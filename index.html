@@ -772,6 +772,96 @@ body{
   background:var(--accent);border-color:var(--accent);color:#fff;
 }
 
+
+/* EXERCISE VIDEO CARD */
+.ex-video-card {
+  margin: 12px 0 0;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: #0d0d0d;
+}
+/* Thumbnail — uses img natural height, no absolute positioning */
+.ex-video-thumb {
+  display: block;
+  width: 100%;
+  position: relative;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  background: #111;
+  min-height: 120px;
+}
+.ex-video-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  object-fit: cover;
+  border: none;
+}
+/* Play button sits on top of img */
+.ex-video-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px; height: 56px;
+  background: rgba(200,16,46,0.90);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.6);
+}
+.ex-video-play::after {
+  content: '';
+  border-left: 20px solid #fff;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  margin-left: 5px;
+}
+/* Bottom bar link */
+.ex-video-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+  text-decoration: none;
+  background: var(--card);
+  -webkit-tap-highlight-color: transparent;
+}
+.ex-video-yt-icon {
+  width: 22px; height: 16px;
+  background: #c8102e;
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ex-video-yt-icon::after {
+  content: '';
+  border-left: 8px solid white;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  margin-left: 2px;
+}
+.ex-video-title {
+  flex: 1;
+  font-size: 11px; color: var(--mid);
+  letter-spacing: 0.3px; line-height: 1.4;
+}
+.ex-video-arrow {
+  font-size: 11px; color: var(--accent);
+}
+/* Fallback label when image doesn't load */
+.ex-video-thumb::before {
+  content: '▶  TAP TO WATCH ON YOUTUBE';
+  position: absolute;
+  bottom: 8px; left: 0; right: 0;
+  text-align: center;
+  font-size: 9px; letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
+  z-index: 1;
+  pointer-events: none;
+}
+
 </style>
 </head>
 <body>
@@ -948,7 +1038,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;background:#111;display:block"><rect x="40" y="110" width="240" height="10" rx="3" fill="#2a2a2a"/><rect x="50" y="120" width="10" height="25" fill="#2a2a2a"/><rect x="260" y="120" width="10" height="25" fill="#2a2a2a"/><rect x="60" y="95" width="175" height="16" rx="7" fill="#333"/><circle cx="250" cy="94" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="100" y1="97" x2="85" y2="58" stroke="#c8102e" stroke-width="2.5"/><line x1="140" y1="97" x2="155" y2="58" stroke="#c8102e" stroke-width="2.5"/><rect x="65" y="54" width="110" height="7" rx="3" fill="#555"/><rect x="55" y="50" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="167" y="50" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><line x1="100" y1="97" x2="90" y2="90" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.35"/><line x1="140" y1="97" x2="150" y2="90" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.35"/><rect x="70" y="88" width="100" height="6" rx="2" fill="#555" opacity="0.3"/><text x="160" y="148" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">BENCH PRESS</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/vcBig73ojpE/mqdefault.jpg" alt="BENCH PRESS" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">How To Bench Press — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Retract scapula before unracking — pull shoulder blades together</div><div class="cue">Bar path: lower chest, wrists straight above elbows</div><div class="cue">2-second eccentric down, drive explosively up</div><div class="cue">Feet flat, slight lower back arch, glutes on bench</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>10</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -961,7 +1061,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="16" y="28" width="14" height="124" rx="3" fill="#2a2a2a"/><circle cx="23" cy="80" r="8" fill="#3a3a3a" stroke="#555" stroke-width="1.5"/><line x1="23" y1="80" x2="126" y2="92" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/><rect x="55" y="130" width="50" height="8" rx="3" fill="#2a2a2a"/><line x1="160" y1="130" x2="160" y2="76" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="65" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><rect x="128" y="128" width="64" height="10" rx="3" fill="#2a2a2a"/><line x1="160" y1="130" x2="104" y2="132" stroke="#c8102e" stroke-width="2.5"/><line x1="104" y1="132" x2="68" y2="130" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="130" x2="202" y2="140" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="128" y2="93" stroke="#c8102e" stroke-width="2.5"/><rect x="116" y="88" width="18" height="10" rx="3" fill="#555"/><line x1="160" y1="97" x2="88" y2="83" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.3"/><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">INCLINE DB PRESS</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/vcBig73ojpE/mqdefault.jpg" alt="INCLINE DB PRESS" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Bench Press Technique — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Set bench to 30–45°. Higher angle shifts load to front delt.</div><div class="cue">Squeeze chest at top for 1 second</div><div class="cue">Elbows at ~45° to body — not flared wide</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -974,7 +1084,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">B1</div><div class="wname">Overhead Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;background:#111;display:block"><rect x="40" y="130" width="240" height="8" rx="3" fill="#2a2a2a"/><rect x="50" y="138" width="10" height="18" fill="#2a2a2a"/><rect x="260" y="138" width="10" height="18" fill="#2a2a2a"/><g transform="rotate(-22 150 100)"><rect x="55" y="88" width="195" height="13" rx="5" fill="#333"/><rect x="62" y="78" width="165" height="13" rx="5" fill="#2e2e2e"/></g><circle cx="234" cy="72" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="108" y1="83" x2="94" y2="50" stroke="#c8102e" stroke-width="2.5"/><line x1="143" y1="79" x2="158" y2="47" stroke="#c8102e" stroke-width="2.5"/><rect x="82" y="43" width="18" height="9" rx="3" fill="#555"/><rect x="79" y="40" width="8" height="12" rx="2" fill="#c8102e" opacity="0.8"/><rect x="91" y="40" width="8" height="12" rx="2" fill="#c8102e" opacity="0.8"/><rect x="151" y="41" width="18" height="9" rx="3" fill="#555"/><rect x="148" y="38" width="8" height="12" rx="2" fill="#c8102e" opacity="0.8"/><rect x="160" y="38" width="8" height="12" rx="2" fill="#c8102e" opacity="0.8"/><text x="160" y="150" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">OVERHEAD PRESS</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=SgyUoY0IZ7A" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/SgyUoY0IZ7A/mqdefault.jpg" alt="OVERHEAD PRESS" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=SgyUoY0IZ7A" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Best Shoulder Exercises — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Brace core hard — this is a full-body press</div><div class="cue">Tuck chin as bar passes face, then press vertically</div><div class="cue">Full lockout at top, controlled descent</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>10</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -987,7 +1107,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">B2</div><div class="wname">Lateral Raises</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="60" y1="152" x2="260" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="152" x2="160" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="152" x2="142" y2="168" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="152" x2="178" y2="168" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="132" y2="105" stroke="#c8102e" stroke-width="2.5"/><line x1="132" y1="105" x2="122" y2="77" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="188" y2="105" stroke="#c8102e" stroke-width="2.5"/><line x1="188" y1="105" x2="198" y2="77" stroke="#c8102e" stroke-width="2.5"/><rect x="100" y="70" width="120" height="8" rx="3" fill="#555"/><rect x="86" y="66" width="18" height="16" rx="3" fill="#c8102e" opacity="0.7"/><rect x="216" y="66" width="18" height="16" rx="3" fill="#c8102e" opacity="0.7"/><line x1="132" y1="105" x2="130" y2="130" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.3"/><text x="160" y="160" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">LATERAL RAISE</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=SgyUoY0IZ7A" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/SgyUoY0IZ7A/mqdefault.jpg" alt="LATERAL RAISE" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=SgyUoY0IZ7A" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Shoulder Exercises — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Slight forward lean at hips (10–15°)</div><div class="cue">Lead with elbows — pinky slightly higher than thumb at top</div><div class="cue">Slow and controlled — no momentum or swinging</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>20</td><td>Light</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1000,7 +1130,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">C1</div><div class="wname">Weighted Dips</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="60" y1="150" x2="260" y2="150" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="150" x2="160" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="150" x2="140" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="150" x2="180" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="100" x2="120" y2="76" stroke="#c8102e" stroke-width="2.5"/><line x1="120" y1="76" x2="120" y2="44" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="100" x2="200" y2="76" stroke="#c8102e" stroke-width="2.5"/><line x1="200" y1="76" x2="200" y2="44" stroke="#c8102e" stroke-width="2.5"/><rect x="96" y="38" width="128" height="9" rx="4" fill="#555"/><rect x="80" y="33" width="20" height="18" rx="3" fill="#c8102e" opacity="0.7"/><rect x="220" y="33" width="20" height="18" rx="3" fill="#c8102e" opacity="0.7"/><line x1="160" y1="105" x2="160" y2="55" stroke="#c8102e" stroke-width="1" stroke-dasharray="3,4" opacity="0.3"/><text x="160" y="156" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">TRICEP DIPS</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/vcBig73ojpE/mqdefault.jpg" alt="TRICEP DIPS" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Push Technique — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Stay upright — leaning forward shifts work to chest</div><div class="cue">Full lockout at top, controlled descent</div><div class="cue">Add weight via belt once 12 bodyweight reps is easy</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Bodyweight</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1012,7 +1152,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="60" y1="152" x2="260" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="152" x2="160" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="152" x2="142" y2="168" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="152" x2="178" y2="168" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="132" y2="105" stroke="#c8102e" stroke-width="2.5"/><line x1="132" y1="105" x2="124" y2="76" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="188" y2="105" stroke="#c8102e" stroke-width="2.5"/><line x1="188" y1="105" x2="192" y2="134" stroke="#c8102e" stroke-width="2.5"/><rect x="118" y="68" width="10" height="20" rx="3" fill="#555"/><rect x="115" y="65" width="14" height="8" rx="2" fill="#c8102e" opacity="0.8"/><rect x="115" y="85" width="14" height="8" rx="2" fill="#c8102e" opacity="0.8"/><rect x="186" y="130" width="10" height="20" rx="3" fill="#555"/><rect x="183" y="127" width="14" height="8" rx="2" fill="#c8102e" opacity="0.55"/><rect x="183" y="147" width="14" height="8" rx="2" fill="#c8102e" opacity="0.55"/><text x="228" y="110" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.5">neutral grip</text><text x="160" y="160" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">CABLE PUSHDOWN</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/vcBig73ojpE/mqdefault.jpg" alt="CABLE PUSHDOWN" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Push Technique — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Elbows pinned at sides — they don't move</div><div class="cue">Full extension at bottom, feel the contraction</div><div class="cue">2-second return — no bouncing</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>15</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1028,7 +1178,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A1</div><div class="wname">Weighted Pull-ups</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="60" y1="152" x2="260" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="150" x2="157" y2="84" stroke="#c8102e" stroke-width="3"/><circle cx="157" cy="73" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="150" x2="144" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="150" x2="176" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="157" y1="102" x2="98" y2="82" stroke="#c8102e" stroke-width="2.5"/><line x1="157" y1="102" x2="216" y2="82" stroke="#c8102e" stroke-width="2.5"/><rect x="82" y="76" width="19" height="10" rx="3" fill="#555"/><rect x="79" y="73" width="9" height="15" rx="2" fill="#c8102e" opacity="0.8"/><rect x="91" y="73" width="9" height="15" rx="2" fill="#c8102e" opacity="0.8"/><rect x="219" y="76" width="19" height="10" rx="3" fill="#555"/><rect x="216" y="73" width="9" height="15" rx="2" fill="#c8102e" opacity="0.8"/><rect x="228" y="73" width="9" height="15" rx="2" fill="#c8102e" opacity="0.8"/><line x1="157" y1="102" x2="120" y2="110" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.3"/><line x1="157" y1="102" x2="194" y2="110" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.3"/><text x="160" y="159" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">WEIGHTED PULL-UPS</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/VL5Ab0T07e4/mqdefault.jpg" alt="WEIGHTED PULL-UPS" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Build a Bigger Back — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Full dead hang at the bottom — no half reps</div><div class="cue">Initiate by depressing scapula, then pull elbows to hips</div><div class="cue">Chin clearly above bar. No kipping or swinging.</div><div class="cue">The single most important exercise in this programme</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>8</td><td>Bodyweight</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1041,7 +1201,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A2</div><div class="wname">Barbell Row</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="40" y1="152" x2="280" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="90" x2="155" y2="127" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="79" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="155" y1="127" x2="118" y2="150" stroke="#c8102e" stroke-width="3"/><line x1="155" y1="127" x2="194" y2="150" stroke="#c8102e" stroke-width="3"/><line x1="160" y1="97" x2="130" y2="98" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="190" y2="98" stroke="#c8102e" stroke-width="2.5"/><rect x="104" y="92" width="112" height="7" rx="3" fill="#555"/><rect x="88" y="88" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="212" y="88" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><line x1="80" y1="127" x2="80" y2="152" stroke="#c8102e" stroke-width="1.5" opacity="0.4"/><text x="54" y="122" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.5">parallel</text><text x="160" y="160" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">BARBELL ROW</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/VL5Ab0T07e4/mqdefault.jpg" alt="BARBELL ROW" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Deadlift & Back Technique — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Hinge at hips, back roughly parallel to floor</div><div class="cue">Overhand grip, pull bar to lower chest</div><div class="cue">Squeeze shoulder blades at top — hold 1 second</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>10</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1054,7 +1224,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="88" y="60" width="10" height="88" rx="3" fill="#3a3a3a"/><rect x="222" y="60" width="10" height="88" rx="3" fill="#3a3a3a"/><rect x="74" y="56" width="38" height="10" rx="4" fill="#555"/><rect x="208" y="56" width="38" height="10" rx="4" fill="#555"/><line x1="160" y1="157" x2="160" y2="92" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="80" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="100" x2="95" y2="64" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="100" x2="225" y2="64" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="157" x2="145" y2="142" stroke="#c8102e" stroke-width="2.5"/><line x1="145" y1="142" x2="148" y2="158" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="157" x2="175" y2="142" stroke="#c8102e" stroke-width="2.5"/><line x1="175" y1="142" x2="172" y2="158" stroke="#c8102e" stroke-width="2.5"/><text x="160" y="159" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">LAT PULLDOWN</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/VL5Ab0T07e4/mqdefault.jpg" alt="LAT PULLDOWN" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Back Technique — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Wide overhand grip, slight lean back (not excessive)</div><div class="cue">Pull to upper chest — elbows drive toward hips</div><div class="cue">Think: pull shoulder blades into your back pockets</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1067,7 +1247,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">B2</div><div class="wname">Seated Cable Row</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="40" y1="152" x2="280" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="100" y1="92" x2="212" y2="73" stroke="#c8102e" stroke-width="3"/><circle cx="222" cy="66" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="100" y1="92" x2="90" y2="152" stroke="#c8102e" stroke-width="2.5"/><line x1="100" y1="92" x2="126" y2="152" stroke="#c8102e" stroke-width="2.5"/><line x1="148" y1="83" x2="142" y2="117" stroke="#c8102e" stroke-width="2.5"/><line x1="172" y1="79" x2="168" y2="117" stroke="#c8102e" stroke-width="2.5"/><rect x="116" y="115" width="68" height="7" rx="3" fill="#555"/><rect x="100" y="111" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="182" y="111" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><path d="M 100 92 Q 106 122 108 150" stroke="#c8102e" stroke-width="1.2" fill="none" stroke-dasharray="3,3" opacity="0.3"/><text x="160" y="160" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">SEATED CABLE ROW</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/VL5Ab0T07e4/mqdefault.jpg" alt="SEATED CABLE ROW" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=VL5Ab0T07e4" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Back Technique — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Neutral grip, back straight throughout</div><div class="cue">Pull to navel — squeeze mid-back at the end</div><div class="cue">Controlled stretch on the way back — don't round</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1079,7 +1269,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">C1</div><div class="wname">Barbell Curl</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="228" y="8" width="16" height="142" rx="3" fill="#2a2a2a"/><circle cx="236" cy="30" r="8" fill="#3a3a3a" stroke="#555" stroke-width="1.5"/><line x1="236" y1="30" x2="183" y2="65" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/><line x1="60" y1="150" x2="260" y2="150" stroke="#2a2a2a" stroke-width="2"/><line x1="158" y1="150" x2="158" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="158" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="158" y1="150" x2="140" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="150" x2="176" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="97" x2="146" y2="90" stroke="#c8102e" stroke-width="2.5"/><line x1="146" y1="90" x2="146" y2="122" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="97" x2="170" y2="90" stroke="#c8102e" stroke-width="2.5"/><line x1="170" y1="90" x2="170" y2="122" stroke="#c8102e" stroke-width="2.5"/><rect x="138" y="120" width="40" height="7" rx="3" fill="#555"/><text x="104" y="92" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.6">elbows pinned</text><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">BARBELL CURL</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/vcBig73ojpE/mqdefault.jpg" alt="BARBELL CURL" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Arm Training — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">No swinging — elbows stay locked at sides</div><div class="cue">Full supination (wrist turn out) at the top</div><div class="cue">3-second eccentric on the way down</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1091,7 +1291,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">C2</div><div class="wname">Hammer Curl</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="28" y="88" width="200" height="14" rx="5" fill="#2a2a2a" transform="rotate(-38 128 95)"/><rect x="58" y="116" width="68" height="12" rx="4" fill="#2a2a2a"/><rect x="198" y="32" width="58" height="14" rx="4" fill="#3a3a3a" transform="rotate(-38 227 39)"/><line x1="50" y1="116" x2="70" y2="68" stroke="#c8102e" stroke-width="3"/><circle cx="74" cy="57" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="50" y1="116" x2="130" y2="84" stroke="#c8102e" stroke-width="2.5"/><line x1="130" y1="84" x2="198" y2="49" stroke="#c8102e" stroke-width="2.5"/><text x="210" y="44" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.55">high foot</text><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">HAMMER CURL</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/vcBig73ojpE/mqdefault.jpg" alt="HAMMER CURL" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=vcBig73ojpE" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Arm Training — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Neutral grip — thumb pointing up throughout the movement</div><div class="cue">Builds brachialis for overall arm thickness</div><div class="cue">Can alternate arms for better mind-muscle connection</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1107,7 +1317,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="68" y="16" width="184" height="10" rx="4" fill="#555"/><rect x="66" y="8" width="14" height="22" rx="3" fill="#3a3a3a"/><rect x="240" y="8" width="14" height="22" rx="3" fill="#3a3a3a"/><circle cx="160" cy="20" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="31" x2="100" y2="25" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="31" x2="220" y2="25" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="31" x2="160" y2="100" stroke="#c8102e" stroke-width="3"/><line x1="160" y1="100" x2="148" y2="138" stroke="#c8102e" stroke-width="2.5"/><line x1="148" y1="138" x2="152" y2="158" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="100" x2="172" y2="138" stroke="#c8102e" stroke-width="2.5"/><line x1="172" y1="138" x2="168" y2="158" stroke="#c8102e" stroke-width="2.5"/><ellipse cx="160" cy="160" rx="10" ry="5" fill="#333" stroke="#c8102e" stroke-width="1" opacity="0.6"/><text x="80" y="30" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.5">wide grip</text><text x="160" y="159" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">BARBELL SQUAT</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/bEv6CCg2BC8/mqdefault.jpg" alt="BARBELL SQUAT" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">How To Squat — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Break parallel — hip crease below knee every rep</div><div class="cue">Chest up, core braced, drive through heels</div><div class="cue">Knees track over toes — push them outward</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>8</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1120,7 +1340,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A2</div><div class="wname">Romanian Deadlift</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="40" y1="154" x2="280" y2="154" stroke="#2a2a2a" stroke-width="2"/><line x1="162" y1="154" x2="162" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="162" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="162" y1="117" x2="210" y2="132" stroke="#c8102e" stroke-width="2.5"/><line x1="210" y1="132" x2="228" y2="154" stroke="#c8102e" stroke-width="2.5"/><line x1="162" y1="117" x2="120" y2="132" stroke="#c8102e" stroke-width="2.5"/><line x1="120" y1="132" x2="116" y2="154" stroke="#c8102e" stroke-width="2.5"/><circle cx="120" cy="150" r="5" fill="none" stroke="#c8102e" stroke-width="1.5" opacity="0.45"/><line x1="162" y1="97" x2="138" y2="103" stroke="#c8102e" stroke-width="2"/><line x1="162" y1="97" x2="186" y2="103" stroke="#c8102e" stroke-width="2"/><rect x="124" y="100" width="16" height="24" rx="4" fill="#555"/><rect x="121" y="97" width="10" height="10" rx="2" fill="#c8102e" opacity="0.7"/><rect x="184" y="100" width="16" height="24" rx="4" fill="#555"/><rect x="193" y="97" width="10" height="10" rx="2" fill="#c8102e" opacity="0.7"/><text x="160" y="162" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">ROMANIAN DEADLIFT</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=P9IOX-xsrDs" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/P9IOX-xsrDs/mqdefault.jpg" alt="ROMANIAN DEADLIFT" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=P9IOX-xsrDs" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">How To RDL — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Hip hinge — push hips back, not knees down</div><div class="cue">Bar stays in contact with legs throughout</div><div class="cue">Feel the hamstring stretch at the bottom — don't round</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>10</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1133,7 +1363,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="40" y1="150" x2="280" y2="150" stroke="#2a2a2a" stroke-width="2"/><line x1="92" y1="102" x2="202" y2="80" stroke="#c8102e" stroke-width="3"/><circle cx="213" cy="73" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="92" y1="102" x2="80" y2="150" stroke="#c8102e" stroke-width="2.5"/><line x1="92" y1="102" x2="118" y2="150" stroke="#c8102e" stroke-width="2.5"/><line x1="135" y1="91" x2="130" y2="118" stroke="#c8102e" stroke-width="2.5"/><line x1="162" y1="87" x2="162" y2="118" stroke="#c8102e" stroke-width="2.5"/><rect x="88" y="118" width="92" height="7" rx="3" fill="#555"/><rect x="74" y="114" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="180" y="114" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="100" y="94" width="70" height="6" rx="2" fill="#555" opacity="0.3"/><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">LEG PRESS</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/bEv6CCg2BC8/mqdefault.jpg" alt="LEG PRESS" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Leg Day Technique — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">High foot placement targets glutes and hamstrings</div><div class="cue">Don't lock out knees — maintain slight bend at top</div><div class="cue">Control the descent — don't let the weight drop</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1145,7 +1385,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">B2</div><div class="wname">Walking Lunges</div><div class="wmeta">3×12 each</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;background:#111;display:block"><line x1="40" y1="126" x2="280" y2="126" stroke="#2a2a2a" stroke-width="2"/><line x1="80" y1="101" x2="248" y2="93" stroke="#c8102e" stroke-width="12" stroke-linecap="round" opacity="0.12"/><line x1="80" y1="101" x2="248" y2="93" stroke="#c8102e" stroke-width="4" stroke-linecap="round"/><circle cx="256" cy="88" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="80" y1="101" x2="76" y2="126" stroke="#c8102e" stroke-width="2.5"/><line x1="76" y1="126" x2="102" y2="126" stroke="#c8102e" stroke-width="2.5"/><line x1="232" y1="98" x2="242" y2="126" stroke="#c8102e" stroke-width="2.5"/><line x1="78" y1="82" x2="256" y2="74" stroke="#c8102e" stroke-width="1" stroke-dasharray="5,4" opacity="0.25"/><text x="160" y="148" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">WALKING LUNGE</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/bEv6CCg2BC8/mqdefault.jpg" alt="WALKING LUNGE" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Leg Technique — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Long stride — front knee tracks directly over toe</div><div class="cue">Back knee just above floor — controlled drop</div><div class="cue">Torso upright and braced throughout</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12/leg</td><td>BW or DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
@@ -1157,7 +1407,17 @@ body{
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">C1</div><div class="wname">Core Circuit</div><div class="wmeta">3 rounds</div><div class="warrow">▼</div></div>
       <div class="wbody">
-        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="140" y="6" width="16" height="52" rx="3" fill="#2a2a2a"/><line x1="148" y1="18" x2="98" y2="42" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/><line x1="148" y1="18" x2="198" y2="42" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/><rect x="88" y="38" width="120" height="7" rx="3" fill="#555"/><rect x="128" y="118" width="60" height="12" rx="4" fill="#2a2a2a"/><line x1="158" y1="118" x2="158" y2="70" stroke="#c8102e" stroke-width="3"/><circle cx="158" cy="59" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="158" y1="118" x2="134" y2="140" stroke="#c8102e" stroke-width="2.5"/><line x1="134" y1="140" x2="116" y2="142" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="118" x2="182" y2="140" stroke="#c8102e" stroke-width="2.5"/><line x1="182" y1="140" x2="200" y2="142" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="80" x2="94" y2="43" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="80" x2="202" y2="43" stroke="#c8102e" stroke-width="2.5"/><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">PLANK</text></svg></div>
+        <div class="ex-video-card">
+        <a class="ex-video-thumb" href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/bEv6CCg2BC8/mqdefault.jpg" alt="PLANK" loading="lazy" onerror="this.style.opacity='0'">
+          <div class="ex-video-play"></div>
+        </a>
+        <a class="ex-video-bar" href="https://www.youtube.com/watch?v=bEv6CCg2BC8" target="_blank" rel="noopener">
+          <div class="ex-video-yt-icon"></div>
+          <div class="ex-video-title">Core Training — Jeff Nippard</div>
+          <div class="ex-video-arrow">▶</div>
+        </a>
+      </div>
         <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Plank: neutral spine, squeeze glutes and abs together</div><div class="cue">No rest between exercises within a round</div><div class="cue">60 seconds rest between rounds</div></div>
         <table class="stbl"><tr><th>Exercise</th><th>Amount</th><th>✓</th></tr>
         <tr><td style="font-size:11px;color:var(--white)">Plank</td><td>60 sec</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
