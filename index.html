@@ -2,6 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Apex Physique">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="12-Week physique programme — Push Pull Legs, nutrition and tracking">
+<link rel="manifest" href="data:application/manifest+json,{
+  %22name%22:%22Apex%20Physique%22,
+  %22short_name%22:%22Apex%22,
+  %22description%22:%2212-Week%20Physique%20Programme%22,
+  %22start_url%22:%22.%22,
+  %22display%22:%22standalone%22,
+  %22background_color%22:%22%230a0a0a%22,
+  %22theme_color%22:%22%230a0a0a%22,
+  %22orientation%22:%22portrait%22,
+  %22icons%22:[
+    {%22src%22:%22data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A//www.w3.org/2000/svg'%20viewBox%3D'0%200%20512%20512'%3E%3Crect%20width%3D'512'%20height%3D'512'%20fill%3D'%230a0a0a'/%3E%3Crect%20x%3D'0'%20y%3D'0'%20width%3D'512'%20height%3D'6'%20fill%3D'%23c8102e'/%3E%3Ctext%20x%3D'256'%20y%3D'220'%20text-anchor%3D'middle'%20font-family%3D'Arial%20Black%2Csans-serif'%20font-weight%3D'900'%20font-size%3D'160'%20fill%3D'%23f2efe8'%20letter-spacing%3D'2'%3EAPEX%3C/text%3E%3Ctext%20x%3D'256'%20y%3D'370'%20text-anchor%3D'middle'%20font-family%3D'Arial%20Black%2Csans-serif'%20font-weight%3D'900'%20font-size%3D'100'%20fill%3D'%23c8102e'%20letter-spacing%3D'8'%3EPHYSIQUE%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22512x512%22,%22type%22:%22image/svg+xml%22,%22purpose%22:%22any%20maskable%22}
+  ]
+}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>APEX PHYSIQUE</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -2081,5 +2100,64 @@ window.addEventListener('DOMContentLoaded',()=>{
   const m=localStorage.getItem('apx_meal'); if(m) switchMeal(m);
 });
 </script>
+
+<!-- PWA INSTALL BANNER -->
+<div id="installBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;
+  background:#1a1a1a;border-top:2px solid #c8102e;padding:14px 16px;
+  z-index:9999;align-items:center;gap:12px;">
+  <div style="flex:1;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:#f2efe8;">
+      ADD TO HOME SCREEN
+    </div>
+    <div style="font-size:11px;color:#6e6e6e;margin-top:2px;">
+      Install as an app for quick access
+    </div>
+  </div>
+  <button onclick="installApp()" style="background:#c8102e;border:none;color:#fff;
+    font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;
+    padding:10px 18px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+    INSTALL
+  </button>
+  <button onclick="document.getElementById('installBanner').style.display='none'"
+    style="background:transparent;border:1px solid #252525;color:#6e6e6e;
+    font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;
+    padding:10px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+    NOT NOW
+  </button>
+</div>
+
+<script>
+// PWA SERVICE WORKER
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js')
+    .catch(err => console.log('SW failed:', err));
+}
+
+// PWA INSTALL PROMPT
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const banner = document.getElementById('installBanner');
+  if(banner) banner.style.display = 'flex';
+});
+
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+      const banner = document.getElementById('installBanner');
+      if(banner) banner.style.display = 'none';
+    });
+  }
+}
+
+window.addEventListener('appinstalled', () => {
+  const banner = document.getElementById('installBanner');
+  if(banner) banner.style.display = 'none';
+});
+</script>
+
 </body>
 </html>
