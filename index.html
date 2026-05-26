@@ -645,6 +645,133 @@ body{
 .today-strip-day.sd-today.sd-done .sd-dot{background:var(--green);}
 .today-strip-day.sd-rest .sd-dot{background:transparent;border:1px solid var(--border);}
 
+
+/* ── TRACKING TAB ────────────────────────────────────────────── */
+.track-section{margin-bottom:20px;}
+.track-section-title{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.track-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* Input card */
+.log-card{background:var(--card);border:1px solid var(--border);padding:14px;margin-bottom:8px;}
+.log-card-title{font-size:12px;font-weight:700;margin-bottom:12px;color:var(--white);}
+.log-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.log-row:last-child{margin-bottom:0;}
+.log-label{font-size:11px;color:var(--mid);min-width:80px;}
+.log-input{
+  flex:1;background:var(--surface);border:1px solid var(--border2);
+  color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;
+  padding:9px 12px;outline:none;-webkit-appearance:none;border-radius:0;
+}
+.log-input:focus{border-color:var(--accent);}
+.log-input::placeholder{color:var(--grey);}
+.log-unit{font-size:11px;color:var(--grey);min-width:28px;}
+.log-btn{
+  width:100%;padding:12px;background:var(--accent);border:none;
+  color:#fff;font-family:'Bebas Neue',sans-serif;font-size:14px;
+  letter-spacing:3px;cursor:pointer;margin-top:12px;
+  -webkit-tap-highlight-color:transparent;transition:filter 0.15s;
+}
+.log-btn:active{filter:brightness(0.85);}
+.log-btn.secondary{background:transparent;border:1px solid var(--border2);color:var(--mid);margin-top:6px;}
+
+/* Chart */
+.chart-wrap{
+  background:var(--card);border:1px solid var(--border);
+  padding:14px;margin-bottom:8px;
+}
+.chart-title{
+  font-size:11px;font-weight:700;color:var(--white);
+  margin-bottom:4px;letter-spacing:0.5px;
+}
+.chart-sub{font-size:10px;color:var(--grey);margin-bottom:12px;}
+.chart-canvas-wrap{position:relative;width:100%;overflow:hidden;}
+.chart-svg{width:100%;display:block;}
+.chart-empty{
+  text-align:center;padding:30px 0;font-size:12px;
+  color:var(--grey);letter-spacing:1px;
+}
+.chart-legend{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--mid);}
+.legend-dot{width:8px;height:8px;border-radius:50%;}
+
+/* History table */
+.history-table{width:100%;border-collapse:collapse;font-size:12px;}
+.history-table th{
+  text-align:left;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--grey);padding:6px 8px;border-bottom:1px solid var(--border);font-weight:400;
+}
+.history-table td{
+  padding:9px 8px;border-bottom:1px solid rgba(37,37,37,0.5);
+  color:var(--mid);vertical-align:middle;
+}
+.history-table tr:last-child td{border-bottom:none;}
+.history-table td:first-child{color:var(--white);font-weight:600;}
+.change-up{color:#4caf7d;}
+.change-down{color:var(--accent);}
+.change-same{color:var(--grey);}
+.delete-row-btn{
+  background:none;border:none;color:var(--grey);
+  font-size:14px;cursor:pointer;padding:4px 6px;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* Summary stats */
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px;}
+.summary-cell{
+  background:var(--card);border:1px solid var(--border);
+  padding:11px 8px;text-align:center;
+}
+.summary-num{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--white);}
+.summary-num.pos{color:#4caf7d;}
+.summary-num.neg{color:var(--accent);}
+.summary-lbl{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+
+/* Photo reminder */
+.photo-reminder{
+  background:rgba(200,16,46,0.06);border:1px solid rgba(200,16,46,0.2);
+  padding:12px 14px;margin-bottom:8px;
+  display:flex;align-items:center;gap:12px;
+}
+.photo-reminder-icon{font-size:22px;}
+.photo-reminder-text{flex:1;font-size:12px;color:var(--mid);line-height:1.5;}
+.photo-reminder-text strong{color:var(--white);display:block;margin-bottom:2px;}
+
+/* Lift entry rows */
+.lift-row{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 0;border-bottom:1px solid rgba(37,37,37,0.4);
+}
+.lift-row:last-child{border-bottom:none;}
+.lift-name{font-size:12px;color:var(--white);font-weight:600;min-width:100px;}
+.lift-input{
+  flex:1;background:var(--surface);border:1px solid var(--border2);
+  color:var(--white);font-family:'DM Sans',sans-serif;font-size:13px;
+  padding:7px 10px;outline:none;-webkit-appearance:none;
+  border-radius:0;text-align:center;
+}
+.lift-input:focus{border-color:var(--accent);}
+.lift-pr{font-size:10px;color:#4caf7d;min-width:44px;text-align:right;}
+
+/* Measurement grid */
+.meas-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.meas-field{display:flex;flex-direction:column;gap:4px;}
+.meas-label{font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;}
+
+
+.lift-toggle-btn{
+  padding:5px 12px;background:var(--card);border:1px solid var(--border2);
+  color:var(--grey);font-size:10px;letter-spacing:1px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:all 0.15s;
+}
+.lift-toggle-btn.active-lift{
+  background:var(--accent);border-color:var(--accent);color:#fff;
+}
+
 </style>
 </head>
 <body>
@@ -705,6 +832,7 @@ body{
   <button class="tab" onclick="switchTab('shopping',this)">Shopping</button>
   <button class="tab" onclick="switchTab('timer',this)">Timer</button>
   <button class="tab" onclick="switchTab('tracker',this)">Progress</button>
+  <button class="tab" onclick="switchTab('tracking',this)">Tracking</button>
 </div>
 
 <!-- ===== OVERVIEW ===== -->
@@ -2083,12 +2211,219 @@ function updatePhaseBadges(){
 window.addEventListener('DOMContentLoaded',()=>{
   buildTracker();
   renderTodayCard();
+  initTracking();
   updatePhaseBadges();
   restoreShop();
   const t=localStorage.getItem('apx_time'); if(t) setTime(t);
   const m=localStorage.getItem('apx_meal'); if(m) switchMeal(m);
 });
 </script>
+
+<!-- ===== TRACKING ===== -->
+<div id="tab-tracking" class="section">
+  <div class="sec-label">Personal Records · Body Stats</div>
+  <div class="sec-title">TRACKING</div>
+
+  <!-- SUMMARY STATS -->
+  <div class="summary-grid">
+    <div class="summary-cell">
+      <div class="summary-num" id="trk-start-weight">—</div>
+      <div class="summary-lbl">Start kg</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-num" id="trk-current-weight">—</div>
+      <div class="summary-lbl">Current kg</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-num" id="trk-weight-change">—</div>
+      <div class="summary-lbl">Change kg</div>
+    </div>
+  </div>
+
+  <!-- PHOTO REMINDER -->
+  <div class="photo-reminder" id="photoReminder" style="display:none">
+    <div class="photo-reminder-icon">📸</div>
+    <div class="photo-reminder-text">
+      <strong>Progress Photo Due</strong>
+      Every 4 weeks — front + side. Same lighting, same spot. Photos show what the scale can't.
+    </div>
+  </div>
+
+  <!-- WEIGHT LOG -->
+  <div class="track-section">
+    <div class="track-section-title">Weekly Weigh-In</div>
+    <div class="log-card">
+      <div class="log-card-title">Log This Week's Weight</div>
+      <div style="font-size:11px;color:var(--grey);margin-bottom:12px;line-height:1.6;">
+        Same day each week · Morning · After toilet · Before eating
+      </div>
+      <div class="log-row">
+        <div class="log-label">Weight</div>
+        <input class="log-input" type="number" id="weightInput" placeholder="e.g. 99.4" step="0.1" min="40" max="200">
+        <div class="log-unit">kg</div>
+      </div>
+      <div class="log-row">
+        <div class="log-label">Week</div>
+        <select class="log-input" id="weightWeek" style="cursor:pointer;">
+          <option value="">Select week...</option>
+        </select>
+        <div class="log-unit"></div>
+      </div>
+      <button class="log-btn" onclick="logWeight()">SAVE WEIGH-IN</button>
+    </div>
+
+    <!-- Weight chart -->
+    <div class="chart-wrap">
+      <div class="chart-title">Bodyweight — 12 Weeks</div>
+      <div class="chart-sub">Target: slow decline · recomp = muscle up, fat down</div>
+      <div class="chart-canvas-wrap">
+        <svg class="chart-svg" id="weightChart" height="140" viewBox="0 0 320 140"></svg>
+        <div class="chart-empty" id="weightChartEmpty">Log your first weigh-in to see your chart</div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Actual weight</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(76,175,125,0.6)"></div>Trend</div>
+      </div>
+    </div>
+
+    <!-- Weight history -->
+    <div class="chart-wrap" id="weightHistoryWrap" style="display:none">
+      <div class="chart-title">History</div>
+      <table class="history-table">
+        <thead><tr><th>Week</th><th>Weight</th><th>Change</th><th></th></tr></thead>
+        <tbody id="weightHistoryBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LIFT TRACKER -->
+  <div class="track-section">
+    <div class="track-section-title">Strength Log</div>
+    <div class="log-card">
+      <div class="log-card-title">Working Weight This Week</div>
+      <div style="font-size:11px;color:var(--grey);margin-bottom:12px;line-height:1.6;">
+        Log your main working set weight · PRs highlighted in green
+      </div>
+      <div class="log-row" style="margin-bottom:6px;">
+        <div class="log-label">Week</div>
+        <select class="log-input" id="liftWeek" style="cursor:pointer;"></select>
+        <div class="log-unit"></div>
+      </div>
+      <div id="liftInputs">
+        <div class="lift-row">
+          <div class="lift-name">Bench Press</div>
+          <input class="lift-input" type="number" id="lift-bench" placeholder="kg" min="0" max="500">
+          <div class="lift-pr" id="pr-bench"></div>
+        </div>
+        <div class="lift-row">
+          <div class="lift-name">Squat</div>
+          <input class="lift-input" type="number" id="lift-squat" placeholder="kg" min="0" max="500">
+          <div class="lift-pr" id="pr-squat"></div>
+        </div>
+        <div class="lift-row">
+          <div class="lift-name">Barbell Row</div>
+          <input class="lift-input" type="number" id="lift-row" placeholder="kg" min="0" max="500">
+          <div class="lift-pr" id="pr-row"></div>
+        </div>
+        <div class="lift-row">
+          <div class="lift-name">Pull-ups +kg</div>
+          <input class="lift-input" type="number" id="lift-pullup" placeholder="kg added" min="0" max="200">
+          <div class="lift-pr" id="pr-pullup"></div>
+        </div>
+        <div class="lift-row">
+          <div class="lift-name">OHP</div>
+          <input class="lift-input" type="number" id="lift-ohp" placeholder="kg" min="0" max="300">
+          <div class="lift-pr" id="pr-ohp"></div>
+        </div>
+      </div>
+      <button class="log-btn" onclick="logLifts()">SAVE LIFTS</button>
+    </div>
+
+    <!-- Lifts chart -->
+    <div class="chart-wrap">
+      <div class="chart-title">Strength Progress</div>
+      <div class="chart-sub">Tap a lift to highlight it</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="liftChartToggle">
+        <button onclick="setActiveLift('bench')"  class="lift-toggle-btn active-lift" data-lift="bench">Bench</button>
+        <button onclick="setActiveLift('squat')"  class="lift-toggle-btn" data-lift="squat">Squat</button>
+        <button onclick="setActiveLift('row')"    class="lift-toggle-btn" data-lift="row">Row</button>
+        <button onclick="setActiveLift('pullup')" class="lift-toggle-btn" data-lift="pullup">Pull-ups</button>
+        <button onclick="setActiveLift('ohp')"    class="lift-toggle-btn" data-lift="ohp">OHP</button>
+      </div>
+      <div class="chart-canvas-wrap">
+        <svg class="chart-svg" id="liftChart" height="140" viewBox="0 0 320 140"></svg>
+        <div class="chart-empty" id="liftChartEmpty">Log your first session to see strength progress</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEASUREMENTS -->
+  <div class="track-section">
+    <div class="track-section-title">Body Measurements · Every 2 Weeks</div>
+    <div class="log-card">
+      <div class="log-card-title">Log Measurements</div>
+      <div class="log-row" style="margin-bottom:10px;">
+        <div class="log-label">Week</div>
+        <select class="log-input" id="measWeek" style="cursor:pointer;"></select>
+        <div class="log-unit"></div>
+      </div>
+      <div class="meas-grid">
+        <div class="meas-field">
+          <div class="meas-label">Waist (cm)</div>
+          <input class="log-input" type="number" id="meas-waist" placeholder="e.g. 98" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Chest (cm)</div>
+          <input class="log-input" type="number" id="meas-chest" placeholder="e.g. 108" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Shoulders (cm)</div>
+          <input class="log-input" type="number" id="meas-shoulders" placeholder="e.g. 122" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Arm (cm)</div>
+          <input class="log-input" type="number" id="meas-arm" placeholder="e.g. 38" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Thigh (cm)</div>
+          <input class="log-input" type="number" id="meas-thigh" placeholder="e.g. 62" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Neck (cm)</div>
+          <input class="log-input" type="number" id="meas-neck" placeholder="e.g. 40" step="0.5">
+        </div>
+      </div>
+      <button class="log-btn" onclick="logMeasurements()">SAVE MEASUREMENTS</button>
+    </div>
+
+    <!-- Measurements history -->
+    <div class="chart-wrap" id="measHistoryWrap" style="display:none">
+      <div class="chart-title">Measurements History</div>
+      <table class="history-table">
+        <thead><tr><th>Week</th><th>Waist</th><th>Chest</th><th>Shoulders</th><th></th></tr></thead>
+        <tbody id="measHistoryBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="track-section">
+    <div class="track-section-title">Weekly Notes</div>
+    <div class="log-card">
+      <div class="log-card-title">How did this week feel?</div>
+      <div class="log-row" style="margin-bottom:10px;">
+        <div class="log-label">Week</div>
+        <select class="log-input" id="noteWeek" style="cursor:pointer;"></select>
+        <div class="log-unit"></div>
+      </div>
+      <textarea class="log-input" id="noteInput" placeholder="Energy levels, sleep quality, how lifts felt, diet adherence, anything worth remembering..." 
+        style="width:100%;min-height:90px;resize:none;padding:10px 12px;line-height:1.6;font-size:12px;"></textarea>
+      <button class="log-btn" onclick="logNote()">SAVE NOTE</button>
+      <div id="noteDisplay" style="display:none;margin-top:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);font-size:12px;color:var(--mid);line-height:1.6;"></div>
+    </div>
+  </div>
+
+</div>
 
 <!-- PWA INSTALL BANNER -->
 <div id="installBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;
@@ -2114,6 +2449,320 @@ window.addEventListener('DOMContentLoaded',()=>{
     NOT NOW
   </button>
 </div>
+
+
+// ── TRACKING ──────────────────────────────────────────────────────────────────
+const TRK_KEY = 'apx_tracking_v1';
+let trkData = JSON.parse(localStorage.getItem(TRK_KEY) || '{"weights":{},"lifts":{},"measurements":{},"notes":{}}');
+
+const LIFT_KEYS = ['bench','squat','row','pullup','ohp'];
+let activeLift = 'bench';
+
+function saveTrk(){ localStorage.setItem(TRK_KEY, JSON.stringify(trkData)); }
+
+// Populate week selectors 1-12
+function populateWeekSelects(){
+  const ids = ['weightWeek','liftWeek','measWeek','noteWeek'];
+  ids.forEach(id => {
+    const sel = document.getElementById(id);
+    if(!sel) return;
+    const cur = getCurrentWeek();
+    sel.innerHTML = '';
+    for(let w=1;w<=12;w++){
+      const opt = document.createElement('option');
+      opt.value = w;
+      opt.textContent = 'Week ' + w + (w===cur?' (current)':'');
+      if(w===cur) opt.selected = true;
+      sel.appendChild(opt);
+    }
+  });
+}
+
+// ── WEIGHT ────────────────────────────────────────────────────────────────────
+function logWeight(){
+  const val = parseFloat(document.getElementById('weightInput').value);
+  const week = parseInt(document.getElementById('weightWeek').value);
+  if(!val || val < 40 || val > 300){ alert('Please enter a valid weight (40–300kg)'); return; }
+  if(!week){ alert('Please select a week'); return; }
+  trkData.weights[week] = val;
+  saveTrk();
+  document.getElementById('weightInput').value = '';
+  renderWeightChart();
+  renderWeightHistory();
+  renderSummary();
+  checkPhotoReminder();
+}
+
+function renderWeightChart(){
+  const svg = document.getElementById('weightChart');
+  const empty = document.getElementById('weightChartEmpty');
+  const entries = Object.entries(trkData.weights).map(([w,v])=>({w:+w,v:+v})).sort((a,b)=>a.w-b.w);
+  if(entries.length < 1){ svg.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display='none';
+  const W=320, H=140, pad={t:10,r:16,b:24,l:36};
+  const iW=W-pad.l-pad.r, iH=H-pad.t-pad.b;
+  const vals = entries.map(e=>e.v);
+  const minV = Math.min(...vals)-2, maxV = Math.max(...vals)+2;
+  const xS = w => pad.l + ((w-1)/(12-1||1))*iW;
+  const yS = v => pad.t + iH - ((v-minV)/(maxV-minV||1))*iH;
+
+  let out = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  // Grid lines
+  for(let i=0;i<=4;i++){
+    const y = pad.t + (iH/4)*i;
+    const val = maxV - ((maxV-minV)/4)*i;
+    out += `<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#252525" stroke-width="1"/>`;
+    out += `<text x="${pad.l-4}" y="${y+4}" text-anchor="end" fill="#6e6e6e" font-size="9">${val.toFixed(0)}</text>`;
+  }
+  // Week markers
+  [1,4,8,12].forEach(w=>{
+    const x=xS(w);
+    out+=`<text x="${x}" y="${H-4}" text-anchor="middle" fill="#6e6e6e" font-size="9">W${w}</text>`;
+  });
+  // Trend line (simple moving average)
+  if(entries.length >= 2){
+    let tPts = entries.map(e=>`${xS(e.w)},${yS(e.v)}`).join(' ');
+    out += `<polyline points="${tPts}" fill="none" stroke="rgba(76,175,125,0.5)" stroke-width="2" stroke-dasharray="4,3"/>`;
+  }
+  // Actual line
+  if(entries.length >= 2){
+    let pts = entries.map(e=>`${xS(e.w)},${yS(e.v)}`).join(' ');
+    out += `<polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>`;
+  }
+  // Dots
+  entries.forEach(e=>{
+    out += `<circle cx="${xS(e.w)}" cy="${yS(e.v)}" r="4" fill="var(--accent)" stroke="#0a0a0a" stroke-width="2"/>`;
+    out += `<text x="${xS(e.w)}" y="${yS(e.v)-8}" text-anchor="middle" fill="#f2efe8" font-size="9">${e.v}</text>`;
+  });
+  out += '</svg>';
+  svg.outerHTML = out;
+}
+
+function renderWeightHistory(){
+  const wrap = document.getElementById('weightHistoryWrap');
+  const tbody = document.getElementById('weightHistoryBody');
+  if(!wrap||!tbody) return;
+  const entries = Object.entries(trkData.weights).map(([w,v])=>({w:+w,v:+v})).sort((a,b)=>b.w-a.w);
+  if(entries.length===0){ wrap.style.display='none'; return; }
+  wrap.style.display='block';
+  tbody.innerHTML='';
+  entries.forEach((e,i)=>{
+    const prev = entries[i+1];
+    let changeHtml='<span class="change-same">—</span>';
+    if(prev){
+      const diff=(e.v-prev.v).toFixed(1);
+      const cls=diff<0?'change-up':diff>0?'change-down':'change-same';
+      const sign=diff>0?'+':'';
+      changeHtml=`<span class="${cls}">${sign}${diff}kg</span>`;
+    }
+    tbody.innerHTML+=`<tr>
+      <td>Week ${e.w}</td>
+      <td>${e.v}kg</td>
+      <td>${changeHtml}</td>
+      <td><button class="delete-row-btn" onclick="deleteWeight(${e.w})">✕</button></td>
+    </tr>`;
+  });
+}
+
+function deleteWeight(week){
+  delete trkData.weights[week];
+  saveTrk(); renderWeightChart(); renderWeightHistory(); renderSummary();
+}
+
+function renderSummary(){
+  const entries = Object.entries(trkData.weights).map(([w,v])=>({w:+w,v:+v})).sort((a,b)=>a.w-b.w);
+  const sw = document.getElementById('trk-start-weight');
+  const cw = document.getElementById('trk-current-weight');
+  const ch = document.getElementById('trk-weight-change');
+  if(entries.length===0){
+    if(sw) sw.textContent='—'; if(cw) cw.textContent='—'; if(ch){ch.textContent='—';ch.className='summary-num';}
+    return;
+  }
+  const first=entries[0].v, last=entries[entries.length-1].v;
+  const diff=(last-first).toFixed(1);
+  if(sw) sw.textContent=first+'kg';
+  if(cw) cw.textContent=last+'kg';
+  if(ch){
+    const sign=diff>0?'+':'';
+    ch.textContent=sign+diff+'kg';
+    ch.className='summary-num '+(diff<0?'pos':diff>0?'neg':'');
+  }
+}
+
+// ── LIFTS ─────────────────────────────────────────────────────────────────────
+function logLifts(){
+  const week = parseInt(document.getElementById('liftWeek').value);
+  if(!week) return;
+  if(!trkData.lifts[week]) trkData.lifts[week]={};
+  let saved=false;
+  LIFT_KEYS.forEach(k=>{
+    const inp=document.getElementById('lift-'+k);
+    if(inp&&inp.value!==''){
+      trkData.lifts[week][k]=parseFloat(inp.value);
+      saved=true;
+    }
+  });
+  if(!saved){ alert('Enter at least one lift weight'); return; }
+  saveTrk();
+  LIFT_KEYS.forEach(k=>{
+    const inp=document.getElementById('lift-'+k);
+    if(inp) inp.value='';
+  });
+  renderLiftChart();
+  renderPRs();
+}
+
+function renderPRs(){
+  LIFT_KEYS.forEach(k=>{
+    const prEl=document.getElementById('pr-'+k);
+    if(!prEl) return;
+    let maxVal=0;
+    Object.values(trkData.lifts).forEach(entry=>{
+      if(entry[k]&&entry[k]>maxVal) maxVal=entry[k];
+    });
+    prEl.textContent=maxVal>0?'PR: '+maxVal+'kg':'';
+  });
+}
+
+function setActiveLift(lift){
+  activeLift=lift;
+  document.querySelectorAll('.lift-toggle-btn').forEach(b=>{
+    b.classList.toggle('active-lift', b.getAttribute('data-lift')===lift);
+  });
+  renderLiftChart();
+}
+
+function renderLiftChart(){
+  const svgId='liftChart', emptyId='liftChartEmpty';
+  const svgEl=document.getElementById(svgId);
+  const emptyEl=document.getElementById(emptyId);
+  if(!svgEl||!emptyEl) return;
+
+  const entries=[];
+  for(let w=1;w<=12;w++){
+    if(trkData.lifts[w]&&trkData.lifts[w][activeLift]!=null){
+      entries.push({w,v:trkData.lifts[w][activeLift]});
+    }
+  }
+  if(entries.length<1){ svgEl.innerHTML=''; emptyEl.style.display='block'; return; }
+  emptyEl.style.display='none';
+
+  const W=320,H=140,pad={t:10,r:16,b:24,l:36};
+  const iW=W-pad.l-pad.r,iH=H-pad.t-pad.b;
+  const vals=entries.map(e=>e.v);
+  const minV=Math.max(0,Math.min(...vals)-10),maxV=Math.max(...vals)+10;
+  const xS=w=>pad.l+((w-1)/(12-1||1))*iW;
+  const yS=v=>pad.t+iH-((v-minV)/(maxV-minV||1))*iH;
+
+  let out=`<svg class="chart-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  for(let i=0;i<=4;i++){
+    const y=pad.t+(iH/4)*i;
+    const val=maxV-((maxV-minV)/4)*i;
+    out+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#252525" stroke-width="1"/>`;
+    out+=`<text x="${pad.l-4}" y="${y+4}" text-anchor="end" fill="#6e6e6e" font-size="9">${val.toFixed(0)}</text>`;
+  }
+  [1,4,8,12].forEach(w=>{
+    out+=`<text x="${xS(w)}" y="${H-4}" text-anchor="middle" fill="#6e6e6e" font-size="9">W${w}</text>`;
+  });
+  if(entries.length>=2){
+    const pts=entries.map(e=>`${xS(e.w)},${yS(e.v)}`).join(' ');
+    out+=`<polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>`;
+  }
+  entries.forEach(e=>{
+    out+=`<circle cx="${xS(e.w)}" cy="${yS(e.v)}" r="4" fill="var(--accent)" stroke="#0a0a0a" stroke-width="2"/>`;
+    out+=`<text x="${xS(e.w)}" y="${yS(e.v)-8}" text-anchor="middle" fill="#f2efe8" font-size="9">${e.v}</text>`;
+  });
+  out+='</svg>';
+  svgEl.outerHTML=out;
+}
+
+// ── MEASUREMENTS ──────────────────────────────────────────────────────────────
+function logMeasurements(){
+  const week=parseInt(document.getElementById('measWeek').value);
+  if(!week) return;
+  if(!trkData.measurements[week]) trkData.measurements[week]={};
+  const fields=['waist','chest','shoulders','arm','thigh','neck'];
+  let saved=false;
+  fields.forEach(f=>{
+    const inp=document.getElementById('meas-'+f);
+    if(inp&&inp.value!==''){
+      trkData.measurements[week][f]=parseFloat(inp.value);
+      saved=true;
+    }
+  });
+  if(!saved){ alert('Enter at least one measurement'); return; }
+  saveTrk();
+  fields.forEach(f=>{const inp=document.getElementById('meas-'+f);if(inp)inp.value='';});
+  renderMeasHistory();
+}
+
+function renderMeasHistory(){
+  const wrap=document.getElementById('measHistoryWrap');
+  const tbody=document.getElementById('measHistoryBody');
+  if(!wrap||!tbody) return;
+  const entries=Object.entries(trkData.measurements).map(([w,v])=>({w:+w,...v})).sort((a,b)=>b.w-a.w);
+  if(entries.length===0){ wrap.style.display='none'; return; }
+  wrap.style.display='block';
+  tbody.innerHTML='';
+  entries.forEach((e,i)=>{
+    const prev=entries[i+1];
+    let waistChange='';
+    if(prev&&prev.waist&&e.waist){
+      const d=(e.waist-prev.waist).toFixed(1);
+      const cls=d<0?'change-up':d>0?'change-down':'change-same';
+      waistChange=` <span class="${cls}">(${d>0?'+':''}${d})</span>`;
+    }
+    tbody.innerHTML+=`<tr>
+      <td>Week ${e.w}</td>
+      <td>${e.waist||'—'}${waistChange}</td>
+      <td>${e.chest||'—'}</td>
+      <td>${e.shoulders||'—'}</td>
+      <td><button class="delete-row-btn" onclick="deleteMeas(${e.w})">✕</button></td>
+    </tr>`;
+  });
+}
+function deleteMeas(week){ delete trkData.measurements[week]; saveTrk(); renderMeasHistory(); }
+
+// ── NOTES ────────────────────────────────────────────────────────────────────
+function logNote(){
+  const week=parseInt(document.getElementById('noteWeek').value);
+  const text=document.getElementById('noteInput').value.trim();
+  if(!text){ alert('Write something first'); return; }
+  trkData.notes[week]=text;
+  saveTrk();
+  document.getElementById('noteInput').value='';
+  renderNote(week);
+}
+
+function renderNote(week){
+  const display=document.getElementById('noteDisplay');
+  if(!display) return;
+  const note=trkData.notes[week||getCurrentWeek()];
+  if(note){ display.style.display='block'; display.textContent=note; }
+  else { display.style.display='none'; }
+}
+
+// ── PHOTO REMINDER ────────────────────────────────────────────────────────────
+function checkPhotoReminder(){
+  const week=getCurrentWeek();
+  const el=document.getElementById('photoReminder');
+  if(!el) return;
+  // Show on weeks 1, 4, 8, 12
+  el.style.display=[1,4,8,12].includes(week)?'flex':'none';
+}
+
+// ── INIT TRACKING ─────────────────────────────────────────────────────────────
+function initTracking(){
+  populateWeekSelects();
+  renderWeightChart();
+  renderWeightHistory();
+  renderSummary();
+  renderLiftChart();
+  renderPRs();
+  renderMeasHistory();
+  renderNote(getCurrentWeek());
+  checkPhotoReminder();
+}
 
 <script>
 // PWA SERVICE WORKER
