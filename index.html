@@ -862,6 +862,178 @@ body{
   pointer-events: none;
 }
 
+
+/* ── WARM-UP SECTION ─────────────────────────────────────────────────────── */
+.warmup-card{
+  background:rgba(200,16,46,0.06);border:1px solid rgba(200,16,46,0.25);
+  margin-bottom:10px;overflow:hidden;
+}
+.warmup-head{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;
+  cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;
+}
+.warmup-head:active{background:rgba(255,255,255,0.02);}
+.warmup-emoji{font-size:18px;}
+.warmup-title{flex:1;font-size:13px;font-weight:700;color:var(--white);}
+.warmup-time{font-size:10px;color:var(--accent);letter-spacing:1px;font-weight:700;}
+.warmup-arrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
+.warmup-card.open .warmup-arrow{transform:rotate(180deg);}
+.warmup-body{display:none;padding:0 14px 14px;border-top:1px solid rgba(200,16,46,0.2);}
+.warmup-card.open .warmup-body{display:block;}
+.warmup-steps{margin-top:10px;display:flex;flex-direction:column;gap:0;}
+.warmup-step{
+  display:flex;gap:12px;padding:9px 0;
+  border-bottom:1px solid rgba(37,37,37,0.4);align-items:flex-start;
+}
+.warmup-step:last-child{border-bottom:none;}
+.warmup-step-num{
+  font-family:'Bebas Neue',sans-serif;font-size:16px;
+  color:var(--accent);min-width:20px;line-height:1.2;flex-shrink:0;
+}
+.warmup-step-info{flex:1;}
+.warmup-step-name{font-size:12px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.warmup-step-detail{font-size:11px;color:var(--mid);line-height:1.5;}
+.warmup-step-time{
+  font-size:10px;color:var(--accent);letter-spacing:1px;
+  font-weight:700;white-space:nowrap;margin-top:2px;
+}
+
+/* ── DELOAD SECTION ──────────────────────────────────────────────────────── */
+.deload-banner{
+  background:var(--card);border:1px solid var(--border);
+  padding:13px 14px;margin-bottom:10px;
+}
+.deload-banner.active-deload{
+  background:rgba(76,175,125,0.08);
+  border-color:var(--green);
+}
+.deload-week-title{
+  font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;
+  margin-bottom:3px;
+}
+.deload-sub{font-size:11px;color:var(--mid);line-height:1.5;margin-bottom:8px;}
+.deload-rules{display:flex;flex-direction:column;gap:5px;}
+.deload-rule{display:flex;gap:8px;font-size:12px;color:var(--mid);}
+.deload-rule::before{content:'→';color:var(--green);flex-shrink:0;}
+.deload-pill{
+  display:inline-block;font-size:9px;padding:3px 8px;letter-spacing:1px;
+  text-transform:uppercase;border:1px solid var(--green);color:var(--green);
+  margin-bottom:8px;
+}
+
+/* ── RPE GUIDE ───────────────────────────────────────────────────────────── */
+.rpe-card{background:var(--card);border:1px solid var(--border);overflow:hidden;margin-bottom:10px;}
+.rpe-row{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid rgba(37,37,37,0.4);}
+.rpe-row:last-child{border-bottom:none;}
+.rpe-num{
+  font-family:'Bebas Neue',sans-serif;font-size:20px;min-width:32px;
+  line-height:1;
+}
+.rpe-bar-wrap{flex:1;}
+.rpe-bar{height:6px;border-radius:3px;margin-bottom:4px;}
+.rpe-desc{font-size:11px;color:var(--mid);}
+.rpe-cue{font-size:10px;color:var(--grey);letter-spacing:0.3px;}
+
+/* ── CARDIO TRACKER ──────────────────────────────────────────────────────── */
+.cardio-log-row{
+  display:flex;align-items:center;gap:8px;margin-bottom:8px;
+  background:var(--card);border:1px solid var(--border);padding:12px 14px;
+}
+.cardio-day-label{font-size:12px;font-weight:700;color:var(--white);flex:1;}
+.cardio-day-sub{font-size:10px;color:var(--grey);margin-top:1px;}
+.cardio-chk-btn{
+  width:28px;height:28px;border:1px solid var(--border2);
+  background:none;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;font-size:14px;color:transparent;
+  transition:all 0.15s;-webkit-tap-highlight-color:transparent;flex-shrink:0;
+}
+.cardio-chk-btn.done{background:var(--green);border-color:var(--green);color:white;}
+.cardio-week-header{
+  font-size:9px;letter-spacing:3px;color:var(--grey);text-transform:uppercase;
+  margin:14px 0 8px;
+}
+.cardio-summary{
+  background:var(--card);border:1px solid var(--border);
+  padding:12px 14px;margin-bottom:14px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;
+}
+.cardio-stat-num{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);}
+.cardio-stat-lbl{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+
+/* ── WATER TRACKER ───────────────────────────────────────────────────────── */
+.water-card{
+  background:var(--card);border:1px solid var(--border);
+  padding:14px;margin-bottom:0;
+}
+.water-display{
+  display:flex;align-items:center;gap:14px;margin-bottom:12px;
+}
+.water-icon-row{display:flex;gap:4px;flex-wrap:wrap;flex:1;}
+.water-glass{
+  font-size:20px;cursor:pointer;transition:all 0.15s;
+  -webkit-tap-highlight-color:transparent;opacity:0.3;
+  filter:grayscale(1);
+}
+.water-glass.filled{opacity:1;filter:none;}
+.water-glass:active{transform:scale(0.9);}
+.water-count{
+  font-family:'Bebas Neue',sans-serif;font-size:32px;
+  color:var(--white);min-width:40px;text-align:right;
+}
+.water-target{font-size:10px;color:var(--grey);letter-spacing:1px;}
+.water-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:8px;}
+.water-bar-fill{height:100%;background:#4a9eff;border-radius:2px;transition:width 0.3s;}
+.water-btn-row{display:flex;gap:8px;}
+.water-btn{
+  flex:1;padding:10px;background:var(--surface);border:1px solid var(--border2);
+  color:var(--mid);font-family:'Bebas Neue',sans-serif;font-size:13px;
+  letter-spacing:2px;cursor:pointer;transition:all 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.water-btn.add{background:rgba(74,158,255,0.15);border-color:#4a9eff;color:#4a9eff;}
+.water-btn:active{filter:brightness(0.85);}
+
+/* ── EXPECTATION SETTER ──────────────────────────────────────────────────── */
+.expect-card{
+  background:var(--card);border:1px solid var(--border);
+  margin-bottom:8px;overflow:hidden;
+}
+.expect-head{
+  display:flex;align-items:center;gap:12px;padding:13px 14px;
+  cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;
+}
+.expect-week{
+  font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;
+  color:var(--accent);min-width:56px;
+}
+.expect-title{flex:1;font-size:13px;font-weight:700;}
+.expect-arrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
+.expect-card.open .expect-arrow{transform:rotate(180deg);}
+.expect-body{display:none;padding:0 14px 14px;border-top:1px solid var(--border);}
+.expect-card.open .expect-body{display:block;}
+.expect-body p{font-size:12px;color:var(--mid);line-height:1.7;margin-top:10px;}
+.expect-body strong{color:var(--white);}
+.expect-tag{
+  display:inline-block;font-size:9px;padding:3px 8px;letter-spacing:1px;
+  border:1px solid var(--border2);color:var(--grey);text-transform:uppercase;
+  margin-top:8px;margin-right:4px;
+}
+.expect-tag.red{border-color:var(--accent);color:var(--accent);}
+.expect-tag.green{border-color:var(--green);color:var(--green);}
+.expect-tag.blue{border-color:#4a9eff;color:#4a9eff;}
+
+/* ── OVERVIEW WIDGET ROW ─────────────────────────────────────────────────── */
+.overview-widgets{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.widget-mini{
+  background:var(--card);border:1px solid var(--border);
+  padding:12px;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:border-color 0.15s;
+}
+.widget-mini:active{border-color:var(--accent);}
+.widget-mini-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:4px;}
+.widget-mini-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);}
+.widget-mini-sub{font-size:10px;color:var(--mid);margin-top:2px;}
+
 </style>
 </head>
 <body>
@@ -969,6 +1141,44 @@ body{
     <div class="day-chip train" onclick="goToWorkout('legs')">Sun<small>Legs</small></div>
   </div>
 
+
+  <!-- WATER + CARDIO WIDGETS -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Daily Targets</div><div class="div-line"></div></div>
+
+  <!-- WATER TRACKER -->
+  <div class="water-card" style="margin-bottom:8px;">
+    <div style="font-size:10px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+      💧 Daily Water — Target: 3.5 litres
+    </div>
+    <div class="water-display">
+      <div class="water-icon-row" id="waterGlasses"></div>
+      <div>
+        <div class="water-count"><span id="waterCount">0</span></div>
+        <div class="water-target">/ 7 glasses</div>
+        <div style="font-size:10px;color:var(--grey);margin-top:2px;">~500ml each</div>
+      </div>
+    </div>
+    <div class="water-bar"><div class="water-bar-fill" id="waterBarFill" style="width:0%"></div></div>
+    <div class="water-btn-row">
+      <button class="water-btn add" onclick="addWater()">+ Add Glass</button>
+      <button class="water-btn" onclick="resetWater()">Reset</button>
+    </div>
+  </div>
+
+  <!-- CARDIO LOG -->
+  <div style="background:var(--card);border:1px solid var(--border);padding:13px 14px;margin-bottom:8px;">
+    <div style="font-size:10px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">🏃 Cardio Log — LISS Target</div>
+    <div style="font-size:11px;color:var(--mid);line-height:1.6;margin-bottom:10px;">
+      Phase 1–2: Optional light cardio. Phase 3: <strong style="color:var(--white)">20–30 min LISS after every session</strong> (brisk walk, cycling, rowing — heart rate 120–140bpm).
+    </div>
+    <div id="cardioWeekDisplay"></div>
+    <div class="cardio-summary">
+      <div><div class="cardio-stat-num" id="cardioThisWeek">0</div><div class="cardio-stat-lbl">This week</div></div>
+      <div><div class="cardio-stat-num" id="cardioTotal">0</div><div class="cardio-stat-lbl">Total sessions</div></div>
+      <div><div class="cardio-stat-num" id="cardioStreak">0</div><div class="cardio-stat-lbl">Week streak</div></div>
+    </div>
+  </div>
+
   <div class="divider"><div class="div-line"></div><div class="div-text">Physique Goals</div><div class="div-line"></div></div>
   <div class="target-grid">
     <div class="target">
@@ -999,7 +1209,71 @@ body{
     <div class="bench-item"><div class="bench-week">Rule 02</div><div class="bench-info"><div class="bench-title">Progressive overload</div><div class="bench-detail">Add weight or reps every week. Stagnation means the programme isn't working.</div></div></div>
     <div class="bench-item"><div class="bench-week">Rule 03</div><div class="bench-info"><div class="bench-title">Rest is productive</div><div class="bench-detail">Thursday off. 8+ hours sleep. Muscle is built during recovery, not during lifting.</div></div></div>
     <div class="bench-item"><div class="bench-week">Rule 04</div><div class="bench-info"><div class="bench-title">Eat to build</div><div class="bench-detail">High protein. Slight caloric surplus on training days. Fuel the machine.</div></div></div>
+  
+  <div class="divider"><div class="div-line"></div><div class="div-text">What To Expect</div><div class="div-line"></div></div>
+  <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(200,16,46,0.2);padding:12px 14px;margin-bottom:10px;">
+    <div style="font-size:11px;color:var(--mid);line-height:1.7;">
+      <strong style="color:var(--white)">The scale is a liar.</strong> You're doing a recomp — your body is swapping fat for muscle simultaneously. Some weeks the scale won't move or will go up slightly. That's normal. Judge progress by the mirror, your lifts going up, and how clothes fit.
+    </div>
   </div>
+
+  <div class="expect-card" onclick="this.classList.toggle('open')">
+    <div class="expect-head">
+      <div class="expect-week">Wk 1–2</div>
+      <div class="expect-title">Feeling it everywhere</div>
+      <div class="expect-arrow">▼</div>
+    </div>
+    <div class="expect-body">
+      <p>You'll be sore in muscles you didn't know you had. <strong>This is normal.</strong> DOMS (delayed onset muscle soreness) peaks 24–48 hours after sessions. Keep moving — light walks help more than rest. The soreness gets much less severe by week 3.</p>
+      <p>The scale might actually go up slightly — water retention from muscle inflammation. Don't panic.</p>
+      <span class="expect-tag red">Expect soreness</span>
+      <span class="expect-tag blue">Scale may rise</span>
+    </div>
+  </div>
+
+  <div class="expect-card" onclick="this.classList.toggle('open')">
+    <div class="expect-head">
+      <div class="expect-week">Wk 3–5</div>
+      <div class="expect-title">The doubt phase</div>
+      <div class="expect-arrow">▼</div>
+    </div>
+    <div class="expect-body">
+      <p>This is where most beginners quit. The initial excitement wears off, the scale isn't moving much, and you're tired. <strong>Push through.</strong> Your body is still adapting — neural pathways are forming, technique is grooving in, and internal changes are happening that you can't see yet.</p>
+      <p>Focus only on whether your <strong>lifts are going up</strong>. If you're benching 5kg more than week 1, you're winning.</p>
+      <span class="expect-tag red">Scale stalls</span>
+      <span class="expect-tag green">Lifts increasing</span>
+    </div>
+  </div>
+
+  <div class="expect-card" onclick="this.classList.toggle('open')">
+    <div class="expect-head">
+      <div class="expect-week">Wk 6–8</div>
+      <div class="expect-title">It starts showing</div>
+      <div class="expect-arrow">▼</div>
+    </div>
+    <div class="expect-body">
+      <p>This is when people start noticing. Shoulders look broader, back has more shape, waist looks tighter even if weight hasn't dropped. <strong>Your body composition is changing</strong> — muscle up, fat redistributing.</p>
+      <p>You're entering the strength phase. Lifts jump significantly. Enjoy it — this is the most satisfying phase.</p>
+      <span class="expect-tag green">Visible changes</span>
+      <span class="expect-tag green">Strength jumps</span>
+    </div>
+  </div>
+
+  <div class="expect-card" onclick="this.classList.toggle('open')">
+    <div class="expect-head">
+      <div class="expect-week">Wk 9–12</div>
+      <div class="expect-title">The reveal</div>
+      <div class="expect-arrow">▼</div>
+    </div>
+    <div class="expect-body">
+      <p>Definition phase. You've built the muscle, now you're exposing it. The added cardio and tighter diet will drop the last layer of fat. The shoulder-to-waist taper becomes visible. <strong>This is what you've been building toward.</strong></p>
+      <p>Realistic expectation at 12 weeks from 100kg: down 6–10kg total, visibly broader, waist measurably smaller, significantly stronger across all lifts.</p>
+      <span class="expect-tag green">Most visible change</span>
+      <span class="expect-tag blue">Take progress photos</span>
+    </div>
+  </div>
+
+</div>
 </div>
 
 <!-- ===== WORKOUTS ===== -->
@@ -1032,8 +1306,157 @@ body{
     <div class="phase-body">This is where the transformation becomes visible. Lean, athletic, powerful. At 100kg with a recomp approach, you should already be leaner by now — this phase finishes the job.<div class="phase-goals"><div class="pg">Hold weight on compound lifts</div><div class="pg">30 min LISS cardio post-session (increase from 20)</div><div class="pg">–100g carbs on rest days</div><div class="pg">Consider extending to 16 weeks if more fat to lose</div></div></div>
   </div>
 
+
+  <!-- DELOAD WEEK GUIDANCE -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Deload Weeks</div><div class="div-line"></div></div>
+  
+  <div style="background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);padding:13px 14px;margin-bottom:10px;">
+    <div style="font-size:10px;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ What Is A Deload & Why It Matters</div>
+    <div style="font-size:12px;color:var(--mid);line-height:1.7;">
+      Every 4 weeks you reduce weight and volume by ~20% for one week. This isn't laziness — it's <strong style="color:var(--white)">how your body supercompensates</strong>. Your joints, tendons, and nervous system recover and you come back stronger. Skip deloads and you risk injury, burnout, and plateau.
+    </div>
+  </div>
+
+  <div class="deload-banner" id="deload-w4">
+    <div class="deload-pill">Week 4 Deload</div>
+    <div class="deload-week-title">End of Foundation Phase</div>
+    <div class="deload-sub">After 4 hard weeks, your body needs this. You'll feel fresher going into Phase 2.</div>
+    <div class="deload-rules">
+      <div class="deload-rule">Reduce all weights by <strong style="color:var(--white)">20%</strong></div>
+      <div class="deload-rule">Cut sets from 4 to <strong style="color:var(--white)">3</strong></div>
+      <div class="deload-rule">Keep reps the same — focus on perfect form</div>
+      <div class="deload-rule">No pushing to failure — stop 3 reps short of your limit</div>
+      <div class="deload-rule">Sleep extra, eat the same, hydrate more</div>
+    </div>
+  </div>
+
+  <div class="deload-banner" id="deload-w8">
+    <div class="deload-pill">Week 8 Deload</div>
+    <div class="deload-week-title">End of Strength Phase</div>
+    <div class="deload-sub">You've been lifting heavy for 4 weeks. This deload sets you up for the best definition phase possible.</div>
+    <div class="deload-rules">
+      <div class="deload-rule">Reduce all weights by <strong style="color:var(--white)">20–25%</strong></div>
+      <div class="deload-rule">Cut sets from 5 to <strong style="color:var(--white)">3</strong></div>
+      <div class="deload-rule">Add 10 min light cardio at the end of each session</div>
+      <div class="deload-rule">Use the week to fix any form issues you noticed</div>
+    </div>
+  </div>
+
+  <div class="deload-banner" id="deload-w12">
+    <div class="deload-pill">Week 12 — Programme End</div>
+    <div class="deload-week-title">Take a Full Rest Week</div>
+    <div class="deload-sub">You've completed 12 weeks. Take 5–7 days fully off before starting your next block. You've earned it.</div>
+    <div class="deload-rules">
+      <div class="deload-rule">No lifting — let everything fully recover</div>
+      <div class="deload-rule">Light walks, swimming, or yoga only if you want to move</div>
+      <div class="deload-rule">Take your Week 12 progress photos</div>
+      <div class="deload-rule">Plan your next 12-week block with higher starting weights</div>
+    </div>
+  </div>
+
+
+  <!-- RPE GUIDE -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">RPE Guide</div><div class="div-line"></div></div>
+  <div style="background:var(--card);border:1px solid var(--border);padding:13px 14px;margin-bottom:10px;">
+    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Rate of Perceived Exertion — How Hard Should You Train?</div>
+    <div style="font-size:12px;color:var(--mid);line-height:1.7;margin-bottom:12px;">
+      RPE is a 1–10 scale of effort. <strong style="color:var(--white)">RPE 10 = absolute maximum, couldn't do one more rep. RPE 7 = 3 reps left in the tank.</strong> Aim for RPE 7–8 on most sets — hard enough to grow, not so hard you wreck your recovery.
+    </div>
+  </div>
+  <div class="rpe-card">
+    <div class="rpe-row">
+      <div class="rpe-num" style="color:#4caf7d">6</div>
+      <div class="rpe-bar-wrap">
+        <div class="rpe-bar" style="background:linear-gradient(90deg,#4caf7d,rgba(76,175,125,0.3));width:60%"></div>
+        <div class="rpe-desc">Light — 4+ reps left in the tank</div>
+        <div class="rpe-cue">Used for warm-up sets only</div>
+      </div>
+    </div>
+    <div class="rpe-row">
+      <div class="rpe-num" style="color:#8bc34a">7</div>
+      <div class="rpe-bar-wrap">
+        <div class="rpe-bar" style="background:linear-gradient(90deg,#8bc34a,rgba(139,195,74,0.3));width:70%"></div>
+        <div class="rpe-desc">Moderate — 3 reps left in the tank</div>
+        <div class="rpe-cue">Good for volume work and new exercises</div>
+      </div>
+    </div>
+    <div class="rpe-row">
+      <div class="rpe-num" style="color:#ffc107">8</div>
+      <div class="rpe-bar-wrap">
+        <div class="rpe-bar" style="background:linear-gradient(90deg,#ffc107,rgba(255,193,7,0.3));width:80%"></div>
+        <div class="rpe-desc">Hard — 2 reps left in the tank</div>
+        <div class="rpe-cue">Target RPE for most working sets</div>
+      </div>
+    </div>
+    <div class="rpe-row">
+      <div class="rpe-num" style="color:#ff9800">9</div>
+      <div class="rpe-bar-wrap">
+        <div class="rpe-bar" style="background:linear-gradient(90deg,#ff9800,rgba(255,152,0,0.3));width:90%"></div>
+        <div class="rpe-desc">Very hard — 1 rep left in the tank</div>
+        <div class="rpe-cue">Last set of compound lifts on strength weeks</div>
+      </div>
+    </div>
+    <div class="rpe-row">
+      <div class="rpe-num" style="color:var(--accent)">10</div>
+      <div class="rpe-bar-wrap">
+        <div class="rpe-bar" style="background:var(--accent);width:100%"></div>
+        <div class="rpe-desc">Maximum — couldn't do one more rep</div>
+        <div class="rpe-cue">Avoid on most sets — too much recovery cost</div>
+      </div>
+    </div>
+  </div>
+
   <div class="divider"><div class="div-line"></div><div class="div-text">Push Day · Mon &amp; Fri</div><div class="div-line"></div></div>
   <div id="push" style="scroll-margin-top:50px">
+  <!-- PUSH DAY WARM-UP -->
+  <div class="warmup-card" onclick="this.classList.toggle('open')">
+    <div class="warmup-head">
+      <div class="warmup-emoji">🔥</div>
+      <div class="warmup-title">Push Day Warm-Up</div>
+      <div class="warmup-time">5 MIN · DO BEFORE EVERY SESSION</div>
+      <div class="warmup-arrow">▼</div>
+    </div>
+    <div class="warmup-body">
+      <div style="font-size:11px;color:var(--mid);margin-top:8px;margin-bottom:10px;line-height:1.5;">
+        Never skip this. Cold shoulders and chest tear. 5 minutes now saves months of injury recovery.
+      </div>
+      <div class="warmup-steps">
+        <div class="warmup-step">
+          <div class="warmup-step-num">1</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Arm Circles</div>
+            <div class="warmup-step-detail">Both directions — small to large. Gets blood into shoulders and rotator cuff.</div>
+            <div class="warmup-step-time">30 sec each direction</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">2</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Band Pull-Aparts (or towel)</div>
+            <div class="warmup-step-detail">Hold a resistance band or towel wide, pull apart at chest height. Opens the shoulder joint.</div>
+            <div class="warmup-step-time">15 reps × 2</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">3</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Push-Up (slow)</div>
+            <div class="warmup-step-detail">3-second descent. Not for reps — for range of motion and shoulder blade activation.</div>
+            <div class="warmup-step-time">10 reps</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">4</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Bench Press Warm-Up Sets</div>
+            <div class="warmup-step-detail">Bar only × 15 → 50% weight × 8 → 70% weight × 3. Then go into your working sets.</div>
+            <div class="warmup-step-time">3 warm-up sets</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
@@ -1192,6 +1615,55 @@ body{
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Pull Day · Tue &amp; Sat</div><div class="div-line"></div></div>
   <div id="pull" style="scroll-margin-top:50px">
+  <!-- PULL DAY WARM-UP -->
+  <div class="warmup-card" onclick="this.classList.toggle('open')">
+    <div class="warmup-head">
+      <div class="warmup-emoji">🔥</div>
+      <div class="warmup-title">Pull Day Warm-Up</div>
+      <div class="warmup-time">5 MIN · DO BEFORE EVERY SESSION</div>
+      <div class="warmup-arrow">▼</div>
+    </div>
+    <div class="warmup-body">
+      <div style="font-size:11px;color:var(--mid);margin-top:8px;margin-bottom:10px;line-height:1.5;">
+        Your back is complex. Warm it up properly and you'll feel a huge difference in how much you can activate during the session.
+      </div>
+      <div class="warmup-steps">
+        <div class="warmup-step">
+          <div class="warmup-step-num">1</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Dead Hang</div>
+            <div class="warmup-step-detail">Just hang from the pull-up bar with arms straight. Decompresses the spine and opens the lats.</div>
+            <div class="warmup-step-time">30 sec × 2</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">2</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Scapula Retractions (on bar)</div>
+            <div class="warmup-step-detail">Hang from bar, squeeze shoulder blades together without bending elbows. Activates the lats directly.</div>
+            <div class="warmup-step-time">10 reps</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">3</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Cat-Cow Stretch</div>
+            <div class="warmup-step-detail">On hands and knees — arch back up (cat) then drop it down (cow). Mobilises thoracic spine.</div>
+            <div class="warmup-step-time">10 reps slow</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">4</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Light Lat Pulldown or Assisted Pull-Up</div>
+            <div class="warmup-step-detail">Very light weight, focus on feeling the lats engage. Not for loading — for connection.</div>
+            <div class="warmup-step-time">15 reps × 2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A1</div><div class="wname">Weighted Pull-ups</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
@@ -1349,6 +1821,63 @@ body{
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Leg Day · Wed &amp; Sun</div><div class="div-line"></div></div>
   <div id="legs" style="scroll-margin-top:50px">
+  <!-- LEG DAY WARM-UP -->
+  <div class="warmup-card" onclick="this.classList.toggle('open')">
+    <div class="warmup-head">
+      <div class="warmup-emoji">🔥</div>
+      <div class="warmup-title">Leg Day Warm-Up</div>
+      <div class="warmup-time">5–8 MIN · DO BEFORE EVERY SESSION</div>
+      <div class="warmup-arrow">▼</div>
+    </div>
+    <div class="warmup-body">
+      <div style="font-size:11px;color:var(--mid);margin-top:8px;margin-bottom:10px;line-height:1.5;">
+        The most important warm-up. Cold squats with 100kg on your back is how people wreck their knees and lower back. Non-negotiable.
+      </div>
+      <div class="warmup-steps">
+        <div class="warmup-step">
+          <div class="warmup-step-num">1</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Leg Swings</div>
+            <div class="warmup-step-detail">Hold wall, swing each leg forward/back then side to side. Opens hip flexors and adductors.</div>
+            <div class="warmup-step-time">15 each direction per leg</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">2</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Bodyweight Squat (deep and slow)</div>
+            <div class="warmup-step-detail">Go as deep as comfortable, pause at the bottom for 2 seconds. Mobilises ankles, hips, and knees.</div>
+            <div class="warmup-step-time">15 reps slow</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">3</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Hip Circle / Glute Bridge</div>
+            <div class="warmup-step-detail">Lie on back, feet flat, drive hips up. Activates glutes before heavy squatting — prevents knee cave.</div>
+            <div class="warmup-step-time">15 reps</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">4</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Squat Warm-Up Sets</div>
+            <div class="warmup-step-detail">Bar only × 15 → 40% × 8 → 60% × 5 → 75% × 2. Then work sets. Never skip these.</div>
+            <div class="warmup-step-time">4 warm-up sets</div>
+          </div>
+        </div>
+        <div class="warmup-step">
+          <div class="warmup-step-num">5</div>
+          <div class="warmup-step-info">
+            <div class="warmup-step-name">Ankle Mobility</div>
+            <div class="warmup-step-detail">Stand facing wall, drive knee over toes while keeping heel down. Tight ankles = knee pain on squats.</div>
+            <div class="warmup-step-time">10 reps each ankle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
     <div class="wcard" onclick="toggleCard(this)">
       <div class="whead"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
@@ -2515,6 +3044,123 @@ function updatePhaseBadges(){
     if(curWeek>end){badge.className='phase-badge done';badge.textContent='Done ✓';}
     else if(curWeek>=starts){badge.className='phase-badge active';badge.textContent='Active ▶';}
     else{badge.className='phase-badge next';badge.textContent='Upcoming';}
+  });
+}
+
+
+// ── WATER TRACKER ────────────────────────────────────────────────────────────
+const WATER_KEY = 'apx_water_v1';
+
+function getWaterData(){
+  const today = new Date().toDateString();
+  const d = JSON.parse(localStorage.getItem(WATER_KEY) || '{}');
+  if(d.date !== today) return {date: today, count: 0};
+  return d;
+}
+
+function saveWaterData(count){
+  const today = new Date().toDateString();
+  localStorage.setItem(WATER_KEY, JSON.stringify({date: today, count}));
+}
+
+function renderWater(){
+  const d = getWaterData();
+  const count = d.count;
+  const target = 7;
+  const countEl = document.getElementById('waterCount');
+  const fillEl = document.getElementById('waterBarFill');
+  const glassesEl = document.getElementById('waterGlasses');
+  if(countEl) countEl.textContent = count;
+  if(fillEl) fillEl.style.width = Math.min(100, Math.round(count/target*100)) + '%';
+  if(glassesEl){
+    glassesEl.innerHTML = '';
+    for(let i=0;i<target;i++){
+      const g = document.createElement('span');
+      g.className = 'water-glass' + (i < count ? ' filled' : '');
+      g.textContent = '💧';
+      g.onclick = () => { saveWaterData(i+1); renderWater(); };
+      glassesEl.appendChild(g);
+    }
+  }
+}
+
+function addWater(){
+  const d = getWaterData();
+  if(d.count >= 7) return;
+  saveWaterData(d.count + 1);
+  renderWater();
+}
+
+function resetWater(){
+  saveWaterData(0);
+  renderWater();
+}
+
+// ── CARDIO TRACKER ────────────────────────────────────────────────────────────
+const CARDIO_KEY = 'apx_cardio_v1';
+let cardioData = JSON.parse(localStorage.getItem(CARDIO_KEY) || '{}');
+
+function saveCardio(){ localStorage.setItem(CARDIO_KEY, JSON.stringify(cardioData)); }
+
+function toggleCardio(week, day){
+  const key = 'w'+week+'d'+day;
+  cardioData[key] = !cardioData[key];
+  saveCardio();
+  renderCardioWeek();
+}
+
+function renderCardioWeek(){
+  const curWeek = getCurrentWeek();
+  const el = document.getElementById('cardioWeekDisplay');
+  if(!el) return;
+  const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const dtype = ['workout','workout','workout','rest','workout','workout','workout'];
+  let html = '<div class="cardio-week-header">Week ' + curWeek + ' — Cardio Sessions</div>';
+  for(let d=0;d<7;d++){
+    const key = 'w'+curWeek+'d'+d;
+    const done = !!cardioData[key];
+    const isRest = dtype[d]==='rest';
+    const label = isRest ? 'Rest Day' : dayNames[d]+' — Post-Session LISS';
+    const sub = isRest ? 'No cardio needed' : '20–30 min walk/cycle · 120–140bpm';
+    html += '<div class="cardio-log-row">';
+    html += '<div><div class="cardio-day-label">'+label+'</div><div style="font-size:10px;color:var(--grey)">'+sub+'</div></div>';
+    if(!isRest){
+      html += '<button class="cardio-chk-btn'+(done?' done':'"')+'" onclick="toggleCardio('+curWeek+','+d+')">'+(done?'✓':'')+'</button>';
+    } else {
+      html += '<span style="font-size:18px">😴</span>';
+    }
+    html += '</div>';
+  }
+  el.innerHTML = html;
+
+  // Summary
+  let total=0, thisWeek=0, weekStreak=0;
+  for(const k in cardioData){ if(cardioData[k]) total++; }
+  for(let d=0;d<7;d++){
+    if(cardioData['w'+curWeek+'d'+d]) thisWeek++;
+  }
+  // Week streak — how many consecutive weeks with at least 1 cardio session
+  for(let w=curWeek;w>=1;w--){
+    let hasCardio=false;
+    for(let d=0;d<7;d++){ if(cardioData['w'+w+'d'+d]){ hasCardio=true; break; } }
+    if(hasCardio) weekStreak++;
+    else break;
+  }
+  const twEl=document.getElementById('cardioThisWeek');
+  const ttEl=document.getElementById('cardioTotal');
+  const csEl=document.getElementById('cardioStreak');
+  if(twEl) twEl.textContent=thisWeek;
+  if(ttEl) ttEl.textContent=total;
+  if(csEl) csEl.textContent=weekStreak;
+}
+
+// ── DELOAD HIGHLIGHTING ────────────────────────────────────────────────────────
+function highlightDeload(){
+  const curWeek = getCurrentWeek();
+  const deloadWeeks = {4:'deload-w4', 8:'deload-w8', 12:'deload-w12'};
+  Object.entries(deloadWeeks).forEach(([w, id]) => {
+    const el = document.getElementById(id);
+    if(el) el.classList.toggle('active-deload', curWeek === +w);
   });
 }
 
