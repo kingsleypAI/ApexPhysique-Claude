@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>APEX PHYSIQUE</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --card: #1a1a1a;
+  --border: #252525;
+  --border2: #2e2e2e;
+  --accent: #c8102e;
+  --accent-glow: rgba(200,16,46,0.15);
+  --accent-dim: rgba(200,16,46,0.12);
+  --accent-dim2: rgba(200,16,46,0.06);
+  --white: #f2efe8;
+  --grey: #6e6e6e;
+  --mid: #9a9a9a;
+  --green: #4caf7d;
+  --green-dim: rgba(76,175,125,0.12);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:14px;
+}
+
+/* HERO */
+.hero{
+  padding:32px 20px 24px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--grey);margin-bottom:10px;
+}
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:46px;letter-spacing:3px;line-height:0.95;
+  color:var(--white);
+}
+.hero-title em{color:var(--accent);font-style:normal;}
+.hero-sub{
+  margin-top:10px;font-size:12px;color:var(--mid);
+  line-height:1.6;max-width:320px;
+}
+.hero-pills{
+  display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;
+}
+.pill{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 10px;border:1px solid var(--border2);color:var(--mid);
+}
+.pill.gold{border-color:var(--accent);color:var(--accent);}
+
+/* TRAINING TIME TOGGLE */
+.time-block{
+  margin:0;padding:16px 20px;
+  border-bottom:1px solid var(--border);
+  background:var(--surface);
+}
+.time-label{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--grey);margin-bottom:10px;
+}
+.time-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.time-btn{
+  padding:12px 10px;
+  background:transparent;border:1px solid var(--border2);
+  color:var(--mid);cursor:pointer;text-align:left;
+  transition:all 0.18s;-webkit-tap-highlight-color:transparent;
+}
+.time-btn-top{display:flex;align-items:center;gap:8px;margin-bottom:3px;}
+.time-icon{font-size:14px;}
+.time-main{font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--white);}
+.time-sub{font-size:10px;color:var(--grey);letter-spacing:0.5px;}
+.time-btn.active{
+  background:var(--accent-dim);
+  border-color:var(--accent);
+}
+.time-btn.active .time-main{color:var(--accent);}
+.time-btn.active .time-sub{color:rgba(232,200,74,0.5);}
+
+.schedule-reveal{
+  display:none;
+  margin-top:12px;padding:12px 14px;
+  background:var(--card);border-left:2px solid var(--accent);
+  font-size:11px;color:var(--mid);line-height:1.9;
+}
+.schedule-reveal.on{display:block;}
+.schedule-reveal strong{color:var(--accent);display:block;margin-bottom:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.sched-row{display:flex;gap:10px;}
+.sched-time{color:var(--grey);min-width:48px;font-size:10px;padding-top:1px;}
+.sched-train{color:var(--white);font-weight:700;}
+
+/* TABS */
+.tabs{
+  display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;border-bottom:1px solid var(--border);
+  position:sticky;top:0;
+  background:rgba(10,10,10,0.97);backdrop-filter:blur(12px);z-index:100;
+}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{
+  flex:0 0 auto;padding:13px 16px;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--grey);cursor:pointer;
+  border-bottom:2px solid transparent;transition:all 0.18s;
+  white-space:nowrap;font-family:'DM Sans',sans-serif;font-weight:700;
+  background:none;border-top:none;border-left:none;border-right:none;
+}
+.tab.active{color:var(--white);border-bottom-color:var(--accent);}
+
+/* SECTIONS */
+.section{display:none;padding:18px 16px;animation:fadeUp 0.25s ease;}
+.section.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* SECTION HEADER */
+.sec-header{margin-bottom:18px;}
+.sec-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--grey);margin-bottom:4px;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:10px;margin:20px 0 14px;}
+.div-line{flex:1;height:1px;background:var(--border);}
+.div-text{font-size:9px;letter-spacing:3px;color:var(--grey);text-transform:uppercase;white-space:nowrap;}
+
+/* STAT ROW */
+.stat-row{display:flex;gap:0;border:1px solid var(--border);margin-bottom:18px;}
+.stat-cell{flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);}
+.stat-cell:last-child{border-right:none;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);}
+.stat-lbl{font-size:9px;letter-spacing:2px;color:var(--grey);text-transform:uppercase;margin-top:2px;}
+
+/* WEEK GRID */
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:18px;}
+.day-chip{
+  padding:9px 2px;text-align:center;font-size:9px;
+  letter-spacing:0.5px;text-transform:uppercase;font-weight:700;
+  border:1px solid var(--border);color:var(--grey);cursor:pointer;
+}
+.day-chip small{font-size:7px;display:block;margin-top:3px;letter-spacing:0;}
+.day-chip.rest{background:rgba(255,255,255,0.02);color:var(--border2);}
+.day-chip.train{background:var(--accent-dim2);border-color:rgba(232,200,74,0.2);color:var(--accent);}
+
+/* BODY TARGET */
+.target-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.target{background:var(--card);border:1px solid var(--border);padding:12px 14px;}
+.target-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.target-name{font-size:12px;font-weight:700;letter-spacing:0.5px;}
+.target-tag{font-size:9px;letter-spacing:2px;border:1px solid var(--border2);color:var(--mid);padding:3px 7px;text-transform:uppercase;}
+.target-tag.hi{border-color:var(--accent);color:var(--accent);}
+.target-bar{height:2px;background:var(--border);margin-bottom:5px;}
+.target-fill{height:100%;background:linear-gradient(90deg,var(--accent),rgba(200,16,46,0.4));}
+.target-sub{font-size:10px;color:var(--grey);}
+
+/* PHASE CARD */
+.phase{border:1px solid var(--border);margin-bottom:8px;overflow:hidden;}
+.phase-head{
+  display:flex;align-items:center;gap:12px;padding:13px 14px;
+  background:var(--card);cursor:pointer;user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.phase-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--border2);line-height:1;min-width:36px;}
+.phase-info{flex:1;}
+.phase-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;}
+.phase-wks{font-size:10px;color:var(--grey);margin-top:2px;letter-spacing:0.5px;}
+.phase-badge{font-size:9px;padding:3px 8px;border:1px solid;text-transform:uppercase;letter-spacing:1px;}
+.phase-badge.now{border-color:var(--accent);color:var(--accent);}
+.phase-badge.next{border-color:var(--border2);color:var(--grey);}
+.phase-body{display:none;padding:12px 14px;border-top:1px solid var(--border);font-size:12px;color:var(--mid);line-height:1.7;}
+.phase.open .phase-body{display:block;}
+.phase-goals{margin-top:8px;display:flex;flex-direction:column;gap:5px;}
+.pg{display:flex;gap:8px;font-size:12px;}
+.pg::before{content:'—';color:var(--accent);flex-shrink:0;}
+
+/* WORKOUT CARD */
+.wcard{background:var(--card);border:1px solid var(--border);margin-bottom:8px;overflow:hidden;}
+.wcard.open .wbody{display:block;}
+.whead{
+  display:flex;align-items:center;padding:12px 14px;
+  cursor:pointer;gap:10px;user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.whead:active{background:rgba(255,255,255,0.02);}
+.wbadge{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;color:var(--accent);min-width:26px;}
+.wname{flex:1;font-size:13px;font-weight:600;letter-spacing:0.2px;}
+.wmeta{font-size:11px;color:var(--grey);}
+.warrow{color:var(--grey);font-size:10px;transition:transform 0.2s;margin-left:4px;}
+.wcard.open .warrow{transform:rotate(180deg);}
+.wbody{display:none;padding:0 14px 14px;border-top:1px solid var(--border);}
+
+/* EXERCISE IMAGE */
+.ex-img{
+  margin:12px 0 0;border:1px solid var(--border);
+  overflow:hidden;background:#0f0f0f;
+}
+.ex-img img{width:100%;display:block;max-height:190px;object-fit:contain;background:#111;}
+.ex-img .img-cap{
+  padding:5px 10px;font-size:9px;color:var(--grey);
+  letter-spacing:1px;text-transform:uppercase;
+  border-top:1px solid var(--border);text-align:center;
+}
+.img-err{padding:16px;text-align:center;font-size:11px;color:var(--grey);display:none;}
+
+/* FORM CUES */
+.cues{
+  margin-top:10px;padding:10px 12px;
+  background:var(--accent-dim2);border-left:2px solid var(--accent);
+}
+.cues-title{font-size:9px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:6px;}
+.cue{display:flex;gap:8px;font-size:11px;color:var(--mid);line-height:1.5;margin-bottom:4px;}
+.cue::before{content:'→';color:var(--accent);flex-shrink:0;}
+
+/* SET TABLE */
+.stbl{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px;}
+.stbl th{text-align:left;color:var(--grey);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 7px;border-bottom:1px solid var(--border);font-weight:400;}
+.stbl td{padding:9px 7px;border-bottom:1px solid rgba(37,37,37,0.5);vertical-align:middle;}
+.stbl tr:last-child td{border-bottom:none;}
+.stbl td:first-child{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--accent);}
+.chk{
+  width:22px;height:22px;border:1px solid var(--border2);
+  background:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:transparent;transition:all 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.chk.done{background:var(--green);border-color:var(--green);color:white;}
+
+/* MACROS */
+.macro-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px;}
+.mcell{background:var(--card);border:1px solid var(--border);padding:12px 8px;text-align:center;}
+.mnum{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);}
+.munit{font-size:9px;color:var(--grey);letter-spacing:1px;}
+.mname{font-size:10px;color:var(--mid);margin-top:3px;letter-spacing:1px;text-transform:uppercase;}
+
+/* MEAL PLAN TOGGLE */
+.meal-switch{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px;}
+.mstab{
+  padding:10px;background:var(--card);border:1px solid var(--border);
+  color:var(--grey);font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;cursor:pointer;text-align:center;
+  transition:all 0.15s;-webkit-tap-highlight-color:transparent;
+  font-family:'DM Sans',sans-serif;line-height:1.4;
+}
+.mstab small{display:block;font-size:9px;font-weight:400;letter-spacing:1px;color:var(--grey);margin-top:2px;}
+.mstab.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.mstab.active small{color:rgba(232,200,74,0.5);}
+
+.mplan{display:none;}
+.mplan.active{display:block;}
+
+.mday-label{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);
+  margin:14px 0 8px;display:flex;align-items:center;gap:8px;
+}
+.mday-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.mrow{background:var(--card);border:1px solid var(--border);margin-bottom:7px;overflow:hidden;}
+.mrow-head{
+  padding:11px 14px;cursor:pointer;display:flex;
+  align-items:center;gap:8px;-webkit-tap-highlight-color:transparent;
+}
+.mrow-head:active{background:rgba(255,255,255,0.02);}
+.mtime{font-size:9px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;min-width:50px;}
+.mname{flex:1;font-size:13px;font-weight:600;}
+.mkcal{font-size:11px;color:var(--grey);}
+.marrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
+.mrow.open .marrow{transform:rotate(180deg);}
+.mbody{display:none;padding:0 14px 14px;border-top:1px solid var(--border);}
+.mrow.open .mbody{display:block;}
+.ings{margin-top:10px;}
+.ing{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(37,37,37,0.5);font-size:12px;color:var(--mid);}
+.ing:last-child{border-bottom:none;}
+.ing-amt{color:var(--white);font-weight:600;min-width:80px;font-size:11px;}
+.mmacros{display:flex;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.mmac{flex:1;text-align:center;}
+.mmac-v{font-family:'Bebas Neue',sans-serif;font-size:17px;}
+.mmac-l{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;}
+.mnote{margin-top:10px;padding:8px 10px;background:var(--accent-dim2);border-left:2px solid var(--accent);font-size:11px;color:var(--mid);line-height:1.5;}
+
+/* SUPPS */
+.supp-list{background:var(--card);border:1px solid var(--border);overflow:hidden;}
+.supp-item{display:flex;gap:12px;padding:12px 14px;border-bottom:1px solid var(--border);}
+.supp-item:last-child{border-bottom:none;}
+.supp-icon{font-size:18px;min-width:24px;}
+.supp-info{}
+.supp-name{font-size:13px;font-weight:700;margin-bottom:2px;}
+.supp-dose{font-size:11px;color:var(--accent);margin-bottom:3px;letter-spacing:0.5px;}
+.supp-why{font-size:11px;color:var(--mid);line-height:1.5;}
+
+/* SHOPPING LIST */
+.shop-time-info{
+  background:var(--card);border:1px solid var(--border);
+  padding:12px 14px;margin-bottom:14px;
+  font-size:12px;color:var(--mid);line-height:1.6;
+}
+.shop-time-info span{color:var(--accent);font-weight:700;}
+
+.shop-cat{margin-bottom:16px;}
+.shop-cat-title{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;
+  color:var(--white);margin-bottom:8px;
+}
+.shop-cat-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.shop-cat-icon{font-size:16px;}
+
+.shop-item{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 0;border-bottom:1px solid var(--border);
+}
+.shop-item:last-child{border-bottom:none;}
+.shop-chk{
+  width:20px;height:20px;border:1px solid var(--border2);
+  background:none;cursor:pointer;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:transparent;transition:all 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.shop-chk.done{background:var(--green);border-color:var(--green);color:white;}
+.shop-item.done-item .shop-item-name{color:var(--grey);text-decoration:line-through;}
+.shop-item-info{flex:1;}
+.shop-item-name{font-size:13px;font-weight:500;transition:all 0.15s;}
+.shop-item-detail{font-size:10px;color:var(--grey);margin-top:1px;letter-spacing:0.3px;}
+.shop-item-qty{font-size:11px;color:var(--accent);font-weight:700;white-space:nowrap;}
+
+.shop-actions{display:flex;gap:8px;margin-bottom:14px;}
+.shop-action-btn{
+  flex:1;padding:10px;background:var(--card);border:1px solid var(--border);
+  color:var(--mid);font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  font-weight:700;cursor:pointer;transition:all 0.15s;
+  -webkit-tap-highlight-color:transparent;
+  font-family:'DM Sans',sans-serif;
+}
+.shop-action-btn:active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+
+.shop-progress-bar{height:3px;background:var(--border);margin-bottom:14px;}
+.shop-progress-fill{height:100%;background:var(--green);transition:width 0.3s;}
+.shop-progress-text{font-size:10px;color:var(--grey);letter-spacing:1px;margin-bottom:10px;}
+
+.shop-toggle{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px;}
+.shop-tab{
+  padding:9px;background:var(--card);border:1px solid var(--border);
+  color:var(--grey);font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;cursor:pointer;text-align:center;
+  transition:all 0.15s;-webkit-tap-highlight-color:transparent;
+  font-family:'DM Sans',sans-serif;
+}
+.shop-tab.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+
+.shop-list-panel{display:none;}
+.shop-list-panel.active{display:block;}
+
+/* TIMER */
+.timer-disp{text-align:center;padding:20px 0;}
+.timer-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--white);letter-spacing:4px;line-height:1;}
+.timer-lbl{font-size:10px;letter-spacing:3px;color:var(--grey);text-transform:uppercase;margin-top:6px;}
+.timer-btns{display:flex;gap:8px;justify-content:center;margin-top:14px;}
+.tbtn{
+  padding:11px 22px;font-family:'Bebas Neue',sans-serif;
+  font-size:14px;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;border:none;transition:all 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.tbtn.pri{background:var(--accent);color:#fff;}
+.tbtn.sec{background:transparent;border:1px solid var(--border);color:var(--mid);}
+.tbtn:active{transform:scale(0.96);}
+.presets{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:12px;}
+.pbtn{
+  padding:9px;background:var(--card);border:1px solid var(--border);
+  color:var(--mid);font-size:12px;letter-spacing:1px;
+  cursor:pointer;text-align:center;font-weight:700;
+  -webkit-tap-highlight-color:transparent;transition:all 0.15s;
+}
+.pbtn small{font-size:8px;color:var(--grey);display:block;margin-top:1px;letter-spacing:0.5px;}
+.pbtn:active,.pbtn.sel{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+
+/* TRACKER */
+.ring-wrap{display:flex;justify-content:center;margin:12px 0;position:relative;}
+.ring-wrap svg{transform:rotate(-90deg);}
+.ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.ring-pct{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--white);display:block;}
+.ring-lbl{font-size:9px;letter-spacing:2px;color:var(--grey);text-transform:uppercase;}
+.trkr-week{margin-bottom:14px;}
+.trkr-week-title{font-size:10px;letter-spacing:3px;color:var(--grey);text-transform:uppercase;margin-bottom:7px;}
+.trkr-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.trkr-day{
+  aspect-ratio:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  border:1px solid var(--border);font-size:7px;
+  letter-spacing:0.5px;color:var(--grey);text-transform:uppercase;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  gap:2px;transition:all 0.15s;
+}
+.trkr-day.workout{border-color:rgba(232,200,74,0.2);color:rgba(232,200,74,0.6);}
+.trkr-day.completed{background:var(--green);border-color:var(--green);color:white;}
+.trkr-day .dl{font-size:7px;opacity:0.6;}
+.trkr-day .di{font-size:12px;line-height:1;}
+
+/* BENCHMARK */
+.bench-item{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.bench-item:last-child{border-bottom:none;}
+.bench-week{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;min-width:56px;padding-top:2px;}
+.bench-info{}
+.bench-title{font-size:13px;font-weight:700;margin-bottom:2px;}
+.bench-detail{font-size:11px;color:var(--mid);}
+
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border);}
+
+/* RECIPES */
+.recipe-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:4px;}
+.recipe-card{background:var(--card);border:1px solid var(--border);overflow:hidden;}
+.recipe-card.open .recipe-body{display:block;}
+.recipe-head{
+  display:flex;align-items:center;padding:13px 14px;
+  cursor:pointer;gap:12px;user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.recipe-head:active{background:rgba(255,255,255,0.02);}
+.recipe-emoji{font-size:22px;min-width:30px;}
+.recipe-info{flex:1;}
+.recipe-name{font-size:14px;font-weight:700;letter-spacing:0.3px;}
+.recipe-meta{font-size:10px;color:var(--grey);margin-top:2px;letter-spacing:0.5px;}
+.recipe-time{font-size:10px;color:var(--accent);font-weight:700;letter-spacing:1px;}
+.recipe-arrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
+.recipe-card.open .recipe-arrow{transform:rotate(180deg);}
+.recipe-body{display:none;border-top:1px solid var(--border);}
+
+.recipe-section{padding:12px 14px;border-bottom:1px solid var(--border);}
+.recipe-section:last-child{border-bottom:none;}
+.recipe-section-title{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:10px;
+}
+.recipe-ing-list{display:flex;flex-direction:column;gap:6px;}
+.recipe-ing{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:12px;color:var(--mid);
+}
+.recipe-ing-qty{
+  color:var(--white);font-weight:700;min-width:80px;
+  font-size:11px;flex-shrink:0;
+}
+.recipe-steps{display:flex;flex-direction:column;gap:0;}
+.recipe-step{
+  display:flex;gap:12px;padding:10px 0;
+  border-bottom:1px solid rgba(37,37,37,0.5);
+}
+.recipe-step:last-child{border-bottom:none;}
+.recipe-step-num{
+  font-family:'Bebas Neue',sans-serif;font-size:20px;
+  color:var(--accent);line-height:1;min-width:22px;
+  padding-top:1px;
+}
+.recipe-step-text{font-size:12px;color:var(--mid);line-height:1.6;flex:1;}
+.recipe-step-text strong{color:var(--white);}
+.recipe-tip{
+  margin-top:10px;padding:9px 11px;
+  background:rgba(200,16,46,0.06);border-left:2px solid var(--accent);
+  font-size:11px;color:var(--mid);line-height:1.5;
+}
+.recipe-tip strong{color:var(--accent);}
+.recipe-tag{
+  display:inline-block;font-size:9px;letter-spacing:1.5px;
+  padding:3px 8px;border:1px solid var(--border2);
+  color:var(--grey);text-transform:uppercase;margin-right:4px;margin-top:6px;
+}
+.recipe-tag.easy{border-color:var(--green);color:var(--green);}
+.recipe-tag.meal-prep{border-color:var(--accent);color:var(--accent);}
+.prep-banner{
+  background:var(--card);border:1px solid var(--border);
+  padding:13px 14px;margin-bottom:14px;
+}
+.prep-banner-title{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.prep-step{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(37,37,37,0.4);font-size:12px;color:var(--mid);}
+.prep-step:last-child{border-bottom:none;}
+.prep-num{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--accent);min-width:18px;}
+
+/* PHASE PROGRESSION */
+.phase-now-card{
+  background:var(--card);border:1px solid var(--accent);
+  padding:14px;margin-bottom:14px;position:relative;overflow:hidden;
+}
+.phase-now-card::before{
+  content:'';position:absolute;top:0;left:0;
+  width:3px;height:100%;background:var(--accent);
+}
+.phase-now-label{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:8px;
+}
+.phase-now-title{
+  font-family:'Bebas Neue',sans-serif;font-size:22px;
+  letter-spacing:2px;color:var(--white);margin-bottom:4px;
+}
+.phase-now-sub{font-size:12px;color:var(--mid);margin-bottom:12px;line-height:1.5;}
+.phase-now-bar-wrap{margin-bottom:6px;}
+.phase-now-bar-label{display:flex;justify-content:space-between;font-size:10px;color:var(--grey);margin-bottom:5px;}
+.phase-now-bar{height:4px;background:var(--border);border-radius:2px;}
+.phase-now-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.6s ease;}
+.phase-now-week{
+  display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:13px;
+  letter-spacing:2px;color:var(--accent);padding:4px 10px;
+  border:1px solid rgba(200,16,46,0.3);background:rgba(200,16,46,0.06);
+}
+
+.phase-unlock{
+  background:var(--card);border:1px solid var(--border);
+  padding:12px 14px;margin-bottom:8px;
+}
+.phase-unlock-title{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--grey);margin-bottom:8px;
+}
+.unlock-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:7px 0;border-bottom:1px solid rgba(37,37,37,0.5);
+  font-size:12px;color:var(--mid);line-height:1.5;
+}
+.unlock-item:last-child{border-bottom:none;}
+.unlock-icon{font-size:14px;min-width:20px;}
+.unlock-item.active-unlock .unlock-text{color:var(--white);}
+.unlock-item.completed-unlock .unlock-text{color:var(--grey);text-decoration:line-through;}
+.unlock-dot{
+  width:8px;height:8px;border-radius:50%;flex-shrink:0;
+  margin-top:4px;border:1px solid var(--border2);background:transparent;
+}
+.unlock-dot.done{background:var(--green);border-color:var(--green);}
+.unlock-dot.active{background:var(--accent);border-color:var(--accent);}
+
+.week-badge{
+  display:inline-block;font-size:9px;padding:2px 7px;
+  letter-spacing:1px;border:1px solid var(--border2);
+  color:var(--grey);text-transform:uppercase;margin-left:6px;
+  vertical-align:middle;
+}
+.week-badge.current{border-color:var(--accent);color:var(--accent);}
+.week-badge.done{border-color:var(--green);color:var(--green);}
+
+/* Phase badges updated dynamically */
+.phase-badge.done{border-color:var(--green);color:var(--green);}
+.phase-badge.active{border-color:var(--accent);color:var(--accent);background:rgba(200,16,46,0.08);}
+.done-badge{font-size:10px;padding:3px 8px;color:var(--green);border:1px solid var(--green);text-transform:uppercase;letter-spacing:1px;}
+.current-badge{font-size:10px;padding:3px 8px;color:var(--accent);border:1px solid var(--accent);text-transform:uppercase;letter-spacing:1px;}
+
+.trkr-week.current-week .trkr-week-title{color:var(--accent);}
+.trkr-week.current-week .trkr-week-title::after{
+  content:' ← YOU ARE HERE';font-size:8px;letter-spacing:1px;
+  color:var(--accent);opacity:0.7;
+}
+.trkr-week.past-week .trkr-week-title{color:var(--grey);}
+.trkr-week.future-week .trkr-week-title{color:rgba(110,110,110,0.4);}
+.trkr-week.future-week .trkr-day{opacity:0.35;}
+
+
+/* TODAY CARD */
+.today-card{
+  background:var(--card);border:1px solid var(--border);
+  margin:0 0 0 0;overflow:hidden;
+  border-top:3px solid var(--accent);
+}
+.today-card-inner{padding:16px;}
+.today-eyebrow{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--grey);margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.today-eyebrow-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);display:inline-block;
+}
+.today-workout-row{
+  display:flex;align-items:center;gap:12px;margin-bottom:14px;
+}
+.today-workout-icon{
+  font-size:28px;line-height:1;
+}
+.today-workout-info{flex:1;}
+.today-workout-name{
+  font-family:'Bebas Neue',sans-serif;font-size:24px;
+  letter-spacing:2px;color:var(--white);line-height:1;
+}
+.today-workout-sub{
+  font-size:11px;color:var(--mid);margin-top:3px;letter-spacing:0.3px;
+}
+.today-log-btn{
+  width:100%;padding:14px;
+  background:var(--accent);border:none;
+  font-family:'Bebas Neue',sans-serif;font-size:16px;
+  letter-spacing:3px;color:#fff;cursor:pointer;
+  transition:all 0.15s;-webkit-tap-highlight-color:transparent;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.today-log-btn:active{filter:brightness(0.85);}
+.today-log-btn.logged{
+  background:var(--green);
+}
+.today-log-btn.rest-day{
+  background:var(--surface);border-top:1px solid var(--border);
+  color:var(--grey);cursor:default;font-size:13px;
+}
+.today-week-strip{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:0;border-top:1px solid var(--border);
+}
+.today-strip-day{
+  padding:8px 4px;text-align:center;
+  font-size:9px;letter-spacing:0.5px;
+  color:var(--grey);border-right:1px solid var(--border);
+  text-transform:uppercase;
+}
+.today-strip-day:last-child{border-right:none;}
+.today-strip-day .sd-name{margin-bottom:3px;}
+.today-strip-day .sd-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--border);margin:0 auto;
+}
+.today-strip-day.sd-done .sd-dot{background:var(--green);}
+.today-strip-day.sd-today{color:var(--white);}
+.today-strip-day.sd-today .sd-dot{background:var(--accent);}
+.today-strip-day.sd-today.sd-done .sd-dot{background:var(--green);}
+.today-strip-day.sd-rest .sd-dot{background:transparent;border:1px solid var(--border);}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">12-Week Physique Programme</div>
+  <div class="hero-title">APEX<br><em>PHYSIQUE</em></div>
+  <div class="hero-sub">Built for 100kg / 5'10" — body recomposition: build muscle, lose fat, transform your physique.</div>
+  <div class="hero-pills">
+    <div class="pill gold">Push · Pull · Legs</div>
+    <div class="pill">6 Days / Week</div>
+    <div class="pill">3 Phases</div>
+    <div class="pill gold">Recomp · 100kg</div>
+  </div>
+</div>
+
+<!-- TRAINING TIME -->
+<div class="time-block">
+  <div class="time-label">Training Window</div>
+  <div class="time-grid">
+    <button class="time-btn" id="btn-am" onclick="setTime('am')">
+      <div class="time-btn-top"><span class="time-icon">🌅</span><span class="time-main">Before Work</span></div>
+      <div class="time-sub">Early morning · ~6:00 AM</div>
+    </button>
+    <button class="time-btn" id="btn-pm" onclick="setTime('pm')">
+      <div class="time-btn-top"><span class="time-icon">🌆</span><span class="time-main">After Work</span></div>
+      <div class="time-sub">Evening · ~6:00 PM</div>
+    </button>
+  </div>
+  <div id="sched-am" class="schedule-reveal">
+    <strong>Morning Schedule</strong>
+    <div class="sched-row"><span class="sched-time">05:15</span><span>Wake · cold water · no phone</span></div>
+    <div class="sched-row"><span class="sched-time">05:30</span><span>Pre-workout meal — oats, banana, coffee</span></div>
+    <div class="sched-row"><span class="sched-time">06:00</span><span class="sched-train">▶ Train — 60–75 min</span></div>
+    <div class="sched-row"><span class="sched-time">07:15</span><span>Post-workout shake + shower</span></div>
+    <div class="sched-row"><span class="sched-time">07:45</span><span>Breakfast — eggs, toast, avocado</span></div>
+    <div class="sched-row"><span class="sched-time">09:00</span><span>Work. You're already ahead.</span></div>
+  </div>
+  <div id="sched-pm" class="schedule-reveal">
+    <strong>Evening Schedule</strong>
+    <div class="sched-row"><span class="sched-time">07:00</span><span>Breakfast — eggs, toast, OJ</span></div>
+    <div class="sched-row"><span class="sched-time">12:30</span><span>Lunch — chicken, rice (main pre-workout meal)</span></div>
+    <div class="sched-row"><span class="sched-time">16:00</span><span>Snack — banana, protein bar</span></div>
+    <div class="sched-row"><span class="sched-time">18:00</span><span class="sched-train">▶ Train — 60–75 min</span></div>
+    <div class="sched-row"><span class="sched-time">19:15</span><span>Post-workout shake (immediate)</span></div>
+    <div class="sched-row"><span class="sched-time">20:30</span><span>Dinner — protein, carbs, veg</span></div>
+    <div class="sched-row"><span class="sched-time">23:00</span><span>Casein protein · sleep 8h</span></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('schedule',this)">Overview</button>
+  <button class="tab" onclick="switchTab('program',this)">Workouts</button>
+  <button class="tab" onclick="switchTab('nutrition',this)">Nutrition</button>
+  <button class="tab" onclick="switchTab('recipes',this)">Recipes</button>
+  <button class="tab" onclick="switchTab('shopping',this)">Shopping</button>
+  <button class="tab" onclick="switchTab('timer',this)">Timer</button>
+  <button class="tab" onclick="switchTab('tracker',this)">Progress</button>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<div id="tab-schedule" class="section active">
+  <div class="today-card">
+    <div class="today-card-inner">
+      <div class="today-eyebrow"><span class="today-eyebrow-dot"></span><span id="todayEyebrow">TODAY</span></div>
+      <div class="today-workout-row">
+        <div class="today-workout-icon" id="todayIcon">💪</div>
+        <div class="today-workout-info">
+          <div class="today-workout-name" id="todayName">Push Day</div>
+          <div class="today-workout-sub" id="todaySub">Chest · Shoulders · Triceps</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--accent)" id="todayWeekBig">Wk 1</div>
+          <div style="font-size:9px;color:var(--grey);letter-spacing:1px" id="todayPhaseBig">Foundation</div>
+        </div>
+      </div>
+    </div>
+    <!-- week strip -->
+    <div class="today-week-strip" id="todayWeekStrip"></div>
+    <!-- log button -->
+    <button class="today-log-btn" id="todayLogBtn" onclick="logToday()">
+      <span id="todayBtnIcon">＋</span>
+      <span id="todayBtnText">LOG TODAY'S SESSION</span>
+    </button>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-cell"><div class="stat-num">6</div><div class="stat-lbl">Days/week</div></div>
+    <div class="stat-cell"><div class="stat-num">12</div><div class="stat-lbl">Weeks</div></div>
+    <div class="stat-cell"><div class="stat-num">3</div><div class="stat-lbl">Phases</div></div>
+    <div class="stat-cell"><div class="stat-num">~15</div><div class="stat-lbl">% BF Goal</div></div>
+  </div>
+
+  <div class="sec-label">Weekly Split</div>
+  <div class="week-grid">
+    <div class="day-chip train" onclick="goToWorkout('push')">Mon<small>Push</small></div>
+    <div class="day-chip train" onclick="goToWorkout('pull')">Tue<small>Pull</small></div>
+    <div class="day-chip train" onclick="goToWorkout('legs')">Wed<small>Legs</small></div>
+    <div class="day-chip rest">Thu<small>Rest</small></div>
+    <div class="day-chip train" onclick="goToWorkout('push')">Fri<small>Push</small></div>
+    <div class="day-chip train" onclick="goToWorkout('pull')">Sat<small>Pull</small></div>
+    <div class="day-chip train" onclick="goToWorkout('legs')">Sun<small>Legs</small></div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Physique Goals</div><div class="div-line"></div></div>
+  <div class="target-grid">
+    <div class="target">
+      <div class="target-top"><div class="target-name">Back &amp; Lats</div><div class="target-tag hi">Priority</div></div>
+      <div class="target-bar"><div class="target-fill" style="width:95%"></div></div>
+      <div class="target-sub">V-taper — wide back, narrow waist</div>
+    </div>
+    <div class="target">
+      <div class="target-top"><div class="target-name">Chest &amp; Shoulders</div><div class="target-tag hi">Priority</div></div>
+      <div class="target-bar"><div class="target-fill" style="width:90%"></div></div>
+      <div class="target-sub">Broad, powerful upper body frame</div>
+    </div>
+    <div class="target">
+      <div class="target-top"><div class="target-name">Legs &amp; Core</div><div class="target-tag">High</div></div>
+      <div class="target-bar"><div class="target-fill" style="width:80%"></div></div>
+      <div class="target-sub">Athletic power and stability</div>
+    </div>
+    <div class="target">
+      <div class="target-top"><div class="target-name">Arms</div><div class="target-tag">High</div></div>
+      <div class="target-bar"><div class="target-fill" style="width:75%"></div></div>
+      <div class="target-sub">Defined, functional — not oversized</div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Principles</div><div class="div-line"></div></div>
+  <div style="background:var(--card);border:1px solid var(--border);padding:14px;">
+    <div class="bench-item"><div class="bench-week">Rule 01</div><div class="bench-info"><div class="bench-title">Consistency above all</div><div class="bench-detail">Show up. Missing sessions kills progress faster than bad form.</div></div></div>
+    <div class="bench-item"><div class="bench-week">Rule 02</div><div class="bench-info"><div class="bench-title">Progressive overload</div><div class="bench-detail">Add weight or reps every week. Stagnation means the programme isn't working.</div></div></div>
+    <div class="bench-item"><div class="bench-week">Rule 03</div><div class="bench-info"><div class="bench-title">Rest is productive</div><div class="bench-detail">Thursday off. 8+ hours sleep. Muscle is built during recovery, not during lifting.</div></div></div>
+    <div class="bench-item"><div class="bench-week">Rule 04</div><div class="bench-info"><div class="bench-title">Eat to build</div><div class="bench-detail">High protein. Slight caloric surplus on training days. Fuel the machine.</div></div></div>
+  </div>
+</div>
+
+<!-- ===== WORKOUTS ===== -->
+<div id="tab-program" class="section">
+  <div class="sec-label">Programme</div>
+  <div class="sec-title">12-WEEK PLAN</div>
+
+  <div class="phase open" onclick="togglePhase(this)">
+    <div class="phase-head">
+      <div class="phase-num">01</div>
+      <div class="phase-info"><div class="phase-name">Foundation</div><div class="phase-wks">Weeks 1–4 · Volume</div></div>
+      <div class="phase-badge now">Current</div>
+    </div>
+    <div class="phase-body">Master form before load. Higher reps, moderate weight, full range of motion every rep.<div class="phase-goals"><div class="pg">4 sets × 10–12 reps</div><div class="pg">60–90 sec rest between sets</div><div class="pg">Track lifts — beat last week every session</div></div></div>
+  </div>
+  <div class="phase" onclick="togglePhase(this)">
+    <div class="phase-head">
+      <div class="phase-num">02</div>
+      <div class="phase-info"><div class="phase-name">Strength</div><div class="phase-wks">Weeks 5–8 · Power</div></div>
+      <div class="phase-badge next">Upcoming</div>
+    </div>
+    <div class="phase-body">Heavier loads, lower reps. Build the raw strength that defines the physique.<div class="phase-goals"><div class="pg">5 sets × 5–6 reps on compound lifts</div><div class="pg">2–3 min rest on heavy sets</div><div class="pg">Drop sets on isolation work</div></div></div>
+  </div>
+  <div class="phase" onclick="togglePhase(this)">
+    <div class="phase-head">
+      <div class="phase-num">03</div>
+      <div class="phase-info"><div class="phase-name">Definition</div><div class="phase-wks">Weeks 9–12 · Cut</div></div>
+      <div class="phase-badge next">Upcoming</div>
+    </div>
+    <div class="phase-body">This is where the transformation becomes visible. Lean, athletic, powerful. At 100kg with a recomp approach, you should already be leaner by now — this phase finishes the job.<div class="phase-goals"><div class="pg">Hold weight on compound lifts</div><div class="pg">30 min LISS cardio post-session (increase from 20)</div><div class="pg">–100g carbs on rest days</div><div class="pg">Consider extending to 16 weeks if more fat to lose</div></div></div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Push Day · Mon &amp; Fri</div><div class="div-line"></div></div>
+  <div id="push" style="scroll-margin-top:50px">
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;background:#111;display:block"><rect x="40" y="110" width="240" height="10" rx="3" fill="#2a2a2a"/><rect x="50" y="120" width="10" height="25" fill="#2a2a2a"/><rect x="260" y="120" width="10" height="25" fill="#2a2a2a"/><rect x="60" y="95" width="175" height="16" rx="7" fill="#333"/><circle cx="250" cy="94" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="100" y1="97" x2="85" y2="58" stroke="#c8102e" stroke-width="2.5"/><line x1="140" y1="97" x2="155" y2="58" stroke="#c8102e" stroke-width="2.5"/><rect x="65" y="54" width="110" height="7" rx="3" fill="#555"/><rect x="55" y="50" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="167" y="50" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><line x1="100" y1="97" x2="90" y2="90" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.35"/><line x1="140" y1="97" x2="150" y2="90" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.35"/><rect x="70" y="88" width="100" height="6" rx="2" fill="#555" opacity="0.3"/><text x="160" y="148" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">BENCH PRESS</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Retract scapula before unracking — pull shoulder blades together</div><div class="cue">Bar path: lower chest, wrists straight above elbows</div><div class="cue">2-second eccentric down, drive explosively up</div><div class="cue">Feet flat, slight lower back arch, glutes on bench</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>10</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>8</td><td>+5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="16" y="28" width="14" height="124" rx="3" fill="#2a2a2a"/><circle cx="23" cy="80" r="8" fill="#3a3a3a" stroke="#555" stroke-width="1.5"/><line x1="23" y1="80" x2="126" y2="92" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/><rect x="55" y="130" width="50" height="8" rx="3" fill="#2a2a2a"/><line x1="160" y1="130" x2="160" y2="76" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="65" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><rect x="128" y="128" width="64" height="10" rx="3" fill="#2a2a2a"/><line x1="160" y1="130" x2="104" y2="132" stroke="#c8102e" stroke-width="2.5"/><line x1="104" y1="132" x2="68" y2="130" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="130" x2="202" y2="140" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="128" y2="93" stroke="#c8102e" stroke-width="2.5"/><rect x="116" y="88" width="18" height="10" rx="3" fill="#555"/><line x1="160" y1="97" x2="88" y2="83" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.3"/><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">INCLINE DB PRESS</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Set bench to 30–45°. Higher angle shifts load to front delt.</div><div class="cue">Squeeze chest at top for 1 second</div><div class="cue">Elbows at ~45° to body — not flared wide</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>10</td><td>Same/+2.5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">B1</div><div class="wname">Overhead Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;background:#111;display:block"><rect x="40" y="130" width="240" height="8" rx="3" fill="#2a2a2a"/><rect x="50" y="138" width="10" height="18" fill="#2a2a2a"/><rect x="260" y="138" width="10" height="18" fill="#2a2a2a"/><g transform="rotate(-22 150 100)"><rect x="55" y="88" width="195" height="13" rx="5" fill="#333"/><rect x="62" y="78" width="165" height="13" rx="5" fill="#2e2e2e"/></g><circle cx="234" cy="72" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="108" y1="83" x2="94" y2="50" stroke="#c8102e" stroke-width="2.5"/><line x1="143" y1="79" x2="158" y2="47" stroke="#c8102e" stroke-width="2.5"/><rect x="82" y="43" width="18" height="9" rx="3" fill="#555"/><rect x="79" y="40" width="8" height="12" rx="2" fill="#c8102e" opacity="0.8"/><rect x="91" y="40" width="8" height="12" rx="2" fill="#c8102e" opacity="0.8"/><rect x="151" y="41" width="18" height="9" rx="3" fill="#555"/><rect x="148" y="38" width="8" height="12" rx="2" fill="#c8102e" opacity="0.8"/><rect x="160" y="38" width="8" height="12" rx="2" fill="#c8102e" opacity="0.8"/><text x="160" y="150" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">OVERHEAD PRESS</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Brace core hard — this is a full-body press</div><div class="cue">Tuck chin as bar passes face, then press vertically</div><div class="cue">Full lockout at top, controlled descent</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>10</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">B2</div><div class="wname">Lateral Raises</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="60" y1="152" x2="260" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="152" x2="160" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="152" x2="142" y2="168" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="152" x2="178" y2="168" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="132" y2="105" stroke="#c8102e" stroke-width="2.5"/><line x1="132" y1="105" x2="122" y2="77" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="188" y2="105" stroke="#c8102e" stroke-width="2.5"/><line x1="188" y1="105" x2="198" y2="77" stroke="#c8102e" stroke-width="2.5"/><rect x="100" y="70" width="120" height="8" rx="3" fill="#555"/><rect x="86" y="66" width="18" height="16" rx="3" fill="#c8102e" opacity="0.7"/><rect x="216" y="66" width="18" height="16" rx="3" fill="#c8102e" opacity="0.7"/><line x1="132" y1="105" x2="130" y2="130" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.3"/><text x="160" y="160" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">LATERAL RAISE</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Slight forward lean at hips (10–15°)</div><div class="cue">Lead with elbows — pinky slightly higher than thumb at top</div><div class="cue">Slow and controlled — no momentum or swinging</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>20</td><td>Light</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">C1</div><div class="wname">Weighted Dips</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="60" y1="150" x2="260" y2="150" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="150" x2="160" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="150" x2="140" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="150" x2="180" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="100" x2="120" y2="76" stroke="#c8102e" stroke-width="2.5"/><line x1="120" y1="76" x2="120" y2="44" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="100" x2="200" y2="76" stroke="#c8102e" stroke-width="2.5"/><line x1="200" y1="76" x2="200" y2="44" stroke="#c8102e" stroke-width="2.5"/><rect x="96" y="38" width="128" height="9" rx="4" fill="#555"/><rect x="80" y="33" width="20" height="18" rx="3" fill="#c8102e" opacity="0.7"/><rect x="220" y="33" width="20" height="18" rx="3" fill="#c8102e" opacity="0.7"/><line x1="160" y1="105" x2="160" y2="55" stroke="#c8102e" stroke-width="1" stroke-dasharray="3,4" opacity="0.3"/><text x="160" y="156" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">TRICEP DIPS</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Stay upright — leaning forward shifts work to chest</div><div class="cue">Full lockout at top, controlled descent</div><div class="cue">Add weight via belt once 12 bodyweight reps is easy</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12</td><td>Bodyweight</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>10</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>10</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="60" y1="152" x2="260" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="152" x2="160" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="152" x2="142" y2="168" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="152" x2="178" y2="168" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="132" y2="105" stroke="#c8102e" stroke-width="2.5"/><line x1="132" y1="105" x2="124" y2="76" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="188" y2="105" stroke="#c8102e" stroke-width="2.5"/><line x1="188" y1="105" x2="192" y2="134" stroke="#c8102e" stroke-width="2.5"/><rect x="118" y="68" width="10" height="20" rx="3" fill="#555"/><rect x="115" y="65" width="14" height="8" rx="2" fill="#c8102e" opacity="0.8"/><rect x="115" y="85" width="14" height="8" rx="2" fill="#c8102e" opacity="0.8"/><rect x="186" y="130" width="10" height="20" rx="3" fill="#555"/><rect x="183" y="127" width="14" height="8" rx="2" fill="#c8102e" opacity="0.55"/><rect x="183" y="147" width="14" height="8" rx="2" fill="#c8102e" opacity="0.55"/><text x="228" y="110" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.5">neutral grip</text><text x="160" y="160" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">CABLE PUSHDOWN</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Elbows pinned at sides — they don't move</div><div class="cue">Full extension at bottom, feel the contraction</div><div class="cue">2-second return — no bouncing</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>15</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Pull Day · Tue &amp; Sat</div><div class="div-line"></div></div>
+  <div id="pull" style="scroll-margin-top:50px">
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">A1</div><div class="wname">Weighted Pull-ups</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="60" y1="152" x2="260" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="150" x2="157" y2="84" stroke="#c8102e" stroke-width="3"/><circle cx="157" cy="73" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="150" x2="144" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="150" x2="176" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="157" y1="102" x2="98" y2="82" stroke="#c8102e" stroke-width="2.5"/><line x1="157" y1="102" x2="216" y2="82" stroke="#c8102e" stroke-width="2.5"/><rect x="82" y="76" width="19" height="10" rx="3" fill="#555"/><rect x="79" y="73" width="9" height="15" rx="2" fill="#c8102e" opacity="0.8"/><rect x="91" y="73" width="9" height="15" rx="2" fill="#c8102e" opacity="0.8"/><rect x="219" y="76" width="19" height="10" rx="3" fill="#555"/><rect x="216" y="73" width="9" height="15" rx="2" fill="#c8102e" opacity="0.8"/><rect x="228" y="73" width="9" height="15" rx="2" fill="#c8102e" opacity="0.8"/><line x1="157" y1="102" x2="120" y2="110" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.3"/><line x1="157" y1="102" x2="194" y2="110" stroke="#c8102e" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.3"/><text x="160" y="159" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">WEIGHTED PULL-UPS</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Full dead hang at the bottom — no half reps</div><div class="cue">Initiate by depressing scapula, then pull elbows to hips</div><div class="cue">Chin clearly above bar. No kipping or swinging.</div><div class="cue">The single most important exercise in this programme</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>8</td><td>Bodyweight</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>6</td><td>+5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>6</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>6</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">A2</div><div class="wname">Barbell Row</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="40" y1="152" x2="280" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="160" y1="90" x2="155" y2="127" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="79" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="155" y1="127" x2="118" y2="150" stroke="#c8102e" stroke-width="3"/><line x1="155" y1="127" x2="194" y2="150" stroke="#c8102e" stroke-width="3"/><line x1="160" y1="97" x2="130" y2="98" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="97" x2="190" y2="98" stroke="#c8102e" stroke-width="2.5"/><rect x="104" y="92" width="112" height="7" rx="3" fill="#555"/><rect x="88" y="88" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="212" y="88" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><line x1="80" y1="127" x2="80" y2="152" stroke="#c8102e" stroke-width="1.5" opacity="0.4"/><text x="54" y="122" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.5">parallel</text><text x="160" y="160" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">BARBELL ROW</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Hinge at hips, back roughly parallel to floor</div><div class="cue">Overhand grip, pull bar to lower chest</div><div class="cue">Squeeze shoulder blades at top — hold 1 second</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>10</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="88" y="60" width="10" height="88" rx="3" fill="#3a3a3a"/><rect x="222" y="60" width="10" height="88" rx="3" fill="#3a3a3a"/><rect x="74" y="56" width="38" height="10" rx="4" fill="#555"/><rect x="208" y="56" width="38" height="10" rx="4" fill="#555"/><line x1="160" y1="157" x2="160" y2="92" stroke="#c8102e" stroke-width="3"/><circle cx="160" cy="80" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="100" x2="95" y2="64" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="100" x2="225" y2="64" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="157" x2="145" y2="142" stroke="#c8102e" stroke-width="2.5"/><line x1="145" y1="142" x2="148" y2="158" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="157" x2="175" y2="142" stroke="#c8102e" stroke-width="2.5"/><line x1="175" y1="142" x2="172" y2="158" stroke="#c8102e" stroke-width="2.5"/><text x="160" y="159" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">LAT PULLDOWN</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Wide overhand grip, slight lean back (not excessive)</div><div class="cue">Pull to upper chest — elbows drive toward hips</div><div class="cue">Think: pull shoulder blades into your back pockets</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>10</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">B2</div><div class="wname">Seated Cable Row</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="40" y1="152" x2="280" y2="152" stroke="#2a2a2a" stroke-width="2"/><line x1="100" y1="92" x2="212" y2="73" stroke="#c8102e" stroke-width="3"/><circle cx="222" cy="66" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="100" y1="92" x2="90" y2="152" stroke="#c8102e" stroke-width="2.5"/><line x1="100" y1="92" x2="126" y2="152" stroke="#c8102e" stroke-width="2.5"/><line x1="148" y1="83" x2="142" y2="117" stroke="#c8102e" stroke-width="2.5"/><line x1="172" y1="79" x2="168" y2="117" stroke="#c8102e" stroke-width="2.5"/><rect x="116" y="115" width="68" height="7" rx="3" fill="#555"/><rect x="100" y="111" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="182" y="111" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><path d="M 100 92 Q 106 122 108 150" stroke="#c8102e" stroke-width="1.2" fill="none" stroke-dasharray="3,3" opacity="0.3"/><text x="160" y="160" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">SEATED CABLE ROW</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Neutral grip, back straight throughout</div><div class="cue">Pull to navel — squeeze mid-back at the end</div><div class="cue">Controlled stretch on the way back — don't round</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">C1</div><div class="wname">Barbell Curl</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="228" y="8" width="16" height="142" rx="3" fill="#2a2a2a"/><circle cx="236" cy="30" r="8" fill="#3a3a3a" stroke="#555" stroke-width="1.5"/><line x1="236" y1="30" x2="183" y2="65" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/><line x1="60" y1="150" x2="260" y2="150" stroke="#2a2a2a" stroke-width="2"/><line x1="158" y1="150" x2="158" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="158" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="158" y1="150" x2="140" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="150" x2="176" y2="167" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="97" x2="146" y2="90" stroke="#c8102e" stroke-width="2.5"/><line x1="146" y1="90" x2="146" y2="122" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="97" x2="170" y2="90" stroke="#c8102e" stroke-width="2.5"/><line x1="170" y1="90" x2="170" y2="122" stroke="#c8102e" stroke-width="2.5"/><rect x="138" y="120" width="40" height="7" rx="3" fill="#555"/><text x="104" y="92" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.6">elbows pinned</text><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">BARBELL CURL</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">No swinging — elbows stay locked at sides</div><div class="cue">Full supination (wrist turn out) at the top</div><div class="cue">3-second eccentric on the way down</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">C2</div><div class="wname">Hammer Curl</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="28" y="88" width="200" height="14" rx="5" fill="#2a2a2a" transform="rotate(-38 128 95)"/><rect x="58" y="116" width="68" height="12" rx="4" fill="#2a2a2a"/><rect x="198" y="32" width="58" height="14" rx="4" fill="#3a3a3a" transform="rotate(-38 227 39)"/><line x1="50" y1="116" x2="70" y2="68" stroke="#c8102e" stroke-width="3"/><circle cx="74" cy="57" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="50" y1="116" x2="130" y2="84" stroke="#c8102e" stroke-width="2.5"/><line x1="130" y1="84" x2="198" y2="49" stroke="#c8102e" stroke-width="2.5"/><text x="210" y="44" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.55">high foot</text><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">HAMMER CURL</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Neutral grip — thumb pointing up throughout the movement</div><div class="cue">Builds brachialis for overall arm thickness</div><div class="cue">Can alternate arms for better mind-muscle connection</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Leg Day · Wed &amp; Sun</div><div class="div-line"></div></div>
+  <div id="legs" style="scroll-margin-top:50px">
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="68" y="16" width="184" height="10" rx="4" fill="#555"/><rect x="66" y="8" width="14" height="22" rx="3" fill="#3a3a3a"/><rect x="240" y="8" width="14" height="22" rx="3" fill="#3a3a3a"/><circle cx="160" cy="20" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="160" y1="31" x2="100" y2="25" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="31" x2="220" y2="25" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="31" x2="160" y2="100" stroke="#c8102e" stroke-width="3"/><line x1="160" y1="100" x2="148" y2="138" stroke="#c8102e" stroke-width="2.5"/><line x1="148" y1="138" x2="152" y2="158" stroke="#c8102e" stroke-width="2.5"/><line x1="160" y1="100" x2="172" y2="138" stroke="#c8102e" stroke-width="2.5"/><line x1="172" y1="138" x2="168" y2="158" stroke="#c8102e" stroke-width="2.5"/><ellipse cx="160" cy="160" rx="10" ry="5" fill="#333" stroke="#c8102e" stroke-width="1" opacity="0.6"/><text x="80" y="30" fill="#c8102e" font-size="8" font-family="sans-serif" opacity="0.5">wide grip</text><text x="160" y="159" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">BARBELL SQUAT</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Break parallel — hip crease below knee every rep</div><div class="cue">Chest up, core braced, drive through heels</div><div class="cue">Knees track over toes — push them outward</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>8</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>6</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>6</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">A2</div><div class="wname">Romanian Deadlift</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="40" y1="154" x2="280" y2="154" stroke="#2a2a2a" stroke-width="2"/><line x1="162" y1="154" x2="162" y2="82" stroke="#c8102e" stroke-width="3"/><circle cx="162" cy="71" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="162" y1="117" x2="210" y2="132" stroke="#c8102e" stroke-width="2.5"/><line x1="210" y1="132" x2="228" y2="154" stroke="#c8102e" stroke-width="2.5"/><line x1="162" y1="117" x2="120" y2="132" stroke="#c8102e" stroke-width="2.5"/><line x1="120" y1="132" x2="116" y2="154" stroke="#c8102e" stroke-width="2.5"/><circle cx="120" cy="150" r="5" fill="none" stroke="#c8102e" stroke-width="1.5" opacity="0.45"/><line x1="162" y1="97" x2="138" y2="103" stroke="#c8102e" stroke-width="2"/><line x1="162" y1="97" x2="186" y2="103" stroke="#c8102e" stroke-width="2"/><rect x="124" y="100" width="16" height="24" rx="4" fill="#555"/><rect x="121" y="97" width="10" height="10" rx="2" fill="#c8102e" opacity="0.7"/><rect x="184" y="100" width="16" height="24" rx="4" fill="#555"/><rect x="193" y="97" width="10" height="10" rx="2" fill="#c8102e" opacity="0.7"/><text x="160" y="162" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">ROMANIAN DEADLIFT</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Hip hinge — push hips back, not knees down</div><div class="cue">Bar stays in contact with legs throughout</div><div class="cue">Feel the hamstring stretch at the bottom — don't round</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>10</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><line x1="40" y1="150" x2="280" y2="150" stroke="#2a2a2a" stroke-width="2"/><line x1="92" y1="102" x2="202" y2="80" stroke="#c8102e" stroke-width="3"/><circle cx="213" cy="73" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="92" y1="102" x2="80" y2="150" stroke="#c8102e" stroke-width="2.5"/><line x1="92" y1="102" x2="118" y2="150" stroke="#c8102e" stroke-width="2.5"/><line x1="135" y1="91" x2="130" y2="118" stroke="#c8102e" stroke-width="2.5"/><line x1="162" y1="87" x2="162" y2="118" stroke="#c8102e" stroke-width="2.5"/><rect x="88" y="118" width="92" height="7" rx="3" fill="#555"/><rect x="74" y="114" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="180" y="114" width="18" height="15" rx="3" fill="#c8102e" opacity="0.7"/><rect x="100" y="94" width="70" height="6" rx="2" fill="#555" opacity="0.3"/><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">LEG PRESS</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">High foot placement targets glutes and hamstrings</div><div class="cue">Don't lock out knees — maintain slight bend at top</div><div class="cue">Control the descent — don't let the weight drop</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">B2</div><div class="wname">Walking Lunges</div><div class="wmeta">3×12 each</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;background:#111;display:block"><line x1="40" y1="126" x2="280" y2="126" stroke="#2a2a2a" stroke-width="2"/><line x1="80" y1="101" x2="248" y2="93" stroke="#c8102e" stroke-width="12" stroke-linecap="round" opacity="0.12"/><line x1="80" y1="101" x2="248" y2="93" stroke="#c8102e" stroke-width="4" stroke-linecap="round"/><circle cx="256" cy="88" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="80" y1="101" x2="76" y2="126" stroke="#c8102e" stroke-width="2.5"/><line x1="76" y1="126" x2="102" y2="126" stroke="#c8102e" stroke-width="2.5"/><line x1="232" y1="98" x2="242" y2="126" stroke="#c8102e" stroke-width="2.5"/><line x1="78" y1="82" x2="256" y2="74" stroke="#c8102e" stroke-width="1" stroke-dasharray="5,4" opacity="0.25"/><text x="160" y="148" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">WALKING LUNGE</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Long stride — front knee tracks directly over toe</div><div class="cue">Back knee just above floor — controlled drop</div><div class="cue">Torso upright and braced throughout</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12/leg</td><td>BW or DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>12/leg</td><td>+DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>12/leg</td><td>+DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+
+    <div class="wcard" onclick="toggleCard(this)">
+      <div class="whead"><div class="wbadge">C1</div><div class="wname">Core Circuit</div><div class="wmeta">3 rounds</div><div class="warrow">▼</div></div>
+      <div class="wbody">
+        <div class="ex-img"><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:170px;background:#111;display:block"><rect x="140" y="6" width="16" height="52" rx="3" fill="#2a2a2a"/><line x1="148" y1="18" x2="98" y2="42" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/><line x1="148" y1="18" x2="198" y2="42" stroke="#888" stroke-width="1.5" stroke-dasharray="3,2"/><rect x="88" y="38" width="120" height="7" rx="3" fill="#555"/><rect x="128" y="118" width="60" height="12" rx="4" fill="#2a2a2a"/><line x1="158" y1="118" x2="158" y2="70" stroke="#c8102e" stroke-width="3"/><circle cx="158" cy="59" r="11" fill="none" stroke="#c8102e" stroke-width="2"/><line x1="158" y1="118" x2="134" y2="140" stroke="#c8102e" stroke-width="2.5"/><line x1="134" y1="140" x2="116" y2="142" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="118" x2="182" y2="140" stroke="#c8102e" stroke-width="2.5"/><line x1="182" y1="140" x2="200" y2="142" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="80" x2="94" y2="43" stroke="#c8102e" stroke-width="2.5"/><line x1="158" y1="80" x2="202" y2="43" stroke="#c8102e" stroke-width="2.5"/><text x="160" y="158" text-anchor="middle" fill="#6e6e6e" font-size="10" font-family="sans-serif" letter-spacing="2">PLANK</text></svg></div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Plank: neutral spine, squeeze glutes and abs together</div><div class="cue">No rest between exercises within a round</div><div class="cue">60 seconds rest between rounds</div></div>
+        <table class="stbl"><tr><th>Exercise</th><th>Amount</th><th>✓</th></tr>
+        <tr><td style="font-size:11px;color:var(--white)">Plank</td><td>60 sec</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td style="font-size:11px;color:var(--white)">Hanging Knee Raise</td><td>15 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td style="font-size:11px;color:var(--white)">Cable Crunch</td><td>15 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td style="font-size:11px;color:var(--white)">Russian Twist</td><td>20 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NUTRITION ===== -->
+<div id="tab-nutrition" class="section">
+  <div class="sec-label">Daily Targets · 100kg / 5'10" · Recomposition</div>
+  <div class="sec-title">NUTRITION</div>
+  <div class="macro-row">
+    <div class="mcell"><div class="mnum">230</div><div class="munit">g / day</div><div class="mname">Protein</div></div>
+    <div class="mcell"><div class="mnum">270</div><div class="munit">g / day</div><div class="mname">Carbs</div></div>
+    <div class="mcell"><div class="mnum">80</div><div class="munit">g / day</div><div class="mname">Fats</div></div>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--border);padding:12px 14px;margin-bottom:14px;">
+    <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Total Daily Calories</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);">~2,800 <span style="font-size:13px;color:var(--grey)">kcal</span></div>
+    <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,800 kcal · Rest day ~2,400 kcal</div>
+  </div>
+
+  <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(200,16,46,0.25);padding:13px 14px;margin-bottom:14px;">
+    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ Recomposition Strategy · 100kg / 5'10"</div>
+    <div style="font-size:11px;color:var(--mid);line-height:1.8;">
+      At your stats a traditional bulk is unnecessary — you have enough stored energy to fuel muscle growth while in a small deficit. This is called <strong style="color:var(--white)">body recomposition</strong>. Expect to lose ~0.5–1kg per week while gaining strength. The scale might barely move for weeks — that's muscle replacing fat. <strong style="color:var(--white)">Judge progress by the mirror and your lifts, not the number.</strong>
+    </div>
+  </div>  <div class="meal-switch">
+    <button class="mstab active" id="ms-am" onclick="switchMeal('am')">🌅 Morning<small>Before-work training</small></button>
+    <button class="mstab" id="ms-pm" onclick="switchMeal('pm')">🌆 Evening<small>After-work training</small></button>
+  </div>
+
+  <!-- AM MEALS -->
+  <div class="mplan active" id="mp-am">
+    <div class="mday-label">Training Days</div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">05:30</div><div class="mname">Pre-Workout</div><div class="mkcal">~480 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">120g dry</span>Rolled oats</div><div class="ing"><span class="ing-amt">1 large</span>Banana</div><div class="ing"><span class="ing-amt">300ml</span>Semi-skimmed milk</div><div class="ing"><span class="ing-amt">5g</span>Creatine monohydrate</div><div class="ing"><span class="ing-amt">1 cup</span>Black coffee</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">22g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">96g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">9g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Eat 30 min before training. Bigger portions for a bigger body — oats give slow-release energy without a crash.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">07:15</div><div class="mname">Post-Workout</div><div class="mkcal">~420 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">40g</span>Whey protein</div><div class="ing"><span class="ing-amt">5 whole</span>Scrambled eggs</div><div class="ing"><span class="ing-amt">2 slices</span>Sourdough toast</div><div class="ing"><span class="ing-amt">½</span>Avocado</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">62g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">40g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Consume within 30 min of training. High protein hit right after training is critical for recomp — muscle preservation while losing fat.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">12:30</div><div class="mname">Lunch</div><div class="mkcal">~620 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">220g</span>Chicken breast (grilled)</div><div class="ing"><span class="ing-amt">150g dry</span>Basmati rice</div><div class="ing"><span class="ing-amt">150g</span>Broccoli or mixed veg</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">57g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">75g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Meal prep this the night before. 10 minutes of prep prevents skipping meals.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">16:00</div><div class="mname">Afternoon Snack</div><div class="mkcal">~280 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">200g</span>Greek yoghurt (full fat)</div><div class="ing"><span class="ing-amt">30g</span>Mixed nuts</div><div class="ing"><span class="ing-amt">1 tsp</span>Honey</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">22g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">18g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Keeps you full until dinner. Protein + healthy fats prevents afternoon muscle breakdown.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">19:30</div><div class="mname">Dinner</div><div class="mkcal">~580 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">250g</span>Salmon fillet or lean beef mince</div><div class="ing"><span class="ing-amt">200g</span>Sweet potato (roasted)</div><div class="ing"><span class="ing-amt">150g</span>Spinach or kale</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">55g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">45g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">20g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Salmon provides omega-3 for joint recovery. At 100kg you need more protein at every meal — don't under-eat here.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">22:00</div><div class="mname">Night Fuel</div><div class="mkcal">~270 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">250g</span>Cottage cheese (low fat)</div><div class="ing"><span class="ing-amt">20g</span>Almonds or walnuts</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">8g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">10g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Casein protein in cottage cheese digests slowly — feeds muscles for 7–8 hours during sleep.</div></div></div>
+    <div class="mday-label">Rest Day (Thursday)</div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">All day</div><div class="mname">Rest Day Adjustments</div><div class="mkcal">~2,200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">Same meals</span>as training days</div><div class="ing"><span class="ing-amt">–80g carbs</span>Remove rice at lunch + skip oats</div><div class="ing"><span class="ing-amt">Keep protein</span>230g minimum — non-negotiable</div><div class="ing"><span class="ing-amt">~2,400 kcal</span>Target for rest day</div><div class="ing"><span class="ing-amt">3+ litres</span>Water</div></div><div class="mnote">Rest day deficit is where most fat loss happens. Drop carbs hard but protect protein — this is the recomp formula.</div></div></div>
+  </div>
+
+  <!-- PM MEALS -->
+  <div class="mplan" id="mp-pm">
+    <div class="mday-label">Training Days</div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">07:00</div><div class="mname">Breakfast</div><div class="mkcal">~550 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">5 whole</span>Eggs (scrambled)</div><div class="ing"><span class="ing-amt">2 slices</span>Sourdough toast</div><div class="ing"><span class="ing-amt">½</span>Avocado</div><div class="ing"><span class="ing-amt">30g</span>Whey protein in milk (extra protein hit)</div><div class="ing"><span class="ing-amt">1 cup</span>Black coffee</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">60g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">24g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">At 100kg you need protein early and often. Swapped OJ for a morning shake — less sugar, more muscle protection.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">12:30</div><div class="mname">Lunch (Main Pre-Workout)</div><div class="mkcal">~650 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">220g</span>Chicken breast or thighs</div><div class="ing"><span class="ing-amt">150g dry</span>Basmati rice</div><div class="ing"><span class="ing-amt">150g</span>Mixed veg</div><div class="ing"><span class="ing-amt">5g</span>Creatine monohydrate</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">58g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">80g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Your primary pre-workout meal. Bigger chicken portion for a 100kg body — this fuels tonight's session.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">16:00</div><div class="mname">Pre-Gym Snack</div><div class="mkcal">~250 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">1 large</span>Banana</div><div class="ing"><span class="ing-amt">1 bar</span>Protein bar (20g+ protein)</div><div class="ing"><span class="ing-amt">1 cup</span>Black coffee or pre-workout</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">22g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">5g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">90 min before training. Fast carbs from banana = immediate fuel. Never train on empty.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">19:15</div><div class="mname">Post-Workout Shake</div><div class="mkcal">~200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">50g</span>Whey protein (extra scoop for 100kg)</div><div class="ing"><span class="ing-amt">1 large</span>Banana or 2 rice cakes</div><div class="ing"><span class="ing-amt">400ml</span>Milk</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">50g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">30g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">4g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Immediately post-workout. 50g whey keeps PM plan on target for 230g daily protein. Drink in the changing room — don't miss the window.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">20:30</div><div class="mname">Dinner</div><div class="mkcal">~620 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">250g</span>Salmon or lean beef mince</div><div class="ing"><span class="ing-amt">180g</span>Sweet potato (keep carbs moderate)</div><div class="ing"><span class="ing-amt">200g</span>Broccoli or spinach</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">55g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">50g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">20g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">High protein, moderate carbs at dinner — recomp diet keeps evening carbs controlled while keeping protein high.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">23:00</div><div class="mname">Night Fuel</div><div class="mkcal">~270 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">250g</span>Cottage cheese</div><div class="ing"><span class="ing-amt">20g</span>Almonds</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">6g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">10g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Casein feeds muscles for 7–8 hours. You train hard evenings — sleep is where gains happen.</div></div></div>
+    <div class="mday-label">Rest Day (Thursday)</div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">All day</div><div class="mname">Rest Day Adjustments</div><div class="mkcal">~2,200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">Same meals</span>as training days</div><div class="ing"><span class="ing-amt">–80g carbs</span>Remove rice at lunch + skip evening sweet potato</div><div class="ing"><span class="ing-amt">Keep protein</span>230g minimum — non-negotiable</div><div class="ing"><span class="ing-amt">~2,400 kcal</span>Rest day target</div><div class="ing"><span class="ing-amt">3+ litres</span>Water</div></div><div class="mnote">Rest day deficit drives fat loss. Slash carbs, protect every gram of protein. This is the day your body burns stored fat.</div></div></div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Supplements</div><div class="div-line"></div></div>
+  <div class="supp-list">
+    <div class="supp-item"><div class="supp-icon">💊</div><div class="supp-info"><div class="supp-name">Creatine Monohydrate</div><div class="supp-dose">5g daily · with pre-workout meal</div><div class="supp-why">The most researched supplement in existence. Increases strength, power output, and muscle size.</div></div></div>
+    <div class="supp-item"><div class="supp-icon">🥛</div><div class="supp-info"><div class="supp-name">Whey Protein</div><div class="supp-dose">40g post-workout</div><div class="supp-why">Fast-digesting. Hits your protein target conveniently. Not magic — just a practical tool.</div></div></div>
+    <div class="supp-item"><div class="supp-icon">🌙</div><div class="supp-info"><div class="supp-name">Casein Protein</div><div class="supp-dose">30g before bed</div><div class="supp-why">Slow-release — feeds muscles for 7–8 hours overnight. Prevents muscle breakdown during sleep.</div></div></div>
+    <div class="supp-item"><div class="supp-icon">☀️</div><div class="supp-info"><div class="supp-name">Vitamin D3 + K2</div><div class="supp-dose">2000–4000 IU daily · with food</div><div class="supp-why">Supports testosterone production and immune function. Most people training hard are deficient.</div></div></div>
+    <div class="supp-item"><div class="supp-icon">🐟</div><div class="supp-info"><div class="supp-name">Omega-3 Fish Oil</div><div class="supp-dose">3g daily · with meals</div><div class="supp-why">Reduces inflammation, supports joint health, improves recovery between sessions.</div></div></div>
+    <div class="supp-item"><div class="supp-icon">⚡</div><div class="supp-info"><div class="supp-name">Zinc + Magnesium (ZMA)</div><div class="supp-dose">Before bed</div><div class="supp-why">Depleted by heavy training. Supports sleep quality, recovery, and hormonal health.</div></div></div>
+  </div>
+</div>
+
+
+<!-- ===== RECIPES ===== -->
+<div id="tab-recipes" class="section">
+  <div class="sec-label">Beginner Friendly · All Recipes</div>
+  <div class="sec-title">RECIPES</div>
+
+  <!-- SUNDAY PREP GUIDE -->
+  <div class="prep-banner">
+    <div class="prep-banner-title">📦 Sunday Meal Prep — 60 Minutes, Whole Week Sorted</div>
+    <div class="prep-step"><div class="prep-num">1</div><span>Cook <strong style="color:var(--white)">1.8kg chicken breast</strong> in oven (200°C, 25 min). Slice and divide into 6 containers.</span></div>
+    <div class="prep-step"><div class="prep-num">2</div><span>Boil <strong style="color:var(--white)">900g dry rice</strong> — takes 12 min. Portion into same containers with chicken.</span></div>
+    <div class="prep-step"><div class="prep-num">3</div><span>Roast <strong style="color:var(--white)">1.4kg sweet potato</strong> (cubed, 200°C, 30 min) — do this while rice boils.</span></div>
+    <div class="prep-step"><div class="prep-num">4</div><span>Steam or microwave <strong style="color:var(--white)">broccoli and veg</strong> (5 min). Add to containers.</span></div>
+    <div class="prep-step"><div class="prep-num">5</div><span>Store in fridge. Grab and go all week — Monday to Saturday covered.</span></div>
+    <div style="margin-top:10px;font-size:11px;color:var(--grey);">💡 Total time: ~60 min · Saves 30+ min every single day · Removes all excuses for eating badly</div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Breakfast</div><div class="div-line"></div></div>
+  <div class="recipe-grid">
+
+    <!-- RECIPE 1: Power Oats -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🥣</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Power Oats</div>
+          <div class="recipe-meta">Pre-workout breakfast · 22g protein · 96g carbs</div>
+        </div>
+        <div class="recipe-time">5 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list">
+            <div class="recipe-ing"><span class="recipe-ing-qty">120g</span>Rolled oats</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">300ml</span>Semi-skimmed milk</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 large</span>Banana, sliced</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Honey (optional)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">5g</span>Creatine (stir in after)</div>
+          </div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps">
+            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Pour oats and milk into a microwave-safe bowl. <strong>Microwave on high for 3 minutes.</strong> Stop halfway and stir.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Take out and stir again — it should be thick and creamy. If too thick, add a splash more milk.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text"><strong>Top with sliced banana</strong> and drizzle of honey. Stir in creatine now — it dissolves invisibly.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Eat immediately. Brew your coffee while it microwaves.</div></div>
+          </div>
+          <div class="recipe-tip"><strong>Beginner tip:</strong> Make this the night before as overnight oats — just mix oats + milk in a jar, leave in the fridge overnight. Grab it cold in the morning. Zero cooking required.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">5 min</span><span class="recipe-tag">No cooking skill needed</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECIPE 2: Scrambled Eggs -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🍳</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Perfect Scrambled Eggs on Toast</div>
+          <div class="recipe-meta">Post-workout breakfast · 62g protein · high satiety</div>
+        </div>
+        <div class="recipe-time">8 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list">
+            <div class="recipe-ing"><span class="recipe-ing-qty">5 whole</span>Eggs</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">2 slices</span>Sourdough bread</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">½</span>Avocado</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Butter or olive oil</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">pinch</span>Salt and black pepper</div>
+          </div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps">
+            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text"><strong>Put bread in the toaster now</strong> — it'll be ready by the time eggs are done.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Crack all 5 eggs into a bowl. Add a pinch of salt and pepper. <strong>Beat with a fork for 30 seconds</strong> until yolks and whites are fully mixed.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Put a non-stick pan on <strong>medium-low heat</strong> (not high — this is the most common beginner mistake). Add butter or oil.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Pour in eggs. <strong>Stir slowly and constantly</strong> with a spatula, moving the egg from the edges to the centre. Takes about 3–4 minutes.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text"><strong>Take off the heat just before they look fully set</strong> — residual heat finishes the job. They should look soft and slightly glossy.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">6</div><div class="recipe-step-text">Serve on toast. Slice avocado and place on top. Season with more black pepper.</div></div>
+          </div>
+          <div class="recipe-tip"><strong>The rule:</strong> Low heat + constant stirring = creamy eggs. High heat = rubbery eggs. Don't rush it.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">8 min</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Lunch &amp; Meal Prep</div><div class="div-line"></div></div>
+  <div class="recipe-grid">
+
+    <!-- RECIPE 3: Oven Chicken + Rice -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🍗</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Oven Baked Chicken &amp; Rice</div>
+          <div class="recipe-meta">Meal prep staple · 57g protein per serving · makes 6 portions</div>
+        </div>
+        <div class="recipe-time">35 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients (6 portions)</div>
+          <div class="recipe-ing-list">
+            <div class="recipe-ing"><span class="recipe-ing-qty">1.8kg</span>Chicken breasts</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">900g dry</span>Basmati rice</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Olive oil</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">2 tsp</span>Garlic powder</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">2 tsp</span>Paprika (smoked or sweet)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Salt + black pepper</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">optional</span>Lemon juice (squeeze over after)</div>
+          </div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps">
+            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text"><strong>Preheat oven to 200°C.</strong> While it heats, line a large baking tray with foil (makes washing up easy).</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Place chicken on the tray. <strong>Drizzle with olive oil</strong>, then sprinkle garlic powder, paprika, salt, and pepper over both sides. Use your hands to rub it in.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text"><strong>Bake for 22–25 minutes.</strong> You'll know it's done when you cut the thickest part and there's no pink inside. When in doubt, give it 3 more minutes.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">While chicken cooks: <strong>boil rice.</strong> Pour rice into a pot. Cover with water (roughly double the volume of rice). Bring to boil, then reduce heat to low, lid on, cook 12 minutes. Turn off heat, leave lid on 5 more minutes.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Let chicken rest 5 minutes, then <strong>slice into strips</strong>. Divide chicken and rice across 6 meal prep containers. Add steamed veg to each.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">6</div><div class="recipe-step-text"><strong>Store in fridge up to 5 days</strong>, or freeze portions 3–6. Reheat in microwave 2–3 minutes.</div></div>
+          </div>
+          <div class="recipe-tip"><strong>Seasoning shortcuts:</strong> If you don't want to measure spices, just use any pre-mixed "chicken seasoning" from any supermarket. Results in 10 seconds.</div>
+          <div><span class="recipe-tag meal-prep">Meal Prep</span><span class="recipe-tag easy">Easy</span><span class="recipe-tag">35 min · 6 portions</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECIPE 4: Garlic Beef Mince Rice Bowl -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🥩</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Garlic Beef Mince Rice Bowl</div>
+          <div class="recipe-meta">High protein dinner · 55g protein · incredibly easy</div>
+        </div>
+        <div class="recipe-time">15 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients (1 portion)</div>
+          <div class="recipe-ing-list">
+            <div class="recipe-ing"><span class="recipe-ing-qty">250g</span>Lean beef mince (5% fat)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">150g dry</span>Rice (pre-cooked from prep is fine)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">3 cloves</span>Garlic (or 1 tsp garlic powder)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Soy sauce</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Olive oil</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">pinch</span>Chilli flakes (optional)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Broccoli or spinach</div>
+          </div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps">
+            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Heat oil in a frying pan on <strong>medium-high heat</strong>. Add minced garlic (or garlic powder) and stir for 30 seconds — you'll smell it instantly.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Add mince. <strong>Break it apart with a spatula</strong> as it cooks — keep it moving so it doesn't clump. Cook for 6–7 minutes until all the pink is gone.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Add soy sauce and chilli flakes. Stir for 1 more minute. It'll go dark and glossy — that's the flavour.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Microwave broccoli for 3 minutes in a bowl with 2 tbsp of water, covered with a plate.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text"><strong>Serve mince over rice with broccoli on the side.</strong> Done.</div></div>
+          </div>
+          <div class="recipe-tip"><strong>Beginner tip:</strong> Soy sauce is your best friend as a new cook — it adds salt, depth, and umami to almost any meat. 1 tbsp goes a long way.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">15 min</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Dinner</div><div class="div-line"></div></div>
+  <div class="recipe-grid">
+
+    <!-- RECIPE 5: Pan Salmon + Sweet Potato -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🐟</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Pan-Seared Salmon &amp; Roast Sweet Potato</div>
+          <div class="recipe-meta">Recovery dinner · 55g protein · omega-3 rich</div>
+        </div>
+        <div class="recipe-time">30 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients (1 portion)</div>
+          <div class="recipe-ing-list">
+            <div class="recipe-ing"><span class="recipe-ing-qty">250g</span>Salmon fillet (skin on or off)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Sweet potato (1 medium)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Spinach or kale</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Olive oil</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Garlic powder</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">pinch</span>Salt + black pepper</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">optional</span>Lemon wedge to serve</div>
+          </div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps">
+            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text"><strong>Preheat oven to 200°C.</strong> Cut sweet potato into cubes (about 2cm). No need to peel — just scrub it. Toss in ½ tbsp olive oil, salt and pepper. Spread on a baking tray. <strong>Roast 25–30 minutes</strong>, turning once halfway.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">When potato has ~8 minutes left: pat salmon dry with kitchen paper. <strong>Season both sides</strong> with salt, pepper, and garlic powder.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Heat remaining oil in a frying pan on <strong>medium-high</strong>. When oil shimmers (but doesn't smoke), lay salmon in <strong>skin-side down</strong> if it has skin. <strong>Don't touch it for 4 minutes.</strong></div></div>
+            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text"><strong>Flip once</strong> and cook 2–3 more minutes. Salmon is done when it flakes easily with a fork and the inside is pale pink (not translucent).</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">While salmon rests: throw spinach into the same hot pan for 1–2 minutes. It wilts fast — just toss it around until it shrinks down.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">6</div><div class="recipe-step-text">Plate everything together. Squeeze lemon over salmon if you have it.</div></div>
+          </div>
+          <div class="recipe-tip"><strong>Don't flip too early:</strong> Salmon tells you when it's ready to flip — the flesh will have turned from translucent to opaque about halfway up the side. Flip then, not before.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">30 min</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECIPE 6: Chilli Chicken Stir Fry -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🥡</div>
+        <div class="recipe-info">
+          <div class="recipe-name">High-Protein Chicken Stir Fry</div>
+          <div class="recipe-meta">Quick dinner · 60g protein · ready in 15 min</div>
+        </div>
+        <div class="recipe-time">15 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients (1 portion)</div>
+          <div class="recipe-ing-list">
+            <div class="recipe-ing"><span class="recipe-ing-qty">220g</span>Chicken breast, sliced thin</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">150g</span>Mixed frozen veg (from bag)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">150g</span>Pre-cooked rice</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Soy sauce</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Sesame oil (optional but great)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Garlic powder</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Olive oil</div>
+          </div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps">
+            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text"><strong>Slice chicken into thin strips</strong> — the thinner they are, the faster they cook and the better the texture.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Heat olive oil in a pan or wok on <strong>high heat</strong>. Stir fry = high heat, fast cooking. Add chicken and cook 4–5 minutes, stirring constantly.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Add frozen veg straight from the bag. Stir fry for 3–4 minutes until veg is heated through and starting to get slight colour.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Add pre-cooked rice, soy sauce, garlic powder, and sesame oil. Toss everything together for 2 minutes until rice is hot and coated.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Taste it. <strong>Want more flavour? Add more soy sauce</strong>, a splash at a time.</div></div>
+          </div>
+          <div class="recipe-tip"><strong>Meal prep hack:</strong> Make 3x this recipe on Sunday — keeps in the fridge 4 days. Best reheated in a pan for 3 minutes (not microwave, or the rice goes mushy).</div>
+          <div><span class="recipe-tag meal-prep">Meal Prep</span><span class="recipe-tag easy">Easy</span><span class="recipe-tag">15 min</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Quick &amp; No-Cook</div><div class="div-line"></div></div>
+  <div class="recipe-grid">
+
+    <!-- RECIPE 7: Cottage Cheese bowl -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🫙</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Night Fuel Cottage Cheese Bowl</div>
+          <div class="recipe-meta">Before bed · 38g protein · zero cooking</div>
+        </div>
+        <div class="recipe-time">2 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list">
+            <div class="recipe-ing"><span class="recipe-ing-qty">250g</span>Low-fat cottage cheese</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">20g</span>Almonds or walnuts</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">optional</span>1 tsp honey or cinnamon</div>
+          </div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps">
+            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Spoon cottage cheese into a bowl.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Scatter nuts on top. Drizzle honey or sprinkle cinnamon if you want it sweeter.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Eat. Sleep. Grow.</div></div>
+          </div>
+          <div class="recipe-tip"><strong>Why it works:</strong> Cottage cheese is full of casein — a slow-digesting protein that feeds your muscles for 7–8 hours while you sleep. This one habit alone will improve your recovery noticeably.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">Zero cooking</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECIPE 8: High Protein Greek Yoghurt -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🍯</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Greek Yoghurt Snack Bowl</div>
+          <div class="recipe-meta">Afternoon snack · 22g protein · keeps you full</div>
+        </div>
+        <div class="recipe-time">2 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list">
+            <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Greek yoghurt (full fat)</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">30g</span>Mixed nuts</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Honey</div>
+            <div class="recipe-ing"><span class="recipe-ing-qty">optional</span>Handful of berries</div>
+          </div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps">
+            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Spoon yoghurt into a bowl or take straight from the tub.</div></div>
+            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Top with nuts, honey, and berries if using.</div></div>
+          </div>
+          <div class="recipe-tip"><strong>Buying tip:</strong> Get <strong>full-fat Greek yoghurt</strong> (not low-fat, not regular yoghurt). Brands like Fage, Chobani, or any supermarket own-brand Greek style work perfectly. Aim for 10g+ protein per 100g on the label.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">Zero cooking</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KITCHEN BASICS -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Kitchen Basics</div><div class="div-line"></div></div>
+  <div style="background:var(--card);border:1px solid var(--border);padding:14px;margin-bottom:8px;">
+    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">What you need to own</div>
+    <div class="bench-item"><div class="bench-week" style="color:var(--white)">🍳</div><div class="bench-info"><div class="bench-title">Non-stick frying pan</div><div class="bench-detail">~£15 from any supermarket. Used for eggs, chicken, mince, stir fry. Most important item you can own.</div></div></div>
+    <div class="bench-item"><div class="bench-week" style="color:var(--white)">🥘</div><div class="bench-info"><div class="bench-title">Medium saucepan</div><div class="bench-detail">For boiling rice. That's it to start. ~£10.</div></div></div>
+    <div class="bench-item"><div class="bench-week" style="color:var(--white)">🔲</div><div class="bench-info"><div class="bench-title">Baking tray</div><div class="bench-detail">For oven chicken and roasted veg. Line with foil to avoid washing up. ~£8.</div></div></div>
+    <div class="bench-item"><div class="bench-week" style="color:var(--white)">⚖️</div><div class="bench-info"><div class="bench-title">Food scale (optional but useful)</div><div class="bench-detail">~£10 on Amazon. Helps you hit macro targets accurately. Especially useful for oats, rice, and protein.</div></div></div>
+    <div class="bench-item" style="border-bottom:none"><div class="bench-week" style="color:var(--white)">📦</div><div class="bench-info"><div class="bench-title">Meal prep containers × 6</div><div class="bench-detail">~£15 for a set. Glass or plastic, microwave safe. Sunday prep = week sorted.</div></div></div>
+  </div>
+
+  <div style="background:var(--card);border:1px solid var(--border);padding:14px;">
+    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">5 spices that make everything taste good</div>
+    <div class="bench-item"><div class="bench-week" style="min-width:16px">🧄</div><div class="bench-info"><div class="bench-title">Garlic powder</div><div class="bench-detail">Goes on everything. Chicken, mince, rice, veg. Buy the big tub.</div></div></div>
+    <div class="bench-item"><div class="bench-week" style="min-width:16px">🌶️</div><div class="bench-info"><div class="bench-title">Smoked paprika</div><div class="bench-detail">Makes chicken taste like it was made by someone who can cook. ~£1.50.</div></div></div>
+    <div class="bench-item"><div class="bench-week" style="min-width:16px">🫙</div><div class="bench-info"><div class="bench-title">Cumin</div><div class="bench-detail">Adds warmth. Great on mince and roasted veg.</div></div></div>
+    <div class="bench-item"><div class="bench-week" style="min-width:16px">🫗</div><div class="bench-info"><div class="bench-title">Soy sauce</div><div class="bench-detail">Not a spice but acts like one. Add to any stir fry or mince dish for instant depth.</div></div></div>
+    <div class="bench-item" style="border-bottom:none"><div class="bench-week" style="min-width:16px">🧂</div><div class="bench-info"><div class="bench-title">Salt &amp; black pepper</div><div class="bench-detail">Season every single thing you cook. Most beginner food tastes bland because of this one omission.</div></div></div>
+  </div>
+
+</div>
+
+<!-- ===== SHOPPING ===== -->
+<div id="tab-shopping" class="section">
+  <div class="sec-label">Weekly Essentials</div>
+  <div class="sec-title">SHOPPING LIST</div>
+
+  <div class="shop-time-info">
+    Quantities based on <span id="shop-time-display">your selected training window</span>. Scaled for <span>100kg bodyweight</span> — 6 training days + 1 rest day.
+  </div>
+
+  <div class="shop-toggle">
+    <button class="shop-tab active" id="sh-food-btn" onclick="switchShop('food')">🛒 Food</button>
+    <button class="shop-tab" id="sh-supps-btn" onclick="switchShop('supps')">💊 Supplements</button>
+  </div>
+
+  <div class="shop-progress-text" id="shopProgressText">0 of 0 items checked</div>
+  <div class="shop-progress-bar"><div class="shop-progress-fill" id="shopProgressFill" style="width:0%"></div></div>
+
+  <div class="shop-actions">
+    <button class="shop-action-btn" onclick="clearShop()">Clear All</button>
+    <button class="shop-action-btn" onclick="checkAllShop()">Check All</button>
+  </div>
+
+  <!-- FOOD LIST -->
+  <div class="shop-list-panel active" id="sh-food">
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">🥩</span>Meat &amp; Fish</div>
+      <div class="shop-item" id="si-chicken"><button class="shop-chk" onclick="toggleShopItem(this,'si-chicken')">✓</button><div class="shop-item-info"><div class="shop-item-name">Chicken breast</div><div class="shop-item-detail">Lean protein — grilled or baked</div></div><div class="shop-item-qty">1.8 kg</div></div>
+      <div class="shop-item" id="si-salmon"><button class="shop-chk" onclick="toggleShopItem(this,'si-salmon')">✓</button><div class="shop-item-info"><div class="shop-item-name">Salmon fillets</div><div class="shop-item-detail">Omega-3 · 2–3 dinners per week</div></div><div class="shop-item-qty">800g</div></div>
+      <div class="shop-item" id="si-beef"><button class="shop-chk" onclick="toggleShopItem(this,'si-beef')">✓</button><div class="shop-item-info"><div class="shop-item-name">Lean beef mince (5% fat)</div><div class="shop-item-detail">High creatine content from food</div></div><div class="shop-item-qty">500g</div></div>
+    </div>
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">🥚</span>Eggs &amp; Dairy</div>
+      <div class="shop-item" id="si-eggs"><button class="shop-chk" onclick="toggleShopItem(this,'si-eggs')">✓</button><div class="shop-item-info"><div class="shop-item-name">Free-range eggs</div><div class="shop-item-detail">Breakfast + post-workout meals</div></div><div class="shop-item-qty">24 eggs</div></div>
+      <div class="shop-item" id="si-cottage"><button class="shop-chk" onclick="toggleShopItem(this,'si-cottage')">✓</button><div class="shop-item-info"><div class="shop-item-name">Cottage cheese (low fat)</div><div class="shop-item-detail">Night fuel — high casein protein</div></div><div class="shop-item-qty">1.8 kg</div></div>
+      <div class="shop-item" id="si-yoghurt"><button class="shop-chk" onclick="toggleShopItem(this,'si-yoghurt')">✓</button><div class="shop-item-info"><div class="shop-item-name">Greek yoghurt (full fat)</div><div class="shop-item-detail">Afternoon snack</div></div><div class="shop-item-qty">1.4 kg</div></div>
+      <div class="shop-item" id="si-milk"><button class="shop-chk" onclick="toggleShopItem(this,'si-milk')">✓</button><div class="shop-item-info"><div class="shop-item-name">Semi-skimmed milk</div><div class="shop-item-detail">Pre-workout oats / shakes</div></div><div class="shop-item-qty">2 litres</div></div>
+    </div>
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">🌾</span>Carbs &amp; Grains</div>
+      <div class="shop-item" id="si-oats"><button class="shop-chk" onclick="toggleShopItem(this,'si-oats')">✓</button><div class="shop-item-info"><div class="shop-item-name">Rolled oats</div><div class="shop-item-detail">Pre-workout breakfast</div></div><div class="shop-item-qty">900g</div></div>
+      <div class="shop-item" id="si-rice"><button class="shop-chk" onclick="toggleShopItem(this,'si-rice')">✓</button><div class="shop-item-info"><div class="shop-item-name">Basmati or white rice</div><div class="shop-item-detail">Lunch + main carb source</div></div><div class="shop-item-qty">1.4 kg</div></div>
+      <div class="shop-item" id="si-bread"><button class="shop-chk" onclick="toggleShopItem(this,'si-bread')">✓</button><div class="shop-item-info"><div class="shop-item-name">Sourdough bread</div><div class="shop-item-detail">Post-workout &amp; breakfast</div></div><div class="shop-item-qty">1 loaf</div></div>
+      <div class="shop-item" id="si-sweet"><button class="shop-chk" onclick="toggleShopItem(this,'si-sweet')">✓</button><div class="shop-item-info"><div class="shop-item-name">Sweet potatoes</div><div class="shop-item-detail">Dinner carb — roasted</div></div><div class="shop-item-qty">1.4 kg</div></div>
+      <div class="shop-item" id="si-rice-cakes"><button class="shop-chk" onclick="toggleShopItem(this,'si-rice-cakes')">✓</button><div class="shop-item-info"><div class="shop-item-name">Rice cakes</div><div class="shop-item-detail">Post-workout quick carbs</div></div><div class="shop-item-qty">1 pack</div></div>
+    </div>
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">🥦</span>Vegetables</div>
+      <div class="shop-item" id="si-broccoli"><button class="shop-chk" onclick="toggleShopItem(this,'si-broccoli')">✓</button><div class="shop-item-info"><div class="shop-item-name">Broccoli</div><div class="shop-item-detail">Lunch &amp; dinner veg</div></div><div class="shop-item-qty">600g</div></div>
+      <div class="shop-item" id="si-spinach"><button class="shop-chk" onclick="toggleShopItem(this,'si-spinach')">✓</button><div class="shop-item-info"><div class="shop-item-name">Spinach or kale</div><div class="shop-item-detail">Dinner, omelettes, cooking</div></div><div class="shop-item-qty">300g</div></div>
+      <div class="shop-item" id="si-mixveg"><button class="shop-chk" onclick="toggleShopItem(this,'si-mixveg')">✓</button><div class="shop-item-info"><div class="shop-item-name">Mixed frozen vegetables</div><div class="shop-item-detail">Easy bulk cooking</div></div><div class="shop-item-qty">500g bag</div></div>
+    </div>
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">🍌</span>Fruit &amp; Snacks</div>
+      <div class="shop-item" id="si-banana"><button class="shop-chk" onclick="toggleShopItem(this,'si-banana')">✓</button><div class="shop-item-info"><div class="shop-item-name">Bananas</div><div class="shop-item-detail">Pre-gym snack + post-workout shakes</div></div><div class="shop-item-qty">10–12</div></div>
+      <div class="shop-item" id="si-nuts"><button class="shop-chk" onclick="toggleShopItem(this,'si-nuts')">✓</button><div class="shop-item-info"><div class="shop-item-name">Mixed nuts (almonds, cashews)</div><div class="shop-item-detail">Snack + night fuel</div></div><div class="shop-item-qty">200g</div></div>
+      <div class="shop-item" id="si-avo"><button class="shop-chk" onclick="toggleShopItem(this,'si-avo')">✓</button><div class="shop-item-info"><div class="shop-item-name">Avocados</div><div class="shop-item-detail">Healthy fats — breakfast</div></div><div class="shop-item-qty">3–4</div></div>
+      <div class="shop-item" id="si-oj"><button class="shop-chk" onclick="toggleShopItem(this,'si-oj')">✓</button><div class="shop-item-info"><div class="shop-item-name">Orange juice (fresh)</div><div class="shop-item-detail">Morning carbs (PM plan)</div></div><div class="shop-item-qty">1 litre</div></div>
+      <div class="shop-item" id="si-pbar"><button class="shop-chk" onclick="toggleShopItem(this,'si-pbar')">✓</button><div class="shop-item-info"><div class="shop-item-name">Protein bars (20g+ protein)</div><div class="shop-item-detail">Pre-gym snack (PM plan)</div></div><div class="shop-item-qty">3–4 bars</div></div>
+    </div>
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">🧴</span>Pantry Staples</div>
+      <div class="shop-item" id="si-oil"><button class="shop-chk" onclick="toggleShopItem(this,'si-oil')">✓</button><div class="shop-item-info"><div class="shop-item-name">Olive oil (extra virgin)</div><div class="shop-item-detail">Cooking fat for most meals</div></div><div class="shop-item-qty">500ml</div></div>
+      <div class="shop-item" id="si-honey"><button class="shop-chk" onclick="toggleShopItem(this,'si-honey')">✓</button><div class="shop-item-info"><div class="shop-item-name">Honey</div><div class="shop-item-detail">Oats, yoghurt, post-workout</div></div><div class="shop-item-qty">1 jar</div></div>
+      <div class="shop-item" id="si-coffee"><button class="shop-chk" onclick="toggleShopItem(this,'si-coffee')">✓</button><div class="shop-item-info"><div class="shop-item-name">Ground coffee / instant</div><div class="shop-item-detail">Pre-workout caffeine source</div></div><div class="shop-item-qty">1 pack</div></div>
+    </div>
+  </div>
+
+  <!-- SUPPLEMENTS LIST -->
+  <div class="shop-list-panel" id="sh-supps">
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">💊</span>Core Supplements</div>
+      <div class="shop-item" id="ss-creatine"><button class="shop-chk" onclick="toggleShopItem(this,'ss-creatine')">✓</button><div class="shop-item-info"><div class="shop-item-name">Creatine Monohydrate</div><div class="shop-item-detail">5g/day · ~£15–20 for 500g · lasts 3 months</div></div><div class="shop-item-qty">500g tub</div></div>
+      <div class="shop-item" id="ss-whey"><button class="shop-chk" onclick="toggleShopItem(this,'ss-whey')">✓</button><div class="shop-item-info"><div class="shop-item-name">Whey Protein Powder</div><div class="shop-item-detail">40g post-workout · look for 20g+ per serving</div></div><div class="shop-item-qty">2 kg bag</div></div>
+      <div class="shop-item" id="ss-casein"><button class="shop-chk" onclick="toggleShopItem(this,'ss-casein')">✓</button><div class="shop-item-info"><div class="shop-item-name">Casein Protein Powder</div><div class="shop-item-detail">30g before bed — OR use cottage cheese</div></div><div class="shop-item-qty">1 kg bag</div></div>
+    </div>
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">🌿</span>Vitamins &amp; Minerals</div>
+      <div class="shop-item" id="ss-vitd"><button class="shop-chk" onclick="toggleShopItem(this,'ss-vitd')">✓</button><div class="shop-item-info"><div class="shop-item-name">Vitamin D3 + K2</div><div class="shop-item-detail">2000–4000 IU D3 daily · K2 improves absorption</div></div><div class="shop-item-qty">90 caps</div></div>
+      <div class="shop-item" id="ss-omega"><button class="shop-chk" onclick="toggleShopItem(this,'ss-omega')">✓</button><div class="shop-item-info"><div class="shop-item-name">Omega-3 Fish Oil</div><div class="shop-item-detail">3g daily · high EPA/DHA content</div></div><div class="shop-item-qty">90 caps</div></div>
+      <div class="shop-item" id="ss-zinc"><button class="shop-chk" onclick="toggleShopItem(this,'ss-zinc')">✓</button><div class="shop-item-info"><div class="shop-item-name">Zinc + Magnesium (ZMA)</div><div class="shop-item-detail">Take before bed, not with dairy</div></div><div class="shop-item-qty">90 caps</div></div>
+    </div>
+
+    <div class="shop-cat">
+      <div class="shop-cat-title"><span class="shop-cat-icon">⚡</span>Optional Extras</div>
+      <div class="shop-item" id="ss-caff"><button class="shop-chk" onclick="toggleShopItem(this,'ss-caff')">✓</button><div class="shop-item-info"><div class="shop-item-name">Caffeine tablets (200mg)</div><div class="shop-item-detail">Budget pre-workout — cheaper than powders</div></div><div class="shop-item-qty">100 tabs</div></div>
+      <div class="shop-item" id="ss-beta"><button class="shop-chk" onclick="toggleShopItem(this,'ss-beta')">✓</button><div class="shop-item-info"><div class="shop-item-name">Beta-Alanine</div><div class="shop-item-detail">3.2g/day · reduces muscle fatigue on hard sets</div></div><div class="shop-item-qty">250g</div></div>
+      <div class="shop-item" id="ss-vitc"><button class="shop-chk" onclick="toggleShopItem(this,'ss-vitc')">✓</button><div class="shop-item-info"><div class="shop-item-name">Vitamin C</div><div class="shop-item-detail">1000mg/day · immune support during hard training</div></div><div class="shop-item-qty">90 tabs</div></div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--border);padding:12px 14px;margin-top:4px;">
+      <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Where to Buy (UK)</div>
+      <div style="font-size:12px;color:var(--mid);line-height:1.8;">
+        <strong style="color:var(--white)">Creatine + Whey + Casein:</strong> MyProtein, Bulk, Optimum Nutrition<br>
+        <strong style="color:var(--white)">Vitamins &amp; minerals:</strong> Holland &amp; Barrett, Amazon, Boots<br>
+        <strong style="color:var(--white)">Cheapest creatine:</strong> Search "creatine monohydrate 500g" — ~£15 is normal
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TIMER ===== -->
+<div id="tab-timer" class="section">
+  <div class="sec-label">Rest &amp; Session</div>
+  <div class="sec-title">TIMER</div>
+  <div class="timer-disp">
+    <div class="timer-num" id="timerDisplay">01:30</div>
+    <div class="timer-lbl" id="timerLabel">Ready</div>
+  </div>
+  <div class="presets">
+    <button class="pbtn" onclick="setTimer(60,this)">1:00<small>Isolation</small></button>
+    <button class="pbtn sel" onclick="setTimer(90,this)">1:30<small>Standard</small></button>
+    <button class="pbtn" onclick="setTimer(120,this)">2:00<small>Compound</small></button>
+    <button class="pbtn" onclick="setTimer(150,this)">2:30<small>Heavy</small></button>
+    <button class="pbtn" onclick="setTimer(180,this)">3:00<small>Max Effort</small></button>
+    <button class="pbtn" onclick="setTimer(300,this)">5:00<small>Deadlift</small></button>
+  </div>
+  <div class="timer-btns">
+    <button class="tbtn pri" id="startStopBtn" onclick="startStopTimer()">START</button>
+    <button class="tbtn sec" onclick="resetTimer()">RESET</button>
+  </div>
+  <div class="divider"><div class="div-line"></div><div class="div-text">Session Timer</div><div class="div-line"></div></div>
+  <div class="timer-disp">
+    <div class="timer-num" id="workoutDisplay">00:00</div>
+    <div class="timer-lbl">Session Duration</div>
+  </div>
+  <div class="timer-btns">
+    <button class="tbtn pri" id="workoutBtn" onclick="toggleWorkout()">START SESSION</button>
+  </div>
+</div>
+
+<!-- ===== TRACKER ===== -->
+<div id="tab-tracker" class="section">
+  <div class="sec-label">12 Weeks</div>
+  <div class="sec-title">PROGRESS</div>
+
+  <!-- CURRENT PHASE CARD — filled by JS -->
+  <div class="phase-now-card" id="currentPhaseCard">
+    <div class="phase-now-label">▶ Current Phase</div>
+    <div class="phase-now-title" id="cpTitle">Phase 1 — Foundation</div>
+    <div class="phase-now-sub" id="cpSub">Weeks 1–4 · Build the base. Master form before load.</div>
+    <div class="phase-now-bar-wrap">
+      <div class="phase-now-bar-label">
+        <span id="cpWeekLabel">Week 1 of 4</span>
+        <span id="cpPct">0%</span>
+      </div>
+      <div class="phase-now-bar"><div class="phase-now-bar-fill" id="cpBarFill" style="width:0%"></div></div>
+    </div>
+    <div id="cpWeekBadge" class="phase-now-week">WEEK 1</div>
+  </div>
+
+  <!-- OVERALL PROGRESS RING + STATS -->
+  <div class="ring-wrap">
+    <svg width="130" height="130" viewBox="0 0 130 130">
+      <circle cx="65" cy="65" r="54" fill="none" stroke="var(--border)" stroke-width="6"/>
+      <circle cx="65" cy="65" r="54" fill="none" stroke="var(--accent)" stroke-width="6"
+        stroke-dasharray="339" stroke-dashoffset="339" id="progressCircle" stroke-linecap="round"/>
+    </svg>
+    <div class="ring-center">
+      <span class="ring-pct" id="progressPct">0%</span>
+      <span class="ring-lbl">Complete</span>
+    </div>
+  </div>
+  <div class="stat-row" style="margin-bottom:18px;">
+    <div class="stat-cell"><div class="stat-num" id="daysCompleted">0</div><div class="stat-lbl">Done</div></div>
+    <div class="stat-cell"><div class="stat-num" style="color:var(--grey)">72</div><div class="stat-lbl">Total</div></div>
+    <div class="stat-cell"><div class="stat-num" id="streakCount">0</div><div class="stat-lbl">Streak 🔥</div></div>
+    <div class="stat-cell"><div class="stat-num" id="currentWeekNum" style="color:var(--accent)">1</div><div class="stat-lbl">Week</div></div>
+  </div>
+
+  <!-- PHASE MILESTONES -->
+  <div class="phase-unlock" id="phaseMilestones">
+    <div class="phase-unlock-title">Phase Milestones</div>
+    <div class="unlock-item" id="ms-p1">
+      <div class="unlock-dot" id="dot-p1"></div>
+      <div class="unlock-icon">🏗️</div>
+      <div class="unlock-text"><strong>Phase 1 — Foundation</strong> · Weeks 1–4<br>4×10–12 reps · 60–90s rest · master form</div>
+    </div>
+    <div class="unlock-item" id="ms-p2">
+      <div class="unlock-dot" id="dot-p2"></div>
+      <div class="unlock-icon">⚡</div>
+      <div class="unlock-text"><strong>Phase 2 — Strength</strong> · Weeks 5–8<br>5×5–6 reps · 2–3 min rest · heavier loads</div>
+    </div>
+    <div class="unlock-item" id="ms-p3">
+      <div class="unlock-dot" id="dot-p3"></div>
+      <div class="unlock-icon">🔥</div>
+      <div class="unlock-text"><strong>Phase 3 — Definition</strong> · Weeks 9–12<br>Maintain strength · add cardio · reveal the work</div>
+    </div>
+  </div>
+
+  <!-- WEEKLY CALENDAR -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">12-Week Calendar</div><div class="div-line"></div></div>
+  <div id="weeklyTracker"></div>
+
+  <!-- BENCHMARKS -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Benchmarks</div><div class="div-line"></div></div>
+  <div style="background:var(--card);border:1px solid var(--border);padding:14px;">
+    <div class="bench-item">
+      <div class="bench-week" id="bm1-badge">Week 4</div>
+      <div class="bench-info"><div class="bench-title">Foundation complete</div><div class="bench-detail">Bench ~80–100kg · Squat ~120kg · 8–10 clean pull-ups · –3 to 4kg bodyweight</div></div>
+    </div>
+    <div class="bench-item">
+      <div class="bench-week" id="bm2-badge">Week 8</div>
+      <div class="bench-info"><div class="bench-title">Strength phase</div><div class="bench-detail">Bench ~110–120kg · Squat ~150kg · Weighted pull-ups +10kg · –6 to 8kg total</div></div>
+    </div>
+    <div class="bench-item">
+      <div class="bench-week" id="bm3-badge">Week 12</div>
+      <div class="bench-info"><div class="bench-title">Target physique</div><div class="bench-detail">Bench ~130kg · Squat ~170kg · Body fat ~15% · Visible taper · ~–8 to 12kg</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── RECIPES ─────────────────────────────────────────────────────────────────
+function toggleRecipe(c){c.classList.toggle('open');}
+
+// ── TABS ─────────────────────────────────────────────────────────────────────
+function switchTab(id,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── CARDS ─────────────────────────────────────────────────────────────────────
+function toggleCard(c){c.classList.toggle('open');}
+function togglePhase(c){c.classList.toggle('open');}
+function chk(e,b){e.stopPropagation();b.classList.toggle('done');}
+function toggleMeal(r){r.classList.toggle('open');}
+
+// ── TRAINING TIME ──────────────────────────────────────────────────────────────
+function setTime(t){
+  document.querySelectorAll('.time-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-'+t).classList.add('active');
+  document.querySelectorAll('.schedule-reveal').forEach(s=>s.classList.remove('on'));
+  document.getElementById('sched-'+t).classList.add('on');
+  localStorage.setItem('apx_time',t);
+  const el=document.getElementById('shop-time-display');
+  if(el) el.textContent=t==='am'?'your morning training schedule':'your evening training schedule';
+}
+
+// ── MEAL PLAN ──────────────────────────────────────────────────────────────────
+function switchMeal(t){
+  document.querySelectorAll('.mstab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('ms-'+t).classList.add('active');
+  document.querySelectorAll('.mplan').forEach(p=>p.classList.remove('active'));
+  document.getElementById('mp-'+t).classList.add('active');
+  localStorage.setItem('apx_meal',t);
+}
+
+// ── SHOPPING ──────────────────────────────────────────────────────────────────
+function switchShop(t){
+  document.querySelectorAll('.shop-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sh-'+t+'-btn').classList.add('active');
+  document.querySelectorAll('.shop-list-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('sh-'+t).classList.add('active');
+  updateShopProgress();
+}
+function toggleShopItem(btn,id){
+  btn.classList.toggle('done');
+  const item=document.getElementById(id);
+  if(item) item.classList.toggle('done-item');
+  const d=JSON.parse(localStorage.getItem('apx_shop')||'{}');
+  d[id]=btn.classList.contains('done');
+  localStorage.setItem('apx_shop',JSON.stringify(d));
+  updateShopProgress();
+}
+function updateShopProgress(){
+  const active=document.querySelector('.shop-list-panel.active');
+  if(!active) return;
+  const all=active.querySelectorAll('.shop-item');
+  const done=active.querySelectorAll('.shop-chk.done');
+  const pct=all.length?Math.round(done.length/all.length*100):0;
+  document.getElementById('shopProgressFill').style.width=pct+'%';
+  document.getElementById('shopProgressText').textContent=done.length+' of '+all.length+' items checked';
+}
+function clearShop(){
+  document.querySelectorAll('.shop-chk').forEach(b=>b.classList.remove('done'));
+  document.querySelectorAll('.shop-item').forEach(i=>i.classList.remove('done-item'));
+  localStorage.setItem('apx_shop','{}');
+  updateShopProgress();
+}
+function checkAllShop(){
+  const active=document.querySelector('.shop-list-panel.active');
+  if(!active) return;
+  const d=JSON.parse(localStorage.getItem('apx_shop')||'{}');
+  active.querySelectorAll('.shop-item').forEach(item=>{
+    const btn=item.querySelector('.shop-chk');
+    btn.classList.add('done');
+    item.classList.add('done-item');
+    d[item.id]=true;
+  });
+  localStorage.setItem('apx_shop',JSON.stringify(d));
+  updateShopProgress();
+}
+function restoreShop(){
+  const d=JSON.parse(localStorage.getItem('apx_shop')||'{}');
+  for(const id in d){
+    if(d[id]){
+      const item=document.getElementById(id);
+      if(item){item.classList.add('done-item');const b=item.querySelector('.shop-chk');if(b)b.classList.add('done');}
+    }
+  }
+  updateShopProgress();
+}
+
+// ── NAVIGATE TO WORKOUT ────────────────────────────────────────────────────────
+function goToWorkout(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('tab-program').classList.add('active');
+  document.querySelectorAll('.tab')[1].classList.add('active');
+  setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},100);
+}
+
+// ── REST TIMER ─────────────────────────────────────────────────────────────────
+let rTime=90,rRem=90,rInt=null,rRun=false;
+function setTimer(s,btn){
+  rTime=s;rRem=s;rRun=false;clearInterval(rInt);
+  document.getElementById('startStopBtn').textContent='START';
+  document.getElementById('timerLabel').textContent='Ready';
+  updTimer();
+  document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('sel'));
+  if(btn)btn.classList.add('sel');
+}
+function updTimer(){
+  const m=Math.floor(rRem/60).toString().padStart(2,'0');
+  const s=(rRem%60).toString().padStart(2,'0');
+  document.getElementById('timerDisplay').textContent=m+':'+s;
+}
+function startStopTimer(){
+  if(rRun){
+    clearInterval(rInt);rRun=false;
+    document.getElementById('startStopBtn').textContent='RESUME';
+    document.getElementById('timerLabel').textContent='Paused';
+  } else {
+    if(rRem===0){rRem=rTime;updTimer();}
+    rRun=true;
+    document.getElementById('startStopBtn').textContent='PAUSE';
+    document.getElementById('timerLabel').textContent='Resting...';
+    rInt=setInterval(()=>{
+      rRem--;updTimer();
+      if(rRem<=0){
+        clearInterval(rInt);rRun=false;
+        document.getElementById('startStopBtn').textContent='START';
+        document.getElementById('timerLabel').textContent='⚡ Go!';
+        document.getElementById('timerDisplay').textContent='00:00';
+        if(navigator.vibrate)navigator.vibrate([300,100,300,100,300]);
+      }
+    },1000);
+  }
+}
+function resetTimer(){
+  clearInterval(rInt);rRun=false;rRem=rTime;
+  document.getElementById('startStopBtn').textContent='START';
+  document.getElementById('timerLabel').textContent='Ready';
+  updTimer();
+}
+
+// ── SESSION TIMER ──────────────────────────────────────────────────────────────
+let wSec=0,wInt=null,wRun=false;
+function toggleWorkout(){
+  if(wRun){clearInterval(wInt);wRun=false;document.getElementById('workoutBtn').textContent='RESUME';}
+  else {
+    wRun=true;document.getElementById('workoutBtn').textContent='PAUSE';
+    wInt=setInterval(()=>{
+      wSec++;
+      const h=Math.floor(wSec/3600);
+      const m=Math.floor((wSec%3600)/60).toString().padStart(2,'0');
+      const s=(wSec%60).toString().padStart(2,'0');
+      document.getElementById('workoutDisplay').textContent=(h>0?h+':':'')+m+':'+s;
+    },1000);
+  }
+}
+
+// ── TRACKER DATA ───────────────────────────────────────────────────────────────
+const DAYS=['M','T','W','T','F','S','S'];
+const DTYPE=['workout','workout','workout','rest','workout','workout','workout'];
+const ICONS=['💪','💪','🦵','😴','💪','💪','🦵'];
+let tData=JSON.parse(localStorage.getItem('apx_tracker')||'{}');
+
+const PHASES=[
+  {num:1,name:'Foundation', sub:'Weeks 1–4 · Build the base. Master form before load.',wks:[1,2,3,4]},
+  {num:2,name:'Strength',   sub:'Weeks 5–8 · Heavier loads, raw power.',              wks:[5,6,7,8]},
+  {num:3,name:'Definition', sub:'Weeks 9–12 · Reveal the work. Lean and powerful.',   wks:[9,10,11,12]}
+];
+
+function getCurrentWeek(){
+  for(let w=12;w>=1;w--){
+    for(let d=0;d<7;d++){if(tData['w'+w+'d'+d]) return w;}
+  }
+  return 1;
+}
+function getCurrentPhase(w){return PHASES.find(p=>p.wks.includes(w))||PHASES[0];}
+
+// ── SAVE & REFRESH (single entry point for all data changes) ──────────────────
+function saveAndRefresh(){
+  localStorage.setItem('apx_tracker',JSON.stringify(tData));
+  buildTracker();
+}
+
+// ── TODAY CARD ─────────────────────────────────────────────────────────────────
+const DAY_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const WORKOUT_SCHEDULE=[
+  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'💪', type:'workout'},
+  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'🔙', type:'workout'},
+  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'🦵', type:'workout'},
+  {name:'Rest Day',  sub:'Recovery · Eat well · Sleep', icon:'😴', type:'rest'},
+  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'💪', type:'workout'},
+  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'🔙', type:'workout'},
+  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'🦵', type:'workout'},
+];
+// Map JS getDay() (0=Sun) to our Mon-first index (0=Mon..6=Sun)
+function jsToIdx(jsDay){return jsDay===0?6:jsDay-1;}
+
+function logToday(){
+  const idx=jsToIdx(new Date().getDay());
+  if(DTYPE[idx]==='rest') return;
+  const curWeek=getCurrentWeek();
+  const key='w'+curWeek+'d'+idx;
+  tData[key]=!tData[key];
+  saveAndRefresh();
+}
+
+function logDay(week, dayIdx){
+  if(DTYPE[dayIdx]==='rest') return;
+  const key='w'+week+'d'+dayIdx;
+  tData[key]=!tData[key];
+  saveAndRefresh();
+}
+
+function renderTodayCard(){
+  const jsDay=new Date().getDay();
+  const idx=jsToIdx(jsDay);
+  const info=WORKOUT_SCHEDULE[idx];
+  const curWeek=getCurrentWeek();
+  const phase=getCurrentPhase(curWeek);
+  const key='w'+curWeek+'d'+idx;
+  const isLogged=!!tData[key];
+  const isRest=info.type==='rest';
+
+  // Header info
+  const eyebrow=document.getElementById('todayEyebrow');
+  if(eyebrow) eyebrow.innerHTML='<span class="today-eyebrow-dot"></span><span>'+DAY_NAMES[jsDay].toUpperCase()+' · WEEK '+curWeek+'</span>';
+  const icon=document.getElementById('todayIcon');
+  if(icon) icon.textContent=info.icon;
+  const name=document.getElementById('todayName');
+  if(name) name.textContent=info.name;
+  const sub=document.getElementById('todaySub');
+  if(sub) sub.textContent=info.sub;
+  const wb=document.getElementById('todayWeekBig');
+  if(wb) wb.textContent='Wk '+curWeek;
+  const pb=document.getElementById('todayPhaseBig');
+  if(pb) pb.textContent=phase.name;
+
+  // Button
+  const btn=document.getElementById('todayLogBtn');
+  const btnIcon=document.getElementById('todayBtnIcon');
+  const btnText=document.getElementById('todayBtnText');
+  if(btn&&btnIcon&&btnText){
+    if(isRest){
+      btn.className='today-log-btn rest-day';
+      btnIcon.textContent='😴'; btnText.textContent='REST DAY — RECOVER WELL';
+    } else if(isLogged){
+      btn.className='today-log-btn logged';
+      btnIcon.textContent='✓'; btnText.textContent='SESSION LOGGED — WELL DONE';
+    } else {
+      btn.className='today-log-btn';
+      btnIcon.textContent='＋'; btnText.textContent="LOG TODAY'S SESSION";
+    }
+  }
+
+  // Week strip — tap any day to toggle
+  const strip=document.getElementById('todayWeekStrip');
+  if(!strip) return;
+  strip.innerHTML='';
+  for(let d=0;d<7;d++){
+    const dk='w'+curWeek+'d'+d;
+    const done=!!tData[dk];
+    const isToday=(d===idx);
+    const isRestD=(DTYPE[d]==='rest');
+    const div=document.createElement('div');
+    let cls='today-strip-day';
+    if(isToday) cls+=' sd-today';
+    if(done) cls+=' sd-done';
+    if(isRestD) cls+=' sd-rest';
+    div.className=cls;
+    div.innerHTML='<div class="sd-name">'+DAYS[d]+'</div><div class="sd-dot"></div>';
+    if(!isRestD){
+      div.style.cursor='pointer';
+      div.setAttribute('data-week',curWeek);
+      div.setAttribute('data-day',d);
+      div.addEventListener('click', function(){
+        const w=parseInt(this.getAttribute('data-week'));
+        const dd=parseInt(this.getAttribute('data-day'));
+        logDay(w,dd);
+      });
+    }
+    strip.appendChild(div);
+  }
+}
+
+// ── TRACKER BUILDER ────────────────────────────────────────────────────────────
+function buildTracker(){
+  const curWeek=getCurrentWeek();
+  const c=document.getElementById('weeklyTracker');
+  if(!c) return;
+  c.innerHTML='';
+  for(let w=1;w<=12;w++){
+    const wd=document.createElement('div');
+    let wClass='trkr-week';
+    if(w===curWeek) wClass+=' current-week';
+    else if(w<curWeek) wClass+=' past-week';
+    else wClass+=' future-week';
+    wd.className=wClass;
+    const phLabel=w===1?'Phase 1':w===5?'Phase 2':w===9?'Phase 3':'';
+    const phHtml=phLabel?'<span style="font-size:8px;letter-spacing:2px;color:var(--accent);margin-left:6px;opacity:0.7">'+phLabel+'</span>':'';
+    wd.innerHTML='<div class="trkr-week-title">Wk '+w+phHtml+'</div>';
+    const dd=document.createElement('div');
+    dd.className='trkr-days';
+    for(let d=0;d<7;d++){
+      const key='w'+w+'d'+d;
+      const el=document.createElement('div');
+      el.className='trkr-day '+DTYPE[d];
+      if(tData[key]) el.classList.add('completed');
+      el.innerHTML='<span class="di">'+(tData[key]?'✓':ICONS[d])+'</span><span class="dl">'+DAYS[d]+'</span>';
+      if(DTYPE[d]!=='rest'){
+        el.setAttribute('data-week',w);
+        el.setAttribute('data-day',d);
+        el.addEventListener('click', function(){
+          const ww=parseInt(this.getAttribute('data-week'));
+          const dd2=parseInt(this.getAttribute('data-day'));
+          logDay(ww,dd2);
+        });
+      }
+      dd.appendChild(el);
+    }
+    wd.appendChild(dd);
+    c.appendChild(wd);
+  }
+  updProgress();
+  updatePhaseCard();
+  updatePhaseBadges();
+  renderTodayCard();
+}
+
+function updProgress(){
+  let done=0,streak=0;
+  for(const k in tData){if(tData[k])done++;}
+  // streak: count consecutive from latest backwards
+  let counting=false;
+  outer: for(let w=12;w>=1;w--){
+    for(let d=6;d>=0;d--){
+      if(DTYPE[d]==='rest') continue;
+      if(tData['w'+w+'d'+d]){counting=true;streak++;}
+      else if(counting){break outer;}
+    }
+  }
+  const pct=Math.round(done/72*100);
+  const pdEl=document.getElementById('progressPct'); if(pdEl) pdEl.textContent=pct+'%';
+  const dcEl=document.getElementById('daysCompleted'); if(dcEl) dcEl.textContent=done;
+  const pcEl=document.getElementById('progressCircle'); if(pcEl) pcEl.style.strokeDashoffset=339-(339*pct/100);
+  const scEl=document.getElementById('streakCount'); if(scEl) scEl.textContent=streak;
+  const cwEl=document.getElementById('currentWeekNum'); if(cwEl) cwEl.textContent=getCurrentWeek();
+}
+
+function updatePhaseCard(){
+  const curWeek=getCurrentWeek();
+  const phase=getCurrentPhase(curWeek);
+  let phaseDone=0;
+  const phaseTotal=phase.wks.length*6;
+  phase.wks.forEach(w=>{for(let d=0;d<7;d++){if(DTYPE[d]==='workout'&&tData['w'+w+'d'+d])phaseDone++;}});
+  const phasePct=Math.round(phaseDone/phaseTotal*100);
+  const weekInPhase=phase.wks.indexOf(curWeek)+1;
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set('cpTitle','Phase '+phase.num+' — '+phase.name);
+  set('cpSub',phase.sub);
+  set('cpWeekLabel','Week '+weekInPhase+' of '+phase.wks.length+' in this phase');
+  set('cpPct',phasePct+'%');
+  set('cpWeekBadge','WEEK '+curWeek);
+  const bar=document.getElementById('cpBarFill');if(bar) bar.style.width=phasePct+'%';
+  PHASES.forEach(p=>{
+    const dot=document.getElementById('dot-p'+p.num);
+    const item=document.getElementById('ms-p'+p.num);
+    if(!dot||!item) return;
+    let pDone=0;
+    p.wks.forEach(w=>{for(let d=0;d<7;d++){if(DTYPE[d]==='workout'&&tData['w'+w+'d'+d])pDone++;}});
+    if(pDone>=p.wks.length*6){dot.className='unlock-dot done';item.className='unlock-item completed-unlock';}
+    else if(p.wks.includes(curWeek)){dot.className='unlock-dot active';item.className='unlock-item active-unlock';}
+    else{dot.className='unlock-dot';item.className='unlock-item';}
+  });
+  const bms=[{id:'bm1-badge',w:4},{id:'bm2-badge',w:8},{id:'bm3-badge',w:12}];
+  bms.forEach(b=>{
+    const e=document.getElementById(b.id);if(!e)return;
+    e.className=curWeek>b.w?'bench-week done-badge':curWeek===b.w?'bench-week current-badge':'bench-week';
+  });
+}
+
+function updatePhaseBadges(){
+  const curWeek=getCurrentWeek();
+  document.querySelectorAll('.phase').forEach((ph,i)=>{
+    const badge=ph.querySelector('.phase-badge');if(!badge)return;
+    const ends=[[4],[8],[12]][i];if(!ends)return;
+    const starts=[[1],[5],[9]][i][0];
+    const end=ends[0];
+    if(curWeek>end){badge.className='phase-badge done';badge.textContent='Done ✓';}
+    else if(curWeek>=starts){badge.className='phase-badge active';badge.textContent='Active ▶';}
+    else{badge.className='phase-badge next';badge.textContent='Upcoming';}
+  });
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded',()=>{
+  buildTracker();
+  renderTodayCard();
+  updatePhaseBadges();
+  restoreShop();
+  const t=localStorage.getItem('apx_time'); if(t) setTime(t);
+  const m=localStorage.getItem('apx_meal'); if(m) switchMeal(m);
+});
+</script>
+</body>
+</html>
