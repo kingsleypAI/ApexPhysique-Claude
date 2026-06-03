@@ -5,14 +5,14 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Apex Physique">
+<meta name="apple-mobile-web-app-title" content="Ascend">
 <meta name="theme-color" content="#0a0a0a">
-<meta name="description" content="12-Week physique programme — Push Pull Legs, nutrition and tracking">
-<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="description" content="Ascend — 12-Week physique programme">
+<link rel="apple-touch-icon" href="/ApexPhysique-Claude/icon-192.png">
 <link rel="manifest" href="./manifest.json">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>APEX PHYSIQUE</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>ASCEND</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #0a0a0a;
@@ -43,31 +43,31 @@ body{
 
 /* HERO */
 .hero{
-  padding:32px 20px 24px;
+  padding:24px 20px 20px;
   border-bottom:1px solid var(--border);
   position:relative;
-  overflow:hidden;
 }
 .hero-eyebrow{
-  font-size:10px;letter-spacing:5px;text-transform:uppercase;
-  color:var(--grey);margin-bottom:10px;
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--grey);margin-bottom:6px;
 }
 .hero-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:46px;letter-spacing:3px;line-height:0.95;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:38px;letter-spacing:-1px;line-height:1;font-weight:700;
   color:var(--white);
 }
 .hero-title em{color:var(--accent);font-style:normal;}
 .hero-sub{
-  margin-top:10px;font-size:12px;color:var(--mid);
+  margin-top:8px;font-size:12px;color:var(--mid);
   line-height:1.6;max-width:320px;
 }
 .hero-pills{
   display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;
 }
 .pill{
-  font-size:10px;letter-spacing:2px;text-transform:uppercase;
-  padding:5px 10px;border:1px solid var(--border2);color:var(--mid);
+  font-size:10px;letter-spacing:1px;text-transform:uppercase;
+  padding:5px 12px;border:1px solid var(--border2);color:var(--mid);
+  border-radius:20px;
 }
 .pill.gold{border-color:var(--accent);color:var(--accent);}
 
@@ -120,11 +120,11 @@ body{
 }
 .tabs::-webkit-scrollbar{display:none;}
 .tab{
-  flex:0 0 auto;padding:13px 16px;
-  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  flex:0 0 auto;padding:12px 14px;
+  font-size:10px;letter-spacing:1px;text-transform:uppercase;
   color:var(--grey);cursor:pointer;
   border-bottom:2px solid transparent;transition:all 0.18s;
-  white-space:nowrap;font-family:'DM Sans',sans-serif;font-weight:700;
+  white-space:nowrap;font-family:'Space Grotesk',sans-serif;font-weight:600;
   background:none;border-top:none;border-left:none;border-right:none;
 }
 .tab.active{color:var(--white);border-bottom-color:var(--accent);}
@@ -137,7 +137,7 @@ body{
 /* SECTION HEADER */
 .sec-header{margin-bottom:18px;}
 .sec-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--grey);margin-bottom:4px;}
-.sec-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;}
+.sec-title{font-family:'Space Grotesk',sans-serif;font-size:26px;letter-spacing:-0.5px;font-weight:700;}
 
 /* DIVIDER */
 .divider{display:flex;align-items:center;gap:10px;margin:20px 0 14px;}
@@ -148,7 +148,7 @@ body{
 .stat-row{display:flex;gap:0;border:1px solid var(--border);margin-bottom:18px;}
 .stat-cell{flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);}
 .stat-cell:last-child{border-right:none;}
-.stat-num{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--accent);}
 .stat-lbl{font-size:9px;letter-spacing:2px;color:var(--grey);text-transform:uppercase;margin-top:2px;}
 
 /* WEEK GRID */
@@ -180,9 +180,9 @@ body{
   background:var(--card);cursor:pointer;user-select:none;
   -webkit-tap-highlight-color:transparent;
 }
-.phase-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--border2);line-height:1;min-width:36px;}
+.phase-num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--border2);line-height:1;min-width:34px;}
 .phase-info{flex:1;}
-.phase-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;}
+.phase-name{font-family:'Space Grotesk',sans-serif;font-size:16px;letter-spacing:2px;}
 .phase-wks{font-size:10px;color:var(--grey);margin-top:2px;letter-spacing:0.5px;}
 .phase-badge{font-size:9px;padding:3px 8px;border:1px solid;text-transform:uppercase;letter-spacing:1px;}
 .phase-badge.now{border-color:var(--accent);color:var(--accent);}
@@ -202,7 +202,7 @@ body{
   -webkit-tap-highlight-color:transparent;
 }
 .whead:active{background:rgba(255,255,255,0.02);}
-.wbadge{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;color:var(--accent);min-width:26px;}
+.wbadge{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0;color:var(--accent);min-width:26px;}
 .wname{flex:1;font-size:13px;font-weight:600;letter-spacing:0.2px;}
 .wmeta{font-size:11px;color:var(--grey);}
 .warrow{color:var(--grey);font-size:10px;transition:transform 0.2s;margin-left:4px;}
@@ -236,7 +236,7 @@ body{
 .stbl th{text-align:left;color:var(--grey);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 7px;border-bottom:1px solid var(--border);font-weight:400;}
 .stbl td{padding:9px 7px;border-bottom:1px solid rgba(37,37,37,0.5);vertical-align:middle;}
 .stbl tr:last-child td{border-bottom:none;}
-.stbl td:first-child{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--accent);}
+.stbl td:first-child{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--accent);}
 .chk{
   width:22px;height:22px;border:1px solid var(--border2);
   background:none;cursor:pointer;
@@ -249,7 +249,7 @@ body{
 /* MACROS */
 .macro-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px;}
 .mcell{background:var(--card);border:1px solid var(--border);padding:12px 8px;text-align:center;}
-.mnum{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);}
+.mnum{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--accent);}
 .munit{font-size:9px;color:var(--grey);letter-spacing:1px;}
 .mname{font-size:10px;color:var(--mid);margin-top:3px;letter-spacing:1px;text-transform:uppercase;}
 
@@ -294,7 +294,7 @@ body{
 .ing-amt{color:var(--white);font-weight:600;min-width:80px;font-size:11px;}
 .mmacros{display:flex;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
 .mmac{flex:1;text-align:center;}
-.mmac-v{font-family:'Bebas Neue',sans-serif;font-size:17px;}
+.mmac-v{font-family:'Space Grotesk',sans-serif;font-size:17px;}
 .mmac-l{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;}
 .mnote{margin-top:10px;padding:8px 10px;background:var(--accent-dim2);border-left:2px solid var(--accent);font-size:11px;color:var(--mid);line-height:1.5;}
 
@@ -319,7 +319,7 @@ body{
 .shop-cat{margin-bottom:16px;}
 .shop-cat-title{
   display:flex;align-items:center;gap:10px;
-  font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;
+  font-family:'Space Grotesk',sans-serif;font-size:16px;letter-spacing:2px;
   color:var(--white);margin-bottom:8px;
 }
 .shop-cat-title::after{content:'';flex:1;height:1px;background:var(--border);}
@@ -373,11 +373,11 @@ body{
 
 /* TIMER */
 .timer-disp{text-align:center;padding:20px 0;}
-.timer-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--white);letter-spacing:4px;line-height:1;}
+.timer-num{font-family:'Space Grotesk',sans-serif;font-size:64px;color:var(--white);letter-spacing:4px;line-height:1;}
 .timer-lbl{font-size:10px;letter-spacing:3px;color:var(--grey);text-transform:uppercase;margin-top:6px;}
 .timer-btns{display:flex;gap:8px;justify-content:center;margin-top:14px;}
 .tbtn{
-  padding:11px 22px;font-family:'Bebas Neue',sans-serif;
+  padding:11px 22px;font-family:'Space Grotesk',sans-serif;
   font-size:14px;letter-spacing:2px;text-transform:uppercase;
   cursor:pointer;border:none;transition:all 0.15s;
   -webkit-tap-highlight-color:transparent;
@@ -399,7 +399,7 @@ body{
 .ring-wrap{display:flex;justify-content:center;margin:12px 0;position:relative;}
 .ring-wrap svg{transform:rotate(-90deg);}
 .ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
-.ring-pct{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--white);display:block;}
+.ring-pct{font-family:'Space Grotesk',sans-serif;font-size:28px;color:var(--white);display:block;}
 .ring-lbl{font-size:9px;letter-spacing:2px;color:var(--grey);text-transform:uppercase;}
 .trkr-week{margin-bottom:14px;}
 .trkr-week-title{font-size:10px;letter-spacing:3px;color:var(--grey);text-transform:uppercase;margin-bottom:7px;}
@@ -470,7 +470,7 @@ body{
 }
 .recipe-step:last-child{border-bottom:none;}
 .recipe-step-num{
-  font-family:'Bebas Neue',sans-serif;font-size:20px;
+  font-family:'Space Grotesk',sans-serif;font-size:20px;
   color:var(--accent);line-height:1;min-width:22px;
   padding-top:1px;
 }
@@ -499,7 +499,7 @@ body{
 }
 .prep-step{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(37,37,37,0.4);font-size:12px;color:var(--mid);}
 .prep-step:last-child{border-bottom:none;}
-.prep-num{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--accent);min-width:18px;}
+.prep-num{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--accent);min-width:18px;}
 
 /* PHASE PROGRESSION */
 .phase-now-card{
@@ -515,7 +515,7 @@ body{
   color:var(--accent);margin-bottom:8px;
 }
 .phase-now-title{
-  font-family:'Bebas Neue',sans-serif;font-size:22px;
+  font-family:'Space Grotesk',sans-serif;font-size:22px;
   letter-spacing:2px;color:var(--white);margin-bottom:4px;
 }
 .phase-now-sub{font-size:12px;color:var(--mid);margin-bottom:12px;line-height:1.5;}
@@ -524,7 +524,7 @@ body{
 .phase-now-bar{height:4px;background:var(--border);border-radius:2px;}
 .phase-now-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.6s ease;}
 .phase-now-week{
-  display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:13px;
+  display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:13px;
   letter-spacing:2px;color:var(--accent);padding:4px 10px;
   border:1px solid rgba(200,16,46,0.3);background:rgba(200,16,46,0.06);
 }
@@ -601,7 +601,7 @@ body{
 }
 .today-workout-info{flex:1;}
 .today-workout-name{
-  font-family:'Bebas Neue',sans-serif;font-size:24px;
+  font-family:'Space Grotesk',sans-serif;font-size:24px;
   letter-spacing:2px;color:var(--white);line-height:1;
 }
 .today-workout-sub{
@@ -610,7 +610,7 @@ body{
 .today-log-btn{
   width:100%;padding:14px;
   background:var(--accent);border:none;
-  font-family:'Bebas Neue',sans-serif;font-size:16px;
+  font-family:'Space Grotesk',sans-serif;font-size:16px;
   letter-spacing:3px;color:#fff;cursor:pointer;
   transition:all 0.15s;-webkit-tap-highlight-color:transparent;
   display:flex;align-items:center;justify-content:center;gap:10px;
@@ -671,7 +671,7 @@ body{
 .log-unit{font-size:11px;color:var(--grey);min-width:28px;}
 .log-btn{
   width:100%;padding:12px;background:var(--accent);border:none;
-  color:#fff;font-family:'Bebas Neue',sans-serif;font-size:14px;
+  color:#fff;font-family:'Space Grotesk',sans-serif;font-size:14px;
   letter-spacing:3px;cursor:pointer;margin-top:12px;
   -webkit-tap-highlight-color:transparent;transition:filter 0.15s;
 }
@@ -725,7 +725,7 @@ body{
   background:var(--card);border:1px solid var(--border);
   padding:11px 8px;text-align:center;
 }
-.summary-num{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--white);}
+.summary-num{font-family:'Space Grotesk',sans-serif;font-size:20px;color:var(--white);}
 .summary-num.pos{color:#4caf7d;}
 .summary-num.neg{color:var(--accent);}
 .summary-lbl{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
@@ -887,7 +887,7 @@ body{
 }
 .warmup-step:last-child{border-bottom:none;}
 .warmup-step-num{
-  font-family:'Bebas Neue',sans-serif;font-size:16px;
+  font-family:'Space Grotesk',sans-serif;font-size:16px;
   color:var(--accent);min-width:20px;line-height:1.2;flex-shrink:0;
 }
 .warmup-step-info{flex:1;}
@@ -908,7 +908,7 @@ body{
   border-color:var(--green);
 }
 .deload-week-title{
-  font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;
+  font-family:'Space Grotesk',sans-serif;font-size:15px;letter-spacing:2px;
   margin-bottom:3px;
 }
 .deload-sub{font-size:11px;color:var(--mid);line-height:1.5;margin-bottom:8px;}
@@ -926,7 +926,7 @@ body{
 .rpe-row{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid rgba(37,37,37,0.4);}
 .rpe-row:last-child{border-bottom:none;}
 .rpe-num{
-  font-family:'Bebas Neue',sans-serif;font-size:20px;min-width:32px;
+  font-family:'Space Grotesk',sans-serif;font-size:20px;min-width:32px;
   line-height:1;
 }
 .rpe-bar-wrap{flex:1;}
@@ -957,7 +957,7 @@ body{
   padding:12px 14px;margin-bottom:14px;
   display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;
 }
-.cardio-stat-num{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);}
+.cardio-stat-num{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--green);}
 .cardio-stat-lbl{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
 
 /* ── WATER TRACKER ───────────────────────────────────────────────────────── */
@@ -977,7 +977,7 @@ body{
 .water-glass.filled{opacity:1;filter:none;}
 .water-glass:active{transform:scale(0.9);}
 .water-count{
-  font-family:'Bebas Neue',sans-serif;font-size:32px;
+  font-family:'Space Grotesk',sans-serif;font-size:32px;
   color:var(--white);min-width:40px;text-align:right;
 }
 .water-target{font-size:10px;color:var(--grey);letter-spacing:1px;}
@@ -986,7 +986,7 @@ body{
 .water-btn-row{display:flex;gap:8px;}
 .water-btn{
   flex:1;padding:10px;background:var(--surface);border:1px solid var(--border2);
-  color:var(--mid);font-family:'Bebas Neue',sans-serif;font-size:13px;
+  color:var(--mid);font-family:'Space Grotesk',sans-serif;font-size:13px;
   letter-spacing:2px;cursor:pointer;transition:all 0.15s;
   -webkit-tap-highlight-color:transparent;
 }
@@ -1003,7 +1003,7 @@ body{
   cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;
 }
 .expect-week{
-  font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;
+  font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:1px;
   color:var(--accent);min-width:56px;
 }
 .expect-title{flex:1;font-size:13px;font-weight:700;}
@@ -1031,8 +1031,111 @@ body{
 }
 .widget-mini:active{border-color:var(--accent);}
 .widget-mini-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:4px;}
-.widget-mini-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);}
+.widget-mini-val{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--white);}
 .widget-mini-sub{font-size:10px;color:var(--mid);margin-top:2px;}
+
+
+/* ── WORKOUT TIME ESTIMATE ───────────────────────────────────────────────── */
+.workout-time-bar{
+  display:flex;align-items:center;gap:10px;
+  background:var(--surface);border:1px solid var(--border);
+  padding:10px 14px;margin-bottom:10px;
+}
+.wt-icon{font-size:18px;}
+.wt-info{flex:1;}
+.wt-title{font-size:12px;font-weight:700;color:var(--white);}
+.wt-detail{font-size:10px;color:var(--mid);margin-top:2px;line-height:1.5;}
+.wt-time{
+  font-family:'Space Grotesk',sans-serif;font-size:26px;
+  color:var(--accent);letter-spacing:1px;line-height:1;text-align:right;
+}
+.wt-time-label{font-size:9px;color:var(--grey);letter-spacing:1px;text-align:right;}
+.wt-breakdown{
+  display:flex;gap:0;margin-top:8px;border-top:1px solid var(--border);
+  padding-top:8px;
+}
+.wt-seg{flex:1;text-align:center;padding:0 4px;border-right:1px solid var(--border);}
+.wt-seg:last-child{border-right:none;}
+.wt-seg-num{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--white);}
+.wt-seg-lbl{font-size:9px;color:var(--grey);letter-spacing:0.5px;text-transform:uppercase;}
+
+
+/* ── CALORIE TRACKER ─────────────────────────────────────────────────────── */
+.cal-tab-wrap{display:none;}
+.cal-ring-wrap{position:relative;display:flex;justify-content:center;margin:4px 0 14px;}
+.cal-ring-wrap svg{transform:rotate(-90deg);}
+.cal-ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.cal-ring-num{font-family:'Space Grotesk',sans-serif;font-size:30px;color:var(--white);display:block;line-height:1;}
+.cal-ring-lbl{font-size:9px;letter-spacing:2px;color:var(--grey);text-transform:uppercase;}
+.cal-ring-target{font-size:10px;color:var(--mid);margin-top:2px;}
+
+.cal-macro-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px;}
+.cal-macro{background:var(--card);border:1px solid var(--border);padding:10px 8px;text-align:center;}
+.cal-macro-val{font-family:'Space Grotesk',sans-serif;font-size:18px;color:var(--white);}
+.cal-macro-target{font-size:9px;color:var(--grey);letter-spacing:1px;}
+.cal-macro-bar{height:3px;background:var(--border);margin:5px 0 3px;}
+.cal-macro-fill{height:100%;background:var(--accent);max-width:100%;}
+.cal-macro-fill.over{background:#ff6b35;}
+.cal-macro-name{font-size:10px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;}
+
+.cal-add-card{background:var(--card);border:1px solid var(--border);padding:14px;margin-bottom:10px;}
+.cal-add-title{font-size:12px;font-weight:700;color:var(--white);margin-bottom:10px;}
+.cal-input-row{display:flex;gap:8px;margin-bottom:8px;align-items:center;}
+.cal-input{
+  flex:1;background:var(--surface);border:1px solid var(--border2);
+  color:var(--white);font-family:'DM Sans',sans-serif;font-size:13px;
+  padding:9px 12px;outline:none;-webkit-appearance:none;
+}
+.cal-input:focus{border-color:var(--accent);}
+.cal-input::placeholder{color:var(--grey);}
+.cal-input-kcal{width:90px;flex:none;text-align:center;}
+.cal-input-macro{width:64px;flex:none;text-align:center;font-size:12px;}
+.cal-add-btn{
+  padding:9px 16px;background:var(--accent);border:none;
+  color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;
+  letter-spacing:2px;cursor:pointer;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.cal-add-btn:active{filter:brightness(0.85);}
+.cal-macro-inputs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px;}
+.cal-macro-label{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+
+.cal-log{background:var(--card);border:1px solid var(--border);overflow:hidden;margin-bottom:10px;}
+.cal-log-header{
+  display:flex;align-items:center;padding:10px 14px;
+  border-bottom:1px solid var(--border);
+}
+.cal-log-header-title{flex:1;font-size:11px;font-weight:700;color:var(--white);letter-spacing:1px;}
+.cal-log-header-cols{display:flex;gap:8px;font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;}
+.cal-log-col{min-width:40px;text-align:right;}
+.cal-entry{
+  display:flex;align-items:center;padding:9px 14px;
+  border-bottom:1px solid rgba(37,37,37,0.4);
+}
+.cal-entry:last-child{border-bottom:none;}
+.cal-entry-name{flex:1;font-size:12px;color:var(--white);}
+.cal-entry-time{font-size:10px;color:var(--grey);margin-top:1px;}
+.cal-entry-kcal{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--accent);min-width:50px;text-align:right;}
+.cal-entry-macro{font-size:10px;color:var(--grey);min-width:36px;text-align:right;}
+.cal-del-btn{background:none;border:none;color:var(--grey);font-size:13px;cursor:pointer;padding:4px 6px;margin-left:4px;-webkit-tap-highlight-color:transparent;}
+.cal-empty{text-align:center;padding:24px;font-size:12px;color:var(--grey);}
+
+.cal-day-nav{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.cal-day-btn{
+  width:32px;height:32px;background:var(--card);border:1px solid var(--border);
+  color:var(--mid);font-size:16px;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;-webkit-tap-highlight-color:transparent;
+}
+.cal-day-btn:active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.cal-day-label{flex:1;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:15px;letter-spacing:2px;color:var(--white);}
+
+.cal-remaining{
+  text-align:center;padding:8px;margin-bottom:10px;
+  font-size:12px;color:var(--mid);
+}
+.cal-remaining span{font-family:'Space Grotesk',sans-serif;font-size:18px;}
+.cal-remaining .under{color:var(--green);}
+.cal-remaining .over{color:#ff6b35;}
 
 </style>
 </head>
@@ -1040,9 +1143,17 @@ body{
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">12-Week Physique Programme</div>
-  <div class="hero-title">APEX<br><em>PHYSIQUE</em></div>
-  <div class="hero-sub">Built for 100kg / 5'10" — body recomposition: build muscle, lose fat, transform your physique.</div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="8" fill="var(--accent)"/>
+      <path d="M18 8 L28 26 H8 Z" fill="none" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M18 8 L18 26" stroke="white" stroke-width="1.5" opacity="0.4"/>
+      <line x1="11" y1="20" x2="25" y2="20" stroke="white" stroke-width="1.5" opacity="0.4"/>
+    </svg>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.5px;color:var(--white);">ASCEND</div>
+  </div>
+  <div class="hero-eyebrow">12-Week Physique Programme · 100kg</div>
+  <div class="hero-sub">Body recomposition — build muscle, lose fat, transform your physique.</div>
   <div class="hero-pills">
     <div class="pill gold">Push · Pull · Legs</div>
     <div class="pill">6 Days / Week</div>
@@ -1067,7 +1178,7 @@ body{
   <div id="sched-am" class="schedule-reveal">
     <strong>Morning Schedule</strong>
     <div class="sched-row"><span class="sched-time">05:15</span><span>Wake · cold water · no phone</span></div>
-    <div class="sched-row"><span class="sched-time">05:30</span><span>Pre-workout meal — oats, banana, coffee</span></div>
+    <div class="sched-row"><span class="sched-time">05:30</span><span>Pre-workout meal — oats + banana + milk + honey (bigger portions)</span></div>
     <div class="sched-row"><span class="sched-time">06:00</span><span class="sched-train">▶ Train — 60–75 min</span></div>
     <div class="sched-row"><span class="sched-time">07:15</span><span>Post-workout shake + shower</span></div>
     <div class="sched-row"><span class="sched-time">07:45</span><span>Breakfast — eggs, toast, avocado</span></div>
@@ -1095,6 +1206,7 @@ body{
   <button class="tab" onclick="switchTab('timer',this)">Timer</button>
   <button class="tab" onclick="switchTab('tracker',this)">Progress</button>
   <button class="tab" onclick="switchTab('tracking',this)">Tracking</button>
+  <button class="tab" onclick="switchTab('calories',this)">Calories</button>
 </div>
 
 <!-- ===== OVERVIEW ===== -->
@@ -1109,7 +1221,7 @@ body{
           <div class="today-workout-sub" id="todaySub">Chest · Shoulders · Triceps</div>
         </div>
         <div style="text-align:right;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--accent)" id="todayWeekBig">Wk 1</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;color:var(--accent)" id="todayWeekBig">Wk 1</div>
           <div style="font-size:9px;color:var(--grey);letter-spacing:1px" id="todayPhaseBig">Foundation</div>
         </div>
       </div>
@@ -1206,7 +1318,7 @@ body{
   <div class="divider"><div class="div-line"></div><div class="div-text">Principles</div><div class="div-line"></div></div>
   <div style="background:var(--card);border:1px solid var(--border);padding:14px;">
     <div class="bench-item"><div class="bench-week">Rule 01</div><div class="bench-info"><div class="bench-title">Consistency above all</div><div class="bench-detail">Show up. Missing sessions kills progress faster than bad form.</div></div></div>
-    <div class="bench-item"><div class="bench-week">Rule 02</div><div class="bench-info"><div class="bench-title">Progressive overload</div><div class="bench-detail">Add weight or reps every week. Stagnation means the programme isn't working.</div></div></div>
+    <div class="bench-item"><div class="bench-week">Rule 02</div><div class="bench-info"><div class="bench-title">Progressive overload</div><div class="bench-detail">Add weight or reps every single week. At 65kg you have huge room to grow fast — exploit it.</div></div></div>
     <div class="bench-item"><div class="bench-week">Rule 03</div><div class="bench-info"><div class="bench-title">Rest is productive</div><div class="bench-detail">Thursday off. 8+ hours sleep. Muscle is built during recovery, not during lifting.</div></div></div>
     <div class="bench-item"><div class="bench-week">Rule 04</div><div class="bench-info"><div class="bench-title">Eat to build</div><div class="bench-detail">High protein. Slight caloric surplus on training days. Fuel the machine.</div></div></div>
   
@@ -1224,7 +1336,7 @@ body{
       <div class="expect-arrow">▼</div>
     </div>
     <div class="expect-body">
-      <p>You'll be sore in muscles you didn't know you had. <strong>This is normal.</strong> DOMS (delayed onset muscle soreness) peaks 24–48 hours after sessions. Keep moving — light walks help more than rest. The soreness gets much less severe by week 3.</p>
+      <p>You'll be sore in muscles you didn't know you had. <strong>This is normal.</strong> DOMS peaks 24–48 hours after sessions. Keep moving — light walks help more than rest. The soreness gets much less severe by week 3.</p>
       <p>The scale might actually go up slightly — water retention from muscle inflammation. Don't panic.</p>
       <span class="expect-tag red">Expect soreness</span>
       <span class="expect-tag blue">Scale may rise</span>
@@ -1343,9 +1455,9 @@ body{
   </div>
 
   <div class="deload-banner" id="deload-w12">
-    <div class="deload-pill">Week 12 — Programme End</div>
-    <div class="deload-week-title">Take a Full Rest Week</div>
-    <div class="deload-sub">You've completed 12 weeks. Take 5–7 days fully off before starting your next block. You've earned it.</div>
+    <div class="deload-pill">Week 12 Deload</div>
+    <div class="deload-week-title">End of Strength Phase</div>
+    <div class="deload-sub">Going into the final definition phase fresh makes a huge difference. One week back-off now.</div>
     <div class="deload-rules">
       <div class="deload-rule">No lifting — let everything fully recover</div>
       <div class="deload-rule">Light walks, swimming, or yoga only if you want to move</div>
@@ -1408,6 +1520,24 @@ body{
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Push Day · Mon &amp; Fri</div><div class="div-line"></div></div>
   <div id="push" style="scroll-margin-top:50px">
+  <!-- WORKOUT TIME ESTIMATE - PUSH -->
+  <div class="workout-time-bar" id="pushTimeBar">
+    <div class="wt-icon">⏱️</div>
+    <div class="wt-info">
+      <div class="wt-title">Estimated Workout Duration</div>
+      <div class="wt-detail" id="pushTimeDetail">Includes warm-up, working sets and rest periods</div>
+    </div>
+    <div>
+      <div class="wt-time" id="pushTimeMins">—</div>
+      <div class="wt-time-label">MINS</div>
+    </div>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--border);display:flex;margin-bottom:10px;" id="pushTimeBreakdown">
+    <div class="wt-seg"><div class="wt-seg-num" id="pushWarmupMins">5</div><div class="wt-seg-lbl">Warm-up</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="pushSetsMins">—</div><div class="wt-seg-lbl">Sets</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="pushRestMins">—</div><div class="wt-seg-lbl">Rest</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="pushTransMins">5</div><div class="wt-seg-lbl">Transition</div></div>
+  </div>
   <!-- PUSH DAY WARM-UP -->
   <div class="warmup-card" onclick="this.classList.toggle('open')">
     <div class="warmup-head">
@@ -1615,6 +1745,24 @@ body{
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Pull Day · Tue &amp; Sat</div><div class="div-line"></div></div>
   <div id="pull" style="scroll-margin-top:50px">
+  <!-- WORKOUT TIME ESTIMATE - PULL -->
+  <div class="workout-time-bar" id="pullTimeBar">
+    <div class="wt-icon">⏱️</div>
+    <div class="wt-info">
+      <div class="wt-title">Estimated Workout Duration</div>
+      <div class="wt-detail" id="pullTimeDetail">Includes warm-up, working sets and rest periods</div>
+    </div>
+    <div>
+      <div class="wt-time" id="pullTimeMins">—</div>
+      <div class="wt-time-label">MINS</div>
+    </div>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--border);display:flex;margin-bottom:10px;" id="pullTimeBreakdown">
+    <div class="wt-seg"><div class="wt-seg-num" id="pullWarmupMins">5</div><div class="wt-seg-lbl">Warm-up</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="pullSetsMins">—</div><div class="wt-seg-lbl">Sets</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="pullRestMins">—</div><div class="wt-seg-lbl">Rest</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="pullTransMins">5</div><div class="wt-seg-lbl">Transition</div></div>
+  </div>
   <!-- PULL DAY WARM-UP -->
   <div class="warmup-card" onclick="this.classList.toggle('open')">
     <div class="warmup-head">
@@ -1821,6 +1969,24 @@ body{
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Leg Day · Wed &amp; Sun</div><div class="div-line"></div></div>
   <div id="legs" style="scroll-margin-top:50px">
+  <!-- WORKOUT TIME ESTIMATE - LEGS -->
+  <div class="workout-time-bar" id="legsTimeBar">
+    <div class="wt-icon">⏱️</div>
+    <div class="wt-info">
+      <div class="wt-title">Estimated Workout Duration</div>
+      <div class="wt-detail" id="legsTimeDetail">Includes warm-up, working sets, rest and core circuit</div>
+    </div>
+    <div>
+      <div class="wt-time" id="legsTimeMins">—</div>
+      <div class="wt-time-label">MINS</div>
+    </div>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--border);display:flex;margin-bottom:10px;" id="legsTimeBreakdown">
+    <div class="wt-seg"><div class="wt-seg-num" id="legsWarmupMins">7</div><div class="wt-seg-lbl">Warm-up</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="legsSetsMins">—</div><div class="wt-seg-lbl">Sets</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="legsRestMins">—</div><div class="wt-seg-lbl">Rest</div></div>
+    <div class="wt-seg"><div class="wt-seg-num" id="legsCoreMins">10</div><div class="wt-seg-lbl">Core circ.</div></div>
+  </div>
   <!-- LEG DAY WARM-UP -->
   <div class="warmup-card" onclick="this.classList.toggle('open')">
     <div class="warmup-head">
@@ -2011,7 +2177,7 @@ body{
 
 <!-- ===== NUTRITION ===== -->
 <div id="tab-nutrition" class="section">
-  <div class="sec-label">Daily Targets · 100kg / 5'10" · Recomposition</div>
+  <div class="sec-label">Daily Targets · 100kg · Recomposition</div>
   <div class="sec-title">NUTRITION</div>
   <div class="macro-row">
     <div class="mcell"><div class="mnum">230</div><div class="munit">g / day</div><div class="mname">Protein</div></div>
@@ -2020,12 +2186,17 @@ body{
   </div>
   <div style="background:var(--card);border:1px solid var(--border);padding:12px 14px;margin-bottom:14px;">
     <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Total Daily Calories</div>
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);">~2,800 <span style="font-size:13px;color:var(--grey)">kcal</span></div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;color:var(--accent);">~2,800 <span style="font-size:13px;color:var(--grey)">kcal</span></div>
     <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,800 kcal · Rest day ~2,400 kcal</div>
   </div>
 
   <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(200,16,46,0.25);padding:13px 14px;margin-bottom:14px;">
-    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ Recomposition Strategy · 100kg / 5'10"</div>
+    <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(200,16,46,0.25);padding:13px 14px;margin-bottom:14px;">
+    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ Recomposition Strategy · 100kg</div>
+    <div style="font-size:11px;color:var(--mid);line-height:1.8;">
+      At your stats a traditional bulk is unnecessary — you have enough stored energy to fuel muscle growth while in a small deficit. This is called <strong style="color:var(--white)">body recomposition</strong>. Expect to lose ~0.5–1kg per week while gaining strength. The scale might barely move for weeks — that's muscle replacing fat. <strong style="color:var(--white)">Judge progress by the mirror and your lifts, not the number.</strong>
+    </div>
+  </div>
     <div style="font-size:11px;color:var(--mid);line-height:1.8;">
       At your stats a traditional bulk is unnecessary — you have enough stored energy to fuel muscle growth while in a small deficit. This is called <strong style="color:var(--white)">body recomposition</strong>. Expect to lose ~0.5–1kg per week while gaining strength. The scale might barely move for weeks — that's muscle replacing fat. <strong style="color:var(--white)">Judge progress by the mirror and your lifts, not the number.</strong>
     </div>
@@ -2037,34 +2208,34 @@ body{
   <!-- AM MEALS -->
   <div class="mplan active" id="mp-am">
     <div class="mday-label">Training Days</div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">05:30</div><div class="mname">Pre-Workout</div><div class="mkcal">~480 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">120g dry</span>Rolled oats</div><div class="ing"><span class="ing-amt">1 large</span>Banana</div><div class="ing"><span class="ing-amt">300ml</span>Semi-skimmed milk</div><div class="ing"><span class="ing-amt">5g</span>Creatine monohydrate</div><div class="ing"><span class="ing-amt">1 cup</span>Black coffee</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">22g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">96g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">9g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Eat 30 min before training. Bigger portions for a bigger body — oats give slow-release energy without a crash.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">07:15</div><div class="mname">Post-Workout</div><div class="mkcal">~420 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">40g</span>Whey protein</div><div class="ing"><span class="ing-amt">5 whole</span>Scrambled eggs</div><div class="ing"><span class="ing-amt">2 slices</span>Sourdough toast</div><div class="ing"><span class="ing-amt">½</span>Avocado</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">62g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">40g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Consume within 30 min of training. High protein hit right after training is critical for recomp — muscle preservation while losing fat.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">12:30</div><div class="mname">Lunch</div><div class="mkcal">~620 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">220g</span>Chicken breast (grilled)</div><div class="ing"><span class="ing-amt">150g dry</span>Basmati rice</div><div class="ing"><span class="ing-amt">150g</span>Broccoli or mixed veg</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">57g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">75g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Meal prep this the night before. 10 minutes of prep prevents skipping meals.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">05:30</div><div class="mname">Pre-Workout</div><div class="mkcal">~480 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">100g dry</span>Rolled oats</div><div class="ing"><span class="ing-amt">1 large</span>Banana</div><div class="ing"><span class="ing-amt">250ml</span>Whole milk (more calories)</div><div class="ing"><span class="ing-amt">1 tbsp</span>Honey</div><div class="ing"><span class="ing-amt">5g</span>Creatine monohydrate</div><div class="ing"><span class="ing-amt">1 cup</span>Black coffee</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">90g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">10g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Big carb hit before training. At 65kg you NEED the fuel — don't skip honey or milk. Carbs are your best friend when bulking.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">07:15</div><div class="mname">Post-Workout</div><div class="mkcal">~420 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">40g</span>Whey protein</div><div class="ing"><span class="ing-amt">4 whole</span>Scrambled eggs</div><div class="ing"><span class="ing-amt">2 slices</span>White bread or toast</div><div class="ing"><span class="ing-amt">1 tbsp</span>Jam or honey (fast carbs)</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">52g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">55g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">14g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Post-workout window is critical for muscle growth — fast carbs spike insulin and drive protein into the muscles. Don't use brown bread here.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">12:30</div><div class="mname">Lunch</div><div class="mkcal">~620 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">180g</span>Chicken breast (grilled)</div><div class="ing"><span class="ing-amt">200g dry</span>Basmati rice (bigger portion)</div><div class="ing"><span class="ing-amt">100g</span>Broccoli or mixed veg</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">46g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">100g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">15g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Biggest carb meal of the day. At 65kg on a lean bulk, rice is not the enemy — it's your fuel. Don't reduce this.</div></div></div>
     <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">16:00</div><div class="mname">Afternoon Snack</div><div class="mkcal">~280 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">200g</span>Greek yoghurt (full fat)</div><div class="ing"><span class="ing-amt">30g</span>Mixed nuts</div><div class="ing"><span class="ing-amt">1 tsp</span>Honey</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">22g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">18g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Keeps you full until dinner. Protein + healthy fats prevents afternoon muscle breakdown.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">19:30</div><div class="mname">Dinner</div><div class="mkcal">~580 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">250g</span>Salmon fillet or lean beef mince</div><div class="ing"><span class="ing-amt">200g</span>Sweet potato (roasted)</div><div class="ing"><span class="ing-amt">150g</span>Spinach or kale</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">55g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">45g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">20g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Salmon provides omega-3 for joint recovery. At 100kg you need more protein at every meal — don't under-eat here.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">19:30</div><div class="mname">Dinner</div><div class="mkcal">~580 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">180g</span>Salmon, chicken thighs, or beef</div><div class="ing"><span class="ing-amt">150g</span>Sweet potato or pasta</div><div class="ing"><span class="ing-amt">150g</span>Spinach or mixed veg</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">40g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">42g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">18g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Chicken thighs over breast at dinner — higher fat content gives more calories, better flavour, great for bulking.</div></div></div>
     <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">22:00</div><div class="mname">Night Fuel</div><div class="mkcal">~270 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">250g</span>Cottage cheese (low fat)</div><div class="ing"><span class="ing-amt">20g</span>Almonds or walnuts</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">8g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">10g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Casein protein in cottage cheese digests slowly — feeds muscles for 7–8 hours during sleep.</div></div></div>
     <div class="mday-label">Rest Day (Thursday)</div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">All day</div><div class="mname">Rest Day Adjustments</div><div class="mkcal">~2,200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">Same meals</span>as training days</div><div class="ing"><span class="ing-amt">–80g carbs</span>Remove rice at lunch + skip oats</div><div class="ing"><span class="ing-amt">Keep protein</span>230g minimum — non-negotiable</div><div class="ing"><span class="ing-amt">~2,400 kcal</span>Target for rest day</div><div class="ing"><span class="ing-amt">3+ litres</span>Water</div></div><div class="mnote">Rest day deficit is where most fat loss happens. Drop carbs hard but protect protein — this is the recomp formula.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">All day</div><div class="mname">Rest Day Adjustments</div><div class="mkcal">~2,200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">Same meals</span>as training days</div><div class="ing"><span class="ing-amt">–100g carbs</span>Reduce rice and oats portions</div><div class="ing"><span class="ing-amt">Keep protein</span>160g minimum — maintain muscle</div><div class="ing"><span class="ing-amt">~2,500 kcal</span>Target for rest day</div><div class="ing"><span class="ing-amt">3+ litres</span>Water</div></div><div class="mnote">Rest day on a lean bulk — you still eat a lot. Just slightly fewer carbs since you're not fuelling a session. Keep it clean.</div></div></div>
   </div>
 
   <!-- PM MEALS -->
   <div class="mplan" id="mp-pm">
     <div class="mday-label">Training Days</div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">07:00</div><div class="mname">Breakfast</div><div class="mkcal">~550 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">5 whole</span>Eggs (scrambled)</div><div class="ing"><span class="ing-amt">2 slices</span>Sourdough toast</div><div class="ing"><span class="ing-amt">½</span>Avocado</div><div class="ing"><span class="ing-amt">30g</span>Whey protein in milk (extra protein hit)</div><div class="ing"><span class="ing-amt">1 cup</span>Black coffee</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">60g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">24g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">At 100kg you need protein early and often. Swapped OJ for a morning shake — less sugar, more muscle protection.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">12:30</div><div class="mname">Lunch (Main Pre-Workout)</div><div class="mkcal">~650 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">220g</span>Chicken breast or thighs</div><div class="ing"><span class="ing-amt">150g dry</span>Basmati rice</div><div class="ing"><span class="ing-amt">150g</span>Mixed veg</div><div class="ing"><span class="ing-amt">5g</span>Creatine monohydrate</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">58g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">80g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">16g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Your primary pre-workout meal. Bigger chicken portion for a 100kg body — this fuels tonight's session.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">07:00</div><div class="mname">Breakfast</div><div class="mkcal">~550 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">3 whole</span>Eggs (scrambled)</div><div class="ing"><span class="ing-amt">2 slices</span>Toast with peanut butter</div><div class="ing"><span class="ing-amt">1 glass</span>Whole milk (250ml)</div><div class="ing"><span class="ing-amt">1 large</span>Banana</div><div class="ing"><span class="ing-amt">1 cup</span>Black coffee</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">34g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">60g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">20g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Big breakfast fuels the whole day. Peanut butter is calorie-dense and easy to eat — perfect for a 65kg person trying to eat enough.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">12:30</div><div class="mname">Lunch (Main Pre-Workout)</div><div class="mkcal">~650 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">160g</span>Chicken breast or thighs</div><div class="ing"><span class="ing-amt">200g dry</span>Basmati rice (big portion)</div><div class="ing"><span class="ing-amt">100g</span>Mixed veg</div><div class="ing"><span class="ing-amt">5g</span>Creatine monohydrate</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">42g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">100g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">15g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Main pre-workout fuel. Massive carb portion gives energy for a hard evening session. This is the most important meal of the day.</div></div></div>
     <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">16:00</div><div class="mname">Pre-Gym Snack</div><div class="mkcal">~250 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">1 large</span>Banana</div><div class="ing"><span class="ing-amt">1 bar</span>Protein bar (20g+ protein)</div><div class="ing"><span class="ing-amt">1 cup</span>Black coffee or pre-workout</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">22g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">5g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">90 min before training. Fast carbs from banana = immediate fuel. Never train on empty.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">19:15</div><div class="mname">Post-Workout Shake</div><div class="mkcal">~200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">50g</span>Whey protein (extra scoop for 100kg)</div><div class="ing"><span class="ing-amt">1 large</span>Banana or 2 rice cakes</div><div class="ing"><span class="ing-amt">400ml</span>Milk</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">50g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">30g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">4g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Immediately post-workout. 50g whey keeps PM plan on target for 230g daily protein. Drink in the changing room — don't miss the window.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">20:30</div><div class="mname">Dinner</div><div class="mkcal">~620 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">250g</span>Salmon or lean beef mince</div><div class="ing"><span class="ing-amt">180g</span>Sweet potato (keep carbs moderate)</div><div class="ing"><span class="ing-amt">200g</span>Broccoli or spinach</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">55g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">50g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">20g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">High protein, moderate carbs at dinner — recomp diet keeps evening carbs controlled while keeping protein high.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">19:15</div><div class="mname">Post-Workout Shake</div><div class="mkcal">~200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">40g</span>Whey protein</div><div class="ing"><span class="ing-amt">1 large</span>Banana</div><div class="ing"><span class="ing-amt">300ml</span>Whole milk</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">42g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">35g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">8g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Post-workout shake with whole milk gives extra calories on top of protein. At 65kg every extra 100 kcal counts toward your surplus.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">20:30</div><div class="mname">Dinner</div><div class="mkcal">~620 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">180g</span>Salmon, beef, or chicken thighs</div><div class="ing"><span class="ing-amt">150g</span>Sweet potato or pasta</div><div class="ing"><span class="ing-amt">150g</span>Spinach or broccoli</div><div class="ing"><span class="ing-amt">1 tbsp</span>Olive oil</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">45g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">18g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Lean bulk dinner — balanced macros, good calories. Carbs at dinner are fine when bulking, don't fear them.</div></div></div>
     <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">23:00</div><div class="mname">Night Fuel</div><div class="mkcal">~270 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">250g</span>Cottage cheese</div><div class="ing"><span class="ing-amt">20g</span>Almonds</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">38g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">6g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">10g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Casein feeds muscles for 7–8 hours. You train hard evenings — sleep is where gains happen.</div></div></div>
     <div class="mday-label">Rest Day (Thursday)</div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">All day</div><div class="mname">Rest Day Adjustments</div><div class="mkcal">~2,200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">Same meals</span>as training days</div><div class="ing"><span class="ing-amt">–80g carbs</span>Remove rice at lunch + skip evening sweet potato</div><div class="ing"><span class="ing-amt">Keep protein</span>230g minimum — non-negotiable</div><div class="ing"><span class="ing-amt">~2,400 kcal</span>Rest day target</div><div class="ing"><span class="ing-amt">3+ litres</span>Water</div></div><div class="mnote">Rest day deficit drives fat loss. Slash carbs, protect every gram of protein. This is the day your body burns stored fat.</div></div></div>
+    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">All day</div><div class="mname">Rest Day Adjustments</div><div class="mkcal">~2,200 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">Same meals</span>as training days</div><div class="ing"><span class="ing-amt">–100g carbs</span>Reduce rice and oat portions</div><div class="ing"><span class="ing-amt">Keep protein</span>160g — protect your muscle</div><div class="ing"><span class="ing-amt">~2,500 kcal</span>Rest day target</div><div class="ing"><span class="ing-amt">3+ litres</span>Water</div></div><div class="mnote">Still eat plenty on rest days. The lean bulk works because you never drop too low — muscle needs calories to grow even on off days.</div></div></div>
   </div>
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Supplements</div><div class="div-line"></div></div>
   <div class="supp-list">
     <div class="supp-item"><div class="supp-icon">💊</div><div class="supp-info"><div class="supp-name">Creatine Monohydrate</div><div class="supp-dose">5g daily · with pre-workout meal</div><div class="supp-why">The most researched supplement in existence. Increases strength, power output, and muscle size.</div></div></div>
     <div class="supp-item"><div class="supp-icon">🥛</div><div class="supp-info"><div class="supp-name">Whey Protein</div><div class="supp-dose">40g post-workout</div><div class="supp-why">Fast-digesting. Hits your protein target conveniently. Not magic — just a practical tool.</div></div></div>
-    <div class="supp-item"><div class="supp-icon">🌙</div><div class="supp-info"><div class="supp-name">Casein Protein</div><div class="supp-dose">30g before bed</div><div class="supp-why">Slow-release — feeds muscles for 7–8 hours overnight. Prevents muscle breakdown during sleep.</div></div></div>
+    <div class="supp-item"><div class="supp-icon">🌙</div><div class="supp-info"><div class="supp-name">Casein Protein / Mass Gainer</div><div class="supp-dose">30–50g before bed</div><div class="supp-why">For a 65kg lean bulk a mass gainer before bed (oats + milk + banana + casein) can fill calorie gaps easily without feeling stuffed during the day.</div></div></div>
     <div class="supp-item"><div class="supp-icon">☀️</div><div class="supp-info"><div class="supp-name">Vitamin D3 + K2</div><div class="supp-dose">2000–4000 IU daily · with food</div><div class="supp-why">Supports testosterone production and immune function. Most people training hard are deficient.</div></div></div>
     <div class="supp-item"><div class="supp-icon">🐟</div><div class="supp-info"><div class="supp-name">Omega-3 Fish Oil</div><div class="supp-dose">3g daily · with meals</div><div class="supp-why">Reduces inflammation, supports joint health, improves recovery between sessions.</div></div></div>
     <div class="supp-item"><div class="supp-icon">⚡</div><div class="supp-info"><div class="supp-name">Zinc + Magnesium (ZMA)</div><div class="supp-dose">Before bed</div><div class="supp-why">Depleted by heavy training. Supports sleep quality, recovery, and hormonal health.</div></div></div>
@@ -2434,7 +2605,7 @@ body{
   <div class="sec-title">SHOPPING LIST</div>
 
   <div class="shop-time-info">
-    Quantities based on <span id="shop-time-display">your selected training window</span>. Scaled for <span>100kg bodyweight</span> — 6 training days + 1 rest day.
+    Quantities based on <span id="shop-time-display">your selected training window</span>. Scaled for <span>65kg lean bulk</span> — 6 training days + 1 rest day.
   </div>
 
   <div class="shop-toggle">
@@ -2456,13 +2627,13 @@ body{
     <div class="shop-cat">
       <div class="shop-cat-title"><span class="shop-cat-icon">🥩</span>Meat &amp; Fish</div>
       <div class="shop-item" id="si-chicken"><button class="shop-chk" onclick="toggleShopItem(this,'si-chicken')">✓</button><div class="shop-item-info"><div class="shop-item-name">Chicken breast</div><div class="shop-item-detail">Lean protein — grilled or baked</div></div><div class="shop-item-qty">1.8 kg</div></div>
-      <div class="shop-item" id="si-salmon"><button class="shop-chk" onclick="toggleShopItem(this,'si-salmon')">✓</button><div class="shop-item-info"><div class="shop-item-name">Salmon fillets</div><div class="shop-item-detail">Omega-3 · 2–3 dinners per week</div></div><div class="shop-item-qty">800g</div></div>
+      <div class="shop-item" id="si-salmon"><button class="shop-chk" onclick="toggleShopItem(this,'si-salmon')">✓</button><div class="shop-item-info"><div class="shop-item-name">Salmon fillets</div><div class="shop-item-detail">Omega-3 · 2–3 dinners per week</div></div><div class="shop-item-qty">500g</div></div>
       <div class="shop-item" id="si-beef"><button class="shop-chk" onclick="toggleShopItem(this,'si-beef')">✓</button><div class="shop-item-info"><div class="shop-item-name">Lean beef mince (5% fat)</div><div class="shop-item-detail">High creatine content from food</div></div><div class="shop-item-qty">500g</div></div>
     </div>
 
     <div class="shop-cat">
       <div class="shop-cat-title"><span class="shop-cat-icon">🥚</span>Eggs &amp; Dairy</div>
-      <div class="shop-item" id="si-eggs"><button class="shop-chk" onclick="toggleShopItem(this,'si-eggs')">✓</button><div class="shop-item-info"><div class="shop-item-name">Free-range eggs</div><div class="shop-item-detail">Breakfast + post-workout meals</div></div><div class="shop-item-qty">24 eggs</div></div>
+      <div class="shop-item" id="si-eggs"><button class="shop-chk" onclick="toggleShopItem(this,'si-eggs')">✓</button><div class="shop-item-info"><div class="shop-item-name">Free-range eggs</div><div class="shop-item-detail">Breakfast + post-workout meals</div></div><div class="shop-item-qty">18 eggs</div></div>
       <div class="shop-item" id="si-cottage"><button class="shop-chk" onclick="toggleShopItem(this,'si-cottage')">✓</button><div class="shop-item-info"><div class="shop-item-name">Cottage cheese (low fat)</div><div class="shop-item-detail">Night fuel — high casein protein</div></div><div class="shop-item-qty">1.8 kg</div></div>
       <div class="shop-item" id="si-yoghurt"><button class="shop-chk" onclick="toggleShopItem(this,'si-yoghurt')">✓</button><div class="shop-item-info"><div class="shop-item-name">Greek yoghurt (full fat)</div><div class="shop-item-detail">Afternoon snack</div></div><div class="shop-item-qty">1.4 kg</div></div>
       <div class="shop-item" id="si-milk"><button class="shop-chk" onclick="toggleShopItem(this,'si-milk')">✓</button><div class="shop-item-info"><div class="shop-item-name">Semi-skimmed milk</div><div class="shop-item-detail">Pre-workout oats / shakes</div></div><div class="shop-item-qty">2 litres</div></div>
@@ -2473,7 +2644,7 @@ body{
       <div class="shop-item" id="si-oats"><button class="shop-chk" onclick="toggleShopItem(this,'si-oats')">✓</button><div class="shop-item-info"><div class="shop-item-name">Rolled oats</div><div class="shop-item-detail">Pre-workout breakfast</div></div><div class="shop-item-qty">900g</div></div>
       <div class="shop-item" id="si-rice"><button class="shop-chk" onclick="toggleShopItem(this,'si-rice')">✓</button><div class="shop-item-info"><div class="shop-item-name">Basmati or white rice</div><div class="shop-item-detail">Lunch + main carb source</div></div><div class="shop-item-qty">1.4 kg</div></div>
       <div class="shop-item" id="si-bread"><button class="shop-chk" onclick="toggleShopItem(this,'si-bread')">✓</button><div class="shop-item-info"><div class="shop-item-name">Sourdough bread</div><div class="shop-item-detail">Post-workout &amp; breakfast</div></div><div class="shop-item-qty">1 loaf</div></div>
-      <div class="shop-item" id="si-sweet"><button class="shop-chk" onclick="toggleShopItem(this,'si-sweet')">✓</button><div class="shop-item-info"><div class="shop-item-name">Sweet potatoes</div><div class="shop-item-detail">Dinner carb — roasted</div></div><div class="shop-item-qty">1.4 kg</div></div>
+      <div class="shop-item" id="si-sweet"><button class="shop-chk" onclick="toggleShopItem(this,'si-sweet')">✓</button><div class="shop-item-info"><div class="shop-item-name">Sweet potatoes</div><div class="shop-item-detail">Dinner carb — roasted</div></div><div class="shop-item-qty">1.0 kg</div></div>
       <div class="shop-item" id="si-rice-cakes"><button class="shop-chk" onclick="toggleShopItem(this,'si-rice-cakes')">✓</button><div class="shop-item-info"><div class="shop-item-name">Rice cakes</div><div class="shop-item-detail">Post-workout quick carbs</div></div><div class="shop-item-qty">1 pack</div></div>
     </div>
 
@@ -2496,7 +2667,8 @@ body{
     <div class="shop-cat">
       <div class="shop-cat-title"><span class="shop-cat-icon">🧴</span>Pantry Staples</div>
       <div class="shop-item" id="si-oil"><button class="shop-chk" onclick="toggleShopItem(this,'si-oil')">✓</button><div class="shop-item-info"><div class="shop-item-name">Olive oil (extra virgin)</div><div class="shop-item-detail">Cooking fat for most meals</div></div><div class="shop-item-qty">500ml</div></div>
-      <div class="shop-item" id="si-honey"><button class="shop-chk" onclick="toggleShopItem(this,'si-honey')">✓</button><div class="shop-item-info"><div class="shop-item-name">Honey</div><div class="shop-item-detail">Oats, yoghurt, post-workout</div></div><div class="shop-item-qty">1 jar</div></div>
+      <div class="shop-item" id="si-honey"><button class="shop-chk" onclick="toggleShopItem(this,'si-honey')">✓</button><div class="shop-item-info"><div class="shop-item-name">Honey</div><div class="shop-item-detail">Oats, shakes, post-workout</div></div><div class="shop-item-qty">1 jar</div></div>
+      <div class="shop-item" id="si-peanut"><button class="shop-chk" onclick="toggleShopItem(this,'si-peanut')">✓</button><div class="shop-item-info"><div class="shop-item-name">Peanut butter (natural)</div><div class="shop-item-detail">High calorie, easy to eat — bulk essential</div></div><div class="shop-item-qty">1 jar</div></div>
       <div class="shop-item" id="si-coffee"><button class="shop-chk" onclick="toggleShopItem(this,'si-coffee')">✓</button><div class="shop-item-info"><div class="shop-item-name">Ground coffee / instant</div><div class="shop-item-detail">Pre-workout caffeine source</div></div><div class="shop-item-qty">1 pack</div></div>
     </div>
   </div>
@@ -2623,6 +2795,7 @@ body{
       <div class="unlock-icon">🔥</div>
       <div class="unlock-text"><strong>Phase 3 — Definition</strong> · Weeks 9–12<br>Maintain strength · add cardio · reveal the work</div>
     </div>
+
   </div>
 
   <!-- WEEKLY CALENDAR -->
@@ -2944,7 +3117,7 @@ function buildTracker(){
   const c=document.getElementById('weeklyTracker');
   if(!c) return;
   c.innerHTML='';
-  for(let w=1;w<=12;w++){
+  for(let w=1;w<=16;w++){
     const wd=document.createElement('div');
     let wClass='trkr-week';
     if(w===curWeek) wClass+=' current-week';
@@ -2980,6 +3153,7 @@ function buildTracker(){
   updatePhaseCard();
   updatePhaseBadges();
   renderTodayCard();
+  calcWorkoutTime();
 }
 
 function updProgress(){
@@ -3164,6 +3338,285 @@ function highlightDeload(){
   });
 }
 
+
+// ── WORKOUT TIME ESTIMATES ────────────────────────────────────────────────────
+function calcWorkoutTime(){
+  const week = getCurrentWeek();
+  // Phase determines rest periods
+  let restSecs, setsPerExercise, label;
+  if(week <= 4){
+    restSecs = 90; setsPerExercise = 4;
+    label = 'Phase 1 · 90s rest between sets';
+  } else if(week <= 8){
+    restSecs = 150; setsPerExercise = 5;
+    label = 'Phase 2 · 2.5 min rest between sets';
+  } else {
+    restSecs = 60; setsPerExercise = 4;
+    label = 'Phase 3 · 60s rest · cut phase';
+  }
+
+  const setTimeSecs = 45; // avg time to perform a set
+
+  function calcDay(exercises, warmupMins, extraMins){
+    const totalSets = exercises * setsPerExercise;
+    const setsMins = Math.round((totalSets * setTimeSecs) / 60);
+    const restMins = Math.round((totalSets * restSecs) / 60);
+    const transMins = 5; // moving between stations
+    const total = warmupMins + setsMins + restMins + transMins + (extraMins||0);
+    return {total, setsMins, restMins, warmupMins, extraMins: extraMins||transMins};
+  }
+
+  // Push: 6 exercises
+  const push = calcDay(6, 5, 5);
+  // Pull: 6 exercises
+  const pull = calcDay(6, 5, 5);
+  // Legs: 4 main exercises + 10 min core circuit
+  const legs = calcDay(4, 7, 10);
+
+  const days = [
+    {prefix:'push', data:push},
+    {prefix:'pull', data:pull},
+    {prefix:'legs', data:legs},
+  ];
+
+  days.forEach(({prefix, data}) => {
+    const tEl = document.getElementById(prefix+'TimeMins');
+    const dEl = document.getElementById(prefix+'TimeDetail');
+    const sEl = document.getElementById(prefix+'SetsMins');
+    const rEl = document.getElementById(prefix+'RestMins');
+    if(tEl) tEl.textContent = data.total;
+    if(dEl) dEl.textContent = label;
+    if(sEl) sEl.textContent = data.setsMins;
+    if(rEl) rEl.textContent = data.restMins;
+  });
+}
+
+// ── CALORIE TRACKER ────────────────────────────────────────────────────────────
+const CAL_KEY = 'apx_calories_v1';
+const CAL_TARGET = 2800;
+const CAL_TARGET_REST = 2400;
+let calOffset = 0; // 0 = today, -1 = yesterday etc.
+
+function getCalKey(offset){
+  const d = new Date();
+  d.setDate(d.getDate() + (offset||0));
+  return d.toISOString().split('T')[0]; // YYYY-MM-DD
+}
+
+function getCalData(){
+  return JSON.parse(localStorage.getItem(CAL_KEY) || '{}');
+}
+
+function saveCalData(data){
+  localStorage.setItem(CAL_KEY, JSON.stringify(data));
+}
+
+function getDayEntries(dateKey){
+  const data = getCalData();
+  return data[dateKey] || [];
+}
+
+function calChangeDay(dir){
+  calOffset += dir;
+  if(calOffset > 0) calOffset = 0; // can't go future
+  renderCalories();
+}
+
+function calAddEntry(){
+  const name = document.getElementById('calFoodName').value.trim();
+  const kcal = parseInt(document.getElementById('calFoodKcal').value);
+  const protein = parseFloat(document.getElementById('calFoodProtein').value) || 0;
+  const carbs = parseFloat(document.getElementById('calFoodCarbs').value) || 0;
+  const fats = parseFloat(document.getElementById('calFoodFats').value) || 0;
+
+  if(!name){ alert('Please enter a food name'); return; }
+  if(!kcal || kcal < 1){ alert('Please enter calories'); return; }
+
+  const dateKey = getCalKey(calOffset);
+  const data = getCalData();
+  if(!data[dateKey]) data[dateKey] = [];
+
+  const now = new Date();
+  const time = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+
+  data[dateKey].push({
+    id: Date.now(),
+    name, kcal, protein, carbs, fats, time
+  });
+
+  saveCalData(data);
+
+  // Clear inputs
+  ['calFoodName','calFoodKcal','calFoodProtein','calFoodCarbs','calFoodFats'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+
+  renderCalories();
+}
+
+function calDeleteEntry(dateKey, id){
+  const data = getCalData();
+  if(!data[dateKey]) return;
+  data[dateKey] = data[dateKey].filter(e => e.id !== id);
+  saveCalData(data);
+  renderCalories();
+}
+
+function renderCalories(){
+  const dateKey = getCalKey(calOffset);
+  const entries = getDayEntries(dateKey);
+
+  // Day label
+  const labelEl = document.getElementById('calDayLabel');
+  if(labelEl){
+    if(calOffset === 0) labelEl.textContent = 'TODAY';
+    else if(calOffset === -1) labelEl.textContent = 'YESTERDAY';
+    else {
+      const d = new Date();
+      d.setDate(d.getDate() + calOffset);
+      labelEl.textContent = d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}).toUpperCase();
+    }
+  }
+
+  // Totals
+  const totalKcal = entries.reduce((s,e) => s+e.kcal, 0);
+  const totalProtein = entries.reduce((s,e) => s+(e.protein||0), 0);
+  const totalCarbs = entries.reduce((s,e) => s+(e.carbs||0), 0);
+  const totalFats = entries.reduce((s,e) => s+(e.fats||0), 0);
+  const target = CAL_TARGET;
+  const pct = Math.min(Math.round(totalKcal/target*100), 100);
+  const isOver = totalKcal > target;
+  const remaining = target - totalKcal;
+
+  // Ring
+  const circ = 390;
+  const ringEl = document.getElementById('calRingCircle');
+  const overEl = document.getElementById('calRingOver');
+  if(ringEl){
+    ringEl.style.strokeDashoffset = circ - (circ * Math.min(pct,100) / 100);
+    ringEl.style.stroke = isOver ? '#ff6b35' : 'var(--accent)';
+  }
+
+  // Ring center
+  const numEl = document.getElementById('calRingNum');
+  if(numEl) numEl.textContent = totalKcal.toLocaleString();
+
+  // Remaining
+  const remEl = document.getElementById('calRemaining');
+  const remNum = document.getElementById('calRemainingNum');
+  if(remEl && remNum){
+    if(isOver){
+      remNum.textContent = Math.abs(remaining).toLocaleString();
+      remNum.className = 'over';
+      remEl.innerHTML = remEl.innerHTML.replace('remaining today','over target');
+      remEl.querySelector('span').textContent = Math.abs(remaining).toLocaleString();
+      remEl.innerHTML = '<span class="over">'+Math.abs(remaining).toLocaleString()+'</span> kcal over target';
+    } else {
+      remEl.innerHTML = '<span class="under">'+remaining.toLocaleString()+'</span> kcal remaining today';
+    }
+  }
+
+  // Macros
+  const setMacro = (id, val, target, barId) => {
+    const el = document.getElementById(id);
+    const bar = document.getElementById(barId);
+    if(el) el.textContent = Math.round(val);
+    if(bar){
+      const pct = Math.min(Math.round(val/target*100), 100);
+      bar.style.width = pct + '%';
+      bar.className = 'cal-macro-fill' + (val > target ? ' over' : '');
+    }
+  };
+  setMacro('calProteinEaten', totalProtein, 230, 'calProteinBar');
+  setMacro('calCarbsEaten', totalCarbs, 270, 'calCarbsBar');
+  setMacro('calFatsEaten', totalFats, 80, 'calFatsBar');
+
+  // Log body
+  const logBody = document.getElementById('calLogBody');
+  if(logBody){
+    if(entries.length === 0){
+      logBody.innerHTML = '<div class="cal-empty">No food logged yet today.<br>Add your first meal above.</div>';
+    } else {
+      const header = document.getElementById('calLogWrap').querySelector('.cal-log-header-title');
+      if(header) header.textContent = entries.length + ' item' + (entries.length>1?'s':'') + ' · ' + totalKcal.toLocaleString() + ' kcal';
+      logBody.innerHTML = entries.slice().reverse().map(e =>
+        `<div class="cal-entry">
+          <div style="flex:1">
+            <div class="cal-entry-name">${e.name}</div>
+            <div class="cal-entry-time">${e.time}</div>
+          </div>
+          <div class="cal-entry-macro">${e.protein?Math.round(e.protein)+'g':'—'}</div>
+          <div class="cal-entry-macro">${e.carbs?Math.round(e.carbs)+'g':'—'}</div>
+          <div class="cal-entry-macro">${e.fats?Math.round(e.fats)+'g':'—'}</div>
+          <div class="cal-entry-kcal">${e.kcal}</div>
+          <button class="cal-del-btn" onclick="calDeleteEntry('${dateKey}',${e.id})">✕</button>
+        </div>`
+      ).join('');
+    }
+  }
+
+  // Week summary
+  renderCalWeekSummary();
+}
+
+function renderCalWeekSummary(){
+  const data = getCalData();
+  const days = [];
+  for(let i=0;i>=-6;i--){
+    const key = getCalKey(i);
+    const entries = data[key] || [];
+    if(entries.length > 0){
+      days.push({
+        key,
+        kcal: entries.reduce((s,e)=>s+e.kcal,0),
+        label: i===0?'Today':i===-1?'Yesterday': (() => {
+          const d=new Date(); d.setDate(d.getDate()+i);
+          return d.toLocaleDateString('en-GB',{weekday:'short'});
+        })()
+      });
+    }
+  }
+
+  const summary = document.getElementById('calWeekSummary');
+  if(!summary) return;
+
+  if(days.length < 2){
+    summary.innerHTML = '<div style="font-size:11px;color:var(--mid);text-align:center;padding:8px 0">Log at least 2 days to see your average</div>';
+    return;
+  }
+
+  const avg = Math.round(days.reduce((s,d)=>s+d.kcal,0)/days.length);
+  const maxKcal = Math.max(...days.map(d=>d.kcal));
+
+  let barsHtml = '<div style="display:flex;gap:4px;align-items:flex-end;height:60px;margin-bottom:6px;">';
+  days.slice().reverse().forEach(d => {
+    const h = Math.max(4, Math.round((d.kcal/maxKcal)*56));
+    const col = d.kcal > 2800 ? '#ff6b35' : d.kcal > 2400 ? 'var(--accent)' : '#4caf7d';
+    barsHtml += `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+      <div style="width:100%;height:${h}px;background:${col};border-radius:2px 2px 0 0"></div>
+      <div style="font-size:8px;color:var(--grey)">${d.label}</div>
+    </div>`;
+  });
+  barsHtml += '</div>';
+
+  const diffFromTarget = avg - 2800;
+  const diffStr = diffFromTarget > 0 ? '+'+diffFromTarget : diffFromTarget.toString();
+  const diffCol = Math.abs(diffFromTarget) < 150 ? 'var(--green)' : diffFromTarget > 0 ? '#ff6b35' : 'var(--accent)';
+
+  summary.innerHTML = barsHtml +
+    `<div style="display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px solid var(--border)">
+      <div>
+        <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase">7-day average</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;color:var(--white)">${avg.toLocaleString()} <span style="font-size:13px;color:var(--grey)">kcal</span></div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase">vs target</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;color:${diffCol}">${diffStr} kcal</div>
+      </div>
+    </div>`;
+}
+
 // ── INIT ───────────────────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded',()=>{
   buildTracker();
@@ -3184,7 +3637,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   <!-- SUMMARY STATS -->
   <div class="summary-grid">
     <div class="summary-cell">
-      <div class="summary-num" id="trk-start-weight">—</div>
+      <div class="summary-num" id="trk-start-weight">65</div>
       <div class="summary-lbl">Start kg</div>
     </div>
     <div class="summary-cell">
@@ -3382,12 +3835,120 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 </div>
 
+<!-- ===== CALORIES ===== -->
+<div id="tab-calories" class="section">
+  <div class="sec-label">Daily Food Log · 2,800 kcal target</div>
+  <div class="sec-title">CALORIES</div>
+
+  <!-- Day Navigation -->
+  <div class="cal-day-nav">
+    <button class="cal-day-btn" onclick="calChangeDay(-1)">‹</button>
+    <div class="cal-day-label" id="calDayLabel">TODAY</div>
+    <button class="cal-day-btn" onclick="calChangeDay(1)">›</button>
+  </div>
+
+  <!-- Ring -->
+  <div class="cal-ring-wrap">
+    <svg width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="62" fill="none" stroke="var(--border)" stroke-width="8"/>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="var(--accent)" stroke-width="8"
+        stroke-dasharray="390" stroke-dashoffset="390" id="calRingCircle" stroke-linecap="round"/>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#ff6b35" stroke-width="8"
+        stroke-dasharray="390" stroke-dashoffset="390" id="calRingOver" stroke-linecap="round" opacity="0"/>
+    </svg>
+    <div class="cal-ring-center">
+      <span class="cal-ring-num" id="calRingNum">0</span>
+      <span class="cal-ring-lbl">kcal eaten</span>
+      <span class="cal-ring-target" id="calRingTarget">of 2,800</span>
+    </div>
+  </div>
+
+  <!-- Remaining -->
+  <div class="cal-remaining" id="calRemaining">
+    <span class="under" id="calRemainingNum">2,800</span> kcal remaining today
+  </div>
+
+  <!-- Macro strip -->
+  <div class="cal-macro-strip">
+    <div class="cal-macro">
+      <div class="cal-macro-val"><span id="calProteinEaten">0</span>g</div>
+      <div class="cal-macro-target">/ 230g</div>
+      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calProteinBar" style="width:0%"></div></div>
+      <div class="cal-macro-name">Protein</div>
+    </div>
+    <div class="cal-macro">
+      <div class="cal-macro-val"><span id="calCarbsEaten">0</span>g</div>
+      <div class="cal-macro-target">/ 270g</div>
+      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calCarbsBar" style="width:0%"></div></div>
+      <div class="cal-macro-name">Carbs</div>
+    </div>
+    <div class="cal-macro">
+      <div class="cal-macro-val"><span id="calFatsEaten">0</span>g</div>
+      <div class="cal-macro-target">/ 80g</div>
+      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calFatsBar" style="width:0%"></div></div>
+      <div class="cal-macro-name">Fats</div>
+    </div>
+  </div>
+
+  <!-- Add food -->
+  <div class="cal-add-card">
+    <div class="cal-add-title">Log Food</div>
+    <div class="cal-input-row">
+      <input class="cal-input" type="text" id="calFoodName" placeholder="Food name (e.g. Chicken breast 200g)" maxlength="60">
+    </div>
+    <div class="cal-input-row">
+      <div style="flex:1">
+        <div class="cal-macro-label">Calories</div>
+        <input class="cal-input cal-input-kcal" style="width:100%" type="number" id="calFoodKcal" placeholder="kcal" min="0" max="5000">
+      </div>
+      <div style="flex:1">
+        <div class="cal-macro-label">Protein (g)</div>
+        <input class="cal-input" type="number" id="calFoodProtein" placeholder="g" min="0" max="500">
+      </div>
+    </div>
+    <div class="cal-input-row">
+      <div style="flex:1">
+        <div class="cal-macro-label">Carbs (g)</div>
+        <input class="cal-input" type="number" id="calFoodCarbs" placeholder="g" min="0" max="500">
+      </div>
+      <div style="flex:1">
+        <div class="cal-macro-label">Fats (g)</div>
+        <input class="cal-input" type="number" id="calFoodFats" placeholder="g" min="0" max="500">
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--grey);margin-bottom:8px;">Macros optional — kcal required</div>
+    <button class="cal-add-btn" style="width:100%" onclick="calAddEntry()">+ ADD FOOD</button>
+  </div>
+
+  <!-- Food log -->
+  <div class="cal-log" id="calLogWrap">
+    <div class="cal-log-header">
+      <div class="cal-log-header-title">Today's Log</div>
+      <div class="cal-log-header-cols">
+        <div class="cal-log-col">P</div>
+        <div class="cal-log-col">C</div>
+        <div class="cal-log-col">F</div>
+        <div class="cal-log-col" style="min-width:54px">kcal</div>
+      </div>
+    </div>
+    <div id="calLogBody">
+      <div class="cal-empty">No food logged yet today.<br>Add your first meal above.</div>
+    </div>
+  </div>
+
+  <!-- Week summary -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">7-Day Average</div><div class="div-line"></div></div>
+  <div style="background:var(--card);border:1px solid var(--border);padding:14px;" id="calWeekSummary">
+    <div style="font-size:11px;color:var(--mid);text-align:center;padding:8px 0;">Log at least 3 days to see your weekly average</div>
+  </div>
+</div>
+
 <!-- PWA INSTALL BANNER -->
 <div id="installBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;
   background:#1a1a1a;border-top:2px solid #c8102e;padding:14px 16px;
   z-index:9999;align-items:center;gap:12px;">
   <div style="flex:1;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:#f2efe8;">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:2px;color:#f2efe8;">
       ADD TO HOME SCREEN
     </div>
     <div style="font-size:11px;color:#6e6e6e;margin-top:2px;">
@@ -3395,13 +3956,13 @@ window.addEventListener('DOMContentLoaded',()=>{
     </div>
   </div>
   <button onclick="installApp()" style="background:#c8102e;border:none;color:#fff;
-    font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;
+    font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:2px;
     padding:10px 18px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
     INSTALL
   </button>
   <button onclick="document.getElementById('installBanner').style.display='none'"
     style="background:transparent;border:1px solid #252525;color:#6e6e6e;
-    font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;
+    font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:1px;
     padding:10px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
     NOT NOW
   </button>
@@ -3426,7 +3987,7 @@ function populateWeekSelects(){
     if(!sel) return;
     const cur = getCurrentWeek();
     sel.innerHTML = '';
-    for(let w=1;w<=12;w++){
+    for(let w=1;w<=16;w++){
       const opt = document.createElement('option');
       opt.value = w;
       opt.textContent = 'Week ' + w + (w===cur?' (current)':'');
@@ -3599,7 +4160,7 @@ function renderLiftChart(){
   if(!svgEl||!emptyEl) return;
 
   const entries=[];
-  for(let w=1;w<=12;w++){
+  for(let w=1;w<=16;w++){
     if(trkData.lifts[w]&&trkData.lifts[w][activeLift]!=null){
       entries.push({w,v:trkData.lifts[w][activeLift]});
     }
@@ -3729,7 +4290,7 @@ function initTracking(){
 <script>
 // PWA SERVICE WORKER
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('./sw.js')
+  navigator.serviceWorker.register('/ApexPhysique-Claude/sw.js', {scope: '/ApexPhysique-Claude/'})
     .catch(err => console.log('SW failed:', err));
 }
 
