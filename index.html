@@ -12,7 +12,7 @@
 <link rel="manifest" href="./manifest.json">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>ASCEND</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #0a0a0a;
@@ -42,7 +42,11 @@ body{
 }
 
 /* HERO */
-.hero{padding:14px 20px 16px;border-bottom:1px solid var(--border);}
+.hero{
+  padding:24px 20px 20px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
 .hero-eyebrow{
   font-size:10px;letter-spacing:3px;text-transform:uppercase;
   color:var(--grey);margin-bottom:6px;
@@ -126,9 +130,9 @@ body{
 .tab.active{color:var(--white);border-bottom-color:var(--accent);}
 
 /* SECTIONS */
-.section{display:none;padding:18px 16px;animation:fadeUp 0.25s ease;}
+.section{display:none;padding:18px 16px 24px;}
 .section.active{display:block;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 
 /* SECTION HEADER */
 .sec-header{margin-bottom:18px;}
@@ -1134,673 +1138,329 @@ body{
 .cal-remaining .over{color:#ff6b35;}
 
 
-/* ══ HAMBURGER NAV ══════════════════════════════════════════════ */
-/* Top bar */
-.topbar{position:sticky;top:0;z-index:200;background:rgba(10,10,10,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;height:52px;flex-shrink:0;}
-.topbar-logo{
-  display:flex;align-items:center;gap:8px;flex:1;
-}
-.topbar-wordmark{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:16px;font-weight:700;letter-spacing:0.04em;
-  color:var(--white);
-}
-.topbar-section{
-  font-size:12px;color:var(--mid);margin-left:10px;
-  padding-left:10px;border-left:1px solid var(--border);
-  font-weight:500;max-width:140px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.hamburger-btn{
-  width:40px;height:40px;
-  background:none;border:none;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:5px;
-  cursor:pointer;-webkit-tap-highlight-color:transparent;
-  padding:0;flex-shrink:0;
-}
-.ham-line{
-  width:22px;height:2px;background:var(--white);
-  border-radius:2px;transition:all 0.25s ease;
-  transform-origin:center;
-}
-/* Animated to X when open */
+
+
+
+
+.hamburger-btn{width:44px;height:44px;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent;z-index:600;}
+.ham-line{width:22px;height:2px;background:#f2efe8;border-radius:2px;transition:transform 0.25s,opacity 0.25s;display:block;}
 .hamburger-btn.open .ham-line:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger-btn.open .ham-line:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger-btn.open .ham-line:nth-child(2){opacity:0;}
 .hamburger-btn.open .ham-line:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-/* Overlay backdrop */
-.nav-backdrop{
-  position:fixed;inset:0;background:rgba(0,0,0,0.6);
-  z-index:300;opacity:0;pointer-events:none;
-  transition:opacity 0.25s ease;
-}
+.nav-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:700;opacity:0;pointer-events:none;transition:opacity 0.25s;}
 .nav-backdrop.open{opacity:1;pointer-events:auto;}
-
-/* Drawer */
-.nav-drawer{
-  position:fixed;top:0;right:0;bottom:0;
-  width:72vw;max-width:280px;
-  background:var(--surface);z-index:400;
-  transform:translateX(100%);
-  transition:transform 0.3s cubic-bezier(0.32,0.72,0,1);
-  display:flex;flex-direction:column;
-  border-left:1px solid var(--border);
-  overflow-y:auto;
-}
+.nav-drawer{position:fixed;top:0;right:0;bottom:0;width:75vw;max-width:300px;background:#141414;z-index:800;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.32,0.72,0,1);overflow-y:auto;border-left:1px solid #222;}
 .nav-drawer.open{transform:translateX(0);}
-
-/* Drawer header */
-.nav-drawer-header{
-  padding:20px 20px 16px;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:10px;
-  flex-shrink:0;
-}
-.nav-drawer-logo{
-  width:32px;height:32px;background:var(--accent);
-  border-radius:8px;display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.nav-drawer-title{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:16px;font-weight:700;color:var(--white);
-}
-.nav-drawer-sub{font-size:11px;color:var(--mid);margin-top:1px;}
-
-/* Nav sections */
-.nav-section{padding:12px 0;}
-.nav-section-label{
-  font-size:9px;font-weight:700;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--grey);
-  padding:0 20px;margin-bottom:4px;
-}
-.nav-item{
-  display:flex;align-items:center;gap:14px;
-  padding:13px 20px;cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-  transition:background 0.15s;
-  position:relative;
-}
+.nav-drawer-header{padding:20px;border-bottom:1px solid #222;display:flex;align-items:center;gap:12px;}
+.nav-drawer-logo{width:34px;height:34px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-drawer-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#f2efe8;}
+.nav-drawer-sub{font-size:11px;color:#666;margin-top:2px;}
+.nav-section{padding:8px 0;}
+.nav-section-label{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#444;padding:0 20px;margin-bottom:2px;}
+.nav-item{display:flex;align-items:center;gap:14px;padding:13px 20px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background 0.15s;position:relative;}
 .nav-item:active{background:rgba(255,255,255,0.04);}
-.nav-item.active{background:var(--accent-dim,rgba(200,16,46,0.08));}
-.nav-item.active::before{
-  content:'';position:absolute;left:0;top:8px;bottom:8px;
-  width:3px;background:var(--accent);border-radius:0 2px 2px 0;
-}
-.nav-item-icon{
-  font-size:18px;width:24px;text-align:center;flex-shrink:0;
-}
-.nav-item-info{flex:1;}
-.nav-item-name{
-  font-size:14px;font-weight:600;color:var(--white);
-  line-height:1;margin-bottom:2px;
-}
+.nav-item.active{background:rgba(200,16,46,0.1);}
+.nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--accent);border-radius:0 2px 2px 0;}
+.nav-item-icon{font-size:20px;width:28px;text-align:center;flex-shrink:0;}
+.nav-item-name{font-size:14px;font-weight:600;color:#f2efe8;line-height:1;margin-bottom:2px;}
 .nav-item.active .nav-item-name{color:var(--accent);}
-.nav-item-desc{font-size:11px;color:var(--mid);}
-.nav-divider{
-  height:1px;background:var(--border);
-  margin:4px 20px;
-}
+.nav-item-desc{font-size:11px;color:#666;}
+.nav-divider{height:1px;background:#222;margin:4px 20px;}
 
 
-/* ══ EXERCISE WEIGHT LOG ════════════════════════════════════════ */
-.ex-weight-log{
-  margin-top:10px;
-  border-top:1px solid var(--border);
-  padding-top:10px;
-}
-.ex-weight-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:8px;
-}
-.ex-weight-title{
-  font-size:10px;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--grey);
-}
-.ex-weight-pr{
-  font-size:11px;font-weight:700;color:var(--green,#4caf7d);
-}
-.ex-weight-input-row{
-  display:flex;gap:6px;align-items:center;
-  margin-bottom:6px;
-}
-.ex-weight-input{
-  flex:1;background:var(--surface,#141414);
-  border:1px solid var(--border2,#2e2e2e);
-  color:var(--white,#f2efe8);
-  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;
-  padding:9px 12px;outline:none;
-  -webkit-appearance:none;text-align:center;
-  border-radius:4px;
-}
-.ex-weight-input:focus{border-color:var(--accent,#c8102e);}
-.ex-weight-input::placeholder{color:var(--grey,#6e6e6e);font-size:12px;font-weight:400;}
-.ex-weight-unit{
-  font-size:12px;color:var(--mid,#9a9a9a);
-  padding:0 2px;white-space:nowrap;min-width:20px;
-}
-.ex-weight-save{
-  padding:9px 16px;background:var(--accent,#c8102e);
-  border:none;color:#fff;
-  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;
-  cursor:pointer;-webkit-tap-highlight-color:transparent;
-  transition:opacity 0.15s;border-radius:4px;white-space:nowrap;
-}
+
+
+
+
+
+.ex-weight-log{margin-top:10px;border-top:1px solid var(--border);padding-top:10px;scroll-margin-top:60px;}
+.ex-weight-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.ex-weight-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);}
+.ex-weight-pr{font-size:11px;font-weight:700;color:#4caf7d;}
+.ex-weight-input-row{display:flex;gap:6px;align-items:center;margin-bottom:6px;}
+.ex-weight-input{flex:1;background:var(--surface);border:1px solid var(--border2,#2e2e2e);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:9px 12px;outline:none;-webkit-appearance:none;text-align:center;border-radius:4px;transform:translateZ(0);}
+.ex-weight-input:focus{border-color:var(--accent);}
+.ex-weight-input::placeholder{color:var(--grey);font-size:12px;font-weight:400;}
+.ex-weight-unit{font-size:12px;color:var(--mid);padding:0 2px;}
+.ex-weight-save{padding:9px 16px;background:var(--accent);border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:4px;}
 .ex-weight-save:active{opacity:0.8;}
-.ex-weight-history{
-  display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;
-}
-.ex-weight-chip{
-  font-size:10px;padding:3px 8px;
-  background:var(--card,#1a1a1a);
-  border:1px solid var(--border,#252525);
-  color:var(--mid,#9a9a9a);border-radius:12px;
-  white-space:nowrap;
-}
-.ex-weight-chip.latest{
-  background:rgba(200,16,46,0.08);
-  border-color:rgba(200,16,46,0.3);
-  color:var(--accent,#c8102e);font-weight:700;
-}
+.ex-weight-history{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;}
+.ex-weight-chip{font-size:10px;padding:3px 8px;background:var(--card);border:1px solid var(--border);color:var(--mid);border-radius:12px;white-space:nowrap;}
+.ex-weight-chip.latest{background:rgba(200,16,46,0.08);border-color:rgba(200,16,46,0.3);color:var(--accent);font-weight:700;}
+.day-banner{margin:20px 0 12px;border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+.day-banner-inner{padding:16px 18px;background:var(--card);display:flex;align-items:center;gap:14px;position:relative;}
+.day-banner-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+.day-banner-icon{font-size:28px;flex-shrink:0;}
+.day-banner-info{flex:1;}
+.day-banner-name{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1;margin-bottom:4px;}
+.day-banner-days{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase;}
+.day-banner-muscles{font-size:11px;color:var(--mid);margin-top:3px;}
+.day-banner-chip{background:rgba(200,16,46,0.08);border:1px solid rgba(200,16,46,0.2);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 
 
-/* ══ WHAT'S NEXT ════════════════════════════════════════════════ */
-.next-hero{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--r-md,10px);
-  padding:20px;
-  margin-bottom:16px;
-  position:relative;
-  overflow:hidden;
-}
-.next-hero::before{
-  content:'';position:absolute;
-  top:0;left:0;width:4px;height:100%;
-  background:var(--accent);
-}
-.next-hero-eyebrow{
-  font-size:10px;font-weight:700;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--accent);
-  margin-bottom:8px;
-}
-.next-hero-title{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:22px;font-weight:700;letter-spacing:-0.02em;
-  color:var(--white);margin-bottom:8px;line-height:1.2;
-}
-.next-hero-body{
-  font-size:13px;color:var(--mid);line-height:1.7;
-}
-.next-hero-body strong{color:var(--white);}
+/* ══ HOME SCREEN ════════════════════════════════════════════════ */
+.home-today{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden;}
+.home-today::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+.home-today-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.home-today-eyebrow{font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);}
+.home-today-week{font-size:12px;font-weight:700;color:var(--white);font-family:'Space Grotesk',sans-serif;}
+.home-today-phase{font-size:11px;color:var(--grey);font-weight:400;}
+.home-today-main{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.home-today-icon{font-size:36px;}
+.home-today-name{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1;margin-bottom:4px;}
+.home-today-sub{font-size:11px;color:var(--mid);}
+.home-log-btn{width:100%;padding:13px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:7px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.home-log-btn:active{opacity:0.85;}
 
-.next-phase-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--r-md,10px);
-  margin-bottom:10px;overflow:hidden;
-}
-.next-phase-head{
-  padding:16px;cursor:pointer;
-  display:flex;align-items:center;gap:14px;
-  -webkit-tap-highlight-color:transparent;
-  user-select:none;
-}
-.next-phase-head:active{background:rgba(255,255,255,0.02);}
-.next-phase-num{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:28px;font-weight:800;color:var(--border2);
-  line-height:1;min-width:36px;
-}
-.next-phase-info{flex:1;}
-.next-phase-name{
-  font-size:15px;font-weight:700;color:var(--white);
-  margin-bottom:3px;
-}
-.next-phase-sub{font-size:12px;color:var(--mid);}
-.next-phase-arrow{color:var(--grey);font-size:11px;transition:transform 0.2s;}
-.next-phase-card.open .next-phase-arrow{transform:rotate(180deg);}
-.next-phase-body{
-  display:none;padding:0 16px 16px;
-  border-top:1px solid var(--border);
-}
-.next-phase-card.open .next-phase-body{display:block;}
-.next-phase-intro{
-  font-size:12px;color:var(--mid);line-height:1.7;
-  margin:12px 0;
-}
-.next-phase-intro strong{color:var(--white);}
+.home-stats{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border-radius:10px;padding:14px 16px;margin-bottom:14px;}
+.home-stat{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.home-stat-n{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--white);}
+.home-stat-l{font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;}
+.home-stat-div{width:1px;height:28px;background:var(--border);}
 
-.next-change-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:8px;margin:12px 0;
-}
-.next-change-cell{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--r-sm,6px);
-  padding:10px 12px;
-}
-.next-change-label{
-  font-size:9px;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--grey);margin-bottom:4px;
-}
-.next-change-val{
-  font-size:13px;font-weight:600;color:var(--white);
-  line-height:1.4;
-}
-.next-change-val.accent{color:var(--accent);}
-.next-change-val.green{color:var(--green,#4caf7d);}
+.home-split{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:20px;}
+.home-split-day{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px;border-radius:8px;cursor:pointer;-webkit-tap-highlight-color:transparent;border:1px solid transparent;}
+.home-split-day.train{background:rgba(200,16,46,0.07);border-color:rgba(200,16,46,0.2);}
+.home-split-day.rest{background:var(--surface);border-color:var(--border);}
+.home-split-day:active{opacity:0.7;}
+.home-split-d{font-size:9px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:0.04em;}
+.home-split-t{font-size:8px;color:var(--accent);font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
+.home-split-day.rest .home-split-t{color:var(--grey);}
 
-.next-ex-list{
-  margin:12px 0;
-}
-.next-ex-item{
-  display:flex;align-items:flex-start;gap:10px;
-  padding:10px 0;border-bottom:1px solid rgba(37,37,37,0.5);
-  font-size:12px;
-}
-.next-ex-item:last-child{border-bottom:none;}
-.next-ex-badge{
-  font-size:10px;font-weight:700;color:var(--accent);
-  min-width:28px;padding-top:1px;letter-spacing:0.04em;
-}
-.next-ex-info{flex:1;}
-.next-ex-name{color:var(--white);font-weight:600;margin-bottom:2px;}
-.next-ex-detail{color:var(--mid);font-size:11px;line-height:1.5;}
+.home-track-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.home-track-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;}
+.home-track-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
+.home-track-big{display:flex;align-items:baseline;gap:4px;}
+.home-track-big span:first-child{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--white);}
+.home-track-unit{font-size:11px;color:var(--grey);}
+.home-track-btn{flex:1;padding:8px 0;background:var(--surface);border:1px solid var(--border);color:var(--mid);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:5px;}
+.home-track-btn.accent{background:rgba(200,16,46,0.12);border-color:rgba(200,16,46,0.3);color:var(--accent);}
 
-.next-tip-box{
-  background:rgba(200,16,46,0.05);
-  border:1px solid rgba(200,16,46,0.2);
-  border-radius:var(--r-sm,6px);
-  padding:12px 14px;margin:12px 0;
-}
-.next-tip-label{
-  font-size:10px;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:6px;
-}
-.next-tip-text{font-size:12px;color:var(--mid);line-height:1.7;}
-.next-tip-text strong{color:var(--white);}
+.home-section-label{font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);margin-bottom:10px;}
 
-.next-section-divider{
-  display:flex;align-items:center;gap:10px;
-  margin:20px 0 12px;
-}
-.next-section-divider span{
-  font-size:10px;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--mid);white-space:nowrap;
-}
-.next-section-divider::before,.next-section-divider::after{
-  content:'';flex:1;height:1px;background:var(--border);
-}
+.home-targets{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.home-target{background:var(--surface);border-radius:8px;padding:12px 14px;}
+.home-target-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.home-target-name{font-size:13px;font-weight:600;color:var(--white);}
+.home-target-tag{font-size:8px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--surface);color:var(--grey);border:1px solid var(--border);}
+.home-target-tag.hi{background:rgba(200,16,46,0.1);color:var(--accent);border-color:rgba(200,16,46,0.3);}
+.home-target-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.home-target-fill{height:100%;background:linear-gradient(90deg,var(--accent),rgba(200,16,46,0.5));border-radius:2px;}
 
-.next-mindset-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--r-md,10px);
-  padding:16px;margin-bottom:10px;
-}
-.next-mindset-icon{font-size:24px;margin-bottom:8px;}
-.next-mindset-title{
-  font-size:14px;font-weight:700;color:var(--white);
-  margin-bottom:6px;
-}
-.next-mindset-body{font-size:12px;color:var(--mid);line-height:1.7;}
-.next-mindset-body strong{color:var(--white);}
+.home-rules{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
+.home-rule{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border);}
+.home-rule:last-child{border-bottom:none;}
+.home-rule-n{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:800;color:var(--accent);min-width:22px;padding-top:1px;}
+.home-rule-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.home-rule-sub{font-size:11px;color:var(--mid);line-height:1.5;}
 
-.next-benchmark{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r-sm,6px);
-  padding:12px 14px;margin-bottom:8px;
-  display:flex;align-items:center;gap:12px;
-}
-.next-benchmark-icon{font-size:20px;flex-shrink:0;}
-.next-benchmark-info{flex:1;}
-.next-benchmark-name{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
-.next-benchmark-detail{font-size:11px;color:var(--mid);line-height:1.5;}
-.next-benchmark-target{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:16px;font-weight:700;color:var(--accent);
-  text-align:right;white-space:nowrap;
-}
-
+.topbar{position:sticky;top:0;z-index:500;background:#0a0a0a;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:58px;}
+.topbar-centre{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;}
+.topbar-wordmark{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;letter-spacing:0.25em;color:#f2efe8;text-transform:uppercase;transition:opacity 0.2s;}
+.topbar-section{font-size:12px;color:#777;font-weight:500;font-family:'DM Sans',sans-serif;letter-spacing:0.02em;transition:opacity 0.2s;}
 </style>
+<script>
+function toggleNav(){
+  var b=document.getElementById('hamburgerBtn'),d=document.getElementById('navDrawer'),k=document.getElementById('navBackdrop');
+  if(!d)return;
+  if(d.classList.contains('open')){
+    b.classList.remove('open');d.classList.remove('open');k.classList.remove('open');
+    document.body.style.overflow='';
+  } else {
+    b.classList.add('open');d.classList.add('open');k.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+}
+function closeNav(){
+  ['hamburgerBtn','navDrawer','navBackdrop'].forEach(function(id){
+    var e=document.getElementById(id);if(e)e.classList.remove('open');
+  });
+  document.body.style.overflow='';
+}
+var NAV_LABELS={
+  schedule:'Overview',program:'Workouts',nutrition:'Nutrition',
+  recipes:'Recipes',shopping:'Shopping',timer:'Timer',
+  tracker:'Progress',tracking:'Tracking',calories:'Calories',
+  next:'After Week 12',deload:'Deload Guide'
+};
+function navTo(id,label){
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  var sec=document.getElementById('tab-'+id);
+  if(sec) sec.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
+  var ni=document.getElementById('nav-'+id);
+  if(ni) ni.classList.add('active');
+  var lbl=document.getElementById('topbarSection');
+  var wm=document.getElementById('topbarWordmark');
+  var isHome=(id==='schedule');
+  if(lbl){lbl.textContent=label||NAV_LABELS[id]||'';lbl.style.opacity=isHome?'0':'1';lbl.style.position=isHome?'absolute':'static';}
+  if(wm){wm.style.opacity=isHome?'1':'0';}
+  closeNav();
+  window.scrollTo(0,0);
+}
+function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
+</script>
 </head>
 <body>
-
-<!-- ══ TOP BAR ══════════════════════════════════════════════════ -->
 <div class="topbar">
   <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleNav()" aria-label="Menu">
-    <div class="ham-line"></div>
-    <div class="ham-line"></div>
-    <div class="ham-line"></div>
+    <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
   </button>
-  <span class="topbar-section" id="topbarSection" style="flex:1;text-align:center;">Overview</span>
-  <div class="topbar-logo" style="justify-content:flex-end;">
-    <span class="topbar-wordmark">ASCEND</span>
-    <svg width="24" height="24" viewBox="0 0 22 22" fill="none">
-      <path d="M11 2L20 18H2L11 2Z" fill="var(--accent)"/>
-      <path d="M11 7L11 16" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
+  <div class="topbar-centre">
+    <span class="topbar-wordmark" id="topbarWordmark">ASCEND</span>
+    <span class="topbar-section" id="topbarSection" style="opacity:0;position:absolute;">Overview</span>
   </div>
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="flex-shrink:0;">
+    <path d="M11 2L20 18H2L11 2Z" fill="var(--accent)"/>
+    <path d="M11 7L11 16" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
 </div>
-
-<!-- Nav backdrop -->
 <div class="nav-backdrop" id="navBackdrop" onclick="closeNav()"></div>
-
-<!-- Nav drawer -->
 <div class="nav-drawer" id="navDrawer">
-  <div class="nav-drawer-header">
-    <div class="nav-drawer-logo">
-      <svg width="18" height="18" viewBox="0 0 22 22" fill="none">
-        <path d="M11 2L20 18H2L11 2Z" fill="white"/>
-      </svg>
-    </div>
-    <div>
-      <div class="nav-drawer-title">Ascend</div>
-      <div class="nav-drawer-sub">12-Week Programme</div>
-    </div>
+  <div class="nav-drawer-header"><div class="nav-drawer-logo"><svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 2L20 18H2L11 2Z" fill="white"/></svg></div><div><div class="nav-drawer-title">Ascend</div><div class="nav-drawer-sub">Tap any section</div></div></div>
+  <div class="nav-section"><div class="nav-section-label">Main</div>
+    <div class="nav-item active" id="nav-schedule" onclick="navTo('schedule','Overview')"><div class="nav-item-icon">🏠</div><div><div class="nav-item-name">Home</div><div class="nav-item-desc">Today · Water · Overview</div></div></div>
+    <div class="nav-item" id="nav-program" onclick="navTo('program','Workouts')"><div class="nav-item-icon">💪</div><div><div class="nav-item-name">Workouts</div><div class="nav-item-desc">Push · Pull · Legs</div></div></div>
+    <div class="nav-item" id="nav-calories" onclick="navTo('calories','Calories')"><div class="nav-item-icon">🍽️</div><div><div class="nav-item-name">Calories</div><div class="nav-item-desc">Log your food today</div></div></div>
+    <div class="nav-item" id="nav-tracker" onclick="navTo('tracker','Progress')"><div class="nav-item-icon">📅</div><div><div class="nav-item-name">Progress</div><div class="nav-item-desc">Session calendar</div></div></div>
   </div>
-
-  <!-- Training -->
-  <div class="nav-section">
-    <div class="nav-section-label">Training</div>
-    <div class="nav-item active" id="nav-schedule" onclick="navTo('schedule','Overview')">
-      <div class="nav-item-icon">🏠</div>
-      <div class="nav-item-info"><div class="nav-item-name">Overview</div><div class="nav-item-desc">Today, water, cardio</div></div>
-    </div>
-    <div class="nav-item" id="nav-program" onclick="navTo('program','Workouts')">
-      <div class="nav-item-icon">💪</div>
-      <div class="nav-item-info"><div class="nav-item-name">Workouts</div><div class="nav-item-desc">Push · Pull · Legs</div></div>
-    </div>
-    <div class="nav-item" id="nav-timer" onclick="navTo('timer','Timer')">
-      <div class="nav-item-icon">⏱</div>
-      <div class="nav-item-info"><div class="nav-item-name">Timer</div><div class="nav-item-desc">Rest timer · Session clock</div></div>
-    </div>
-  </div>
-
   <div class="nav-divider"></div>
-
-  <!-- Nutrition -->
-  <div class="nav-section">
-    <div class="nav-section-label">Nutrition</div>
-    <div class="nav-item" id="nav-nutrition" onclick="navTo('nutrition','Nutrition')">
-      <div class="nav-item-icon">🥗</div>
-      <div class="nav-item-info"><div class="nav-item-name">Nutrition</div><div class="nav-item-desc">Macros · Meal plans</div></div>
-    </div>
-    <div class="nav-item" id="nav-recipes" onclick="navTo('recipes','Recipes')">
-      <div class="nav-item-icon">🍳</div>
-      <div class="nav-item-info"><div class="nav-item-name">Recipes</div><div class="nav-item-desc">Meals · Prep guide</div></div>
-    </div>
-    <div class="nav-item" id="nav-shopping" onclick="navTo('shopping','Shopping')">
-      <div class="nav-item-icon">🛒</div>
-      <div class="nav-item-info"><div class="nav-item-name">Shopping</div><div class="nav-item-desc">Weekly grocery list</div></div>
-    </div>
-    <div class="nav-item" id="nav-calories" onclick="navTo('calories','Calories')">
-      <div class="nav-item-icon">📊</div>
-      <div class="nav-item-info"><div class="nav-item-name">Calories</div><div class="nav-item-desc">Daily food log</div></div>
-    </div>
+  <div class="nav-section"><div class="nav-section-label">More</div>
+    <div class="nav-item" id="nav-timer" onclick="navTo('timer','Timer')"><div class="nav-item-icon">⏱️</div><div><div class="nav-item-name">Timer</div><div class="nav-item-desc">Rest timer · Stopwatch</div></div></div>
+    <div class="nav-item" id="nav-tracking" onclick="navTo('tracking','Tracking')"><div class="nav-item-icon">📈</div><div><div class="nav-item-name">Body Tracking</div><div class="nav-item-desc">Weight · Lifts · Measurements</div></div></div>
+    <div class="nav-item" id="nav-nutrition" onclick="navTo('nutrition','Nutrition')"><div class="nav-item-icon">🥗</div><div><div class="nav-item-name">Nutrition</div><div class="nav-item-desc">Macros · Meal plan</div></div></div>
+    <div class="nav-item" id="nav-recipes" onclick="navTo('recipes','Recipes')"><div class="nav-item-icon">🍳</div><div><div class="nav-item-name">Recipes</div><div class="nav-item-desc">Meals · Prep guide</div></div></div>
+    <div class="nav-item" id="nav-shopping" onclick="navTo('shopping','Shopping')"><div class="nav-item-icon">🛒</div><div><div class="nav-item-name">Shopping List</div><div class="nav-item-desc">Weekly groceries</div></div></div>
   </div>
-
   <div class="nav-divider"></div>
-
-  <!-- Progress -->
-  <div class="nav-section">
-    <div class="nav-section-label">Progress</div>
-    <div class="nav-item" id="nav-tracker" onclick="navTo('tracker','Progress')">
-      <div class="nav-item-icon">📅</div>
-      <div class="nav-item-info"><div class="nav-item-name">Progress</div><div class="nav-item-desc">12-week calendar</div></div>
-    </div>
-    <div class="nav-item" id="nav-tracking" onclick="navTo('tracking','Tracking')">
-      <div class="nav-item-icon">📈</div>
-      <div class="nav-item-info"><div class="nav-item-name">Tracking</div><div class="nav-item-desc">Weight · Lifts · Measurements</div></div>
-    </div>
-
-
-  <div class="nav-divider"></div>
-
-  <!-- What's Next -->
-  <div class="nav-section">
-    <div class="nav-section-label">After Week 12</div>
-    <div class="nav-item" id="nav-next" onclick="navTo('next','What\'s Next')">
-      <div class="nav-item-icon">🚀</div>
-      <div class="nav-item-info"><div class="nav-item-name">What's Next</div><div class="nav-item-desc">Phase 2 · Beyond 12 weeks</div></div>
-    </div>
-  </div>
-  </div>
-
-</div>
-
-
-<!-- HERO -->
-<div class="hero">
-  
-  <div class="hero-eyebrow">12-Week Physique Programme · 100kg</div>
-  <div class="hero-sub">Body recomposition — build muscle, lose fat, transform your physique.</div>
-  <div class="hero-pills">
-    <div class="pill gold">Push · Pull · Legs</div>
-    <div class="pill">6 Days / Week</div>
-    <div class="pill">3 Phases</div>
-    <div class="pill gold">Recomp · 100kg</div>
+  <div class="nav-section"><div class="nav-section-label">Planning</div>
+    <div class="nav-item" id="nav-next" onclick="navTo('next','After Week 12')"><div class="nav-item-icon">🚀</div><div><div class="nav-item-name">After Week 12</div><div class="nav-item-desc">Phase 2 · What comes next</div></div></div>
   </div>
 </div>
-
-<!-- TRAINING TIME -->
-<div class="time-block">
-  <div class="time-label">Training Window</div>
-  <div class="time-grid">
-    <button class="time-btn" id="btn-am" onclick="setTime('am')">
-      <div class="time-btn-top"><span class="time-icon">🌅</span><span class="time-main">Before Work</span></div>
-      <div class="time-sub">Early morning · ~6:00 AM</div>
-    </button>
-    <button class="time-btn" id="btn-pm" onclick="setTime('pm')">
-      <div class="time-btn-top"><span class="time-icon">🌆</span><span class="time-main">After Work</span></div>
-      <div class="time-sub">Evening · ~6:00 PM</div>
-    </button>
-  </div>
-  <div id="sched-am" class="schedule-reveal">
-    <strong>Morning Schedule</strong>
-    <div class="sched-row"><span class="sched-time">05:15</span><span>Wake · cold water · no phone</span></div>
-    <div class="sched-row"><span class="sched-time">05:30</span><span>Pre-workout meal — oats + banana + milk + honey (bigger portions)</span></div>
-    <div class="sched-row"><span class="sched-time">06:00</span><span class="sched-train">▶ Train — 60–75 min</span></div>
-    <div class="sched-row"><span class="sched-time">07:15</span><span>Post-workout shake + shower</span></div>
-    <div class="sched-row"><span class="sched-time">07:45</span><span>Breakfast — eggs, toast, avocado</span></div>
-    <div class="sched-row"><span class="sched-time">09:00</span><span>Work. You're already ahead.</span></div>
-  </div>
-  <div id="sched-pm" class="schedule-reveal">
-    <strong>Evening Schedule</strong>
-    <div class="sched-row"><span class="sched-time">07:00</span><span>Breakfast — eggs, toast, OJ</span></div>
-    <div class="sched-row"><span class="sched-time">12:30</span><span>Lunch — chicken, rice (main pre-workout meal)</span></div>
-    <div class="sched-row"><span class="sched-time">16:00</span><span>Snack — banana, protein bar</span></div>
-    <div class="sched-row"><span class="sched-time">18:00</span><span class="sched-train">▶ Train — 60–75 min</span></div>
-    <div class="sched-row"><span class="sched-time">19:15</span><span>Post-workout shake (immediate)</span></div>
-    <div class="sched-row"><span class="sched-time">20:30</span><span>Dinner — protein, carbs, veg</span></div>
-    <div class="sched-row"><span class="sched-time">23:00</span><span>Casein protein · sleep 8h</span></div>
-  </div>
-</div>
-
-<!-- TABS -->
-
 
 <!-- ===== OVERVIEW ===== -->
 <div id="tab-schedule" class="section active">
-  <div class="today-card">
-    <div class="today-card-inner">
-      <div class="today-eyebrow"><span class="today-eyebrow-dot"></span><span id="todayEyebrow">TODAY</span></div>
-      <div class="today-workout-row">
-        <div class="today-workout-icon" id="todayIcon">💪</div>
-        <div class="today-workout-info">
-          <div class="today-workout-name" id="todayName">Push Day</div>
-          <div class="today-workout-sub" id="todaySub">Chest · Shoulders · Triceps</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;color:var(--accent)" id="todayWeekBig">Wk 1</div>
-          <div style="font-size:9px;color:var(--grey);letter-spacing:1px" id="todayPhaseBig">Foundation</div>
-        </div>
+
+  <!-- TODAY HERO -->
+  <div class="home-today">
+    <div class="home-today-meta">
+      <span class="home-today-eyebrow" id="todayEyebrow">TODAY</span>
+      <span class="home-today-week"><span id="todayWeekBig">Wk 1</span> <span class="home-today-phase" id="todayPhaseBig">Foundation</span></span>
+    </div>
+    <div class="home-today-main">
+      <div class="home-today-icon" id="todayIcon">💪</div>
+      <div class="home-today-text">
+        <div class="home-today-name" id="todayName">Push Day</div>
+        <div class="home-today-sub" id="todaySub">Chest · Shoulders · Triceps</div>
       </div>
     </div>
-    <!-- week strip -->
     <div class="today-week-strip" id="todayWeekStrip"></div>
-    <!-- log button -->
-    <button class="today-log-btn" id="todayLogBtn" onclick="logToday()">
+    <button class="home-log-btn" id="todayLogBtn" onclick="logToday()">
       <span id="todayBtnIcon">＋</span>
       <span id="todayBtnText">LOG TODAY'S SESSION</span>
     </button>
   </div>
 
-  <div class="stat-row">
-    <div class="stat-cell"><div class="stat-num">6</div><div class="stat-lbl">Days/week</div></div>
-    <div class="stat-cell"><div class="stat-num">12</div><div class="stat-lbl">Weeks</div></div>
-    <div class="stat-cell"><div class="stat-num">3</div><div class="stat-lbl">Phases</div></div>
-    <div class="stat-cell"><div class="stat-num">~15</div><div class="stat-lbl">% BF Goal</div></div>
+  <!-- STATS ROW -->
+  <div class="home-stats">
+    <div class="home-stat"><span class="home-stat-n">6</span><span class="home-stat-l">days/wk</span></div>
+    <div class="home-stat-div"></div>
+    <div class="home-stat"><span class="home-stat-n">12</span><span class="home-stat-l">weeks</span></div>
+    <div class="home-stat-div"></div>
+    <div class="home-stat"><span class="home-stat-n">3</span><span class="home-stat-l">phases</span></div>
+    <div class="home-stat-div"></div>
+    <div class="home-stat"><span class="home-stat-n">~15%</span><span class="home-stat-l">bf goal</span></div>
   </div>
 
-  <div class="sec-label">Weekly Split</div>
-  <div class="week-grid">
-    <div class="day-chip train" onclick="goToWorkout('push')">Mon<small>Push</small></div>
-    <div class="day-chip train" onclick="goToWorkout('pull')">Tue<small>Pull</small></div>
-    <div class="day-chip train" onclick="goToWorkout('legs')">Wed<small>Legs</small></div>
-    <div class="day-chip rest">Thu<small>Rest</small></div>
-    <div class="day-chip train" onclick="goToWorkout('push')">Fri<small>Push</small></div>
-    <div class="day-chip train" onclick="goToWorkout('pull')">Sat<small>Pull</small></div>
-    <div class="day-chip train" onclick="goToWorkout('legs')">Sun<small>Legs</small></div>
+  <!-- WEEK SPLIT -->
+  <div class="home-split">
+    <div class="home-split-day train" onclick="goToWorkout('push')"><span class="home-split-d">Mon</span><span class="home-split-t">Push</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('pull')"><span class="home-split-d">Tue</span><span class="home-split-t">Pull</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('legs')"><span class="home-split-d">Wed</span><span class="home-split-t">Legs</span></div>
+    <div class="home-split-day rest"><span class="home-split-d">Thu</span><span class="home-split-t">Rest</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('push')"><span class="home-split-d">Fri</span><span class="home-split-t">Push</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('pull')"><span class="home-split-d">Sat</span><span class="home-split-t">Pull</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('legs')"><span class="home-split-d">Sun</span><span class="home-split-t">Legs</span></div>
   </div>
 
-
-  <!-- WATER + CARDIO WIDGETS -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">Daily Targets</div><div class="div-line"></div></div>
-
-  <!-- WATER TRACKER -->
-  <div class="water-card" style="margin-bottom:8px;">
-    <div style="font-size:10px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
-      💧 Daily Water — Target: 3.5 litres
-    </div>
-    <div class="water-display">
-      <div class="water-icon-row" id="waterGlasses"></div>
-      <div>
-        <div class="water-count"><span id="waterCount">0</span></div>
-        <div class="water-target">/ 7 glasses</div>
-        <div style="font-size:10px;color:var(--grey);margin-top:2px;">~500ml each</div>
+  <!-- WATER + CARDIO -->
+  <div class="home-track-row">
+    <div class="home-track-card">
+      <div class="home-track-label">💧 Water</div>
+      <div class="home-track-big"><span id="waterCount">0</span><span class="home-track-unit">/ 7</span></div>
+      <div class="water-bar" style="margin:8px 0 10px;"><div class="water-bar-fill" id="waterBarFill" style="width:0%"></div></div>
+      <div id="waterGlasses" style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px;"></div>
+      <div style="display:flex;gap:6px;">
+        <button class="home-track-btn accent" onclick="addWater()">+ Glass</button>
+        <button class="home-track-btn" onclick="resetWater()">Reset</button>
       </div>
     </div>
-    <div class="water-bar"><div class="water-bar-fill" id="waterBarFill" style="width:0%"></div></div>
-    <div class="water-btn-row">
-      <button class="water-btn add" onclick="addWater()">+ Add Glass</button>
-      <button class="water-btn" onclick="resetWater()">Reset</button>
+    <div class="home-track-card">
+      <div class="home-track-label">🏃 Cardio</div>
+      <div class="home-track-big"><span id="cardioThisWeek">0</span><span class="home-track-unit">this wk</span></div>
+      <div id="cardioWeekDisplay" style="margin:8px 0 6px;"></div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+        <span style="font-size:10px;color:var(--grey);">Total</span>
+        <span style="font-size:12px;font-weight:700;color:var(--white)" id="cardioTotal">0</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="font-size:10px;color:var(--grey);">Streak</span>
+        <span style="font-size:12px;font-weight:700;color:var(--accent)" id="cardioStreak">0</span>
+      </div>
     </div>
   </div>
 
-  <!-- CARDIO LOG -->
-  <div style="background:var(--card);border:1px solid var(--border);padding:13px 14px;margin-bottom:8px;">
-    <div style="font-size:10px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">🏃 Cardio Log — LISS Target</div>
-    <div style="font-size:11px;color:var(--mid);line-height:1.6;margin-bottom:10px;">
-      Phase 1–2: Optional light cardio. Phase 3: <strong style="color:var(--white)">20–30 min LISS after every session</strong> (brisk walk, cycling, rowing — heart rate 120–140bpm).
+  <!-- PHYSIQUE TARGETS -->
+  <div class="home-section-label">Physique Focus</div>
+  <div class="home-targets">
+    <div class="home-target">
+      <div class="home-target-row"><span class="home-target-name">Back &amp; Lats</span><span class="home-target-tag hi">Priority</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:95%"></div></div>
     </div>
-    <div id="cardioWeekDisplay"></div>
-    <div class="cardio-summary">
-      <div><div class="cardio-stat-num" id="cardioThisWeek">0</div><div class="cardio-stat-lbl">This week</div></div>
-      <div><div class="cardio-stat-num" id="cardioTotal">0</div><div class="cardio-stat-lbl">Total sessions</div></div>
-      <div><div class="cardio-stat-num" id="cardioStreak">0</div><div class="cardio-stat-lbl">Week streak</div></div>
+    <div class="home-target">
+      <div class="home-target-row"><span class="home-target-name">Chest &amp; Shoulders</span><span class="home-target-tag hi">Priority</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:90%"></div></div>
     </div>
-  </div>
-
-  <div class="divider"><div class="div-line"></div><div class="div-text">Physique Goals</div><div class="div-line"></div></div>
-  <div class="target-grid">
-    <div class="target">
-      <div class="target-top"><div class="target-name">Back &amp; Lats</div><div class="target-tag hi">Priority</div></div>
-      <div class="target-bar"><div class="target-fill" style="width:95%"></div></div>
-      <div class="target-sub">V-taper — wide back, narrow waist</div>
+    <div class="home-target">
+      <div class="home-target-row"><span class="home-target-name">Legs &amp; Core</span><span class="home-target-tag">High</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:80%"></div></div>
     </div>
-    <div class="target">
-      <div class="target-top"><div class="target-name">Chest &amp; Shoulders</div><div class="target-tag hi">Priority</div></div>
-      <div class="target-bar"><div class="target-fill" style="width:90%"></div></div>
-      <div class="target-sub">Broad, powerful upper body frame</div>
-    </div>
-    <div class="target">
-      <div class="target-top"><div class="target-name">Legs &amp; Core</div><div class="target-tag">High</div></div>
-      <div class="target-bar"><div class="target-fill" style="width:80%"></div></div>
-      <div class="target-sub">Athletic power and stability</div>
-    </div>
-    <div class="target">
-      <div class="target-top"><div class="target-name">Arms</div><div class="target-tag">High</div></div>
-      <div class="target-bar"><div class="target-fill" style="width:75%"></div></div>
-      <div class="target-sub">Defined, functional — not oversized</div>
+    <div class="home-target">
+      <div class="home-target-row"><span class="home-target-name">Arms</span><span class="home-target-tag">High</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:75%"></div></div>
     </div>
   </div>
 
-  <div class="divider"><div class="div-line"></div><div class="div-text">Principles</div><div class="div-line"></div></div>
-  <div style="background:var(--card);border:1px solid var(--border);padding:14px;">
-    <div class="bench-item"><div class="bench-week">Rule 01</div><div class="bench-info"><div class="bench-title">Consistency above all</div><div class="bench-detail">Show up. Missing sessions kills progress faster than bad form.</div></div></div>
-    <div class="bench-item"><div class="bench-week">Rule 02</div><div class="bench-info"><div class="bench-title">Progressive overload</div><div class="bench-detail">Add weight or reps every single week. At 65kg you have huge room to grow fast — exploit it.</div></div></div>
-    <div class="bench-item"><div class="bench-week">Rule 03</div><div class="bench-info"><div class="bench-title">Rest is productive</div><div class="bench-detail">Thursday off. 8+ hours sleep. Muscle is built during recovery, not during lifting.</div></div></div>
-    <div class="bench-item"><div class="bench-week">Rule 04</div><div class="bench-info"><div class="bench-title">Eat to build</div><div class="bench-detail">High protein. Slight caloric surplus on training days. Fuel the machine.</div></div></div>
-  
-  <div class="divider"><div class="div-line"></div><div class="div-text">What To Expect</div><div class="div-line"></div></div>
-  <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(200,16,46,0.2);padding:12px 14px;margin-bottom:10px;">
-    <div style="font-size:11px;color:var(--mid);line-height:1.7;">
-      <strong style="color:var(--white)">The scale is a liar.</strong> You're doing a recomp — your body is swapping fat for muscle simultaneously. Some weeks the scale won't move or will go up slightly. That's normal. Judge progress by the mirror, your lifts going up, and how clothes fit.
-    </div>
+  <!-- RULES -->
+  <div class="home-section-label">The Rules</div>
+  <div class="home-rules">
+    <div class="home-rule"><span class="home-rule-n">01</span><div><div class="home-rule-title">Consistency above all</div><div class="home-rule-sub">Missing sessions kills progress faster than bad form.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">02</span><div><div class="home-rule-title">Progressive overload</div><div class="home-rule-sub">Add weight or reps every single week. You have huge room to grow fast.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">03</span><div><div class="home-rule-title">Rest is productive</div><div class="home-rule-sub">Thursday off. 8+ hours sleep. Muscle is built during recovery.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to build</div><div class="home-rule-sub">High protein. Slight surplus on training days. Fuel the machine.</div></div></div>
+  </div>
+
+  <!-- EXPECT -->
+  <div class="home-section-label">What To Expect</div>
+  <div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:12px 14px;margin-bottom:12px;border-radius:0 6px 6px 0;">
+    <div style="font-size:12px;color:var(--mid);line-height:1.7;"><strong style="color:var(--white)">The scale is a liar.</strong> You're doing a recomp — swapping fat for muscle. Some weeks it won't move or will go up. Judge by the mirror, your lifts, and how clothes fit.</div>
   </div>
 
   <div class="expect-card" onclick="this.classList.toggle('open')">
-    <div class="expect-head">
-      <div class="expect-week">Wk 1–2</div>
-      <div class="expect-title">Feeling it everywhere</div>
-      <div class="expect-arrow">▼</div>
-    </div>
-    <div class="expect-body">
-      <p>You'll be sore in muscles you didn't know you had. <strong>This is normal.</strong> DOMS peaks 24–48 hours after sessions. Keep moving — light walks help more than rest. The soreness gets much less severe by week 3.</p>
-      <p>The scale might actually go up slightly — water retention from muscle inflammation. Don't panic.</p>
-      <span class="expect-tag red">Expect soreness</span>
-      <span class="expect-tag blue">Scale may rise</span>
-    </div>
+    <div class="expect-head"><div class="expect-week">Wk 1–2</div><div class="expect-title">Feeling it everywhere</div><div class="expect-arrow">▼</div></div>
+    <div class="expect-body"><p>DOMS peaks 24–48h after sessions. <strong>This is normal.</strong> The soreness gets much less severe by week 3. Keep moving — light walks help more than rest.</p><span class="expect-tag red">Expect soreness</span><span class="expect-tag blue">Scale may rise</span></div>
   </div>
-
   <div class="expect-card" onclick="this.classList.toggle('open')">
-    <div class="expect-head">
-      <div class="expect-week">Wk 3–5</div>
-      <div class="expect-title">The doubt phase</div>
-      <div class="expect-arrow">▼</div>
-    </div>
-    <div class="expect-body">
-      <p>This is where most beginners quit. The initial excitement wears off, the scale isn't moving much, and you're tired. <strong>Push through.</strong> Your body is still adapting — neural pathways are forming, technique is grooving in, and internal changes are happening that you can't see yet.</p>
-      <p>Focus only on whether your <strong>lifts are going up</strong>. If you're benching 5kg more than week 1, you're winning.</p>
-      <span class="expect-tag red">Scale stalls</span>
-      <span class="expect-tag green">Lifts increasing</span>
-    </div>
+    <div class="expect-head"><div class="expect-week">Wk 3–5</div><div class="expect-title">The doubt phase</div><div class="expect-arrow">▼</div></div>
+    <div class="expect-body"><p>Where most quit. Scale stalls, excitement fades. <strong>Push through.</strong> Focus only on whether your <strong>lifts are going up</strong>. If you're benching 5kg more than week 1, you're winning.</p><span class="expect-tag red">Scale stalls</span><span class="expect-tag green">Lifts increasing</span></div>
   </div>
-
   <div class="expect-card" onclick="this.classList.toggle('open')">
-    <div class="expect-head">
-      <div class="expect-week">Wk 6–8</div>
-      <div class="expect-title">It starts showing</div>
-      <div class="expect-arrow">▼</div>
-    </div>
-    <div class="expect-body">
-      <p>This is when people start noticing. Shoulders look broader, back has more shape, waist looks tighter even if weight hasn't dropped. <strong>Your body composition is changing</strong> — muscle up, fat redistributing.</p>
-      <p>You're entering the strength phase. Lifts jump significantly. Enjoy it — this is the most satisfying phase.</p>
-      <span class="expect-tag green">Visible changes</span>
-      <span class="expect-tag green">Strength jumps</span>
-    </div>
-  </div>
-
-  <div class="expect-card" onclick="this.classList.toggle('open')">
-    <div class="expect-head">
-      <div class="expect-week">Wk 9–12</div>
-      <div class="expect-title">The reveal</div>
-      <div class="expect-arrow">▼</div>
-    </div>
-    <div class="expect-body">
-      <p>Definition phase. You've built the muscle, now you're exposing it. The added cardio and tighter diet will drop the last layer of fat. The shoulder-to-waist taper becomes visible. <strong>This is what you've been building toward.</strong></p>
-      <p>Realistic expectation at 12 weeks from 100kg: down 6–10kg total, visibly broader, waist measurably smaller, significantly stronger across all lifts.</p>
-      <span class="expect-tag green">Most visible change</span>
-      <span class="expect-tag blue">Take progress photos</span>
-    </div>
+    <div class="expect-head"><div class="expect-week">Wk 6–8</div><div class="expect-title">The visual shift</div><div class="expect-arrow">▼</div></div>
+    <div class="expect-body"><p>This is when people start noticing. Shoulders broader, waist tighter, face leaner. The compound interest of consistency starts paying out.</p><span class="expect-tag green">Most visible change</span><span class="expect-tag blue">Take progress photos</span></div>
   </div>
 
 </div>
-</div>
-
-<!-- ===== WORKOUTS ===== -->
 <div id="tab-program" class="section">
   <div class="sec-label">Programme</div>
   <div class="sec-title">12-WEEK PLAN</div>
@@ -1831,107 +1491,8 @@ body{
   </div>
 
 
-  <!-- DELOAD WEEK GUIDANCE -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">Deload Weeks</div><div class="div-line"></div></div>
-  
-  <div style="background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);padding:13px 14px;margin-bottom:10px;">
-    <div style="font-size:10px;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ What Is A Deload & Why It Matters</div>
-    <div style="font-size:12px;color:var(--mid);line-height:1.7;">
-      Every 4 weeks you reduce weight and volume by ~20% for one week. This isn't laziness — it's <strong style="color:var(--white)">how your body supercompensates</strong>. Your joints, tendons, and nervous system recover and you come back stronger. Skip deloads and you risk injury, burnout, and plateau.
-    </div>
-  </div>
-
-  <div class="deload-banner" id="deload-w4">
-    <div class="deload-pill">Week 4 Deload</div>
-    <div class="deload-week-title">End of Foundation Phase</div>
-    <div class="deload-sub">After 4 hard weeks, your body needs this. You'll feel fresher going into Phase 2.</div>
-    <div class="deload-rules">
-      <div class="deload-rule">Reduce all weights by <strong style="color:var(--white)">20%</strong></div>
-      <div class="deload-rule">Cut sets from 4 to <strong style="color:var(--white)">3</strong></div>
-      <div class="deload-rule">Keep reps the same — focus on perfect form</div>
-      <div class="deload-rule">No pushing to failure — stop 3 reps short of your limit</div>
-      <div class="deload-rule">Sleep extra, eat the same, hydrate more</div>
-    </div>
-  </div>
-
-  <div class="deload-banner" id="deload-w8">
-    <div class="deload-pill">Week 8 Deload</div>
-    <div class="deload-week-title">End of Strength Phase</div>
-    <div class="deload-sub">You've been lifting heavy for 4 weeks. This deload sets you up for the best definition phase possible.</div>
-    <div class="deload-rules">
-      <div class="deload-rule">Reduce all weights by <strong style="color:var(--white)">20–25%</strong></div>
-      <div class="deload-rule">Cut sets from 5 to <strong style="color:var(--white)">3</strong></div>
-      <div class="deload-rule">Add 10 min light cardio at the end of each session</div>
-      <div class="deload-rule">Use the week to fix any form issues you noticed</div>
-    </div>
-  </div>
-
-  <div class="deload-banner" id="deload-w12">
-    <div class="deload-pill">Week 12 Deload</div>
-    <div class="deload-week-title">End of Strength Phase</div>
-    <div class="deload-sub">Going into the final definition phase fresh makes a huge difference. One week back-off now.</div>
-    <div class="deload-rules">
-      <div class="deload-rule">No lifting — let everything fully recover</div>
-      <div class="deload-rule">Light walks, swimming, or yoga only if you want to move</div>
-      <div class="deload-rule">Take your Week 12 progress photos</div>
-      <div class="deload-rule">Plan your next 12-week block with higher starting weights</div>
-    </div>
-  </div>
-
-
-  <!-- RPE GUIDE -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">RPE Guide</div><div class="div-line"></div></div>
-  <div style="background:var(--card);border:1px solid var(--border);padding:13px 14px;margin-bottom:10px;">
-    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Rate of Perceived Exertion — How Hard Should You Train?</div>
-    <div style="font-size:12px;color:var(--mid);line-height:1.7;margin-bottom:12px;">
-      RPE is a 1–10 scale of effort. <strong style="color:var(--white)">RPE 10 = absolute maximum, couldn't do one more rep. RPE 7 = 3 reps left in the tank.</strong> Aim for RPE 7–8 on most sets — hard enough to grow, not so hard you wreck your recovery.
-    </div>
-  </div>
-  <div class="rpe-card">
-    <div class="rpe-row">
-      <div class="rpe-num" style="color:#4caf7d">6</div>
-      <div class="rpe-bar-wrap">
-        <div class="rpe-bar" style="background:linear-gradient(90deg,#4caf7d,rgba(76,175,125,0.3));width:60%"></div>
-        <div class="rpe-desc">Light — 4+ reps left in the tank</div>
-        <div class="rpe-cue">Used for warm-up sets only</div>
-      </div>
-    </div>
-    <div class="rpe-row">
-      <div class="rpe-num" style="color:#8bc34a">7</div>
-      <div class="rpe-bar-wrap">
-        <div class="rpe-bar" style="background:linear-gradient(90deg,#8bc34a,rgba(139,195,74,0.3));width:70%"></div>
-        <div class="rpe-desc">Moderate — 3 reps left in the tank</div>
-        <div class="rpe-cue">Good for volume work and new exercises</div>
-      </div>
-    </div>
-    <div class="rpe-row">
-      <div class="rpe-num" style="color:#ffc107">8</div>
-      <div class="rpe-bar-wrap">
-        <div class="rpe-bar" style="background:linear-gradient(90deg,#ffc107,rgba(255,193,7,0.3));width:80%"></div>
-        <div class="rpe-desc">Hard — 2 reps left in the tank</div>
-        <div class="rpe-cue">Target RPE for most working sets</div>
-      </div>
-    </div>
-    <div class="rpe-row">
-      <div class="rpe-num" style="color:#ff9800">9</div>
-      <div class="rpe-bar-wrap">
-        <div class="rpe-bar" style="background:linear-gradient(90deg,#ff9800,rgba(255,152,0,0.3));width:90%"></div>
-        <div class="rpe-desc">Very hard — 1 rep left in the tank</div>
-        <div class="rpe-cue">Last set of compound lifts on strength weeks</div>
-      </div>
-    </div>
-    <div class="rpe-row">
-      <div class="rpe-num" style="color:var(--accent)">10</div>
-      <div class="rpe-bar-wrap">
-        <div class="rpe-bar" style="background:var(--accent);width:100%"></div>
-        <div class="rpe-desc">Maximum — couldn't do one more rep</div>
-        <div class="rpe-cue">Avoid on most sets — too much recovery cost</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"><div class="div-line"></div><div class="div-text">Push Day · Mon &amp; Fri</div><div class="div-line"></div></div>
-  <div id="push" style="scroll-margin-top:50px">
+  <div id="push" style="scroll-margin-top:60px">
+  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-accent"></div><div class="day-banner-icon">💪</div><div class="day-banner-info"><div class="day-banner-name">Push Day</div><div class="day-banner-days">Monday &amp; Friday</div><div class="day-banner-muscles">Chest · Shoulders · Triceps</div></div><div class="day-banner-chip">5 exercises</div></div></div>
   <!-- WORKOUT TIME ESTIMATE - PUSH -->
   <div class="workout-time-bar" id="pushTimeBar">
     <div class="wt-icon">⏱️</div>
@@ -2023,6 +1584,11 @@ body{
         <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>4</td><td>8</td><td>+5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Barbell Bench Press">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_bench_press"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Barbell Bench Press')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-barbell_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
       </div>
     </div>
 
@@ -2049,6 +1615,11 @@ body{
         <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>4</td><td>10</td><td>Same/+2.5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Incline DB Press">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-incline_db_press"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-incline_db_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Incline DB Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Incline DB Press')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-incline_db_press"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
       </div>
     </div>
 
@@ -2074,25 +1645,12 @@ body{
         <tr><td>1</td><td>10</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Overhead Press">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-overhead_press"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-overhead_press"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Press')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Overhead Press')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-overhead_press">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
-        </div></table>
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-overhead_press"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-overhead_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Overhead Press')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-overhead_press"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
       </div>
     </div>
 
@@ -2118,44 +1676,41 @@ body{
         <tr><td>1</td><td>20</td><td>Light</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Lateral Raises">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-lateral_raises"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-lateral_raises"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Lateral Raises')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Lateral Raises')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-lateral_raises">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-lateral_raises"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-lateral_raises" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Lateral Raises')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Lateral Raises')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-lateral_raises"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
     <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">C1</div><div class="wname">Skull Crushers (EZ Bar)</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
+      <div class="whead"><div class="wbadge">C1</div><div class="wname">Close-Grip Bench Press</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody">
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/vcBig73ojpE" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/vcBig73ojpE/mqdefault.jpg" alt="SKULL CRUSHERS" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/thx13oPVK5c" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/thx13oPVK5c/mqdefault.jpg" alt="TRICEP DIPS" loading="lazy" onerror="this.style.opacity='0'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/vcBig73ojpE" target="_blank" rel="noopener">
+        <a class="ex-video-bar" href="https://www.youtube.com/shorts/thx13oPVK5c" target="_blank" rel="noopener">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Skull Crushers — EZ Bar Technique<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Tricep Dip Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
+      </div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Stay upright — leaning forward shifts work to chest</div><div class="cue">Full lockout at top, controlled descent</div><div class="cue">Add weight via belt once 12 bodyweight reps is easy</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>12</td><td>Bodyweight</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>10</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>10</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Close-Grip Bench Press">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-close_grip_bench_press"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-close_grip_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Close-Grip Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Close-Grip Bench Press')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-close_grip_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2182,31 +1737,17 @@ body{
         <tr><td>1</td><td>15</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-      
-        <div class="ex-weight-log" data-ex-name="Barbell Bench Press">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-barbell_bench_press"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-barbell_bench_press"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Bench Press')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Barbell Bench Press')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-barbell_bench_press">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+        <div class="ex-weight-log" data-ex-name="Cable Tricep Pushdown">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-cable_tricep_pushdown"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_tricep_pushdown" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Tricep Pushdown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Cable Tricep Pushdown')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-cable_tricep_pushdown"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="divider"><div class="div-line"></div><div class="div-text">Pull Day · Tue &amp; Sat</div><div class="div-line"></div></div>
-  <div id="pull" style="scroll-margin-top:50px">
+  <div id="pull" style="scroll-margin-top:60px">
+  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-accent"></div><div class="day-banner-icon">🔙</div><div class="day-banner-info"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps</div></div><div class="day-banner-chip">6 exercises</div></div></div>
   <!-- WORKOUT TIME ESTIMATE - PULL -->
   <div class="workout-time-bar" id="pullTimeBar">
     <div class="wt-icon">⏱️</div>
@@ -2279,54 +1820,30 @@ body{
       <div class="whead"><div class="wbadge">A1</div><div class="wname">Cable Face Pull</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody">
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/SgyUoY0IZ7A" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/SgyUoY0IZ7A/mqdefault.jpg" alt="CABLE FACE PULL" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/ZPG8OsHKXLw" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/ZPG8OsHKXLw/mqdefault.jpg" alt="WEIGHTED PULL-UPS" loading="lazy" onerror="this.style.opacity='0'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/SgyUoY0IZ7A" target="_blank" rel="noopener">
+        <a class="ex-video-bar" href="https://www.youtube.com/shorts/ZPG8OsHKXLw" target="_blank" rel="noopener">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Cable Face Pull — Rear Delt Builder<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">The Perfect Pull-Up (5 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
-        </div>
       </div>
-    </div>
-
-    <!-- Overhead Tricep Extension -->
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">B2</div><div class="wname">Overhead Tricep Extension (DB)</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
-      <div class="wbody">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/thx13oPVK5c" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/thx13oPVK5c/mqdefault.jpg" alt="OVERHEAD TRICEP EXTENSION" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/thx13oPVK5c" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Overhead Tricep Extension — Long Head<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-        </div>        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/xJoSRGdqae8" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/xJoSRGdqae8/mqdefault.jpg" alt="OVERHEAD TRICEP EXT" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/xJoSRGdqae8" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Overhead Tricep Extension Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Full dead hang at the bottom — no half reps</div><div class="cue">Initiate by depressing scapula, then pull elbows to hips</div><div class="cue">Chin clearly above bar. No kipping or swinging.</div><div class="cue">The single most important exercise in this programme</div></div>
+        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
+        <tr><td>1</td><td>8</td><td>Bodyweight</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>2</td><td>6</td><td>+5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>6</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>4</td><td>6</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Cable Face Pull">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-cable_face_pull"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_face_pull" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Face Pull')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Cable Face Pull')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-cable_face_pull"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
-        </table>
       </div>
     </div>
 
@@ -2335,40 +1852,28 @@ body{
       <div class="wbody">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/QdDrKsvZuvQ" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/QdDrKsvZuvQ/mqdefault.jpg" alt="DUMBBELL ROW" loading="lazy" onerror="this.style.opacity='0'">
+          <img src="https://img.youtube.com/vi/QdDrKsvZuvQ/mqdefault.jpg" alt="BARBELL ROW" loading="lazy" onerror="this.style.opacity='0'">
           <div class="ex-video-play"></div>
         </a>
         <a class="ex-video-bar" href="https://www.youtube.com/shorts/QdDrKsvZuvQ" target="_blank" rel="noopener">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Dumbbell Row Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Barbell Row (4 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
-        </div>
+      </div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Hinge at hips, back roughly parallel to floor</div><div class="cue">Overhand grip, pull bar to lower chest</div><div class="cue">Squeeze shoulder blades at top — hold 1 second</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>10</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <div class="ex-weight-log" data-ex-name="Cable Face Pull">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-cable_face_pull"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-cable_face_pull"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Face Pull')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Weighted Pull-ups')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-cable_face_pull">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Dumbbell Row">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-dumbbell_row"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-dumbbell_row" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Dumbbell Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Dumbbell Row')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-dumbbell_row"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2390,36 +1895,16 @@ body{
           <div class="ex-video-arrow">▶</div>
         </a>
       </div>
-        <div class="cues">
-          <div class="cues-title">Why Dumbbell Row (not barbell row yet)</div>
-          <div class="cue">→ Single arm means you can focus on feeling your lat contract — key for beginners</div>
-          <div class="cue">→ Much easier to keep neutral spine vs barbell row</div>
-          <div class="cue">→ Plant one knee and hand on a bench, hang the dumbbell straight down</div>
-          <div class="cue">→ Pull the dumbbell to your hip — not your armpit — to maximise lat engagement</div>
-          <div class="cue">→ Pause at the top and squeeze the lat before lowering slowly</div>
-        </div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Wide overhand grip, slight lean back (not excessive)</div><div class="cue">Pull to upper chest — elbows drive toward hips</div><div class="cue">Think: pull shoulder blades into your back pockets</div></div>
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>10</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <div class="ex-weight-log" data-ex-name="Dumbbell Row">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-dumbbell_row"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-dumbbell_row"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Dumbbell Row')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Barbell Row')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-dumbbell_row">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+        <tr><td>4</td><td>10</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Lat Pulldown">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-lat_pulldown"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-lat_pulldown" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Lat Pulldown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Lat Pulldown')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-lat_pulldown"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2445,24 +1930,11 @@ body{
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <div class="ex-weight-log" data-ex-name="Lat Pulldown">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-lat_pulldown"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-lat_pulldown"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Lat Pulldown')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Lat Pulldown')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-lat_pulldown">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Seated Cable Row">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-seated_cable_row"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-seated_cable_row" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Seated Cable Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Seated Cable Row')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-seated_cable_row"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2488,24 +1960,11 @@ body{
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <div class="ex-weight-log" data-ex-name="Seated Cable Row">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-seated_cable_row"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-seated_cable_row"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Seated Cable Row')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Seated Cable Row')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-seated_cable_row">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+        <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Barbell Curl">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_curl"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Barbell Curl')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-barbell_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2532,31 +1991,17 @@ body{
         <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-      
-        <div class="ex-weight-log" data-ex-name="Incline DB Press">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-incline_db_press"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-incline_db_press"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Incline DB Press')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Incline DB Press')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-incline_db_press">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+        <div class="ex-weight-log" data-ex-name="Hammer Curl">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-hammer_curl"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-hammer_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Hammer Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Hammer Curl')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-hammer_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="divider"><div class="div-line"></div><div class="div-text">Leg Day · Wed &amp; Sun</div><div class="div-line"></div></div>
-  <div id="legs" style="scroll-margin-top:50px">
+  <div id="legs" style="scroll-margin-top:60px">
+  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-accent"></div><div class="day-banner-icon">🦵</div><div class="day-banner-info"><div class="day-banner-name">Leg Day</div><div class="day-banner-days">Wednesday &amp; Sunday</div><div class="day-banner-muscles">Quads · Hamstrings · Core</div></div><div class="day-banner-chip">5 exercises</div></div></div>
   <!-- WORKOUT TIME ESTIMATE - LEGS -->
   <div class="workout-time-bar" id="legsTimeBar">
     <div class="wt-icon">⏱️</div>
@@ -2655,24 +2100,11 @@ body{
         <tr><td>1</td><td>8</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>6</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>6</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <div class="ex-weight-log" data-ex-name="Barbell Curl">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-barbell_curl"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-barbell_curl"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Curl')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Barbell Curl')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-barbell_curl">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+        <tr><td>4</td><td>6</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Barbell Squat">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_squat"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Squat')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Barbell Squat')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-barbell_squat"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2699,24 +2131,11 @@ body{
         <tr><td>1</td><td>10</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <div class="ex-weight-log" data-ex-name="Hammer Curl">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-hammer_curl"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-hammer_curl"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Hammer Curl')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Hammer Curl')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-hammer_curl">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
+        <div class="ex-weight-log" data-ex-name="Romanian Deadlift">
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-romanian_deadlift"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-romanian_deadlift" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Romanian Deadlift')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Romanian Deadlift')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-romanian_deadlift"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2742,42 +2161,11 @@ body{
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Leg Press">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-leg_press"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-leg_press"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key===\'Enter\')logExerciseWeight(\'Leg Press\')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight(\'Leg Press\')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-leg_press">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
-        </div>
-        <div class="ex-weight-log" data-ex-name="Barbell Squat">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-barbell_squat"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-barbell_squat"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Squat')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Barbell Squat')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-barbell_squat">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-leg_press"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-leg_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Leg Press')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-leg_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2803,42 +2191,11 @@ body{
         <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
         <tr><td>1</td><td>12/leg</td><td>BW or DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td>2</td><td>12/leg</td><td>+DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>12/leg</td><td>+DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
+        <tr><td>3</td><td>12/leg</td><td>+DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Walking Lunges">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-walking_lunges"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-walking_lunges"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key===\'Enter\')logExerciseWeight(\'Walking Lunges\')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight(\'Walking Lunges\')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-walking_lunges">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
-        </div>
-        <div class="ex-weight-log" data-ex-name="Romanian Deadlift">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-romanian_deadlift"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-romanian_deadlift"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Romanian Deadlift')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Romanian Deadlift')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-romanian_deadlift">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-walking_lunges"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-walking_lunges" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Walking Lunges')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Walking Lunges')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-walking_lunges"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2860,387 +2217,78 @@ body{
           <div class="ex-video-arrow">▶</div>
         </a>
       </div>
-        <div class="cues">
-          <div class="cues-title">Skull Crushers — Best Tricep Builder</div>
-          <div class="cue">→ Lie flat on a bench, EZ bar (or two dumbbells) held directly above your chest</div>
-          <div class="cue">→ Only your forearms move — upper arms stay fixed pointing straight up</div>
-          <div class="cue">→ Lower the bar toward your forehead slowly (3 seconds down)</div>
-          <div class="cue">→ Press back up by squeezing the triceps — don't use momentum</div>
-          <div class="cue">→ Best done at the end of push day when triceps are already pumped</div>
-        </div>
+        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Plank: neutral spine, squeeze glutes and abs together</div><div class="cue">No rest between exercises within a round</div><div class="cue">60 seconds rest between rounds</div></div>
         <table class="stbl"><tr><th>Exercise</th><th>Amount</th><th>✓</th></tr>
         <tr><td style="font-size:11px;color:var(--white)">Plank</td><td>60 sec</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td style="font-size:11px;color:var(--white)">Hanging Knee Raise</td><td>15 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td style="font-size:11px;color:var(--white)">Cable Crunch</td><td>15 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
         <tr><td style="font-size:11px;color:var(--white)">Russian Twist</td><td>20 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Core Circuit">
-          <div class="ex-weight-header">
-            <div class="ex-weight-title">Working Weight</div>
-            <div class="ex-weight-pr" id="wl-pr-core_circuit"></div>
-          </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-core_circuit"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Core Circuit')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Core Circuit')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-core_circuit">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
-        </div>
-      </div>
-    </div>
-          <div class="ex-weight-input-row">
-            <input class="ex-weight-input" type="number"
-              id="wl-input-overhead_press"
-              placeholder="Enter kg"
-              min="0" max="500" step="0.5"
-              onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Press')">
-            <div class="ex-weight-unit">kg</div>
-            <button class="ex-weight-save" onclick="logExerciseWeight('Overhead Press')">Log</button>
-          </div>
-          <div class="ex-weight-history" id="wl-hist-overhead_press">
-            <span class="ex-weight-chip">No entries yet</span>
-          </div>
+          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-core_circuit"></div></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-core_circuit" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Core Circuit')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Core Circuit')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-core_circuit"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+</div><!-- ===== DELOAD ===== -->
+<div <div id="tab-deload" class="section">
+  <div class="sec-label">Programme Notes</div>
+  <div class="sec-title">DELOAD &amp; RPE</div>
 
-
-<!-- ===== WHAT'S NEXT ===== -->
-<div id="tab-next" class="section">
-  <div class="sec-label">Beyond Week 12</div>
-  <div class="sec-title">WHAT'S NEXT</div>
-
-  <!-- Hero message -->
-  <div class="next-hero">
-    <div class="next-hero-eyebrow">🎉 You finished Phase 1</div>
-    <div class="next-hero-title">12 weeks changes your body.<br>The next 12 change your life.</div>
-    <div class="next-hero-body">
-      If you followed this programme properly you're significantly stronger, leaner, and have built genuine training habits. <strong>But you've also barely scratched the surface.</strong><br><br>
-      The first 12 weeks are always the fastest period of improvement — you've built the foundation. Now you build the actual physique. Here's exactly what to do next.
+  <div class="divider"><div class="div-line"></div><div class="div-text">Deload Weeks</div><div class="div-line"></div></div>
+  
+  <div style="background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);padding:13px 14px;margin-bottom:10px;">
+    <div style="font-size:10px;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ What Is A Deload & Why It Matters</div>
+    <div style="font-size:12px;color:var(--mid);line-height:1.7;">
+      Every 4 weeks you reduce weight and volume by ~20% for one week. This isn't laziness — it's <strong style="color:var(--white)">how your body supercompensates</strong>. Your joints, tendons, and nervous system recover and you come back stronger. Skip deloads and you risk injury, burnout, and plateau.
     </div>
   </div>
 
-  <!-- First: take a week off -->
-  <div class="next-section-divider"><span>Step 1 — Immediately after week 12</span></div>
-
-  <div class="next-mindset-card">
-    <div class="next-mindset-icon">😴</div>
-    <div class="next-mindset-title">Take a full week off</div>
-    <div class="next-mindset-body">
-      Not optional. After 12 weeks of consistent training your joints, tendons, and nervous system are accumulated fatigued even if you don't feel it. <strong>A full deload week will make you come back noticeably stronger</strong> — this is called supercompensation and it's real.<br><br>
-      During this week: light walks, good sleep, eat your normal calories. No gym. Let your body finish adapting to everything you've put it through.
+  <div class="deload-banner" id="deload-w4">
+    <div class="deload-pill">Week 4 Deload</div>
+    <div class="deload-week-title">End of Foundation Phase</div>
+    <div class="deload-sub">After 4 hard weeks, your body needs this. You'll feel fresher going into Phase 2.</div>
+    <div class="deload-rules">
+      <div class="deload-rule">Reduce all weights by <strong style="color:var(--white)">20%</strong></div>
+      <div class="deload-rule">Cut sets from 4 to <strong style="color:var(--white)">3</strong></div>
+      <div class="deload-rule">Keep reps the same — focus on perfect form</div>
+      <div class="deload-rule">No pushing to failure — stop 3 reps short of your limit</div>
+      <div class="deload-rule">Sleep extra, eat the same, hydrate more</div>
     </div>
   </div>
 
-  <div class="next-mindset-card">
-    <div class="next-mindset-icon">📸</div>
-    <div class="next-mindset-title">Take your Week 12 photos</div>
-    <div class="next-mindset-body">
-      Front, side, and back. Same time of day as your Week 1 photos (if you took them). <strong>You will not believe the difference.</strong> Save them — they become the motivation for the next block when things get hard.
+  <div class="deload-banner" id="deload-w8">
+    <div class="deload-pill">Week 8 Deload</div>
+    <div class="deload-week-title">End of Strength Phase</div>
+    <div class="deload-sub">You've been lifting heavy for 4 weeks. This deload sets you up for the best definition phase possible.</div>
+    <div class="deload-rules">
+      <div class="deload-rule">Reduce all weights by <strong style="color:var(--white)">20–25%</strong></div>
+      <div class="deload-rule">Cut sets from 5 to <strong style="color:var(--white)">3</strong></div>
+      <div class="deload-rule">Add 10 min light cardio at the end of each session</div>
+      <div class="deload-rule">Use the week to fix any form issues you noticed</div>
     </div>
   </div>
 
-  <div class="next-mindset-card">
-    <div class="next-mindset-icon">📊</div>
-    <div class="next-mindset-title">Assess your lifts honestly</div>
-    <div class="next-mindset-body">
-      Check your weight logs in the Tracking tab. Write down your current working weights. These become your <strong>new baseline</strong> — your Week 1 weights for the next block should be heavier across the board. That's the whole point.
+  <div class="deload-banner" id="deload-w12">
+    <div class="deload-pill">Week 12 Deload</div>
+    <div class="deload-week-title">End of Strength Phase</div>
+    <div class="deload-sub">Going into the final definition phase fresh makes a huge difference. One week back-off now.</div>
+    <div class="deload-rules">
+      <div class="deload-rule">No lifting — let everything fully recover</div>
+      <div class="deload-rule">Light walks, swimming, or yoga only if you want to move</div>
+      <div class="deload-rule">Take your Week 12 progress photos</div>
+      <div class="deload-rule">Plan your next 12-week block with higher starting weights</div>
     </div>
   </div>
 
-  <!-- Phase 2 -->
-  <div class="next-section-divider"><span>Phase 2 — Weeks 13–24</span></div>
 
-  <div class="next-phase-card" onclick="this.classList.toggle('open')">
-    <div class="next-phase-head">
-      <div class="next-phase-num">02</div>
-      <div class="next-phase-info">
-        <div class="next-phase-name">Hypertrophy Block</div>
-        <div class="next-phase-sub">Weeks 13–24 · Maximum muscle growth</div>
-      </div>
-      <div class="next-phase-arrow">▼</div>
-    </div>
-    <div class="next-phase-body">
-      <div class="next-phase-intro">
-        Phase 1 built your strength foundation and taught you movement patterns. <strong>Phase 2 is where you actually build the physique.</strong> Higher volume, more sets, more exercises per session. Your body is now ready to handle and respond to more work.
-      </div>
 
-      <div class="next-change-grid">
-        <div class="next-change-cell">
-          <div class="next-change-label">Sets per exercise</div>
-          <div class="next-change-val accent">4–5 sets</div>
-        </div>
-        <div class="next-change-cell">
-          <div class="next-change-label">Rep range</div>
-          <div class="next-change-val accent">8–12 reps</div>
-        </div>
-        <div class="next-change-cell">
-          <div class="next-change-label">Rest periods</div>
-          <div class="next-change-val">90–120 sec</div>
-        </div>
-        <div class="next-change-cell">
-          <div class="next-change-label">Progression</div>
-          <div class="next-change-val green">+2.5kg when reps hit top of range</div>
-        </div>
-      </div>
-
-      <div class="next-tip-box">
-        <div class="next-tip-label">Key change from Phase 1</div>
-        <div class="next-tip-text">Add one extra set to every compound lift. Add one new isolation exercise per muscle group. <strong>Volume is the primary driver of hypertrophy</strong> — your body has adapted to the Phase 1 workload and needs more stimulus to keep growing.</div>
-      </div>
-
-      <div class="next-ex-list">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Exercises to add in Phase 2</div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">PUSH</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">Cable Flye</div>
-            <div class="next-ex-detail">Isolates the chest — gives the stretch and peak contraction you can't get from pressing. Add after bench press.</div>
-          </div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">PUSH</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">DB Lateral Raise Drop Set</div>
-            <div class="next-ex-detail">Same lateral raise but drop the weight by 50% when you hit failure and do 8 more reps. Shoulder caps.</div>
-          </div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">PULL</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">Pull-ups (bodyweight)</div>
-            <div class="next-ex-detail">By week 13 you should be strong enough to attempt these. Start with 3 sets to failure even if that's 2–3 reps. Progress from there.</div>
-          </div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">PULL</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">Incline DB Curl</div>
-            <div class="next-ex-detail">Greater stretch on the bicep long head than standing curls. Sit on an incline bench, arms hanging back behind your hips.</div>
-          </div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">LEGS</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">Bulgarian Split Squat</div>
-            <div class="next-ex-detail">One of the hardest leg exercises. Rear foot on bench, front foot forward. Brutally effective for quad and glute development.</div>
-          </div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">LEGS</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">Leg Curl (machine)</div>
-            <div class="next-ex-detail">Direct hamstring isolation. RDLs build the hinge pattern but a leg curl gets the hamstrings from a shortened position too.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Phase 3 -->
-  <div class="next-phase-card" onclick="this.classList.toggle('open')">
-    <div class="next-phase-head">
-      <div class="next-phase-num">03</div>
-      <div class="next-phase-info">
-        <div class="next-phase-name">Strength Block</div>
-        <div class="next-phase-sub">Weeks 25–36 · Build raw power</div>
-      </div>
-      <div class="next-phase-arrow">▼</div>
-    </div>
-    <div class="next-phase-body">
-      <div class="next-phase-intro">
-        After 6 months of training you're ready for a proper strength block. <strong>Stronger muscles are bigger muscles</strong> — periodically training for strength (lower reps, heavier load) forces adaptation that pure hypertrophy work doesn't. Then when you return to higher reps, you're lifting more weight and the muscle stimulus is greater.
-      </div>
-
-      <div class="next-change-grid">
-        <div class="next-change-cell">
-          <div class="next-change-label">Sets per compound</div>
-          <div class="next-change-val accent">5 sets</div>
-        </div>
-        <div class="next-change-cell">
-          <div class="next-change-label">Rep range</div>
-          <div class="next-change-val accent">4–6 reps</div>
-        </div>
-        <div class="next-change-cell">
-          <div class="next-change-label">Rest periods</div>
-          <div class="next-change-val">2–3 min</div>
-        </div>
-        <div class="next-change-cell">
-          <div class="next-change-label">Accessories</div>
-          <div class="next-change-val">Keep at 8–12 reps</div>
-        </div>
-      </div>
-
-      <div class="next-tip-box">
-        <div class="next-tip-label">The strength block mindset</div>
-        <div class="next-tip-text">Compound lifts only go heavy — Bench, Squat, Romanian Deadlift, Overhead Press. <strong>Chase numbers on these four.</strong> Everything else stays at normal hypertrophy rep ranges. The goal is to end this block with a new PR on every main lift.</div>
-      </div>
-
-      <div class="next-ex-list">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Strength block targets (realistic after 6 months)</div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">🏋️</div>
-          <div class="next-ex-info"><div class="next-ex-name">Barbell Bench Press</div><div class="next-ex-detail">Target: 1 × bodyweight (e.g. 100kg if you weigh 100kg)</div></div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">🦵</div>
-          <div class="next-ex-info"><div class="next-ex-name">Barbell Squat</div><div class="next-ex-detail">Target: 1.25–1.5 × bodyweight for 5 reps</div></div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">💪</div>
-          <div class="next-ex-info"><div class="next-ex-name">Overhead Press</div><div class="next-ex-detail">Target: 60–70% of bodyweight for 5 reps</div></div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">🔙</div>
-          <div class="next-ex-info"><div class="next-ex-name">Pull-ups</div><div class="next-ex-detail">Target: 10 clean reps bodyweight, then start adding weight</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Nutrition evolution -->
-  <div class="next-section-divider"><span>How your nutrition changes</span></div>
-
-  <div class="next-phase-card" onclick="this.classList.toggle('open')">
-    <div class="next-phase-head">
-      <div class="next-phase-num">🍽</div>
-      <div class="next-phase-info">
-        <div class="next-phase-name">Nutrition Phase 2</div>
-        <div class="next-phase-sub">Adjusting calories and macros for new goals</div>
-      </div>
-      <div class="next-phase-arrow">▼</div>
-    </div>
-    <div class="next-phase-body">
-      <div class="next-phase-intro">
-        After 12 weeks your body has changed — your maintenance calories will be different (more muscle = higher metabolism), and depending on your results you may want to adjust your strategy.
-      </div>
-      <div class="next-ex-list">
-        <div class="next-ex-item">
-          <div class="next-ex-badge">📉</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">If you lost weight but want more size</div>
-            <div class="next-ex-detail">Increase calories by 200–300 kcal per day. Keep protein at 2g per kg of bodyweight minimum. Add the extra calories from carbs — rice, oats, banana.</div>
-          </div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">📈</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">If you maintained weight but gained muscle</div>
-            <div class="next-ex-detail">Recomp worked. For Phase 2 — small surplus of 200 kcal on training days only to accelerate muscle growth while staying lean.</div>
-          </div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">⚖️</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">Recalculate your calories</div>
-            <div class="next-ex-detail">Use the same formula but with your new bodyweight. If you lost 5kg your maintenance is lower — recalculate before starting Phase 2.</div>
-          </div>
-        </div>
-        <div class="next-ex-item">
-          <div class="next-ex-badge">💊</div>
-          <div class="next-ex-info">
-            <div class="next-ex-name">Supplements to consider adding</div>
-            <div class="next-ex-detail">Creatine monohydrate 5g/day if not already — the most proven supplement for strength and muscle. Beta-alanine 3.2g/day for high-rep endurance sets.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mindset section -->
-  <div class="next-section-divider"><span>The bigger picture</span></div>
-
-  <div class="next-mindset-card">
-    <div class="next-mindset-icon">📈</div>
-    <div class="next-mindset-title">Progress slows — that's normal</div>
-    <div class="next-mindset-body">
-      The first 12 weeks are the fastest gains you'll ever make — beginner adaptation is uniquely powerful. <strong>Phase 2 progress will be slower but the changes are deeper.</strong> Expect to add 1–2kg of actual muscle per month maximum as a natural lifter. Anyone promising more is lying. Judge progress over months, not weeks.
-    </div>
-  </div>
-
-  <div class="next-mindset-card">
-    <div class="next-mindset-icon">🔄</div>
-    <div class="next-mindset-title">The cycle that builds physiques</div>
-    <div class="next-mindset-body">
-      Every serious lifter runs in blocks: <strong>Hypertrophy block → Strength block → Deload → Repeat.</strong> Each cycle you come back slightly bigger and stronger. After 2–3 years of this you'll look completely different. There's no shortcut — just this cycle, repeated consistently.
-    </div>
-  </div>
-
-  <div class="next-mindset-card">
-    <div class="next-mindset-icon">🎯</div>
-    <div class="next-mindset-title">Set a new 12-week goal now</div>
-    <div class="next-mindset-body">
-      Don't wait until the end of Week 12. In Week 10 — while you're still in the programme — decide what the next block looks like. <strong>A specific target beats "I'll just keep training."</strong> Pick a lift to prioritise, a bodyweight target, or a physique milestone. Write it down. Start planning it.
-    </div>
-  </div>
-
-  <!-- Benchmark targets -->
-  <div class="next-section-divider"><span>Where you should be at week 12</span></div>
-  <div style="font-size:12px;color:var(--mid);line-height:1.6;margin-bottom:12px;">Realistic benchmarks for a consistent beginner after 12 weeks. These are working weight targets for sets of 8–10 reps — not one-rep maxes.</div>
-
-  <div class="next-benchmark">
-    <div class="next-benchmark-icon">💪</div>
-    <div class="next-benchmark-info">
-      <div class="next-benchmark-name">Barbell Bench Press</div>
-      <div class="next-benchmark-detail">Should feel solid with good form</div>
-    </div>
-    <div class="next-benchmark-target">60–80kg</div>
-  </div>
-  <div class="next-benchmark">
-    <div class="next-benchmark-icon">🦵</div>
-    <div class="next-benchmark-info">
-      <div class="next-benchmark-name">Barbell Squat</div>
-      <div class="next-benchmark-detail">Depth consistent, knees tracking</div>
-    </div>
-    <div class="next-benchmark-target">80–100kg</div>
-  </div>
-  <div class="next-benchmark">
-    <div class="next-benchmark-icon">🔙</div>
-    <div class="next-benchmark-info">
-      <div class="next-benchmark-name">Lat Pulldown</div>
-      <div class="next-benchmark-detail">Full stretch and contraction each rep</div>
-    </div>
-    <div class="next-benchmark-target">50–70kg</div>
-  </div>
-  <div class="next-benchmark">
-    <div class="next-benchmark-icon">🏋️</div>
-    <div class="next-benchmark-info">
-      <div class="next-benchmark-name">Overhead Press</div>
-      <div class="next-benchmark-detail">Strict press, no leg drive</div>
-    </div>
-    <div class="next-benchmark-target">40–55kg</div>
-  </div>
-  <div class="next-benchmark">
-    <div class="next-benchmark-icon">💪</div>
-    <div class="next-benchmark-info">
-      <div class="next-benchmark-name">Romanian Deadlift</div>
-      <div class="next-benchmark-detail">Good hamstring stretch, neutral spine</div>
-    </div>
-    <div class="next-benchmark-target">70–90kg</div>
-  </div>
-  <div class="next-benchmark">
-    <div class="next-benchmark-icon">🤸</div>
-    <div class="next-benchmark-info">
-      <div class="next-benchmark-name">Pull-ups</div>
-      <div class="next-benchmark-detail">Clean full range of motion reps</div>
-    </div>
-    <div class="next-benchmark-target">5–10 reps</div>
-  </div>
-
-  <div style="background:var(--accent-dim,rgba(200,16,46,0.08));border:1px solid rgba(200,16,46,0.25);border-radius:var(--r-sm,6px);padding:14px;margin-top:16px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Remember</div>
-    <div style="font-size:12px;color:var(--mid);line-height:1.7;">These are <strong style="color:var(--white)">guidelines, not rules.</strong> Some people progress faster, some slower. If you're hitting these numbers you're doing exceptionally well. If you're below them, check your sleep, nutrition, and consistency before changing the programme. The programme works — the variables are always sleep, food, and effort.</div>
-  </div>
 
 </div>
-
+</div>
 <!-- ===== NUTRITION ===== -->
 <div id="tab-nutrition" class="section">
   <div class="sec-label">Daily Targets · 100kg · Recomposition</div>
@@ -3886,148 +2934,394 @@ body{
   </div>
 </div>
 
+
+
+<!-- ===== TRACKING ===== -->
+<div id="tab-tracking" class="section">
+  <div class="sec-label">Personal Records · Body Stats</div>
+  <div class="sec-title">TRACKING</div>
+
+  <!-- SUMMARY STATS -->
+  <div class="summary-grid">
+    <div class="summary-cell">
+      <div class="summary-num" id="trk-start-weight">65</div>
+      <div class="summary-lbl">Start kg</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-num" id="trk-current-weight">—</div>
+      <div class="summary-lbl">Current kg</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-num" id="trk-weight-change">—</div>
+      <div class="summary-lbl">Change kg</div>
+    </div>
+  </div>
+
+  <!-- PHOTO REMINDER -->
+  <div class="photo-reminder" id="photoReminder" style="display:none">
+    <div class="photo-reminder-icon">📸</div>
+    <div class="photo-reminder-text">
+      <strong>Progress Photo Due</strong>
+      Every 4 weeks — front + side. Same lighting, same spot. Photos show what the scale can't.
+    </div>
+  </div>
+
+  <!-- WEIGHT LOG -->
+  <div class="track-section">
+    <div class="track-section-title">Weekly Weigh-In</div>
+    <div class="log-card">
+      <div class="log-card-title">Log This Week's Weight</div>
+      <div style="font-size:11px;color:var(--grey);margin-bottom:12px;line-height:1.6;">
+        Same day each week · Morning · After toilet · Before eating
+      </div>
+      <div class="log-row">
+        <div class="log-label">Weight</div>
+        <input class="log-input" type="number" id="weightInput" placeholder="e.g. 99.4" step="0.1" min="40" max="200">
+        <div class="log-unit">kg</div>
+      </div>
+      <div class="log-row">
+        <div class="log-label">Week</div>
+        <select class="log-input" id="weightWeek" style="cursor:pointer;">
+          <option value="">Select week...</option>
+        </select>
+        <div class="log-unit"></div>
+      </div>
+      <button class="log-btn" onclick="logWeight()">SAVE WEIGH-IN</button>
+    </div>
+
+    <!-- Weight chart -->
+    <div class="chart-wrap">
+      <div class="chart-title">Bodyweight — 12 Weeks</div>
+      <div class="chart-sub">Target: slow decline · recomp = muscle up, fat down</div>
+      <div class="chart-canvas-wrap">
+        <svg class="chart-svg" id="weightChart" height="140" viewBox="0 0 320 140"></svg>
+        <div class="chart-empty" id="weightChartEmpty">Log your first weigh-in to see your chart</div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Actual weight</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(76,175,125,0.6)"></div>Trend</div>
+      </div>
+    </div>
+
+    <!-- Weight history -->
+    <div class="chart-wrap" id="weightHistoryWrap" style="display:none">
+      <div class="chart-title">History</div>
+      <table class="history-table">
+        <thead><tr><th>Week</th><th>Weight</th><th>Change</th><th></th></tr></thead>
+        <tbody id="weightHistoryBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LIFT TRACKER -->
+  <div class="track-section">
+    <div class="track-section-title">Strength Log</div>
+    <div class="log-card">
+      <div class="log-card-title">Working Weight This Week</div>
+      <div style="font-size:11px;color:var(--grey);margin-bottom:12px;line-height:1.6;">
+        Log your main working set weight · PRs highlighted in green
+      </div>
+      <div class="log-row" style="margin-bottom:6px;">
+        <div class="log-label">Week</div>
+        <select class="log-input" id="liftWeek" style="cursor:pointer;"></select>
+        <div class="log-unit"></div>
+      </div>
+      <div id="liftInputs">
+        <div class="lift-row">
+          <div class="lift-name">Bench Press</div>
+          <input class="lift-input" type="number" id="lift-bench" placeholder="kg" min="0" max="500">
+          <div class="lift-pr" id="pr-bench"></div>
+        </div>
+        <div class="lift-row">
+          <div class="lift-name">Squat</div>
+          <input class="lift-input" type="number" id="lift-squat" placeholder="kg" min="0" max="500">
+          <div class="lift-pr" id="pr-squat"></div>
+        </div>
+        <div class="lift-row">
+          <div class="lift-name">Barbell Row</div>
+          <input class="lift-input" type="number" id="lift-row" placeholder="kg" min="0" max="500">
+          <div class="lift-pr" id="pr-row"></div>
+        </div>
+        <div class="lift-row">
+          <div class="lift-name">Pull-ups +kg</div>
+          <input class="lift-input" type="number" id="lift-pullup" placeholder="kg added" min="0" max="200">
+          <div class="lift-pr" id="pr-pullup"></div>
+        </div>
+        <div class="lift-row">
+          <div class="lift-name">OHP</div>
+          <input class="lift-input" type="number" id="lift-ohp" placeholder="kg" min="0" max="300">
+          <div class="lift-pr" id="pr-ohp"></div>
+        </div>
+      </div>
+      <button class="log-btn" onclick="logLifts()">SAVE LIFTS</button>
+    </div>
+
+    <!-- Lifts chart -->
+    <div class="chart-wrap">
+      <div class="chart-title">Strength Progress</div>
+      <div class="chart-sub">Tap a lift to highlight it</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="liftChartToggle">
+        <button onclick="setActiveLift('bench')"  class="lift-toggle-btn active-lift" data-lift="bench">Bench</button>
+        <button onclick="setActiveLift('squat')"  class="lift-toggle-btn" data-lift="squat">Squat</button>
+        <button onclick="setActiveLift('row')"    class="lift-toggle-btn" data-lift="row">Row</button>
+        <button onclick="setActiveLift('pullup')" class="lift-toggle-btn" data-lift="pullup">Pull-ups</button>
+        <button onclick="setActiveLift('ohp')"    class="lift-toggle-btn" data-lift="ohp">OHP</button>
+      </div>
+      <div class="chart-canvas-wrap">
+        <svg class="chart-svg" id="liftChart" height="140" viewBox="0 0 320 140"></svg>
+        <div class="chart-empty" id="liftChartEmpty">Log your first session to see strength progress</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEASUREMENTS -->
+  <div class="track-section">
+    <div class="track-section-title">Body Measurements · Every 2 Weeks</div>
+    <div class="log-card">
+      <div class="log-card-title">Log Measurements</div>
+      <div class="log-row" style="margin-bottom:10px;">
+        <div class="log-label">Week</div>
+        <select class="log-input" id="measWeek" style="cursor:pointer;"></select>
+        <div class="log-unit"></div>
+      </div>
+      <div class="meas-grid">
+        <div class="meas-field">
+          <div class="meas-label">Waist (cm)</div>
+          <input class="log-input" type="number" id="meas-waist" placeholder="e.g. 98" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Chest (cm)</div>
+          <input class="log-input" type="number" id="meas-chest" placeholder="e.g. 108" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Shoulders (cm)</div>
+          <input class="log-input" type="number" id="meas-shoulders" placeholder="e.g. 122" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Arm (cm)</div>
+          <input class="log-input" type="number" id="meas-arm" placeholder="e.g. 38" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Thigh (cm)</div>
+          <input class="log-input" type="number" id="meas-thigh" placeholder="e.g. 62" step="0.5">
+        </div>
+        <div class="meas-field">
+          <div class="meas-label">Neck (cm)</div>
+          <input class="log-input" type="number" id="meas-neck" placeholder="e.g. 40" step="0.5">
+        </div>
+      </div>
+      <button class="log-btn" onclick="logMeasurements()">SAVE MEASUREMENTS</button>
+    </div>
+
+    <!-- Measurements history -->
+    <div class="chart-wrap" id="measHistoryWrap" style="display:none">
+      <div class="chart-title">Measurements History</div>
+      <table class="history-table">
+        <thead><tr><th>Week</th><th>Waist</th><th>Chest</th><th>Shoulders</th><th></th></tr></thead>
+        <tbody id="measHistoryBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="track-section">
+    <div class="track-section-title">Weekly Notes</div>
+    <div class="log-card">
+      <div class="log-card-title">How did this week feel?</div>
+      <div class="log-row" style="margin-bottom:10px;">
+        <div class="log-label">Week</div>
+        <select class="log-input" id="noteWeek" style="cursor:pointer;"></select>
+        <div class="log-unit"></div>
+      </div>
+      <textarea class="log-input" id="noteInput" placeholder="Energy levels, sleep quality, how lifts felt, diet adherence, anything worth remembering..." 
+        style="width:100%;min-height:90px;resize:none;padding:10px 12px;line-height:1.6;font-size:12px;"></textarea>
+      <button class="log-btn" onclick="logNote()">SAVE NOTE</button>
+      <div id="noteDisplay" style="display:none;margin-top:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);font-size:12px;color:var(--mid);line-height:1.6;"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== CALORIES ===== -->
+<div id="tab-calories" class="section">
+  <div class="sec-label">Daily Food Log · 2,800 kcal target</div>
+  <div class="sec-title">CALORIES</div>
+
+  <!-- Day Navigation -->
+  <div class="cal-day-nav">
+    <button class="cal-day-btn" onclick="calChangeDay(-1)">‹</button>
+    <div class="cal-day-label" id="calDayLabel">TODAY</div>
+    <button class="cal-day-btn" onclick="calChangeDay(1)">›</button>
+  </div>
+
+  <!-- Ring -->
+  <div class="cal-ring-wrap">
+    <svg width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="62" fill="none" stroke="var(--border)" stroke-width="8"/>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="var(--accent)" stroke-width="8"
+        stroke-dasharray="390" stroke-dashoffset="390" id="calRingCircle" stroke-linecap="round"/>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#ff6b35" stroke-width="8"
+        stroke-dasharray="390" stroke-dashoffset="390" id="calRingOver" stroke-linecap="round" opacity="0"/>
+    </svg>
+    <div class="cal-ring-center">
+      <span class="cal-ring-num" id="calRingNum">0</span>
+      <span class="cal-ring-lbl">kcal eaten</span>
+      <span class="cal-ring-target" id="calRingTarget">of 2,800</span>
+    </div>
+  </div>
+
+  <!-- Remaining -->
+  <div class="cal-remaining" id="calRemaining">
+    <span class="under" id="calRemainingNum">2,800</span> kcal remaining today
+  </div>
+
+  <!-- Macro strip -->
+  <div class="cal-macro-strip">
+    <div class="cal-macro">
+      <div class="cal-macro-val"><span id="calProteinEaten">0</span>g</div>
+      <div class="cal-macro-target">/ 230g</div>
+      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calProteinBar" style="width:0%"></div></div>
+      <div class="cal-macro-name">Protein</div>
+    </div>
+    <div class="cal-macro">
+      <div class="cal-macro-val"><span id="calCarbsEaten">0</span>g</div>
+      <div class="cal-macro-target">/ 270g</div>
+      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calCarbsBar" style="width:0%"></div></div>
+      <div class="cal-macro-name">Carbs</div>
+    </div>
+    <div class="cal-macro">
+      <div class="cal-macro-val"><span id="calFatsEaten">0</span>g</div>
+      <div class="cal-macro-target">/ 80g</div>
+      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calFatsBar" style="width:0%"></div></div>
+      <div class="cal-macro-name">Fats</div>
+    </div>
+  </div>
+
+  <!-- Add food -->
+  <div class="cal-add-card">
+    <div class="cal-add-title">Log Food</div>
+    <div class="cal-input-row">
+      <input class="cal-input" type="text" id="calFoodName" placeholder="Food name (e.g. Chicken breast 200g)" maxlength="60">
+    </div>
+    <div class="cal-input-row">
+      <div style="flex:1">
+        <div class="cal-macro-label">Calories</div>
+        <input class="cal-input cal-input-kcal" style="width:100%" type="number" id="calFoodKcal" placeholder="kcal" min="0" max="5000">
+      </div>
+      <div style="flex:1">
+        <div class="cal-macro-label">Protein (g)</div>
+        <input class="cal-input" type="number" id="calFoodProtein" placeholder="g" min="0" max="500">
+      </div>
+    </div>
+    <div class="cal-input-row">
+      <div style="flex:1">
+        <div class="cal-macro-label">Carbs (g)</div>
+        <input class="cal-input" type="number" id="calFoodCarbs" placeholder="g" min="0" max="500">
+      </div>
+      <div style="flex:1">
+        <div class="cal-macro-label">Fats (g)</div>
+        <input class="cal-input" type="number" id="calFoodFats" placeholder="g" min="0" max="500">
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--grey);margin-bottom:8px;">Macros optional — kcal required</div>
+    <button class="cal-add-btn" style="width:100%" onclick="calAddEntry()">+ ADD FOOD</button>
+  </div>
+
+  <!-- Food log -->
+  <div class="cal-log" id="calLogWrap">
+    <div class="cal-log-header">
+      <div class="cal-log-header-title">Today's Log</div>
+      <div class="cal-log-header-cols">
+        <div class="cal-log-col">P</div>
+        <div class="cal-log-col">C</div>
+        <div class="cal-log-col">F</div>
+        <div class="cal-log-col" style="min-width:54px">kcal</div>
+      </div>
+    </div>
+    <div id="calLogBody">
+      <div class="cal-empty">No food logged yet today.<br>Add your first meal above.</div>
+    </div>
+  </div>
+
+  <!-- Week summary -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">7-Day Average</div><div class="div-line"></div></div>
+  <div style="background:var(--card);border:1px solid var(--border);padding:14px;" id="calWeekSummary">
+    <div style="font-size:11px;color:var(--mid);text-align:center;padding:8px 0;">Log at least 3 days to see your weekly average</div>
+  </div>
+</div>
+
+<!-- PWA INSTALL BANNER -->
+<div id="installBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;
+  background:#1a1a1a;border-top:2px solid #c8102e;padding:14px 16px;
+  z-index:9999;align-items:center;gap:12px;">
+  <div style="flex:1;">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:2px;color:#f2efe8;">
+      ADD TO HOME SCREEN
+    </div>
+    <div style="font-size:11px;color:#6e6e6e;margin-top:2px;">
+      Install as an app for quick access
+    </div>
+  </div>
+  <button onclick="installApp()" style="background:#c8102e;border:none;color:#fff;
+    font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:2px;
+    padding:10px 18px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+    INSTALL
+  </button>
+  <button onclick="document.getElementById('installBanner').style.display='none'"
+    style="background:transparent;border:1px solid #252525;color:#6e6e6e;
+    font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:1px;
+    padding:10px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+    NOT NOW
+  </button>
+</div>
+
+
+
+<!-- ===== AFTER WEEK 12 ===== -->
+<div id="tab-next" class="section">
+  <div class="sec-label">Planning</div>
+  <div class="sec-title">AFTER WEEK 12</div>
+  <div style="padding:16px 0;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:12px;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Phase 2 · Strength Block</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After 12 weeks of recomp, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload to push past 100kg.</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Assess at Week 12</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;">If you hit 100kg with visible recomp — strength phase next. If not yet at target, extend 4 weeks with adjusted macros before transitioning.</div>
+    </div>
+  </div>
+</div>
+
 <script>
-
-// ══ EXERCISE WEIGHT LOG ════════════════════════════════════════
-const WL_KEY = 'ascend_weights_v1';
-
-function getWeightLog(){
-  return JSON.parse(localStorage.getItem(WL_KEY) || '{}');
-}
-function saveWeightLog(log){
-  localStorage.setItem(WL_KEY, JSON.stringify(log));
-}
-
-// Generate a storage key from exercise name
-function exKey(name){
-  return name.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
-}
-
-function logExerciseWeight(name){
-  const key = exKey(name);
-  const inputId = 'wl-input-' + key;
-  const input = document.getElementById(inputId);
-  if(!input) return;
-  const val = parseFloat(input.value);
-  if(!val || val <= 0){ input.style.borderColor='var(--accent)'; setTimeout(()=>input.style.borderColor='',1000); return; }
-
-  const log = getWeightLog();
-  if(!log[key]) log[key] = [];
-  const entry = { kg: val, date: new Date().toISOString().split('T')[0], ts: Date.now() };
-  // Don't duplicate same weight same day
-  const today = entry.date;
-  log[key] = log[key].filter(e => e.date !== today);
-  log[key].push(entry);
-  // Keep last 10 entries per exercise
-  if(log[key].length > 10) log[key] = log[key].slice(-10);
-  saveWeightLog(log);
-
-  input.value = '';
-  renderExerciseWeightLog(name);
-  showWeightToast(name, val);
-}
-
-function renderExerciseWeightLog(name){
-  const key = exKey(name);
-  const log = getWeightLog();
-  const entries = (log[key] || []).slice().sort((a,b) => b.ts - a.ts);
-
-  // Update PR
-  const prEl = document.getElementById('wl-pr-' + key);
-  if(prEl){
-    if(entries.length > 0){
-      const pr = Math.max(...entries.map(e => e.kg));
-      prEl.textContent = 'PR: ' + pr + 'kg';
-    } else {
-      prEl.textContent = '';
-    }
-  }
-
-  // Update history chips
-  const histEl = document.getElementById('wl-hist-' + key);
-  if(histEl){
-    if(entries.length === 0){
-      histEl.innerHTML = '<span class="ex-weight-chip">No entries yet</span>';
-    } else {
-      histEl.innerHTML = entries.slice(0,5).map((e, i) => {
-        const d = new Date(e.date);
-        const label = d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
-        return `<span class="ex-weight-chip ${i===0?'latest':''}">${e.kg}kg · ${label}</span>`;
-      }).join('');
-    }
-  }
-}
-
-function showWeightToast(name, kg){
-  const toast = document.createElement('div');
-  toast.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--green,#4caf7d);color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;font-family:\'DM Sans\',sans-serif;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,0.4);animation:fadeUp 0.2s ease;white-space:nowrap;';
-  toast.textContent = '✓ ' + kg + 'kg logged for ' + name;
-  document.body.appendChild(toast);
-  setTimeout(() => { toast.style.opacity='0'; toast.style.transition='opacity 0.3s'; setTimeout(()=>toast.remove(),300); }, 2000);
-}
-
-function initWeightLogs(){
-  document.querySelectorAll('[data-ex-name]').forEach(el => {
-    renderExerciseWeightLog(el.getAttribute('data-ex-name'));
-  });
-}
-
 // ── RECIPES ─────────────────────────────────────────────────────────────────
 function toggleRecipe(c){c.classList.toggle('open');}
 
-
-// ══ HAMBURGER NAV ══════════════════════════════════════════════
-function toggleNav(){
-  const btn = document.getElementById('hamburgerBtn');
-  const drawer = document.getElementById('navDrawer');
-  const backdrop = document.getElementById('navBackdrop');
-  const isOpen = drawer.classList.contains('open');
-  if(isOpen){ closeNav(); }
-  else {
-    btn.classList.add('open');
-    drawer.classList.add('open');
-    backdrop.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeNav(){
-  document.getElementById('hamburgerBtn').classList.remove('open');
-  document.getElementById('navDrawer').classList.remove('open');
-  document.getElementById('navBackdrop').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-const NAV_LABELS = {
-  schedule:'Overview', program:'Workouts', nutrition:'Nutrition',
-  recipes:'Recipes', shopping:'Shopping', timer:'Timer',
-  tracker:'Progress', tracking:'Tracking', calories:'Calories',
-  next:"What's Next"
-};
-
-function navTo(id, label){
-  // Switch the section
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  const section = document.getElementById('tab-'+id);
-  if(section) section.classList.add('active');
-  // Update active nav item
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const navItem = document.getElementById('nav-'+id);
-  if(navItem) navItem.classList.add('active');
-  // Update topbar label
-  const sectionLabel = document.getElementById('topbarSection');
-  if(sectionLabel) sectionLabel.textContent = label || NAV_LABELS[id] || '';
-  // Close drawer
-  closeNav();
-  // Scroll to top
-  window.scrollTo(0,0);
-}
-
 // ── TABS ─────────────────────────────────────────────────────────────────────
-function switchTab(id,el){
-  // Legacy support — redirect to navTo
-  navTo(id, NAV_LABELS ? NAV_LABELS[id] : id);
+
+var WL_KEY='ascend_weights_v1';
+function getWeightLog(){return JSON.parse(localStorage.getItem(WL_KEY)||'{}');}
+function saveWeightLog(log){localStorage.setItem(WL_KEY,JSON.stringify(log));}
+function exKey(name){return name.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');}
+function logExerciseWeight(name){
+  var key=exKey(name),input=document.getElementById('wl-input-'+key);if(!input)return;
+  var val=parseFloat(input.value);if(!val||val<=0){input.style.borderColor='var(--accent)';setTimeout(function(){input.style.borderColor='';},1000);return;}
+  var log=getWeightLog();if(!log[key])log[key]=[];
+  var today=new Date().toISOString().split('T')[0];
+  log[key]=log[key].filter(function(e){return e.date!==today;});
+  log[key].push({kg:val,date:today,ts:Date.now()});
+  if(log[key].length>10)log[key]=log[key].slice(-10);
+  saveWeightLog(log);input.value='';renderExerciseWeightLog(name);showWtToast(name,val);
 }
+function renderExerciseWeightLog(name){
+  var key=exKey(name),log=getWeightLog(),entries=(log[key]||[]).slice().sort(function(a,b){return b.ts-a.ts;});
+  var pr=document.getElementById('wl-pr-'+key);if(pr)pr.textContent=entries.length>0?'PR: '+Math.max.apply(null,entries.map(function(e){return e.kg;}))+'kg':'';
+  var hist=document.getElementById('wl-hist-'+key);
+  if(hist){hist.innerHTML=!entries.length?'<span class="ex-weight-chip">No entries yet</span>':entries.slice(0,5).map(function(e,i){var d=new Date(e.date);return '<span class="ex-weight-chip'+(i===0?' latest':'')+'">'+e.kg+'kg · '+d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+'</span>';}).join('');}
+}
+function showWtToast(name,kg){var t=document.createElement('div');t.style.cssText="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#4caf7d;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;z-index:9999;white-space:nowrap;";t.textContent='✓ '+kg+'kg logged for '+name;document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';t.style.transition='opacity 0.3s';setTimeout(function(){t.remove();},300);},2000);}
+function initWeightLogs(){document.querySelectorAll('[data-ex-name]').forEach(function(el){renderExerciseWeightLog(el.getAttribute('data-ex-name'));});}
+
 
 // ── CARDS ─────────────────────────────────────────────────────────────────────
 function toggleCard(c){c.classList.toggle('open');}
@@ -4814,356 +4108,17 @@ function renderCalWeekSummary(){
 }
 
 // ── INIT ───────────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded',()=>{
-  if(typeof initWeightLogs==='function') initWeightLogs();
-  buildTracker();
-  renderTodayCard();
-  initTracking();
-  updatePhaseBadges();
-  restoreShop();
-  const t=localStorage.getItem('apx_time'); if(t) setTime(t);
-  const m=localStorage.getItem('apx_meal'); if(m) switchMeal(m);
+window.addEventListener('DOMContentLoaded',function(){
+  try{if(typeof initWeightLogs==='function')initWeightLogs();}catch(e){}
+  try{buildTracker();}catch(e){}
+  try{renderTodayCard();}catch(e){}
+  try{initTracking();}catch(e){}
+  try{updatePhaseBadges();}catch(e){}
+  try{restoreShop();}catch(e){}
+  try{var t=localStorage.getItem('apx_time');if(t)setTime(t);}catch(e){}
+  try{var m=localStorage.getItem('apx_meal');if(m)switchMeal(m);}catch(e){}
 });
 </script>
-
-<!-- ===== TRACKING ===== -->
-<div id="tab-tracking" class="section">
-  <div class="sec-label">Personal Records · Body Stats</div>
-  <div class="sec-title">TRACKING</div>
-
-  <!-- SUMMARY STATS -->
-  <div class="summary-grid">
-    <div class="summary-cell">
-      <div class="summary-num" id="trk-start-weight">65</div>
-      <div class="summary-lbl">Start kg</div>
-    </div>
-    <div class="summary-cell">
-      <div class="summary-num" id="trk-current-weight">—</div>
-      <div class="summary-lbl">Current kg</div>
-    </div>
-    <div class="summary-cell">
-      <div class="summary-num" id="trk-weight-change">—</div>
-      <div class="summary-lbl">Change kg</div>
-    </div>
-  </div>
-
-  <!-- PHOTO REMINDER -->
-  <div class="photo-reminder" id="photoReminder" style="display:none">
-    <div class="photo-reminder-icon">📸</div>
-    <div class="photo-reminder-text">
-      <strong>Progress Photo Due</strong>
-      Every 4 weeks — front + side. Same lighting, same spot. Photos show what the scale can't.
-    </div>
-  </div>
-
-  <!-- WEIGHT LOG -->
-  <div class="track-section">
-    <div class="track-section-title">Weekly Weigh-In</div>
-    <div class="log-card">
-      <div class="log-card-title">Log This Week's Weight</div>
-      <div style="font-size:11px;color:var(--grey);margin-bottom:12px;line-height:1.6;">
-        Same day each week · Morning · After toilet · Before eating
-      </div>
-      <div class="log-row">
-        <div class="log-label">Weight</div>
-        <input class="log-input" type="number" id="weightInput" placeholder="e.g. 99.4" step="0.1" min="40" max="200">
-        <div class="log-unit">kg</div>
-      </div>
-      <div class="log-row">
-        <div class="log-label">Week</div>
-        <select class="log-input" id="weightWeek" style="cursor:pointer;">
-          <option value="">Select week...</option>
-        </select>
-        <div class="log-unit"></div>
-      </div>
-      <button class="log-btn" onclick="logWeight()">SAVE WEIGH-IN</button>
-    </div>
-
-    <!-- Weight chart -->
-    <div class="chart-wrap">
-      <div class="chart-title">Bodyweight — 12 Weeks</div>
-      <div class="chart-sub">Target: slow decline · recomp = muscle up, fat down</div>
-      <div class="chart-canvas-wrap">
-        <svg class="chart-svg" id="weightChart" height="140" viewBox="0 0 320 140"></svg>
-        <div class="chart-empty" id="weightChartEmpty">Log your first weigh-in to see your chart</div>
-      </div>
-      <div class="chart-legend">
-        <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Actual weight</div>
-        <div class="legend-item"><div class="legend-dot" style="background:rgba(76,175,125,0.6)"></div>Trend</div>
-      </div>
-    </div>
-
-    <!-- Weight history -->
-    <div class="chart-wrap" id="weightHistoryWrap" style="display:none">
-      <div class="chart-title">History</div>
-      <table class="history-table">
-        <thead><tr><th>Week</th><th>Weight</th><th>Change</th><th></th></tr></thead>
-        <tbody id="weightHistoryBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- LIFT TRACKER -->
-  <div class="track-section">
-    <div class="track-section-title">Strength Log</div>
-    <div class="log-card">
-      <div class="log-card-title">Working Weight This Week</div>
-      <div style="font-size:11px;color:var(--grey);margin-bottom:12px;line-height:1.6;">
-        Log your main working set weight · PRs highlighted in green
-      </div>
-      <div class="log-row" style="margin-bottom:6px;">
-        <div class="log-label">Week</div>
-        <select class="log-input" id="liftWeek" style="cursor:pointer;"></select>
-        <div class="log-unit"></div>
-      </div>
-      <div id="liftInputs">
-        <div class="lift-row">
-          <div class="lift-name">Bench Press</div>
-          <input class="lift-input" type="number" id="lift-bench" placeholder="kg" min="0" max="500">
-          <div class="lift-pr" id="pr-bench"></div>
-        </div>
-        <div class="lift-row">
-          <div class="lift-name">Squat</div>
-          <input class="lift-input" type="number" id="lift-squat" placeholder="kg" min="0" max="500">
-          <div class="lift-pr" id="pr-squat"></div>
-        </div>
-        <div class="lift-row">
-          <div class="lift-name">Barbell Row</div>
-          <input class="lift-input" type="number" id="lift-row" placeholder="kg" min="0" max="500">
-          <div class="lift-pr" id="pr-row"></div>
-        </div>
-        <div class="lift-row">
-          <div class="lift-name">Pull-ups +kg</div>
-          <input class="lift-input" type="number" id="lift-pullup" placeholder="kg added" min="0" max="200">
-          <div class="lift-pr" id="pr-pullup"></div>
-        </div>
-        <div class="lift-row">
-          <div class="lift-name">OHP</div>
-          <input class="lift-input" type="number" id="lift-ohp" placeholder="kg" min="0" max="300">
-          <div class="lift-pr" id="pr-ohp"></div>
-        </div>
-      </div>
-      <button class="log-btn" onclick="logLifts()">SAVE LIFTS</button>
-    </div>
-
-    <!-- Lifts chart -->
-    <div class="chart-wrap">
-      <div class="chart-title">Strength Progress</div>
-      <div class="chart-sub">Tap a lift to highlight it</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="liftChartToggle">
-        <button onclick="setActiveLift('bench')"  class="lift-toggle-btn active-lift" data-lift="bench">Bench</button>
-        <button onclick="setActiveLift('squat')"  class="lift-toggle-btn" data-lift="squat">Squat</button>
-        <button onclick="setActiveLift('row')"    class="lift-toggle-btn" data-lift="row">Row</button>
-        <button onclick="setActiveLift('pullup')" class="lift-toggle-btn" data-lift="pullup">Pull-ups</button>
-        <button onclick="setActiveLift('ohp')"    class="lift-toggle-btn" data-lift="ohp">OHP</button>
-      </div>
-      <div class="chart-canvas-wrap">
-        <svg class="chart-svg" id="liftChart" height="140" viewBox="0 0 320 140"></svg>
-        <div class="chart-empty" id="liftChartEmpty">Log your first session to see strength progress</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MEASUREMENTS -->
-  <div class="track-section">
-    <div class="track-section-title">Body Measurements · Every 2 Weeks</div>
-    <div class="log-card">
-      <div class="log-card-title">Log Measurements</div>
-      <div class="log-row" style="margin-bottom:10px;">
-        <div class="log-label">Week</div>
-        <select class="log-input" id="measWeek" style="cursor:pointer;"></select>
-        <div class="log-unit"></div>
-      </div>
-      <div class="meas-grid">
-        <div class="meas-field">
-          <div class="meas-label">Waist (cm)</div>
-          <input class="log-input" type="number" id="meas-waist" placeholder="e.g. 98" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Chest (cm)</div>
-          <input class="log-input" type="number" id="meas-chest" placeholder="e.g. 108" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Shoulders (cm)</div>
-          <input class="log-input" type="number" id="meas-shoulders" placeholder="e.g. 122" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Arm (cm)</div>
-          <input class="log-input" type="number" id="meas-arm" placeholder="e.g. 38" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Thigh (cm)</div>
-          <input class="log-input" type="number" id="meas-thigh" placeholder="e.g. 62" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Neck (cm)</div>
-          <input class="log-input" type="number" id="meas-neck" placeholder="e.g. 40" step="0.5">
-        </div>
-      </div>
-      <button class="log-btn" onclick="logMeasurements()">SAVE MEASUREMENTS</button>
-    </div>
-
-    <!-- Measurements history -->
-    <div class="chart-wrap" id="measHistoryWrap" style="display:none">
-      <div class="chart-title">Measurements History</div>
-      <table class="history-table">
-        <thead><tr><th>Week</th><th>Waist</th><th>Chest</th><th>Shoulders</th><th></th></tr></thead>
-        <tbody id="measHistoryBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- NOTES -->
-  <div class="track-section">
-    <div class="track-section-title">Weekly Notes</div>
-    <div class="log-card">
-      <div class="log-card-title">How did this week feel?</div>
-      <div class="log-row" style="margin-bottom:10px;">
-        <div class="log-label">Week</div>
-        <select class="log-input" id="noteWeek" style="cursor:pointer;"></select>
-        <div class="log-unit"></div>
-      </div>
-      <textarea class="log-input" id="noteInput" placeholder="Energy levels, sleep quality, how lifts felt, diet adherence, anything worth remembering..." 
-        style="width:100%;min-height:90px;resize:none;padding:10px 12px;line-height:1.6;font-size:12px;"></textarea>
-      <button class="log-btn" onclick="logNote()">SAVE NOTE</button>
-      <div id="noteDisplay" style="display:none;margin-top:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);font-size:12px;color:var(--mid);line-height:1.6;"></div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ===== CALORIES ===== -->
-<div id="tab-calories" class="section">
-  <div class="sec-label">Daily Food Log · 2,800 kcal target</div>
-  <div class="sec-title">CALORIES</div>
-
-  <!-- Day Navigation -->
-  <div class="cal-day-nav">
-    <button class="cal-day-btn" onclick="calChangeDay(-1)">‹</button>
-    <div class="cal-day-label" id="calDayLabel">TODAY</div>
-    <button class="cal-day-btn" onclick="calChangeDay(1)">›</button>
-  </div>
-
-  <!-- Ring -->
-  <div class="cal-ring-wrap">
-    <svg width="150" height="150" viewBox="0 0 150 150">
-      <circle cx="75" cy="75" r="62" fill="none" stroke="var(--border)" stroke-width="8"/>
-      <circle cx="75" cy="75" r="62" fill="none" stroke="var(--accent)" stroke-width="8"
-        stroke-dasharray="390" stroke-dashoffset="390" id="calRingCircle" stroke-linecap="round"/>
-      <circle cx="75" cy="75" r="62" fill="none" stroke="#ff6b35" stroke-width="8"
-        stroke-dasharray="390" stroke-dashoffset="390" id="calRingOver" stroke-linecap="round" opacity="0"/>
-    </svg>
-    <div class="cal-ring-center">
-      <span class="cal-ring-num" id="calRingNum">0</span>
-      <span class="cal-ring-lbl">kcal eaten</span>
-      <span class="cal-ring-target" id="calRingTarget">of 2,800</span>
-    </div>
-  </div>
-
-  <!-- Remaining -->
-  <div class="cal-remaining" id="calRemaining">
-    <span class="under" id="calRemainingNum">2,800</span> kcal remaining today
-  </div>
-
-  <!-- Macro strip -->
-  <div class="cal-macro-strip">
-    <div class="cal-macro">
-      <div class="cal-macro-val"><span id="calProteinEaten">0</span>g</div>
-      <div class="cal-macro-target">/ 230g</div>
-      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calProteinBar" style="width:0%"></div></div>
-      <div class="cal-macro-name">Protein</div>
-    </div>
-    <div class="cal-macro">
-      <div class="cal-macro-val"><span id="calCarbsEaten">0</span>g</div>
-      <div class="cal-macro-target">/ 270g</div>
-      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calCarbsBar" style="width:0%"></div></div>
-      <div class="cal-macro-name">Carbs</div>
-    </div>
-    <div class="cal-macro">
-      <div class="cal-macro-val"><span id="calFatsEaten">0</span>g</div>
-      <div class="cal-macro-target">/ 80g</div>
-      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calFatsBar" style="width:0%"></div></div>
-      <div class="cal-macro-name">Fats</div>
-    </div>
-  </div>
-
-  <!-- Add food -->
-  <div class="cal-add-card">
-    <div class="cal-add-title">Log Food</div>
-    <div class="cal-input-row">
-      <input class="cal-input" type="text" id="calFoodName" placeholder="Food name (e.g. Chicken breast 200g)" maxlength="60">
-    </div>
-    <div class="cal-input-row">
-      <div style="flex:1">
-        <div class="cal-macro-label">Calories</div>
-        <input class="cal-input cal-input-kcal" style="width:100%" type="number" id="calFoodKcal" placeholder="kcal" min="0" max="5000">
-      </div>
-      <div style="flex:1">
-        <div class="cal-macro-label">Protein (g)</div>
-        <input class="cal-input" type="number" id="calFoodProtein" placeholder="g" min="0" max="500">
-      </div>
-    </div>
-    <div class="cal-input-row">
-      <div style="flex:1">
-        <div class="cal-macro-label">Carbs (g)</div>
-        <input class="cal-input" type="number" id="calFoodCarbs" placeholder="g" min="0" max="500">
-      </div>
-      <div style="flex:1">
-        <div class="cal-macro-label">Fats (g)</div>
-        <input class="cal-input" type="number" id="calFoodFats" placeholder="g" min="0" max="500">
-      </div>
-    </div>
-    <div style="font-size:10px;color:var(--grey);margin-bottom:8px;">Macros optional — kcal required</div>
-    <button class="cal-add-btn" style="width:100%" onclick="calAddEntry()">+ ADD FOOD</button>
-  </div>
-
-  <!-- Food log -->
-  <div class="cal-log" id="calLogWrap">
-    <div class="cal-log-header">
-      <div class="cal-log-header-title">Today's Log</div>
-      <div class="cal-log-header-cols">
-        <div class="cal-log-col">P</div>
-        <div class="cal-log-col">C</div>
-        <div class="cal-log-col">F</div>
-        <div class="cal-log-col" style="min-width:54px">kcal</div>
-      </div>
-    </div>
-    <div id="calLogBody">
-      <div class="cal-empty">No food logged yet today.<br>Add your first meal above.</div>
-    </div>
-  </div>
-
-  <!-- Week summary -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">7-Day Average</div><div class="div-line"></div></div>
-  <div style="background:var(--card);border:1px solid var(--border);padding:14px;" id="calWeekSummary">
-    <div style="font-size:11px;color:var(--mid);text-align:center;padding:8px 0;">Log at least 3 days to see your weekly average</div>
-  </div>
-</div>
-
-<!-- PWA INSTALL BANNER -->
-<div id="installBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;
-  background:#1a1a1a;border-top:2px solid #c8102e;padding:14px 16px;
-  z-index:9999;align-items:center;gap:12px;">
-  <div style="flex:1;">
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;letter-spacing:2px;color:#f2efe8;">
-      ADD TO HOME SCREEN
-    </div>
-    <div style="font-size:11px;color:#6e6e6e;margin-top:2px;">
-      Install as an app for quick access
-    </div>
-  </div>
-  <button onclick="installApp()" style="background:#c8102e;border:none;color:#fff;
-    font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:2px;
-    padding:10px 18px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
-    INSTALL
-  </button>
-  <button onclick="document.getElementById('installBanner').style.display='none'"
-    style="background:transparent;border:1px solid #252525;color:#6e6e6e;
-    font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:1px;
-    padding:10px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;">
-    NOT NOW
-  </button>
-</div>
 <script>
 
 
@@ -5516,6 +4471,5 @@ window.addEventListener('appinstalled', () => {
   if(banner) banner.style.display = 'none';
 });
 </script>
-
 </body>
 </html>
