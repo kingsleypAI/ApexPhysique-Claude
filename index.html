@@ -1259,6 +1259,21 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .topbar-centre{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;}
 .topbar-wordmark{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;letter-spacing:0.25em;color:#f2efe8;text-transform:uppercase;transition:opacity 0.2s;}
 .topbar-section{font-size:12px;color:#777;font-weight:500;font-family:'DM Sans',sans-serif;letter-spacing:0.02em;transition:opacity 0.2s;}
+
+/* ══ STRAVA ACTIVITY CARD ═══════════════════════════════════════ */
+.strava-activity{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:12px;}
+.strava-activity-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+.strava-activity-info{flex:1;min-width:0;}
+.strava-activity-name{font-size:13px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px;}
+.strava-activity-meta{font-size:10px;color:var(--grey);}
+.strava-activity-stat{text-align:right;flex-shrink:0;}
+.strava-activity-dist{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--white);}
+.strava-activity-unit{font-size:9px;color:var(--grey);}
+
+
+.off-result{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 13px;transition:border-color 0.15s;}
+.off-result:active{border-color:var(--accent);}
+
 </style>
 <script>
 function toggleNav(){
@@ -1282,7 +1297,7 @@ var NAV_LABELS={
   schedule:'Overview',program:'Workouts',nutrition:'Nutrition',
   recipes:'Recipes',shopping:'Shopping',timer:'Timer',
   tracker:'Progress',tracking:'Tracking',calories:'Calories',
-  next:'After Week 12',deload:'Deload Guide'
+  next:'After Week 12',deload:'Deload Guide',strava:'Strava'
 };
 function navTo(id,label){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
@@ -1298,6 +1313,7 @@ function navTo(id,label){
   if(wm){wm.style.opacity=isHome?'1':'0';}
   closeNav();
   window.scrollTo(0,0);
+  if(id==='strava') document.dispatchEvent(new Event('stravaTabActive'));
 }
 function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
 </script>
@@ -1336,6 +1352,23 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
   <div class="nav-divider"></div>
   <div class="nav-section"><div class="nav-section-label">Planning</div>
     <div class="nav-item" id="nav-next" onclick="navTo('next','After Week 12')"><div class="nav-item-icon">🚀</div><div><div class="nav-item-name">After Week 12</div><div class="nav-item-desc">Phase 2 · What comes next</div></div></div>
+  </div>
+  <div class="nav-divider"></div>
+  <div class="nav-section">
+    <div class="nav-section-label">Integrations</div>
+    <div class="nav-item" id="nav-strava" onclick="navTo('strava','Strava')">
+      <div class="nav-item-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="#FC4C02"/></svg>
+      </div>
+      <div style="flex:1"><div class="nav-item-name">Strava</div><div class="nav-item-desc" id="stravaNavStatus">Connect your activities</div></div>
+      <div id="stravaNavBadge" style="display:none;width:8px;height:8px;border-radius:50%;background:#FC4C02;flex-shrink:0;margin-top:4px;"></div>
+    </div>
+  </div>
+  <div style="padding:12px 20px 20px;">
+    <button id="stravaNavBtn" onclick="navTo('strava','Strava')" style="width:100%;padding:11px;background:#FC4C02;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:8px;-webkit-tap-highlight-color:transparent;">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="white"/></svg>
+      <span id="stravaNavBtnText">Connect Strava</span>
+    </button>
   </div>
 </div>
 
@@ -2289,6 +2322,96 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
 
 </div>
 </div>
+<!-- ===== STRAVA ===== -->
+<div id="tab-strava" class="section">
+  <div class="sec-label">Integrations</div>
+  <div class="sec-title">STRAVA</div>
+
+  <!-- Not connected state -->
+  <div id="stravaConnect" style="display:block;">
+    <div style="text-align:center;padding:24px 0 20px;">
+      <div style="width:64px;height:64px;background:#FC4C02;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="white"/></svg>
+      </div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:var(--white);margin-bottom:8px;">Connect Strava</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;max-width:280px;margin:0 auto;">Sync your runs, rides and cardio sessions directly into Ascend. Activities log automatically.</div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-bottom:10px;">What syncs</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#FC4C02;">✓</span> Runs, rides, walks, swims</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#FC4C02;">✓</span> Distance, duration, calories burned</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#FC4C02;">✓</span> Auto-logs to your cardio tracker</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#FC4C02;">✓</span> Last 10 activities imported on connect</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(252,76,2,0.07);border:1px solid rgba(252,76,2,0.25);border-radius:8px;padding:12px 14px;margin-bottom:20px;">
+      <div style="font-size:11px;color:var(--mid);line-height:1.6;">
+        <strong style="color:var(--white);display:block;margin-bottom:4px;">How it works</strong>
+        Tap Connect below. You'll be redirected to Strava to approve access, then brought back to Ascend. Your data never leaves your device — the token is stored locally.
+      </div>
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Your Strava Client ID</div>
+      <div style="font-size:11px;color:var(--mid);margin-bottom:8px;line-height:1.5;">Get this free at <strong style="color:var(--white)">developers.strava.com</strong> — create an app, copy the Client ID.</div>
+      <input type="number" id="stravaClientId" placeholder="e.g. 12345" style="width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;padding:11px 14px;outline:none;border-radius:6px;margin-bottom:8px;box-sizing:border-box;">
+      <div style="font-size:10px;color:var(--grey);">One-time setup. We never see your Strava data.</div>
+    </div>
+
+    <button onclick="stravaConnect()" style="width:100%;padding:14px;background:#FC4C02;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;-webkit-tap-highlight-color:transparent;">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="white"/></svg>
+      Connect with Strava
+    </button>
+  </div>
+
+  <!-- Connected state -->
+  <div id="stravaConnected" style="display:none;">
+
+    <!-- Athlete card -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+      <div style="height:3px;background:#FC4C02;"></div>
+      <div style="padding:16px;display:flex;align-items:center;gap:14px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(252,76,2,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;" id="stravaAvatarWrap">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="#FC4C02"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--white);" id="stravaAthleteName">Connected</div>
+          <div style="font-size:11px;color:#FC4C02;margin-top:2px;">● Strava connected</div>
+        </div>
+        <button onclick="stravaSync()" id="stravaSyncBtn" style="background:rgba(252,76,2,0.12);border:1px solid rgba(252,76,2,0.3);color:#FC4C02;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:7px 12px;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;">Sync</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;">
+      <div style="background:var(--surface);border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--white);" id="stravaStatActivities">—</div>
+        <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;">Activities</div>
+      </div>
+      <div style="background:var(--surface);border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--white);" id="stravaStatKm">—</div>
+        <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;">km this month</div>
+      </div>
+      <div style="background:var(--surface);border-radius:8px;padding:12px;text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--white);" id="stravaStatCalories">—</div>
+        <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;">kcal burned</div>
+      </div>
+    </div>
+
+    <!-- Recent activities -->
+    <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Recent Activities</div>
+    <div id="stravaActivitiesList" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;"></div>
+
+    <!-- Disconnect -->
+    <button onclick="stravaDisconnect()" style="width:100%;padding:11px;background:var(--surface);border:1px solid var(--border);color:var(--mid);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.04em;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">
+      Disconnect Strava
+    </button>
+  </div>
+</div>
+
 <!-- ===== NUTRITION ===== -->
 <div id="tab-nutrition" class="section">
   <div class="sec-label">Daily Targets · 100kg · Recomposition</div>
@@ -3197,7 +3320,46 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     </div>
   </div>
 
-  <!-- Add food -->
+  <!-- Food Search (Open Food Facts) -->
+  <div class="cal-add-card" style="margin-bottom:10px;">
+    <div class="cal-add-title" style="margin-bottom:10px;">Search Food</div>
+    <div style="display:flex;gap:8px;margin-bottom:8px;">
+      <input class="cal-input" type="text" id="offSearchInput" placeholder="Search any food or brand…"
+        style="flex:1" onkeydown="if(event.key==='Enter')offSearch()">
+      <button onclick="offSearch()" style="padding:0 14px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer;border-radius:6px;white-space:nowrap;-webkit-tap-highlight-color:transparent;">Search</button>
+    </div>
+    <button onclick="offStartScan()" style="width:100%;padding:9px;background:var(--surface);border:1px solid var(--border2);color:var(--mid);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:7px;-webkit-tap-highlight-color:transparent;margin-bottom:4px;">
+      <span style="font-size:16px;">📷</span> Scan Barcode
+    </button>
+    <div id="offResults" style="margin-top:8px;display:flex;flex-direction:column;gap:6px;"></div>
+
+    <!-- Camera scanner overlay -->
+    <div id="offScannerWrap" style="display:none;margin-top:8px;border-radius:10px;overflow:hidden;background:#000;position:relative;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(0,0,0,0.8);">
+        <span style="font-size:12px;font-weight:600;color:#fff;">Point camera at barcode</span>
+        <button onclick="offStopScan()" style="background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:11px;font-weight:600;padding:5px 12px;cursor:pointer;border-radius:20px;-webkit-tap-highlight-color:transparent;">✕ Close</button>
+      </div>
+      <div style="position:relative;">
+        <video id="offScanVideo" style="width:100%;display:block;max-height:240px;object-fit:cover;" playsinline muted></video>
+        <!-- Aiming guide -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:70%;height:80px;border:2px solid rgba(200,16,46,0.8);border-radius:6px;box-shadow:0 0 0 2000px rgba(0,0,0,0.35);"></div>
+        </div>
+      </div>
+      <div id="offScanStatus" style="padding:10px 14px;font-size:11px;color:#aaa;background:rgba(0,0,0,0.8);text-align:center;">Scanning…</div>
+    </div>
+
+    <!-- Fallback: manual barcode entry -->
+    <div id="offBarcodeWrap" style="display:none;margin-top:8px;">
+      <div style="font-size:11px;color:var(--mid);margin-bottom:6px;">Enter barcode manually:</div>
+      <div style="display:flex;gap:8px;">
+        <input class="cal-input" type="number" id="offBarcodeInput" placeholder="e.g. 5000112548167" style="flex:1;font-size:16px;">
+        <button onclick="offLookupBarcode()" style="padding:0 14px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Look up</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manual Log -->
   <div class="cal-add-card">
     <div class="cal-add-title">Log Food</div>
     <div class="cal-input-row">
@@ -4109,6 +4271,7 @@ function renderCalWeekSummary(){
 
 // ── INIT ───────────────────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded',function(){
+  try{stravaInit();}catch(e){console.warn('Strava init:',e);}
   try{if(typeof initWeightLogs==='function')initWeightLogs();}catch(e){}
   try{buildTracker();}catch(e){}
   try{renderTodayCard();}catch(e){}
@@ -4470,6 +4633,464 @@ window.addEventListener('appinstalled', () => {
   const banner = document.getElementById('installBanner');
   if(banner) banner.style.display = 'none';
 });
+</script>
+<script>
+
+// ══ STRAVA INTEGRATION ═══════════════════════════════════════════
+const STRAVA_KEY     = 'ascend_strava_v1';
+const STRAVA_ID_KEY  = 'ascend_strava_client_id';
+
+function stravaGetData(){ return JSON.parse(localStorage.getItem(STRAVA_KEY)||'null'); }
+function stravaSetData(d){ localStorage.setItem(STRAVA_KEY, JSON.stringify(d)); }
+function stravaGetClientId(){ return localStorage.getItem(STRAVA_ID_KEY)||''; }
+
+// Sport type → emoji
+function stravaIcon(sport){
+  const map={Run:'🏃',TrailRun:'🏔️',Walk:'🚶',Hike:'🥾',Ride:'🚴',MountainBikeRide:'🚵',VirtualRide:'🚴',Swim:'🏊',Workout:'💪',WeightTraining:'🏋️',Yoga:'🧘',Crossfit:'🔥',Elliptical:'⚡',StairStepper:'🪜',Rowing:'🚣'};
+  return map[sport] || '🏃';
+}
+function sportColor(sport){
+  if(/Run|Walk|Hike/.test(sport)) return 'rgba(252,76,2,0.15)';
+  if(/Ride|Bike/.test(sport)) return 'rgba(59,130,246,0.15)';
+  if(/Swim/.test(sport)) return 'rgba(14,165,233,0.15)';
+  return 'rgba(76,175,125,0.15)';
+}
+
+// Connect — redirect to Strava OAuth
+function stravaConnect(){
+  const clientId = document.getElementById('stravaClientId').value.trim();
+  if(!clientId){ 
+    document.getElementById('stravaClientId').style.borderColor='var(--accent)';
+    setTimeout(()=>document.getElementById('stravaClientId').style.borderColor='',1500);
+    return;
+  }
+  localStorage.setItem(STRAVA_ID_KEY, clientId);
+  const redirectUri = encodeURIComponent(window.location.href.split('?')[0].split('#')[0]);
+  const scope = 'read,activity:read';
+  const url = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=strava_oauth`;
+  window.location.href = url;
+}
+
+// Handle OAuth callback (code in URL)
+function stravaHandleCallback(){
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('state') !== 'strava_oauth') return;
+  const code = params.get('code');
+  const error = params.get('error');
+  
+  // Clean URL
+  window.history.replaceState({}, document.title, window.location.pathname);
+
+  if(error || !code){
+    alert('Strava connection was cancelled or failed. Please try again.');
+    return;
+  }
+
+  // Store code temporarily — show instructions to complete token exchange
+  // Since we're a PWA with no backend, we need the user to paste their access token
+  // We'll use the implicit/token approach by showing a helper
+  stravaShowTokenHelper(code);
+}
+
+function stravaShowTokenHelper(code){
+  // Show a prompt explaining they need to exchange the code
+  // The cleanest approach for a no-backend PWA: direct them to exchange
+  // We'll prompt for the access token directly since we can't do server-side exchange
+  navTo('strava','Strava');
+  
+  const connectDiv = document.getElementById('stravaConnect');
+  if(connectDiv){
+    connectDiv.innerHTML = `
+      <div style="background:rgba(252,76,2,0.08);border:1px solid rgba(252,76,2,0.3);border-radius:10px;padding:16px;margin-bottom:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;">✓ Strava authorised</div>
+        <div style="font-size:12px;color:var(--mid);line-height:1.7;">Now paste your <strong style="color:var(--white)">Access Token</strong> below. Get it from:<br>
+        <strong style="color:#FC4C02">developers.strava.com → Your App → "My API Application"</strong><br>
+        Copy the access token shown there.</div>
+      </div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Access Token</div>
+      <input type="text" id="stravaTokenInput" placeholder="Paste your access token here" style="width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 14px;outline:none;border-radius:6px;margin-bottom:10px;box-sizing:border-box;">
+      <button onclick="stravaActivate()" style="width:100%;padding:13px;background:#FC4C02;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:7px;">Activate Strava</button>
+    `;
+  }
+}
+
+function stravaActivate(){
+  const token = document.getElementById('stravaTokenInput') ? document.getElementById('stravaTokenInput').value.trim() : '';
+  if(!token){ alert('Please paste your access token'); return; }
+  stravaFetchAthlete(token);
+}
+
+// Fetch athlete profile
+async function stravaFetchAthlete(token){
+  try{
+    const r = await fetch('https://www.strava.com/api/v3/athlete', {
+      headers:{'Authorization':'Bearer '+token}
+    });
+    if(!r.ok) throw new Error('Token invalid or expired ('+r.status+')');
+    const athlete = await r.json();
+    
+    // Save
+    stravaSetData({
+      token,
+      athleteId: athlete.id,
+      firstName: athlete.firstname,
+      lastName: athlete.lastname,
+      profile: athlete.profile_medium || athlete.profile,
+      connectedAt: Date.now()
+    });
+    
+    // Fetch activities
+    await stravaFetchActivities(token);
+    stravaRenderConnected();
+    stravaUpdateNav(true);
+  } catch(e){
+    alert('Could not connect: '+e.message+'. Check your access token at developers.strava.com');
+  }
+}
+
+// Fetch recent activities
+async function stravaFetchActivities(token){
+  try{
+    const data = stravaGetData();
+    const r = await fetch('https://www.strava.com/api/v3/athlete/activities?per_page=10&page=1', {
+      headers:{'Authorization':'Bearer '+(token||data.token)}
+    });
+    if(!r.ok) throw new Error('Could not fetch activities');
+    const activities = await r.json();
+    
+    // Update stored data
+    const updated = {...stravaGetData(), activities, lastSync: Date.now()};
+    stravaSetData(updated);
+    
+    // Log cardio sessions to Ascend
+    stravaLogToCardio(activities);
+    return activities;
+  } catch(e){
+    console.warn('Strava activities fetch failed:', e);
+    return [];
+  }
+}
+
+// Log strava activities to Ascend cardio tracker
+function stravaLogToCardio(activities){
+  if(!activities || !activities.length) return;
+  const CARDIO_KEY = 'apx_cardio_v1';
+  const cardio = JSON.parse(localStorage.getItem(CARDIO_KEY)||'{}');
+  let added = 0;
+  activities.forEach(a => {
+    const date = a.start_date_local.split('T')[0];
+    if(!cardio[date]){
+      cardio[date] = {
+        type: a.sport_type || a.type,
+        duration: Math.round(a.moving_time/60),
+        name: a.name,
+        distance: a.distance ? Math.round(a.distance/100)/10 : null,
+        calories: a.calories || null,
+        source: 'strava',
+        stravaId: a.id
+      };
+      added++;
+    }
+  });
+  localStorage.setItem(CARDIO_KEY, JSON.stringify(cardio));
+  if(added > 0 && typeof renderCardioWeek === 'function') renderCardioWeek();
+}
+
+// Render connected state
+function stravaRenderConnected(){
+  const data = stravaGetData();
+  if(!data || !data.token) return;
+
+  const connectDiv = document.getElementById('stravaConnect');
+  const connectedDiv = document.getElementById('stravaConnected');
+  if(connectDiv) connectDiv.style.display = 'none';
+  if(connectedDiv) connectedDiv.style.display = 'block';
+
+  // Athlete name
+  const nameEl = document.getElementById('stravaAthleteName');
+  if(nameEl) nameEl.textContent = (data.firstName||'') + ' ' + (data.lastName||'');
+
+  // Avatar
+  if(data.profile){
+    const wrap = document.getElementById('stravaAvatarWrap');
+    if(wrap) wrap.innerHTML = `<img src="${data.profile}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">`;
+  }
+
+  // Stats
+  const acts = data.activities || [];
+  const now = new Date();
+  const monthActs = acts.filter(a => {
+    const d = new Date(a.start_date_local);
+    return d.getMonth()===now.getMonth() && d.getFullYear()===now.getFullYear();
+  });
+  const totalKm = monthActs.reduce((s,a)=>(s + (a.distance||0)/1000), 0);
+  const totalCal = monthActs.reduce((s,a)=>(s + (a.calories||0)), 0);
+
+  const actEl = document.getElementById('stravaStatActivities');
+  const kmEl  = document.getElementById('stravaStatKm');
+  const calEl = document.getElementById('stravaStatCalories');
+  if(actEl) actEl.textContent = monthActs.length;
+  if(kmEl)  kmEl.textContent  = totalKm.toFixed(1);
+  if(calEl) calEl.textContent = totalCal > 0 ? totalCal : '—';
+
+  // Activity list
+  const listEl = document.getElementById('stravaActivitiesList');
+  if(listEl){
+    if(!acts.length){
+      listEl.innerHTML = '<div style="font-size:12px;color:var(--grey);padding:12px 0;">No activities found. Try syncing.</div>';
+    } else {
+      listEl.innerHTML = acts.slice(0,8).map(a => {
+        const dist = a.distance ? (a.distance/1000).toFixed(2)+'km' : '';
+        const dur  = a.moving_time ? Math.floor(a.moving_time/60)+'min' : '';
+        const date = new Date(a.start_date_local).toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+        const icon = stravaIcon(a.sport_type || a.type);
+        const color = sportColor(a.sport_type || a.type);
+        return `<div class="strava-activity">
+          <div class="strava-activity-icon" style="background:${color};">${icon}</div>
+          <div class="strava-activity-info">
+            <div class="strava-activity-name">${a.name}</div>
+            <div class="strava-activity-meta">${date} · ${dur}${dist?' · '+dist:''}</div>
+          </div>
+          ${dist ? `<div class="strava-activity-stat"><div class="strava-activity-dist">${(a.distance/1000).toFixed(1)}</div><div class="strava-activity-unit">km</div></div>` : ''}
+        </div>`;
+      }).join('');
+    }
+  }
+}
+
+// Sync button
+async function stravaSync(){
+  const btn = document.getElementById('stravaSyncBtn');
+  if(btn){ btn.textContent='Syncing…'; btn.disabled=true; }
+  const data = stravaGetData();
+  if(data && data.token){
+    await stravaFetchActivities(data.token);
+    stravaRenderConnected();
+  }
+  if(btn){ btn.textContent='Sync'; btn.disabled=false; }
+}
+
+// Disconnect
+function stravaDisconnect(){
+  if(!confirm('Disconnect Strava? Your synced cardio sessions will remain logged.')) return;
+  localStorage.removeItem(STRAVA_KEY);
+  localStorage.removeItem(STRAVA_ID_KEY);
+  stravaUpdateNav(false);
+  const connectDiv = document.getElementById('stravaConnect');
+  const connectedDiv = document.getElementById('stravaConnected');
+  // Reset connect div
+  if(connectDiv) connectDiv.innerHTML = document.getElementById('stravaConnect').innerHTML; // reset
+  location.reload(); // cleanest reset
+}
+
+// Update nav drawer indicators
+function stravaUpdateNav(connected){
+  const badge = document.getElementById('stravaNavBadge');
+  const status = document.getElementById('stravaNavStatus');
+  const btnText = document.getElementById('stravaNavBtnText');
+  if(badge) badge.style.display = connected ? 'block' : 'none';
+  if(status) status.textContent = connected ? '● Connected' : 'Connect your activities';
+  if(status) status.style.color = connected ? '#FC4C02' : '';
+  if(btnText) btnText.textContent = connected ? 'View Strava' : 'Connect Strava';
+}
+
+// Init Strava on page load
+function stravaInit(){
+  // Handle OAuth callback
+  stravaHandleCallback();
+  
+  const data = stravaGetData();
+  if(data && data.token){
+    stravaUpdateNav(true);
+    // Pre-fill client ID if stored
+    const cidEl = document.getElementById('stravaClientId');
+    if(cidEl && stravaGetClientId()) cidEl.value = stravaGetClientId();
+    // If on strava tab, render connected state
+    if(document.getElementById('tab-strava') && document.getElementById('tab-strava').classList.contains('active')){
+      stravaRenderConnected();
+    }
+  } else {
+    stravaUpdateNav(false);
+    // Pre-fill client ID if saved before
+    const cid = stravaGetClientId();
+    const cidEl = document.getElementById('stravaClientId');
+    if(cidEl && cid) cidEl.value = cid;
+  }
+}
+
+// Render when Strava tab becomes active — hook into head navTo via event
+document.addEventListener('stravaTabActive', function(){
+  var data = stravaGetData();
+  if(data && data.token){ stravaRenderConnected(); }
+});
+
+</script>
+<script>
+// ══ OPEN FOOD FACTS + CAMERA BARCODE SCANNER ═════════════════════
+var _offStream = null;
+var _offScanInterval = null;
+
+async function offSearch(){
+  var q=(document.getElementById('offSearchInput')||{}).value;
+  if(!q||!q.trim())return;
+  q=q.trim();
+  var el=document.getElementById('offResults');
+  el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Searching…</div>';
+  try{
+    var r=await fetch('https://world.openfoodfacts.org/cgi/search.pl?search_terms='+encodeURIComponent(q)+'&search_simple=1&action=process&json=1&page_size=8&fields=product_name,brands,nutriments');
+    var d=await r.json();
+    var prods=(d.products||[]).filter(function(p){return p.product_name&&p.nutriments&&p.nutriments['energy-kcal_100g'];});
+    if(!prods.length){el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">No results. Try different search or log manually.</div>';return;}
+    window._offProds=prods;
+    offRenderResults(prods);
+  }catch(e){el.innerHTML='<div style="font-size:12px;color:var(--accent);padding:8px 0;">Search failed. Check connection.</div>';}
+}
+
+// ── Camera barcode scanner ────────────────────────────────────────
+async function offStartScan(){
+  var wrap=document.getElementById('offScannerWrap');
+  var status=document.getElementById('offScanStatus');
+
+  // Check BarcodeDetector support
+  if(!('BarcodeDetector' in window)){
+    // Fallback: show manual input
+    document.getElementById('offBarcodeWrap').style.display='block';
+    return;
+  }
+
+  // Request camera
+  try{
+    _offStream=await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:'environment',width:{ideal:1280},height:{ideal:720}}
+    });
+  }catch(e){
+    // Camera denied or unavailable — fallback to manual
+    document.getElementById('offBarcodeWrap').style.display='block';
+    return;
+  }
+
+  var video=document.getElementById('offScanVideo');
+  video.srcObject=_offStream;
+  await video.play();
+  wrap.style.display='block';
+  status.textContent='Scanning — hold steady over a barcode';
+
+  // Create detector
+  var detector=new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e','code_128','code_39','qr_code']});
+
+  _offScanInterval=setInterval(async function(){
+    if(video.readyState<video.HAVE_ENOUGH_DATA)return;
+    try{
+      var codes=await detector.detect(video);
+      if(codes&&codes.length>0){
+        var code=codes[0].rawValue;
+        clearInterval(_offScanInterval);
+        _offScanInterval=null;
+        status.textContent='✓ Barcode detected: '+code;
+        setTimeout(function(){offStopScan();},600);
+        offFetchBarcode(code);
+      }
+    }catch(e){}
+  },300);
+}
+
+function offStopScan(){
+  if(_offScanInterval){clearInterval(_offScanInterval);_offScanInterval=null;}
+  if(_offStream){_offStream.getTracks().forEach(function(t){t.stop();});_offStream=null;}
+  var video=document.getElementById('offScanVideo');
+  if(video){video.srcObject=null;}
+  var wrap=document.getElementById('offScannerWrap');
+  if(wrap)wrap.style.display='none';
+}
+
+async function offFetchBarcode(code){
+  var el=document.getElementById('offResults');
+  el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Looking up barcode…</div>';
+  try{
+    var r=await fetch('https://world.openfoodfacts.org/api/v0/product/'+code+'.json?fields=product_name,brands,nutriments,serving_size');
+    var d=await r.json();
+    if(d.status!==1||!d.product||!d.product.nutriments){
+      el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Product not found. Try searching by name or log manually.</div>';
+      return;
+    }
+    window._offProds=[d.product];
+    offRenderResults([d.product]);
+  }catch(e){el.innerHTML='<div style="font-size:12px;color:var(--accent);padding:8px 0;">Lookup failed. Check connection.</div>';}
+}
+
+// Manual barcode fallback
+async function offLookupBarcode(){
+  var code=(document.getElementById('offBarcodeInput')||{}).value;
+  if(code&&code.trim()) offFetchBarcode(code.trim());
+}
+
+function offRenderResults(prods){
+  var el=document.getElementById('offResults');
+  var rows=prods.map(function(p,i){
+    var kcal=Math.round(p.nutriments['energy-kcal_100g']||0);
+    var prot=Math.round(p.nutriments['proteins_100g']||0);
+    var carb=Math.round(p.nutriments['carbohydrates_100g']||0);
+    var fat=Math.round(p.nutriments['fat_100g']||0);
+    var nm=(p.product_name||'Unknown food').substring(0,50);
+    var br=p.brands?(p.brands.split(',')[0]).substring(0,30):'';
+    var d=document.createElement('div');
+    d.className='off-result';
+    d.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">'
+      +'<div style="flex:1;min-width:0;">'
+      +'<div style="font-size:13px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+nm+'</div>'
+      +(br?'<div style="font-size:10px;color:var(--grey);margin-top:1px;">'+br+'</div>':'')
+      +'</div>'
+      +'<div style="text-align:right;flex-shrink:0;">'
+      +'<div style="font-size:16px;font-weight:700;color:var(--white);">'+kcal+'</div>'
+      +'<div style="font-size:9px;color:var(--grey);">kcal/100g</div>'
+      +'</div></div>'
+      +'<div style="display:flex;gap:10px;margin-top:6px;">'
+      +'<span style="font-size:10px;color:var(--mid);">P <strong style="color:var(--white);">'+prot+'g</strong></span>'
+      +'<span style="font-size:10px;color:var(--mid);">C <strong style="color:var(--white);">'+carb+'g</strong></span>'
+      +'<span style="font-size:10px;color:var(--mid);">F <strong style="color:var(--white);">'+fat+'g</strong></span>'
+      +'<span style="font-size:10px;color:var(--grey);margin-left:auto;">per 100g</span>'
+      +'</div>'
+      +'<div style="display:flex;gap:6px;margin-top:8px;">'
+      +'<input type="number" id="offG_'+i+'" value="100" min="1" max="2000" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:7px 10px;outline:none;border-radius:5px;">'
+      +'<button class="off-add-btn" style="padding:0 16px;background:var(--accent);border:none;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.04em;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;">Add</button>'
+      +'</div>';
+    d.querySelector('.off-add-btn').addEventListener('click',function(e){
+      e.stopPropagation();
+      offLogProduct(i,nm,kcal,prot,carb,fat);
+    });
+    return d;
+  });
+  el.innerHTML='';
+  rows.forEach(function(r){el.appendChild(r);});
+}
+
+function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
+  var gEl=document.getElementById('offG_'+idx);
+  var g=parseFloat(gEl?gEl.value:100)||100;
+  var f=g/100;
+  var kcal=Math.round(kcal100*f);
+  var prot=Math.round(prot100*f);
+  var carb=Math.round(carb100*f);
+  var fat=Math.round(fat100*f);
+  var label=name+' ('+g+'g)';
+  if(typeof addCalEntry==='function'){
+    addCalEntry(label,kcal,prot,carb,fat);
+  } else {
+    var fn=document.getElementById('calFoodName');
+    var fk=document.getElementById('calFoodKcal');
+    var fp=document.getElementById('calFoodProtein');
+    var fc=document.getElementById('calFoodCarbs');
+    var ff=document.getElementById('calFoodFats');
+    if(fn)fn.value=label;if(fk)fk.value=kcal;
+    if(fp)fp.value=prot;if(fc)fc.value=carb;if(ff)ff.value=fat;
+    if(typeof addCalFood==='function')addCalFood();
+  }
+  document.getElementById('offSearchInput').value='';
+  offStopScan();
+  var el=document.getElementById('offResults');
+  el.innerHTML='<div style="font-size:12px;color:#4caf7d;padding:8px 0;">✓ '+label+' logged — '+kcal+' kcal</div>';
+  setTimeout(function(){if(el)el.innerHTML='';},3000);
+}
 </script>
 </body>
 </html>
