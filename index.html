@@ -1304,6 +1304,165 @@ body{
   color:var(--accent,#c8102e);font-weight:700;
 }
 
+
+/* ══ WHAT'S NEXT ════════════════════════════════════════════════ */
+.next-hero{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--r-md,10px);
+  padding:20px;
+  margin-bottom:16px;
+  position:relative;
+  overflow:hidden;
+}
+.next-hero::before{
+  content:'';position:absolute;
+  top:0;left:0;width:4px;height:100%;
+  background:var(--accent);
+}
+.next-hero-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:8px;
+}
+.next-hero-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:22px;font-weight:700;letter-spacing:-0.02em;
+  color:var(--white);margin-bottom:8px;line-height:1.2;
+}
+.next-hero-body{
+  font-size:13px;color:var(--mid);line-height:1.7;
+}
+.next-hero-body strong{color:var(--white);}
+
+.next-phase-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-md,10px);
+  margin-bottom:10px;overflow:hidden;
+}
+.next-phase-head{
+  padding:16px;cursor:pointer;
+  display:flex;align-items:center;gap:14px;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.next-phase-head:active{background:rgba(255,255,255,0.02);}
+.next-phase-num{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:28px;font-weight:800;color:var(--border2);
+  line-height:1;min-width:36px;
+}
+.next-phase-info{flex:1;}
+.next-phase-name{
+  font-size:15px;font-weight:700;color:var(--white);
+  margin-bottom:3px;
+}
+.next-phase-sub{font-size:12px;color:var(--mid);}
+.next-phase-arrow{color:var(--grey);font-size:11px;transition:transform 0.2s;}
+.next-phase-card.open .next-phase-arrow{transform:rotate(180deg);}
+.next-phase-body{
+  display:none;padding:0 16px 16px;
+  border-top:1px solid var(--border);
+}
+.next-phase-card.open .next-phase-body{display:block;}
+.next-phase-intro{
+  font-size:12px;color:var(--mid);line-height:1.7;
+  margin:12px 0;
+}
+.next-phase-intro strong{color:var(--white);}
+
+.next-change-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px;margin:12px 0;
+}
+.next-change-cell{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-sm,6px);
+  padding:10px 12px;
+}
+.next-change-label{
+  font-size:9px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--grey);margin-bottom:4px;
+}
+.next-change-val{
+  font-size:13px;font-weight:600;color:var(--white);
+  line-height:1.4;
+}
+.next-change-val.accent{color:var(--accent);}
+.next-change-val.green{color:var(--green,#4caf7d);}
+
+.next-ex-list{
+  margin:12px 0;
+}
+.next-ex-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 0;border-bottom:1px solid rgba(37,37,37,0.5);
+  font-size:12px;
+}
+.next-ex-item:last-child{border-bottom:none;}
+.next-ex-badge{
+  font-size:10px;font-weight:700;color:var(--accent);
+  min-width:28px;padding-top:1px;letter-spacing:0.04em;
+}
+.next-ex-info{flex:1;}
+.next-ex-name{color:var(--white);font-weight:600;margin-bottom:2px;}
+.next-ex-detail{color:var(--mid);font-size:11px;line-height:1.5;}
+
+.next-tip-box{
+  background:rgba(200,16,46,0.05);
+  border:1px solid rgba(200,16,46,0.2);
+  border-radius:var(--r-sm,6px);
+  padding:12px 14px;margin:12px 0;
+}
+.next-tip-label{
+  font-size:10px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px;
+}
+.next-tip-text{font-size:12px;color:var(--mid);line-height:1.7;}
+.next-tip-text strong{color:var(--white);}
+
+.next-section-divider{
+  display:flex;align-items:center;gap:10px;
+  margin:20px 0 12px;
+}
+.next-section-divider span{
+  font-size:10px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--mid);white-space:nowrap;
+}
+.next-section-divider::before,.next-section-divider::after{
+  content:'';flex:1;height:1px;background:var(--border);
+}
+
+.next-mindset-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-md,10px);
+  padding:16px;margin-bottom:10px;
+}
+.next-mindset-icon{font-size:24px;margin-bottom:8px;}
+.next-mindset-title{
+  font-size:14px;font-weight:700;color:var(--white);
+  margin-bottom:6px;
+}
+.next-mindset-body{font-size:12px;color:var(--mid);line-height:1.7;}
+.next-mindset-body strong{color:var(--white);}
+
+.next-benchmark{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-sm,6px);
+  padding:12px 14px;margin-bottom:8px;
+  display:flex;align-items:center;gap:12px;
+}
+.next-benchmark-icon{font-size:20px;flex-shrink:0;}
+.next-benchmark-info{flex:1;}
+.next-benchmark-name{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.next-benchmark-detail{font-size:11px;color:var(--mid);line-height:1.5;}
+.next-benchmark-target{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:16px;font-weight:700;color:var(--accent);
+  text-align:right;white-space:nowrap;
+}
+
 </style>
 </head>
 <body>
@@ -1395,6 +1554,18 @@ body{
       <div class="nav-item-icon">📈</div>
       <div class="nav-item-info"><div class="nav-item-name">Tracking</div><div class="nav-item-desc">Weight · Lifts · Measurements</div></div>
     </div>
+
+
+  <div class="nav-divider"></div>
+
+  <!-- What's Next -->
+  <div class="nav-section">
+    <div class="nav-section-label">After Week 12</div>
+    <div class="nav-item" id="nav-next" onclick="navTo('next','What\'s Next')">
+      <div class="nav-item-icon">🚀</div>
+      <div class="nav-item-info"><div class="nav-item-name">What's Next</div><div class="nav-item-desc">Phase 2 · Beyond 12 weeks</div></div>
+    </div>
+  </div>
   </div>
 
 </div>
@@ -2740,6 +2911,336 @@ body{
   </div>
 </div>
 
+
+<!-- ===== WHAT'S NEXT ===== -->
+<div id="tab-next" class="section">
+  <div class="sec-label">Beyond Week 12</div>
+  <div class="sec-title">WHAT'S NEXT</div>
+
+  <!-- Hero message -->
+  <div class="next-hero">
+    <div class="next-hero-eyebrow">🎉 You finished Phase 1</div>
+    <div class="next-hero-title">12 weeks changes your body.<br>The next 12 change your life.</div>
+    <div class="next-hero-body">
+      If you followed this programme properly you're significantly stronger, leaner, and have built genuine training habits. <strong>But you've also barely scratched the surface.</strong><br><br>
+      The first 12 weeks are always the fastest period of improvement — you've built the foundation. Now you build the actual physique. Here's exactly what to do next.
+    </div>
+  </div>
+
+  <!-- First: take a week off -->
+  <div class="next-section-divider"><span>Step 1 — Immediately after week 12</span></div>
+
+  <div class="next-mindset-card">
+    <div class="next-mindset-icon">😴</div>
+    <div class="next-mindset-title">Take a full week off</div>
+    <div class="next-mindset-body">
+      Not optional. After 12 weeks of consistent training your joints, tendons, and nervous system are accumulated fatigued even if you don't feel it. <strong>A full deload week will make you come back noticeably stronger</strong> — this is called supercompensation and it's real.<br><br>
+      During this week: light walks, good sleep, eat your normal calories. No gym. Let your body finish adapting to everything you've put it through.
+    </div>
+  </div>
+
+  <div class="next-mindset-card">
+    <div class="next-mindset-icon">📸</div>
+    <div class="next-mindset-title">Take your Week 12 photos</div>
+    <div class="next-mindset-body">
+      Front, side, and back. Same time of day as your Week 1 photos (if you took them). <strong>You will not believe the difference.</strong> Save them — they become the motivation for the next block when things get hard.
+    </div>
+  </div>
+
+  <div class="next-mindset-card">
+    <div class="next-mindset-icon">📊</div>
+    <div class="next-mindset-title">Assess your lifts honestly</div>
+    <div class="next-mindset-body">
+      Check your weight logs in the Tracking tab. Write down your current working weights. These become your <strong>new baseline</strong> — your Week 1 weights for the next block should be heavier across the board. That's the whole point.
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="next-section-divider"><span>Phase 2 — Weeks 13–24</span></div>
+
+  <div class="next-phase-card" onclick="this.classList.toggle('open')">
+    <div class="next-phase-head">
+      <div class="next-phase-num">02</div>
+      <div class="next-phase-info">
+        <div class="next-phase-name">Hypertrophy Block</div>
+        <div class="next-phase-sub">Weeks 13–24 · Maximum muscle growth</div>
+      </div>
+      <div class="next-phase-arrow">▼</div>
+    </div>
+    <div class="next-phase-body">
+      <div class="next-phase-intro">
+        Phase 1 built your strength foundation and taught you movement patterns. <strong>Phase 2 is where you actually build the physique.</strong> Higher volume, more sets, more exercises per session. Your body is now ready to handle and respond to more work.
+      </div>
+
+      <div class="next-change-grid">
+        <div class="next-change-cell">
+          <div class="next-change-label">Sets per exercise</div>
+          <div class="next-change-val accent">4–5 sets</div>
+        </div>
+        <div class="next-change-cell">
+          <div class="next-change-label">Rep range</div>
+          <div class="next-change-val accent">8–12 reps</div>
+        </div>
+        <div class="next-change-cell">
+          <div class="next-change-label">Rest periods</div>
+          <div class="next-change-val">90–120 sec</div>
+        </div>
+        <div class="next-change-cell">
+          <div class="next-change-label">Progression</div>
+          <div class="next-change-val green">+2.5kg when reps hit top of range</div>
+        </div>
+      </div>
+
+      <div class="next-tip-box">
+        <div class="next-tip-label">Key change from Phase 1</div>
+        <div class="next-tip-text">Add one extra set to every compound lift. Add one new isolation exercise per muscle group. <strong>Volume is the primary driver of hypertrophy</strong> — your body has adapted to the Phase 1 workload and needs more stimulus to keep growing.</div>
+      </div>
+
+      <div class="next-ex-list">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Exercises to add in Phase 2</div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">PUSH</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">Cable Flye</div>
+            <div class="next-ex-detail">Isolates the chest — gives the stretch and peak contraction you can't get from pressing. Add after bench press.</div>
+          </div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">PUSH</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">DB Lateral Raise Drop Set</div>
+            <div class="next-ex-detail">Same lateral raise but drop the weight by 50% when you hit failure and do 8 more reps. Shoulder caps.</div>
+          </div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">PULL</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">Pull-ups (bodyweight)</div>
+            <div class="next-ex-detail">By week 13 you should be strong enough to attempt these. Start with 3 sets to failure even if that's 2–3 reps. Progress from there.</div>
+          </div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">PULL</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">Incline DB Curl</div>
+            <div class="next-ex-detail">Greater stretch on the bicep long head than standing curls. Sit on an incline bench, arms hanging back behind your hips.</div>
+          </div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">LEGS</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">Bulgarian Split Squat</div>
+            <div class="next-ex-detail">One of the hardest leg exercises. Rear foot on bench, front foot forward. Brutally effective for quad and glute development.</div>
+          </div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">LEGS</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">Leg Curl (machine)</div>
+            <div class="next-ex-detail">Direct hamstring isolation. RDLs build the hinge pattern but a leg curl gets the hamstrings from a shortened position too.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="next-phase-card" onclick="this.classList.toggle('open')">
+    <div class="next-phase-head">
+      <div class="next-phase-num">03</div>
+      <div class="next-phase-info">
+        <div class="next-phase-name">Strength Block</div>
+        <div class="next-phase-sub">Weeks 25–36 · Build raw power</div>
+      </div>
+      <div class="next-phase-arrow">▼</div>
+    </div>
+    <div class="next-phase-body">
+      <div class="next-phase-intro">
+        After 6 months of training you're ready for a proper strength block. <strong>Stronger muscles are bigger muscles</strong> — periodically training for strength (lower reps, heavier load) forces adaptation that pure hypertrophy work doesn't. Then when you return to higher reps, you're lifting more weight and the muscle stimulus is greater.
+      </div>
+
+      <div class="next-change-grid">
+        <div class="next-change-cell">
+          <div class="next-change-label">Sets per compound</div>
+          <div class="next-change-val accent">5 sets</div>
+        </div>
+        <div class="next-change-cell">
+          <div class="next-change-label">Rep range</div>
+          <div class="next-change-val accent">4–6 reps</div>
+        </div>
+        <div class="next-change-cell">
+          <div class="next-change-label">Rest periods</div>
+          <div class="next-change-val">2–3 min</div>
+        </div>
+        <div class="next-change-cell">
+          <div class="next-change-label">Accessories</div>
+          <div class="next-change-val">Keep at 8–12 reps</div>
+        </div>
+      </div>
+
+      <div class="next-tip-box">
+        <div class="next-tip-label">The strength block mindset</div>
+        <div class="next-tip-text">Compound lifts only go heavy — Bench, Squat, Romanian Deadlift, Overhead Press. <strong>Chase numbers on these four.</strong> Everything else stays at normal hypertrophy rep ranges. The goal is to end this block with a new PR on every main lift.</div>
+      </div>
+
+      <div class="next-ex-list">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Strength block targets (realistic after 6 months)</div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">🏋️</div>
+          <div class="next-ex-info"><div class="next-ex-name">Barbell Bench Press</div><div class="next-ex-detail">Target: 1 × bodyweight (e.g. 100kg if you weigh 100kg)</div></div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">🦵</div>
+          <div class="next-ex-info"><div class="next-ex-name">Barbell Squat</div><div class="next-ex-detail">Target: 1.25–1.5 × bodyweight for 5 reps</div></div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">💪</div>
+          <div class="next-ex-info"><div class="next-ex-name">Overhead Press</div><div class="next-ex-detail">Target: 60–70% of bodyweight for 5 reps</div></div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">🔙</div>
+          <div class="next-ex-info"><div class="next-ex-name">Pull-ups</div><div class="next-ex-detail">Target: 10 clean reps bodyweight, then start adding weight</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nutrition evolution -->
+  <div class="next-section-divider"><span>How your nutrition changes</span></div>
+
+  <div class="next-phase-card" onclick="this.classList.toggle('open')">
+    <div class="next-phase-head">
+      <div class="next-phase-num">🍽</div>
+      <div class="next-phase-info">
+        <div class="next-phase-name">Nutrition Phase 2</div>
+        <div class="next-phase-sub">Adjusting calories and macros for new goals</div>
+      </div>
+      <div class="next-phase-arrow">▼</div>
+    </div>
+    <div class="next-phase-body">
+      <div class="next-phase-intro">
+        After 12 weeks your body has changed — your maintenance calories will be different (more muscle = higher metabolism), and depending on your results you may want to adjust your strategy.
+      </div>
+      <div class="next-ex-list">
+        <div class="next-ex-item">
+          <div class="next-ex-badge">📉</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">If you lost weight but want more size</div>
+            <div class="next-ex-detail">Increase calories by 200–300 kcal per day. Keep protein at 2g per kg of bodyweight minimum. Add the extra calories from carbs — rice, oats, banana.</div>
+          </div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">📈</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">If you maintained weight but gained muscle</div>
+            <div class="next-ex-detail">Recomp worked. For Phase 2 — small surplus of 200 kcal on training days only to accelerate muscle growth while staying lean.</div>
+          </div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">⚖️</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">Recalculate your calories</div>
+            <div class="next-ex-detail">Use the same formula but with your new bodyweight. If you lost 5kg your maintenance is lower — recalculate before starting Phase 2.</div>
+          </div>
+        </div>
+        <div class="next-ex-item">
+          <div class="next-ex-badge">💊</div>
+          <div class="next-ex-info">
+            <div class="next-ex-name">Supplements to consider adding</div>
+            <div class="next-ex-detail">Creatine monohydrate 5g/day if not already — the most proven supplement for strength and muscle. Beta-alanine 3.2g/day for high-rep endurance sets.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mindset section -->
+  <div class="next-section-divider"><span>The bigger picture</span></div>
+
+  <div class="next-mindset-card">
+    <div class="next-mindset-icon">📈</div>
+    <div class="next-mindset-title">Progress slows — that's normal</div>
+    <div class="next-mindset-body">
+      The first 12 weeks are the fastest gains you'll ever make — beginner adaptation is uniquely powerful. <strong>Phase 2 progress will be slower but the changes are deeper.</strong> Expect to add 1–2kg of actual muscle per month maximum as a natural lifter. Anyone promising more is lying. Judge progress over months, not weeks.
+    </div>
+  </div>
+
+  <div class="next-mindset-card">
+    <div class="next-mindset-icon">🔄</div>
+    <div class="next-mindset-title">The cycle that builds physiques</div>
+    <div class="next-mindset-body">
+      Every serious lifter runs in blocks: <strong>Hypertrophy block → Strength block → Deload → Repeat.</strong> Each cycle you come back slightly bigger and stronger. After 2–3 years of this you'll look completely different. There's no shortcut — just this cycle, repeated consistently.
+    </div>
+  </div>
+
+  <div class="next-mindset-card">
+    <div class="next-mindset-icon">🎯</div>
+    <div class="next-mindset-title">Set a new 12-week goal now</div>
+    <div class="next-mindset-body">
+      Don't wait until the end of Week 12. In Week 10 — while you're still in the programme — decide what the next block looks like. <strong>A specific target beats "I'll just keep training."</strong> Pick a lift to prioritise, a bodyweight target, or a physique milestone. Write it down. Start planning it.
+    </div>
+  </div>
+
+  <!-- Benchmark targets -->
+  <div class="next-section-divider"><span>Where you should be at week 12</span></div>
+  <div style="font-size:12px;color:var(--mid);line-height:1.6;margin-bottom:12px;">Realistic benchmarks for a consistent beginner after 12 weeks. These are working weight targets for sets of 8–10 reps — not one-rep maxes.</div>
+
+  <div class="next-benchmark">
+    <div class="next-benchmark-icon">💪</div>
+    <div class="next-benchmark-info">
+      <div class="next-benchmark-name">Barbell Bench Press</div>
+      <div class="next-benchmark-detail">Should feel solid with good form</div>
+    </div>
+    <div class="next-benchmark-target">60–80kg</div>
+  </div>
+  <div class="next-benchmark">
+    <div class="next-benchmark-icon">🦵</div>
+    <div class="next-benchmark-info">
+      <div class="next-benchmark-name">Barbell Squat</div>
+      <div class="next-benchmark-detail">Depth consistent, knees tracking</div>
+    </div>
+    <div class="next-benchmark-target">80–100kg</div>
+  </div>
+  <div class="next-benchmark">
+    <div class="next-benchmark-icon">🔙</div>
+    <div class="next-benchmark-info">
+      <div class="next-benchmark-name">Lat Pulldown</div>
+      <div class="next-benchmark-detail">Full stretch and contraction each rep</div>
+    </div>
+    <div class="next-benchmark-target">50–70kg</div>
+  </div>
+  <div class="next-benchmark">
+    <div class="next-benchmark-icon">🏋️</div>
+    <div class="next-benchmark-info">
+      <div class="next-benchmark-name">Overhead Press</div>
+      <div class="next-benchmark-detail">Strict press, no leg drive</div>
+    </div>
+    <div class="next-benchmark-target">40–55kg</div>
+  </div>
+  <div class="next-benchmark">
+    <div class="next-benchmark-icon">💪</div>
+    <div class="next-benchmark-info">
+      <div class="next-benchmark-name">Romanian Deadlift</div>
+      <div class="next-benchmark-detail">Good hamstring stretch, neutral spine</div>
+    </div>
+    <div class="next-benchmark-target">70–90kg</div>
+  </div>
+  <div class="next-benchmark">
+    <div class="next-benchmark-icon">🤸</div>
+    <div class="next-benchmark-info">
+      <div class="next-benchmark-name">Pull-ups</div>
+      <div class="next-benchmark-detail">Clean full range of motion reps</div>
+    </div>
+    <div class="next-benchmark-target">5–10 reps</div>
+  </div>
+
+  <div style="background:var(--accent-dim,rgba(200,16,46,0.08));border:1px solid rgba(200,16,46,0.25);border-radius:var(--r-sm,6px);padding:14px;margin-top:16px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Remember</div>
+    <div style="font-size:12px;color:var(--mid);line-height:1.7;">These are <strong style="color:var(--white)">guidelines, not rules.</strong> Some people progress faster, some slower. If you're hitting these numbers you're doing exceptionally well. If you're below them, check your sleep, nutrition, and consistency before changing the programme. The programme works — the variables are always sleep, food, and effort.</div>
+  </div>
+
+</div>
+
 <!-- ===== NUTRITION ===== -->
 <div id="tab-nutrition" class="section">
   <div class="sec-label">Daily Targets · 100kg · Recomposition</div>
@@ -3500,7 +4001,8 @@ function closeNav(){
 const NAV_LABELS = {
   schedule:'Overview', program:'Workouts', nutrition:'Nutrition',
   recipes:'Recipes', shopping:'Shopping', timer:'Timer',
-  tracker:'Progress', tracking:'Tracking', calories:'Calories'
+  tracker:'Progress', tracking:'Tracking', calories:'Calories',
+  next:"What's Next"
 };
 
 function navTo(id, label){
