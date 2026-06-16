@@ -1178,7 +1178,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .ex-weight-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);}
 .ex-weight-pr{font-size:11px;font-weight:700;color:#4caf7d;}
 .ex-weight-input-row{display:flex;gap:6px;align-items:center;margin-bottom:6px;}
-.ex-weight-input{flex:1;background:var(--surface);border:1px solid var(--border2,#2e2e2e);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:9px 12px;outline:none;-webkit-appearance:none;text-align:center;border-radius:4px;transform:translateZ(0);}
+.ex-weight-input{flex:1;background:var(--surface);border:1px solid var(--border2,#2e2e2e);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:9px 12px;outline:none;-webkit-appearance:none;text-align:center;border-radius:4px;transform:translateZ(0);touch-action:manipulation;}
 .ex-weight-input:focus{border-color:var(--accent);}
 .ex-weight-input::placeholder{color:var(--grey);font-size:12px;font-weight:400;}
 .ex-weight-unit{font-size:12px;color:var(--mid);padding:0 2px;}
@@ -1258,7 +1258,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .topbar{position:sticky;top:0;z-index:500;background:#0a0a0a;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:58px;}
 .topbar-centre{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;}
 .topbar-wordmark{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;letter-spacing:0.25em;color:#f2efe8;text-transform:uppercase;transition:opacity 0.2s;}
-.topbar-section{font-size:12px;color:#777;font-weight:500;font-family:'DM Sans',sans-serif;letter-spacing:0.02em;transition:opacity 0.2s;}
+.topbar-section{display:none;}
 
 /* ══ STRAVA ACTIVITY CARD ═══════════════════════════════════════ */
 .strava-activity{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:12px;}
@@ -1306,11 +1306,6 @@ function navTo(id,label){
   document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
   var ni=document.getElementById('nav-'+id);
   if(ni) ni.classList.add('active');
-  var lbl=document.getElementById('topbarSection');
-  var wm=document.getElementById('topbarWordmark');
-  var isHome=(id==='schedule');
-  if(lbl){lbl.textContent=label||NAV_LABELS[id]||'';lbl.style.opacity=isHome?'0':'1';lbl.style.position=isHome?'absolute':'static';}
-  if(wm){wm.style.opacity=isHome?'1':'0';}
   closeNav();
   window.scrollTo(0,0);
   if(id==='strava') document.dispatchEvent(new Event('stravaTabActive'));
@@ -1324,8 +1319,8 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
   </button>
   <div class="topbar-centre">
-    <span class="topbar-wordmark" id="topbarWordmark">ASCEND</span>
-    <span class="topbar-section" id="topbarSection" style="opacity:0;position:absolute;">Overview</span>
+    <span class="topbar-wordmark">ASCEND</span>
+    
   </div>
   <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
     <div id="topbarAvatar" style="display:none;width:28px;height:28px;border-radius:50%;overflow:hidden;border:1.5px solid rgba(252,76,2,0.6);flex-shrink:0;">
@@ -1642,9 +1637,9 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
   </div>
 
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/hWbUlkb5Ms4" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/hWbUlkb5Ms4/mqdefault.jpg" alt="BENCH PRESS" loading="lazy" onerror="this.style.opacity='0'">
@@ -1667,15 +1662,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>8</td><td>+5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Barbell Bench Press">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_bench_press"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Barbell Bench Press')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Bench Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/injgcGPR3sE" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/injgcGPR3sE/mqdefault.jpg" alt="INCLINE DB PRESS" loading="lazy" onerror="this.style.opacity='0'">
@@ -1698,15 +1693,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>10</td><td>Same/+2.5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Incline DB Press">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-incline_db_press"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-incline_db_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Incline DB Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Incline DB Press')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-incline_db_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Incline DB Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Incline DB Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-incline_db_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">B1</div><div class="wname">Overhead Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Overhead Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/xJoSRGdqae8" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/xJoSRGdqae8/mqdefault.jpg" alt="OVERHEAD PRESS" loading="lazy" onerror="this.style.opacity='0'">
@@ -1729,15 +1724,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Overhead Press">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-overhead_press"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-overhead_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Overhead Press')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-overhead_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Overhead Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-overhead_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">B2</div><div class="wname">Lateral Raises</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Lateral Raises</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/NZsldrqqca8" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/NZsldrqqca8/mqdefault.jpg" alt="LATERAL RAISE" loading="lazy" onerror="this.style.opacity='0'">
@@ -1760,15 +1755,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Lateral Raises">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-lateral_raises"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-lateral_raises" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Lateral Raises')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Lateral Raises')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-lateral_raises" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Lateral Raises')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Lateral Raises')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-lateral_raises"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">C1</div><div class="wname">Close-Grip Bench Press</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Close-Grip Bench Press</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/thx13oPVK5c" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/thx13oPVK5c/mqdefault.jpg" alt="TRICEP DIPS" loading="lazy" onerror="this.style.opacity='0'">
@@ -1790,15 +1785,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>3</td><td>10</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Close-Grip Bench Press">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-close_grip_bench_press"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-close_grip_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Close-Grip Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Close-Grip Bench Press')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-close_grip_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Close-Grip Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Close-Grip Bench Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-close_grip_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/7OF77JMEXhM" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/7OF77JMEXhM/mqdefault.jpg" alt="CABLE PUSHDOWN" loading="lazy" onerror="this.style.opacity='0'">
@@ -1820,7 +1815,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Cable Tricep Pushdown">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-cable_tricep_pushdown"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_tricep_pushdown" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Tricep Pushdown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Cable Tricep Pushdown')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_tricep_pushdown" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Tricep Pushdown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Tricep Pushdown')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-cable_tricep_pushdown"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -1897,9 +1892,9 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
   </div>
 
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">A1</div><div class="wname">Cable Face Pull</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Cable Face Pull</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/ZPG8OsHKXLw" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/ZPG8OsHKXLw/mqdefault.jpg" alt="WEIGHTED PULL-UPS" loading="lazy" onerror="this.style.opacity='0'">
@@ -1922,15 +1917,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>6</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Cable Face Pull">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-cable_face_pull"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_face_pull" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Face Pull')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Cable Face Pull')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_face_pull" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Face Pull')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Face Pull')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-cable_face_pull"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">A2</div><div class="wname">Dumbbell Row</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Dumbbell Row</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/QdDrKsvZuvQ" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/QdDrKsvZuvQ/mqdefault.jpg" alt="BARBELL ROW" loading="lazy" onerror="this.style.opacity='0'">
@@ -1953,15 +1948,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Dumbbell Row">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-dumbbell_row"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-dumbbell_row" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Dumbbell Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Dumbbell Row')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-dumbbell_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Dumbbell Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Dumbbell Row')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-dumbbell_row"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/jULa7guhCdM" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/jULa7guhCdM/mqdefault.jpg" alt="LAT PULLDOWN" loading="lazy" onerror="this.style.opacity='0'">
@@ -1984,15 +1979,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>10</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Lat Pulldown">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-lat_pulldown"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-lat_pulldown" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Lat Pulldown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Lat Pulldown')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-lat_pulldown" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Lat Pulldown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Lat Pulldown')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-lat_pulldown"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">B2</div><div class="wname">Seated Cable Row</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Seated Cable Row</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/8QuMq1GMMng" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/8QuMq1GMMng/mqdefault.jpg" alt="SEATED CABLE ROW" loading="lazy" onerror="this.style.opacity='0'">
@@ -2014,15 +2009,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Seated Cable Row">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-seated_cable_row"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-seated_cable_row" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Seated Cable Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Seated Cable Row')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-seated_cable_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Seated Cable Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Seated Cable Row')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-seated_cable_row"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">C1</div><div class="wname">Barbell Curl</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Barbell Curl</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/dIAxyJimXnA" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/dIAxyJimXnA/mqdefault.jpg" alt="BARBELL CURL" loading="lazy" onerror="this.style.opacity='0'">
@@ -2044,15 +2039,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Barbell Curl">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_curl"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Barbell Curl')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">C2</div><div class="wname">Hammer Curl</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Hammer Curl</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/NyW2fT2gQhM" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/NyW2fT2gQhM/mqdefault.jpg" alt="HAMMER CURL" loading="lazy" onerror="this.style.opacity='0'">
@@ -2074,7 +2069,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Hammer Curl">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-hammer_curl"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-hammer_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Hammer Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Hammer Curl')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-hammer_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Hammer Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Hammer Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-hammer_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2159,9 +2154,9 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
   </div>
 
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/PPmvh7gBTi0" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/PPmvh7gBTi0/mqdefault.jpg" alt="BARBELL SQUAT" loading="lazy" onerror="this.style.opacity='0'">
@@ -2184,15 +2179,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>6</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Barbell Squat">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_squat"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Squat')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Barbell Squat')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Squat')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Squat')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_squat"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">A2</div><div class="wname">Romanian Deadlift</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Romanian Deadlift</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/eHLuROg0FSI" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/eHLuROg0FSI/mqdefault.jpg" alt="ROMANIAN DEADLIFT" loading="lazy" onerror="this.style.opacity='0'">
@@ -2215,15 +2210,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Romanian Deadlift">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-romanian_deadlift"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-romanian_deadlift" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Romanian Deadlift')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Romanian Deadlift')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-romanian_deadlift" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Romanian Deadlift')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Romanian Deadlift')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-romanian_deadlift"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/BnacvXdaxq8" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/BnacvXdaxq8/mqdefault.jpg" alt="LEG PRESS" loading="lazy" onerror="this.style.opacity='0'">
@@ -2245,15 +2240,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Leg Press">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-leg_press"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-leg_press" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Leg Press')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-leg_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Leg Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-leg_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">B2</div><div class="wname">Walking Lunges</div><div class="wmeta">3×12 each</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Walking Lunges</div><div class="wmeta">3×12 each</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/IRq5o3ntLIE" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/IRq5o3ntLIE/mqdefault.jpg" alt="WALKING LUNGE" loading="lazy" onerror="this.style.opacity='0'">
@@ -2275,15 +2270,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td>3</td><td>12/leg</td><td>+DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Walking Lunges">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-walking_lunges"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-walking_lunges" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Walking Lunges')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Walking Lunges')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-walking_lunges" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Walking Lunges')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Walking Lunges')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-walking_lunges"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
 
-    <div class="wcard" onclick="toggleCard(this)">
-      <div class="whead"><div class="wbadge">C1</div><div class="wname">Core Circuit</div><div class="wmeta">3 rounds</div><div class="warrow">▼</div></div>
-      <div class="wbody">
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Core Circuit</div><div class="wmeta">3 rounds</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" href="https://www.youtube.com/shorts/hoeNgjheDHk" target="_blank" rel="noopener">
           <img src="https://img.youtube.com/vi/hoeNgjheDHk/mqdefault.jpg" alt="PLANK" loading="lazy" onerror="this.style.opacity='0'">
@@ -2306,7 +2301,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
         <tr><td style="font-size:11px;color:var(--white)">Russian Twist</td><td>20 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
         <div class="ex-weight-log" data-ex-name="Core Circuit">
           <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-core_circuit"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-core_circuit" placeholder="Enter kg" min="0" max="500" step="0.5" onkeydown="if(event.key==='Enter')logExerciseWeight('Core Circuit')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="logExerciseWeight('Core Circuit')">Log</button></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-core_circuit" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Core Circuit')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Core Circuit')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-core_circuit"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -3524,10 +3519,13 @@ function logExerciseWeight(name){
   saveWeightLog(log);input.value='';renderExerciseWeightLog(name);showWtToast(name,val);
 }
 function renderExerciseWeightLog(name){
+  var scrollY=window.scrollY;
   var key=exKey(name),log=getWeightLog(),entries=(log[key]||[]).slice().sort(function(a,b){return b.ts-a.ts;});
   var pr=document.getElementById('wl-pr-'+key);if(pr)pr.textContent=entries.length>0?'PR: '+Math.max.apply(null,entries.map(function(e){return e.kg;}))+'kg':'';
   var hist=document.getElementById('wl-hist-'+key);
   if(hist){hist.innerHTML=!entries.length?'<span class="ex-weight-chip">No entries yet</span>':entries.slice(0,5).map(function(e,i){var d=new Date(e.date);return '<span class="ex-weight-chip'+(i===0?' latest':'')+'">'+e.kg+'kg · '+d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+'</span>';}).join('');}
+
+  window.scrollTo(0,scrollY);
 }
 function showWtToast(name,kg){var t=document.createElement('div');t.style.cssText="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#4caf7d;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;z-index:9999;white-space:nowrap;";t.textContent='✓ '+kg+'kg logged for '+name;document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';t.style.transition='opacity 0.3s';setTimeout(function(){t.remove();},300);},2000);}
 function initWeightLogs(){document.querySelectorAll('[data-ex-name]').forEach(function(el){renderExerciseWeightLog(el.getAttribute('data-ex-name'));});}
