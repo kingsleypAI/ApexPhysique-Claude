@@ -1327,14 +1327,62 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <span class="topbar-wordmark" id="topbarWordmark">ASCEND</span>
     <span class="topbar-section" id="topbarSection" style="opacity:0;position:absolute;">Overview</span>
   </div>
-  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="flex-shrink:0;">
-    <path d="M11 2L20 18H2L11 2Z" fill="var(--accent)"/>
-    <path d="M11 7L11 16" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-  </svg>
+  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+    <div id="topbarAvatar" style="display:none;width:28px;height:28px;border-radius:50%;overflow:hidden;border:1.5px solid rgba(252,76,2,0.6);flex-shrink:0;">
+      <img id="topbarAvatarImg" src="" style="width:100%;height:100%;object-fit:cover;" alt="Strava">
+    </div>
+    <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><defs>
+  <linearGradient id="lgA" x1="0%" y1="100%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#1a3a6b"/>
+    <stop offset="55%" stop-color="#C8102E"/>
+    <stop offset="100%" stop-color="#FC4C02"/>
+  </linearGradient>
+  <linearGradient id="lgB" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FC4C02"/>
+    <stop offset="100%" stop-color="#e8380d"/>
+  </linearGradient>
+</defs><path d="M8,88 L38,32 L50,48 L62,8 L92,88 Z" fill="url(#lgA)"/>
+  <path d="M62,8 L72,32 L66,32 L92,88 L62,60 L58,68 L62,8 Z" fill="url(#lgB)" opacity="0.92"/>
+  <polygon points="62,2 64,8 70,8 65,12 67,18 62,14 57,18 59,12 54,8 60,8" fill="#FC4C02" opacity="0.95"/>
+  <circle cx="34" cy="45" r="4" fill="white" opacity="0.9"/>
+  <path d="M34,49 L30,62 L36,58 L38,65" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+  <path d="M34,52 L28,48" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <path d="M34,54 L40,51" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <path d="M30,62 L25,70" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85"/>
+  <path d="M36,58 L42,64" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85"/></svg>
+  </div>
 </div>
 <div class="nav-backdrop" id="navBackdrop" onclick="closeNav()"></div>
 <div class="nav-drawer" id="navDrawer">
-  <div class="nav-drawer-header"><div class="nav-drawer-logo"><svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 2L20 18H2L11 2Z" fill="white"/></svg></div><div><div class="nav-drawer-title">Ascend</div><div class="nav-drawer-sub">Tap any section</div></div></div>
+  <div class="nav-drawer-header"><div class="nav-drawer-logo"><svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
+  <linearGradient id="lgA" x1="0%" y1="100%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#1a3a6b"/>
+    <stop offset="55%" stop-color="#C8102E"/>
+    <stop offset="100%" stop-color="#FC4C02"/>
+  </linearGradient>
+  <linearGradient id="lgB" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FC4C02"/>
+    <stop offset="100%" stop-color="#e8380d"/>
+  </linearGradient>
+</defs>
+  <!-- Mountain body -->
+  <path d="M8,88 L38,32 L50,48 L62,8 L92,88 Z" fill="url(#lgA)"/>
+  <!-- Right peak highlight (arrow shape) -->
+  <path d="M62,8 L72,32 L66,32 L92,88 L62,60 L58,68 L62,8 Z" fill="url(#lgB)" opacity="0.92"/>
+  <!-- Arrow tip star at summit -->
+  <polygon points="62,2 64,8 70,8 65,12 67,18 62,14 57,18 59,12 54,8 60,8" fill="#FC4C02" opacity="0.95"/>
+  <!-- Running figure on left slope (white silhouette) -->
+  <!-- Head -->
+  <circle cx="34" cy="45" r="4" fill="white" opacity="0.9"/>
+  <!-- Body leaning forward -->
+  <path d="M34,49 L30,62 L36,58 L38,65" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+  <!-- Arms pumping -->
+  <path d="M34,52 L28,48" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <path d="M34,54 L40,51" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <!-- Legs stride -->
+  <path d="M30,62 L25,70" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85"/>
+  <path d="M36,58 L42,64" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85"/>
+</svg></div><div><div class="nav-drawer-title">Ascend</div><div class="nav-drawer-sub">Tap any section</div></div></div>
   <div class="nav-section"><div class="nav-section-label">Main</div>
     <div class="nav-item active" id="nav-schedule" onclick="navTo('schedule','Overview')"><div class="nav-item-icon">🏠</div><div><div class="nav-item-name">Home</div><div class="nav-item-desc">Today · Water · Overview</div></div></div>
     <div class="nav-item" id="nav-program" onclick="navTo('program','Workouts')"><div class="nav-item-icon">💪</div><div><div class="nav-item-name">Workouts</div><div class="nav-item-desc">Push · Pull · Legs</div></div></div>
@@ -4892,6 +4940,19 @@ function stravaUpdateNav(connected){
   if(status) status.textContent = connected ? '● Connected' : 'Connect your activities';
   if(status) status.style.color = connected ? '#FC4C02' : '';
   if(btnText) btnText.textContent = connected ? 'View Strava' : 'Connect Strava';
+  var avatarWrap = document.getElementById('topbarAvatar');
+  var avatarImg  = document.getElementById('topbarAvatarImg');
+  if(connected){
+    var data = stravaGetData();
+    if(data && data.profile && avatarImg){
+      avatarImg.src = data.profile;
+      avatarImg.onerror = function(){ if(avatarWrap) avatarWrap.style.display='none'; };
+      if(avatarWrap) avatarWrap.style.display = 'block';
+    }
+  } else {
+    if(avatarWrap) avatarWrap.style.display = 'none';
+    if(avatarImg)  avatarImg.src = '';
+  }
 }
 
 // Init Strava on page load
