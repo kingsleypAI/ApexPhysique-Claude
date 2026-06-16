@@ -381,9 +381,11 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   font-size:14px;letter-spacing:2px;text-transform:uppercase;
   cursor:pointer;border:none;transition:all 0.15s;
   -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  user-select:none;-webkit-user-select:none;
 }
 .tbtn.pri{background:var(--accent);color:#fff;}
-.tbtn.sec{background:transparent;border:1px solid var(--border);color:var(--mid);}
+.tbtn.sec{background:transparent;border:1px solid var(--border);color:var(--mid);touch-action:manipulation;cursor:pointer;}
 .tbtn:active{transform:scale(0.96);}
 .presets{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:12px;}
 .pbtn{
@@ -1299,6 +1301,27 @@ var NAV_LABELS={
   tracker:'Progress',tracking:'Tracking',calories:'Calories',
   next:'After Week 12',deload:'Deload Guide',strava:'Strava'
 };
+
+// ── NAVIGATION SOUND ─────────────────────────────────────────────
+var _audioCtx = null;
+function playNavTick(){
+  try{
+    if(!_audioCtx) _audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+    var ctx = _audioCtx;
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(620, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(480, ctx.currentTime + 0.06);
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.09);
+  }catch(e){}
+}
+
 function navTo(id,label){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   var sec=document.getElementById('tab-'+id);
@@ -1309,6 +1332,7 @@ function navTo(id,label){
   closeNav();
   window.scrollTo(0,0);
   if(id==='strava') document.dispatchEvent(new Event('stravaTabActive'));
+  playNavTick();
 }
 function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
 </script>
@@ -2997,16 +3021,50 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="timer-lbl" id="timerLabel">Ready</div>
   </div>
   <div class="presets">
-    <button class="pbtn" onclick="setTimer(60,this)">1:00<small>Isolation</small></button>
-    <button class="pbtn sel" onclick="setTimer(90,this)">1:30<small>Standard</small></button>
-    <button class="pbtn" onclick="setTimer(120,this)">2:00<small>Compound</small></button>
-    <button class="pbtn" onclick="setTimer(150,this)">2:30<small>Heavy</small></button>
-    <button class="pbtn" onclick="setTimer(180,this)">3:00<small>Max Effort</small></button>
-    <button class="pbtn" onclick="setTimer(300,this)">5:00<small>Deadlift</small></button>
+    <button class="pbtn" onclick="rTime=60;rRem=60;rRun=false;clearInterval(rInt);document.getElementById('startStopBtn').textContent='START';document.getElementById('timerLabel').textContent='Ready';document.getElementById('timerDisplay').textContent=Math.floor(60/60).toString().padStart(2,'0')+':'+((60%60).toString().padStart(2,'0'));document.querySelectorAll('.pbtn').forEach(function(b){b.classList.remove('sel')});this.classList.add('sel');">1:00<small>Isolation</small></button>
+    <button class="pbtn sel" onclick="rTime=90;rRem=90;rRun=false;clearInterval(rInt);document.getElementById('startStopBtn').textContent='START';document.getElementById('timerLabel').textContent='Ready';document.getElementById('timerDisplay').textContent=Math.floor(90/60).toString().padStart(2,'0')+':'+((90%60).toString().padStart(2,'0'));document.querySelectorAll('.pbtn').forEach(function(b){b.classList.remove('sel')});this.classList.add('sel');">1:30<small>Standard</small></button>
+    <button class="pbtn" onclick="rTime=120;rRem=120;rRun=false;clearInterval(rInt);document.getElementById('startStopBtn').textContent='START';document.getElementById('timerLabel').textContent='Ready';document.getElementById('timerDisplay').textContent=Math.floor(120/60).toString().padStart(2,'0')+':'+((120%60).toString().padStart(2,'0'));document.querySelectorAll('.pbtn').forEach(function(b){b.classList.remove('sel')});this.classList.add('sel');">2:00<small>Compound</small></button>
+    <button class="pbtn" onclick="rTime=150;rRem=150;rRun=false;clearInterval(rInt);document.getElementById('startStopBtn').textContent='START';document.getElementById('timerLabel').textContent='Ready';document.getElementById('timerDisplay').textContent=Math.floor(150/60).toString().padStart(2,'0')+':'+((150%60).toString().padStart(2,'0'));document.querySelectorAll('.pbtn').forEach(function(b){b.classList.remove('sel')});this.classList.add('sel');">2:30<small>Heavy</small></button>
+    <button class="pbtn" onclick="rTime=180;rRem=180;rRun=false;clearInterval(rInt);document.getElementById('startStopBtn').textContent='START';document.getElementById('timerLabel').textContent='Ready';document.getElementById('timerDisplay').textContent=Math.floor(180/60).toString().padStart(2,'0')+':'+((180%60).toString().padStart(2,'0'));document.querySelectorAll('.pbtn').forEach(function(b){b.classList.remove('sel')});this.classList.add('sel');">3:00<small>Max Effort</small></button>
+    <button class="pbtn" onclick="rTime=300;rRem=300;rRun=false;clearInterval(rInt);document.getElementById('startStopBtn').textContent='START';document.getElementById('timerLabel').textContent='Ready';document.getElementById('timerDisplay').textContent=Math.floor(300/60).toString().padStart(2,'0')+':'+((300%60).toString().padStart(2,'0'));document.querySelectorAll('.pbtn').forEach(function(b){b.classList.remove('sel')});this.classList.add('sel');">5:00<small>Deadlift</small></button>
   </div>
   <div class="timer-btns">
-    <button class="tbtn pri" id="startStopBtn" onclick="startStopTimer()">START</button>
-    <button class="tbtn sec" onclick="resetTimer()">RESET</button>
+    <button class="tbtn pri" id="startStopBtn" onclick="
+  try{
+    if(rRun){
+      clearInterval(rInt);rRun=false;
+      document.getElementById('startStopBtn').textContent='RESUME';
+      document.getElementById('timerLabel').textContent='Paused';
+    } else {
+      if(rRem===0){rRem=rTime;updTimer();}
+      rRun=true;
+      document.getElementById('startStopBtn').textContent='PAUSE';
+      document.getElementById('timerLabel').textContent='Resting...';
+      rInt=setInterval(function(){
+        rRem--;updTimer();
+        if(rRem<=0){
+          clearInterval(rInt);rRun=false;
+          document.getElementById('startStopBtn').textContent='START';
+          document.getElementById('timerLabel').textContent='Go!';
+          document.getElementById('timerDisplay').textContent='00:00';
+          if(navigator.vibrate)navigator.vibrate([300,100,300,100,300]);
+        }
+      },1000);
+    }
+  }catch(e){alert('Timer error: '+e.message);}
+">START</button>
+    <button class="tbtn sec" onclick="
+  try{
+    clearInterval(rInt);
+    rRun=false;
+    rRem=rTime;
+    document.getElementById('startStopBtn').textContent='START';
+    document.getElementById('timerLabel').textContent='Ready';
+    updTimer();
+  }catch(e){
+    alert('Reset error: '+e.message);
+  }
+">RESET</button>
   </div>
   <div class="divider"><div class="div-line"></div><div class="div-text">Session Timer</div><div class="div-line"></div></div>
   <div class="timer-disp">
@@ -3014,7 +3072,16 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="timer-lbl">Session Duration</div>
   </div>
   <div class="timer-btns">
-    <button class="tbtn pri" id="workoutBtn" onclick="toggleWorkout()">START SESSION</button>
+    <button class="tbtn pri" id="workoutBtn" onclick="try{toggleWorkout()}catch(e){alert(e)}">START SESSION</button>
+    <button class="tbtn sec" onclick="
+      try{
+        clearInterval(wInt);
+        wRun=false;
+        wSec=0;
+        document.getElementById('workoutDisplay').textContent='00:00';
+        document.getElementById('workoutBtn').textContent='START SESSION';
+      }catch(e){alert('Session reset error: '+e.message);}
+    ">RESET</button>
   </div>
 </div>
 
@@ -3623,7 +3690,7 @@ function goToWorkout(id){
 }
 
 // ── REST TIMER ─────────────────────────────────────────────────────────────────
-let rTime=90,rRem=90,rInt=null,rRun=false;
+var rTime=90,rRem=90,rInt=null,rRun=false;
 function setTimer(s,btn){
   rTime=s;rRem=s;rRun=false;clearInterval(rInt);
   document.getElementById('startStopBtn').textContent='START';
@@ -3632,6 +3699,7 @@ function setTimer(s,btn){
   document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('sel'));
   if(btn)btn.classList.add('sel');
 }
+
 function updTimer(){
   const m=Math.floor(rRem/60).toString().padStart(2,'0');
   const s=(rRem%60).toString().padStart(2,'0');
@@ -3667,7 +3735,7 @@ function resetTimer(){
 }
 
 // ── SESSION TIMER ──────────────────────────────────────────────────────────────
-let wSec=0,wInt=null,wRun=false;
+var wSec=0,wInt=null,wRun=false;
 function toggleWorkout(){
   if(wRun){clearInterval(wInt);wRun=false;document.getElementById('workoutBtn').textContent='RESUME';}
   else {
@@ -5064,17 +5132,110 @@ function offStopScan(){
 
 async function offFetchBarcode(code){
   var el=document.getElementById('offResults');
-  el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Looking up barcode…</div>';
+  el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Looking up…</div>';
   try{
-    var r=await fetch('https://world.openfoodfacts.org/api/v0/product/'+code+'.json?fields=product_name,brands,nutriments,serving_size');
+    var r=await fetch('https://world.openfoodfacts.org/api/v0/product/'+code+'.json?fields=product_name,brands,nutriments,serving_size,product_quantity,quantity');
     var d=await r.json();
     if(d.status!==1||!d.product||!d.product.nutriments){
-      el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Product not found. Try searching by name or log manually.</div>';
+      el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Product not found. Try searching by name.</div>';
       return;
     }
-    window._offProds=[d.product];
-    offRenderResults([d.product]);
-  }catch(e){el.innerHTML='<div style="font-size:12px;color:var(--accent);padding:8px 0;">Lookup failed. Check connection.</div>';}
+    var p=d.product;
+    var nm=(p.product_name||'Unknown').substring(0,50);
+    var br=p.brands?(p.brands.split(',')[0]).trim():'';
+    var nut=p.nutriments;
+
+    // Work out the full product amount in grams/ml
+    // OFF stores quantity e.g. "500 ml", "330ml", "200g", "4x25g"
+    var fullGrams=100;
+    var qty=p.product_quantity||p.quantity||p.serving_size||'';
+    var qmatch=String(qty).match(/(\d+(?:\.\d+)?)\s*(?:ml|g|cl|l)/i);
+    if(qmatch){
+      var qval=parseFloat(qmatch[1]);
+      var qunit=qmatch[0].replace(/[\d.\s]/g,'').toLowerCase();
+      if(qunit==='l') qval*=1000;
+      if(qunit==='cl') qval*=10;
+      fullGrams=Math.round(qval);
+    }
+
+    // Nutrition per 100g/ml
+    var kcal100=Math.round(nut['energy-kcal_100g']||nut['energy-kcal']||0);
+    var prot100=Math.round((nut['proteins_100g']||nut['proteins']||0)*10)/10;
+    var carb100=Math.round((nut['carbohydrates_100g']||nut['carbohydrates']||0)*10)/10;
+    var fat100 =Math.round((nut['fat_100g']||nut['fat']||0)*10)/10;
+
+    // Totals for the full item
+    var f=fullGrams/100;
+    var kcal=Math.round(kcal100*f);
+    var prot=Math.round(prot100*f*10)/10;
+    var carb=Math.round(carb100*f*10)/10;
+    var fat =Math.round(fat100*f*10)/10;
+
+    var label=nm+(br?' · '+br:'');
+    var sizeStr=fullGrams+(qty&&String(qty).toLowerCase().indexOf('ml')>-1?'ml':'g');
+
+    // Show confirm card — one tap logs it
+    el.innerHTML='';
+    var card=document.createElement('div');
+    card.style.cssText='background:var(--card);border:1px solid rgba(200,16,46,0.35);border-radius:10px;overflow:hidden;';
+    card.innerHTML='<div style="height:3px;background:var(--accent);"></div>'
+      +'<div style="padding:14px;">'
+      +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">✓ Barcode matched</div>'
+      +'<div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px;">'+nm+'</div>'
+      +(br?'<div style="font-size:11px;color:var(--grey);margin-bottom:10px;">'+br+'</div>':'<div style="margin-bottom:10px;"></div>')
+      +'<div style="display:flex;gap:8px;margin-bottom:12px;">'
+      +'<div style="flex:1;background:var(--surface);border-radius:7px;padding:10px;text-align:center;">'
+      +'<div style="font-size:20px;font-weight:800;color:var(--white);">'+kcal+'</div>'
+      +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">kcal</div>'
+      +'</div>'
+      +'<div style="flex:1;background:var(--surface);border-radius:7px;padding:10px;text-align:center;">'
+      +'<div style="font-size:20px;font-weight:800;color:var(--white);">'+prot+'g</div>'
+      +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">protein</div>'
+      +'</div>'
+      +'<div style="flex:1;background:var(--surface);border-radius:7px;padding:10px;text-align:center;">'
+      +'<div style="font-size:20px;font-weight:800;color:var(--white);">'+carb+'g</div>'
+      +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">carbs</div>'
+      +'</div>'
+      +'<div style="flex:1;background:var(--surface);border-radius:7px;padding:10px;text-align:center;">'
+      +'<div style="font-size:20px;font-weight:800;color:var(--white);">'+fat+'g</div>'
+      +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">fat</div>'
+      +'</div>'
+      +'</div>'
+      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">'
+      +'<span style="font-size:11px;color:var(--mid);">Serving size:</span>'
+      +'<input type="number" id="offScanGrams" value="'+fullGrams+'" min="1" max="5000" style="width:70px;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:6px 8px;outline:none;border-radius:5px;text-align:center;">'
+      +'<span style="font-size:11px;color:var(--grey);">'+(qty&&String(qty).toLowerCase().indexOf('ml')>-1?'ml':'g')+' (full item: '+sizeStr+')</span>'
+      +'</div>'
+      +'<button id="offScanLogBtn" style="width:100%;padding:13px;background:var(--accent);border:none;color:#fff;font-family:Space Grotesk,sans-serif;font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:7px;-webkit-tap-highlight-color:transparent;">Log '+nm.split(' ')[0]+'</button>'
+      +'</div>';
+    el.appendChild(card);
+
+    document.getElementById('offScanLogBtn').addEventListener('click',function(){
+      var g=parseFloat(document.getElementById('offScanGrams').value)||fullGrams;
+      var ratio=g/100;
+      var fLabel=nm+' ('+g+(qty&&String(qty).toLowerCase().indexOf('ml')>-1?'ml':'g')+')';
+      var fKcal=Math.round(kcal100*ratio);
+      var fProt=Math.round(prot100*ratio*10)/10;
+      var fCarb=Math.round(carb100*ratio*10)/10;
+      var fFat =Math.round(fat100*ratio*10)/10;
+      if(typeof addCalEntry==='function'){
+        addCalEntry(fLabel,fKcal,fProt,fCarb,fFat);
+      } else {
+        var fn2=document.getElementById('calFoodName');
+        var fk2=document.getElementById('calFoodKcal');
+        var fp2=document.getElementById('calFoodProtein');
+        var fc2=document.getElementById('calFoodCarbs');
+        var ff2=document.getElementById('calFoodFats');
+        if(fn2)fn2.value=fLabel;if(fk2)fk2.value=fKcal;
+        if(fp2)fp2.value=fProt;if(fc2)fc2.value=fCarb;if(ff2)ff2.value=fFat;
+        if(typeof addCalFood==='function')addCalFood();
+      }
+      el.innerHTML='<div style="font-size:13px;font-weight:700;color:#4caf7d;padding:10px 0;">✓ '+nm+' logged — '+fKcal+' kcal</div>';
+      setTimeout(function(){if(el)el.innerHTML='';},3000);
+    });
+  }catch(e){
+    el.innerHTML='<div style="font-size:12px;color:var(--accent);padding:8px 0;">Lookup failed. Check connection.</div>';
+  }
 }
 
 // Manual barcode fallback
@@ -5149,6 +5310,13 @@ function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
   var el=document.getElementById('offResults');
   el.innerHTML='<div style="font-size:12px;color:#4caf7d;padding:8px 0;">✓ '+label+' logged — '+kcal+' kcal</div>';
   setTimeout(function(){if(el)el.innerHTML='';},3000);
+}
+</script>
+<script>
+function updTimer(){
+  var m=Math.floor(rRem/60).toString().padStart(2,'0');
+  var s=(rRem%60).toString().padStart(2,'0');
+  document.getElementById('timerDisplay').textContent=m+':'+s;
 }
 </script>
 </body>
