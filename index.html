@@ -1276,6 +1276,13 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .off-result{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 13px;transition:border-color 0.15s;}
 .off-result:active{border-color:var(--accent);}
 
+
+.ex-prog{margin:8px 0;background:var(--surface);border-radius:6px;padding:8px 10px;}
+.ex-prog-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid var(--border);}
+.ex-prog-row:last-child{border-bottom:none;}
+.ex-prog-phase{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);}
+.ex-prog-target{font-size:11px;font-weight:600;color:var(--white);}
+
 </style>
 <script>
 function toggleNav(){
@@ -1462,6 +1469,19 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     </button>
   </div>
 
+  <!-- PROGRESS BANNER -->
+  <div style="background:linear-gradient(135deg,rgba(200,16,46,0.12),rgba(200,16,46,0.04));border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:14px;">
+    <div style="font-size:28px;flex-shrink:0;">🔥</div>
+    <div style="flex:1">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">5kg down. 10kg to go.</div>
+      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → <strong style="color:var(--accent);">105kg</strong> → 95kg target. You're already proving the programme works — keep the momentum.</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">105</div>
+      <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">kg now</div>
+    </div>
+  </div>
+
   <!-- STATS ROW -->
   <div class="home-stats">
     <div class="home-stat"><span class="home-stat-n">6</span><span class="home-stat-l">days/wk</span></div>
@@ -1470,7 +1490,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="home-stat-div"></div>
     <div class="home-stat"><span class="home-stat-n">3</span><span class="home-stat-l">phases</span></div>
     <div class="home-stat-div"></div>
-    <div class="home-stat"><span class="home-stat-n">~15%</span><span class="home-stat-l">bf goal</span></div>
+    <div class="home-stat"><span class="home-stat-n">~12%</span><span class="home-stat-l">bf goal</span></div>
   </div>
 
   <!-- WEEK SPLIT -->
@@ -1538,7 +1558,106 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="home-rule"><span class="home-rule-n">01</span><div><div class="home-rule-title">Consistency above all</div><div class="home-rule-sub">Missing sessions kills progress faster than bad form.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">02</span><div><div class="home-rule-title">Progressive overload</div><div class="home-rule-sub">Add weight or reps every single week. You have huge room to grow fast.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">03</span><div><div class="home-rule-title">Rest is productive</div><div class="home-rule-sub">Thursday off. 8+ hours sleep. Muscle is built during recovery.</div></div></div>
-    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to build</div><div class="home-rule-sub">High protein. Slight surplus on training days. Fuel the machine.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">2,700 kcal training days · 2,300 rest days · 230g protein daily. Deficit drives fat loss, protein preserves muscle.</div></div></div>
+  </div>
+
+
+  <!-- SUPPLEMENTS -->
+  <div class="home-section-label">Your Supplements</div>
+
+  <!-- Protein -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:10px;">
+    <div style="height:3px;background:var(--accent);"></div>
+    <div style="padding:14px;">
+      <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;">
+        <div style="font-size:28px;flex-shrink:0;">🥛</div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:800;color:var(--white);margin-bottom:2px;">ON Gold Standard Isolate</div>
+          <div style="font-size:10px;color:var(--grey);">Chocolate · 31 servings · 25g protein/scoop</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+        <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(200,16,46,0.2);border-radius:8px;padding:10px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">Training Days</div>
+          <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">2 shakes</div>
+          <div style="font-size:10px;color:var(--mid);margin-top:3px;">50g protein from shakes</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-bottom:4px;">Rest Days</div>
+          <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">1 shake</div>
+          <div style="font-size:10px;color:var(--mid);margin-top:3px;">25g protein from shakes</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <span style="color:var(--accent);font-size:12px;flex-shrink:0;margin-top:1px;">①</span>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Post-workout <span style="font-size:10px;font-weight:400;color:var(--grey);">within 30 min of finishing</span></div>
+            <div style="font-size:11px;color:var(--mid);">1 scoop in 300ml water. Most important window — muscles are primed for protein uptake.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <span style="color:var(--accent);font-size:12px;flex-shrink:0;margin-top:1px;">②</span>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Before bed <span style="font-size:10px;font-weight:400;color:var(--grey);">training days only</span></div>
+            <div style="font-size:11px;color:var(--mid);">1 scoop with milk or water. Sustains protein synthesis overnight during the main recovery window.</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;background:var(--surface);border-radius:6px;padding:10px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);margin-bottom:6px;">Daily protein target at 105kg</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <span style="font-size:11px;color:var(--mid);">Target: <strong style="color:var(--white);">210–230g/day</strong></span>
+          <span style="font-size:11px;color:var(--mid);">From shakes: <strong style="color:var(--white);">25–50g</strong></span>
+          <span style="font-size:11px;color:var(--mid);">From food: <strong style="color:var(--white);">~170g</strong></span>
+        </div>
+        <div style="font-size:10px;color:var(--grey);margin-top:5px;">31 servings lasts ~3 weeks at 2/day training + 1/day rest</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Omega 3 -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px;">
+    <div style="height:3px;background:linear-gradient(90deg,#1a6b9a,#2eaad4);"></div>
+    <div style="padding:14px;">
+      <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;">
+        <div style="font-size:28px;flex-shrink:0;">🐟</div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:800;color:var(--white);margin-bottom:2px;">Omega 3 Fish Oil 2000mg</div>
+          <div style="font-size:10px;color:var(--grey);">240 softgels · 660mg EPA + 440mg DHA · 4 month supply</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+        <div style="background:rgba(26,107,154,0.1);border:1px solid rgba(26,107,154,0.3);border-radius:8px;padding:10px;text-align:center;">
+          <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">2 caps</div>
+          <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">every day</div>
+        </div>
+        <div style="background:rgba(26,107,154,0.1);border:1px solid rgba(26,107,154,0.3);border-radius:8px;padding:10px;text-align:center;">
+          <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">120 days</div>
+          <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">supply at 2/day</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <span style="color:#2eaad4;font-size:12px;flex-shrink:0;margin-top:1px;">①</span>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Morning — 1 capsule <span style="font-size:10px;font-weight:400;color:var(--grey);">with breakfast</span></div>
+            <div style="font-size:11px;color:var(--mid);">Take with a meal containing fat — this dramatically improves absorption of EPA &amp; DHA.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <span style="color:#2eaad4;font-size:12px;flex-shrink:0;margin-top:1px;">②</span>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--white);">Evening — 1 capsule <span style="font-size:10px;font-weight:400;color:var(--grey);">with dinner</span></div>
+            <div style="font-size:11px;color:var(--mid);">Splitting the dose reduces fishy aftertaste and improves tolerability.</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;background:var(--surface);border-radius:6px;padding:10px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);margin-bottom:5px;">Why it matters for this programme</div>
+        <div style="font-size:11px;color:var(--mid);line-height:1.6;">EPA reduces exercise-induced inflammation — critical when training 6 days/week. DHA supports brain function and mood during a hard cut phase. Both reduce joint stress from heavy compound lifting.</div>
+      </div>
+    </div>
   </div>
 
   <!-- EXPECT -->
@@ -1592,507 +1711,262 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
 
 
   <div id="push" style="scroll-margin-top:60px">
-  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-accent"></div><div class="day-banner-icon">💪</div><div class="day-banner-info"><div class="day-banner-name">Push Day</div><div class="day-banner-days">Monday &amp; Friday</div><div class="day-banner-muscles">Chest · Shoulders · Triceps</div></div><div class="day-banner-chip">5 exercises</div></div></div>
-  <!-- WORKOUT TIME ESTIMATE - PUSH -->
-  <div class="workout-time-bar" id="pushTimeBar">
-    <div class="wt-icon">⏱️</div>
-    <div class="wt-info">
-      <div class="wt-title">Estimated Workout Duration</div>
-      <div class="wt-detail" id="pushTimeDetail">Includes warm-up, working sets and rest periods</div>
-    </div>
-    <div>
-      <div class="wt-time" id="pushTimeMins">—</div>
-      <div class="wt-time-label">MINS</div>
-    </div>
-  </div>
-  <div style="background:var(--card);border:1px solid var(--border);display:flex;margin-bottom:10px;" id="pushTimeBreakdown">
-    <div class="wt-seg"><div class="wt-seg-num" id="pushWarmupMins">5</div><div class="wt-seg-lbl">Warm-up</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="pushSetsMins">—</div><div class="wt-seg-lbl">Sets</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="pushRestMins">—</div><div class="wt-seg-lbl">Rest</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="pushTransMins">5</div><div class="wt-seg-lbl">Transition</div></div>
-  </div>
-  <!-- PUSH DAY WARM-UP -->
-  <div class="warmup-card" onclick="this.classList.toggle('open')">
-    <div class="warmup-head">
-      <div class="warmup-emoji">🔥</div>
-      <div class="warmup-title">Push Day Warm-Up</div>
-      <div class="warmup-time">5 MIN · DO BEFORE EVERY SESSION</div>
-      <div class="warmup-arrow">▼</div>
-    </div>
-    <div class="warmup-body">
-      <div style="font-size:11px;color:var(--mid);margin-top:8px;margin-bottom:10px;line-height:1.5;">
-        Never skip this. Cold shoulders and chest tear. 5 minutes now saves months of injury recovery.
-      </div>
-      <div class="warmup-steps">
-        <div class="warmup-step">
-          <div class="warmup-step-num">1</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Arm Circles</div>
-            <div class="warmup-step-detail">Both directions — small to large. Gets blood into shoulders and rotator cuff.</div>
-            <div class="warmup-step-time">30 sec each direction</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">2</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Band Pull-Aparts (or towel)</div>
-            <div class="warmup-step-detail">Hold a resistance band or towel wide, pull apart at chest height. Opens the shoulder joint.</div>
-            <div class="warmup-step-time">15 reps × 2</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">3</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Push-Up (slow)</div>
-            <div class="warmup-step-detail">3-second descent. Not for reps — for range of motion and shoulder blade activation.</div>
-            <div class="warmup-step-time">10 reps</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">4</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Bench Press Warm-Up Sets</div>
-            <div class="warmup-step-detail">Bar only × 15 → 50% weight × 8 → 70% weight × 3. Then go into your working sets.</div>
-            <div class="warmup-step-time">3 warm-up sets</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Push Day</div><div class="day-banner-days">Monday &amp; Friday</div><div class="day-banner-muscles">Chest · Shoulders · Triceps</div></div></div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/hWbUlkb5Ms4" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/hWbUlkb5Ms4/mqdefault.jpg" alt="BENCH PRESS" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/hWbUlkb5Ms4" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Bench Press (5 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Retract scapula before unracking — pull shoulder blades together</div><div class="cue">Bar path: lower chest, wrists straight above elbows</div><div class="cue">2-second eccentric down, drive explosively up</div><div class="cue">Feet flat, slight lower back arch, glutes on bench</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>10</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>8</td><td>+5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Barbell Bench Press">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_bench_press"></div></div>
+          <a class="ex-video-thumb" href="https://www.youtube.com/shorts/hWbUlkb5Ms4" target="_blank" rel="noopener">
+            <div style="background:var(--surface);border-radius:6px;padding:12px;text-align:center;font-size:11px;color:var(--mid);">▶ Watch form guide</div>
+          </a>
+        </div>
+        <p class="wtip">Drive through your chest, not shoulders. Elbows 45° to body. Full ROM — bar touches chest. This is your primary strength movement.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×8 @ 70% 1RM — form focus</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×6 @ 80% 1RM — add 2.5kg/wk</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×5 @ 85%+ — max effort sets</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-barbell_bench_press">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-barbell_bench_press"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Bench Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/injgcGPR3sE" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/injgcGPR3sE/mqdefault.jpg" alt="INCLINE DB PRESS" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/injgcGPR3sE" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Incline Press Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min · Jeff Nippard</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Set bench to 30–45°. Higher angle shifts load to front delt.</div><div class="cue">Squeeze chest at top for 1 second</div><div class="cue">Elbows at ~45° to body — not flared wide</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>10</td><td>Same/+2.5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Incline DB Press">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-incline_db_press"></div></div>
+        
+        <p class="wtip">30–45° incline. Controls upper chest. Dumbbells allow full stretch at the bottom — don't rush the eccentric.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×10 moderate weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×8 +2.5kg each week</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×6–8 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-incline_db_press">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-incline_db_press"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-incline_db_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Incline DB Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Incline DB Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-incline_db_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Overhead Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/xJoSRGdqae8" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/xJoSRGdqae8/mqdefault.jpg" alt="OVERHEAD PRESS" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/xJoSRGdqae8" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Overhead Press Checklist<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min · Jeff Nippard</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Brace core hard — this is a full-body press</div><div class="cue">Tuck chin as bar passes face, then press vertically</div><div class="cue">Full lockout at top, controlled descent</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>10</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Overhead Press">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-overhead_press"></div></div>
+        
+        <p class="wtip">Standing or seated. Brace core hard. Bar path: slight arc around nose. Lock out fully at top.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×10 strict form</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×8 progressive load</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×6–8 heavy — push PR</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-overhead_press">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-overhead_press"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-overhead_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Overhead Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-overhead_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Lateral Raises</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Cable Lateral Raise</div><div class="wmeta">4×12–15</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/NZsldrqqca8" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/NZsldrqqca8/mqdefault.jpg" alt="LATERAL RAISE" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/NZsldrqqca8" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Lateral Raises<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min · Jeff Nippard</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Slight forward lean at hips (10–15°)</div><div class="cue">Lead with elbows — pinky slightly higher than thumb at top</div><div class="cue">Slow and controlled — no momentum or swinging</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>20</td><td>Light</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>15</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Lateral Raises">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-lateral_raises"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-lateral_raises" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Lateral Raises')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Lateral Raises')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-lateral_raises"><span class="ex-weight-chip">No entries yet</span></div>
+        
+        <p class="wtip">Slight lean away from cable. Lead with elbow, not wrist. Control the negative — don't swing.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×15 light, feel the burn</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×12 add weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×10–12 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-cable_lateral_raise">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-cable_lateral_raise"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_lateral_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Lateral Raise')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Lateral Raise')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-cable_lateral_raise"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Close-Grip Bench Press</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Cable Fly</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/thx13oPVK5c" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/thx13oPVK5c/mqdefault.jpg" alt="TRICEP DIPS" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/thx13oPVK5c" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Tricep Dip Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Stay upright — leaning forward shifts work to chest</div><div class="cue">Full lockout at top, controlled descent</div><div class="cue">Add weight via belt once 12 bodyweight reps is easy</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>12</td><td>Bodyweight</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>10</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>10</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Close-Grip Bench Press">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-close_grip_bench_press"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-close_grip_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Close-Grip Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Close-Grip Bench Press')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-close_grip_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
+        
+        <p class="wtip">High-to-low or mid cable. Slight bend in elbow, squeeze at centre. Chest isolation — not a pressing movement.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×15 squeeze hard</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×12 progressive</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×10 heavy stretch</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-cable_fly">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-cable_fly"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_fly" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Fly')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Fly')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-cable_fly"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/7OF77JMEXhM" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/7OF77JMEXhM/mqdefault.jpg" alt="CABLE PUSHDOWN" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/7OF77JMEXhM" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Tricep Pushdown — Avoid Mistakes<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Elbows pinned at sides — they don't move</div><div class="cue">Full extension at bottom, feel the contraction</div><div class="cue">2-second return — no bouncing</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>15</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Cable Tricep Pushdown">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-cable_tricep_pushdown"></div></div>
+        
+        <p class="wtip">Straight bar or rope. Elbows pinned at sides — only forearms move. Full extension every rep.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×12 full extension</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×10 add weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×8–10 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-cable_tricep_pushdown">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-cable_tricep_pushdown"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_tricep_pushdown" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Tricep Pushdown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Tricep Pushdown')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-cable_tricep_pushdown"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Overhead Tricep Extension</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        
+        <p class="wtip">Rope or DB overhead. Full stretch at the top, controlled extension. Long head emphasis — critical for arm size.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×12 feel the stretch</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×10 progressive</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×8–10 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-overhead_tricep_extension">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-overhead_tricep_extension"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-overhead_tricep_extension" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Tricep Extension')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Overhead Tricep Extension')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-overhead_tricep_extension"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
   </div>
 
   <div id="pull" style="scroll-margin-top:60px">
-  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-accent"></div><div class="day-banner-icon">🔙</div><div class="day-banner-info"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps</div></div><div class="day-banner-chip">6 exercises</div></div></div>
-  <!-- WORKOUT TIME ESTIMATE - PULL -->
-  <div class="workout-time-bar" id="pullTimeBar">
-    <div class="wt-icon">⏱️</div>
-    <div class="wt-info">
-      <div class="wt-title">Estimated Workout Duration</div>
-      <div class="wt-detail" id="pullTimeDetail">Includes warm-up, working sets and rest periods</div>
-    </div>
-    <div>
-      <div class="wt-time" id="pullTimeMins">—</div>
-      <div class="wt-time-label">MINS</div>
-    </div>
-  </div>
-  <div style="background:var(--card);border:1px solid var(--border);display:flex;margin-bottom:10px;" id="pullTimeBreakdown">
-    <div class="wt-seg"><div class="wt-seg-num" id="pullWarmupMins">5</div><div class="wt-seg-lbl">Warm-up</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="pullSetsMins">—</div><div class="wt-seg-lbl">Sets</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="pullRestMins">—</div><div class="wt-seg-lbl">Rest</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="pullTransMins">5</div><div class="wt-seg-lbl">Transition</div></div>
-  </div>
-  <!-- PULL DAY WARM-UP -->
-  <div class="warmup-card" onclick="this.classList.toggle('open')">
-    <div class="warmup-head">
-      <div class="warmup-emoji">🔥</div>
-      <div class="warmup-title">Pull Day Warm-Up</div>
-      <div class="warmup-time">5 MIN · DO BEFORE EVERY SESSION</div>
-      <div class="warmup-arrow">▼</div>
-    </div>
-    <div class="warmup-body">
-      <div style="font-size:11px;color:var(--mid);margin-top:8px;margin-bottom:10px;line-height:1.5;">
-        Your back is complex. Warm it up properly and you'll feel a huge difference in how much you can activate during the session.
-      </div>
-      <div class="warmup-steps">
-        <div class="warmup-step">
-          <div class="warmup-step-num">1</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Dead Hang</div>
-            <div class="warmup-step-detail">Just hang from the pull-up bar with arms straight. Decompresses the spine and opens the lats.</div>
-            <div class="warmup-step-time">30 sec × 2</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">2</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Scapula Retractions (on bar)</div>
-            <div class="warmup-step-detail">Hang from bar, squeeze shoulder blades together without bending elbows. Activates the lats directly.</div>
-            <div class="warmup-step-time">10 reps</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">3</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Cat-Cow Stretch</div>
-            <div class="warmup-step-detail">On hands and knees — arch back up (cat) then drop it down (cow). Mobilises thoracic spine.</div>
-            <div class="warmup-step-time">10 reps slow</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">4</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Light Lat Pulldown or Assisted Pull-Up</div>
-            <div class="warmup-step-detail">Very light weight, focus on feeling the lats engage. Not for loading — for connection.</div>
-            <div class="warmup-step-time">15 reps × 2</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps &amp; Rear Delts</div></div></div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Cable Face Pull</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Deadlift</div><div class="wmeta">4×5</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/ZPG8OsHKXLw" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/ZPG8OsHKXLw/mqdefault.jpg" alt="WEIGHTED PULL-UPS" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/ZPG8OsHKXLw" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">The Perfect Pull-Up (5 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Full dead hang at the bottom — no half reps</div><div class="cue">Initiate by depressing scapula, then pull elbows to hips</div><div class="cue">Chin clearly above bar. No kipping or swinging.</div><div class="cue">The single most important exercise in this programme</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>8</td><td>Bodyweight</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>6</td><td>+5kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>6</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>6</td><td>+5–10kg</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Cable Face Pull">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-cable_face_pull"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_face_pull" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Face Pull')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Face Pull')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-cable_face_pull"><span class="ex-weight-chip">No entries yet</span></div>
+        
+        <p class="wtip">The king. Hinge at hips, bar over mid-foot, proud chest. Drive floor away — don't pull the bar. Rest 3 min between sets.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×6 @ 70% — form groove</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×5 @ 80% — add 5kg/wk</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×4 @ 87.5%+ — near max</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-deadlift">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-deadlift"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-deadlift" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Deadlift')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Deadlift')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-deadlift"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Dumbbell Row</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Barbell Row</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/QdDrKsvZuvQ" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/QdDrKsvZuvQ/mqdefault.jpg" alt="BARBELL ROW" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/QdDrKsvZuvQ" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Barbell Row (4 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Hinge at hips, back roughly parallel to floor</div><div class="cue">Overhand grip, pull bar to lower chest</div><div class="cue">Squeeze shoulder blades at top — hold 1 second</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>10</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Dumbbell Row">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-dumbbell_row"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-dumbbell_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Dumbbell Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Dumbbell Row')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-dumbbell_row"><span class="ex-weight-chip">No entries yet</span></div>
+        
+        <p class="wtip">Overhand grip. Hinge to ~45°, pull to lower chest. Squeeze shoulder blades. More mass-building than cable rows.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×8 controlled</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×6 progressive load</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×5 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-barbell_row">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-barbell_row"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Row')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-barbell_row"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/jULa7guhCdM" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/jULa7guhCdM/mqdefault.jpg" alt="LAT PULLDOWN" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/jULa7guhCdM" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Lat Pulldown Correctly<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Wide overhand grip, slight lean back (not excessive)</div><div class="cue">Pull to upper chest — elbows drive toward hips</div><div class="cue">Think: pull shoulder blades into your back pockets</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>10</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Lat Pulldown">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-lat_pulldown"></div></div>
+        
+        <p class="wtip">Wide grip, slight lean back. Pull to upper chest, lead with elbows. Full hang at top — don't cheat the stretch.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×10 full ROM</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×8 add weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×6–8 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-lat_pulldown">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-lat_pulldown"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-lat_pulldown" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Lat Pulldown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Lat Pulldown')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-lat_pulldown"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Seated Cable Row</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Seated Cable Row</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/8QuMq1GMMng" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/8QuMq1GMMng/mqdefault.jpg" alt="SEATED CABLE ROW" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/8QuMq1GMMng" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Seated Cable Row (4 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Neutral grip, back straight throughout</div><div class="cue">Pull to navel — squeeze mid-back at the end</div><div class="cue">Controlled stretch on the way back — don't round</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Seated Cable Row">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-seated_cable_row"></div></div>
+        
+        <p class="wtip">Neutral grip. Stay upright — don't rock. Pull to navel, hold 1s, full stretch forward.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×12</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×10 progressive</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×8 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-seated_cable_row">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-seated_cable_row"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-seated_cable_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Seated Cable Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Seated Cable Row')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-seated_cable_row"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Barbell Curl</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Cable Face Pull</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/dIAxyJimXnA" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/dIAxyJimXnA/mqdefault.jpg" alt="BARBELL CURL" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/dIAxyJimXnA" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Barbell Bicep Curl<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
+        
+        <p class="wtip">Rope at eye level. Pull to face, elbows flared out. Essential for shoulder health and rear delt development. Never skip this.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×20 light, feel it</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×15 add weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×12–15 moderate heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-cable_face_pull">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-cable_face_pull"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-cable_face_pull" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Face Pull')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Face Pull')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-cable_face_pull"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
       </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">No swinging — elbows stay locked at sides</div><div class="cue">Full supination (wrist turn out) at the top</div><div class="cue">3-second eccentric on the way down</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Barbell Curl">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_curl"></div></div>
+    </div>
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Barbell Curl</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        
+        <p class="wtip">Strict form. No swinging. Supinate at the top — rotate wrist out. Full extension at bottom.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×10 strict</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×8 add 2.5kg/wk</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×6–8 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-barbell_curl">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-barbell_curl"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Hammer Curl</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Hammer Curl</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/NyW2fT2gQhM" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/NyW2fT2gQhM/mqdefault.jpg" alt="HAMMER CURL" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/NyW2fT2gQhM" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Hammer Curl (Dos & Don'ts)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Neutral grip — thumb pointing up throughout the movement</div><div class="cue">Builds brachialis for overall arm thickness</div><div class="cue">Can alternate arms for better mind-muscle connection</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>12</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Hammer Curl">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-hammer_curl"></div></div>
+        
+        <p class="wtip">Neutral grip. Works brachialis — adds thickness under the bicep. Alternate arms or together.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×12</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×10 progressive</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×8–10 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-hammer_curl">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-hammer_curl"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-hammer_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Hammer Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Hammer Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-hammer_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
@@ -2101,294 +1975,134 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
   </div>
 
   <div id="legs" style="scroll-margin-top:60px">
-  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-accent"></div><div class="day-banner-icon">🦵</div><div class="day-banner-info"><div class="day-banner-name">Leg Day</div><div class="day-banner-days">Wednesday &amp; Sunday</div><div class="day-banner-muscles">Quads · Hamstrings · Core</div></div><div class="day-banner-chip">5 exercises</div></div></div>
-  <!-- WORKOUT TIME ESTIMATE - LEGS -->
-  <div class="workout-time-bar" id="legsTimeBar">
-    <div class="wt-icon">⏱️</div>
-    <div class="wt-info">
-      <div class="wt-title">Estimated Workout Duration</div>
-      <div class="wt-detail" id="legsTimeDetail">Includes warm-up, working sets, rest and core circuit</div>
-    </div>
-    <div>
-      <div class="wt-time" id="legsTimeMins">—</div>
-      <div class="wt-time-label">MINS</div>
-    </div>
-  </div>
-  <div style="background:var(--card);border:1px solid var(--border);display:flex;margin-bottom:10px;" id="legsTimeBreakdown">
-    <div class="wt-seg"><div class="wt-seg-num" id="legsWarmupMins">7</div><div class="wt-seg-lbl">Warm-up</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="legsSetsMins">—</div><div class="wt-seg-lbl">Sets</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="legsRestMins">—</div><div class="wt-seg-lbl">Rest</div></div>
-    <div class="wt-seg"><div class="wt-seg-num" id="legsCoreMins">10</div><div class="wt-seg-lbl">Core circ.</div></div>
-  </div>
-  <!-- LEG DAY WARM-UP -->
-  <div class="warmup-card" onclick="this.classList.toggle('open')">
-    <div class="warmup-head">
-      <div class="warmup-emoji">🔥</div>
-      <div class="warmup-title">Leg Day Warm-Up</div>
-      <div class="warmup-time">5–8 MIN · DO BEFORE EVERY SESSION</div>
-      <div class="warmup-arrow">▼</div>
-    </div>
-    <div class="warmup-body">
-      <div style="font-size:11px;color:var(--mid);margin-top:8px;margin-bottom:10px;line-height:1.5;">
-        The most important warm-up. Cold squats with 100kg on your back is how people wreck their knees and lower back. Non-negotiable.
-      </div>
-      <div class="warmup-steps">
-        <div class="warmup-step">
-          <div class="warmup-step-num">1</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Leg Swings</div>
-            <div class="warmup-step-detail">Hold wall, swing each leg forward/back then side to side. Opens hip flexors and adductors.</div>
-            <div class="warmup-step-time">15 each direction per leg</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">2</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Bodyweight Squat (deep and slow)</div>
-            <div class="warmup-step-detail">Go as deep as comfortable, pause at the bottom for 2 seconds. Mobilises ankles, hips, and knees.</div>
-            <div class="warmup-step-time">15 reps slow</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">3</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Hip Circle / Glute Bridge</div>
-            <div class="warmup-step-detail">Lie on back, feet flat, drive hips up. Activates glutes before heavy squatting — prevents knee cave.</div>
-            <div class="warmup-step-time">15 reps</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">4</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Squat Warm-Up Sets</div>
-            <div class="warmup-step-detail">Bar only × 15 → 40% × 8 → 60% × 5 → 75% × 2. Then work sets. Never skip these.</div>
-            <div class="warmup-step-time">4 warm-up sets</div>
-          </div>
-        </div>
-        <div class="warmup-step">
-          <div class="warmup-step-num">5</div>
-          <div class="warmup-step-info">
-            <div class="warmup-step-name">Ankle Mobility</div>
-            <div class="warmup-step-detail">Stand facing wall, drive knee over toes while keeping heel down. Tight ankles = knee pain on squats.</div>
-            <div class="warmup-step-time">10 reps each ankle</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Leg Day</div><div class="day-banner-days">Wednesday &amp; Sunday</div><div class="day-banner-muscles">Quads · Hamstrings · Glutes · Calves</div></div></div>
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/PPmvh7gBTi0" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/PPmvh7gBTi0/mqdefault.jpg" alt="BARBELL SQUAT" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/PPmvh7gBTi0" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Squat Checklist (5 Keys)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Break parallel — hip crease below knee every rep</div><div class="cue">Chest up, core braced, drive through heels</div><div class="cue">Knees track over toes — push them outward</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>8</td><td>Warm-up</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>6</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>6</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Barbell Squat">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-barbell_squat"></div></div>
+        
+        <p class="wtip">Bar on traps, feet shoulder-width. Sit between legs, not back. Hit parallel or below. Drive knees out on the way up.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×8 @ 70% — depth focus</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×6 @ 80% — add 5kg/wk</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×5 @ 85%+ — max effort</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-barbell_squat">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-barbell_squat"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-barbell_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Squat')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Squat')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_squat"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Romanian Deadlift</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/eHLuROg0FSI" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/eHLuROg0FSI/mqdefault.jpg" alt="ROMANIAN DEADLIFT" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/eHLuROg0FSI" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To RDL (3 Tips)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Hip hinge — push hips back, not knees down</div><div class="cue">Bar stays in contact with legs throughout</div><div class="cue">Feel the hamstring stretch at the bottom — don't round</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>10</td><td>Moderate</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>10</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>8</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>4</td><td>8</td><td>Heavy</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Romanian Deadlift">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-romanian_deadlift"></div></div>
+        
+        <p class="wtip">Soft knee bend. Hinge until you feel hamstring stretch — usually mid-shin. Drive hips forward to stand. The best hamstring builder.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×10 feel the stretch</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×8 progressive load</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×6–8 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-romanian_deadlift">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-romanian_deadlift"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-romanian_deadlift" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Romanian Deadlift')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Romanian Deadlift')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-romanian_deadlift"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/BnacvXdaxq8" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/BnacvXdaxq8/mqdefault.jpg" alt="LEG PRESS" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/BnacvXdaxq8" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Leg Press Properly<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">High foot placement targets glutes and hamstrings</div><div class="cue">Don't lock out knees — maintain slight bend at top</div><div class="cue">Control the descent — don't let the weight drop</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>12</td><td>Working</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Leg Press">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-leg_press"></div></div>
+        
+        <p class="wtip">Feet mid-platform. Full depth — don't lock out at top. Vary foot position: high = glutes, low = quads.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×12 full ROM</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×10 add weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×8 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-leg_press">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-leg_press"></div>
           <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-leg_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Leg Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-leg_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Walking Lunges</div><div class="wmeta">3×12 each</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Bulgarian Split Squat</div><div class="wmeta">3×10 each</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/IRq5o3ntLIE" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/IRq5o3ntLIE/mqdefault.jpg" alt="WALKING LUNGE" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/IRq5o3ntLIE" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Walking Lunge Form & Technique<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Long stride — front knee tracks directly over toe</div><div class="cue">Back knee just above floor — controlled drop</div><div class="cue">Torso upright and braced throughout</div></div>
-        <table class="stbl"><tr><th>Set</th><th>Reps</th><th>Load</th><th>✓</th></tr>
-        <tr><td>1</td><td>12/leg</td><td>BW or DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>2</td><td>12/leg</td><td>+DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td>3</td><td>12/leg</td><td>+DB</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Walking Lunges">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-walking_lunges"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-walking_lunges" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Walking Lunges')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Walking Lunges')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-walking_lunges"><span class="ex-weight-chip">No entries yet</span></div>
+        
+        <p class="wtip">Rear foot elevated. Front foot far enough that knee stays behind toes. Hardest leg exercise — will expose imbalances.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×10 bodyweight or light</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×8 add DB weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×8 heavy DBs</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-bulgarian_split_squat">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-bulgarian_split_squat"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-bulgarian_split_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Bulgarian Split Squat')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Bulgarian Split Squat')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-bulgarian_split_squat"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
-
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Core Circuit</div><div class="wmeta">3 rounds</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Leg Curl</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/hoeNgjheDHk" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/hoeNgjheDHk/mqdefault.jpg" alt="PLANK" loading="lazy" onerror="this.style.opacity='0'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/hoeNgjheDHk" target="_blank" rel="noopener">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Do a Plank<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">< 1 min</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
+        
+        <p class="wtip">Lying or seated. Full extension, curl to full contraction. One of the only true hamstring isolation movements.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×12 feel the curl</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×10 progressive</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×8–10 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-leg_curl">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-leg_curl"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-leg_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Leg Curl')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-leg_curl"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
       </div>
-        <div class="cues"><div class="cues-title">Form Cues</div><div class="cue">Plank: neutral spine, squeeze glutes and abs together</div><div class="cue">No rest between exercises within a round</div><div class="cue">60 seconds rest between rounds</div></div>
-        <table class="stbl"><tr><th>Exercise</th><th>Amount</th><th>✓</th></tr>
-        <tr><td style="font-size:11px;color:var(--white)">Plank</td><td>60 sec</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td style="font-size:11px;color:var(--white)">Hanging Knee Raise</td><td>15 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td style="font-size:11px;color:var(--white)">Cable Crunch</td><td>15 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr>
-        <tr><td style="font-size:11px;color:var(--white)">Russian Twist</td><td>20 reps</td><td><button class="chk" onclick="chk(event,this)">✓</button></td></tr></table>
-        <div class="ex-weight-log" data-ex-name="Core Circuit">
-          <div class="ex-weight-header"><div class="ex-weight-title">Working Weight</div><div class="ex-weight-pr" id="wl-pr-core_circuit"></div></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-core_circuit" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Core Circuit')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Core Circuit')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-core_circuit"><span class="ex-weight-chip">No entries yet</span></div>
+    </div>
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Standing Calf Raise</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        
+        <p class="wtip">Full stretch at the bottom — paused. Rise up onto big toe. Calves respond to high reps and full ROM. Most people rush this.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×20 full stretch</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×15 add weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×12–15 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-standing_calf_raise">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-standing_calf_raise"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-standing_calf_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Standing Calf Raise')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Standing Calf Raise')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-standing_calf_raise"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Hanging Leg Raise</div><div class="wmeta">3×15</div><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        
+        <p class="wtip">Dead hang, raise legs to 90° or higher. Control the descent. Do not swing. Builds real core strength, not just endurance.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×12 strict</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×15 progressive</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×15 add ankle weight</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-hanging_leg_raise">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-hanging_leg_raise"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-hanging_leg_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Hanging Leg Raise')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Hanging Leg Raise')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-hanging_leg_raise"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div><!-- ===== DELOAD ===== -->
-<div <div id="tab-deload" class="section">
-  <div class="sec-label">Programme Notes</div>
-  <div class="sec-title">DELOAD &amp; RPE</div>
-
-  <div class="divider"><div class="div-line"></div><div class="div-text">Deload Weeks</div><div class="div-line"></div></div>
-  
-  <div style="background:rgba(76,175,125,0.07);border:1px solid rgba(76,175,125,0.25);padding:13px 14px;margin-bottom:10px;">
-    <div style="font-size:10px;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ What Is A Deload & Why It Matters</div>
-    <div style="font-size:12px;color:var(--mid);line-height:1.7;">
-      Every 4 weeks you reduce weight and volume by ~20% for one week. This isn't laziness — it's <strong style="color:var(--white)">how your body supercompensates</strong>. Your joints, tendons, and nervous system recover and you come back stronger. Skip deloads and you risk injury, burnout, and plateau.
-    </div>
-  </div>
-
-  <div class="deload-banner" id="deload-w4">
-    <div class="deload-pill">Week 4 Deload</div>
-    <div class="deload-week-title">End of Foundation Phase</div>
-    <div class="deload-sub">After 4 hard weeks, your body needs this. You'll feel fresher going into Phase 2.</div>
-    <div class="deload-rules">
-      <div class="deload-rule">Reduce all weights by <strong style="color:var(--white)">20%</strong></div>
-      <div class="deload-rule">Cut sets from 4 to <strong style="color:var(--white)">3</strong></div>
-      <div class="deload-rule">Keep reps the same — focus on perfect form</div>
-      <div class="deload-rule">No pushing to failure — stop 3 reps short of your limit</div>
-      <div class="deload-rule">Sleep extra, eat the same, hydrate more</div>
-    </div>
-  </div>
-
-  <div class="deload-banner" id="deload-w8">
-    <div class="deload-pill">Week 8 Deload</div>
-    <div class="deload-week-title">End of Strength Phase</div>
-    <div class="deload-sub">You've been lifting heavy for 4 weeks. This deload sets you up for the best definition phase possible.</div>
-    <div class="deload-rules">
-      <div class="deload-rule">Reduce all weights by <strong style="color:var(--white)">20–25%</strong></div>
-      <div class="deload-rule">Cut sets from 5 to <strong style="color:var(--white)">3</strong></div>
-      <div class="deload-rule">Add 10 min light cardio at the end of each session</div>
-      <div class="deload-rule">Use the week to fix any form issues you noticed</div>
-    </div>
-  </div>
-
-  <div class="deload-banner" id="deload-w12">
-    <div class="deload-pill">Week 12 Deload</div>
-    <div class="deload-week-title">End of Strength Phase</div>
-    <div class="deload-sub">Going into the final definition phase fresh makes a huge difference. One week back-off now.</div>
-    <div class="deload-rules">
-      <div class="deload-rule">No lifting — let everything fully recover</div>
-      <div class="deload-rule">Light walks, swimming, or yoga only if you want to move</div>
-      <div class="deload-rule">Take your Week 12 progress photos</div>
-      <div class="deload-rule">Plan your next 12-week block with higher starting weights</div>
-    </div>
-  </div>
-
-
-
-
-</div>
-</div>
 <!-- ===== STRAVA ===== -->
 <div id="tab-strava" class="section">
   <div class="sec-label">Integrations</div>
@@ -2481,7 +2195,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
 
 <!-- ===== NUTRITION ===== -->
 <div id="tab-nutrition" class="section">
-  <div class="sec-label">Daily Targets · 100kg · Recomposition</div>
+  <div class="sec-label">Daily Targets · 105kg · Aggressive Recomp</div>
   <div class="sec-title">NUTRITION</div>
   <div class="macro-row">
     <div class="mcell"><div class="mnum">230</div><div class="munit">g / day</div><div class="mname">Protein</div></div>
@@ -2491,12 +2205,12 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
   <div style="background:var(--card);border:1px solid var(--border);padding:12px 14px;margin-bottom:14px;">
     <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Total Daily Calories</div>
     <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;color:var(--accent);">~2,800 <span style="font-size:13px;color:var(--grey)">kcal</span></div>
-    <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,800 kcal · Rest day ~2,400 kcal</div>
+    <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,700 kcal · Rest day ~2,400 kcal</div>
   </div>
 
   <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(200,16,46,0.25);padding:13px 14px;margin-bottom:14px;">
     <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(200,16,46,0.25);padding:13px 14px;margin-bottom:14px;">
-    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ Recomposition Strategy · 100kg</div>
+    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ Recomposition Strategy · 105kg</div>
     <div style="font-size:11px;color:var(--mid);line-height:1.8;">
       At your stats a traditional bulk is unnecessary — you have enough stored energy to fuel muscle growth while in a small deficit. This is called <strong style="color:var(--white)">body recomposition</strong>. Expect to lose ~0.5–1kg per week while gaining strength. The scale might barely move for weeks — that's muscle replacing fat. <strong style="color:var(--white)">Judge progress by the mirror and your lifts, not the number.</strong>
     </div>
@@ -3162,7 +2876,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     </div>
     <div class="bench-item">
       <div class="bench-week" id="bm3-badge">Week 12</div>
-      <div class="bench-info"><div class="bench-title">Target physique</div><div class="bench-detail">Bench ~130kg · Squat ~170kg · Body fat ~15% · Visible taper · ~–8 to 12kg</div></div>
+      <div class="bench-info"><div class="bench-title">Target physique</div><div class="bench-detail">Bench ~130kg · Squat ~170kg · Body fat ~12% · Visible taper · ~–8 to 12kg</div></div>
     </div>
   </div>
 </div>
@@ -3377,7 +3091,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
 
 <!-- ===== CALORIES ===== -->
 <div id="tab-calories" class="section">
-  <div class="sec-label">Daily Food Log · 2,800 kcal target</div>
+  <div class="sec-label">Daily Food Log · 2,700 kcal target</div>
   <div class="sec-title">CALORIES</div>
 
   <!-- Day Navigation -->
@@ -3556,11 +3270,11 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
   <div style="padding:16px 0;">
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:12px;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Phase 2 · Strength Block</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After 12 weeks of recomp, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload to push past 100kg.</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After 12 weeks of recomp, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload. You're 10kg from your 95kg lean target.</div>
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Assess at Week 12</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.7;">If you hit 100kg with visible recomp — strength phase next. If not yet at target, extend 4 weeks with adjusted macros before transitioning.</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;">You started at 110kg and are already at 105kg — 5kg down. Target: reach 95–97kg lean. Once there, transition to a strength/bulk phase.</div>
     </div>
   </div>
 </div>
@@ -3763,10 +3477,24 @@ const PHASES=[
 ];
 
 function getCurrentWeek(){
-  for(let w=12;w>=1;w--){
-    for(let d=0;d<7;d++){if(tData['w'+w+'d'+d]) return w;}
+  // Date-based: store program start date, calc from elapsed days
+  const START_KEY = 'apx_program_start';
+  let startStr = localStorage.getItem(START_KEY);
+  if(!startStr){
+    // First launch — set start date to today's Monday
+    const today = new Date();
+    const day = today.getDay();
+    const diff = day === 0 ? -6 : 1 - day; // back to Monday
+    const monday = new Date(today);
+    monday.setDate(today.getDate() + diff);
+    monday.setHours(0,0,0,0);
+    startStr = monday.toISOString();
+    localStorage.setItem(START_KEY, startStr);
   }
-  return 1;
+  const start = new Date(startStr);
+  const now = new Date();
+  const elapsed = Math.floor((now - start) / (1000 * 60 * 60 * 24 * 7));
+  return Math.min(Math.max(elapsed + 1, 1), 12);
 }
 function getCurrentPhase(w){return PHASES.find(p=>p.wks.includes(w))||PHASES[0];}
 
@@ -4159,7 +3887,7 @@ function calcWorkoutTime(){
 
 // ── CALORIE TRACKER ────────────────────────────────────────────────────────────
 const CAL_KEY = 'apx_calories_v1';
-const CAL_TARGET = 2800;
+const CAL_TARGET = 2700;
 const CAL_TARGET_REST = 2400;
 let calOffset = 0; // 0 = today, -1 = yesterday etc.
 
@@ -5318,6 +5046,67 @@ function updTimer(){
   var s=(rRem%60).toString().padStart(2,'0');
   document.getElementById('timerDisplay').textContent=m+':'+s;
 }
+</script>
+<script>
+
+// ── DATA BACKUP & RESTORE ────────────────────────────────────────
+function exportData(){
+  const keys = [
+    'apx_tracker','apx_calories_v1','apx_cardio_v1','ascend_weights_v1',
+    'apx_water_v1','apx_meal','apx_shop','apx_time','apx_program_start',
+    'ascend_strava_v1','ascend_strava_client_id'
+  ];
+  const backup = {version:1, exported: new Date().toISOString(), data:{}};
+  keys.forEach(k => {
+    const v = localStorage.getItem(k);
+    if(v) backup.data[k] = v;
+  });
+  const blob = new Blob([JSON.stringify(backup,null,2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'ascend-backup-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importData(){
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = function(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      try{
+        const backup = JSON.parse(ev.target.result);
+        if(!backup.data) throw new Error('Invalid backup file');
+        Object.keys(backup.data).forEach(k => localStorage.setItem(k, backup.data[k]));
+        alert('Data restored successfully! Reloading...');
+        location.reload();
+      } catch(e){
+        alert('Failed to restore: '+e.message);
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+function resetProgramStart(){
+  if(!confirm('Reset program start date to today? This will recalculate your current week.')) return;
+  const START_KEY = 'apx_program_start';
+  const today = new Date();
+  const day = today.getDay();
+  const diff = day === 0 ? -6 : 1 - day;
+  const monday = new Date(today);
+  monday.setDate(today.getDate() + diff);
+  monday.setHours(0,0,0,0);
+  localStorage.setItem(START_KEY, monday.toISOString());
+  location.reload();
+}
+
 </script>
 </body>
 </html>
