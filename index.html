@@ -796,8 +796,8 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   overflow: hidden;
-  background: #111;
-  min-height: 120px;
+  background: #1a1a1a;
+  min-height: 140px;
 }
 .ex-video-thumb img {
   display: block;
@@ -1288,6 +1288,10 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .ex-prog-phase{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);}
 .ex-prog-target{font-size:11px;font-weight:600;color:var(--white);}
 
+
+.ex-video-thumb-wrap{display:block;}
+.ex-video-thumb img{display:block;width:100%;height:auto;min-height:90px;background:var(--surface);}
+
 </style>
 <script>
 function toggleNav(){
@@ -1347,6 +1351,30 @@ function navTo(id,label){
   playNavTick();
 }
 function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
+function openYT(vid_id){
+  // Try native YouTube app first, fall back to browser
+  var appUrl = 'vnd.youtube://shorts/' + vid_id;
+  var webUrl = 'https://www.youtube.com/shorts/' + vid_id;
+  var start = Date.now();
+  var timer = setTimeout(function(){
+    if(Date.now() - start < 1500) window.open(webUrl, '_blank');
+  }, 800);
+  try { window.location = appUrl; } catch(e) { window.open(webUrl,'_blank'); }
+}
+
+function toggleVideoPlayer(vid_id){
+  var player = document.getElementById('vp-'+vid_id);
+  var thumb = document.getElementById('vt-'+vid_id);
+  if(!player || !thumb) return;
+  if(player.style.display === 'none'){
+    player.style.display = 'block';
+    thumb.style.display = 'none';
+  } else {
+    player.style.display = 'none';
+    thumb.style.display = 'block';
+  }
+}
+
 </script>
 </head>
 <body>
@@ -1355,7 +1383,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
   </button>
   <div class="topbar-centre">
-    <span class="topbar-wordmark">ASCEND</span>
+    <span class="topbar-wordmark" id="topbarWordmark">ASCEND</span>
     
   </div>
   <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
@@ -1479,7 +1507,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div style="font-size:28px;flex-shrink:0;">🔥</div>
     <div style="flex:1">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">5kg down. 10kg to go.</div>
-      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → <strong style="color:var(--accent);">105kg</strong> → 95kg target. You're already proving the programme works — keep the momentum.</div>
+      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → <strong style="color:var(--accent);">105kg</strong> → 95kg target. 3.5km walk to gym + 3.5km to work daily + 6-day lifting — the combination is working.</div>
     </div>
     <div style="text-align:right;flex-shrink:0;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">105</div>
@@ -1522,7 +1550,7 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
       </div>
     </div>
     <div class="home-track-card">
-      <div class="home-track-label">🏃 Cardio</div>
+      <div class="home-track-label">🏃 Cardio <span style="font-size:9px;color:var(--accent);font-weight:700;">+3.5km to gym · 3.5km to work</span></div>
       <div class="home-track-big"><span id="cardioThisWeek">0</span><span class="home-track-unit">this wk</span></div>
       <div id="cardioWeekDisplay" style="margin:8px 0 6px;"></div>
       <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
@@ -1555,6 +1583,14 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
       <div class="home-target-row"><span class="home-target-name">Arms</span><span class="home-target-tag">High</span></div>
       <div class="home-target-bar"><div class="home-target-fill" style="width:75%"></div></div>
     </div>
+    <div class="home-target">
+      <div class="home-target-row"><span class="home-target-name">Lower Back &amp; Hips</span><span class="home-target-tag" style="background:rgba(252,76,2,0.1);color:#FC4C02;border-color:rgba(252,76,2,0.3);">Fat Loss Last</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:40%;background:linear-gradient(90deg,#FC4C02,rgba(252,76,2,0.4));"></div></div>
+    </div>
+    <div class="home-target">
+      <div class="home-target-row"><span class="home-target-name">Belly &amp; Core</span><span class="home-target-tag" style="background:rgba(252,76,2,0.1);color:#FC4C02;border-color:rgba(252,76,2,0.3);">Fat Loss Last</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:35%;background:linear-gradient(90deg,#FC4C02,rgba(252,76,2,0.4));"></div></div>
+    </div>
   </div>
 
   <!-- RULES -->
@@ -1563,7 +1599,8 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="home-rule"><span class="home-rule-n">01</span><div><div class="home-rule-title">Consistency above all</div><div class="home-rule-sub">Missing sessions kills progress faster than bad form.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">02</span><div><div class="home-rule-title">Progressive overload</div><div class="home-rule-sub">Add weight or reps every single week. You have huge room to grow fast.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">03</span><div><div class="home-rule-title">Rest is productive</div><div class="home-rule-sub">Thursday off. 8+ hours sleep. Muscle is built during recovery.</div></div></div>
-    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">2,700 kcal training days · 2,300 rest days · 230g protein daily. Deficit drives fat loss, protein preserves muscle.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">2,700 kcal training days · 2,300 rest days · 230g protein daily. 3.5km to gym (warm-up) + 3.5km to work (cool-down) burns ~450 kcal daily. Keep food targets the same — the walks do the extra work.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">05</span><div><div class="home-rule-title">Sleep is non-negotiable</div><div class="home-rule-sub">7+ hours. Cortisol from poor sleep directly causes belly and lower back fat storage and retention. The single most underrated factor in stubborn fat loss.</div></div></div>
   </div>
 
 
@@ -1683,6 +1720,15 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="expect-head"><div class="expect-week">Wk 6–8</div><div class="expect-title">The visual shift</div><div class="expect-arrow">▼</div></div>
     <div class="expect-body"><p>This is when people start noticing. Shoulders broader, waist tighter, face leaner. The compound interest of consistency starts paying out.</p><span class="expect-tag green">Most visible change</span><span class="expect-tag blue">Take progress photos</span></div>
   </div>
+  <div class="expect-card" onclick="this.classList.toggle('open')">
+    <div class="expect-head"><div class="expect-week">Wk 8–12</div><div class="expect-title">Belly &amp; stubborn fat shifts</div><div class="expect-arrow">▼</div></div>
+    <div class="expect-body">
+      <p>Belly and lower back fat are the last to go for men — this is biology, not failure. The fat cells here have more alpha-2 receptors that actively resist mobilisation. <strong>By week 8 the deficit has been consistent long enough</strong> to start clearing this layer.</p>
+      <p style="margin-top:8px;">You'll notice it first when relaxed — the belly starts sitting flatter instead of pushing out. Upper abs become visible when relaxed around week 10. Lower belly and hip fat is a week 12+ result.</p>
+      <p style="margin-top:8px;"><strong>Three things that accelerate this:</strong> 7+ hours sleep (cortisol destroys belly fat progress), no alcohol (suppresses fat oxidation for 36hrs), and your heavy compound lifts (squats/deadlifts spike testosterone and GH for hours after).</p>
+      <span class="expect-tag blue">Sleep 7+ hrs</span><span class="expect-tag red">Avoid alcohol</span><span class="expect-tag green">Compounds are key</span>
+    </div>
+  </div>
 
 </div>
 <div id="tab-program" class="section">
@@ -1720,16 +1766,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/hWbUlkb5Ms4" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/hWbUlkb5Ms4/mqdefault.jpg" alt="How To Bench Press (5 Steps)" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('hWbUlkb5Ms4')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/hWbUlkb5Ms4/hqdefault.jpg" alt="Perfect Bench Press (5 Steps)" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/hWbUlkb5Ms4" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('hWbUlkb5Ms4')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Bench Press (5 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Bench Press (5 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -1751,16 +1799,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/injgcGPR3sE" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/injgcGPR3sE/mqdefault.jpg" alt="Incline DB Press Form" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('IyjIiR9-kBk')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/IyjIiR9-kBk/hqdefault.jpg" alt="Incline DB Press Tutorial" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/injgcGPR3sE" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('IyjIiR9-kBk')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Incline DB Press Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Incline DB Press Tutorial<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -1783,16 +1833,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Overhead Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/xJoSRGdqae8" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/xJoSRGdqae8/mqdefault.jpg" alt="Overhead Press Checklist" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('afR3tPH6y_g')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/afR3tPH6y_g/hqdefault.jpg" alt="Barbell Overhead Press Form" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/xJoSRGdqae8" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('afR3tPH6y_g')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Overhead Press Checklist<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Barbell Overhead Press Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -1815,16 +1867,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Cable Lateral Raise</div><div class="wmeta">4×12–15</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/NZsldrqqca8" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/NZsldrqqca8/mqdefault.jpg" alt="Perfect Lateral Raises" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('HeovYNoZDRg')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/HeovYNoZDRg/hqdefault.jpg" alt="Better Way To Do Lateral Raises" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/NZsldrqqca8" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('HeovYNoZDRg')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Lateral Raises<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Better Way To Do Lateral Raises<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -1847,16 +1901,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Cable Fly</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/JntTub4MXSU" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/JntTub4MXSU/mqdefault.jpg" alt="Cable Fly Technique" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('JntTub4MXSU')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/JntTub4MXSU/hqdefault.jpg" alt="Cable Fly Technique" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/JntTub4MXSU" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('JntTub4MXSU')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Cable Fly Technique<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Cable Fly Technique<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -1879,16 +1935,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/7OF77JMEXhM" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/7OF77JMEXhM/mqdefault.jpg" alt="Tricep Pushdown — Avoid Mistakes" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('7OF77JMEXhM')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/7OF77JMEXhM/hqdefault.jpg" alt="Tricep Pushdown Mistakes Fix" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/7OF77JMEXhM" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('7OF77JMEXhM')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Tricep Pushdown — Avoid Mistakes<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Tricep Pushdown Mistakes Fix<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -1911,16 +1969,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Overhead Tricep Extension</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/vVhMc0ETDhc" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/vVhMc0ETDhc/mqdefault.jpg" alt="Overhead Tricep Extension" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('b_r_LW4HEcM')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/b_r_LW4HEcM/hqdefault.jpg" alt="Perfect Overhead Tricep Extension" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/vVhMc0ETDhc" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('b_r_LW4HEcM')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Overhead Tricep Extension<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Overhead Tricep Extension<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -1947,16 +2007,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Deadlift</div><div class="wmeta">4×5</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/VL5Ab0T07e4" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/VL5Ab0T07e4/mqdefault.jpg" alt="How To Deadlift (5 Steps)" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('8np3vKDBJfc')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/8np3vKDBJfc/hqdefault.jpg" alt="The Perfect Deadlift (5 Steps)" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/VL5Ab0T07e4" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('8np3vKDBJfc')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Deadlift (5 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">The Perfect Deadlift (5 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -1979,16 +2041,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Barbell Row</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/QdDrKsvZuvQ" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/QdDrKsvZuvQ/mqdefault.jpg" alt="Perfect Barbell Row (4 Steps)" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('Nqh7q3zDCoQ')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/Nqh7q3zDCoQ/hqdefault.jpg" alt="The Perfect Barbell Row (5 Steps)" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/QdDrKsvZuvQ" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('Nqh7q3zDCoQ')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Barbell Row (4 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">The Perfect Barbell Row (5 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2011,16 +2075,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/jULa7guhCdM" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/jULa7guhCdM/mqdefault.jpg" alt="How To Lat Pulldown Correctly" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('hnSqbBk15tw')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/hnSqbBk15tw/hqdefault.jpg" alt="Stop Messing Up Lat Pulldowns" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/jULa7guhCdM" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('hnSqbBk15tw')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Lat Pulldown Correctly<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Stop Messing Up Lat Pulldowns<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2043,16 +2109,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Seated Cable Row</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/8QuMq1GMMng" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/8QuMq1GMMng/mqdefault.jpg" alt="How To Seated Cable Row (4 Steps)" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('8QuMq1GMMng')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/8QuMq1GMMng/hqdefault.jpg" alt="Seated Cable Row Form" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/8QuMq1GMMng" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('8QuMq1GMMng')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Seated Cable Row (4 Steps)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Seated Cable Row Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2075,16 +2143,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Cable Face Pull</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/ZPG8OsHKXLw" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/ZPG8OsHKXLw/mqdefault.jpg" alt="Face Pull — Shoulder Health" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('ZPG8OsHKXLw')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/ZPG8OsHKXLw/hqdefault.jpg" alt="Face Pull — Shoulder Health" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/ZPG8OsHKXLw" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('ZPG8OsHKXLw')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Face Pull — Shoulder Health<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Face Pull — Shoulder Health<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2107,16 +2177,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Barbell Curl</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/dIAxyJimXnA" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/dIAxyJimXnA/mqdefault.jpg" alt="Perfect Barbell Bicep Curl" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('dIAxyJimXnA')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/dIAxyJimXnA/hqdefault.jpg" alt="Perfect Barbell Curl Form" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/dIAxyJimXnA" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('dIAxyJimXnA')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Barbell Bicep Curl<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Barbell Curl Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2139,16 +2211,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Hammer Curl</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/NyW2fT2gQhM" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/NyW2fT2gQhM/mqdefault.jpg" alt="How To Hammer Curl" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('NyW2fT2gQhM')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/NyW2fT2gQhM/hqdefault.jpg" alt="Hammer Curl Form" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/NyW2fT2gQhM" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('NyW2fT2gQhM')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Hammer Curl<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Hammer Curl Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2175,16 +2249,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/PPmvh7gBTi0" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/PPmvh7gBTi0/mqdefault.jpg" alt="Perfect Squat Checklist" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('PPmvh7gBTi0')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/PPmvh7gBTi0/hqdefault.jpg" alt="Perfect Squat Checklist" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/PPmvh7gBTi0" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('PPmvh7gBTi0')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Squat Checklist<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Squat Checklist<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2207,16 +2283,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Romanian Deadlift</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/eHLuROg0FSI" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/eHLuROg0FSI/mqdefault.jpg" alt="How To RDL (3 Tips)" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('ecuZtKTNI9U')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/ecuZtKTNI9U/hqdefault.jpg" alt="Romanian Deadlift Form Tip" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/eHLuROg0FSI" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('ecuZtKTNI9U')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To RDL (3 Tips)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Romanian Deadlift Form Tip<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2239,16 +2317,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/BnacvXdaxq8" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/BnacvXdaxq8/mqdefault.jpg" alt="How To Leg Press Properly" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('BnacvXdaxq8')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/BnacvXdaxq8/hqdefault.jpg" alt="How To Leg Press Properly" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/BnacvXdaxq8" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('BnacvXdaxq8')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Leg Press Properly<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Leg Press Properly<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2271,16 +2351,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Bulgarian Split Squat</div><div class="wmeta">3×10 each</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/2C-uNgKwPLE" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/2C-uNgKwPLE/mqdefault.jpg" alt="Bulgarian Split Squat Tutorial" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('o7yFuIR9XVU')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/o7yFuIR9XVU/hqdefault.jpg" alt="Bulgarian Split Squats Form Fix" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/2C-uNgKwPLE" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('o7yFuIR9XVU')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Bulgarian Split Squat Tutorial<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Bulgarian Split Squats Form Fix<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2303,16 +2385,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Leg Curl</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/1Tq3QdYUuHs" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/1Tq3QdYUuHs/mqdefault.jpg" alt="How To Leg Curl Correctly" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('1Tq3QdYUuHs')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/1Tq3QdYUuHs/hqdefault.jpg" alt="Leg Curl Correct Form" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/1Tq3QdYUuHs" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('1Tq3QdYUuHs')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Leg Curl Correctly<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Leg Curl Correct Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2335,16 +2419,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Standing Calf Raise</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/gwLzBJYoWlI" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/gwLzBJYoWlI/mqdefault.jpg" alt="Perfect Calf Raise Technique" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('gwLzBJYoWlI')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/gwLzBJYoWlI/hqdefault.jpg" alt="Perfect Calf Raise Technique" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/gwLzBJYoWlI" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('gwLzBJYoWlI')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Calf Raise Technique<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Calf Raise Technique<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -2367,16 +2453,18 @@ function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Hanging Leg Raise</div><div class="wmeta">3×15</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
+        
+        
         <div class="ex-video-card">
-        <a class="ex-video-thumb" href="https://www.youtube.com/shorts/hoeNgjheDHk" target="_blank" rel="noopener">
-          <img src="https://img.youtube.com/vi/hoeNgjheDHk/mqdefault.jpg" alt="Hanging Leg Raise Form" loading="lazy" onerror="this.style.opacity='0'">
+        <a class="ex-video-thumb" onclick="openYT('hoeNgjheDHk')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/hoeNgjheDHk/hqdefault.jpg" alt="Hanging Leg Raise Form" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" href="https://www.youtube.com/shorts/hoeNgjheDHk" target="_blank" rel="noopener">
+        <a class="ex-video-bar" onclick="openYT('hoeNgjheDHk')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Hanging Leg Raise Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey)">&lt; 1 min</span>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Hanging Leg Raise Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
         </a>
@@ -4383,6 +4471,20 @@ function renderCalWeekSummary(){
 
 // ── INIT ───────────────────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded',function(){
+  // Auto-log 7km morning walk for today
+  try{
+    var CARDIO_KEY='apx_cardio_v1';
+    var cardio=JSON.parse(localStorage.getItem(CARDIO_KEY)||'{}');
+    var today=new Date().toISOString().slice(0,10);
+    if(!cardio[today+'-am']){
+      cardio[today+'-am']={type:'Walk',duration:42,name:'Walk to Gym (3.5km)',distance:3.5,calories:225,source:'auto'};
+      localStorage.setItem(CARDIO_KEY,JSON.stringify(cardio));
+    }
+    if(!cardio[today+'-pm']){
+      cardio[today+'-pm']={type:'Walk',duration:42,name:'Walk to Work (3.5km)',distance:3.5,calories:225,source:'auto'};
+      localStorage.setItem(CARDIO_KEY,JSON.stringify(cardio));
+    }
+  }catch(e){}
   try{stravaInit();}catch(e){console.warn('Strava init:',e);}
   try{if(typeof initWeightLogs==='function')initWeightLogs();}catch(e){}
   try{buildTracker();}catch(e){}
@@ -5197,8 +5299,8 @@ async function offFetchBarcode(code){
       var fProt=Math.round(prot100*ratio*10)/10;
       var fCarb=Math.round(carb100*ratio*10)/10;
       var fFat =Math.round(fat100*ratio*10)/10;
-      if(typeof addCalEntry==='function'){
-        addCalEntry(fLabel,fKcal,fProt,fCarb,fFat);
+      if(typeof calAddEntry==='function'){
+        calAddEntry(fLabel,fKcal,fProt,fCarb,fFat);
       } else {
         var fn2=document.getElementById('calFoodName');
         var fk2=document.getElementById('calFoodKcal');
@@ -5207,7 +5309,7 @@ async function offFetchBarcode(code){
         var ff2=document.getElementById('calFoodFats');
         if(fn2)fn2.value=fLabel;if(fk2)fk2.value=fKcal;
         if(fp2)fp2.value=fProt;if(fc2)fc2.value=fCarb;if(ff2)ff2.value=fFat;
-        if(typeof addCalFood==='function')addCalFood();
+        if(typeof calAddEntry==='function')calAddEntry();
       }
       el.innerHTML='<div style="font-size:13px;font-weight:700;color:#4caf7d;padding:10px 0;">✓ '+nm+' logged — '+fKcal+' kcal</div>';
       setTimeout(function(){if(el)el.innerHTML='';},3000);
@@ -5272,8 +5374,8 @@ function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
   var carb=Math.round(carb100*f);
   var fat=Math.round(fat100*f);
   var label=name+' ('+g+'g)';
-  if(typeof addCalEntry==='function'){
-    addCalEntry(label,kcal,prot,carb,fat);
+  if(typeof calAddEntry==='function'){
+    calAddEntry(label,kcal,prot,carb,fat);
   } else {
     var fn=document.getElementById('calFoodName');
     var fk=document.getElementById('calFoodKcal');
@@ -5282,7 +5384,7 @@ function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
     var ff=document.getElementById('calFoodFats');
     if(fn)fn.value=label;if(fk)fk.value=kcal;
     if(fp)fp.value=prot;if(fc)fc.value=carb;if(ff)ff.value=fat;
-    if(typeof addCalFood==='function')addCalFood();
+    if(typeof calAddEntry==='function')calAddEntry();
   }
   document.getElementById('offSearchInput').value='';
   offStopScan();
@@ -5291,13 +5393,7 @@ function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
   setTimeout(function(){if(el)el.innerHTML='';},3000);
 }
 </script>
-<script>
-function updTimer(){
-  var m=Math.floor(rRem/60).toString().padStart(2,'0');
-  var s=(rRem%60).toString().padStart(2,'0');
-  document.getElementById('timerDisplay').textContent=m+':'+s;
-}
-</script>
+
 <script>
 
 // ── DATA BACKUP & RESTORE ────────────────────────────────────────
