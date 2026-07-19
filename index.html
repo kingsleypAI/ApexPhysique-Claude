@@ -2,20 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Ascend">
-<meta name="theme-color" content="#0a0a0a">
-<meta name="application-name" content="Ascend">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Ascend">
-<meta name="theme-color" content="#0a0a0a">
+
+
+
+
+
+
+
+
+
+
 <meta name="description" content="Ascend — 12-Week physique programme">
 <link rel="apple-touch-icon" href="/ApexPhysique-Claude/icon-192.png">
-<link rel="manifest" href="./manifest.json">
+<link rel="manifest" href="/ApexPhysique-Claude/manifest.json">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Ascend">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ascend">
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0a0a0a">
 <title>ASCEND</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -4991,14 +4998,24 @@ function initTracking(){
 // PWA SERVICE WORKER
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/ApexPhysique-Claude/sw.js', {scope: '/ApexPhysique-Claude/'})
-    .catch(err => console.log('SW failed:', err));
+    .then(function(reg){
+      // Force update check on every load
+      reg.update();
+    })
+    .catch(function(err){ console.log('SW failed:', err); });
+}
+// Suppress install prompt permanently — app is already installed as PWA
+window.addEventListener('beforeinstallprompt', function(e){
+  e.preventDefault();
+  return false;
+});
+// Detect if running in standalone (installed PWA) mode
+if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone){
+  document.documentElement.setAttribute('data-pwa','true');
 }
 
 
-window.addEventListener('appinstalled', () => {
-  const banner = document.getElementById('installBanner');
-  if(banner) banner.style.display = 'none';
-});
+// App installed successfully;
 </script>
 <script>
 
