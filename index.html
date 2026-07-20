@@ -1307,14 +1307,15 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 
 
 /* ── MINI REST TIMER ─────────────────────────────────────────── */
-.mini-timer{background:var(--surface);border-radius:0 0 10px 10px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:12px;border:1px solid var(--border);border-top:none;}
-.mini-timer-display{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--white);min-width:52px;letter-spacing:0.02em;}
-.mini-timer-presets{display:flex;gap:4px;flex:1;}
-.mini-preset{padding:5px 8px;background:var(--card);border:1px solid var(--border);color:var(--grey);font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;cursor:pointer;border-radius:4px;-webkit-tap-highlight-color:transparent;}
+.mini-timer{background:var(--surface);border-radius:0 0 10px 10px;padding:12px 14px;margin-bottom:12px;border:1px solid var(--border);border-top:none;}
+.mini-timer-row1{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.mini-timer-display{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;color:var(--white);letter-spacing:0.02em;line-height:1;}
+.mini-timer-btns{display:flex;gap:8px;align-items:center;}
+.mini-start{padding:10px 24px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:7px;-webkit-tap-highlight-color:transparent;min-width:90px;}
+.mini-reset{padding:10px 14px;background:var(--card);border:1px solid var(--border);color:var(--mid);font-size:14px;cursor:pointer;border-radius:7px;-webkit-tap-highlight-color:transparent;}
+.mini-timer-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.mini-preset{padding:8px 0;background:var(--card);border:1px solid var(--border);color:var(--grey);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;text-align:center;width:100%;}
 .mini-preset.active{background:rgba(200,16,46,0.15);border-color:rgba(200,16,46,0.4);color:var(--accent);}
-.mini-timer-btns{display:flex;gap:6px;}
-.mini-start{padding:6px 14px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;white-space:nowrap;}
-.mini-reset{padding:6px 10px;background:var(--card);border:1px solid var(--border);color:var(--mid);font-size:13px;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;}
 
 </style>
 <script>
@@ -1963,16 +1964,18 @@ function toggleVideoPlayer(vid_id){
   <div id="push" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Push Day</div><div class="day-banner-days">Monday &amp; Friday</div><div class="day-banner-muscles">Chest · Shoulders · Triceps</div></div></div>
     <div class="mini-timer" id="miniTimer">
-      <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+      <div class="mini-timer-row1">
+        <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+        <div class="mini-timer-btns">
+          <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
+          <button class="mini-reset" onclick="miniReset()">↺</button>
+        </div>
+      </div>
       <div class="mini-timer-presets">
         <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
         <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
         <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
         <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
-      </div>
-      <div class="mini-timer-btns">
-        <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
-        <button class="mini-reset" onclick="miniReset()">↺</button>
       </div>
     </div>
     <div class="wcard">
@@ -2217,16 +2220,18 @@ function toggleVideoPlayer(vid_id){
   <div id="pull" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps &amp; Rear Delts</div></div></div>
     <div class="mini-timer" id="miniTimer">
-      <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+      <div class="mini-timer-row1">
+        <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+        <div class="mini-timer-btns">
+          <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
+          <button class="mini-reset" onclick="miniReset()">↺</button>
+        </div>
+      </div>
       <div class="mini-timer-presets">
         <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
         <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
         <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
         <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
-      </div>
-      <div class="mini-timer-btns">
-        <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
-        <button class="mini-reset" onclick="miniReset()">↺</button>
       </div>
     </div>
     <div class="wcard">
@@ -2476,16 +2481,18 @@ function toggleVideoPlayer(vid_id){
   <div id="legs" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Leg Day</div><div class="day-banner-days">Wednesday &amp; Sunday</div><div class="day-banner-muscles">Quads · Hamstrings · Glutes · Calves</div></div></div>
     <div class="mini-timer" id="miniTimer">
-      <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+      <div class="mini-timer-row1">
+        <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+        <div class="mini-timer-btns">
+          <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
+          <button class="mini-reset" onclick="miniReset()">↺</button>
+        </div>
+      </div>
       <div class="mini-timer-presets">
         <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
         <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
         <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
         <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
-      </div>
-      <div class="mini-timer-btns">
-        <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
-        <button class="mini-reset" onclick="miniReset()">↺</button>
       </div>
     </div>
     <div class="wcard">
