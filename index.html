@@ -1302,6 +1302,20 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 
 .day-banner-week{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-top:4px;opacity:0.9;}
 
+
+#checkinBanner{margin-bottom:14px;}
+
+
+/* ── MINI REST TIMER ─────────────────────────────────────────── */
+.mini-timer{background:var(--surface);border-radius:0 0 10px 10px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:12px;border:1px solid var(--border);border-top:none;}
+.mini-timer-display{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--white);min-width:52px;letter-spacing:0.02em;}
+.mini-timer-presets{display:flex;gap:4px;flex:1;}
+.mini-preset{padding:5px 8px;background:var(--card);border:1px solid var(--border);color:var(--grey);font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;cursor:pointer;border-radius:4px;-webkit-tap-highlight-color:transparent;}
+.mini-preset.active{background:rgba(200,16,46,0.15);border-color:rgba(200,16,46,0.4);color:var(--accent);}
+.mini-timer-btns{display:flex;gap:6px;}
+.mini-start{padding:6px 14px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;white-space:nowrap;}
+.mini-reset{padding:6px 10px;background:var(--card);border:1px solid var(--border);color:var(--mid);font-size:13px;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;}
+
 </style>
 <script>
 function toggleNav(){
@@ -1358,6 +1372,7 @@ function navTo(id,label){
   closeNav();
   window.scrollTo(0,0);
   if(id==='strava') document.dispatchEvent(new Event('stravaTabActive'));
+  if(id==='program') setTimeout(function(){try{initWorkoutView();}catch(e){}},50);
   playNavTick();
 }
 function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
@@ -1460,7 +1475,6 @@ function toggleVideoPlayer(vid_id){
   </div>
   <div class="nav-divider"></div>
   <div class="nav-section"><div class="nav-section-label">More</div>
-    <div class="nav-item" id="nav-timer" onclick="navTo('timer','Timer')"><div class="nav-item-icon">⏱️</div><div><div class="nav-item-name">Timer</div><div class="nav-item-desc">Rest timer · Stopwatch</div></div></div>
     <div class="nav-item" id="nav-tracking" onclick="navTo('tracking','Tracking')"><div class="nav-item-icon">📈</div><div><div class="nav-item-name">Body Tracking</div><div class="nav-item-desc">Weight · Lifts · Measurements</div></div></div>
     <div class="nav-item" id="nav-nutrition" onclick="navTo('nutrition','Nutrition')"><div class="nav-item-icon">🥗</div><div><div class="nav-item-name">Nutrition</div><div class="nav-item-desc">Macros · Meal plan</div></div></div>
     <div class="nav-item" id="nav-recipes" onclick="navTo('recipes','Recipes')"><div class="nav-item-icon">🍳</div><div><div class="nav-item-name">Recipes</div><div class="nav-item-desc">Meals · Prep guide</div></div></div>
@@ -1516,14 +1530,17 @@ function toggleVideoPlayer(vid_id){
   <div style="background:linear-gradient(135deg,rgba(200,16,46,0.12),rgba(200,16,46,0.04));border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:14px;">
     <div style="font-size:28px;flex-shrink:0;">🔥</div>
     <div style="flex:1">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">9kg down. 6kg to go. 🔥</div>
-      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → 105kg → <strong style="color:var(--accent);">101kg</strong> → 95kg target. 9kg down — faster than average. 3.5km walk to gym + 3.5km to work daily + 6-day lifting is working.</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">9kg down. 16kg to go. 🔥</div>
+      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → 105kg → <strong style="color:var(--accent);">101kg</strong> → 85kg target. 9kg down — faster than average. 3.5km walk to gym + 3.5km to work daily + 6-day lifting is working.</div>
     </div>
     <div style="text-align:right;flex-shrink:0;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">101</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">kg now</div>
     </div>
   </div>
+
+  <!-- CHECK-IN BANNER -->
+  <div id="checkinBanner" style="display:none;"></div>
 
   <!-- REAL BODY STATS -->
   <div style="background:var(--surface);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;">
@@ -1906,7 +1923,16 @@ function toggleVideoPlayer(vid_id){
 </div>
 <div id="tab-program" class="section">
   <div class="sec-label">Programme</div>
-  <div class="sec-title">12-WEEK PLAN</div>
+  <div id="todayWorkoutHeader" class="sec-title">12-WEEK PLAN</div>
+
+  <!-- TODAY'S WORKOUT CARD -->
+  <div id="todayWorkoutCard" style="margin-bottom:16px;"></div>
+
+  <!-- VIEW TOGGLE -->
+  <div style="display:flex;gap:8px;margin-bottom:16px;">
+    <button id="btnTodayOnly" onclick="setWorkoutView('today')" style="flex:1;padding:9px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Today Only</button>
+    <button id="btnFullPlan" onclick="setWorkoutView('full')" style="flex:1;padding:9px;background:var(--surface);border:1px solid var(--border);color:var(--mid);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Full Programme</button>
+  </div>
 
   <div class="phase open" onclick="togglePhase(this)">
     <div class="phase-head">
@@ -1936,6 +1962,19 @@ function toggleVideoPlayer(vid_id){
 
   <div id="push" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Push Day</div><div class="day-banner-days">Monday &amp; Friday</div><div class="day-banner-muscles">Chest · Shoulders · Triceps</div></div></div>
+    <div class="mini-timer" id="miniTimer">
+      <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+      <div class="mini-timer-presets">
+        <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
+        <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
+        <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
+        <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
+      </div>
+      <div class="mini-timer-btns">
+        <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
+        <button class="mini-reset" onclick="miniReset()">↺</button>
+      </div>
+    </div>
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
@@ -2177,6 +2216,19 @@ function toggleVideoPlayer(vid_id){
 
   <div id="pull" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps &amp; Rear Delts</div></div></div>
+    <div class="mini-timer" id="miniTimer">
+      <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+      <div class="mini-timer-presets">
+        <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
+        <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
+        <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
+        <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
+      </div>
+      <div class="mini-timer-btns">
+        <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
+        <button class="mini-reset" onclick="miniReset()">↺</button>
+      </div>
+    </div>
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Chest-Supported T-Bar Row</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
@@ -2423,6 +2475,19 @@ function toggleVideoPlayer(vid_id){
 
   <div id="legs" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Leg Day</div><div class="day-banner-days">Wednesday &amp; Sunday</div><div class="day-banner-muscles">Quads · Hamstrings · Glutes · Calves</div></div></div>
+    <div class="mini-timer" id="miniTimer">
+      <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
+      <div class="mini-timer-presets">
+        <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
+        <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
+        <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
+        <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
+      </div>
+      <div class="mini-timer-btns">
+        <button class="mini-start" id="miniStartBtn" onclick="miniStartStop()">START</button>
+        <button class="mini-reset" onclick="miniReset()">↺</button>
+      </div>
+    </div>
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
@@ -3810,11 +3875,11 @@ function toggleVideoPlayer(vid_id){
       </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:12px;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Phase 2 · Strength Block</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After 12 weeks of recomp, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload. You're 10kg from your 95kg lean target.</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After 12 weeks of recomp, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload. You're 11kg from your 85kg lean target. At 85kg/10% BF you'll be genuinely lean with full vascularity.</div>
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Assess at Week 12</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.7;">You started at 110kg and are already at 105kg — 5kg down. Target: reach 95–97kg lean. Once there, transition to a strength/bulk phase.</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;">You started at 110kg and are already at 105kg — 5kg down. Target: reach 85–87kg lean. Once there, transition to a strength/bulk phase.</div>
     </div>
   </div>
 </div>
@@ -4685,6 +4750,8 @@ window.addEventListener('DOMContentLoaded',function(){
   try{stravaInit();}catch(e){console.warn('Strava init:',e);}
   try{if(typeof initWeightLogs==='function')initWeightLogs();}catch(e){}
   try{updateWorkoutBanners();}catch(e){}
+  try{initCheckin();}catch(e){}
+  try{initWorkoutView();}catch(e){}
   try{buildTracker();}catch(e){}
   try{renderTodayCard();}catch(e){}
   try{initTracking();}catch(e){}
@@ -5704,6 +5771,323 @@ function setManualWeek(){
   localStorage.setItem('apx_program_start', start.toISOString());
   alert('Programme set to Week ' + w + '. Reloading...');
   location.reload();
+}
+
+</script>
+<script>
+
+// ── CHECK-IN REMINDER ─────────────────────────────────────────────
+var CHECKIN_KEY = 'apx_checkin_v1';
+
+function getLastCheckin(){
+  return JSON.parse(localStorage.getItem(CHECKIN_KEY)||'null');
+}
+
+function logCheckin(weight, bf){
+  var data = {
+    date: new Date().toISOString().slice(0,10),
+    weight: weight||null,
+    bf: bf||null,
+    ts: Date.now()
+  };
+  var history = getCheckinHistory();
+  history.unshift(data);
+  localStorage.setItem(CHECKIN_KEY, JSON.stringify(history.slice(0,20)));
+  renderCheckinBanner();
+}
+
+function getCheckinHistory(){
+  var stored = localStorage.getItem(CHECKIN_KEY);
+  if(!stored) return [];
+  var val = JSON.parse(stored);
+  return Array.isArray(val) ? val : [val];
+}
+
+function renderCheckinBanner(){
+  var banner = document.getElementById('checkinBanner');
+  if(!banner) return;
+  var history = getCheckinHistory();
+  var last = history[0];
+  var today = new Date();
+
+  if(!last){
+    // Never checked in — show prompt
+    banner.style.display = 'block';
+    banner.innerHTML = buildCheckinBanner('first');
+    return;
+  }
+
+  var lastDate = new Date(last.date);
+  var daysSince = Math.floor((today - lastDate) / (1000*60*60*24));
+
+  if(daysSince >= 14){
+    banner.style.display = 'block';
+    banner.innerHTML = buildCheckinBanner('due', daysSince, last);
+  } else {
+    banner.style.display = 'block';
+    banner.innerHTML = buildCheckinStatus(daysSince, last, history);
+  }
+}
+
+function buildCheckinBanner(type, days, last){
+  if(type === 'first'){
+    return '<div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.4);border-radius:10px;padding:14px;">'
+      +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">📊 Log First Check-In</div>'
+      +'<div style="font-size:12px;color:var(--mid);margin-bottom:10px;">Log your current weight and body fat % from the gym scale to start tracking your progress properly.</div>'
+      +'<div style="display:flex;gap:8px;">'
+      +'<input type="number" id="ciWeight" placeholder="Weight (kg)" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
+      +'<input type="number" id="ciBF" placeholder="BF %" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
+      +'</div>'
+      +'<button onclick="submitCheckin()" style="width:100%;margin-top:8px;padding:10px;background:var(--accent);border:none;color:#fff;font-family:Space Grotesk,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Log Check-In</button>'
+      +'</div>';
+  }
+  var overdue = days - 14;
+  return '<div style="background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.4);border-radius:10px;padding:14px;">'
+    +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">⏰ Check-In Due'+(overdue>0?' ('+overdue+'d overdue)':'')+'</div>'
+    +'<div style="font-size:12px;color:var(--mid);margin-bottom:4px;">Last check-in: <strong style="color:var(--white);">'+last.date+'</strong>'
+    +(last.weight?' · '+last.weight+'kg':'')+(last.bf?' · '+last.bf+'% BF':'')+'</div>'
+    +'<div style="font-size:11px;color:var(--mid);margin-bottom:10px;">'+days+' days since last weigh-in. Head to the gym scale and come back to log it.</div>'
+    +'<div style="display:flex;gap:8px;">'
+    +'<input type="number" id="ciWeight" placeholder="Weight (kg)" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
+    +'<input type="number" id="ciBF" placeholder="BF %" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
+    +'</div>'
+    +'<button onclick="submitCheckin()" style="width:100%;margin-top:8px;padding:10px;background:var(--accent);border:none;color:#fff;font-family:Space Grotesk,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Log Check-In</button>'
+    +'</div>';
+}
+
+function buildCheckinStatus(days, last, history){
+  var next = 14 - days;
+  var prevWeight = history.length > 1 ? history[1].weight : null;
+  var diff = (prevWeight && last.weight) ? (last.weight - prevWeight).toFixed(1) : null;
+  var diffStr = diff ? (diff > 0 ? '+'+diff : diff)+'kg' : '';
+
+  // Milestone check
+  var milestones = [
+    {w:99, label:'Sub-100kg 🎯', achieved: last.weight && last.weight < 100},
+    {w:95, label:'Milestone: 95kg 🎯', achieved: last.weight && last.weight <= 95},
+    {w:90, label:'Goal weight: 85kg 🏆', achieved: last.weight && last.weight <= 90},
+  ];
+  var nextMilestone = milestones.find(function(m){ return !m.achieved; });
+  var kmToGo = nextMilestone && last.weight ? (last.weight - nextMilestone.w).toFixed(1) : null;
+
+  return '<div style="background:var(--surface);border-radius:10px;padding:12px 14px;">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
+    +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);">Next Check-In</div>'
+    +'<div style="font-size:12px;font-weight:700;color:var(--white);">'+next+' days</div>'
+    +'</div>'
+    +'<div style="height:4px;background:var(--border);border-radius:2px;margin-bottom:10px;">'
+    +'<div style="height:100%;width:'+(days/14*100)+'%;background:var(--accent);border-radius:2px;transition:width 0.3s;"></div>'
+    +'</div>'
+    +'<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);">'
+    +'<span>Last: <strong style="color:var(--white);">'+(last.weight||'—')+'kg</strong>'+(diffStr?' <span style="color:'+(diff<0?'#4caf7d':'var(--accent)')+';">'+diffStr+'</span>':'')+' · '+(last.bf||'—')+'% BF</span>'
+    +(nextMilestone?'<span style="color:var(--accent);">'+kmToGo+'kg to '+nextMilestone.label+'</span>':'<span style="color:#4caf7d;">All milestones hit! 🏆</span>')
+    +'</div>'
+    +'</div>';
+}
+
+function submitCheckin(){
+  var w = parseFloat(document.getElementById('ciWeight').value)||null;
+  var b = parseFloat(document.getElementById('ciBF').value)||null;
+  if(!w && !b){ alert('Enter at least your weight'); return; }
+  logCheckin(w, b);
+
+  // Check milestones
+  if(w && w < 100){
+    setTimeout(function(){
+      alert('🎯 MILESTONE: You broke 100kg! Sub-100 achieved. Incredible work.');
+    }, 300);
+  } else if(w && w <= 95){
+    setTimeout(function(){
+      alert('🏆 GOAL WEIGHT REACHED: 95kg hit. You did it.');
+    }, 300);
+  }
+}
+
+// Log initial check-in from real gym scale data
+function initCheckin(){
+  var history = getCheckinHistory();
+  if(history.length === 0){
+    // Pre-load with the two real readings we already have
+    var seed = [
+      {date:'2026-07-18', weight:101.0, bf:21.0, ts: new Date('2026-07-18').getTime()},
+      {date:'2026-07-14', weight:102.0, bf:20.7, ts: new Date('2026-07-14').getTime()}
+    ];
+    localStorage.setItem(CHECKIN_KEY, JSON.stringify(seed));
+  }
+  renderCheckinBanner();
+}
+
+</script>
+<script>
+
+// ── TODAY'S WORKOUT VIEW ─────────────────────────────────────────
+var DAY_TO_WORKOUT = {
+  0: 'legs',   // Sunday
+  1: 'push',   // Monday
+  2: 'pull',   // Tuesday
+  3: 'legs',   // Wednesday
+  4: 'rest',   // Thursday
+  5: 'push',   // Friday
+  6: 'pull'    // Saturday
+};
+
+var DAY_LABELS = {
+  push: {name:'Push Day', sub:'Chest · Shoulders · Triceps', icon:'💪'},
+  pull: {name:'Pull Day', sub:'Back · Lats · Biceps', icon:'🔙'},
+  legs: {name:'Leg Day', sub:'Quads · Hamstrings · Glutes', icon:'🦵'},
+  rest: {name:'Rest Day', sub:'Recovery · Eat well · Sleep', icon:'😴'}
+};
+
+var DAY_NAMES_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function getTodayWorkout(){
+  var jsDay = new Date().getDay();
+  return DAY_TO_WORKOUT[jsDay] || 'rest';
+}
+
+function setWorkoutView(mode){
+  localStorage.setItem('apx_workout_view', mode);
+  applyWorkoutView(mode);
+  // Update button styles
+  var btnToday = document.getElementById('btnTodayOnly');
+  var btnFull  = document.getElementById('btnFullPlan');
+  if(btnToday && btnFull){
+    if(mode === 'today'){
+      btnToday.style.background = 'var(--accent)';
+      btnToday.style.color = '#fff';
+      btnToday.style.border = 'none';
+      btnFull.style.background = 'var(--surface)';
+      btnFull.style.color = 'var(--mid)';
+      btnFull.style.border = '1px solid var(--border)';
+    } else {
+      btnFull.style.background = 'var(--accent)';
+      btnFull.style.color = '#fff';
+      btnFull.style.border = 'none';
+      btnToday.style.background = 'var(--surface)';
+      btnToday.style.color = 'var(--mid)';
+      btnToday.style.border = '1px solid var(--border)';
+    }
+  }
+}
+
+function applyWorkoutView(mode){
+  var todayType = getTodayWorkout();
+  var pushDiv = document.getElementById('push');
+  var pullDiv = document.getElementById('pull');
+  var legsDiv = document.getElementById('legs');
+  var phases   = document.querySelectorAll('.phase');
+  var header   = document.getElementById('todayWorkoutHeader');
+  var card     = document.getElementById('todayWorkoutCard');
+  var jsDay    = new Date().getDay();
+  var dayLabel = DAY_LABELS[todayType];
+  var week     = getCurrentWeek();
+
+  if(mode === 'today'){
+    // Hide all days and phases
+    if(pushDiv) pushDiv.style.display = todayType==='push'?'block':'none';
+    if(pullDiv) pullDiv.style.display = todayType==='pull'?'block':'none';
+    if(legsDiv) legsDiv.style.display = todayType==='legs'?'block':'none';
+    phases.forEach(function(p){ p.style.display='none'; });
+
+    // Update header
+    if(header) header.textContent = DAY_NAMES_SHORT[jsDay].toUpperCase() + ' — ' + (dayLabel?dayLabel.name:'Workouts');
+
+    // Build today summary card
+    if(card && dayLabel){
+      if(todayType === 'rest'){
+        card.innerHTML = '<div style="background:var(--surface);border-radius:10px;padding:16px;text-align:center;">'
+          +'<div style="font-size:32px;margin-bottom:8px;">😴</div>'
+          +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:4px;">Rest Day</div>'
+          +'<div style="font-size:12px;color:var(--mid);">No training today. Eat your protein, sleep well, recover hard.</div>'
+          +'</div>';
+      } else {
+        card.innerHTML = '<div style="background:rgba(200,16,46,0.06);border:1px solid rgba(200,16,46,0.2);border-radius:10px;padding:12px 14px;">'
+          +'<div style="display:flex;align-items:center;gap:10px;">'
+          +'<div style="font-size:28px;">'+dayLabel.icon+'</div>'
+          +'<div>'
+          +'<div style="font-family:Space+Grotesk,sans-serif;font-size:15px;font-weight:800;color:var(--white);">'+dayLabel.name+'</div>'
+          +'<div style="font-size:11px;color:var(--mid);">'+dayLabel.sub+'</div>'
+          +'</div>'
+          +'<div style="margin-left:auto;text-align:right;">'
+          +'<div style="font-size:11px;font-weight:700;color:var(--accent);">Week '+week+'</div>'
+          +'<div style="font-size:10px;color:var(--grey);">'+getCurrentPhase(week).name+'</div>'
+          +'</div>'
+          +'</div>'
+          +'</div>';
+      }
+    }
+  } else {
+    // Full view — show everything
+    if(pushDiv) pushDiv.style.display = 'block';
+    if(pullDiv) pullDiv.style.display = 'block';
+    if(legsDiv) legsDiv.style.display = 'block';
+    phases.forEach(function(p){ p.style.display=''; });
+    if(header) header.textContent = '12-WEEK PLAN';
+    if(card) card.innerHTML = '';
+  }
+}
+
+function initWorkoutView(){
+  var saved = localStorage.getItem('apx_workout_view') || 'today';
+  setWorkoutView(saved);
+}
+
+</script>
+<script>
+
+// ── MINI REST TIMER ───────────────────────────────────────────────
+var _mTime=90,_mRem=90,_mInt=null,_mRun=false;
+
+function miniSetTimer(s){
+  _mTime=s;_mRem=s;_mRun=false;
+  clearInterval(_mInt);_mInt=null;
+  var btn=document.getElementById('miniStartBtn');
+  if(btn)btn.textContent='START';
+  miniUpdDisplay();
+  document.querySelectorAll('.mini-preset').forEach(function(b){b.classList.remove('active');});
+  // Mark the matching preset active
+  var secs={'60':0,'90':1,'120':2,'180':3};
+  var idx=secs[String(s)];
+  var presets=document.querySelectorAll('.mini-preset');
+  if(idx!==undefined && presets[idx]) presets[idx].classList.add('active');
+}
+
+function miniUpdDisplay(){
+  var m=Math.floor(_mRem/60).toString().padStart(2,'0');
+  var s=(_mRem%60).toString().padStart(2,'0');
+  var displays=document.querySelectorAll('.mini-timer-display');
+  displays.forEach(function(d){d.textContent=m+':'+s;});
+}
+
+function miniStartStop(){
+  if(_mRun){
+    clearInterval(_mInt);_mInt=null;_mRun=false;
+    document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='RESUME';});
+  } else {
+    if(_mRem<=0){_mRem=_mTime;miniUpdDisplay();}
+    _mRun=true;
+    document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='PAUSE';});
+    _mInt=setInterval(function(){
+      _mRem--;
+      miniUpdDisplay();
+      if(_mRem<=0){
+        clearInterval(_mInt);_mInt=null;_mRun=false;
+        document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='START';});
+        document.querySelectorAll('.mini-timer-display').forEach(function(d){d.textContent='GO!';});
+        if(navigator.vibrate) navigator.vibrate([200,100,200]);
+        setTimeout(function(){
+          _mRem=_mTime;miniUpdDisplay();
+        },1500);
+      }
+    },1000);
+  }
+}
+
+function miniReset(){
+  clearInterval(_mInt);_mInt=null;_mRun=false;
+  _mRem=_mTime;
+  miniUpdDisplay();
+  document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='START';});
 }
 
 </script>
