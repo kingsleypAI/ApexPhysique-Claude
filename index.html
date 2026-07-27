@@ -1317,6 +1317,13 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .mini-preset{padding:8px 0;background:var(--card);border:1px solid var(--border);color:var(--grey);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;text-align:center;width:100%;}
 .mini-preset.active{background:rgba(200,16,46,0.15);border-color:rgba(200,16,46,0.4);color:var(--accent);}
 
+
+.ex-tick{background:none;border:1.5px solid var(--border);color:var(--grey);width:30px;height:30px;border-radius:50%;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;margin-right:6px;-webkit-tap-highlight-color:transparent;transition:all 0.15s;}
+.ex-tick.done{background:#4caf7d;border-color:#4caf7d;color:#fff;}
+.wcard.done-card>.whead .wname{text-decoration:line-through;color:var(--grey);}
+.day-checklist-bar{height:3px;background:var(--border);margin:0;overflow:hidden;}
+.day-checklist-fill{height:100%;background:#4caf7d;border-radius:0;transition:width 0.4s;}
+
 </style>
 <script>
 function toggleNav(){
@@ -1531,11 +1538,11 @@ function toggleVideoPlayer(vid_id){
   <div style="background:linear-gradient(135deg,rgba(200,16,46,0.12),rgba(200,16,46,0.04));border:1px solid rgba(200,16,46,0.3);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:14px;">
     <div style="font-size:28px;flex-shrink:0;">🔥</div>
     <div style="flex:1">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">9kg down. 16kg to go. 🔥</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">SUB-100 ACHIEVED. 10.8kg down 🎯 🔥</div>
       <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → 105kg → <strong style="color:var(--accent);">101kg</strong> → 85kg target. 9kg down — faster than average. 3.5km walk to gym + 3.5km to work daily + 6-day lifting is working.</div>
     </div>
     <div style="text-align:right;flex-shrink:0;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">101</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">99.2</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">kg now</div>
     </div>
   </div>
@@ -1546,19 +1553,19 @@ function toggleVideoPlayer(vid_id){
   <!-- REAL BODY STATS -->
   <div style="background:var(--surface);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;">
     <div style="text-align:center;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);">101kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);">99.2kg</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Weight</div>
     </div>
     <div style="text-align:center;border-left:1px solid var(--border);">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--accent);">21%</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--accent);">20.8%</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Body Fat</div>
     </div>
     <div style="text-align:center;border-left:1px solid var(--border);">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);">79.8kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);">78.6kg</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Lean Mass</div>
     </div>
     <div style="text-align:center;border-left:1px solid var(--border);">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:#4caf7d;">21.2kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:#4caf7d;">20.6kg</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Fat Mass</div>
     </div>
   </div>
@@ -1639,7 +1646,7 @@ function toggleVideoPlayer(vid_id){
     <div class="home-target">
       <div class="home-target-row"><span class="home-target-name">Vascularity</span><span class="home-target-tag" style="background:rgba(59,130,246,0.1);color:#60a5fa;border-color:rgba(59,130,246,0.3);">Coming Soon</span></div>
       <div class="home-target-bar"><div class="home-target-fill" style="width:25%;background:linear-gradient(90deg,#3b82f6,rgba(59,130,246,0.4));"></div></div>
-      <div style="font-size:10px;color:var(--grey);margin-top:4px;">Currently 21% BF · Arms ~15% · Abs ~12% · ~6kg fat to go</div>
+      <div style="font-size:10px;color:var(--grey);margin-top:4px;">Currently 20.8% BF · Arms ~15% · Abs ~12% · ~7.6kg fat to go</div>
     </div>
     <div class="home-target">
       <div class="home-target-row"><span class="home-target-name">Lower Back &amp; Hips</span><span class="home-target-tag" style="background:rgba(252,76,2,0.1);color:#FC4C02;border-color:rgba(252,76,2,0.3);">Fat Loss Last</span></div>
@@ -1963,6 +1970,7 @@ function toggleVideoPlayer(vid_id){
 
   <div id="push" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Push Day</div><div class="day-banner-days">Monday &amp; Friday</div><div class="day-banner-muscles">Chest · Shoulders · Triceps</div></div></div>
+    <div class="day-checklist-bar"><div class="day-checklist-fill" id="bar-push-day"></div></div>
     <div class="mini-timer" id="miniTimer">
       <div class="mini-timer-row1">
         <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
@@ -1979,7 +1987,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×6–8</div><button class="ex-tick" id="tick-barbell_bench_press" onclick="event.stopPropagation();toggleExDone('Barbell Bench Press')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2012,7 +2020,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Incline DB Press</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-incline_db_press" onclick="event.stopPropagation();toggleExDone('Incline DB Press')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2046,7 +2054,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Overhead Press</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Overhead Press</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-overhead_press" onclick="event.stopPropagation();toggleExDone('Overhead Press')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2080,7 +2088,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Cable Lateral Raise</div><div class="wmeta">4×12–15</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Cable Lateral Raise</div><div class="wmeta">4×12–15</div><button class="ex-tick" id="tick-cable_lateral_raise" onclick="event.stopPropagation();toggleExDone('Cable Lateral Raise')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2114,7 +2122,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Cable Fly</div><div class="wmeta">3×12–15</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Cable Fly</div><div class="wmeta">3×12–15</div><button class="ex-tick" id="tick-cable_fly" onclick="event.stopPropagation();toggleExDone('Cable Fly')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2148,7 +2156,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">4×10–12</div><button class="ex-tick" id="tick-cable_tricep_pushdown" onclick="event.stopPropagation();toggleExDone('Cable Tricep Pushdown')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2182,7 +2190,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Overhead Tricep Extension</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Overhead Tricep Extension</div><div class="wmeta">3×12</div><button class="ex-tick" id="tick-overhead_tricep_extension" onclick="event.stopPropagation();toggleExDone('Overhead Tricep Extension')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2219,6 +2227,7 @@ function toggleVideoPlayer(vid_id){
 
   <div id="pull" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps &amp; Rear Delts</div></div></div>
+    <div class="day-checklist-bar"><div class="day-checklist-fill" id="bar-pull-day"></div></div>
     <div class="mini-timer" id="miniTimer">
       <div class="mini-timer-row1">
         <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
@@ -2235,7 +2244,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Chest-Supported T-Bar Row</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Chest-Supported T-Bar Row</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-chest_supported_t_bar_row" onclick="event.stopPropagation();toggleExDone('Chest-Supported T-Bar Row')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" onclick="openYT('UA8xugEALos')" style="cursor:pointer;">
@@ -2266,7 +2275,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Barbell Row</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Barbell Row</div><div class="wmeta">4×6–8</div><button class="ex-tick" id="tick-barbell_row" onclick="event.stopPropagation();toggleExDone('Barbell Row')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2300,7 +2309,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Lat Pulldown</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-lat_pulldown" onclick="event.stopPropagation();toggleExDone('Lat Pulldown')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2334,7 +2343,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Assisted Pull-Up</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Assisted Pull-Up</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-assisted_pull_up" onclick="event.stopPropagation();toggleExDone('Assisted Pull-Up')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         <div class="ex-video-card">
         <a class="ex-video-thumb" onclick="openYT('DMo3HJoawmU')" style="cursor:pointer;">
@@ -2375,7 +2384,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Cable Face Pull</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Cable Face Pull</div><div class="wmeta">4×15–20</div><button class="ex-tick" id="tick-cable_face_pull" onclick="event.stopPropagation();toggleExDone('Cable Face Pull')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2409,7 +2418,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Barbell Curl</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Barbell Curl</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-barbell_curl" onclick="event.stopPropagation();toggleExDone('Barbell Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2443,7 +2452,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Hammer Curl</div><div class="wmeta">3×10–12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Hammer Curl</div><div class="wmeta">3×10–12</div><button class="ex-tick" id="tick-hammer_curl" onclick="event.stopPropagation();toggleExDone('Hammer Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2480,6 +2489,7 @@ function toggleVideoPlayer(vid_id){
 
   <div id="legs" style="scroll-margin-top:60px">
   <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Leg Day</div><div class="day-banner-days">Wednesday &amp; Sunday</div><div class="day-banner-muscles">Quads · Hamstrings · Glutes · Calves</div></div></div>
+    <div class="day-checklist-bar"><div class="day-checklist-fill" id="bar-leg-day"></div></div>
     <div class="mini-timer" id="miniTimer">
       <div class="mini-timer-row1">
         <div class="mini-timer-display" id="miniTimerDisplay">01:30</div>
@@ -2496,7 +2506,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><button class="ex-tick" id="tick-barbell_squat" onclick="event.stopPropagation();toggleExDone('Barbell Squat')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2530,7 +2540,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Smith Machine RDL</div><div class="wmeta">4×8–10</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A2</div><div class="wname">Smith Machine RDL</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-smith_machine_rdl" onclick="event.stopPropagation();toggleExDone('Smith Machine RDL')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2564,7 +2574,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">4×10–12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B1</div><div class="wname">Leg Press</div><div class="wmeta">4×10–12</div><button class="ex-tick" id="tick-leg_press" onclick="event.stopPropagation();toggleExDone('Leg Press')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2598,7 +2608,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Bulgarian Split Squat</div><div class="wmeta">3×10 each</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Bulgarian Split Squat</div><div class="wmeta">3×10 each</div><button class="ex-tick" id="tick-bulgarian_split_squat" onclick="event.stopPropagation();toggleExDone('Bulgarian Split Squat')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2632,7 +2642,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Leg Curl</div><div class="wmeta">3×12</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C1</div><div class="wname">Leg Curl</div><div class="wmeta">3×12</div><button class="ex-tick" id="tick-leg_curl" onclick="event.stopPropagation();toggleExDone('Leg Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2666,7 +2676,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Standing Calf Raise</div><div class="wmeta">4×15–20</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Standing Calf Raise</div><div class="wmeta">4×15–20</div><button class="ex-tick" id="tick-standing_calf_raise" onclick="event.stopPropagation();toggleExDone('Standing Calf Raise')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2700,7 +2710,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Hanging Leg Raise</div><div class="wmeta">3×15</div><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C3</div><div class="wname">Hanging Leg Raise</div><div class="wmeta">3×15</div><button class="ex-tick" id="tick-hanging_leg_raise" onclick="event.stopPropagation();toggleExDone('Hanging Leg Raise')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -4758,6 +4768,8 @@ window.addEventListener('DOMContentLoaded',function(){
   try{if(typeof initWeightLogs==='function')initWeightLogs();}catch(e){}
   try{updateWorkoutBanners();}catch(e){}
   try{initCheckin();}catch(e){}
+  try{renderDoneState();}catch(e){}
+  try{requestNotifPermission();}catch(e){}
   try{initWorkoutView();}catch(e){}
   try{buildTracker();}catch(e){}
   try{renderTodayCard();}catch(e){}
@@ -5916,6 +5928,7 @@ function initCheckin(){
   if(history.length === 0){
     // Pre-load with the two real readings we already have
     var seed = [
+      {date:'2026-07-27', weight:99.2, bf:20.8, ts: new Date('2026-07-27').getTime()},
       {date:'2026-07-18', weight:101.0, bf:21.0, ts: new Date('2026-07-18').getTime()},
       {date:'2026-07-14', weight:102.0, bf:20.7, ts: new Date('2026-07-14').getTime()}
     ];
@@ -6081,7 +6094,7 @@ function miniStartStop(){
         clearInterval(_mInt);_mInt=null;_mRun=false;
         document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='START';});
         document.querySelectorAll('.mini-timer-display').forEach(function(d){d.textContent='GO!';});
-        if(navigator.vibrate) navigator.vibrate([200,100,200]);
+        if(typeof fireTimerNotification==='function') fireTimerNotification();
         setTimeout(function(){
           _mRem=_mTime;miniUpdDisplay();
         },1500);
@@ -6095,6 +6108,73 @@ function miniReset(){
   _mRem=_mTime;
   miniUpdDisplay();
   document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='START';});
+}
+
+</script>
+<script>
+
+// ── EXERCISE CHECKLIST ───────────────────────────────────────────
+var DONE_KEY = 'apx_done_v1';
+
+function getDoneData(){
+  var d = JSON.parse(localStorage.getItem(DONE_KEY)||'{}');
+  var today = new Date().toISOString().slice(0,10);
+  if(d.date !== today) return {date:today, done:{}};
+  return d;
+}
+function saveDoneData(d){ localStorage.setItem(DONE_KEY, JSON.stringify(d)); }
+
+function toggleExDone(name){
+  var key = name.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+  var d = getDoneData();
+  d.done[key] = !d.done[key];
+  saveDoneData(d);
+  renderDoneState();
+}
+
+function renderDoneState(){
+  var d = getDoneData();
+  var done = d.done||{};
+  document.querySelectorAll('.ex-tick').forEach(function(btn){
+    var key=btn.id.replace('tick-','');
+    var isDone=!!done[key];
+    btn.classList.toggle('done',isDone);
+    var wcard=btn.closest('.wcard');
+    if(wcard) wcard.classList.toggle('done-card',isDone);
+  });
+  var dayMap={
+    'push-day':['barbell_bench_press','incline_db_press','overhead_press','cable_lateral_raise','cable_fly','cable_tricep_pushdown','overhead_tricep_extension'],
+    'pull-day':['chest_supported_t_bar_row','barbell_row','lat_pulldown','assisted_pull_up','cable_face_pull','barbell_curl','hammer_curl'],
+    'leg-day':['barbell_squat','smith_machine_rdl','leg_press','bulgarian_split_squat','leg_curl','standing_calf_raise','hanging_leg_raise']
+  };
+  Object.keys(dayMap).forEach(function(day){
+    var ex=dayMap[day];
+    var doneCount=ex.filter(function(k){return !!done[k];}).length;
+    var bar=document.getElementById('bar-'+day);
+    if(bar) bar.style.width=Math.round((doneCount/ex.length)*100)+'%';
+  });
+}
+
+// ── TIMER NOTIFICATION ────────────────────────────────────────────
+function requestNotifPermission(){
+  if('Notification' in window && Notification.permission==='default'){
+    Notification.requestPermission();
+  }
+}
+
+function fireTimerNotification(){
+  document.title='REST DONE \u2014 GO! \ud83d\udcaa';
+  setTimeout(function(){ document.title='ASCEND'; }, 4000);
+  if('Notification' in window && Notification.permission==='granted'){
+    var n=new Notification('Rest Over \u2014 Go! \ud83d\udcaa',{
+      body:'Time for the next set.',
+      icon:'/ApexPhysique-Claude/icon-192.png',
+      tag:'ascend-timer',
+      renotify:true
+    });
+    setTimeout(function(){ n.close(); }, 5000);
+  }
+  if(navigator.vibrate) navigator.vibrate([300,100,300,100,300]);
 }
 
 </script>
