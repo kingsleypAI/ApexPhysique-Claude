@@ -1573,6 +1573,18 @@ function toggleVideoPlayer(vid_id){
     </div>
   </div>
 
+  <!-- TDEE NOTE -->
+  <div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.2);border-radius:8px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px;">Daily Burn (TDEE)</div>
+      <div style="font-size:11px;color:var(--mid);">~3,500 kcal · deficit ~830/day · ~0.8kg/wk loss</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:800;color:var(--white);">3,500</div>
+      <div style="font-size:9px;color:var(--grey);">kcal/day</div>
+    </div>
+  </div>
+
   <!-- STATS ROW -->
   <div class="home-stats">
     <div class="home-stat"><span class="home-stat-n">6</span><span class="home-stat-l">days/wk</span></div>
@@ -1608,7 +1620,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="home-track-card">
-      <div class="home-track-label">🏃 Cardio <span style="font-size:9px;color:var(--accent);font-weight:700;">+3.5km to gym · 3.5km to work</span></div>
+      <div class="home-track-label">🏃 Cardio <span style="font-size:9px;color:var(--accent);font-weight:700;">40 sessions · 2,927 kcal (Jul)</span></div>
       <div class="home-track-big"><span id="cardioThisWeek">0</span><span class="home-track-unit">this wk</span></div>
       <div id="cardioWeekDisplay" style="margin:8px 0 6px;"></div>
       <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
@@ -1673,7 +1685,7 @@ function toggleVideoPlayer(vid_id){
     <div class="home-rule"><span class="home-rule-n">01</span><div><div class="home-rule-title">Consistency above all</div><div class="home-rule-sub">Missing sessions kills progress faster than bad form.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">02</span><div><div class="home-rule-title">Progressive overload</div><div class="home-rule-sub">Add weight or reps every single week. You have huge room to grow fast.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">03</span><div><div class="home-rule-title">Rest is productive</div><div class="home-rule-sub">Thursday off. 8+ hours sleep. Muscle is built during recovery.</div></div></div>
-    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">2,700 kcal training days · 2,300 rest days · 230g protein daily. 3.5km to gym (warm-up) + 3.5km to work (cool-down) burns ~450 kcal daily. Keep food targets the same — the walks do the extra work.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">2,700 kcal training days · 2,300 rest days · 230g protein daily. 3.5km to gym + 3.5km to work + gym session = ~830 kcal deficit daily. Samsung Health confirms ~172 kcal tracked walks. On track for ~0.8kg/wk loss.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">05</span><div><div class="home-rule-title">Sleep is non-negotiable</div><div class="home-rule-sub">7+ hours. Cortisol from poor sleep directly causes belly and lower back fat storage and retention. The single most underrated factor in stubborn fat loss.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">06</span><div><div class="home-rule-title">Belly &amp; love handles — the truth</div><div class="home-rule-sub">You cannot target fat loss to these areas. But the deficit + daily walks + calorie cycling is already the optimal protocol. The oblique twists in leg raises build the muscle underneath. Fat clears from these areas last — typically weeks 8–12.</div></div></div>
   </div>
@@ -4790,11 +4802,11 @@ window.addEventListener('DOMContentLoaded',function(){
     var cardio=JSON.parse(localStorage.getItem(CARDIO_KEY)||'{}');
     var today=new Date().toISOString().slice(0,10);
     if(!cardio[today+'-am']){
-      cardio[today+'-am']={type:'Walk',duration:42,name:'Walk to Gym (3.5km)',distance:3.5,calories:225,source:'auto'};
+      cardio[today+'-am']={type:'Walk',duration:42,name:'Walk to Gym (3.5km)',distance:3.5,calories:175,source:'auto'};
       localStorage.setItem(CARDIO_KEY,JSON.stringify(cardio));
     }
     if(!cardio[today+'-pm']){
-      cardio[today+'-pm']={type:'Walk',duration:42,name:'Walk to Work (3.5km)',distance:3.5,calories:225,source:'auto'};
+      cardio[today+'-pm']={type:'Walk',duration:42,name:'Walk to Work (3.5km)',distance:3.5,calories:175,source:'auto'};
       localStorage.setItem(CARDIO_KEY,JSON.stringify(cardio));
     }
   }catch(e){}
