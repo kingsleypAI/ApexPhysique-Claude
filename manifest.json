@@ -1,15 +1,13 @@
 {
-  "name": "Ascend",
-  "short_name": "Ascend",
-  "description": "Ascend — 12-Week physique programme",
+  "name": "Forge",
+  "short_name": "Forge",
+  "description": "Forge \u2014 12-week physique recomposition tracker",
   "start_url": "/ApexPhysique-Claude/",
   "scope": "/ApexPhysique-Claude/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
-  "orientation": "portrait-primary",
-  "prefer_related_applications": false,
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/ApexPhysique-Claude/icon-192.png",

@@ -12,35 +12,35 @@
 
 
 
-<meta name="description" content="Ascend — 12-Week physique programme">
+<meta name="description" content="Forge — 12-Week physique programme">
 <link rel="apple-touch-icon" href="/ApexPhysique-Claude/icon-192.png">
 <link rel="manifest" href="/ApexPhysique-Claude/manifest.json">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="Ascend">
+  <meta name="application-name" content="Forge">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Ascend">
+  <meta name="apple-mobile-web-app-title" content="Forge">
   <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#0a0a0a">
-<title>ASCEND</title>
+<title>FORGE</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #0a0a0a;
-  --surface: #141414;
-  --card: #1a1a1a;
-  --border: #252525;
+  --surface: #111111;
+  --card: #161616;
+  --border: #242424;
   --border2: #2e2e2e;
-  --accent: #0ea5e9;
-  --accent-glow: rgba(14,165,233,0.15);
-  --accent-dim: rgba(14,165,233,0.12);
-  --accent-dim2: rgba(14,165,233,0.06);
-  --white: #f2efe8;
-  --grey: #6e6e6e;
-  --mid: #9a9a9a;
-  --green: #4caf7d;
-  --green-dim: rgba(76,175,125,0.12);
+  --accent: #C8102E;
+  --accent-glow: rgba(200,16,46,0.07);
+  --accent-dim: rgba(200,16,46,0.05);
+  --accent-dim2: rgba(200,16,46,0.03);
+  --white: #ffffff;
+  --grey: #555555;
+  --mid: #888888;
+  --green: #aaaaaa;
+  --green-dim: rgba(200,16,46,0.05);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -171,7 +171,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   border:1px solid var(--border);color:var(--grey);cursor:pointer;
 }
 .day-chip small{font-size:7px;display:block;margin-top:3px;letter-spacing:0;}
-.day-chip.rest{background:rgba(255,255,255,0.02);color:var(--border2);}
+.day-chip.rest{background:rgba(200,16,46,0.02);color:var(--border2);}
 .day-chip.train{background:var(--accent-dim2);border-color:rgba(232,200,74,0.2);color:var(--accent);}
 
 /* BODY TARGET */
@@ -182,7 +182,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .target-tag{font-size:9px;letter-spacing:2px;border:1px solid var(--border2);color:var(--mid);padding:3px 7px;text-transform:uppercase;}
 .target-tag.hi{border-color:var(--accent);color:var(--accent);}
 .target-bar{height:2px;background:var(--border);margin-bottom:5px;}
-.target-fill{height:100%;background:linear-gradient(90deg,var(--accent),rgba(14,165,233,0.4));}
+.target-fill{height:100%;background:linear-gradient(90deg,var(--accent),rgba(255,255,255,0.4));}
 .target-sub{font-size:10px;color:var(--grey);}
 
 /* PHASE CARD */
@@ -213,7 +213,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   cursor:pointer;gap:10px;user-select:none;
   -webkit-tap-highlight-color:transparent;
 }
-.whead:active{background:rgba(255,255,255,0.02);}
+.whead:active{background:rgba(200,16,46,0.02);}
 .wbadge{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0;color:var(--accent);min-width:26px;}
 .wname{flex:1;font-size:13px;font-weight:600;letter-spacing:0.2px;}
 .wmeta{font-size:11px;color:var(--grey);}
@@ -292,7 +292,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   padding:11px 14px;cursor:pointer;display:flex;
   align-items:center;gap:8px;-webkit-tap-highlight-color:transparent;
 }
-.mrow-head:active{background:rgba(255,255,255,0.02);}
+.mrow-head:active{background:rgba(200,16,46,0.02);}
 .mtime{font-size:9px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;min-width:50px;}
 .mname{flex:1;font-size:13px;font-weight:600;}
 .mkcal{font-size:11px;color:var(--grey);}
@@ -452,7 +452,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   cursor:pointer;gap:12px;user-select:none;
   -webkit-tap-highlight-color:transparent;
 }
-.recipe-head:active{background:rgba(255,255,255,0.02);}
+.recipe-head:active{background:rgba(200,16,46,0.02);}
 .recipe-emoji{font-size:22px;min-width:30px;}
 .recipe-info{flex:1;}
 .recipe-name{font-size:14px;font-weight:700;letter-spacing:0.3px;}
@@ -492,7 +492,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .recipe-step-text strong{color:var(--white);}
 .recipe-tip{
   margin-top:10px;padding:9px 11px;
-  background:rgba(14,165,233,0.06);border-left:2px solid var(--accent);
+  background:rgba(200,16,46,0.06);border-left:2px solid var(--accent);
   font-size:11px;color:var(--mid);line-height:1.5;
 }
 .recipe-tip strong{color:var(--accent);}
@@ -540,7 +540,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .phase-now-week{
   display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:13px;
   letter-spacing:2px;color:var(--accent);padding:4px 10px;
-  border:1px solid rgba(14,165,233,0.3);background:rgba(14,165,233,0.06);
+  border:1px solid rgba(255,255,255,0.3);background:rgba(200,16,46,0.06);
 }
 
 .phase-unlock{
@@ -578,7 +578,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 
 /* Phase badges updated dynamically */
 .phase-badge.done{border-color:var(--green);color:var(--green);}
-.phase-badge.active{border-color:var(--accent);color:var(--accent);background:rgba(14,165,233,0.08);}
+.phase-badge.active{border-color:var(--accent);color:var(--accent);background:rgba(200,16,46,0.08);}
 .done-badge{font-size:10px;padding:3px 8px;color:var(--green);border:1px solid var(--green);text-transform:uppercase;letter-spacing:1px;}
 .current-badge{font-size:10px;padding:3px 8px;color:var(--accent);border:1px solid var(--accent);text-transform:uppercase;letter-spacing:1px;}
 
@@ -724,7 +724,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 }
 .history-table tr:last-child td{border-bottom:none;}
 .history-table td:first-child{color:var(--white);font-weight:600;}
-.change-up{color:#4caf7d;}
+.change-up{color:#aaaaaa;}
 .change-down{color:var(--accent);}
 .change-same{color:var(--grey);}
 .delete-row-btn{
@@ -740,13 +740,13 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   padding:11px 8px;text-align:center;
 }
 .summary-num{font-family:'Space Grotesk',sans-serif;font-size:20px;color:var(--white);}
-.summary-num.pos{color:#4caf7d;}
+.summary-num.pos{color:#aaaaaa;}
 .summary-num.neg{color:var(--accent);}
 .summary-lbl{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
 
 /* Photo reminder */
 .photo-reminder{
-  background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.2);
+  background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.2);
   padding:12px 14px;margin-bottom:8px;
   display:flex;align-items:center;gap:12px;
 }
@@ -768,7 +768,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   border-radius:0;text-align:center;
 }
 .lift-input:focus{border-color:var(--accent);}
-.lift-pr{font-size:10px;color:#4caf7d;min-width:44px;text-align:right;}
+.lift-pr{font-size:10px;color:#aaaaaa;min-width:44px;text-align:right;}
 
 /* Measurement grid */
 .meas-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
@@ -820,7 +820,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 56px; height: 56px;
-  background: rgba(14,165,233,0.90);
+  background: rgba(255,255,255,0.90);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   pointer-events: none;
@@ -844,7 +844,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 }
 .ex-video-yt-icon {
   width: 22px; height: 16px;
-  background: #0ea5e9;
+  background: #C8102E;
   border-radius: 3px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -879,20 +879,20 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 
 /* ── WARM-UP SECTION ─────────────────────────────────────────────────────── */
 .warmup-card{
-  background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.25);
+  background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.25);
   margin-bottom:10px;overflow:hidden;
 }
 .warmup-head{
   display:flex;align-items:center;gap:10px;padding:12px 14px;
   cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;
 }
-.warmup-head:active{background:rgba(255,255,255,0.02);}
+.warmup-head:active{background:rgba(200,16,46,0.02);}
 .warmup-emoji{font-size:18px;}
 .warmup-title{flex:1;font-size:13px;font-weight:700;color:var(--white);}
 .warmup-time{font-size:10px;color:var(--accent);letter-spacing:1px;font-weight:700;}
 .warmup-arrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
 .warmup-card.open .warmup-arrow{transform:rotate(180deg);}
-.warmup-body{display:none;padding:0 14px 14px;border-top:1px solid rgba(14,165,233,0.2);}
+.warmup-body{display:none;padding:0 14px 14px;border-top:1px solid rgba(255,255,255,0.2);}
 .warmup-card.open .warmup-body{display:block;}
 .warmup-steps{margin-top:10px;display:flex;flex-direction:column;gap:0;}
 .warmup-step{
@@ -918,7 +918,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
   padding:13px 14px;margin-bottom:10px;
 }
 .deload-banner.active-deload{
-  background:rgba(76,175,125,0.08);
+  background:rgba(200,16,46,0.08);
   border-color:var(--green);
 }
 .deload-week-title{
@@ -1172,8 +1172,8 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .nav-section{padding:8px 0;}
 .nav-section-label{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#444;padding:0 20px;margin-bottom:2px;}
 .nav-item{display:flex;align-items:center;gap:14px;padding:13px 20px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background 0.15s;position:relative;}
-.nav-item:active{background:rgba(255,255,255,0.04);}
-.nav-item.active{background:rgba(14,165,233,0.1);}
+.nav-item:active{background:rgba(200,16,46,0.04);}
+.nav-item.active{background:rgba(200,16,46,0.1);}
 .nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--accent);border-radius:0 2px 2px 0;}
 .nav-item-icon{font-size:20px;width:28px;text-align:center;flex-shrink:0;}
 .nav-item-name{font-size:14px;font-weight:600;color:#f2efe8;line-height:1;margin-bottom:2px;}
@@ -1190,7 +1190,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .ex-weight-log{margin-top:10px;border-top:1px solid var(--border);padding-top:10px;scroll-margin-top:60px;}
 .ex-weight-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
 .ex-weight-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);}
-.ex-weight-pr{font-size:11px;font-weight:700;color:#4caf7d;}
+.ex-weight-pr{font-size:11px;font-weight:700;color:#aaaaaa;}
 .ex-weight-input-row{display:flex;gap:6px;align-items:center;margin-bottom:6px;}
 .ex-weight-input{flex:1;background:var(--surface);border:1px solid var(--border2,#2e2e2e);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:9px 12px;outline:none;-webkit-appearance:none;text-align:center;border-radius:4px;transform:translateZ(0);touch-action:manipulation;}
 .ex-weight-input:focus{border-color:var(--accent);}
@@ -1200,7 +1200,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .ex-weight-save:active{opacity:0.8;}
 .ex-weight-history{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;}
 .ex-weight-chip{font-size:10px;padding:3px 8px;background:var(--card);border:1px solid var(--border);color:var(--mid);border-radius:12px;white-space:nowrap;}
-.ex-weight-chip.latest{background:rgba(14,165,233,0.08);border-color:rgba(14,165,233,0.3);color:var(--accent);font-weight:700;}
+.ex-weight-chip.latest{background:rgba(200,16,46,0.08);border-color:rgba(255,255,255,0.3);color:var(--accent);font-weight:700;}
 .day-banner{margin:20px 0 12px;border-radius:10px;overflow:hidden;border:1px solid var(--border);}
 .day-banner-inner{padding:16px 18px;background:var(--card);display:flex;align-items:center;gap:14px;position:relative;}
 .day-banner-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
@@ -1209,7 +1209,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .day-banner-name{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1;margin-bottom:4px;}
 .day-banner-days{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase;}
 .day-banner-muscles{font-size:11px;color:var(--mid);margin-top:3px;}
-.day-banner-chip{background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.2);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.day-banner-chip{background:rgba(200,16,46,0.08);border:1px solid rgba(255,255,255,0.2);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
 @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 
 
@@ -1224,7 +1224,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .home-today-icon{font-size:36px;}
 .home-today-name{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1;margin-bottom:4px;}
 .home-today-sub{font-size:11px;color:var(--mid);}
-.home-log-btn{width:100%;padding:13px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:7px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.home-log-btn{width:100%;padding:13px;background:transparent;border:none;color:#ffffff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:7px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;}
 .home-log-btn:active{opacity:0.85;}
 
 .home-stats{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border-radius:10px;padding:14px 16px;margin-bottom:14px;}
@@ -1235,7 +1235,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 
 .home-split{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:20px;}
 .home-split-day{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px;border-radius:8px;cursor:pointer;-webkit-tap-highlight-color:transparent;border:1px solid transparent;}
-.home-split-day.train{background:rgba(14,165,233,0.07);border-color:rgba(14,165,233,0.2);}
+.home-split-day.train{background:rgba(200,16,46,0.07);border-color:rgba(255,255,255,0.2);}
 .home-split-day.rest{background:var(--surface);border-color:var(--border);}
 .home-split-day:active{opacity:0.7;}
 .home-split-d{font-size:9px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:0.04em;}
@@ -1249,7 +1249,7 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .home-track-big span:first-child{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--white);}
 .home-track-unit{font-size:11px;color:var(--grey);}
 .home-track-btn{flex:1;padding:8px 0;background:var(--surface);border:1px solid var(--border);color:var(--mid);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:5px;}
-.home-track-btn.accent{background:rgba(14,165,233,0.12);border-color:rgba(14,165,233,0.3);color:var(--accent);}
+.home-track-btn.accent{background:rgba(200,16,46,0.12);border-color:rgba(255,255,255,0.3);color:var(--accent);}
 
 .home-section-label{font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);margin-bottom:10px;}
 
@@ -1258,9 +1258,9 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .home-target-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
 .home-target-name{font-size:13px;font-weight:600;color:var(--white);}
 .home-target-tag{font-size:8px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--surface);color:var(--grey);border:1px solid var(--border);}
-.home-target-tag.hi{background:rgba(14,165,233,0.1);color:var(--accent);border-color:rgba(14,165,233,0.3);}
+.home-target-tag.hi{background:rgba(200,16,46,0.1);color:var(--accent);border-color:rgba(255,255,255,0.3);}
 .home-target-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
-.home-target-fill{height:100%;background:linear-gradient(90deg,var(--accent),rgba(14,165,233,0.5));border-radius:2px;}
+.home-target-fill{height:100%;background:linear-gradient(90deg,var(--accent),rgba(255,255,255,0.5));border-radius:2px;}
 
 .home-rules{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
 .home-rule{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border);}
@@ -1315,14 +1315,14 @@ to{opacity:1;transform:translateY(0);}}to{opacity:1;transform:translateY(0);}}
 .mini-reset{padding:10px 14px;background:var(--card);border:1px solid var(--border);color:var(--mid);font-size:14px;cursor:pointer;border-radius:7px;-webkit-tap-highlight-color:transparent;}
 .mini-timer-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
 .mini-preset{padding:8px 0;background:var(--card);border:1px solid var(--border);color:var(--grey);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;text-align:center;width:100%;}
-.mini-preset.active{background:rgba(14,165,233,0.15);border-color:rgba(14,165,233,0.4);color:var(--accent);}
+.mini-preset.active{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4);color:var(--accent);}
 
 
 .ex-tick{background:none;border:1.5px solid var(--border);color:var(--grey);width:30px;height:30px;border-radius:50%;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;margin-right:6px;-webkit-tap-highlight-color:transparent;transition:all 0.15s;}
-.ex-tick.done{background:#4caf7d;border-color:#4caf7d;color:#fff;}
+.ex-tick.done{background:#C8102E;border-color:#C8102E;color:#000;}
 .wcard.done-card>.whead .wname{text-decoration:line-through;color:var(--grey);}
 .day-checklist-bar{height:3px;background:var(--border);margin:0;overflow:hidden;}
-.day-checklist-fill{height:100%;background:#4caf7d;border-radius:0;transition:width 0.4s;}
+.day-checklist-fill{height:100%;background:#C8102E;border-radius:0;transition:width 0.4s;}
 
 </style>
 <script>
@@ -1381,8 +1381,8 @@ function navTo(id,label){
   window.scrollTo(0,0);
   if(id==='strava') document.dispatchEvent(new Event('stravaTabActive'));
   if(id==='program') setTimeout(function(){try{initWorkoutView();}catch(e){}},50);
-  if(id==='tracker') setTimeout(function(){try{renderExercisePRsGrid();}catch(e){}},50);
-  if(id==='schedule') setTimeout(function(){try{renderHomePRs();}catch(e){}},50);
+  if(id==='tracker') setTimeout(function(){try{renderExercisePRsGrid();}catch(e){};try{buildMonthCalendar();}catch(e){}},50);
+  if(id==='schedule') setTimeout(function(){try{renderHomePRs();}catch(e){};try{buildHomeMiniCal();}catch(e){}},50);
   playNavTick();
 }
 function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
@@ -1418,26 +1418,26 @@ function toggleVideoPlayer(vid_id){
     <div class="ham-line"></div><div class="ham-line"></div><div class="ham-line"></div>
   </button>
   <div class="topbar-centre">
-    <span class="topbar-wordmark" id="topbarWordmark">ASCEND</span>
+    <span class="topbar-wordmark" id="topbarWordmark">FORGE</span>
     
   </div>
   <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-    <div id="topbarAvatar" style="display:none;width:28px;height:28px;border-radius:50%;overflow:hidden;border:1.5px solid rgba(252,76,2,0.6);flex-shrink:0;">
+    <div id="topbarAvatar" style="display:none;width:28px;height:28px;border-radius:50%;overflow:hidden;border:1.5px solid rgba(255,255,255,0.6);flex-shrink:0;">
       <img id="topbarAvatarImg" src="" style="width:100%;height:100%;object-fit:cover;" alt="Strava">
     </div>
     <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><defs>
   <linearGradient id="lgA" x1="0%" y1="100%" x2="100%" y2="0%">
     <stop offset="0%" stop-color="#0c1a3a"/>
-    <stop offset="55%" stop-color="#0ea5e9"/>
-    <stop offset="100%" stop-color="#38bdf8"/>
+    <stop offset="55%" stop-color="#C8102E"/>
+    <stop offset="100%" stop-color="#dddddd"/>
   </linearGradient>
   <linearGradient id="lgB" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#0ea5e9"/>
-    <stop offset="100%" stop-color="#0284c7"/>
+    <stop offset="0%" stop-color="#C8102E"/>
+    <stop offset="100%" stop-color="#cccccc"/>
   </linearGradient>
 </defs><path d="M8,88 L38,32 L50,48 L62,8 L92,88 Z" fill="url(#lgA)"/>
   <path d="M62,8 L72,32 L66,32 L92,88 L62,60 L58,68 L62,8 Z" fill="url(#lgB)" opacity="0.92"/>
-  <polygon points="62,2 64,8 70,8 65,12 67,18 62,14 57,18 59,12 54,8 60,8" fill="#38bdf8" opacity="0.95"/>
+  <polygon points="62,2 64,8 70,8 65,12 67,18 62,14 57,18 59,12 54,8 60,8" fill="#dddddd" opacity="0.95"/>
   <circle cx="34" cy="45" r="4" fill="white" opacity="0.9"/>
   <path d="M34,49 L30,62 L36,58 L38,65" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
   <path d="M34,52 L28,48" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.9"/>
@@ -1451,12 +1451,12 @@ function toggleVideoPlayer(vid_id){
   <div class="nav-drawer-header"><div class="nav-drawer-logo"><svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
   <linearGradient id="lgA" x1="0%" y1="100%" x2="100%" y2="0%">
     <stop offset="0%" stop-color="#0c1a3a"/>
-    <stop offset="55%" stop-color="#0ea5e9"/>
-    <stop offset="100%" stop-color="#38bdf8"/>
+    <stop offset="55%" stop-color="#C8102E"/>
+    <stop offset="100%" stop-color="#dddddd"/>
   </linearGradient>
   <linearGradient id="lgB" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#0ea5e9"/>
-    <stop offset="100%" stop-color="#0284c7"/>
+    <stop offset="0%" stop-color="#C8102E"/>
+    <stop offset="100%" stop-color="#cccccc"/>
   </linearGradient>
 </defs>
   <!-- Mountain body -->
@@ -1464,7 +1464,7 @@ function toggleVideoPlayer(vid_id){
   <!-- Right peak highlight (arrow shape) -->
   <path d="M62,8 L72,32 L66,32 L92,88 L62,60 L58,68 L62,8 Z" fill="url(#lgB)" opacity="0.92"/>
   <!-- Arrow tip star at summit -->
-  <polygon points="62,2 64,8 70,8 65,12 67,18 62,14 57,18 59,12 54,8 60,8" fill="#38bdf8" opacity="0.95"/>
+  <polygon points="62,2 64,8 70,8 65,12 67,18 62,14 57,18 59,12 54,8 60,8" fill="#dddddd" opacity="0.95"/>
   <!-- Running figure on left slope (white silhouette) -->
   <!-- Head -->
   <circle cx="34" cy="45" r="4" fill="white" opacity="0.9"/>
@@ -1476,7 +1476,7 @@ function toggleVideoPlayer(vid_id){
   <!-- Legs stride -->
   <path d="M30,62 L25,70" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85"/>
   <path d="M36,58 L42,64" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85"/>
-</svg></div><div><div class="nav-drawer-title">Ascend</div><div class="nav-drawer-sub">Tap any section</div></div></div>
+</svg></div><div><div class="nav-drawer-title">Forge</div><div class="nav-drawer-sub">Tap any section</div></div></div>
   <div class="nav-section"><div class="nav-section-label">Main</div>
     <div class="nav-item active" id="nav-schedule" onclick="navTo('schedule','Overview')"><div class="nav-item-icon">🏠</div><div><div class="nav-item-name">Home</div><div class="nav-item-desc">Today · Water · Overview</div></div></div>
     <div class="nav-item" id="nav-program" onclick="navTo('program','Workouts')"><div class="nav-item-icon">💪</div><div><div class="nav-item-name">Workouts</div><div class="nav-item-desc">Push · Pull · Legs</div></div></div>
@@ -1500,14 +1500,14 @@ function toggleVideoPlayer(vid_id){
     <div class="nav-section-label">Integrations</div>
     <div class="nav-item" id="nav-strava" onclick="navTo('strava','Strava')">
       <div class="nav-item-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="#FC4C02"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="#bbbbbb"/></svg>
       </div>
       <div style="flex:1"><div class="nav-item-name">Strava</div><div class="nav-item-desc" id="stravaNavStatus">Connect your activities</div></div>
-      <div id="stravaNavBadge" style="display:none;width:8px;height:8px;border-radius:50%;background:#FC4C02;flex-shrink:0;margin-top:4px;"></div>
+      <div id="stravaNavBadge" style="display:none;width:8px;height:8px;border-radius:50%;background:#bbbbbb;flex-shrink:0;margin-top:4px;"></div>
     </div>
   </div>
   <div style="padding:12px 20px 20px;">
-    <button id="stravaNavBtn" onclick="navTo('strava','Strava')" style="width:100%;padding:11px;background:#FC4C02;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:8px;-webkit-tap-highlight-color:transparent;">
+    <button id="stravaNavBtn" onclick="navTo('strava','Strava')" style="width:100%;padding:11px;background:#bbbbbb;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:8px;-webkit-tap-highlight-color:transparent;">
       <svg width="16" height="16" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="white"/></svg>
       <span id="stravaNavBtnText">Connect Strava</span>
     </button>
@@ -1518,34 +1518,41 @@ function toggleVideoPlayer(vid_id){
 <div id="tab-schedule" class="section active">
 
   <!-- TODAY HERO -->
-  <div class="home-today">
-    <div class="home-today-meta">
-      <span class="home-today-eyebrow" id="todayEyebrow">TODAY</span>
-      <span class="home-today-week"><span id="todayWeekBig">Wk 1</span> <span class="home-today-phase" id="todayPhaseBig">Foundation</span></span>
-    </div>
-    <div class="home-today-main">
-      <div class="home-today-icon" id="todayIcon">💪</div>
-      <div class="home-today-text">
-        <div class="home-today-name" id="todayName">Push Day</div>
-        <div class="home-today-sub" id="todaySub">Chest · Shoulders · Triceps</div>
+  <!-- UNIFIED SESSION CALENDAR -->
+  <div id="homeMiniCal" style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;">
+    <div style="padding:12px 14px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:26px;" id="todayIcon">💪</div>
+        <div>
+          <div style="font-family:Space+Grotesk,sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="todayName">Push Day</div>
+          <div style="font-size:11px;color:var(--mid);" id="todaySub">Chest · Shoulders · Triceps</div>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);" id="todayWeekBig">Wk 1</div>
+        <div style="font-size:9px;color:var(--grey);" id="todayPhaseBig">Foundation</div>
+        <div style="font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-top:1px;" id="todayEyebrow">TODAY</div>
       </div>
     </div>
+    <div id="homeMiniCalGrid" style="padding:10px 12px;"></div>
+    <div style="padding:0 12px 12px;">
+      <button class="home-log-btn" id="todayLogBtn" onclick="logToday()" style="border-radius:8px;width:100%;">
+        <span id="todayBtnIcon">＋</span>
+        <span id="todayBtnText">LOG TODAY'S SESSION</span>
+      </button>
+    </div>
     <div class="today-week-strip" id="todayWeekStrip"></div>
-    <button class="home-log-btn" id="todayLogBtn" onclick="logToday()">
-      <span id="todayBtnIcon">＋</span>
-      <span id="todayBtnText">LOG TODAY'S SESSION</span>
-    </button>
   </div>
 
   <!-- PROGRESS BANNER -->
-  <div style="background:linear-gradient(135deg,rgba(14,165,233,0.12),rgba(14,165,233,0.04));border:1px solid rgba(14,165,233,0.3);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:14px;">
+  <div style="background:linear-gradient(135deg,rgba(200,16,46,0.12),rgba(200,16,46,0.04));border:1px solid rgba(255,255,255,0.3);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:14px;">
     <div style="font-size:28px;flex-shrink:0;">🔥</div>
     <div style="flex:1">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">🔥 12.3kg down · Sub-20% BF achieved!</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">🔥 11.3kg down · 19.9% BF · 85kg target</div>
       <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → 105kg → <strong style="color:var(--accent);">101kg</strong> → 85kg target. 9kg down — faster than average. 3.5km walk to gym + 3.5km to work daily + 6-day lifting is working.</div>
     </div>
     <div style="text-align:right;flex-shrink:0;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">97.7</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">98.7</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">kg now</div>
     </div>
   </div>
@@ -1553,10 +1560,26 @@ function toggleVideoPlayer(vid_id){
   <!-- CHECK-IN BANNER -->
   <div id="checkinBanner" style="display:none;"></div>
 
+  <!-- MOTIVATION & RECOVERY -->
+  <div id="motivationCard" style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
+    <div style="height:3px;background:linear-gradient(90deg,#444,#222);"></div>
+    <div style="padding:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Mind &amp; Body</div>
+        <div style="display:flex;gap:6px;">
+          <button onclick="setMotivationMode('low')" id="btnMotivLow" style="padding:5px 10px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.3);color:var(--accent);">Low Motivation</button>
+          <button onclick="setMotivationMode('ill')" id="btnMotivIll" style="padding:5px 10px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;background:var(--surface);border:1px solid var(--border);color:var(--mid);">I'm Ill</button>
+          <button onclick="setMotivationMode('normal')" id="btnMotivNormal" style="padding:5px 10px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;background:var(--surface);border:1px solid var(--border);color:var(--mid);">Feeling Good</button>
+        </div>
+      </div>
+      <div id="motivationContent"></div>
+    </div>
+  </div>
+
   <!-- REAL BODY STATS -->
   <div style="background:var(--surface);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;">
     <div style="text-align:center;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);">97.7kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);">98.7kg</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Weight</div>
     </div>
     <div style="text-align:center;border-left:1px solid var(--border);">
@@ -1564,17 +1587,17 @@ function toggleVideoPlayer(vid_id){
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Body Fat</div>
     </div>
     <div style="text-align:center;border-left:1px solid var(--border);">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);">78.3kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);">79.1kg</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Lean Mass</div>
     </div>
     <div style="text-align:center;border-left:1px solid var(--border);">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:#4caf7d;">19.4kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">19.6kg</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Fat Mass</div>
     </div>
   </div>
 
   <!-- TDEE NOTE -->
-  <div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.2);border-radius:8px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
+  <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
     <div>
       <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px;">Daily Burn (TDEE)</div>
       <div style="font-size:11px;color:var(--mid);">~3,480 kcal · deficit ~810/day · ~0.8kg/wk loss</div>
@@ -1646,6 +1669,11 @@ function toggleVideoPlayer(vid_id){
       <div class="home-target-bar"><div class="home-target-fill" style="width:90%"></div></div>
     </div>
     <div class="home-target">
+      <div class="home-target-row"><span class="home-target-name">Traps &amp; Neck Thickness</span><span class="home-target-tag hi">Hardy Key</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:30%"></div></div>
+      <div style="font-size:10px;color:var(--grey);margin-top:4px;">Add: DB Shrugs · Rack Pulls · Face Pulls — Hardy's most distinctive feature</div>
+    </div>
+    <div class="home-target">
       <div class="home-target-row"><span class="home-target-name">Legs &amp; Core</span><span class="home-target-tag">High</span></div>
       <div class="home-target-bar"><div class="home-target-fill" style="width:80%"></div></div>
     </div>
@@ -1654,27 +1682,27 @@ function toggleVideoPlayer(vid_id){
       <div class="home-target-bar"><div class="home-target-fill" style="width:75%"></div></div>
     </div>
     <div class="home-target">
-      <div class="home-target-row"><span class="home-target-name">Pull-Up / Muscle-Up Goal</span><span class="home-target-tag" style="background:rgba(76,175,125,0.1);color:#4caf7d;border-color:rgba(76,175,125,0.3);">In Progress</span></div>
-      <div class="home-target-bar"><div class="home-target-fill" style="width:20%;background:linear-gradient(90deg,#4caf7d,rgba(76,175,125,0.4));"></div></div>
+      <div class="home-target-row"><span class="home-target-name">Pull-Up / Muscle-Up Goal</span><span class="home-target-tag" style="background:rgba(200,16,46,0.1);color:#aaaaaa;border-color:rgba(255,255,255,0.3);">In Progress</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:20%;background:linear-gradient(90deg,#aaaaaa,rgba(255,255,255,0.4));"></div></div>
       <div style="font-size:10px;color:var(--grey);margin-top:4px;">Assisted → band → negative → bodyweight → muscle-up</div>
     </div>
     <div class="home-target">
-      <div class="home-target-row"><span class="home-target-name">Vascularity</span><span class="home-target-tag" style="background:rgba(59,130,246,0.1);color:#60a5fa;border-color:rgba(59,130,246,0.3);">Coming Soon</span></div>
-      <div class="home-target-bar"><div class="home-target-fill" style="width:25%;background:linear-gradient(90deg,#3b82f6,rgba(59,130,246,0.4));"></div></div>
+      <div class="home-target-row"><span class="home-target-name">Vascularity</span><span class="home-target-tag" style="background:rgba(200,16,46,0.1);color:#aaaaaa;border-color:rgba(255,255,255,0.3);">Coming Soon</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:25%;background:linear-gradient(90deg,#3b82f6,rgba(255,255,255,0.4));"></div></div>
       <div style="font-size:10px;color:var(--grey);margin-top:4px;">Currently 19.9% BF — sub-20% achieved! · Abs ~12% · ~9.4kg fat to go</div>
     </div>
     <div class="home-target">
-      <div class="home-target-row"><span class="home-target-name">Lower Back &amp; Hips</span><span class="home-target-tag" style="background:rgba(252,76,2,0.1);color:#FC4C02;border-color:rgba(252,76,2,0.3);">Fat Loss Last</span></div>
-      <div class="home-target-bar"><div class="home-target-fill" style="width:40%;background:linear-gradient(90deg,#FC4C02,rgba(252,76,2,0.4));"></div></div>
+      <div class="home-target-row"><span class="home-target-name">Lower Back &amp; Hips</span><span class="home-target-tag" style="background:rgba(200,16,46,0.1);color:#bbbbbb;border-color:rgba(255,255,255,0.3);">Fat Loss Last</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:40%;background:linear-gradient(90deg,#bbbbbb,rgba(255,255,255,0.4));"></div></div>
     </div>
     <div class="home-target">
-      <div class="home-target-row"><span class="home-target-name">Belly &amp; Core</span><span class="home-target-tag" style="background:rgba(252,76,2,0.1);color:#FC4C02;border-color:rgba(252,76,2,0.3);">Fat Loss Last</span></div>
-      <div class="home-target-bar"><div class="home-target-fill" style="width:35%;background:linear-gradient(90deg,#FC4C02,rgba(252,76,2,0.4));"></div></div>
+      <div class="home-target-row"><span class="home-target-name">Belly &amp; Core</span><span class="home-target-tag" style="background:rgba(200,16,46,0.1);color:#bbbbbb;border-color:rgba(255,255,255,0.3);">Fat Loss Last</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:35%;background:linear-gradient(90deg,#bbbbbb,rgba(255,255,255,0.4));"></div></div>
       <div style="font-size:10px;color:var(--grey);margin-top:4px;"><strong style="color:var(--accent);">Wk 1–4:</strong> Hanging leg raises only · <strong style="color:var(--white);">Wk 5+:</strong> Add cable crunch + plank finisher</div>
     </div>
     <div class="home-target">
-      <div class="home-target-row"><span class="home-target-name">Love Handles / Obliques</span><span class="home-target-tag" style="background:rgba(252,76,2,0.1);color:#FC4C02;border-color:rgba(252,76,2,0.3);">Fat Loss Last</span></div>
-      <div class="home-target-bar"><div class="home-target-fill" style="width:30%;background:linear-gradient(90deg,#FC4C02,rgba(252,76,2,0.4));"></div></div>
+      <div class="home-target-row"><span class="home-target-name">Love Handles / Obliques</span><span class="home-target-tag" style="background:rgba(200,16,46,0.1);color:#bbbbbb;border-color:rgba(255,255,255,0.3);">Fat Loss Last</span></div>
+      <div class="home-target-bar"><div class="home-target-fill" style="width:30%;background:linear-gradient(90deg,#bbbbbb,rgba(255,255,255,0.4));"></div></div>
       <div style="font-size:10px;color:var(--grey);margin-top:4px;">Twisting leg raises · 3.5km walks · Calorie deficit working</div>
     </div>
   </div>
@@ -1692,6 +1720,18 @@ function toggleVideoPlayer(vid_id){
 
 
 
+  <!-- MORE INFO ACCORDION -->
+  <button id="homeMoreBtn" onclick="
+    var d=document.getElementById('homeMoreContent');
+    var open=d.style.display!=='none';
+    d.style.display=open?'none':'block';
+    this.querySelector('.more-arrow').textContent=open?'More ▾':'Less ▴';
+  " style="width:100%;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--mid);font-family:Space+Grotesk,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;justify-content:space-between;align-items:center;margin-bottom:0;">
+    <span>PRs · Rules · Supplements · Targets</span>
+    <span class="more-arrow">More ▾</span>
+  </button>
+  <div id="homeMoreContent" style="display:none;">
+
   <!-- PRs SNAPSHOT -->
   <div class="home-section-label">Personal Records</div>
   <div id="homePRsCard" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:20px;">
@@ -1699,105 +1739,20 @@ function toggleVideoPlayer(vid_id){
   </div>
 
   <!-- SUPPLEMENTS -->
-  <div class="home-section-label">Your Supplements</div>
+  <div style="margin-bottom:20px;">
+    <button onclick="var d=this.nextElementSibling;var open=d.style.display!=='none';d.style.display=open?'none':'block';this.querySelector('.supp-arrow').textContent=open?'▶':'▼';" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;margin-bottom:4px;">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:2px;">Your Supplements</div>
+        <div style="font-size:11px;color:var(--mid);">Whey · Omega 3 · Magnesium · Vitamin D3 — tap to expand</div>
+      </div>
+      <span class="supp-arrow" style="color:var(--grey);font-size:12px;">▶</span>
+    </button>
+    <div style="display:none;">
 
-  <!-- Protein -->
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:10px;">
-    <div style="height:3px;background:var(--accent);"></div>
-    <div style="padding:14px;">
-      <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;">
-        <div style="font-size:28px;flex-shrink:0;">🥛</div>
-        <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:800;color:var(--white);margin-bottom:2px;">ON Gold Standard Isolate</div>
-          <div style="font-size:10px;color:var(--grey);">Chocolate · 31 servings · 25g protein/scoop</div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-        <div style="background:rgba(14,165,233,0.07);border:1px solid rgba(14,165,233,0.2);border-radius:8px;padding:10px;">
-          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">Training Days</div>
-          <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">2 shakes</div>
-          <div style="font-size:10px;color:var(--mid);margin-top:3px;">50g protein from shakes</div>
-        </div>
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px;">
-          <div style="font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-bottom:4px;">Rest Days</div>
-          <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">1 shake</div>
-          <div style="font-size:10px;color:var(--mid);margin-top:3px;">25g protein from shakes</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:var(--accent);font-size:12px;flex-shrink:0;margin-top:1px;">①</span>
-          <div>
-            <div style="font-size:12px;font-weight:600;color:var(--white);">Post-workout <span style="font-size:10px;font-weight:400;color:var(--grey);">within 30 min of finishing</span></div>
-            <div style="font-size:11px;color:var(--mid);">1 scoop in 300ml water. Most important window — muscles are primed for protein uptake.</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:var(--accent);font-size:12px;flex-shrink:0;margin-top:1px;">②</span>
-          <div>
-            <div style="font-size:12px;font-weight:600;color:var(--white);">Before bed <span style="font-size:10px;font-weight:400;color:var(--grey);">training days only</span></div>
-            <div style="font-size:11px;color:var(--mid);">1 scoop with milk or water. Sustains protein synthesis overnight during the main recovery window.</div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:12px;background:var(--surface);border-radius:6px;padding:10px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);margin-bottom:6px;">Daily protein target at 101kg</div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <span style="font-size:11px;color:var(--mid);">Target: <strong style="color:var(--white);">210–230g/day</strong></span>
-          <span style="font-size:11px;color:var(--mid);">From shakes: <strong style="color:var(--white);">25–50g</strong></span>
-          <span style="font-size:11px;color:var(--mid);">From food: <strong style="color:var(--white);">~170g</strong></span>
-        </div>
-        <div style="font-size:10px;color:var(--grey);margin-top:5px;">31 servings lasts ~3 weeks at 2/day training + 1/day rest</div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Omega 3 -->
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px;">
-    <div style="height:3px;background:linear-gradient(90deg,#1a6b9a,#2eaad4);"></div>
-    <div style="padding:14px;">
-      <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;">
-        <div style="font-size:28px;flex-shrink:0;">🐟</div>
-        <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:800;color:var(--white);margin-bottom:2px;">Omega 3 Fish Oil 2000mg</div>
-          <div style="font-size:10px;color:var(--grey);">240 softgels · 660mg EPA + 440mg DHA · 4 month supply</div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-        <div style="background:rgba(26,107,154,0.1);border:1px solid rgba(26,107,154,0.3);border-radius:8px;padding:10px;text-align:center;">
-          <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">2 caps</div>
-          <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">every day</div>
-        </div>
-        <div style="background:rgba(26,107,154,0.1);border:1px solid rgba(26,107,154,0.3);border-radius:8px;padding:10px;text-align:center;">
-          <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">120 days</div>
-          <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">supply at 2/day</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:#2eaad4;font-size:12px;flex-shrink:0;margin-top:1px;">①</span>
-          <div>
-            <div style="font-size:12px;font-weight:600;color:var(--white);">Morning — 1 capsule <span style="font-size:10px;font-weight:400;color:var(--grey);">with breakfast</span></div>
-            <div style="font-size:11px;color:var(--mid);">Take with a meal containing fat — this dramatically improves absorption of EPA &amp; DHA.</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:#2eaad4;font-size:12px;flex-shrink:0;margin-top:1px;">②</span>
-          <div>
-            <div style="font-size:12px;font-weight:600;color:var(--white);">Evening — 1 capsule <span style="font-size:10px;font-weight:400;color:var(--grey);">with dinner</span></div>
-            <div style="font-size:11px;color:var(--mid);">Splitting the dose reduces fishy aftertaste and improves tolerability.</div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:12px;background:var(--surface);border-radius:6px;padding:10px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);margin-bottom:5px;">Why it matters for this programme</div>
-        <div style="font-size:11px;color:var(--mid);line-height:1.6;">EPA reduces exercise-induced inflammation — critical when training 6 days/week. DHA supports brain function and mood during a hard cut phase. Both reduce joint stress from heavy compound lifting.</div>
-      </div>
-    </div>
-  </div>
   <!-- MAGNESIUM -->
   <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:10px;">
-    <div style="height:3px;background:linear-gradient(90deg,#5b4fcf,#8b7cf8);"></div>
+    <div style="height:3px;background:linear-gradient(90deg,#777777,#999999);"></div>
     <div style="padding:14px;">
       <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;">
         <div style="font-size:28px;flex-shrink:0;">💊</div>
@@ -1807,18 +1762,18 @@ function toggleVideoPlayer(vid_id){
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-        <div style="background:rgba(91,79,207,0.1);border:1px solid rgba(91,79,207,0.3);border-radius:8px;padding:10px;text-align:center;">
+        <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:10px;text-align:center;">
           <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">2 caps</div>
           <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">every day</div>
         </div>
-        <div style="background:rgba(91,79,207,0.1);border:1px solid rgba(91,79,207,0.3);border-radius:8px;padding:10px;text-align:center;">
+        <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:10px;text-align:center;">
           <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">3 months</div>
           <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">supply</div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;">
         <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:#8b7cf8;font-size:12px;flex-shrink:0;margin-top:1px;">①</span>
+          <span style="color:#999999;font-size:12px;flex-shrink:0;margin-top:1px;">①</span>
           <div>
             <div style="font-size:12px;font-weight:600;color:var(--white);">Before bed — 2 capsules <span style="font-size:10px;font-weight:400;color:var(--grey);">30–60 min before sleep</span></div>
             <div style="font-size:11px;color:var(--mid);">Magnesium is most effective taken at night. Bisglycinate and taurate forms are the most bioavailable and the most calming — they cross the blood-brain barrier and directly improve sleep depth.</div>
@@ -1829,19 +1784,19 @@ function toggleVideoPlayer(vid_id){
         <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Why it matters for this programme</div>
         <div style="display:flex;flex-direction:column;gap:6px;">
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#8b7cf8;flex-shrink:0;">▸</span>
+            <span style="color:#999999;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Sleep &amp; recovery</strong> — Magnesium regulates melatonin and GABA, the two main sleep-onset chemicals. Poor sleep = high cortisol = stubborn belly fat. This is your sleep fix.</span>
           </div>
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#8b7cf8;flex-shrink:0;">▸</span>
+            <span style="color:#999999;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Muscle cramps &amp; soreness</strong> — Training 6 days/week depletes magnesium rapidly through sweat. Deficiency causes muscle cramps, spasms and delayed soreness. Restores electrolyte balance.</span>
           </div>
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#8b7cf8;flex-shrink:0;">▸</span>
+            <span style="color:#999999;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Protein synthesis (Leucine)</strong> — The added 90mg leucine directly triggers the mTOR pathway, switching on muscle protein synthesis. Small dose but meaningful when taken consistently.</span>
           </div>
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#8b7cf8;flex-shrink:0;">▸</span>
+            <span style="color:#999999;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Cortisol reduction</strong> — Magnesium taurate specifically blunts cortisol response. Lower cortisol = more fat mobilisation from stubborn areas (belly, lower back).</span>
           </div>
         </div>
@@ -1851,7 +1806,7 @@ function toggleVideoPlayer(vid_id){
 
   <!-- VITAMIN D3 -->
   <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px;">
-    <div style="height:3px;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
+    <div style="height:3px;background:linear-gradient(90deg,#bbbbbb,#cccccc);"></div>
     <div style="padding:14px;">
       <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;">
         <div style="font-size:28px;flex-shrink:0;">☀️</div>
@@ -1861,48 +1816,48 @@ function toggleVideoPlayer(vid_id){
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-        <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px;text-align:center;">
+        <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:10px;text-align:center;">
           <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">1 tablet</div>
           <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">every day</div>
         </div>
-        <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px;text-align:center;">
+        <div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:10px;text-align:center;">
           <div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--white);">13+ months</div>
           <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">supply</div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px;">
         <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:#f59e0b;font-size:12px;flex-shrink:0;margin-top:1px;">①</span>
+          <span style="color:#bbbbbb;font-size:12px;flex-shrink:0;margin-top:1px;">①</span>
           <div>
             <div style="font-size:12px;font-weight:600;color:var(--white);">Morning — 1 tablet <span style="font-size:10px;font-weight:400;color:var(--grey);">with breakfast</span></div>
             <div style="font-size:11px;color:var(--mid);">Fat-soluble vitamin — must be taken with food containing fat for absorption. Stack it with your Omega 3 morning capsule. Same meal, two supplements.</div>
           </div>
         </div>
       </div>
-      <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:8px;padding:10px;margin-bottom:10px;">
+      <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px;margin-bottom:10px;">
         <div style="font-size:11px;color:var(--mid);line-height:1.6;"><strong style="color:var(--white);">Especially important for you.</strong> You walk to the gym at early hours before sunrise. You work indoors. The UK has minimal UVB between October–April even at midday. You are almost certainly deficient — most UK adults are. Deficiency at your training intensity causes measurable drops in testosterone, strength output and fat metabolism.</div>
       </div>
       <div style="background:var(--surface);border-radius:8px;padding:10px;">
         <div style="font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Why it matters for this programme</div>
         <div style="display:flex;flex-direction:column;gap:6px;">
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#f59e0b;flex-shrink:0;">▸</span>
+            <span style="color:#bbbbbb;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Testosterone production</strong> — D3 is a direct precursor to testosterone synthesis. Studies show men supplementing D3 see 20–25% increases in free testosterone. Critical for muscle gain and fat loss simultaneously.</span>
           </div>
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#f59e0b;flex-shrink:0;">▸</span>
+            <span style="color:#bbbbbb;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Strength &amp; muscle function</strong> — Vitamin D receptors exist in muscle tissue. Deficiency directly reduces strength output and muscle contraction efficiency — you lift less than you should.</span>
           </div>
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#f59e0b;flex-shrink:0;">▸</span>
+            <span style="color:#bbbbbb;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Fat metabolism</strong> — D3 regulates genes involved in fat cell formation and breakdown. Low D3 is independently associated with higher body fat and slower fat loss response.</span>
           </div>
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#f59e0b;flex-shrink:0;">▸</span>
+            <span style="color:#bbbbbb;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Mood &amp; motivation</strong> — D3 regulates serotonin. Low D3 = low mood, low drive, harder to get up early for gym sessions. Particularly relevant given your 4–6am starts.</span>
           </div>
           <div style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mid);">
-            <span style="color:#f59e0b;flex-shrink:0;">▸</span>
+            <span style="color:#bbbbbb;flex-shrink:0;">▸</span>
             <span><strong style="color:var(--white);">Bone &amp; joint health</strong> — Heavy compound lifting (squats, bench, rows) under D3 deficiency accelerates joint wear. D3 maintains calcium absorption and bone mineral density.</span>
           </div>
         </div>
@@ -1914,7 +1869,7 @@ function toggleVideoPlayer(vid_id){
 
   <!-- EXPECT -->
   <div class="home-section-label">What To Expect</div>
-  <div style="background:rgba(14,165,233,0.06);border-left:3px solid var(--accent);padding:12px 14px;margin-bottom:12px;border-radius:0 6px 6px 0;">
+  <div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:12px 14px;margin-bottom:12px;border-radius:0 6px 6px 0;">
     <div style="font-size:12px;color:var(--mid);line-height:1.7;"><strong style="color:var(--white)">The scale is a liar.</strong> You're doing a recomp — swapping fat for muscle. Some weeks it won't move or will go up. Judge by the mirror, your lifts, and how clothes fit.</div>
   </div>
 
@@ -1951,7 +1906,10 @@ function toggleVideoPlayer(vid_id){
   </div>
 
 </div>
-<div id="tab-program" class="section">
+  </div>
+<div </div>
+</div>
+id="tab-program" class="section">
   <div class="sec-label">Programme</div>
   <div id="todayWorkoutHeader" class="sec-title">12-WEEK PLAN</div>
 
@@ -1964,7 +1922,7 @@ function toggleVideoPlayer(vid_id){
     <button id="btnFullPlan" onclick="setWorkoutView('full')" style="flex:1;padding:9px;background:var(--surface);border:1px solid var(--border);color:var(--mid);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Full Programme</button>
     <button id="btn30Min" onclick="toggle30MinMode()" style="flex:1;padding:9px;background:var(--surface);border:1px solid var(--border);color:var(--mid);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">⚡ 30 Min</button>
   </div>
-  <div id="thirtyMinBanner" style="display:none;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.25);border-radius:8px;padding:10px 14px;margin-bottom:10px;">
+  <div id="thirtyMinBanner" style="display:none;background:rgba(200,16,46,0.08);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:10px 14px;margin-bottom:10px;">
     <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px;">⚡ 30-Minute Superset Mode</div>
     <div style="font-size:11px;color:var(--mid);line-height:1.6;">Exercises are paired into supersets — do A then B back-to-back with no rest. Rest 60 sec between pairs. 3 sets per superset. Done in 30 min. <strong style="color:var(--white);">Same stimulus, half the time.</strong></div>
   </div>
@@ -2251,7 +2209,39 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
 
-    <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
+        <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C4</div><div class="wname">Dips</div><div class="wmeta">3×10–12</div><button class="ex-tick" id="tick-dips" onclick="event.stopPropagation();toggleExDone('Dips')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div class="ex-video-card">
+          <a class="ex-video-thumb" onclick="openYT('Qd8IQfmRxVk')" style="cursor:pointer;">
+            <img src="https://img.youtube.com/vi/Qd8IQfmRxVk/hqdefault.jpg" alt="How To Do Dips" loading="lazy" onerror="this.style.opacity='0.3'">
+            <div class="ex-video-play"></div>
+          </a>
+          <a class="ex-video-bar" onclick="openYT('Qd8IQfmRxVk')" style="cursor:pointer;">
+            <div class="ex-video-yt-icon"></div>
+            <div class="ex-video-title">
+              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Do Dips (Lower Chest)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
+            </div>
+            <div class="ex-video-arrow">▶</div>
+          </a>
+        </div>
+        <p class="wtip">The lower chest is what gives the Hardy pec shelf. Lean forward slightly at the top to shift emphasis to lower chest. Add weight (belt/plate) when bodyweight gets easy. <span style="display:none;color:#C8102E;">⚡ 30-MIN: Solo finisher. 3×10 weighted or bodyweight.</span></p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×10 bodyweight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×10 +5kg</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×8 +10kg</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-dips">
+          <div class="ex-weight-label">Track weight added</div>
+          <div class="ex-weight-pr" id="wl-pr-dips"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-dips" placeholder="Added kg (0 = bodyweight)" min="0" max="100" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Dips')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Dips')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-dips"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+
+<div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Session Notes</div>
       <textarea id="note-push" placeholder="How did it feel? Any PRs? Anything tight or sore? Notes save automatically..." style="width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:DM Sans,sans-serif;font-size:14px;padding:10px 12px;outline:none;border-radius:8px;resize:none;min-height:80px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;" oninput="saveSessionNote('push',this.value)"></textarea>
       <div style="font-size:10px;color:var(--grey);margin-top:4px;" id="note-status-push"></div>
@@ -2259,7 +2249,7 @@ function toggleVideoPlayer(vid_id){
   </div>
 
   <div id="pull" style="scroll-margin-top:60px">
-  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps &amp; Rear Delts</div></div></div>
+  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps · Forearms</div></div></div>
     <div class="day-checklist-bar"><div class="day-checklist-fill" id="bar-pull-day"></div></div>
     <div class="mini-timer" id="miniTimer">
       <div class="mini-timer-row1">
@@ -2393,7 +2383,7 @@ function toggleVideoPlayer(vid_id){
         </a>
       </div>
         <p class="wtip"><strong style="color:var(--accent)">Your pull-up goal starts here.</strong> Use the assisted pull-up machine — set the counterweight so you can complete 8–10 clean reps. Reduce the assistance weight every 2 weeks. When the machine is at zero, you can do a pull-up. Full ROM: dead hang at the bottom, chin over bar at the top. No kipping. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Barbell Row. Second compound superset.</span></p>
-        <div style="background:rgba(14,165,233,0.06);border-left:3px solid var(--accent);padding:10px 12px;margin:8px 0;border-radius:0 6px 6px 0;">
+        <div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:10px 12px;margin:8px 0;border-radius:0 6px 6px 0;">
           <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Pull-Up Progression Milestones</div>
           <div style="display:flex;flex-direction:column;gap:4px;">
             <div style="font-size:11px;color:var(--mid);"><span style="color:var(--white);font-weight:600;">Wk 1–4 &nbsp;</span>Assisted machine · reduce weight each week</div>
@@ -2422,14 +2412,14 @@ function toggleVideoPlayer(vid_id){
         
         
         <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('ZBhK5Vzphc4')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/ZBhK5Vzphc4/hqdefault.jpg" alt="Dumbbell Face Pulls Tutorial" loading="lazy" onerror="this.style.opacity='0.3'">
+        <a class="ex-video-thumb" onclick="openYT('MChHOiaCR7s')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/MChHOiaCR7s/hqdefault.jpg" alt="How to: Cable Face Pull" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" onclick="openYT('ZBhK5Vzphc4')" style="cursor:pointer;">
+        <a class="ex-video-bar" onclick="openYT('MChHOiaCR7s')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Dumbbell Face Pulls Tutorial<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To: Cable Face Pull<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
             <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
@@ -2490,14 +2480,14 @@ function toggleVideoPlayer(vid_id){
         
         
         <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('0t8JcuQ45VA')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/0t8JcuQ45VA/hqdefault.jpg" alt="Incline Dumbbell Hammer Curl Form" loading="lazy" onerror="this.style.opacity='0.3'">
+        <a class="ex-video-thumb" onclick="openYT('NyW2fT2gQhM')" style="cursor:pointer;">
+          <img src="https://img.youtube.com/vi/NyW2fT2gQhM/hqdefault.jpg" alt="Hammer Curls Form Tips" loading="lazy" onerror="this.style.opacity='0.3'">
           <div class="ex-video-play"></div>
         </a>
-        <a class="ex-video-bar" onclick="openYT('0t8JcuQ45VA')" style="cursor:pointer;">
+        <a class="ex-video-bar" onclick="openYT('NyW2fT2gQhM')" style="cursor:pointer;">
           <div class="ex-video-yt-icon"></div>
           <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Incline Dumbbell Hammer Curl Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Hammer Curls — Form Tips & Do's/Don'ts<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
             <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
           </div>
           <div class="ex-video-arrow">▶</div>
@@ -2519,7 +2509,133 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
 
-    <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
+        <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C4</div><div class="wname">DB Shrugs</div><div class="wmeta">4×15–20</div><button class="ex-tick" id="tick-db_shrugs" onclick="event.stopPropagation();toggleExDone('DB Shrugs')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div class="ex-video-card">
+          <a class="ex-video-thumb" onclick="openYT('XdpVMxwRxOk')" style="cursor:pointer;">
+            <img src="https://img.youtube.com/vi/XdpVMxwRxOk/hqdefault.jpg" alt="DB Shrug Form" loading="lazy" onerror="this.style.opacity='0.3'">
+            <div class="ex-video-play"></div>
+          </a>
+          <a class="ex-video-bar" onclick="openYT('XdpVMxwRxOk')" style="cursor:pointer;">
+            <div class="ex-video-yt-icon"></div>
+            <div class="ex-video-title">
+              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">DB Shrug Form — Build Traps<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
+            </div>
+            <div class="ex-video-arrow">▶</div>
+          </a>
+        </div>
+        <p class="wtip"><strong style="color:var(--accent)">Tom Hardy's defining feature is trap thickness.</strong> Heavy DBs, full shrug to ear level, 1 second hold at top, slow descent. High reps build the dense trap look. Do NOT roll your shoulders — straight up and down. <span style="display:none;color:#C8102E;">⚡ 30-MIN: Paired with Hammer Curl — shrug then curl, opposite muscles.</span></p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×15 moderate — feel the hold</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">4×12 heavy — add weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">4×10 very heavy — PR focus</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-db_shrugs">
+          <div class="ex-weight-label">Track weight (per DB)</div>
+          <div class="ex-weight-pr" id="wl-pr-db_shrugs"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-db_shrugs" placeholder="Enter kg per DB" min="0" max="200" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('DB Shrugs')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('DB Shrugs')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-db_shrugs"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D1</div><div class="wname">Wrist Curl</div><div class="wmeta">3×15–20</div><button class="ex-tick" id="tick-wrist_curl" onclick="event.stopPropagation();toggleExDone('Wrist Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div class="ex-video-card">
+          <a class="ex-video-thumb" onclick="openYT('0T5V7FZQb-w')" style="cursor:pointer;">
+            <img src="https://img.youtube.com/vi/0T5V7FZQb-w/hqdefault.jpg" alt="Wrist Curls & Extensions Superset" loading="lazy" onerror="this.style.opacity='0.3'">
+            <div class="ex-video-play"></div>
+          </a>
+          <a class="ex-video-bar" onclick="openYT('0T5V7FZQb-w')" style="cursor:pointer;">
+            <div class="ex-video-yt-icon"></div>
+            <div class="ex-video-title">
+              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Wrist Curls & Extensions Superset<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
+            </div>
+            <div class="ex-video-arrow">▶</div>
+          </a>
+        </div>
+        <p class="wtip">Sit on bench, forearms on thighs, palms up, bar or DB hanging off fingers. Curl wrist up fully, lower slowly. The flexor vein runs directly over this muscle — this is your single best vascularity exercise. High reps, controlled, full ROM.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×20 light — feel the pump</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×15 add weight</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×12–15 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-wrist_curl">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-wrist_curl"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-wrist_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Wrist Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Wrist Curl')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-wrist_curl"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D2</div><div class="wname">Reverse Barbell Curl</div><div class="wmeta">3×10–12</div><button class="ex-tick" id="tick-reverse_barbell_curl" onclick="event.stopPropagation();toggleExDone('Reverse Barbell Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div class="ex-video-card">
+          <a class="ex-video-thumb" onclick="openYT('2lCrNqH2uaA')" style="cursor:pointer;">
+            <img src="https://img.youtube.com/vi/2lCrNqH2uaA/hqdefault.jpg" alt="Reverse Barbell Curls | Forearms + Biceps" loading="lazy" onerror="this.style.opacity='0.3'">
+            <div class="ex-video-play"></div>
+          </a>
+          <a class="ex-video-bar" onclick="openYT('2lCrNqH2uaA')" style="cursor:pointer;">
+            <div class="ex-video-yt-icon"></div>
+            <div class="ex-video-title">
+              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Reverse Barbell Curls | Forearms + Biceps<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
+            </div>
+            <div class="ex-video-arrow">▶</div>
+          </a>
+        </div>
+        <p class="wtip">Overhand grip (palms down), strict form, full extension. Hits the brachioradialis — the thick muscle on top of the forearm that veins run over when you straighten your arm. Far more forearm stimulus than a standard curl. Keep elbows pinned.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×12 light — form focus</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×10 progressive</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×8–10 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-reverse_barbell_curl">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-reverse_barbell_curl"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-reverse_barbell_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Reverse Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Reverse Barbell Curl')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-reverse_barbell_curl"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D3</div><div class="wname">Plate Pinch Hold</div><div class="wmeta">3×30–45 sec</div><button class="ex-tick" id="tick-plate_pinch_hold" onclick="event.stopPropagation();toggleExDone('Plate Pinch Hold')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div class="ex-video-card">
+          <a class="ex-video-thumb" onclick="openYT('DRCSpntjwRw')" style="cursor:pointer;">
+            <img src="https://img.youtube.com/vi/DRCSpntjwRw/hqdefault.jpg" alt="Forearm Workout Using a Barbell" loading="lazy" onerror="this.style.opacity='0.3'">
+            <div class="ex-video-play"></div>
+          </a>
+          <a class="ex-video-bar" onclick="openYT('DRCSpntjwRw')" style="cursor:pointer;">
+            <div class="ex-video-yt-icon"></div>
+            <div class="ex-video-title">
+              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Forearm Workout Using a Barbell<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
+              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
+            </div>
+            <div class="ex-video-arrow">▶</div>
+          </a>
+        </div>
+        <p class="wtip">Pinch two 5kg plates together smooth-side out between thumb and fingers. Hold for 30–45 seconds each hand. Brutal on the finger flexors and forearm density. This is the grip work that makes forearms look thick and vascular even relaxed. No equipment needed beyond standard plates.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×30s 2×5kg plates</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.2 Wk5-8</span><span class="ex-prog-target">3×40s or heavier</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">Ph.3 Wk9-12</span><span class="ex-prog-target">3×45s + added weight</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-plate_pinch_hold">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-plate_pinch_hold"></div>
+          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" id="wl-input-plate_pinch_hold" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Plate Pinch Hold')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Plate Pinch Hold')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-plate_pinch_hold"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+<div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Session Notes</div>
       <textarea id="note-pull" placeholder="How did it feel? Any PRs? Anything tight or sore? Notes save automatically..." style="width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:DM Sans,sans-serif;font-size:14px;padding:10px 12px;outline:none;border-radius:8px;resize:none;min-height:80px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;" oninput="saveSessionNote('pull',this.value)"></textarea>
       <div style="font-size:10px;color:var(--grey);margin-top:4px;" id="note-status-pull"></div>
@@ -2798,27 +2914,27 @@ function toggleVideoPlayer(vid_id){
   <!-- Not connected state -->
   <div id="stravaConnect" style="display:block;">
     <div style="text-align:center;padding:24px 0 20px;">
-      <div style="width:64px;height:64px;background:#FC4C02;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+      <div style="width:64px;height:64px;background:#bbbbbb;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="white"/></svg>
       </div>
       <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:var(--white);margin-bottom:8px;">Connect Strava</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.7;max-width:280px;margin:0 auto;">Sync your runs, rides and cardio sessions directly into Ascend. Activities log automatically.</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;max-width:280px;margin:0 auto;">Sync your runs, rides and cardio sessions directly into Forge. Activities log automatically.</div>
     </div>
 
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px;">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-bottom:10px;">What syncs</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#FC4C02;">✓</span> Runs, rides, walks, swims</div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#FC4C02;">✓</span> Distance, duration, calories burned</div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#FC4C02;">✓</span> Auto-logs to your cardio tracker</div>
-        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#FC4C02;">✓</span> Last 10 activities imported on connect</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#bbbbbb;">✓</span> Runs, rides, walks, swims</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#bbbbbb;">✓</span> Distance, duration, calories burned</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#bbbbbb;">✓</span> Auto-logs to your cardio tracker</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mid);"><span style="color:#bbbbbb;">✓</span> Last 10 activities imported on connect</div>
       </div>
     </div>
 
-    <div style="background:rgba(252,76,2,0.07);border:1px solid rgba(252,76,2,0.25);border-radius:8px;padding:12px 14px;margin-bottom:20px;">
+    <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:12px 14px;margin-bottom:20px;">
       <div style="font-size:11px;color:var(--mid);line-height:1.6;">
         <strong style="color:var(--white);display:block;margin-bottom:4px;">How it works</strong>
-        Tap Connect below. You'll be redirected to Strava to approve access, then brought back to Ascend. Your data never leaves your device — the token is stored locally.
+        Tap Connect below. You'll be redirected to Strava to approve access, then brought back to Forge. Your data never leaves your device — the token is stored locally.
       </div>
     </div>
 
@@ -2829,7 +2945,7 @@ function toggleVideoPlayer(vid_id){
       <div style="font-size:10px;color:var(--grey);">One-time setup. We never see your Strava data.</div>
     </div>
 
-    <button onclick="stravaConnect()" style="width:100%;padding:14px;background:#FC4C02;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;-webkit-tap-highlight-color:transparent;">
+    <button onclick="stravaConnect()" style="width:100%;padding:14px;background:#bbbbbb;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;-webkit-tap-highlight-color:transparent;">
       <svg width="18" height="18" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="white"/></svg>
       Connect with Strava
     </button>
@@ -2840,16 +2956,16 @@ function toggleVideoPlayer(vid_id){
 
     <!-- Athlete card -->
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
-      <div style="height:3px;background:#FC4C02;"></div>
+      <div style="height:3px;background:#bbbbbb;"></div>
       <div style="padding:16px;display:flex;align-items:center;gap:14px;">
-        <div style="width:48px;height:48px;border-radius:50%;background:rgba(252,76,2,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;" id="stravaAvatarWrap">
-          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="#FC4C02"/></svg>
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;" id="stravaAvatarWrap">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0 5 13.828h4.172" fill="#bbbbbb"/></svg>
         </div>
         <div style="flex:1;">
           <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--white);" id="stravaAthleteName">Connected</div>
-          <div style="font-size:11px;color:#FC4C02;margin-top:2px;">● Strava connected</div>
+          <div style="font-size:11px;color:#bbbbbb;margin-top:2px;">● Strava connected</div>
         </div>
-        <button onclick="stravaSync()" id="stravaSyncBtn" style="background:rgba(252,76,2,0.12);border:1px solid rgba(252,76,2,0.3);color:#FC4C02;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:7px 12px;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;">Sync</button>
+        <button onclick="stravaSync()" id="stravaSyncBtn" style="background:rgba(200,16,46,0.12);border:1px solid rgba(255,255,255,0.3);color:#bbbbbb;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:7px 12px;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;">Sync</button>
       </div>
     </div>
 
@@ -2895,8 +3011,8 @@ function toggleVideoPlayer(vid_id){
     <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,700 kcal · Rest day ~2,400 kcal</div>
   </div>
 
-  <div style="background:rgba(14,165,233,0.07);border:1px solid rgba(14,165,233,0.25);padding:13px 14px;margin-bottom:14px;">
-    <div style="background:rgba(14,165,233,0.07);border:1px solid rgba(14,165,233,0.25);padding:13px 14px;margin-bottom:14px;">
+  <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(255,255,255,0.25);padding:13px 14px;margin-bottom:14px;">
+    <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(255,255,255,0.25);padding:13px 14px;margin-bottom:14px;">
     <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ Recomposition Strategy · 101kg</div>
     <div style="font-size:11px;color:var(--mid);line-height:1.8;">
       At your stats a traditional bulk is unnecessary — you have enough stored energy to fuel muscle growth while in a small deficit. This is called <strong style="color:var(--white)">body recomposition</strong>. Expect to lose ~0.5–1kg per week while gaining strength. The scale might barely move for weeks — that's muscle replacing fat. <strong style="color:var(--white)">Judge progress by the mirror and your lifts, not the number.</strong>
@@ -3546,8 +3662,12 @@ function toggleVideoPlayer(vid_id){
 
   </div>
 
-  <!-- WEEKLY CALENDAR -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">12-Week Calendar</div><div class="div-line"></div></div>
+  <!-- MONTHLY CALENDAR -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Session Calendar</div><div class="div-line"></div></div>
+  <div id="monthCalendar" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:20px;"></div>
+
+  <!-- WEEKLY GRID -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">12-Week Overview</div><div class="div-line"></div></div>
   <div id="weeklyTracker"></div>
 
 
@@ -3638,7 +3758,7 @@ function toggleVideoPlayer(vid_id){
       </div>
       <div class="chart-legend">
         <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Actual weight</div>
-        <div class="legend-item"><div class="legend-dot" style="background:rgba(76,175,125,0.6)"></div>Trend</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.6)"></div>Trend</div>
       </div>
     </div>
 
@@ -3859,7 +3979,7 @@ function toggleVideoPlayer(vid_id){
         <video id="offScanVideo" style="width:100%;display:block;max-height:240px;object-fit:cover;" playsinline muted></video>
         <!-- Aiming guide -->
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
-          <div style="width:70%;height:80px;border:2px solid rgba(14,165,233,0.8);border-radius:6px;box-shadow:0 0 0 2000px rgba(0,0,0,0.35);"></div>
+          <div style="width:70%;height:80px;border:2px solid rgba(255,255,255,0.8);border-radius:6px;box-shadow:0 0 0 2000px rgba(0,0,0,0.35);"></div>
         </div>
       </div>
       <div id="offScanStatus" style="padding:10px 14px;font-size:11px;color:#aaa;background:rgba(0,0,0,0.8);text-align:center;">Scanning…</div>
@@ -3935,14 +4055,14 @@ function toggleVideoPlayer(vid_id){
   <div class="sec-label">Planning</div>
   <div class="sec-title">AFTER WEEK 12</div>
   <div style="padding:16px 0;">
-      <div style="background:rgba(14,165,233,0.07);border:1px solid rgba(14,165,233,0.2);border-radius:10px;padding:14px;margin-bottom:12px;">
+      <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:14px;margin-bottom:12px;">
         <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">🎯 Pull-Up Goal</div>
         <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">First bodyweight pull-up by week 12</div>
         <div style="font-size:11px;color:var(--mid);line-height:1.7;">By the end of this programme your lat strength from pulldowns, rows and assisted pull-ups — combined with ~10kg of bodyweight lost — puts you in a strong position for your first clean rep. Muscle-ups are the next goal after you can hit 5–10 consecutive pull-ups.</div>
       </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:12px;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Phase 2 · Strength Block</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After 12 weeks of recomp, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload. You're 11kg from your 85kg lean target. At 85kg/10% BF you'll be genuinely lean with full vascularity.</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After 12 weeks of recomp, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload. You're 11kg from your 85kg · 10% BF. At 85kg · 10% BF you'll be genuinely lean with full vascularity.</div>
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Assess at Week 12</div>
@@ -3957,7 +4077,7 @@ function toggleRecipe(c){c.classList.toggle('open');}
 
 // ── TABS ─────────────────────────────────────────────────────────────────────
 
-var WL_KEY='ascend_weights_v1';
+var WL_KEY='forge_weights_v1';
 function getWeightLog(){return JSON.parse(localStorage.getItem(WL_KEY)||'{}');}
 function saveWeightLog(log){localStorage.setItem(WL_KEY,JSON.stringify(log));  try{document.dispatchEvent(new Event('weightLogged'));}catch(e){}
 }
@@ -3970,7 +4090,11 @@ function logExerciseWeight(name){
   log[key]=log[key].filter(function(e){return e.date!==today;});
   log[key].push({kg:val,date:today,ts:Date.now()});
   if(log[key].length>10)log[key]=log[key].slice(-10);
-  saveWeightLog(log);input.value='';renderExerciseWeightLog(name);showWtToast(name,val);
+  saveWeightLog(log);input.value='';renderExerciseWeightLog(name);
+  var allE=log[key]||[];var prevPR=allE.length>1?Math.max.apply(null,allE.slice(0,-1).map(function(e){return e.kg;})):0;
+  if(val>prevPR&&prevPR>0&&typeof showToast==='function'){showToast('🏆 NEW PR! '+val+'kg on '+name+'. Next: '+(val+2.5)+'kg',4000);}
+  else if(val===prevPR&&prevPR>0&&typeof showToast==='function'){showToast('✓ PR matched! Try '+(val+2.5)+'kg next session',3500);}
+  else{showWtToast(name,val);}
 }
 function renderExerciseWeightLog(name){
   var scrollY=window.scrollY;
@@ -3981,7 +4105,7 @@ function renderExerciseWeightLog(name){
 
   window.scrollTo(0,scrollY);
 }
-function showWtToast(name,kg){var t=document.createElement('div');t.style.cssText="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#4caf7d;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;z-index:9999;white-space:nowrap;";t.textContent='✓ '+kg+'kg logged for '+name;document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';t.style.transition='opacity 0.3s';setTimeout(function(){t.remove();},300);},2000);}
+function showWtToast(name,kg){var t=document.createElement('div');t.style.cssText="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#aaaaaa;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;z-index:9999;white-space:nowrap;";t.textContent='✓ '+kg+'kg logged for '+name;document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';t.style.transition='opacity 0.3s';setTimeout(function(){t.remove();},300);},2000);}
 function initWeightLogs(){
   // Restore weight logs using wname elements
   document.querySelectorAll('.wname').forEach(function(el){
@@ -4774,7 +4898,7 @@ function renderCalWeekSummary(){
   let barsHtml = '<div style="display:flex;gap:4px;align-items:flex-end;height:60px;margin-bottom:6px;">';
   days.slice().reverse().forEach(d => {
     const h = Math.max(4, Math.round((d.kcal/maxKcal)*56));
-    const col = d.kcal > 2800 ? '#ff6b35' : d.kcal > 2400 ? 'var(--accent)' : '#4caf7d';
+    const col = d.kcal > 2800 ? '#ff6b35' : d.kcal > 2400 ? 'var(--accent)' : '#aaaaaa';
     barsHtml += `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
       <div style="width:100%;height:${h}px;background:${col};border-radius:2px 2px 0 0"></div>
       <div style="font-size:8px;color:var(--grey)">${d.label}</div>
@@ -4824,8 +4948,12 @@ window.addEventListener('DOMContentLoaded',function(){
   try{if(typeof initTracking==='function')initTracking();}catch(e){}
   try{renderExercisePRsGrid();}catch(e){}
   try{renderHomePRs();}catch(e){}
+  try{buildMonthCalendar();}catch(e){}
+  try{buildHomeMiniCal();}catch(e){}
+  try{updateHomeStats();}catch(e){}
   try{loadSessionNotes();}catch(e){}
   try{init30MinMode();}catch(e){}
+  try{initMotivation();}catch(e){}
   try{initWorkoutView();}catch(e){}
   try{buildTracker();}catch(e){}
   try{renderTodayCard();}catch(e){}
@@ -4912,7 +5040,7 @@ function renderWeightChart(){
   // Trend line (simple moving average)
   if(entries.length >= 2){
     let tPts = entries.map(e=>`${xS(e.w)},${yS(e.v)}`).join(' ');
-    out += `<polyline points="${tPts}" fill="none" stroke="rgba(76,175,125,0.5)" stroke-width="2" stroke-dasharray="4,3"/>`;
+    out += `<polyline points="${tPts}" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-dasharray="4,3"/>`;
   }
   // Actual line
   if(entries.length >= 2){
@@ -5182,8 +5310,8 @@ if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.s
 <script>
 
 // ══ STRAVA INTEGRATION ═══════════════════════════════════════════
-const STRAVA_KEY     = 'ascend_strava_v1';
-const STRAVA_ID_KEY  = 'ascend_strava_client_id';
+const STRAVA_KEY     = 'forge_strava_v1';
+const STRAVA_ID_KEY  = 'forge_strava_client_id';
 
 function stravaGetData(){ return JSON.parse(localStorage.getItem(STRAVA_KEY)||'null'); }
 function stravaSetData(d){ localStorage.setItem(STRAVA_KEY, JSON.stringify(d)); }
@@ -5195,10 +5323,10 @@ function stravaIcon(sport){
   return map[sport] || '🏃';
 }
 function sportColor(sport){
-  if(/Run|Walk|Hike/.test(sport)) return 'rgba(252,76,2,0.15)';
-  if(/Ride|Bike/.test(sport)) return 'rgba(59,130,246,0.15)';
-  if(/Swim/.test(sport)) return 'rgba(14,165,233,0.15)';
-  return 'rgba(76,175,125,0.15)';
+  if(/Run|Walk|Hike/.test(sport)) return 'rgba(255,255,255,0.15)';
+  if(/Ride|Bike/.test(sport)) return 'rgba(255,255,255,0.15)';
+  if(/Swim/.test(sport)) return 'rgba(255,255,255,0.15)';
+  return 'rgba(255,255,255,0.15)';
 }
 
 // Connect — redirect to Strava OAuth
@@ -5246,15 +5374,15 @@ function stravaShowTokenHelper(code){
   const connectDiv = document.getElementById('stravaConnect');
   if(connectDiv){
     connectDiv.innerHTML = `
-      <div style="background:rgba(252,76,2,0.08);border:1px solid rgba(252,76,2,0.3);border-radius:10px;padding:16px;margin-bottom:14px;">
+      <div style="background:rgba(200,16,46,0.08);border:1px solid rgba(255,255,255,0.3);border-radius:10px;padding:16px;margin-bottom:14px;">
         <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;">✓ Strava authorised</div>
         <div style="font-size:12px;color:var(--mid);line-height:1.7;">Now paste your <strong style="color:var(--white)">Access Token</strong> below. Get it from:<br>
-        <strong style="color:#FC4C02">developers.strava.com → Your App → "My API Application"</strong><br>
+        <strong style="color:#bbbbbb">developers.strava.com → Your App → "My API Application"</strong><br>
         Copy the access token shown there.</div>
       </div>
       <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Access Token</div>
       <input type="text" id="stravaTokenInput" placeholder="Paste your access token here" style="width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;padding:11px 14px;outline:none;border-radius:6px;margin-bottom:10px;box-sizing:border-box;">
-      <button onclick="stravaActivate()" style="width:100%;padding:13px;background:#FC4C02;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:7px;">Activate Strava</button>
+      <button onclick="stravaActivate()" style="width:100%;padding:13px;background:#bbbbbb;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:7px;">Activate Strava</button>
     `;
   }
 }
@@ -5307,7 +5435,7 @@ async function stravaFetchActivities(token){
     const updated = {...stravaGetData(), activities, lastSync: Date.now()};
     stravaSetData(updated);
     
-    // Log cardio sessions to Ascend
+    // Log cardio sessions to Forge
     stravaLogToCardio(activities);
     return activities;
   } catch(e){
@@ -5316,7 +5444,7 @@ async function stravaFetchActivities(token){
   }
 }
 
-// Log strava activities to Ascend cardio tracker
+// Log strava activities to Forge cardio tracker
 function stravaLogToCardio(activities){
   if(!activities || !activities.length) return;
   const CARDIO_KEY = 'apx_cardio_v1';
@@ -5435,7 +5563,7 @@ function stravaUpdateNav(connected){
   const btnText = document.getElementById('stravaNavBtnText');
   if(badge) badge.style.display = connected ? 'block' : 'none';
   if(status) status.textContent = connected ? '● Connected' : 'Connect your activities';
-  if(status) status.style.color = connected ? '#FC4C02' : '';
+  if(status) status.style.color = connected ? '#bbbbbb' : '';
   if(btnText) btnText.textContent = connected ? 'View Strava' : 'Connect Strava';
   var avatarWrap = document.getElementById('topbarAvatar');
   var avatarImg  = document.getElementById('topbarAvatarImg');
@@ -5608,7 +5736,7 @@ async function offFetchBarcode(code){
     // Show confirm card — one tap logs it
     el.innerHTML='';
     var card=document.createElement('div');
-    card.style.cssText='background:var(--card);border:1px solid rgba(14,165,233,0.35);border-radius:10px;overflow:hidden;';
+    card.style.cssText='background:var(--card);border:1px solid rgba(255,255,255,0.35);border-radius:10px;overflow:hidden;';
     card.innerHTML='<div style="height:3px;background:var(--accent);"></div>'
       +'<div style="padding:14px;">'
       +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">✓ Barcode matched</div>'
@@ -5661,7 +5789,7 @@ async function offFetchBarcode(code){
         if(fp2)fp2.value=fProt;if(fc2)fc2.value=fCarb;if(ff2)ff2.value=fFat;
         if(typeof calAddEntry==='function')calAddEntry();
       }
-      el.innerHTML='<div style="font-size:13px;font-weight:700;color:#4caf7d;padding:10px 0;">✓ '+nm+' logged — '+fKcal+' kcal</div>';
+      el.innerHTML='<div style="font-size:13px;font-weight:700;color:#aaaaaa;padding:10px 0;">✓ '+nm+' logged — '+fKcal+' kcal</div>';
       setTimeout(function(){if(el)el.innerHTML='';},3000);
     });
   }catch(e){
@@ -5739,7 +5867,7 @@ function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
   document.getElementById('offSearchInput').value='';
   offStopScan();
   var el=document.getElementById('offResults');
-  el.innerHTML='<div style="font-size:12px;color:#4caf7d;padding:8px 0;">✓ '+label+' logged — '+kcal+' kcal</div>';
+  el.innerHTML='<div style="font-size:12px;color:#aaaaaa;padding:8px 0;">✓ '+label+' logged — '+kcal+' kcal</div>';
   setTimeout(function(){if(el)el.innerHTML='';},3000);
 }
 </script>
@@ -5749,9 +5877,9 @@ function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
 // ── DATA BACKUP & RESTORE ────────────────────────────────────────
 function exportData(){
   const keys = [
-    'apx_tracker','apx_calories_v1','apx_cardio_v1','ascend_weights_v1',
+    'apx_tracker','apx_calories_v1','apx_cardio_v1','forge_weights_v1',
     'apx_water_v1','apx_meal','apx_shop','apx_time','apx_program_start',
-    'ascend_strava_v1','ascend_strava_client_id'
+    'forge_strava_v1','forge_strava_client_id'
   ];
   const backup = {version:1, exported: new Date().toISOString(), data:{}};
   keys.forEach(k => {
@@ -5762,7 +5890,7 @@ function exportData(){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'ascend-backup-'+new Date().toISOString().slice(0,10)+'.json';
+  a.download = 'forge-backup-'+new Date().toISOString().slice(0,10)+'.json';
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -5871,7 +5999,7 @@ function logCheckin(weight, bf){
   // Bridge to body tracking weight chart
   if(weight){
     try{
-      var TRK_KEY = 'ascend_tracking_v1';
+      var TRK_KEY = 'forge_tracking_v1';
       var td = JSON.parse(localStorage.getItem(TRK_KEY)||'{"weights":{},"lifts":{},"measurements":{},"notes":{}}');
       var week = typeof getCurrentWeek==='function' ? getCurrentWeek() : 1;
       td.weights[week] = weight;
@@ -5918,7 +6046,7 @@ function renderCheckinBanner(){
 
 function buildCheckinBanner(type, days, last){
   if(type === 'first'){
-    return '<div style="background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.4);border-radius:10px;padding:14px;">'
+    return '<div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.4);border-radius:10px;padding:14px;">'
       +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">📊 Log First Check-In</div>'
       +'<div style="font-size:12px;color:var(--mid);margin-bottom:10px;">Log your current weight and body fat % from the gym scale to start tracking your progress properly.</div>'
       +'<div style="display:flex;gap:8px;">'
@@ -5929,7 +6057,7 @@ function buildCheckinBanner(type, days, last){
       +'</div>';
   }
   var overdue = days - 14;
-  return '<div style="background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.4);border-radius:10px;padding:14px;">'
+  return '<div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.4);border-radius:10px;padding:14px;">'
     +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">⏰ Check-In Due'+(overdue>0?' ('+overdue+'d overdue)':'')+'</div>'
     +'<div style="font-size:12px;color:var(--mid);margin-bottom:4px;">Last check-in: <strong style="color:var(--white);">'+last.date+'</strong>'
     +(last.weight?' · '+last.weight+'kg':'')+(last.bf?' · '+last.bf+'% BF':'')+'</div>'
@@ -5966,8 +6094,8 @@ function buildCheckinStatus(days, last, history){
     +'<div style="height:100%;width:'+(days/14*100)+'%;background:var(--accent);border-radius:2px;transition:width 0.3s;"></div>'
     +'</div>'
     +'<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);">'
-    +'<span>Last: <strong style="color:var(--white);">'+(last.weight||'—')+'kg</strong>'+(diffStr?' <span style="color:'+(diff<0?'#4caf7d':'var(--accent)')+';">'+diffStr+'</span>':'')+' · '+(last.bf||'—')+'% BF</span>'
-    +(nextMilestone?'<span style="color:var(--accent);">'+kmToGo+'kg to '+nextMilestone.label+'</span>':'<span style="color:#4caf7d;">All milestones hit! 🏆</span>')
+    +'<span>Last: <strong style="color:var(--white);">'+(last.weight||'—')+'kg</strong>'+(diffStr?' <span style="color:'+(diff<0?'#aaaaaa':'var(--accent)')+';">'+diffStr+'</span>':'')+' · '+(last.bf||'—')+'% BF</span>'
+    +(nextMilestone?'<span style="color:var(--accent);">'+kmToGo+'kg to '+nextMilestone.label+'</span>':'<span style="color:#aaaaaa;">All milestones hit! 🏆</span>')
     +'</div>'
     +'</div>';
 }
@@ -5995,9 +6123,13 @@ function submitCheckin(){
 // Log initial check-in from real gym scale data
 function initCheckin(){
   var history = getCheckinHistory();
-  if(history.length === 0){
+  // Update seed if our hardcoded dates are newer than stored
+  var latestSeedDate = '2026-08-24';
+  var needsUpdate = !history.length || history[0].date < latestSeedDate;
+  if(history.length === 0 || needsUpdate){
     // Pre-load with the two real readings we already have
     var seed = [
+      {date:'2026-08-24', weight:98.7, bf:19.9, ts: new Date('2026-08-24').getTime()},
       {date:'2026-08-14', weight:97.7, bf:19.9, ts: new Date('2026-08-14').getTime()},
       {date:'2026-07-27', weight:99.2, bf:20.8, ts: new Date('2026-07-27').getTime()},
       {date:'2026-07-18', weight:101.0, bf:21.0, ts: new Date('2026-07-18').getTime()},
@@ -6005,12 +6137,13 @@ function initCheckin(){
     ];
     // Also seed body tracking weight chart
     try{
-      var TRK_KEY_SEED = 'ascend_tracking_v1';
+      var TRK_KEY_SEED = 'forge_tracking_v1';
       var tdSeed = JSON.parse(localStorage.getItem(TRK_KEY_SEED)||'{"weights":{},"lifts":{},"measurements":{},"notes":{}}');
       if(!tdSeed.weights[3]) tdSeed.weights[3] = 102.0;
       if(!tdSeed.weights[4]) tdSeed.weights[4] = 101.0;
       if(!tdSeed.weights[5]) tdSeed.weights[5] = 99.2;
       if(!tdSeed.weights[6]) tdSeed.weights[6] = 97.7;
+      if(!tdSeed.weights[7]) tdSeed.weights[7] = 98.7;
       localStorage.setItem(TRK_KEY_SEED, JSON.stringify(tdSeed));
     }catch(e){}
     localStorage.setItem(CHECKIN_KEY, JSON.stringify(seed));
@@ -6097,7 +6230,7 @@ function applyWorkoutView(mode){
     if(card && dayLabel){
       if(todayType === 'rest'){
         card.innerHTML = '<div style="background:var(--surface);border-radius:10px;overflow:hidden;">'
-          +'<div style="height:3px;background:linear-gradient(90deg,#4caf7d,#38bdf8);"></div>'
+          +'<div style="height:3px;background:linear-gradient(90deg,#aaaaaa,#dddddd);"></div>'
           +'<div style="padding:14px;">'
           +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">'
           +'<div style="font-size:32px;">😴</div>'
@@ -6110,7 +6243,7 @@ function applyWorkoutView(mode){
           +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">④</span><span><strong style="color:var(--white);">Magnesium before bed</strong> — take your 2 caps tonight. Cortisol blunting and deep sleep.</span></div>'
           +'</div></div></div>';
       } else {
-        card.innerHTML = '<div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.2);border-radius:10px;padding:12px 14px;">'
+        card.innerHTML = '<div style="background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:12px 14px;">'
           +'<div style="display:flex;align-items:center;gap:10px;">'
           +'<div style="font-size:28px;">'+dayLabel.icon+'</div>'
           +'<div>'
@@ -6206,12 +6339,34 @@ function miniReset(){
 var DONE_KEY = 'apx_done_v1';
 
 function getDoneData(){
-  var d = JSON.parse(localStorage.getItem(DONE_KEY)||'{}');
+  // Returns today's done object {key: bool}
+  var all = JSON.parse(localStorage.getItem(DONE_KEY)||'{}');
   var today = new Date().toISOString().slice(0,10);
-  if(d.date !== today) return {date:today, done:{}};
-  return d;
+  // Migrate old format {date, done} to new date-keyed format
+  if(all.date && all.done){
+    var migrated = {};
+    migrated[all.date] = all.done;
+    localStorage.setItem(DONE_KEY, JSON.stringify(migrated));
+    all = migrated;
+  }
+  return {date: today, done: all[today] || {}};
 }
-function saveDoneData(d){ localStorage.setItem(DONE_KEY, JSON.stringify(d)); }
+function getAllDoneData(){
+  var all = JSON.parse(localStorage.getItem(DONE_KEY)||'{}');
+  if(all.date && all.done){
+    var migrated = {};
+    migrated[all.date] = all.done;
+    localStorage.setItem(DONE_KEY, JSON.stringify(migrated));
+    return migrated;
+  }
+  return all;
+}
+function saveDoneData(d){
+  var all = getAllDoneData();
+  var today = new Date().toISOString().slice(0,10);
+  all[today] = d.done;
+  localStorage.setItem(DONE_KEY, JSON.stringify(all));
+}
 
 function toggleExDone(name){
   var key = name.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
@@ -6232,8 +6387,8 @@ function renderDoneState(){
     if(wcard) wcard.classList.toggle('done-card',isDone);
   });
   var dayMap={
-    'push-day':['barbell_bench_press','incline_db_press','overhead_press','cable_lateral_raise','cable_fly','cable_tricep_pushdown','overhead_tricep_extension'],
-    'pull-day':['chest_supported_t_bar_row','barbell_row','lat_pulldown','assisted_pull_up','cable_face_pull','barbell_curl','hammer_curl'],
+    'push-day':['barbell_bench_press','incline_db_press','overhead_press','cable_lateral_raise','cable_fly','cable_tricep_pushdown','overhead_tricep_extension','dips'],
+    'pull-day':['chest_supported_t_bar_row','barbell_row','lat_pulldown','assisted_pull_up','cable_face_pull','barbell_curl','hammer_curl','db_shrugs','wrist_curl','reverse_barbell_curl','plate_pinch_hold'],
     'leg-day':['barbell_squat','smith_machine_rdl','leg_press','bulgarian_split_squat','leg_curl','standing_calf_raise','hanging_leg_raise']
   };
   Object.keys(dayMap).forEach(function(day){
@@ -6253,12 +6408,12 @@ function requestNotifPermission(){
 
 function fireTimerNotification(){
   document.title='REST DONE \u2014 GO! \ud83d\udcaa';
-  setTimeout(function(){ document.title='ASCEND'; }, 4000);
+  setTimeout(function(){ document.title='FORGE'; }, 4000);
   if('Notification' in window && Notification.permission==='granted'){
     var n=new Notification('Rest Over \u2014 Go! \ud83d\udcaa',{
       body:'Time for the next set.',
       icon:'/ApexPhysique-Claude/icon-192.png',
-      tag:'ascend-timer',
+      tag:'forge-timer',
       renotify:true
     });
     setTimeout(function(){ n.close(); }, 5000);
@@ -6273,7 +6428,7 @@ function fireTimerNotification(){
 function exKey2(name){ return name.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,''); }
 
 function getAllExercisePRs(){
-  var WL_KEY = 'ascend_weights_v1';
+  var WL_KEY = 'forge_weights_v1';
   var log = JSON.parse(localStorage.getItem(WL_KEY)||'{}');
   var exercises = [
     'Barbell Bench Press','Incline DB Press','Overhead Press','Cable Lateral Raise',
@@ -6305,7 +6460,7 @@ function buildSparkline(vals, w, h){
     var y=Math.round(h-((v-min)/range)*h);
     return x+','+y;
   });
-  var trend = vals[vals.length-1] >= vals[0] ? 'var(--accent)' : '#4caf7d';
+  var trend = vals[vals.length-1] >= vals[0] ? 'var(--accent)' : '#aaaaaa';
   return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" style="display:block;">'
     +'<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+trend+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>'
     +'</svg>';
@@ -6322,7 +6477,7 @@ function renderExercisePRsGrid(){
   grid.innerHTML = prs.map(function(p){
     var spark = buildSparkline(p.last5, 60, 24);
     var trend = p.last5.length>1 ? (p.last5[p.last5.length-1]>=p.last5[0]?'▲':'▼') : '';
-    var tcolor = p.last5.length>1 ? (p.last5[p.last5.length-1]>=p.last5[0]?'var(--accent)':'#4caf7d') : '';
+    var tcolor = p.last5.length>1 ? (p.last5[p.last5.length-1]>=p.last5[0]?'var(--accent)':'#aaaaaa') : '';
     return '<div style="background:var(--surface);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:12px;">'
       +'<div style="flex:1;min-width:0;">'
       +'<div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+p.name+'</div>'
@@ -6459,5 +6614,333 @@ function init30MinMode(){
 }
 
 </script>
+<script>
+
+// ── MOTIVATION & ILLNESS SYSTEM ──────────────────────────────────
+var MOTIV_KEY = 'apx_motiv_v1';
+
+var MOTIV_CONTENT = {
+  normal: '<div style="font-size:12px;color:var(--mid);">You\'re feeling good. Keep going — you\'re 13.3kg down and building the Tom Hardy physique. Stay consistent.</div>',
+
+  low: '<div style="display:flex;flex-direction:column;gap:10px;">'
+    + '<div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Motivation is temporary. Results are permanent.</div>'
+    + '<div style="font-size:12px;color:var(--mid);line-height:1.7;">You\'ve lost 13.3kg. Sub-100kg. Sub-20% BF. Shoulders wider. People are noticing. <strong style="color:var(--white);">That didn\'t happen by accident — it happened because you showed up.</strong></div>'
+    + '<div style="background:var(--surface);border-radius:8px;padding:10px 12px;">'
+    + '<div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">When motivation is low — do this</div>'
+    + '<div style="display:flex;flex-direction:column;gap:6px;">'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">①</span><span><strong style="color:var(--white);">Just get there.</strong> Don\'t plan a session. Just walk to the gym. The hardest part is leaving.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">②</span><span><strong style="color:var(--white);">Use ⚡ 30-Min mode.</strong> 3 supersets, done. You will always feel better after than before.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">③</span><span><strong style="color:var(--white);">Look at your progress.</strong> 110kg → 98.7kg. That\'s real. The person who started this programme earned every kg.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">④</span><span><strong style="color:var(--white);">Week 7 is the hardest.</strong> This is exactly when most people quit. The ones who don\'t are the ones who look completely different in 12 weeks.</span></div>'
+    + '</div></div>'
+    + '<div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:10px 12px;border-radius:0 6px 6px 0;">'
+    + '<div style="font-size:11px;color:var(--mid);line-height:1.6;"><strong style="color:var(--white);">Remember why you started.</strong> You wanted to look like Tom Hardy in Warrior. You wanted to be lean. You wanted to feel strong. None of that changed — only your energy today did.</div>'
+    + '</div></div>',
+
+  ill: '<div style="display:flex;flex-direction:column;gap:10px;">'
+    + '<div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Rest. Recover. Come back stronger.</div>'
+    + '<div style="font-size:12px;color:var(--mid);line-height:1.7;">Training while ill is counterproductive — your immune system needs the resources your muscles would use. <strong style="color:var(--white);">One week off will not undo 7 weeks of work.</strong> Your muscle memory is permanent.</div>'
+    + '<div style="background:var(--surface);border-radius:8px;padding:10px 12px;">'
+    + '<div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#aaaaaa;margin-bottom:6px;">What to do while ill</div>'
+    + '<div style="display:flex;flex-direction:column;gap:6px;">'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:#aaaaaa;">①</span><span><strong style="color:var(--white);">Keep protein high.</strong> 200g+ protein prevents muscle loss even without training. Shakes count.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:#aaaaaa;">②</span><span><strong style="color:var(--white);">Sleep as much as possible.</strong> GH peaks during deep sleep. This is passive recovery and passive fat loss.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:#aaaaaa;">③</span><span><strong style="color:var(--white);">Stay hydrated.</strong> 11 glasses minimum. Dehydration makes illness worse and slows recovery.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:#aaaaaa;">④</span><span><strong style="color:var(--white);">Take your supplements.</strong> Vitamin D3 and Omega 3 both support immune function. Magnesium helps sleep quality.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:#aaaaaa;">⑤</span><span><strong style="color:var(--white);">Light walk only if symptom-free below the neck.</strong> Runny nose = fine to walk. Chest/fever = complete rest.</span></div>'
+    + '</div></div>'
+    + '<div style="background:rgba(200,16,46,0.06);border-left:3px solid #aaaaaa;padding:10px 12px;border-radius:0 6px 6px 0;">'
+    + '<div style="font-size:11px;color:var(--mid);line-height:1.6;"><strong style="color:var(--white);">Your last rest week you still lost 1.5kg</strong> and came back gaining 0.8kg of lean mass. Rest works. Trust it.</div>'
+    + '</div></div>'
+};
+
+function setMotivationMode(mode){
+  localStorage.setItem(MOTIV_KEY, mode);
+  renderMotivationCard(mode);
+  // Update button styles
+  ['low','ill','normal'].forEach(function(m){
+    var btn = document.getElementById('btnMotiv' + m.charAt(0).toUpperCase() + m.slice(1));
+    if(!btn) return;
+    var active = m === mode;
+    var colors = {low:'var(--accent)', ill:'#aaaaaa', normal:'#9a9a9a'};
+    btn.style.background = active ? 'rgba(255,255,255,0.15)' : 'var(--surface)';
+    btn.style.borderColor = active ? colors[m] : 'var(--border)';
+    btn.style.color       = active ? colors[m] : 'var(--mid)';
+  });
+}
+
+function renderMotivationCard(mode){
+  var el = document.getElementById('motivationContent');
+  if(!el) return;
+  el.innerHTML = MOTIV_CONTENT[mode] || MOTIV_CONTENT['normal'];
+}
+
+function initMotivation(){
+  var saved = localStorage.getItem(MOTIV_KEY) || 'low';
+  setMotivationMode(saved);
+}
+
+</script>
+<script>
+
+// ── MONTHLY SESSION CALENDAR ─────────────────────────────────────
+var _calYear  = new Date().getFullYear();
+var _calMonth = new Date().getMonth(); // 0-indexed
+
+// Day type by JS getDay(): 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
+var CAL_DAY_TYPE = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'};
+var CAL_DAY_COLOUR = {push:'var(--accent)',pull:'#aaaaaa',legs:'#888888',rest:'var(--border2)'};
+var CAL_DAY_LABEL  = {push:'Push',pull:'Pull',legs:'Legs',rest:'Rest'};
+
+function buildMonthCalendar(){
+  var el = document.getElementById('monthCalendar');
+  if(!el) return;
+
+  var now   = new Date();
+  var year  = _calYear;
+  var month = _calMonth;
+  var monthName = ['January','February','March','April','May','June',
+    'July','August','September','October','November','December'][month];
+
+  var firstDay = new Date(year, month, 1).getDay(); // 0=Sun
+  var daysInMonth = new Date(year, month+1, 0).getDate();
+
+  // Monday-first: adjust firstDay (0=Mon..6=Sun)
+  var startOffset = (firstDay === 0) ? 6 : firstDay - 1;
+
+  // Get done data to know which days have ticked exercises
+  var doneRaw = (typeof getAllDoneData==='function') ? getAllDoneData() : JSON.parse(localStorage.getItem('apx_done_v1')||'{}');
+
+  // Build HTML
+  var html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">'
+    +'<button onclick="calPrevMonth()" style="background:var(--surface);border:1px solid var(--border);color:var(--mid);padding:6px 12px;border-radius:6px;cursor:pointer;font-size:16px;-webkit-tap-highlight-color:transparent;">‹</button>'
+    +'<div style="text-align:center;">'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--white);">'+monthName+'</div>'
+    +'<div style="font-size:10px;color:var(--grey);">'+year+'</div>'
+    +'</div>'
+    +'<button onclick="calNextMonth()" style="background:var(--surface);border:1px solid var(--border);color:var(--mid);padding:6px 12px;border-radius:6px;cursor:pointer;font-size:16px;-webkit-tap-highlight-color:transparent;">›</button>'
+    +'</div>';
+
+  // Day headers Mon-Sun
+  var dayHeaders = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  html += '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:4px;">';
+  dayHeaders.forEach(function(d){
+    html += '<div style="text-align:center;font-size:9px;font-weight:700;letter-spacing:0.06em;color:var(--grey);padding:2px 0;">'+d+'</div>';
+  });
+  html += '</div>';
+
+  // Calendar grid
+  html += '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;">';
+
+  // Empty cells before first day
+  for(var i=0;i<startOffset;i++){
+    html += '<div></div>';
+  }
+
+  for(var d=1;d<=daysInMonth;d++){
+    var date = new Date(year, month, d);
+    var jsDay = date.getDay();
+    var dayType = CAL_DAY_TYPE[jsDay] || 'rest';
+    var colour  = CAL_DAY_COLOUR[dayType] || 'var(--border2)';
+    var label   = CAL_DAY_LABEL[dayType]  || '';
+    var dateStr = year+'-'+(month+1<10?'0'+(month+1):(month+1))+'-'+(d<10?'0'+d:d);
+
+    var isToday   = (d===now.getDate() && month===now.getMonth() && year===now.getFullYear());
+    var isFuture  = date > now;
+    var isPast    = date < new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    // Check if session was done (any exercises ticked that day)
+    var doneThatDay = doneRaw[dateStr] ? Object.values(doneRaw[dateStr]).filter(Boolean).length : 0;
+    var totalEx = (dayType==='push'||dayType==='pull') ? 8 : (dayType==='legs' ? 7 : 0);
+    var sessionDone = doneThatDay >= Math.ceil(totalEx * 0.5); // 50%+ = done
+
+    var opacity = isFuture ? '0.25' : '1';
+    var bg = sessionDone
+      ? colour
+      : (isToday ? 'rgba(255,255,255,0.15)' : 'var(--surface)');
+    var border = isToday ? '2px solid var(--accent)' : '1px solid var(--border)';
+    var textCol = sessionDone ? '#fff' : (isFuture ? 'var(--grey)' : 'var(--mid)');
+    var dayNumCol = isToday ? 'var(--accent)' : (sessionDone ? '#fff' : 'var(--white)');
+
+    html += '<div style="border-radius:6px;padding:4px 2px;text-align:center;background:'+bg+';border:'+border+';opacity:'+opacity+';min-height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">'
+      +'<div style="font-size:12px;font-weight:700;color:'+dayNumCol+';">'+d+'</div>'
+      +(dayType!=='rest' ? '<div style="font-size:7px;font-weight:700;letter-spacing:0.04em;color:'+(sessionDone?'rgba(255,255,255,0.8)':colour)+';text-transform:uppercase;">'+label+'</div>' : '')
+      +(doneThatDay>0 && !sessionDone ? '<div style="width:4px;height:4px;border-radius:50%;background:'+colour+';margin-top:1px;"></div>' : '')
+      +'</div>';
+  }
+
+  html += '</div>';
+
+  // Legend
+  html += '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;">';
+  [{t:'push',l:'Push'},{t:'pull',l:'Pull'},{t:'legs',l:'Legs'},{t:'rest',l:'Rest'}].forEach(function(item){
+    html += '<div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--grey);">'
+      +'<div style="width:8px;height:8px;border-radius:2px;background:'+CAL_DAY_COLOUR[item.t]+';"></div>'
+      +'<span>'+item.l+'</span></div>';
+  });
+  html += '<div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--grey);">'
+    +'<div style="width:8px;height:8px;border-radius:50%;background:var(--accent);"></div>'
+    +'<span>Partial</span></div>';
+  html += '</div>';
+
+  el.innerHTML = html;
+}
+
+function calPrevMonth(){
+  _calMonth--;
+  if(_calMonth < 0){ _calMonth=11; _calYear--; }
+  buildMonthCalendar();
+}
+function calNextMonth(){
+  _calMonth++;
+  if(_calMonth > 11){ _calMonth=0; _calYear++; }
+  buildMonthCalendar();
+}
+
+</script>
+<script>
+
+function updateHomeStats(){
+  // Count total sessions from done data
+  var doneRaw = (typeof getAllDoneData==='function') ? getAllDoneData() : JSON.parse(localStorage.getItem('apx_done_v1')||'{}');
+  var totalSessions = 0;
+  var streak = 0;
+  var dates = Object.keys(doneRaw).sort().reverse();
+  var today = new Date().toISOString().slice(0,10);
+
+  dates.forEach(function(date){
+    var d = doneRaw[date];
+    if(!d) return;
+    var count = Object.values(d).filter(Boolean).length;
+    if(count >= 4) totalSessions++; // 4+ exercises = counts as session
+  });
+
+  // Calculate streak
+  var checkDate = new Date();
+  for(var i=0;i<60;i++){
+    var ds = checkDate.toISOString().slice(0,10);
+    var jsDay = checkDate.getDay();
+    var dayType = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'}[jsDay];
+    if(dayType === 'rest'){
+      checkDate.setDate(checkDate.getDate()-1);
+      continue;
+    }
+    var d = doneRaw[ds];
+    var count = d ? Object.values(d).filter(Boolean).length : 0;
+    if(count >= 4){ streak++; checkDate.setDate(checkDate.getDate()-1); }
+    else if(ds === today) { checkDate.setDate(checkDate.getDate()-1); } // today not yet done
+    else break;
+  }
+
+  var sessEl = document.getElementById('homeStatSessions');
+  var strEl  = document.getElementById('homeStatStreak');
+  if(sessEl) sessEl.textContent = totalSessions;
+  if(strEl)  strEl.textContent  = streak;
+}
+
+</script>
+<script>
+
+// ── HOME MINI CALENDAR ────────────────────────────────────────────
+var _homeCalYear  = new Date().getFullYear();
+var _homeCalMonth = new Date().getMonth();
+
+function buildHomeMiniCal(){
+  var el = document.getElementById('homeMiniCalGrid');
+  if(!el) return;
+  var now   = new Date();
+  var year  = _homeCalYear;
+  var month = _homeCalMonth;
+  var fullMonthNames = ['January','February','March','April','May','June',
+    'July','August','September','October','November','December'];
+  var firstDay    = new Date(year, month, 1).getDay();
+  var daysInMonth = new Date(year, month+1, 0).getDate();
+  var startOffset = (firstDay === 0) ? 6 : firstDay - 1;
+  var allDone = typeof getAllDoneData==='function' ? getAllDoneData() : {};
+  var DAY_T   = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'};
+  var DAY_COL = {push:'#C8102E',pull:'#aaaaaa',legs:'#777777',rest:'transparent'};
+
+  var out = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
+    +'<button onclick="homeCalPrev()" style="background:none;border:none;color:var(--grey);font-size:20px;cursor:pointer;padding:0 6px;-webkit-tap-highlight-color:transparent;line-height:1;">‹</button>'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:13px;font-weight:800;color:var(--white);">'+fullMonthNames[month]+' '+year+'</div>'
+    +'<button onclick="homeCalNext()" style="background:none;border:none;color:var(--grey);font-size:20px;cursor:pointer;padding:0 6px;-webkit-tap-highlight-color:transparent;line-height:1;">›</button>'
+    +'</div>';
+
+  out += '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px;">';
+  ['M','T','W','T','F','S','S'].forEach(function(d){
+    out += '<div style="text-align:center;font-size:9px;font-weight:700;color:var(--grey);padding:1px 0;">'+d+'</div>';
+  });
+  out += '</div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;">';
+
+  for(var i=0;i<startOffset;i++) out += '<div></div>';
+
+  for(var d=1;d<=daysInMonth;d++){
+    var dt     = new Date(year, month, d);
+    var jsDay  = dt.getDay();
+    var dtype  = DAY_T[jsDay];
+    var col    = DAY_COL[dtype] || 'transparent';
+    var ds     = year+'-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var dayDone= allDone[ds] ? Object.values(allDone[ds]).filter(Boolean).length : 0;
+    var isToday= (d===now.getDate()&&month===now.getMonth()&&year===now.getFullYear());
+    var fut    = dt > new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    var trained= dayDone >= 4;
+    var isRest = dtype==='rest';
+
+    var bg     = trained ? col : (isToday ? 'rgba(255,255,255,0.18)' : 'var(--surface)');
+    var border = isToday ? '1.5px solid var(--accent)' : '1px solid var(--border)';
+    var numCol = trained ? '#fff' : (isToday ? 'var(--accent)' : (fut ? 'var(--grey)' : 'var(--mid)'));
+    var op     = fut ? '0.3' : '1';
+
+    out += '<div style="border-radius:5px;padding:3px 1px;text-align:center;background:'+bg
+      +';border:'+border+';opacity:'+op+';min-height:36px;display:flex;flex-direction:column;'
+      +'align-items:center;justify-content:center;">'
+      +'<div style="font-size:11px;font-weight:700;color:'+numCol+';">'+d+'</div>'
+      +(!isRest ? '<div style="width:5px;height:5px;border-radius:50%;background:'
+        +(trained?'rgba(255,255,255,0.5)':col)+';margin-top:1px;"></div>' : '')
+      +'</div>';
+  }
+  out += '</div>';
+
+  // Stats row
+  var totalThisMonth=0;
+  for(var dd=1;dd<=daysInMonth;dd++){
+    var dds=year+'-'+String(month+1).padStart(2,'0')+'-'+String(dd).padStart(2,'0');
+    if(allDone[dds]&&Object.values(allDone[dds]).filter(Boolean).length>=4) totalThisMonth++;
+  }
+
+  out += '<div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);">'
+    +'<div style="text-align:center;flex:1;">'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--white);">'+totalThisMonth+'</div>'
+    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">sessions</div>'
+    +'</div>'
+    +'<div style="width:1px;background:var(--border);"></div>'
+    +'<div style="text-align:center;flex:1;">'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--accent);">'
+    +(month===now.getMonth()&&year===now.getFullYear() ? (daysInMonth-now.getDate()) : '—')+'</div>'
+    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">days left</div>'
+    +'</div>'
+    +'<div style="width:1px;background:var(--border);"></div>'
+    +'<div style="text-align:center;flex:1;">'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">14.2kg</div>'
+    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">to goal</div>'
+    +'</div>'
+    +'';
+
+  el.innerHTML = out;
+}
+
+function homeCalPrev(){
+  _homeCalMonth--;
+  if(_homeCalMonth<0){_homeCalMonth=11;_homeCalYear--;}
+  buildHomeMiniCal();
+}
+function homeCalNext(){
+  _homeCalMonth++;
+  if(_homeCalMonth>11){_homeCalMonth=0;_homeCalYear++;}
+  buildHomeMiniCal();
+}
+
+</script>
 </body>
 </html>
+</div>
