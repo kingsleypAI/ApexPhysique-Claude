@@ -1493,7 +1493,7 @@ function toggleVideoPlayer(vid_id){
   <div class="nav-divider"></div>
   <div class="nav-section"><div class="nav-section-label">Planning</div>
     <div class="nav-item" id="nav-next" onclick="navTo('next','After Week 12')"><div class="nav-item-icon">🚀</div><div><div class="nav-item-name">After Week 12</div><div class="nav-item-desc">Phase 2 · What comes next</div></div></div>
-    <div class="nav-item" id="nav-deload" onclick="navTo('deload','Deload Guide')"><div class="nav-item-icon">⚡</div><div><div class="nav-item-name">Deload Guide</div><div class="nav-item-desc">Week 4 · 8 · 12 protocol</div></div></div>
+
   </div>
   <div class="nav-divider"></div>
   <div class="nav-section">
@@ -1610,13 +1610,13 @@ function toggleVideoPlayer(vid_id){
 
   <!-- STATS ROW -->
   <div class="home-stats">
-    <div class="home-stat"><span class="home-stat-n">6</span><span class="home-stat-l">days/wk</span></div>
+    <div class="home-stat"><span class="home-stat-n" id="homeStatSessions">0</span><span class="home-stat-l">sessions</span></div>
     <div class="home-stat-div"></div>
-    <div class="home-stat"><span class="home-stat-n">12</span><span class="home-stat-l">weeks</span></div>
+    <div class="home-stat"><span class="home-stat-n" id="homeStatStreak">0</span><span class="home-stat-l">streak</span></div>
     <div class="home-stat-div"></div>
-    <div class="home-stat"><span class="home-stat-n">3</span><span class="home-stat-l">phases</span></div>
+    <div class="home-stat"><span class="home-stat-n">85kg</span><span class="home-stat-l">target</span></div>
     <div class="home-stat-div"></div>
-    <div class="home-stat"><span class="home-stat-n">12%</span><span class="home-stat-l">bf goal</span></div>
+    <div class="home-stat"><span class="home-stat-n">10%</span><span class="home-stat-l">bf goal</span></div>
   </div>
 
   <!-- WEEK SPLIT -->
@@ -6216,11 +6216,18 @@ function applyWorkoutView(mode){
   var dayLabel = DAY_LABELS[todayType];
   var week     = getCurrentWeek();
 
+  // Failsafe: on rest day, show tomorrow's workout type instead of nothing
+  var displayType = todayType;
+  if(todayType === 'rest'){
+    var tomorrowDay = (jsDay + 1) % 7;
+    displayType = DAY_TO_WORKOUT[tomorrowDay] || 'push';
+  }
+
   if(mode === 'today'){
-    // Hide all days and phases
-    if(pushDiv) pushDiv.style.display = todayType==='push'?'block':'none';
-    if(pullDiv) pullDiv.style.display = todayType==='pull'?'block':'none';
-    if(legsDiv) legsDiv.style.display = todayType==='legs'?'block':'none';
+    // Show today's workout, or tomorrow's if resting (never blank)
+    if(pushDiv) pushDiv.style.display = displayType==='push'?'block':'none';
+    if(pullDiv) pullDiv.style.display = displayType==='pull'?'block':'none';
+    if(legsDiv) legsDiv.style.display = displayType==='legs'?'block':'none';
     phases.forEach(function(p){ p.style.display='none'; });
 
     // Update header
@@ -6229,19 +6236,22 @@ function applyWorkoutView(mode){
     // Build today summary card
     if(card && dayLabel){
       if(todayType === 'rest'){
+        var tomLabel = DAY_LABELS[displayType];
         card.innerHTML = '<div style="background:var(--surface);border-radius:10px;overflow:hidden;">'
           +'<div style="height:3px;background:linear-gradient(90deg,#aaaaaa,#dddddd);"></div>'
           +'<div style="padding:14px;">'
           +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">'
           +'<div style="font-size:32px;">😴</div>'
-          +'<div><div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--white);">Rest Day — Thursday</div>'
+          +'<div><div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--white);">Rest Day</div>'
           +'<div style="font-size:11px;color:var(--mid);">Recovery is where muscle is built</div></div></div>'
           +'<div style="display:flex;flex-direction:column;gap:8px;">'
           +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">①</span><span><strong style="color:var(--white);">Protein target: 220g+</strong> — muscle repair peaks 24-48h after training. Today matters as much as yesterday.</span></div>'
           +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">②</span><span><strong style="color:var(--white);">Walk if you can</strong> — light movement (not your commute walks) helps flush lactic acid. 20 min casual walk.</span></div>'
-          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">③</span><span><strong style="color:var(--white);">Sleep 8hrs tonight</strong> — tomorrow is Push Day. GH spikes at night. This is when shoulders actually grow.</span></div>'
+          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">③</span><span><strong style="color:var(--white);">Sleep 8hrs tonight</strong> — tomorrow is '+(tomLabel?tomLabel.name:'training day')+'. GH spikes at night. This is when muscle actually grows.</span></div>'
           +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">④</span><span><strong style="color:var(--white);">Magnesium before bed</strong> — take your 2 caps tonight. Cortisol blunting and deep sleep.</span></div>'
-          +'</div></div></div>';
+          +'</div>'
+          +'<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--grey);">Showing tomorrow\'s '+(tomLabel?tomLabel.name:'workout')+' below so you can preview it ↓</div>'
+          +'</div></div>';
       } else {
         card.innerHTML = '<div style="background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:12px 14px;">'
           +'<div style="display:flex;align-items:center;gap:10px;">'
