@@ -509,7 +509,7 @@ body{
 }
 .prep-banner-title{
   font-size:10px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--accent);margin-bottom:8px;
+  color:#ffffff;margin-bottom:8px;
 }
 .prep-step{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(37,37,37,0.4);font-size:12px;color:var(--mid);}
 .prep-step:last-child{border-bottom:none;}
@@ -1576,6 +1576,17 @@ function toggleVideoPlayer(vid_id){
     <span class="more-arrow">More ▾</span>
   </button>
   <div id="homeMoreContent" style="display:none;">
+
+  <!-- DATA BACKUP -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Data Backup</div>
+    <div style="font-size:11px;color:var(--mid);margin-bottom:10px;">Save a copy of your weights, check-ins, and progress. Browser storage can be cleared unexpectedly — back up regularly.</div>
+    <div style="display:flex;gap:8px;">
+      <button onclick="exportData()" style="flex:1;padding:10px;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">⬇ Export JSON</button>
+      <button onclick="importData()" style="flex:1;padding:10px;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">⬆ Import JSON</button>
+    </div>
+  </div>
+
 <!-- PROGRESS BANNER -->
   <div style="background:linear-gradient(135deg,rgba(200,16,46,0.12),rgba(200,16,46,0.04));border:1px solid rgba(255,255,255,0.3);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:14px;">
     <div style="font-size:28px;flex-shrink:0;">🔥</div>
@@ -1640,16 +1651,7 @@ function toggleVideoPlayer(vid_id){
     </div>
   </div>
 
-  <!-- STATS ROW -->
-  <div class="home-stats">
-    <div class="home-stat"><span class="home-stat-n" id="homeStatSessions">0</span><span class="home-stat-l">sessions</span></div>
-    <div class="home-stat-div"></div>
-    <div class="home-stat"><span class="home-stat-n" id="homeStatStreak">0</span><span class="home-stat-l">streak</span></div>
-    <div class="home-stat-div"></div>
-    <div class="home-stat"><span class="home-stat-n">85kg</span><span class="home-stat-l">target</span></div>
-    <div class="home-stat-div"></div>
-    <div class="home-stat"><span class="home-stat-n">10%</span><span class="home-stat-l">bf goal</span></div>
-  </div>
+  <!-- (duplicate sessions/streak row removed — shown in compact strip above) -->
 
   <!-- WEEK SPLIT -->
   <div class="home-split">
@@ -2008,7 +2010,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-barbell_bench_press">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-barbell_bench_press"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Bench Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Bench Press')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_bench_press',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Bench Press')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_bench_press',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Bench Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2029,7 +2031,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-incline_db_press">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-incline_db_press"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-incline_db_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Incline DB Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Incline DB Press')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-incline_db_press',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-incline_db_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Incline DB Press')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-incline_db_press',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Incline DB Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-incline_db_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2050,7 +2052,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-overhead_press">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-overhead_press"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-overhead_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Overhead Press')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-overhead_press',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-overhead_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Press')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-overhead_press',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Overhead Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-overhead_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2071,7 +2073,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-cable_lateral_raise">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-cable_lateral_raise"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_lateral_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Lateral Raise')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Lateral Raise')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_lateral_raise',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_lateral_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Lateral Raise')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_lateral_raise',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Lateral Raise')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-cable_lateral_raise"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2092,7 +2094,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-cable_fly">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-cable_fly"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_fly" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Fly')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Fly')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_fly',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_fly" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Fly')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_fly',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Fly')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-cable_fly"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2113,7 +2115,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-cable_tricep_pushdown">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-cable_tricep_pushdown"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_tricep_pushdown" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Tricep Pushdown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Tricep Pushdown')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_tricep_pushdown',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_tricep_pushdown" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Tricep Pushdown')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_tricep_pushdown',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Tricep Pushdown')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-cable_tricep_pushdown"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2134,7 +2136,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-overhead_tricep_extension">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-overhead_tricep_extension"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-overhead_tricep_extension" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Tricep Extension')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Overhead Tricep Extension')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-overhead_tricep_extension',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-overhead_tricep_extension" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Overhead Tricep Extension')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-overhead_tricep_extension',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Overhead Tricep Extension')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-overhead_tricep_extension"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2153,7 +2155,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-dips">
           <div class="ex-weight-label">Track weight added</div>
           <div class="ex-weight-pr" id="wl-pr-dips"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-dips" placeholder="Added kg (0 = bodyweight)" min="0" max="100" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Dips')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Dips')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-dips',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-dips" placeholder="Added kg (0 = bodyweight)" min="0" max="100" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Dips')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-dips',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Dips')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-dips"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2197,7 +2199,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-chest_supported_t_bar_row">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-chest_supported_t_bar_row"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-chest_supported_t_bar_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Chest-Supported T-Bar Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Chest-Supported T-Bar Row')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-chest_supported_t_bar_row',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-chest_supported_t_bar_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Chest-Supported T-Bar Row')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-chest_supported_t_bar_row',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Chest-Supported T-Bar Row')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-chest_supported_t_bar_row"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2218,7 +2220,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-barbell_row">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-barbell_row"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Row')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Row')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_row',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_row" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Row')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_row',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Row')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_row"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2239,7 +2241,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-lat_pulldown">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-lat_pulldown"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-lat_pulldown" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Lat Pulldown')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Lat Pulldown')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-lat_pulldown',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-lat_pulldown" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Lat Pulldown')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-lat_pulldown',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Lat Pulldown')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-lat_pulldown"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2267,7 +2269,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-assisted_pull_up">
           <div class="ex-weight-label">Track assist weight (kg counterweight used)</div>
           <div class="ex-weight-pr" id="wl-pr-assisted_pull_up"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-assisted_pull_up" placeholder="Assist kg (lower = stronger)" min="0" max="100" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Assisted Pull-Up')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Assisted Pull-Up')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-assisted_pull_up',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-assisted_pull_up" placeholder="Assist kg (lower = stronger)" min="0" max="100" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Assisted Pull-Up')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-assisted_pull_up',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Assisted Pull-Up')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-assisted_pull_up"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2288,7 +2290,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-cable_face_pull">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-cable_face_pull"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_face_pull" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Face Pull')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Face Pull')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_face_pull',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_face_pull" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Face Pull')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_face_pull',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Face Pull')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-cable_face_pull"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2309,7 +2311,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-barbell_curl">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-barbell_curl"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Curl')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2330,7 +2332,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-hammer_curl">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-hammer_curl"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-hammer_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Hammer Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Hammer Curl')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-hammer_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-hammer_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Hammer Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-hammer_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Hammer Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-hammer_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2349,7 +2351,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-db_shrugs">
           <div class="ex-weight-label">Track weight (per DB)</div>
           <div class="ex-weight-pr" id="wl-pr-db_shrugs"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-db_shrugs" placeholder="Enter kg per DB" min="0" max="200" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('DB Shrugs')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('DB Shrugs')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-db_shrugs',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-db_shrugs" placeholder="Enter kg per DB" min="0" max="200" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('DB Shrugs')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-db_shrugs',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('DB Shrugs')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-db_shrugs"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2369,7 +2371,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-wrist_curl">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-wrist_curl"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-wrist_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Wrist Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Wrist Curl')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-wrist_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-wrist_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Wrist Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-wrist_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Wrist Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-wrist_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2387,7 +2389,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-reverse_barbell_curl">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-reverse_barbell_curl"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-reverse_barbell_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Reverse Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Reverse Barbell Curl')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-reverse_barbell_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-reverse_barbell_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Reverse Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-reverse_barbell_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Reverse Barbell Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-reverse_barbell_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2405,7 +2407,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-plate_pinch_hold">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-plate_pinch_hold"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-plate_pinch_hold" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Plate Pinch Hold')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Plate Pinch Hold')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-plate_pinch_hold" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Plate Pinch Hold')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Plate Pinch Hold')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-plate_pinch_hold"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2451,7 +2453,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-barbell_squat">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-barbell_squat"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Squat')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Squat')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_squat',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Squat')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_squat',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Squat')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-barbell_squat"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2472,7 +2474,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-smith_machine_rdl">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-smith_machine_rdl"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-smith_machine_rdl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Smith Machine RDL')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Smith Machine RDL')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-smith_machine_rdl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-smith_machine_rdl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Smith Machine RDL')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-smith_machine_rdl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Smith Machine RDL')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-smith_machine_rdl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2493,7 +2495,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-leg_press">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-leg_press"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-leg_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Press')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Leg Press')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-leg_press',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-leg_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Press')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-leg_press',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Leg Press')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-leg_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2514,7 +2516,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-bulgarian_split_squat">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-bulgarian_split_squat"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-bulgarian_split_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Bulgarian Split Squat')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Bulgarian Split Squat')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-bulgarian_split_squat',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-bulgarian_split_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Bulgarian Split Squat')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-bulgarian_split_squat',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Bulgarian Split Squat')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-bulgarian_split_squat"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2535,7 +2537,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-leg_curl">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-leg_curl"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-leg_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Curl')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Leg Curl')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-leg_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-leg_curl" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-leg_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Leg Curl')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-leg_curl"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2556,7 +2558,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-standing_calf_raise">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-standing_calf_raise"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-standing_calf_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Standing Calf Raise')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Standing Calf Raise')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-standing_calf_raise',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-standing_calf_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Standing Calf Raise')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-standing_calf_raise',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Standing Calf Raise')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-standing_calf_raise"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2577,7 +2579,7 @@ function toggleVideoPlayer(vid_id){
         <div class="ex-weight-log" id="wl-hanging_leg_raise">
           <div class="ex-weight-label">Track weight</div>
           <div class="ex-weight-pr" id="wl-pr-hanging_leg_raise"></div>
-          <div class="ex-weight-input-row"><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-hanging_leg_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Hanging Leg Raise')"><div class="ex-weight-unit">kg</div><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Hanging Leg Raise')">Log</button></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-hanging_leg_raise',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-hanging_leg_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Hanging Leg Raise')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-hanging_leg_raise',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Hanging Leg Raise')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-hanging_leg_raise"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
@@ -2691,7 +2693,7 @@ function toggleVideoPlayer(vid_id){
   </div>
   <div style="background:var(--card);border:1px solid var(--border);padding:12px 14px;margin-bottom:14px;">
     <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Total Daily Calories</div>
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;color:var(--accent);">~2,800 <span style="font-size:13px;color:var(--grey)">kcal</span></div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;color:var(--accent);">~2,270 <span style="font-size:13px;color:var(--grey)">kcal</span></div>
     <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,270 kcal · Rest day ~2,400 kcal</div>
   </div>
 
@@ -2702,9 +2704,7 @@ function toggleVideoPlayer(vid_id){
       At your stats a traditional bulk is unnecessary — you have enough stored energy to fuel muscle growth while in a small deficit. This is called <strong style="color:var(--white)">body recomposition</strong>. Expect to lose ~0.5–1kg per week while gaining strength. The scale might barely move for weeks — that's muscle replacing fat. <strong style="color:var(--white)">Judge progress by the mirror and your lifts, not the number.</strong>
     </div>
   </div>
-    <div style="font-size:11px;color:var(--mid);line-height:1.8;">
-      At your stats a traditional bulk is unnecessary — you have enough stored energy to fuel muscle growth while in a small deficit. This is called <strong style="color:var(--white)">body recomposition</strong>. Expect to lose ~0.5–1kg per week while gaining strength. The scale might barely move for weeks — that's muscle replacing fat. <strong style="color:var(--white)">Judge progress by the mirror and your lifts, not the number.</strong>
-    </div>
+    
   </div>  <div class="meal-switch">
     <button class="mstab active" id="ms-am" onclick="switchMeal('am')">🌅 Morning<small>Before-work training</small></button>
     <button class="mstab" id="ms-pm" onclick="switchMeal('pm')">🌆 Evening<small>After-work training</small></button>
@@ -3314,7 +3314,7 @@ function toggleVideoPlayer(vid_id){
   <div class="sec-title">SHOPPING LIST</div>
 
   <div class="shop-time-info">
-    Quantities based on <span id="shop-time-display">your selected training window</span>. Scaled for <span>65kg lean bulk</span> — 6 training days + 1 rest day.
+    Quantities based on <span id="shop-time-display">your selected training window</span>. Scaled for <span>101kg recomp</span> — 6 training days + 1 rest day.
   </div>
 
   <div class="shop-toggle">
@@ -3591,11 +3591,11 @@ function toggleVideoPlayer(vid_id){
   <!-- SUMMARY STATS -->
   <div class="summary-grid">
     <div class="summary-cell">
-      <div class="summary-num" id="trk-start-weight">65</div>
+      <div class="summary-num" id="trk-start-weight">110</div>
       <div class="summary-lbl">Start kg</div>
     </div>
     <div class="summary-cell">
-      <div class="summary-num" id="trk-current-weight">—</div>
+      <div class="summary-num" id="trk-current-weight">98.7</div>
       <div class="summary-lbl">Current kg</div>
     </div>
     <div class="summary-cell">
@@ -4170,11 +4170,21 @@ const DTYPE=['workout','workout','workout','rest','workout','workout','workout']
 const ICONS=['💪','💪','🦵','😴','💪','💪','🦵'];
 let tData=JSON.parse(localStorage.getItem('apx_tracker')||'{}');
 
-const PHASES=[
-  {num:1,name:'Foundation', sub:'Weeks 1–4 · Build the base. Master form before load.',wks:[1,2,3,4]},
-  {num:2,name:'Strength',   sub:'Weeks 5–8 · Heavier loads, raw power.',              wks:[5,6,7,8]},
-  {num:3,name:'Definition', sub:'Weeks 9–12 · Reveal the work. Lean and powerful.',   wks:[9,10,11,12]}
-];
+// Open-ended: 3 phases cycling every 6 weeks, repeating indefinitely
+function getPhaseBlock(curWeek){
+  var cycleLen = 6, cycleNum = Math.floor((curWeek-1)/cycleLen), posInCycle = ((curWeek-1)%cycleLen)+1;
+  var blockStart = cycleNum*cycleLen+1;
+  var defs = [
+    {num:1,name:'Foundation', sub:'Build the base. Master form before load.', span:[1,2]},
+    {num:2,name:'Strength',   sub:'Heavier loads, raw power.',                span:[3,4]},
+    {num:3,name:'Definition', sub:'Reveal the work. Lean and powerful.',      span:[5,6]}
+  ];
+  var d = defs.find(function(x){return posInCycle>=x.span[0]&&posInCycle<=x.span[1];}) || defs[0];
+  var wks = [];
+  for(var i=d.span[0]; i<=d.span[1]; i++) wks.push(blockStart+i-1);
+  return {num:d.num, name:d.name, sub:d.sub+' (cycle '+(cycleNum+1)+')', wks:wks};
+}
+const PHASES=[0,1,2].map(function(i){ return getPhaseBlock(i*2+1); }); // legacy reference, first cycle only
 
 function getCurrentWeek(){
   // Open-ended: total weeks since programme start, uncapped
@@ -4201,11 +4211,7 @@ function getMonthsIn(){
   return Math.round((week / 4.345) * 10) / 10; // weeks to months, 1 decimal
 }
 function getCurrentPhase(w){
-  // Open-ended: cycle through 3 phases every 6 weeks indefinitely
-  var cyclePos = ((w-1) % 6) + 1;
-  if(cyclePos <= 2) return {name:'Foundation', desc:'Form & base volume'};
-  if(cyclePos <= 4) return {name:'Strength', desc:'Heavier loads, lower reps'};
-  return {name:'Peak', desc:'Max effort, push PRs'};
+  return getPhaseBlock(w); // returns {num,name,sub,wks} — same shape updatePhaseCard expects
 }
 
 // ── SAVE & REFRESH (single entry point for all data changes) ──────────────────
@@ -4405,22 +4411,22 @@ function updatePhaseCard(){
     else if(p.wks.includes(curWeek)){dot.className='unlock-dot active';item.className='unlock-item active-unlock';}
     else{dot.className='unlock-dot';item.className='unlock-item';}
   });
-  const bms=[{id:'bm1-badge',w:4},{id:'bm2-badge',w:8},{id:'bm3-badge',w:12}];
+  const cyclePos = ((curWeek-1) % 6) + 1;
+  const bms=[{id:'bm1-badge',w:2},{id:'bm2-badge',w:4},{id:'bm3-badge',w:6}];
   bms.forEach(b=>{
     const e=document.getElementById(b.id);if(!e)return;
-    e.className=curWeek>b.w?'bench-week done-badge':curWeek===b.w?'bench-week current-badge':'bench-week';
+    e.className=cyclePos>b.w?'bench-week done-badge':cyclePos===b.w?'bench-week current-badge':'bench-week';
   });
 }
 
 function updatePhaseBadges(){
   const curWeek=getCurrentWeek();
+  const cyclePos = ((curWeek-1) % 6) + 1;
   document.querySelectorAll('.phase').forEach((ph,i)=>{
     const badge=ph.querySelector('.phase-badge');if(!badge)return;
-    const ends=[[4],[8],[12]][i];if(!ends)return;
-    const starts=[[1],[5],[9]][i][0];
-    const end=ends[0];
-    if(curWeek>end){badge.className='phase-badge done';badge.textContent='Done ✓';}
-    else if(curWeek>=starts){badge.className='phase-badge active';badge.textContent='Active ▶';}
+    const starts=[1,3,5][i], ends=[2,4,6][i];
+    if(cyclePos>ends){badge.className='phase-badge done';badge.textContent='Done ✓';}
+    else if(cyclePos>=starts){badge.className='phase-badge active';badge.textContent='Active ▶';}
     else{badge.className='phase-badge next';badge.textContent='Upcoming';}
   });
 }
@@ -5177,6 +5183,18 @@ function initTracking(){
   renderMeasHistory();
   renderNote(getCurrentWeek());
   checkPhotoReminder();
+  // Sync start/current weight from real check-in history if available
+  try{
+    var history = typeof getCheckinHistory==='function' ? getCheckinHistory() : [];
+    if(history.length){
+      var latest = history[0];
+      var earliest = history[history.length-1];
+      var startEl = document.getElementById('trk-start-weight');
+      var curEl = document.getElementById('trk-current-weight');
+      if(startEl && earliest && earliest.weight) startEl.textContent = earliest.weight;
+      if(curEl && latest && latest.weight) curEl.textContent = latest.weight;
+    }
+  }catch(e){}
 }
 
 
@@ -5774,9 +5792,11 @@ function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
 // ── DATA BACKUP & RESTORE ────────────────────────────────────────
 function exportData(){
   const keys = [
-    'apx_tracker','apx_calories_v1','apx_cardio_v1','forge_weights_v1',
+    'apx_tracker','apx_calories_v1','apx_cardio_v1','ascend_weights_v1',
     'apx_water_v1','apx_meal','apx_shop','apx_time','apx_program_start',
-    'forge_strava_v1','forge_strava_client_id'
+    'ascend_strava_v1','ascend_strava_client_id',
+    'apx_checkin_v1','apx_done_v1','apx_notes_v1','apx_motiv_v1',
+    'apx_30min','apx_workout_view','forge_notif','ascend_tracking_v1'
   ];
   const backup = {version:1, exported: new Date().toISOString(), data:{}};
   keys.forEach(k => {
@@ -6211,10 +6231,12 @@ function miniUpdDisplay(){
 function miniStartStop(){
   if(_mRun){
     clearInterval(_mInt);_mInt=null;_mRun=false;
+    releaseWakeLock();
     document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='RESUME';});
   } else {
     if(_mRem<=0){_mRem=_mTime;miniUpdDisplay();}
     _mRun=true;
+    requestWakeLock();
     document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='PAUSE';});
     _mInt=setInterval(function(){
       _mRem--;
@@ -6224,6 +6246,7 @@ function miniStartStop(){
         document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='START';});
         document.querySelectorAll('.mini-timer-display').forEach(function(d){d.textContent='GO!';});
         if(typeof fireTimerNotification==='function') fireTimerNotification();
+        if(typeof playBeep==='function') playBeep();
         setTimeout(function(){
           _mRem=_mTime;miniUpdDisplay();
         },1500);
@@ -6278,9 +6301,17 @@ function saveDoneData(d){
 function toggleExDone(name){
   var key = name.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
   var d = getDoneData();
+  var wasChecking = !d.done[key];
   d.done[key] = !d.done[key];
   saveDoneData(d);
   renderDoneState();
+  // Auto-start the rest timer when a set is checked off (not when unchecking)
+  if(wasChecking){
+    try{
+      if(!_mRun){ miniStartStop(); }
+      else { _mRem=_mTime; miniUpdDisplay(); } // restart if already running
+    }catch(e){}
+  }
 }
 
 function renderDoneState(){
@@ -6797,14 +6828,15 @@ function buildHomeMiniCal(){
     var trained= dayDone >= 4;
     var isRest = dtype==='rest';
 
-    var bg     = trained ? col : (isToday ? 'rgba(255,255,255,0.18)' : 'var(--surface)');
-    var border = isToday ? '1.5px solid var(--accent)' : '1px solid var(--border)';
+    var bg     = trained ? col : (isToday ? 'rgba(200,16,46,0.22)' : 'var(--surface)');
+    var border = isToday ? '2px solid var(--accent)' : '1px solid var(--border)';
+    var glow   = isToday ? 'box-shadow:0 0 0 2px rgba(200,16,46,0.35);' : '';
     var numCol = trained ? '#fff' : (isToday ? 'var(--accent)' : (fut ? 'var(--grey)' : 'var(--mid)'));
     var op     = fut ? '0.3' : '1';
 
     out += '<div style="border-radius:5px;padding:3px 1px;text-align:center;background:'+bg
       +';border:'+border+';opacity:'+op+';min-height:36px;display:flex;flex-direction:column;'
-      +'align-items:center;justify-content:center;">'
+      +'align-items:center;justify-content:center;'+glow+'">'
       +'<div style="font-size:11px;font-weight:700;color:'+numCol+';">'+d+'</div>'
       +(!isRest ? '<div style="width:5px;height:5px;border-radius:50%;background:'
         +(trained?'rgba(255,255,255,0.5)':col)+';margin-top:1px;"></div>' : '')
@@ -6885,6 +6917,57 @@ var _debounceTimers = {};
 function debounce(key, fn, delay){
   clearTimeout(_debounceTimers[key]);
   _debounceTimers[key] = setTimeout(fn, delay || 300);
+}
+
+</script>
+<script>
+
+function stepWeight(inputId, delta){
+  var inp = document.getElementById(inputId);
+  if(!inp) return;
+  var cur = parseFloat(inp.value) || 0;
+  var next = Math.max(0, cur + delta);
+  inp.value = (next % 1 === 0) ? next.toFixed(0) : next.toFixed(1);
+}
+
+</script>
+<script>
+
+function playBeep(){
+  try{
+    var ctx = new (window.AudioContext||window.webkitAudioContext)();
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.value = 880;
+    osc.type = 'sine';
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+0.4);
+    osc.start(); osc.stop(ctx.currentTime+0.4);
+    setTimeout(function(){
+      var osc2=ctx.createOscillator(), gain2=ctx.createGain();
+      osc2.connect(gain2); gain2.connect(ctx.destination);
+      osc2.frequency.value=1046; osc2.type='sine';
+      gain2.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+0.4);
+      osc2.start(); osc2.stop(ctx.currentTime+0.4);
+    }, 200);
+  }catch(e){}
+}
+
+</script>
+<script>
+
+var _wakeLock = null;
+async function requestWakeLock(){
+  try{
+    if('wakeLock' in navigator){
+      _wakeLock = await navigator.wakeLock.request('screen');
+    }
+  }catch(e){}
+}
+function releaseWakeLock(){
+  try{ if(_wakeLock){ _wakeLock.release(); _wakeLock = null; } }catch(e){}
 }
 
 </script>
