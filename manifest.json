@@ -1,22 +1,22 @@
 {
   "name": "Forge",
   "short_name": "Forge",
-  "description": "Forge \u2014 12-week physique recomposition tracker",
-  "start_url": "/ApexPhysique-Claude/",
-  "scope": "/ApexPhysique-Claude/",
+  "description": "Forge \u2014 physique recomposition tracker",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/ApexPhysique-Claude/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/ApexPhysique-Claude/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
