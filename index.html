@@ -12,7 +12,7 @@
 
 
 
-<meta name="description" content="Forge — 12-Week physique programme">
+<meta name="description" content="Forge — physique recomposition programme">
 <link rel="apple-touch-icon" href="/ApexPhysique-Claude/icon-192.png">
 <link rel="manifest" href="/ApexPhysique-Claude/manifest.json">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -1386,16 +1386,7 @@ function navTo(id,label){
   playNavTick();
 }
 function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
-function openYT(vid_id){
-  // Try native YouTube app first, fall back to browser
-  var appUrl = 'vnd.youtube://shorts/' + vid_id;
-  var webUrl = 'https://www.youtube.com/shorts/' + vid_id;
-  var start = Date.now();
-  var timer = setTimeout(function(){
-    if(Date.now() - start < 1500) window.open(webUrl, '_blank');
-  }, 800);
-  try { window.location = appUrl; } catch(e) { window.open(webUrl,'_blank'); }
-}
+
 
 function toggleVideoPlayer(vid_id){
   var player = document.getElementById('vp-'+vid_id);
@@ -1492,7 +1483,7 @@ function toggleVideoPlayer(vid_id){
   </div>
   <div class="nav-divider"></div>
   <div class="nav-section"><div class="nav-section-label">Planning</div>
-    <div class="nav-item" id="nav-next" onclick="navTo('next','After Week 12')"><div class="nav-item-icon">🚀</div><div><div class="nav-item-name">After Week 12</div><div class="nav-item-desc">Phase 2 · What comes next</div></div></div>
+    <div class="nav-item" id="nav-next" onclick="navTo('next','Whats Next')"><div class="nav-item-icon">🚀</div><div><div class="nav-item-name">What's Next</div><div class="nav-item-desc">Phase 2 · What comes next</div></div></div>
 
   </div>
   <div class="nav-divider"></div>
@@ -1520,7 +1511,7 @@ function toggleVideoPlayer(vid_id){
   <!-- TODAY HERO -->
   <!-- UNIFIED SESSION CALENDAR -->
   <div id="homeMiniCal" style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;">
-    <div style="padding:12px 14px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+    <div onclick="goToTodayWorkout()" style="padding:12px 14px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;cursor:pointer;-webkit-tap-highlight-color:transparent;">
       <div style="display:flex;align-items:center;gap:10px;">
         <div style="font-size:26px;" id="todayIcon">💪</div>
         <div>
@@ -1528,28 +1519,69 @@ function toggleVideoPlayer(vid_id){
           <div style="font-size:11px;color:var(--mid);" id="todaySub">Chest · Shoulders · Triceps</div>
         </div>
       </div>
-      <div style="text-align:right;">
-        <div style="font-size:11px;font-weight:700;color:var(--accent);" id="todayWeekBig">Wk 1</div>
-        <div style="font-size:9px;color:var(--grey);" id="todayPhaseBig">Foundation</div>
-        <div style="font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);margin-top:1px;" id="todayEyebrow">TODAY</div>
+      <div style="text-align:right;display:flex;align-items:center;gap:8px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--accent);" id="todayWeekBig">Wk 1</div>
+          <div style="font-size:9px;color:var(--grey);" id="todayPhaseBig">Foundation</div>
+        </div>
+        <div style="font-size:16px;color:var(--grey);">›</div>
       </div>
     </div>
     <div id="homeMiniCalGrid" style="padding:10px 12px;"></div>
-    <div style="padding:0 12px 12px;">
-      <button class="home-log-btn" id="todayLogBtn" onclick="logToday()" style="border-radius:8px;width:100%;">
+    <div style="padding:0 12px 12px;display:flex;gap:8px;">
+      <button class="home-log-btn" id="todayLogBtn" onclick="logToday()" style="border-radius:8px;flex:1;">
         <span id="todayBtnIcon">＋</span>
-        <span id="todayBtnText">LOG TODAY'S SESSION</span>
+        <span id="todayBtnText">LOG SESSION</span>
+      </button>
+      <button onclick="goToTodayWorkout()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;background:var(--surface);border:1px solid var(--border2);border-radius:8px;color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;">
+        <span>VIEW WORKOUT</span><span>›</span>
       </button>
     </div>
-    <div class="today-week-strip" id="todayWeekStrip"></div>
   </div>
 
-  <!-- PROGRESS BANNER -->
+  <!-- COMPACT STATS STRIP -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">98.7kg</div>
+      <div style="font-size:11px;color:var(--mid);">4 months in · <span id="homeStatMonths">4</span>mo</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding-top:10px;border-top:1px solid var(--border);">
+      <div style="text-align:center;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent);" id="homeStatBF">19.9%</div>
+        <div style="font-size:8px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px;">body fat</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border);">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatSessions2">0</div>
+        <div style="font-size:8px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px;">sessions</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border);">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatStreak2">0</div>
+        <div style="font-size:8px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px;">streak</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border);">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);">85kg</div>
+        <div style="font-size:8px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px;">target</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MORE INFO ACCORDION -->
+  <button id="homeMoreBtn" onclick="
+    var d=document.getElementById('homeMoreContent');
+    var open=d.style.display!=='none';
+    d.style.display=open?'none':'block';
+    this.querySelector('.more-arrow').textContent=open?'More ▾':'Less ▴';
+  " style="width:100%;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--mid);font-family:Space+Grotesk,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;justify-content:space-between;align-items:center;margin-bottom:0;">
+    <span>PRs · Rules · Supplements · Targets</span>
+    <span class="more-arrow">More ▾</span>
+  </button>
+  <div id="homeMoreContent" style="display:none;">
+<!-- PROGRESS BANNER -->
   <div style="background:linear-gradient(135deg,rgba(200,16,46,0.12),rgba(200,16,46,0.04));border:1px solid rgba(255,255,255,0.3);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:14px;">
     <div style="font-size:28px;flex-shrink:0;">🔥</div>
     <div style="flex:1">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">🔥 11.3kg down · 19.9% BF · 85kg target</div>
-      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → 105kg → <strong style="color:var(--accent);">101kg</strong> → 85kg target. 9kg down — faster than average. 3.5km walk to gym + 3.5km to work daily + 6-day lifting is working.</div>
+      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → 105kg → <strong style="color:var(--accent);">98.7kg</strong> → 85kg target. Steady progress over 4 months. Car commute now — 6-day lifting and diet doing the work.</div>
     </div>
     <div style="text-align:right;flex-shrink:0;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">98.7</div>
@@ -1600,10 +1632,10 @@ function toggleVideoPlayer(vid_id){
   <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
     <div>
       <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px;">Daily Burn (TDEE)</div>
-      <div style="font-size:11px;color:var(--mid);">~3,480 kcal · deficit ~810/day · ~0.8kg/wk loss</div>
+      <div style="font-size:11px;color:var(--mid);">~3,024 kcal · deficit ~750/day · ~0.7kg/wk loss</div>
     </div>
     <div style="text-align:right;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:800;color:var(--white);">3,500</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:800;color:var(--white);">3,024</div>
       <div style="font-size:9px;color:var(--grey);">kcal/day</div>
     </div>
   </div>
@@ -1713,24 +1745,14 @@ function toggleVideoPlayer(vid_id){
     <div class="home-rule"><span class="home-rule-n">01</span><div><div class="home-rule-title">Consistency above all</div><div class="home-rule-sub">30 minutes done beats 90 minutes skipped every time. Use ⚡ 30-min mode in Workouts when time is short — same stimulus, supersets, half the time.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">02</span><div><div class="home-rule-title">Progressive overload</div><div class="home-rule-sub">Add weight or reps every single week. You have huge room to grow fast.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">03</span><div><div class="home-rule-title">Rest is productive</div><div class="home-rule-sub">Thursday off. 8+ hours sleep. Muscle is built during recovery.</div></div></div>
-    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">2,700 kcal training days · 2,300 rest days · 230g protein daily. 3.5km to gym + 3.5km to work + gym session = ~830 kcal deficit daily. Samsung Health confirms ~172 kcal tracked walks. On track for ~0.8kg/wk loss.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">2,270 kcal training days · 2,120 kcal rest days · 217g protein daily. Car commute now, no walking — deficit comes from diet + 6-day training. ~750 kcal deficit daily, ~0.7kg/wk projected.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">05</span><div><div class="home-rule-title">Sleep is non-negotiable</div><div class="home-rule-sub">7+ hours. Cortisol from poor sleep directly causes belly and lower back fat storage and retention. The single most underrated factor in stubborn fat loss.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">06</span><div><div class="home-rule-title">Belly &amp; love handles — the truth</div><div class="home-rule-sub">You cannot target fat loss to these areas. But the deficit + daily walks + calorie cycling is already the optimal protocol. The oblique twists in leg raises build the muscle underneath. Fat clears from these areas last — typically weeks 8–12.</div></div></div>
   </div>
 
 
 
-  <!-- MORE INFO ACCORDION -->
-  <button id="homeMoreBtn" onclick="
-    var d=document.getElementById('homeMoreContent');
-    var open=d.style.display!=='none';
-    d.style.display=open?'none':'block';
-    this.querySelector('.more-arrow').textContent=open?'More ▾':'Less ▴';
-  " style="width:100%;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--mid);font-family:Space+Grotesk,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;justify-content:space-between;align-items:center;margin-bottom:0;">
-    <span>PRs · Rules · Supplements · Targets</span>
-    <span class="more-arrow">More ▾</span>
-  </button>
-  <div id="homeMoreContent" style="display:none;">
+  
 
   <!-- PRs SNAPSHOT -->
   <div class="home-section-label">Personal Records</div>
@@ -1911,7 +1933,7 @@ function toggleVideoPlayer(vid_id){
 </div>
 <div id="tab-program" class="section">
   <div class="sec-label">Programme</div>
-  <div id="todayWorkoutHeader" class="sec-title">12-WEEK PLAN</div>
+  <div id="todayWorkoutHeader" class="sec-title">TRAINING PLAN</div>
 
   <!-- TODAY'S WORKOUT CARD -->
   <div id="todayWorkoutCard" style="margin-bottom:16px;"></div>
@@ -1976,20 +1998,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('_FkbD0FhgVE')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/_FkbD0FhgVE/hqdefault.jpg" alt="Perfect Bench Press Form (DO THIS!)" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('_FkbD0FhgVE')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Bench Press Form (DO THIS!)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('M7OU_kSMzhs')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to Perform The Barbell Bench Press</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         <p class="wtip">Drive through your chest, not shoulders. Elbows 45° to body. Full ROM — bar touches chest. This is your primary strength movement. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Cable Lateral Raise — do both back-to-back, rest 60s. Push + isolation = no muscle overlap.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×8 @ 70% 1RM — form focus</span></div>
@@ -2009,20 +2018,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('ZTxRbytP_z8')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/ZTxRbytP_z8/hqdefault.jpg" alt="Incline Dumbbell Press Form & Tips" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('ZTxRbytP_z8')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Incline Dumbbell Press Form & Tips<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('-1uX3Xrhc28')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">High Incline Dumbbell Press Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">30–45° incline. Controls upper chest. Dumbbells allow full stretch at the bottom — don't rush the eccentric. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Cable Tricep Pushdown — chest then triceps, natural sequence.</span></p>
         <div class="ex-prog">
@@ -2043,20 +2039,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('4LBVP2Oe7fg')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/4LBVP2Oe7fg/hqdefault.jpg" alt="The PERFECT Barbell Overhead Press" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('4LBVP2Oe7fg')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">The PERFECT Barbell Overhead Press<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('afR3tPH6y_g')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Barbell Overhead Press Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Standing or seated. Brace core hard. Bar path: slight arc around nose. Lock out fully at top. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Cable Fly — shoulders then chest isolation finish.</span></p>
         <div class="ex-prog">
@@ -2077,20 +2060,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('HeovYNoZDRg')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/HeovYNoZDRg/hqdefault.jpg" alt="Better Way To Do Lateral Raises" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('HeovYNoZDRg')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Better Way To Do Lateral Raises<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('HCfU6LGpgMk')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cable Lateral Raise Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Slight lean away from cable. Lead with elbow, not wrist. Control the negative — don't swing. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Bench Press. Do this immediately after bench, no rest.</span></p>
         <div class="ex-prog">
@@ -2111,20 +2081,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('JntTub4MXSU')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/JntTub4MXSU/hqdefault.jpg" alt="Cable Fly Technique" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('JntTub4MXSU')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Cable Fly Technique<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('c44hwGS-peY')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cable Flyes Target Different Chest Parts</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">High-to-low or mid cable. Slight bend in elbow, squeeze at centre. Chest isolation — not a pressing movement. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Overhead Press. Finisher superset.</span></p>
         <div class="ex-prog">
@@ -2145,20 +2102,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('leazgWMaSo8')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/leazgWMaSo8/hqdefault.jpg" alt="Perfect Tricep Pushdown Form" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('leazgWMaSo8')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Perfect Tricep Pushdown Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('leazgWMaSo8')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Perfect Tricep Pushdown Form</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Straight bar or rope. Elbows pinned at sides — only forearms move. Full extension every rep. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Incline DB Press. Triceps are already warm.</span></p>
         <div class="ex-prog">
@@ -2179,20 +2123,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('AYqg9S5FrUU')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/AYqg9S5FrUU/hqdefault.jpg" alt="Overhead Tricep Extension Form" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('AYqg9S5FrUU')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Overhead Tricep Extension Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('VDSx0BWXuSE')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Overhead Tricep Extension</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Rope or DB overhead. Full stretch at the top, controlled extension. Long head emphasis — critical for arm size. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Solo finisher. 3×12, rest 45s between sets. Session done.</span></p>
         <div class="ex-prog">
@@ -2212,20 +2143,7 @@ function toggleVideoPlayer(vid_id){
         <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C4</div><div class="wname">Dips</div><div class="wmeta">3×10–12</div><button class="ex-tick" id="tick-dips" onclick="event.stopPropagation();toggleExDone('Dips')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-          <a class="ex-video-thumb" onclick="openYT('Qd8IQfmRxVk')" style="cursor:pointer;">
-            <img src="https://img.youtube.com/vi/Qd8IQfmRxVk/hqdefault.jpg" alt="How To Do Dips" loading="lazy" onerror="this.style.opacity='0.3'">
-            <div class="ex-video-play"></div>
-          </a>
-          <a class="ex-video-bar" onclick="openYT('Qd8IQfmRxVk')" style="cursor:pointer;">
-            <div class="ex-video-yt-icon"></div>
-            <div class="ex-video-title">
-              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Do Dips (Lower Chest)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-            </div>
-            <div class="ex-video-arrow">▶</div>
-          </a>
-        </div>
+        <div onclick="openYT('-A0KQHglinQ')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Chest Dips vs Tricep Dips</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         <p class="wtip">The lower chest is what gives the Hardy pec shelf. Lean forward slightly at the top to shift emphasis to lower chest. Add weight (belt/plate) when bodyweight gets easy. <span style="display:none;color:#C8102E;">⚡ 30-MIN: Solo finisher. 3×10 weighted or bodyweight.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×10 bodyweight</span></div>
@@ -2269,20 +2187,7 @@ function toggleVideoPlayer(vid_id){
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Chest-Supported T-Bar Row</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-chest_supported_t_bar_row" onclick="event.stopPropagation();toggleExDone('Chest-Supported T-Bar Row')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('UA8xugEALos')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/UA8xugEALos/hqdefault.jpg" alt="Fix Your Chest Supported Rows" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('UA8xugEALos')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Fix Your Chest Supported Rows<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('Mlr-Lx-10HQ')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Chest Supported T-Bar Row Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         <p class="wtip">Chest braced firmly against the pad — this removes your lower back from the movement entirely, making it the safest heavy back builder when training alone. Pull elbows back and up, squeeze blades together at the top. No spinal loading risk. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Lat Pulldown — both horizontal + vertical pull, no overlap.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×10 controlled</span></div>
@@ -2302,20 +2207,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('kIdRn16sFQg')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/kIdRn16sFQg/hqdefault.jpg" alt="How To Build Your Lats (Barbell Row)" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('kIdRn16sFQg')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To Build Your Lats (Barbell Row)<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('kIdRn16sFQg')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How To Build Your Lats (Barbell Row Form)</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Overhand grip. Hinge to ~45°, pull to lower chest. Squeeze shoulder blades. More mass-building than cable rows. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Assisted Pull-Up — compound pull superset.</span></p>
         <div class="ex-prog">
@@ -2336,20 +2228,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('02Qci1-0Aao')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/02Qci1-0Aao/hqdefault.jpg" alt="Wide Grip Lat Pulldown Form Tutorial" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('02Qci1-0Aao')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Wide Grip Lat Pulldown Form Tutorial<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('02Qci1-0Aao')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Wide Grip Lat Pulldown Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Wide grip, slight lean back. Pull to upper chest, lead with elbows. Full hang at top — don't cheat the stretch. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with T-Bar Row. Do this immediately after.</span></p>
         <div class="ex-prog">
@@ -2368,20 +2247,7 @@ function toggleVideoPlayer(vid_id){
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Assisted Pull-Up</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-assisted_pull_up" onclick="event.stopPropagation();toggleExDone('Assisted Pull-Up')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('DMo3HJoawmU')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/DMo3HJoawmU/hqdefault.jpg" alt="Assisted Pull-Up Progression" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('DMo3HJoawmU')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Assisted Pull-Up Progression<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('fWvV5cV4Fn4')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dual Cable Machine Assisted Pull Up</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         <p class="wtip"><strong style="color:var(--accent)">Your pull-up goal starts here.</strong> Use the assisted pull-up machine — set the counterweight so you can complete 8–10 clean reps. Reduce the assistance weight every 2 weeks. When the machine is at zero, you can do a pull-up. Full ROM: dead hang at the bottom, chin over bar at the top. No kipping. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Barbell Row. Second compound superset.</span></p>
         <div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:10px 12px;margin:8px 0;border-radius:0 6px 6px 0;">
           <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Pull-Up Progression Milestones</div>
@@ -2411,20 +2277,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('MChHOiaCR7s')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/MChHOiaCR7s/hqdefault.jpg" alt="How to: Cable Face Pull" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('MChHOiaCR7s')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">How To: Cable Face Pull<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('MChHOiaCR7s')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to: Cable Face Pull</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Rope at eye level. Pull to face, elbows flared out. Essential for shoulder health and rear delt development. Never skip this. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Barbell Curl — rear delt then bicep, no overlap.</span></p>
         <div class="ex-prog">
@@ -2445,20 +2298,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('rZtbLUGMzbk')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/rZtbLUGMzbk/hqdefault.jpg" alt="You're Curling WRONG! Fix Barbell Curl" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('rZtbLUGMzbk')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">You're Curling WRONG! Fix Barbell Curl<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('rZtbLUGMzbk')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">You're Curling WRONG! Fix Barbell Curl</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Strict form. No swinging. Supinate at the top — rotate wrist out. Full extension at bottom. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Face Pull. Curl straight after face pull.</span></p>
         <div class="ex-prog">
@@ -2479,20 +2319,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('NyW2fT2gQhM')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/NyW2fT2gQhM/hqdefault.jpg" alt="Hammer Curls Form Tips" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('NyW2fT2gQhM')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Hammer Curls — Form Tips & Do's/Don'ts<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('NyW2fT2gQhM')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Hammer Curls - Form Tip Do's and Don'ts</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Neutral grip. Works brachialis — adds thickness under the bicep. Alternate arms or together. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Solo finisher. 3×10, rest 45s. Session done.</span></p>
         <div class="ex-prog">
@@ -2512,20 +2339,7 @@ function toggleVideoPlayer(vid_id){
         <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C4</div><div class="wname">DB Shrugs</div><div class="wmeta">4×15–20</div><button class="ex-tick" id="tick-db_shrugs" onclick="event.stopPropagation();toggleExDone('DB Shrugs')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-          <a class="ex-video-thumb" onclick="openYT('XdpVMxwRxOk')" style="cursor:pointer;">
-            <img src="https://img.youtube.com/vi/XdpVMxwRxOk/hqdefault.jpg" alt="DB Shrug Form" loading="lazy" onerror="this.style.opacity='0.3'">
-            <div class="ex-video-play"></div>
-          </a>
-          <a class="ex-video-bar" onclick="openYT('XdpVMxwRxOk')" style="cursor:pointer;">
-            <div class="ex-video-yt-icon"></div>
-            <div class="ex-video-title">
-              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">DB Shrug Form — Build Traps<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-            </div>
-            <div class="ex-video-arrow">▶</div>
-          </a>
-        </div>
+        <div onclick="openYT('j2-RccWDhDo')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dumbbell Shrugs Correct Form</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         <p class="wtip"><strong style="color:var(--accent)">Tom Hardy's defining feature is trap thickness.</strong> Heavy DBs, full shrug to ear level, 1 second hold at top, slow descent. High reps build the dense trap look. Do NOT roll your shoulders — straight up and down. <span style="display:none;color:#C8102E;">⚡ 30-MIN: Paired with Hammer Curl — shrug then curl, opposite muscles.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">4×15 moderate — feel the hold</span></div>
@@ -2545,20 +2359,7 @@ function toggleVideoPlayer(vid_id){
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D1</div><div class="wname">Wrist Curl</div><div class="wmeta">3×15–20</div><button class="ex-tick" id="tick-wrist_curl" onclick="event.stopPropagation();toggleExDone('Wrist Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-          <a class="ex-video-thumb" onclick="openYT('0T5V7FZQb-w')" style="cursor:pointer;">
-            <img src="https://img.youtube.com/vi/0T5V7FZQb-w/hqdefault.jpg" alt="Wrist Curls & Extensions Superset" loading="lazy" onerror="this.style.opacity='0.3'">
-            <div class="ex-video-play"></div>
-          </a>
-          <a class="ex-video-bar" onclick="openYT('0T5V7FZQb-w')" style="cursor:pointer;">
-            <div class="ex-video-yt-icon"></div>
-            <div class="ex-video-title">
-              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Wrist Curls & Extensions Superset<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-            </div>
-            <div class="ex-video-arrow">▶</div>
-          </a>
-        </div>
+        <div onclick="openYT('xY8c6LcLRao')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to: Dumbbell Wrist Curl</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         <p class="wtip">Sit on bench, forearms on thighs, palms up, bar or DB hanging off fingers. Curl wrist up fully, lower slowly. The flexor vein runs directly over this muscle — this is your single best vascularity exercise. High reps, controlled, full ROM.</p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×20 light — feel the pump</span></div>
@@ -2576,20 +2377,7 @@ function toggleVideoPlayer(vid_id){
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D2</div><div class="wname">Reverse Barbell Curl</div><div class="wmeta">3×10–12</div><button class="ex-tick" id="tick-reverse_barbell_curl" onclick="event.stopPropagation();toggleExDone('Reverse Barbell Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-          <a class="ex-video-thumb" onclick="openYT('2lCrNqH2uaA')" style="cursor:pointer;">
-            <img src="https://img.youtube.com/vi/2lCrNqH2uaA/hqdefault.jpg" alt="Reverse Barbell Curls | Forearms + Biceps" loading="lazy" onerror="this.style.opacity='0.3'">
-            <div class="ex-video-play"></div>
-          </a>
-          <a class="ex-video-bar" onclick="openYT('2lCrNqH2uaA')" style="cursor:pointer;">
-            <div class="ex-video-yt-icon"></div>
-            <div class="ex-video-title">
-              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Reverse Barbell Curls | Forearms + Biceps<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-            </div>
-            <div class="ex-video-arrow">▶</div>
-          </a>
-        </div>
+        <div onclick="openYT('2lCrNqH2uaA')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Reverse Barbell Curls | Forearms + Biceps</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         <p class="wtip">Overhand grip (palms down), strict form, full extension. Hits the brachioradialis — the thick muscle on top of the forearm that veins run over when you straighten your arm. Far more forearm stimulus than a standard curl. Keep elbows pinned.</p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×12 light — form focus</span></div>
@@ -2607,20 +2395,7 @@ function toggleVideoPlayer(vid_id){
     <div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D3</div><div class="wname">Plate Pinch Hold</div><div class="wmeta">3×30–45 sec</div><button class="ex-tick" id="tick-plate_pinch_hold" onclick="event.stopPropagation();toggleExDone('Plate Pinch Hold')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
-        <div class="ex-video-card">
-          <a class="ex-video-thumb" onclick="openYT('DRCSpntjwRw')" style="cursor:pointer;">
-            <img src="https://img.youtube.com/vi/DRCSpntjwRw/hqdefault.jpg" alt="Forearm Workout Using a Barbell" loading="lazy" onerror="this.style.opacity='0.3'">
-            <div class="ex-video-play"></div>
-          </a>
-          <a class="ex-video-bar" onclick="openYT('DRCSpntjwRw')" style="cursor:pointer;">
-            <div class="ex-video-yt-icon"></div>
-            <div class="ex-video-title">
-              <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Forearm Workout Using a Barbell<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-              <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-            </div>
-            <div class="ex-video-arrow">▶</div>
-          </a>
-        </div>
+        <div onclick="openYT('zOmCzoRXWDc')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Plate Pinch Hold</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         <p class="wtip">Pinch two 5kg plates together smooth-side out between thumb and fingers. Hold for 30–45 seconds each hand. Brutal on the finger flexors and forearm density. This is the grip work that makes forearms look thick and vascular even relaxed. No equipment needed beyond standard plates.</p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">Ph.1 Wk1-4</span><span class="ex-prog-target">3×30s 2×5kg plates</span></div>
@@ -2665,20 +2440,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('dW3zj79xfrc')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/dW3zj79xfrc/hqdefault.jpg" alt="The PERFECT Barbell Squat" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('dW3zj79xfrc')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">The PERFECT Barbell Squat<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('8y_6tN6wvZM')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Barbell Squat Tutorial: Proper Form & Depth</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Bar on traps, feet shoulder-width. Sit between legs, not back. Hit parallel or below. Drive knees out on the way up. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Leg Curl — quad dominant + hamstring isolation, no overlap.</span></p>
         <div class="ex-prog">
@@ -2699,20 +2461,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('XXM_ihF8aKU')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/XXM_ihF8aKU/hqdefault.jpg" alt="Smith Machine RDL Tutorial" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('XXM_ihF8aKU')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Smith Machine RDL Tutorial<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('jKaB6MkZZPI')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Smith Machine RDL Tutorial for Beginners</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Fixed bar path makes this far safer solo than free-weight RDLs — the bar can't drift forward and pull your back out of position. Soft knee bend, hinge until you feel the hamstring stretch, drive hips forward to stand. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Standing Calf Raise — hip hinge + calf, completely different muscles.</span></p>
         <div class="ex-prog">
@@ -2733,20 +2482,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('BnacvXdaxq8')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/BnacvXdaxq8/hqdefault.jpg" alt="Leg Press Properly" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('BnacvXdaxq8')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Leg Press Properly<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('S4c9EYGYDA8')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to Use the Leg Press Machine Safely</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Feet mid-platform. Full depth — don't lock out at top. Vary foot position: high = glutes, low = quads. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Bulgarian Split Squat — both quad dominant but different stimulus.</span></p>
         <div class="ex-prog">
@@ -2767,20 +2503,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('or1frhkjBDc')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/or1frhkjBDc/hqdefault.jpg" alt="Bulgarian Split Squat Setup & Form" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('or1frhkjBDc')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Bulgarian Split Squat Setup & Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('or1frhkjBDc')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bulgarian Split Squat Setup & Form Tips</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Rear foot elevated. Front foot far enough that knee stays behind toes. Hardest leg exercise — will expose imbalances. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Leg Press. Go straight in after leg press.</span></p>
         <div class="ex-prog">
@@ -2801,20 +2524,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('jf9PBwwNAMs')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/jf9PBwwNAMs/hqdefault.jpg" alt="Seated Leg Curl Form" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('jf9PBwwNAMs')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Seated Leg Curl Form<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('aakNLjjm4Qo')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How To: Seated Leg Curl Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Lying or seated. Full extension, curl to full contraction. One of the only true hamstring isolation movements. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Squat. Do this immediately after squats.</span></p>
         <div class="ex-prog">
@@ -2835,20 +2545,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('gwLzBJYoWlI')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/gwLzBJYoWlI/hqdefault.jpg" alt="Calf Raise Technique" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('gwLzBJYoWlI')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Calf Raise Technique<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('yQZDGjL-xT4')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Standing Calf Raise Machine Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Full stretch at the bottom — paused. Rise up onto big toe. Calves respond to high reps and full ROM. Most people rush this. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with RDL. Calves between RDL sets.</span></p>
         <div class="ex-prog">
@@ -2869,20 +2566,7 @@ function toggleVideoPlayer(vid_id){
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div class="ex-video-card">
-        <a class="ex-video-thumb" onclick="openYT('-Mgcl-1oCZw')" style="cursor:pointer;">
-          <img src="https://img.youtube.com/vi/-Mgcl-1oCZw/hqdefault.jpg" alt="Hanging Leg Raises Done RIGHT" loading="lazy" onerror="this.style.opacity='0.3'">
-          <div class="ex-video-play"></div>
-        </a>
-        <a class="ex-video-bar" onclick="openYT('-Mgcl-1oCZw')" style="cursor:pointer;">
-          <div class="ex-video-yt-icon"></div>
-          <div class="ex-video-title">
-            <strong style="color:var(--white);display:block;margin-bottom:2px;font-size:12px">Hanging Leg Raises Done RIGHT<span style="background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;letter-spacing:1px;margin-left:6px;vertical-align:middle;">SHORT</span></strong>
-            <span style="font-size:10px;color:var(--grey);">Opens YouTube app</span>
-          </div>
-          <div class="ex-video-arrow">▶</div>
-        </a>
-      </div>
+        <div onclick="openYT('0wSUjj5j1xo')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;padding:14px;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div><div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How To Do Hanging Leg Raises Correct Form</div><div style="font-size:10px;color:var(--grey);margin-top:1px;">Tap to watch · Opens YouTube</div></div><div style="font-size:16px;color:var(--grey);">›</div></div>
         
         <p class="wtip">Dead hang, raise legs to 90° or higher. Control the descent. Do not swing. Builds real core strength. <strong style="color:var(--accent)">Love handle focus:</strong> add a twist at the top (knees to each elbow alternating) to hit the obliques — this is the specific muscle under love handles. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Solo finisher. 3×12 strict. Session complete.</span></p>
         <div class="ex-prog">
@@ -3008,7 +2692,7 @@ function toggleVideoPlayer(vid_id){
   <div style="background:var(--card);border:1px solid var(--border);padding:12px 14px;margin-bottom:14px;">
     <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Total Daily Calories</div>
     <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;color:var(--accent);">~2,800 <span style="font-size:13px;color:var(--grey)">kcal</span></div>
-    <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,700 kcal · Rest day ~2,400 kcal</div>
+    <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,270 kcal · Rest day ~2,400 kcal</div>
   </div>
 
   <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(255,255,255,0.25);padding:13px 14px;margin-bottom:14px;">
@@ -3157,7 +2841,58 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
 
-  </div>
+  
+    <!-- RECIPE 9: Protein French Toast -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🍳</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Protein French Toast</div>
+          <div class="recipe-meta">Weekend treat breakfast · 34g protein · 42g carbs</div>
+        </div>
+        <div class="recipe-time">10 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">2 large</span>Eggs</div><div class="recipe-ing"><span class="recipe-ing-qty">30g</span>Whey protein powder (vanilla)</div><div class="recipe-ing"><span class="recipe-ing-qty">60ml</span>Milk</div><div class="recipe-ing"><span class="recipe-ing-qty">2 slices</span>Wholemeal bread, thick-cut</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Cinnamon</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Butter for frying</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Berries, to serve</div></div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Whisk eggs, protein powder, milk and cinnamon in a shallow bowl until smooth — no lumps.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text"><strong>Dunk each slice of bread</strong> in the mixture for 10 seconds per side, letting it soak in properly.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Melt butter in a non-stick pan on medium heat. Fry each slice <strong>3–4 min per side</strong> until golden and cooked through.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Top with berries. No syrup needed — the protein powder already adds sweetness.</div></div></div>
+          <div class="recipe-tip"><strong>Tip:</strong> Use slightly stale bread — it soaks up the egg mixture better without falling apart.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">10 min</span><span class="recipe-tag">Weekend breakfast</span></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- RECIPE 10: Cottage Cheese Pancakes -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🥞</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Cottage Cheese Pancakes</div>
+          <div class="recipe-meta">High protein weekend stack · 38g protein · 30g carbs</div>
+        </div>
+        <div class="recipe-time">12 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">250g</span>Cottage cheese</div><div class="recipe-ing"><span class="recipe-ing-qty">3 large</span>Eggs</div><div class="recipe-ing"><span class="recipe-ing-qty">40g</span>Plain flour or oats, blended</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Baking powder</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Vanilla extract</div><div class="recipe-ing"><span class="recipe-ing-qty">Spray</span>Oil, for the pan</div></div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Blend cottage cheese, eggs, flour and vanilla in a blender until completely smooth — about 30 seconds.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Stir in baking powder by hand (don't blend it — you want the bubbles it makes).</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Heat a non-stick pan on medium, spray lightly with oil. <strong>Pour small pancakes</strong> (about 3 tbsp batter each).</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Cook 2 min until bubbles form on top, then flip and cook another 90 seconds. Repeat with remaining batter.</div></div></div>
+          <div class="recipe-tip"><strong>Tip:</strong> These are far more filling than normal pancakes — the cottage cheese makes them dense and protein-packed. Great post-workout too.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">12 min</span><span class="recipe-tag">Weekend breakfast</span></div>
+        </div>
+      </div>
+    </div>
+</div>
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Lunch &amp; Meal Prep</div><div class="div-line"></div></div>
   <div class="recipe-grid">
@@ -3241,7 +2976,58 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
 
-  </div>
+  
+    <!-- RECIPE 11: High-Protein Chicken Burrito Bowl -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🌯</div>
+        <div class="recipe-info">
+          <div class="recipe-name">High-Protein Chicken Burrito Bowl</div>
+          <div class="recipe-meta">Meal prep lunch · 48g protein · 58g carbs</div>
+        </div>
+        <div class="recipe-time">20 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">500g</span>Chicken breast, diced</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Fajita seasoning or paprika+cumin</div><div class="recipe-ing"><span class="recipe-ing-qty">300g</span>Cooked rice</div><div class="recipe-ing"><span class="recipe-ing-qty">400g</span>Tin black beans, drained</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Red pepper, sliced</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Avocado, sliced</div><div class="recipe-ing"><span class="recipe-ing-qty">100g</span>Sweetcorn</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Fresh coriander</div></div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Season diced chicken with fajita spice. Fry in a hot pan with a little oil for <strong>8–10 min</strong> until fully cooked through and slightly charred.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">In the same pan, quickly soften the pepper for 2–3 min once chicken is out resting.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Warm the black beans in a separate pan or microwave for 2 min.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text"><strong>Build the bowl:</strong> rice base, chicken, peppers, beans, sweetcorn. Top with avocado and coriander.</div></div><div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Divide into 4 meal prep containers for the week — keeps well 3–4 days in the fridge.</div></div></div>
+          <div class="recipe-tip"><strong>Tip:</strong> This scales perfectly for batch cooking — double or triple the chicken and rice, prep once, eat all week.</div>
+          <div><span class="recipe-tag">Meal prep</span><span class="recipe-tag">20 min</span><span class="recipe-tag">4 servings</span></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- RECIPE 12: Tuna &amp; White Bean Power Salad -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🥗</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Tuna &amp; White Bean Power Salad</div>
+          <div class="recipe-meta">No-cook lunch · 36g protein · 28g carbs</div>
+        </div>
+        <div class="recipe-time">8 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">2 tins</span>Tuna in spring water, drained</div><div class="recipe-ing"><span class="recipe-ing-qty">400g</span>Tin cannellini beans, drained</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Red onion, finely diced</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Lemon, juiced</div><div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Olive oil</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Fresh parsley, chopped</div><div class="recipe-ing"><span class="recipe-ing-qty">Salt &amp; pepper</span>To taste</div></div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Drain the tuna well and flake it into a large bowl with a fork.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Add the cannellini beans, red onion and parsley.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Dress with lemon juice, olive oil, salt and pepper. Toss everything together.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Eat straight away or pack into a container — this actually tastes better after a few hours in the fridge as the flavours settle.</div></div></div>
+          <div class="recipe-tip"><strong>Tip:</strong> Zero cooking required. This is the fastest way to hit 35g+ protein when you have no time or energy to cook.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">No-cook</span><span class="recipe-tag">8 min</span></div>
+        </div>
+      </div>
+    </div>
+</div>
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Dinner</div><div class="div-line"></div></div>
   <div class="recipe-grid">
@@ -3325,7 +3111,109 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
 
-  </div>
+  
+    <!-- RECIPE 13: One-Pan Chicken &amp; Chickpea Curry -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🍛</div>
+        <div class="recipe-info">
+          <div class="recipe-name">One-Pan Chicken &amp; Chickpea Curry</div>
+          <div class="recipe-meta">Batch-cook dinner · 44g protein · 38g carbs</div>
+        </div>
+        <div class="recipe-time">30 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">500g</span>Chicken thigh, diced (skinless)</div><div class="recipe-ing"><span class="recipe-ing-qty">400g</span>Tin chickpeas, drained</div><div class="recipe-ing"><span class="recipe-ing-qty">400g</span>Tin chopped tomatoes</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Onion, diced</div><div class="recipe-ing"><span class="recipe-ing-qty">2 cloves</span>Garlic, minced</div><div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Curry powder</div><div class="recipe-ing"><span class="recipe-ing-qty">200ml</span>Light coconut milk</div><div class="recipe-ing"><span class="recipe-ing-qty">300g</span>Cooked rice, to serve</div></div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Fry the onion and garlic in a large pan on medium heat for 3–4 min until softened.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Add the chicken thigh and curry powder. Fry for <strong>5 min</strong>, stirring, until the chicken is coated and starting to brown.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Pour in the chopped tomatoes, chickpeas and coconut milk. Stir well.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text"><strong>Simmer for 15–18 minutes</strong> on low-medium heat, stirring occasionally, until the chicken is fully cooked and the sauce has thickened.</div></div><div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Serve over rice. Makes 4 generous portions — freezes well for up to 3 months.</div></div></div>
+          <div class="recipe-tip"><strong>Tip:</strong> Chicken thigh stays juicier than breast in a curry that simmers this long — don't swap it out even though breast has slightly less fat.</div>
+          <div><span class="recipe-tag">Batch cook</span><span class="recipe-tag">30 min</span><span class="recipe-tag">4 servings</span><span class="recipe-tag">Freezer-friendly</span></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- RECIPE 14: Baked Cod with Lemon &amp; Herb Crust -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🐟</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Baked Cod with Lemon &amp; Herb Crust</div>
+          <div class="recipe-meta">Light high-protein dinner · 40g protein · 22g carbs</div>
+        </div>
+        <div class="recipe-time">22 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">2</span>Cod fillets (150g each)</div><div class="recipe-ing"><span class="recipe-ing-qty">30g</span>Breadcrumbs (wholemeal)</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Lemon, zested</div><div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Fresh parsley, chopped</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Olive oil</div><div class="recipe-ing"><span class="recipe-ing-qty">300g</span>New potatoes</div><div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Green beans</div></div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Preheat oven to <strong>200°C</strong>. Boil the new potatoes for 15–18 min until tender.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Mix breadcrumbs, lemon zest, parsley and olive oil in a bowl — this is your crust topping.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Pat the cod fillets dry, place on a lined baking tray, and press the breadcrumb mix firmly on top of each fillet.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text"><strong>Bake for 12–15 minutes</strong> until the fish is opaque and flakes easily with a fork, and the top is golden.</div></div><div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Steam the green beans for the last 4 minutes. Serve everything together.</div></div></div>
+          <div class="recipe-tip"><strong>Tip:</strong> Cod is one of the leanest white fish available and cooks fast — don't overcook it or it turns rubbery. 12 minutes is usually spot on for fillets this size.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">22 min</span><span class="recipe-tag">Light dinner</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECIPE 15: Post-Workout Recovery Shake -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🥤</div>
+        <div class="recipe-info">
+          <div class="recipe-name">Post-Workout Recovery Shake</div>
+          <div class="recipe-meta">Immediately after training · 42g protein · 48g carbs</div>
+        </div>
+        <div class="recipe-time">3 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">40g</span>Whey protein powder</div><div class="recipe-ing"><span class="recipe-ing-qty">1 large</span>Banana</div><div class="recipe-ing"><span class="recipe-ing-qty">300ml</span>Milk</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Peanut butter</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Ice cubes</div></div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Add all ingredients to a blender.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Blend on high for <strong>30–45 seconds</strong> until completely smooth.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Drink within 30 minutes of finishing your session — this is when your muscles absorb protein and carbs most effectively.</div></div></div>
+          <div class="recipe-tip"><strong>Tip:</strong> The banana + peanut butter combo replaces the glycogen you burned during training, not just protein — both matter for recovery.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">No-cook</span><span class="recipe-tag">3 min</span></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- RECIPE 16: 5-Minute Protein Wrap -->
+    <div class="recipe-card" onclick="toggleRecipe(this)">
+      <div class="recipe-head">
+        <div class="recipe-emoji">🥙</div>
+        <div class="recipe-info">
+          <div class="recipe-name">5-Minute Protein Wrap</div>
+          <div class="recipe-meta">Grab and go lunch · 32g protein · 26g carbs</div>
+        </div>
+        <div class="recipe-time">5 MIN</div>
+        <div class="recipe-arrow">▼</div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-section">
+          <div class="recipe-section-title">Ingredients</div>
+          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">1 large</span>Wholemeal wrap</div><div class="recipe-ing"><span class="recipe-ing-qty">100g</span>Sliced chicken or turkey (pre-cooked)</div><div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Hummus</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Spinach leaves</div><div class="recipe-ing"><span class="recipe-ing-qty">Few slices</span>Cucumber</div></div>
+        </div>
+        <div class="recipe-section">
+          <div class="recipe-section-title">Steps</div>
+          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Spread hummus evenly across the wrap.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Layer the sliced chicken, spinach and cucumber down the centre.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Roll tightly, tucking in the sides as you go. Cut in half diagonally.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Eat immediately or wrap in foil and take it with you — holds well for a few hours.</div></div></div>
+          <div class="recipe-tip"><strong>Tip:</strong> Keep pre-cooked sliced chicken or turkey in the fridge at all times (buy it ready-sliced if short on time) — this turns any lunch into a 30g+ protein meal in under 5 minutes.</div>
+          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">No-cook</span><span class="recipe-tag">5 min</span></div>
+        </div>
+      </div>
+    </div>
+</div>
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Quick &amp; No-Cook</div><div class="div-line"></div></div>
   <div class="recipe-grid">
@@ -3667,7 +3555,7 @@ function toggleVideoPlayer(vid_id){
   <div id="monthCalendar" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:20px;"></div>
 
   <!-- WEEKLY GRID -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">12-Week Overview</div><div class="div-line"></div></div>
+  <div class="divider"><div class="div-line"></div><div class="div-text">Training Overview</div><div class="div-line"></div></div>
   <div id="weeklyTracker"></div>
 
 
@@ -3903,7 +3791,7 @@ function toggleVideoPlayer(vid_id){
 
 <!-- ===== CALORIES ===== -->
 <div id="tab-calories" class="section">
-  <div class="sec-label">Daily Food Log · 2,700 kcal target</div>
+  <div class="sec-label">Daily Food Log · 2,270 kcal target</div>
   <div class="sec-title">CALORIES</div>
 
   <!-- Day Navigation -->
@@ -4062,7 +3950,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:12px;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Phase 2 · Strength Block</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After 12 weeks of recomp, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload. You're 11kg from your 85kg · 10% BF. At 85kg · 10% BF you'll be genuinely lean with full vascularity.</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.7;">After this recomp phase, move to a lean bulk (+200–300 kcal/day), drop reps to 5×5 on compounds, and focus on progressive overload. You're 11kg from your 85kg · 10% BF. At 85kg · 10% BF you'll be genuinely lean with full vascularity.</div>
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;">Assess at Week 12</div>
@@ -4289,14 +4177,13 @@ const PHASES=[
 ];
 
 function getCurrentWeek(){
-  // Date-based: store program start date, calc from elapsed days
+  // Open-ended: total weeks since programme start, uncapped
   const START_KEY = 'apx_program_start';
   let startStr = localStorage.getItem(START_KEY);
   if(!startStr){
-    // First launch — set start date to today's Monday
     const today = new Date();
     const day = today.getDay();
-    const diff = day === 0 ? -6 : 1 - day; // back to Monday
+    const diff = day === 0 ? -6 : 1 - day;
     const monday = new Date(today);
     monday.setDate(today.getDate() + diff);
     monday.setHours(0,0,0,0);
@@ -4306,9 +4193,20 @@ function getCurrentWeek(){
   const start = new Date(startStr);
   const now = new Date();
   const elapsed = Math.floor((now - start) / (1000 * 60 * 60 * 24 * 7));
-  return Math.min(Math.max(elapsed + 1, 1), 12);
+  return Math.max(elapsed + 1, 1); // no upper cap — open-ended
 }
-function getCurrentPhase(w){return PHASES.find(p=>p.wks.includes(w))||PHASES[0];}
+
+function getMonthsIn(){
+  const week = getCurrentWeek();
+  return Math.round((week / 4.345) * 10) / 10; // weeks to months, 1 decimal
+}
+function getCurrentPhase(w){
+  // Open-ended: cycle through 3 phases every 6 weeks indefinitely
+  var cyclePos = ((w-1) % 6) + 1;
+  if(cyclePos <= 2) return {name:'Foundation', desc:'Form & base volume'};
+  if(cyclePos <= 4) return {name:'Strength', desc:'Heavier loads, lower reps'};
+  return {name:'Peak', desc:'Max effort, push PRs'};
+}
 
 // ── SAVE & REFRESH (single entry point for all data changes) ──────────────────
 function saveAndRefresh(){
@@ -4926,19 +4824,7 @@ function renderCalWeekSummary(){
 // ── INIT ───────────────────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded',function(){
   // Auto-log 7km morning walk for today
-  try{
-    var CARDIO_KEY='apx_cardio_v1';
-    var cardio=JSON.parse(localStorage.getItem(CARDIO_KEY)||'{}');
-    var today=new Date().toISOString().slice(0,10);
-    if(!cardio[today+'-am']){
-      cardio[today+'-am']={type:'Walk',duration:42,name:'Walk to Gym (3.5km)',distance:3.5,calories:175,source:'auto'};
-      localStorage.setItem(CARDIO_KEY,JSON.stringify(cardio));
-    }
-    if(!cardio[today+'-pm']){
-      cardio[today+'-pm']={type:'Walk',duration:42,name:'Walk to Work (3.5km)',distance:3.5,calories:175,source:'auto'};
-      localStorage.setItem(CARDIO_KEY,JSON.stringify(cardio));
-    }
-  }catch(e){}
+  // Walking commute auto-log removed — now driving to gym
   try{stravaInit();}catch(e){console.warn('Strava init:',e);}
   try{if(typeof initWeightLogs==='function')initWeightLogs();}catch(e){}
   try{updateWorkoutBanners();}catch(e){}
@@ -4950,7 +4836,18 @@ window.addEventListener('DOMContentLoaded',function(){
   try{renderHomePRs();}catch(e){}
   try{buildMonthCalendar();}catch(e){}
   try{buildHomeMiniCal();}catch(e){}
+  try{
+    // Ensure program start reflects ~4 months of real training if not set realistically
+    var psKey='apx_program_start';
+    var ps=localStorage.getItem(psKey);
+    if(!ps || (new Date()-new Date(ps))/(1000*60*60*24*7) < 15){
+      var backdate=new Date();
+      backdate.setDate(backdate.getDate()-119); // ~17 weeks / 4 months ago
+      localStorage.setItem(psKey, backdate.toISOString());
+    }
+  }catch(e){}
   try{updateHomeStats();}catch(e){}
+  try{var mEl=document.getElementById('homeStatMonths'); if(mEl) mEl.textContent=getMonthsIn();}catch(e){}
   try{loadSessionNotes();}catch(e){}
   try{init30MinMode();}catch(e){}
   try{initMotivation();}catch(e){}
@@ -6274,7 +6171,7 @@ function applyWorkoutView(mode){
     if(pullDiv) pullDiv.style.display = 'block';
     if(legsDiv) legsDiv.style.display = 'block';
     phases.forEach(function(p){ p.style.display=''; });
-    if(header) header.textContent = '12-WEEK PLAN';
+    if(header) header.textContent = 'TRAINING PLAN';
     if(card) card.innerHTML = '';
   }
 }
@@ -6846,6 +6743,10 @@ function updateHomeStats(){
   var strEl  = document.getElementById('homeStatStreak');
   if(sessEl) sessEl.textContent = totalSessions;
   if(strEl)  strEl.textContent  = streak;
+  var sessEl2 = document.getElementById('homeStatSessions2');
+  var strEl2  = document.getElementById('homeStatStreak2');
+  if(sessEl2) sessEl2.textContent = totalSessions;
+  if(strEl2)  strEl2.textContent  = streak;
 }
 
 </script>
@@ -6948,6 +6849,32 @@ function homeCalNext(){
   _homeCalMonth++;
   if(_homeCalMonth>11){_homeCalMonth=0;_homeCalYear++;}
   buildHomeMiniCal();
+}
+
+</script>
+<script>
+
+function goToTodayWorkout(){
+  navTo('program','Workouts');
+  setTimeout(function(){
+    try{ setWorkoutView('today'); }catch(e){}
+    var todayType = getTodayWorkout();
+    var target = document.getElementById(todayType === 'rest' ? DAY_TO_WORKOUT[(new Date().getDay()+1)%7] : todayType);
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 150);
+}
+
+</script>
+<script>
+
+function openYT(vid_id){
+  var appUrl = 'vnd.youtube://shorts/' + vid_id;
+  var webUrl = 'https://www.youtube.com/shorts/' + vid_id;
+  var start = Date.now();
+  setTimeout(function(){
+    if(Date.now() - start < 1500) window.open(webUrl, '_blank');
+  }, 800);
+  try { window.location = appUrl; } catch(e) { window.open(webUrl,'_blank'); }
 }
 
 </script>
