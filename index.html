@@ -1529,23 +1529,23 @@ function toggleVideoPlayer(vid_id){
         <div style="width:52px;flex-shrink:0;font-size:10px;font-weight:700;color:var(--white);">7:00am</div>
         <div style="flex:1;">
           <div style="font-size:12px;font-weight:700;color:var(--white);">Breakfast</div>
-          <div style="font-size:10px;color:var(--mid);margin-top:1px;">Protein shake · 3 scrambled eggs · 1 slice toast</div>
+          <div style="font-size:10px;color:var(--mid);margin-top:1px;">Protein shake · 2 poached eggs · 1 slice toast</div>
         </div>
       </div>
 
       <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
         <div style="width:52px;flex-shrink:0;font-size:10px;font-weight:700;color:var(--white);">1:00pm</div>
         <div style="flex:1;">
-          <div style="font-size:12px;font-weight:700;color:var(--white);">Lunch</div>
-          <div style="font-size:10px;color:var(--mid);margin-top:1px;">0% Greek yoghurt · mixed berries · honey · 1 scoop protein powder</div>
+          <div style="font-size:12px;font-weight:700;color:var(--white);" id="mealLunchName">Lunch</div>
+          <div style="font-size:10px;color:var(--mid);margin-top:1px;" id="mealLunchDesc">0% Greek yoghurt · mixed berries · honey · 1 scoop protein powder</div>
         </div>
       </div>
 
       <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
         <div style="width:52px;flex-shrink:0;font-size:10px;font-weight:700;color:var(--white);">5:00pm</div>
         <div style="flex:1;">
-          <div style="font-size:12px;font-weight:700;color:var(--white);">Tuna — after work</div>
-          <div style="font-size:10px;color:var(--mid);margin-top:1px;">1 can tuna in spring water, drained — straight after work, before dinner</div>
+          <div style="font-size:12px;font-weight:700;color:var(--white);" id="mealTunaName">Tuna — after work</div>
+          <div style="font-size:10px;color:var(--mid);margin-top:1px;" id="mealTunaDesc">1 can tuna in spring water, drained — straight after work, before dinner</div>
         </div>
       </div>
 
@@ -2366,54 +2366,7 @@ function toggleVideoPlayer(vid_id){
     </div>
 
 
-    <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D1</div><div class="wname">Wrist Curl</div><div class="wmeta">3×15–20</div><button class="ex-tick" id="tick-wrist_curl" onclick="event.stopPropagation();toggleExDone('Wrist Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
-      <div class="wbody" onclick="event.stopPropagation()">
-        <div onclick="openYT('xY8c6LcLRao')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/xY8c6LcLRao/mqdefault.jpg" alt="How to: Dumbbell Wrist Curl" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to: Dumbbell Wrist Curl</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
-        <p class="wtip">Sit on bench, forearms on thighs, palms up, bar or DB hanging off fingers. Curl wrist up fully, lower slowly. The flexor vein runs directly over this muscle — this is your single best vascularity exercise. High reps, controlled, full ROM.</p>
-        <div class="ex-prog">
-          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×12–15 heavy</span></div>
-        </div>
-        <div class="ex-weight-log" id="wl-wrist_curl">
-          <div class="ex-weight-label">Track weight</div>
-          <div class="ex-weight-pr" id="wl-pr-wrist_curl"></div>
-          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-wrist_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-wrist_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Wrist Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-wrist_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Wrist Curl')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-wrist_curl"><span class="ex-weight-chip">No entries yet</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D2</div><div class="wname">Reverse Barbell Curl</div><div class="wmeta">3×10–12</div><button class="ex-tick" id="tick-reverse_barbell_curl" onclick="event.stopPropagation();toggleExDone('Reverse Barbell Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
-      <div class="wbody" onclick="event.stopPropagation()">
-        <div onclick="openYT('2lCrNqH2uaA')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/2lCrNqH2uaA/mqdefault.jpg" alt="Reverse Barbell Curls | Forearms + Biceps" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Reverse Barbell Curls | Forearms + Biceps</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
-        <p class="wtip">Overhand grip (palms down), strict form, full extension. Hits the brachioradialis — the thick muscle on top of the forearm that veins run over when you straighten your arm. Far more forearm stimulus than a standard curl. Keep elbows pinned.</p>
-        <div class="ex-prog">
-          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×8–10 heavy</span></div>
-        </div>
-        <div class="ex-weight-log" id="wl-reverse_barbell_curl">
-          <div class="ex-weight-label">Track weight</div>
-          <div class="ex-weight-pr" id="wl-pr-reverse_barbell_curl"></div>
-          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-reverse_barbell_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-reverse_barbell_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Reverse Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-reverse_barbell_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Reverse Barbell Curl')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-reverse_barbell_curl"><span class="ex-weight-chip">No entries yet</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D3</div><div class="wname">Plate Pinch Hold</div><div class="wmeta">3×30–45 sec</div><button class="ex-tick" id="tick-plate_pinch_hold" onclick="event.stopPropagation();toggleExDone('Plate Pinch Hold')" title="Mark done">✓</button><div class="warrow">▼</div></div>
-      <div class="wbody" onclick="event.stopPropagation()">
-        <div onclick="openYT('zOmCzoRXWDc')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/zOmCzoRXWDc/mqdefault.jpg" alt="Plate Pinch Hold" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Plate Pinch Hold</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
-        <p class="wtip">Pinch two 5kg plates together smooth-side out between thumb and fingers. Hold for 30–45 seconds each hand. Brutal on the finger flexors and forearm density. This is the grip work that makes forearms look thick and vascular even relaxed. No equipment needed beyond standard plates.</p>
-        <div class="ex-prog">
-          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×45s + added weight</span></div>
-        </div>
-        <div class="ex-weight-log" id="wl-plate_pinch_hold">
-          <div class="ex-weight-label">Track weight</div>
-          <div class="ex-weight-pr" id="wl-pr-plate_pinch_hold"></div>
-          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-plate_pinch_hold" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Plate Pinch Hold')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Plate Pinch Hold')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-plate_pinch_hold"><span class="ex-weight-chip">No entries yet</span></div>
-        </div>
-      </div>
-    </div>
+    
 <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">Session Notes</div>
       <textarea id="note-pull" placeholder="How did it feel? Any PRs? Anything tight or sore? Notes save automatically..." style="width:100%;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:DM Sans,sans-serif;font-size:14px;padding:10px 12px;outline:none;border-radius:8px;resize:none;min-height:80px;box-sizing:border-box;-webkit-tap-highlight-color:transparent;" oninput="debounce('note-pull',function(){saveSessionNote('pull',document.getElementById('note-pull').value);},300)"></textarea>
@@ -2440,21 +2393,21 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Squat</div><div class="wmeta">4×6–8</div><button class="ex-tick" id="tick-barbell_squat" onclick="event.stopPropagation();toggleExDone('Barbell Squat')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Goblet Squat</div><div class="wmeta">4×6–8</div><button class="ex-tick" id="tick-goblet_squat" onclick="event.stopPropagation();toggleExDone('Goblet Squat')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div onclick="openYT('8y_6tN6wvZM')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/8y_6tN6wvZM/mqdefault.jpg" alt="Barbell Squat Tutorial: Proper Form & Depth" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Barbell Squat Tutorial: Proper Form & Depth</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <div onclick="openYT('wjkoL-CagYE')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/wjkoL-CagYE/mqdefault.jpg" alt="Goblet Squat Tutorial: Proper Form & Depth" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Goblet Squat Tutorial: Proper Form & Depth</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Bar on traps, feet shoulder-width. Sit between legs, not back. Hit parallel or below. Drive knees out on the way up. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Leg Curl — quad dominant + hamstring isolation, no overlap.</span></p>
+        <p class="wtip">Hold a dumbbell vertically at chest height, elbows tucked. Sit between legs, not back. Hit parallel or below. Much gentler on the lower back than barbell squats — good option when recovering or short on energy. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Leg Curl — quad dominant + hamstring isolation, no overlap.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×5 @ 85%+ — max effort</span></div>
         </div>
-        <div class="ex-weight-log" id="wl-barbell_squat">
+        <div class="ex-weight-log" id="wl-goblet_squat">
           <div class="ex-weight-label">Track weight</div>
-          <div class="ex-weight-pr" id="wl-pr-barbell_squat"></div>
-          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_squat',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Squat')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_squat',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Squat')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-barbell_squat"><span class="ex-weight-chip">No entries yet</span></div>
+          <div class="ex-weight-pr" id="wl-pr-goblet_squat"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-goblet_squat',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-goblet_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Goblet Squat')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-goblet_squat',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Goblet Squat')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-goblet_squat"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2497,21 +2450,21 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Bulgarian Split Squat</div><div class="wmeta">3×10 each</div><button class="ex-tick" id="tick-bulgarian_split_squat" onclick="event.stopPropagation();toggleExDone('Bulgarian Split Squat')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Leg Extension</div><div class="wmeta">3×12</div><button class="ex-tick" id="tick-leg_extension" onclick="event.stopPropagation();toggleExDone('Leg Extension')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div onclick="openYT('or1frhkjBDc')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/or1frhkjBDc/mqdefault.jpg" alt="Bulgarian Split Squat Setup & Form Tips" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bulgarian Split Squat Setup & Form Tips</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <div onclick="openYT('d3d2yz7V26c')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/d3d2yz7V26c/mqdefault.jpg" alt="Leg Extension Setup & Form Tips" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Leg Extension Setup & Form Tips</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Rear foot elevated. Front foot far enough that knee stays behind toes. Hardest leg exercise — will expose imbalances. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Leg Press. Go straight in after leg press.</span></p>
+        <p class="wtip">Seated, back of knees against the pad, no gap. Extend fully, squeeze quads at the top, lower slow. Much gentler than split squats — no balance demand, isolates the quads directly. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Leg Press. Go straight in after leg press.</span></p>
         <div class="ex-prog">
-          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×8 heavy DBs</span></div>
+          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×12 controlled</span></div>
         </div>
-        <div class="ex-weight-log" id="wl-bulgarian_split_squat">
+        <div class="ex-weight-log" id="wl-leg_extension">
           <div class="ex-weight-label">Track weight</div>
-          <div class="ex-weight-pr" id="wl-pr-bulgarian_split_squat"></div>
-          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-bulgarian_split_squat',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-bulgarian_split_squat" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Bulgarian Split Squat')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-bulgarian_split_squat',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Bulgarian Split Squat')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-bulgarian_split_squat"><span class="ex-weight-chip">No entries yet</span></div>
+          <div class="ex-weight-pr" id="wl-pr-leg_extension"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-leg_extension',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-leg_extension" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Leg Extension')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-leg_extension',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Leg Extension')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-leg_extension"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2569,6 +2522,54 @@ function toggleVideoPlayer(vid_id){
           <div class="ex-weight-pr" id="wl-pr-hanging_leg_raise"></div>
           <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-hanging_leg_raise',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-hanging_leg_raise" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Hanging Leg Raise')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-hanging_leg_raise',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Hanging Leg Raise')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-hanging_leg_raise"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+<div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D1</div><div class="wname">Wrist Curl</div><div class="wmeta">3×15–20</div><button class="ex-tick" id="tick-wrist_curl" onclick="event.stopPropagation();toggleExDone('Wrist Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div onclick="openYT('xY8c6LcLRao')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/xY8c6LcLRao/mqdefault.jpg" alt="How to: Dumbbell Wrist Curl" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to: Dumbbell Wrist Curl</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <p class="wtip">Sit on bench, forearms on thighs, palms up, bar or DB hanging off fingers. Curl wrist up fully, lower slowly. The flexor vein runs directly over this muscle — this is your single best vascularity exercise. High reps, controlled, full ROM.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×12–15 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-wrist_curl">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-wrist_curl"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-wrist_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-wrist_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Wrist Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-wrist_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Wrist Curl')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-wrist_curl"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D2</div><div class="wname">Reverse Barbell Curl</div><div class="wmeta">3×10–12</div><button class="ex-tick" id="tick-reverse_barbell_curl" onclick="event.stopPropagation();toggleExDone('Reverse Barbell Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div onclick="openYT('2lCrNqH2uaA')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/2lCrNqH2uaA/mqdefault.jpg" alt="Reverse Barbell Curls | Forearms + Biceps" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Reverse Barbell Curls | Forearms + Biceps</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <p class="wtip">Overhand grip (palms down), strict form, full extension. Hits the brachioradialis — the thick muscle on top of the forearm that veins run over when you straighten your arm. Far more forearm stimulus than a standard curl. Keep elbows pinned.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×8–10 heavy</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-reverse_barbell_curl">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-reverse_barbell_curl"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-reverse_barbell_curl',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-reverse_barbell_curl" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Reverse Barbell Curl')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-reverse_barbell_curl',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Reverse Barbell Curl')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-reverse_barbell_curl"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D3</div><div class="wname">Plate Pinch Hold</div><div class="wmeta">3×30–45 sec</div><button class="ex-tick" id="tick-plate_pinch_hold" onclick="event.stopPropagation();toggleExDone('Plate Pinch Hold')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div onclick="openYT('zOmCzoRXWDc')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/zOmCzoRXWDc/mqdefault.jpg" alt="Plate Pinch Hold" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Plate Pinch Hold</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <p class="wtip">Pinch two 5kg plates together smooth-side out between thumb and fingers. Hold for 30–45 seconds each hand. Brutal on the finger flexors and forearm density. This is the grip work that makes forearms look thick and vascular even relaxed. No equipment needed beyond standard plates.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×45s + added weight</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-plate_pinch_hold">
+          <div class="ex-weight-label">Track weight</div>
+          <div class="ex-weight-pr" id="wl-pr-plate_pinch_hold"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-plate_pinch_hold" placeholder="Enter kg" min="0" max="200" step="1" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Plate Pinch Hold')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Plate Pinch Hold')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-plate_pinch_hold"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -4795,6 +4796,7 @@ window.addEventListener('DOMContentLoaded',function(){
   try{renderHomePRs();}catch(e){}
   try{buildMonthCalendar();}catch(e){}
   try{buildHomeMiniCal();}catch(e){}
+  try{updateMealRotation();}catch(e){}
   try{
     // Ensure program start reflects ~4 months of real training if not set realistically
     var psKey='apx_program_start';
@@ -5977,8 +5979,8 @@ function renderDoneState(){
   });
   var dayMap={
     'push-day':['barbell_bench_press','incline_db_press','overhead_press','cable_lateral_raise','cable_fly','cable_tricep_pushdown','overhead_tricep_extension','dips'],
-    'pull-day':['chest_supported_t_bar_row','barbell_row','lat_pulldown','assisted_pull_up','cable_face_pull','barbell_curl','hammer_curl','db_shrugs','wrist_curl','reverse_barbell_curl','plate_pinch_hold'],
-    'leg-day':['barbell_squat','smith_machine_rdl','leg_press','bulgarian_split_squat','leg_curl','standing_calf_raise','hanging_leg_raise']
+    'pull-day':['chest_supported_t_bar_row','barbell_row','lat_pulldown','assisted_pull_up','cable_face_pull','barbell_curl','hammer_curl','db_shrugs'],
+    'leg-day':['goblet_squat','smith_machine_rdl','leg_press','leg_extension','leg_curl','standing_calf_raise','hanging_leg_raise','wrist_curl','reverse_barbell_curl','plate_pinch_hold']
   };
   Object.keys(dayMap).forEach(function(day){
     var ex=dayMap[day];
@@ -6619,6 +6621,48 @@ async function requestWakeLock(){
 }
 function releaseWakeLock(){
   try{ if(_wakeLock){ _wakeLock.release(); _wakeLock = null; } }catch(e){}
+}
+
+</script>
+<script>
+
+// ── MEAL VARIETY ROTATION ────────────────────────────────────────
+var LUNCH_ROTATION = {
+  1: {name:'Lunch', desc:'0% Greek yoghurt · mixed berries · honey · 1 scoop protein powder'},
+  2: {name:'Lunch — wrap', desc:'Wrap · ham or chicken slices · light mayo · lettuce'},
+  3: {name:'Lunch', desc:'0% Greek yoghurt · mixed berries · honey · 1 scoop protein powder'},
+  4: {name:'Lunch — boiled eggs', desc:'2 boiled eggs · ready-salted crisps · apple'},
+  5: {name:'Lunch', desc:'0% Greek yoghurt · mixed berries · honey · 1 scoop protein powder'},
+  6: {name:'Lunch — noodle pot', desc:'Instant noodle pot · tin of tuna or chicken mixed in'},
+  0: {name:'Lunch — wrap', desc:'Wrap · ham or chicken slices · light mayo · lettuce'}
+};
+
+var TUNA_ROTATION = {
+  1: {name:'Tuna — after work', desc:'1 can tuna in spring water, drained — straight after work, before dinner'},
+  2: {name:'Tinned chicken — after work', desc:'1 pack tinned chicken breast, drained — straight after work, before dinner'},
+  3: {name:'Tuna — after work', desc:'1 can tuna in spring water, drained — straight after work, before dinner'},
+  4: {name:'Tuna — after work', desc:'1 can tuna in spring water, drained — straight after work, before dinner'},
+  5: {name:'Tinned chicken — after work', desc:'1 pack tinned chicken breast, drained — straight after work, before dinner'},
+  6: {name:'Tuna — after work', desc:'1 can tuna in spring water, drained — straight after work, before dinner'},
+  0: {name:'Tuna — after work', desc:'1 can tuna in spring water, drained — straight after work, before dinner'}
+};
+
+function updateMealRotation(){
+  try{
+    var today = new Date().getDay(); // 0=Sun, 1=Mon, ... 6=Sat
+    var lunch = LUNCH_ROTATION[today];
+    var tuna  = TUNA_ROTATION[today];
+
+    var lunchNameEl = document.getElementById('mealLunchName');
+    var lunchDescEl = document.getElementById('mealLunchDesc');
+    var tunaNameEl  = document.getElementById('mealTunaName');
+    var tunaDescEl  = document.getElementById('mealTunaDesc');
+
+    if(lunchNameEl && lunch){ lunchNameEl.textContent = lunch.name; }
+    if(lunchDescEl && lunch){ lunchDescEl.textContent = lunch.desc; }
+    if(tunaNameEl && tuna){ tunaNameEl.textContent = tuna.name; }
+    if(tunaDescEl && tuna){ tunaDescEl.textContent = tuna.desc; }
+  }catch(e){}
 }
 
 </script>
