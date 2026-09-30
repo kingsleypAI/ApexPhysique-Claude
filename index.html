@@ -1579,15 +1579,36 @@ function toggleVideoPlayer(vid_id){
     </div>
   </div>
 
+  <!-- WEIGHT TREND -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:14px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);">Weight Trend</div>
+      <div id="trendSummary" style="font-size:11px;font-weight:700;color:var(--accent);"></div>
+    </div>
+    <svg id="trendSparkline" width="100%" height="40" viewBox="0 0 300 40" style="display:block;"></svg>
+  </div>
+
+  <!-- NEXT CHECK-IN MINI BANNER -->
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);">Next Check-In</div>
+      <div id="nextCheckinDate" style="font-size:13px;font-weight:700;color:var(--white);margin-top:2px;">Sunday 4th October</div>
+    </div>
+    <div style="text-align:right;">
+      <div id="nextCheckinDays" style="font-size:16px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--accent);">14 days</div>
+      <div style="font-size:9px;color:var(--grey);">from now</div>
+    </div>
+  </div>
+
   <!-- COMPACT STATS STRIP -->
   <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px;">
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">98.3kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">95.3kg</div>
       <div style="font-size:11px;color:var(--mid);">4 months in · <span id="homeStatMonths">4</span>mo</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding-top:10px;border-top:1px solid var(--border);">
       <div style="text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent);" id="homeStatBF">20.6%</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent);" id="homeStatBF">22.4%</div>
         <div style="font-size:8px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px;">body fat</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border);">
@@ -4797,6 +4818,8 @@ window.addEventListener('DOMContentLoaded',function(){
   try{buildMonthCalendar();}catch(e){}
   try{buildHomeMiniCal();}catch(e){}
   try{updateMealRotation();}catch(e){}
+  try{updateCheckinCountdown();}catch(e){}
+  try{renderWeightTrend();}catch(e){}
   try{
     // Ensure program start reflects ~4 months of real training if not set realistically
     var psKey='apx_program_start';
@@ -5698,6 +5721,7 @@ function initCheckin(){
   if(history.length === 0 || needsUpdate){
     // Pre-load with the two real readings we already have
     var seed = [
+      {date:'2026-09-20', weight:95.3, bf:22.4, ts: new Date('2026-09-20').getTime()},
       {date:'2026-09-10', weight:98.3, bf:20.6, ts: new Date('2026-09-10').getTime()},
       {date:'2026-08-24', weight:98.7, bf:19.9, ts: new Date('2026-08-24').getTime()},
       {date:'2026-08-14', weight:97.7, bf:19.9, ts: new Date('2026-08-14').getTime()},
@@ -6662,6 +6686,76 @@ function updateMealRotation(){
     if(lunchDescEl && lunch){ lunchDescEl.textContent = lunch.desc; }
     if(tunaNameEl && tuna){ tunaNameEl.textContent = tuna.name; }
     if(tunaDescEl && tuna){ tunaDescEl.textContent = tuna.desc; }
+  }catch(e){}
+}
+
+</script>
+<script>
+
+function updateCheckinCountdown(){
+  try{
+    var history = typeof getCheckinHistory==='function' ? getCheckinHistory() : [];
+    var dateEl = document.getElementById('nextCheckinDate');
+    var daysEl = document.getElementById('nextCheckinDays');
+    if(!dateEl || !daysEl || !history.length) return;
+    var lastDate = new Date(history[0].date);
+    var nextDue = new Date(lastDate);
+    nextDue.setDate(nextDue.getDate() + 14);
+    var today = new Date();
+    var daysLeft = Math.ceil((nextDue - today) / (1000*60*60*24));
+    if(daysLeft <= 0){
+      daysEl.textContent = 'Due now';
+    } else {
+      daysEl.textContent = daysLeft + ' day' + (daysLeft===1?'':'s');
+    }
+    var opts = {weekday:'long', day:'numeric', month:'long'};
+    dateEl.textContent = nextDue.toLocaleDateString('en-GB', opts);
+  }catch(e){}
+}
+
+</script>
+<script>
+
+function renderWeightTrend(){
+  try{
+    var history = typeof getCheckinHistory==='function' ? getCheckinHistory() : [];
+    var svg = document.getElementById('trendSparkline');
+    var summary = document.getElementById('trendSummary');
+    if(!svg || !summary || history.length < 2) {
+      if(summary) summary.textContent = history.length ? 'Log more check-ins to see trend' : '';
+      return;
+    }
+    // history[0] is newest, so reverse for chronological order
+    var chrono = history.slice().reverse();
+    var weights = chrono.map(function(h){ return h.weight; }).filter(function(w){ return w != null; });
+    if(weights.length < 2){ summary.textContent = 'Log more check-ins to see trend'; return; }
+
+    var minW = Math.min.apply(null, weights);
+    var maxW = Math.max.apply(null, weights);
+    var range = (maxW - minW) || 1;
+    var w = 300, h = 40, pad = 4;
+
+    var points = weights.map(function(wt, i){
+      var x = pad + (i / (weights.length-1)) * (w - pad*2);
+      var y = h - pad - ((wt - minW) / range) * (h - pad*2);
+      return x + ',' + y;
+    });
+
+    var first = weights[0];
+    var last = weights[weights.length-1];
+    var diff = (last - first).toFixed(1);
+    var diffLabel = diff < 0 ? diff + 'kg' : '+' + diff + 'kg';
+    var color = diff < 0 ? '#4caf7d' : (diff > 0 ? 'var(--accent)' : 'var(--grey)');
+
+    summary.textContent = diffLabel + ' over ' + weights.length + ' check-ins';
+    summary.style.color = color;
+
+    svg.innerHTML = '<polyline points="' + points.join(' ') + '" fill="none" stroke="' + color + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+      points.map(function(p, i){
+        var isLast = i === points.length-1;
+        var coords = p.split(',');
+        return '<circle cx="'+coords[0]+'" cy="'+coords[1]+'" r="'+(isLast?4:2.5)+'" fill="'+color+'"/>';
+      }).join('');
   }catch(e){}
 }
 
