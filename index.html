@@ -1470,13 +1470,10 @@ function toggleVideoPlayer(vid_id){
   <div class="nav-section"><div class="nav-section-label">Main</div>
     <div class="nav-item active" id="nav-schedule" onclick="navTo('schedule','Overview')"><div class="nav-item-icon">🏠</div><div><div class="nav-item-name">Home</div><div class="nav-item-desc">Today · Water · Overview</div></div></div>
     <div class="nav-item" id="nav-program" onclick="navTo('program','Workouts')"><div class="nav-item-icon">💪</div><div><div class="nav-item-name">Workouts</div><div class="nav-item-desc">Push · Pull · Legs</div></div></div>
-    <div class="nav-item" id="nav-calories" onclick="navTo('calories','Calories')"><div class="nav-item-icon">🍽️</div><div><div class="nav-item-name">Calories</div><div class="nav-item-desc">Log your food today</div></div></div>
-    <div class="nav-item" id="nav-tracker" onclick="navTo('tracker','Progress')"><div class="nav-item-icon">📅</div><div><div class="nav-item-name">Progress</div><div class="nav-item-desc">Session calendar</div></div></div>
   </div>
   <div class="nav-divider"></div>
   <div class="nav-section"><div class="nav-section-label">More</div>
-    <div class="nav-item" id="nav-tracking" onclick="navTo('tracking','Tracking')"><div class="nav-item-icon">📈</div><div><div class="nav-item-name">Body Tracking</div><div class="nav-item-desc">Weight · Lifts · Measurements</div></div></div>
-    <div class="nav-item" id="nav-nutrition" onclick="navTo('nutrition','Nutrition')"><div class="nav-item-icon">🥗</div><div><div class="nav-item-name">Nutrition</div><div class="nav-item-desc">Macros · Meal plan</div></div></div>
+    <div class="nav-item" id="nav-nutrition" onclick="navTo('nutrition','Cut Meal Plan')"><div class="nav-item-icon">🥗</div><div><div class="nav-item-name">Cut Meal Plan</div><div class="nav-item-desc">Macros · meal options</div></div></div>
     <div class="nav-item" id="nav-recipes" onclick="navTo('recipes','Recipes')"><div class="nav-item-icon">🍳</div><div><div class="nav-item-name">Recipes</div><div class="nav-item-desc">Meals · Prep guide</div></div></div>
     <div class="nav-item" id="nav-shopping" onclick="navTo('shopping','Shopping')"><div class="nav-item-icon">🛒</div><div><div class="nav-item-name">Shopping List</div><div class="nav-item-desc">Weekly groceries</div></div></div>
   </div>
@@ -1529,7 +1526,7 @@ function toggleVideoPlayer(vid_id){
         <div style="width:52px;flex-shrink:0;font-size:10px;font-weight:700;color:var(--white);">7:00am</div>
         <div style="flex:1;">
           <div style="font-size:12px;font-weight:700;color:var(--white);">Breakfast</div>
-          <div style="font-size:10px;color:var(--mid);margin-top:1px;">Protein shake · 2 poached eggs · 1 slice toast</div>
+          <div style="font-size:10px;color:var(--mid);margin-top:1px;">2 scoop protein shake · 2 poached eggs · 1 slice toast</div>
         </div>
       </div>
 
@@ -1569,13 +1566,13 @@ function toggleVideoPlayer(vid_id){
         <div style="width:52px;flex-shrink:0;font-size:10px;font-weight:700;color:var(--white);">~7:30pm</div>
         <div style="flex:1;">
           <div style="font-size:12px;font-weight:700;color:var(--white);">Post-Gym Shake</div>
-          <div style="font-size:10px;color:var(--mid);margin-top:1px;">Protein shake — straight after training, last intake of the day</div>
+          <div style="font-size:10px;color:var(--mid);margin-top:1px;">2 scoop protein shake — straight after training, last intake of the day</div>
         </div>
       </div>
 
     </div>
     <div style="background:rgba(200,16,46,0.06);border-top:1px solid var(--border);padding:10px 14px;">
-      <div style="font-size:10px;color:var(--mid);">~169g protein · ~1,700 kcal deficit target · <span style="color:var(--white);font-weight:700;">Tuna kept clear of 9-5 work hours</span></div>
+      <div style="font-size:10px;color:var(--mid);">~217g protein · ~470 kcal deficit target (2 scoops/shake confirmed) · <span style="color:var(--white);font-weight:700;">Tuna kept clear of 9-5 work hours</span></div>
     </div>
   </div>
 
@@ -1603,12 +1600,12 @@ function toggleVideoPlayer(vid_id){
   <!-- COMPACT STATS STRIP -->
   <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px;">
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">95.3kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">95.6kg</div>
       <div style="font-size:11px;color:var(--mid);">4 months in · <span id="homeStatMonths">4</span>mo</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding-top:10px;border-top:1px solid var(--border);">
       <div style="text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent);" id="homeStatBF">22.4%</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent);" id="homeStatBF">20.2%</div>
         <div style="font-size:8px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px;">body fat</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border);">
@@ -1808,7 +1805,7 @@ function toggleVideoPlayer(vid_id){
     <div class="home-rule"><span class="home-rule-n">01</span><div><div class="home-rule-title">Consistency above all</div><div class="home-rule-sub">30 minutes done beats 90 minutes skipped every time. Use ⚡ 30-min mode in Workouts when time is short — same stimulus, supersets, half the time.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">02</span><div><div class="home-rule-title">Progressive overload</div><div class="home-rule-sub">Add weight or reps every single week. You have huge room to grow fast.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">03</span><div><div class="home-rule-title">Rest is productive</div><div class="home-rule-sub">Thursday off. 8+ hours sleep. Muscle is built during recovery.</div></div></div>
-    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">2,270 kcal training days · 2,120 kcal rest days · 217g protein daily. Car commute now, no walking — deficit comes from diet + 6-day training. ~750 kcal deficit daily, ~0.7kg/wk projected.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">~2,495 kcal actual intake (2 scoops/shake confirmed) · 217g protein daily, already on target. Deficit smaller than planned (~470 kcal/day, ~0.4kg/wk) but protein is excellent — worth the trade-off.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">05</span><div><div class="home-rule-title">Sleep is non-negotiable</div><div class="home-rule-sub">7+ hours. Cortisol from poor sleep directly causes belly and lower back fat storage and retention. The single most underrated factor in stubborn fat loss.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">06</span><div><div class="home-rule-title">Belly &amp; love handles — the truth</div><div class="home-rule-sub">You cannot target fat loss to these areas. But the deficit + daily walks + calorie cycling is already the optimal protocol. The oblique twists in leg raises build the muscle underneath. Fat clears from these areas last — typically weeks 8–12.</div></div></div>
   </div>
@@ -2414,7 +2411,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="wcard">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Goblet Squat</div><div class="wmeta">4×6–8</div><button class="ex-tick" id="tick-goblet_squat" onclick="event.stopPropagation();toggleExDone('Goblet Squat')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Goblet Squat</div><div class="wmeta">4×10–12</div><button class="ex-tick" id="tick-goblet_squat" onclick="event.stopPropagation();toggleExDone('Goblet Squat')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
@@ -2547,6 +2544,38 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
 <div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C4</div><div class="wname">Russian Twist</div><div class="wmeta">3×20 each side</div><button class="ex-tick" id="tick-russian_twist" onclick="event.stopPropagation();toggleExDone('Russian Twist')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div onclick="openYT('iuJo2lMF5Ig')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/iuJo2lMF5Ig/mqdefault.jpg" alt="Russian Twist Exercise Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Russian Twist Exercise Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <p class="wtip">The direct oblique builder — this is what shows as the "ab wall" definition on the sides of your core as body fat drops. Sit with knees bent, lean back slightly, rotate a weight (plate or dumbbell) side to side, touching the floor each side. Keep the movement controlled, not fast and sloppy.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×20 each side, light-moderate weight</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-russian_twist">
+          <div class="ex-weight-label">Track weight used</div>
+          <div class="ex-weight-pr" id="wl-pr-russian_twist"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-russian_twist',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-russian_twist" placeholder="Enter kg" min="0" max="50" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Russian Twist')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-russian_twist',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Russian Twist')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-russian_twist"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+<div class="wcard">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C5</div><div class="wname">Cable Crunch</div><div class="wmeta">3×15</div><button class="ex-tick" id="tick-cable_crunch" onclick="event.stopPropagation();toggleExDone('Cable Crunch')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div onclick="openYT('bd63yN6g_9w')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/bd63yN6g_9w/mqdefault.jpg" alt="Cable Crunch Form: Build Strong Abs" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cable Crunch Form: Build Strong Abs</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <p class="wtip">The direct upper ab builder — weighted and progressive, unlike bodyweight crunches. Kneel facing the cable machine, rope behind your head, crunch down rounding your spine, hips stay still. The weight gets progressively heavier as you get stronger, which bodyweight crunches can't offer.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×15, add weight as it gets easier</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-cable_crunch">
+          <div class="ex-weight-label">Track weight used</div>
+          <div class="ex-weight-pr" id="wl-pr-cable_crunch"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_crunch',-2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-cable_crunch" placeholder="Enter kg" min="0" max="100" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Cable Crunch')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-cable_crunch',2.5)" style="width:32px;height:36px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:15px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Cable Crunch')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-cable_crunch"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+<div class="wcard">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D1</div><div class="wname">Wrist Curl</div><div class="wmeta">3×15–20</div><button class="ex-tick" id="tick-wrist_curl" onclick="event.stopPropagation();toggleExDone('Wrist Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         <div onclick="openYT('xY8c6LcLRao')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/xY8c6LcLRao/mqdefault.jpg" alt="How to: Dumbbell Wrist Curl" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to: Dumbbell Wrist Curl</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
@@ -2605,678 +2634,254 @@ function toggleVideoPlayer(vid_id){
 <!-- ===== NUTRITION ===== -->
 <div id="tab-nutrition" class="section">
   <div class="sec-label">Guide Targets · 98kg · Aggressive Cut to Nov</div>
-  <div class="sec-title">NUTRITION</div>
-    <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:14px;margin-bottom:14px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">🎯 Pull-Up Goal</div>
-    <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">First bodyweight pull-up</div>
-    <div style="font-size:11px;color:var(--mid);line-height:1.7;">Lat strength from pulldowns, rows and assisted pull-ups — combined with the weight already lost — puts you in a strong position for your first clean rep. Muscle-ups are the next goal after 5–10 consecutive pull-ups.</div>
-  </div>
-
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
-      <div style="height:3px;background:linear-gradient(90deg,var(--accent),#4a4a4a);"></div>
-      <div style="padding:18px;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--white);margin-bottom:4px;">The Plan: Cut First, Then Lean Bulk</div>
-        <div style="font-size:11px;color:var(--mid);margin-bottom:14px;">Wanting to be bulkier AND leaner isn't a contradiction — it's exactly what recomposition solves, just not both at once. Finish the cut, then build on a clean foundation.</div>
-
-        <div style="background:var(--surface);border-radius:8px;padding:12px 14px;margin-bottom:10px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <span style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;">Phase 1 — Now</span>
-            <span style="font-size:10px;color:var(--grey);">Current</span>
-          </div>
-          <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Finish the cut to 85kg · 10% BF</div>
-          <div style="font-size:11px;color:var(--mid);line-height:1.6;">Keep the current deficit and PPL split exactly as is — it's working. Roughly 8–9kg to go, realistically 10–14 weeks. Don't start the bulk early — bulking on top of extra fat just means more fat to lose later.</div>
-        </div>
-
-        <div style="background:var(--surface);border-radius:8px;padding:12px 14px;margin-bottom:10px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <span style="font-size:11px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.06em;">Phase 2 — Lean Bulk</span>
-            <span style="font-size:10px;color:var(--grey);">Starts at 85kg</span>
-          </div>
-          <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">Small surplus, strength-focused</div>
-          <div style="display:flex;flex-direction:column;gap:6px;">
-            <div style="font-size:11px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;">①</span><span><strong style="color:var(--white);">+250–350 kcal/day surplus</strong> — enough to build muscle, small enough to avoid fast fat regain</span></div>
-            <div style="font-size:11px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;">②</span><span><strong style="color:var(--white);">Protein stays high</strong> — same ~2.2g/kg you're doing now, non-negotiable</span></div>
-            <div style="font-size:11px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;">③</span><span><strong style="color:var(--white);">Carbs increase most</strong> — fuel for lifting heavier, drop reps toward 5×5 on compounds</span></div>
-            <div style="font-size:11px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;">④</span><span><strong style="color:var(--white);">Weigh weekly, track the rate</strong> — target ~0.25–0.4kg/week gain. Faster than that is mostly fat, not muscle</span></div>
-            <div style="font-size:11px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;">⑤</span><span><strong style="color:var(--white);">Strength becomes the scoreboard</strong> — PRs on bench, squat, row matter more than the scale during this phase</span></div>
-          </div>
-        </div>
-
-        <div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:10px 12px;border-radius:0 6px 6px 0;">
-          <div style="font-size:11px;color:var(--mid);line-height:1.6;"><strong style="color:var(--white);">Why this order works:</strong> you're still relatively new to training — this is the window where real muscle gets built even in a deficit, which is exactly why your lean mass has held steady while cutting. That window closes as you get more advanced. Use it now by finishing the cut, then build clean on top of it.</div>
-        </div>
-      </div>
-    </div>
-
-<div style="background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:14px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">When You Can't Track Exactly</div>
-    <div style="font-size:11px;color:var(--mid);line-height:1.6;margin-bottom:10px;">No fixed kitchen or diet plan right now? Walking to the gym is back on, and switching Monster Original → Zero Sugar recovers ~590 kcal/day on its own — both need zero food control. Priority order when your food choices are limited:</div>
-    <div style="display:flex;flex-direction:column;gap:7px;">
-      <div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;font-weight:700;">1</span><span><strong style="color:var(--white);">Protein first</strong> — whatever's in the house (eggs, chicken, dairy, beans, tuna), prioritise that portion over carbs or snacks when you get a choice</span></div>
-      <div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;font-weight:700;">2</span><span><strong style="color:var(--white);">Water before meals</strong> — helps with portion control when you're eating what's available rather than what you planned</span></div>
-      <div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;font-weight:700;">3</span><span><strong style="color:var(--white);">Training stays yours</strong> — the one variable fully in your control. Keep showing up, that consistency matters more than any single day's food</span></div>
-      <div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);flex-shrink:0;font-weight:700;">4</span><span><strong style="color:var(--white);">Check in every 2–3 weeks</strong>, not daily — small fluctuations mean very little when food isn't fully in your control</span></div>
-    </div>
-  </div>
-
+  <div class="sec-title">CUT MEAL PLAN</div>
   <!-- MONSTER SWAP CALLOUT -->
   <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(200,16,46,0.25);border-radius:10px;padding:14px;margin-bottom:14px;">
     <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">🥤 Easiest Win Available</div>
     <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">Monster Original → Monster Zero Sugar</div>
-    <div style="font-size:11px;color:var(--mid);line-height:1.7;">3 cans/day of Original is ~630 kcal and 162g sugar — daily. Switching to Zero Sugar keeps the exact same routine and caffeine but drops that to ~30–45 kcal. That's roughly <strong style="color:var(--white);">590 kcal/day recovered</strong> without changing anything else about your food. On its own, close to an extra 0.5kg/week of fat loss. Also likely helps sleep and energy crashes — that much daily sugar affects both.</div>
+    <div style="font-size:11px;color:var(--mid);line-height:1.7;">3 cans/day of Original is ~630 kcal and 162g sugar — daily. Switching to Zero Sugar keeps the exact same routine and caffeine but drops that to ~30–45 kcal. That's roughly <strong style="color:var(--white);">590 kcal/day recovered</strong> without changing anything else about your food.</div>
   </div>
 
+  <!-- FOOD FATIGUE NOTE -->
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:14px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Variety Fixes Food Fatigue</div>
+    <div style="font-size:11px;color:var(--mid);line-height:1.7;">Eating the same thing every day is the fastest way to fall off a cut — not because the food is wrong, but because you stop wanting to eat it. Everything below is grouped by meal slot with several swappable options. Pick whichever sounds good that day — all options in a group are roughly matched for protein and calories.</div>
+  </div>
+
+  <!-- SCOOP GUIDANCE -->
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;gap:10px;align-items:center;">
+    <div style="font-size:20px;">🥄</div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--white);">Every "protein shake" = 1 scoop</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">Check your tub's label — most scoops are ~24g protein. Don't double up without checking, it changes the calorie maths.</div>
+    </div>
+  </div>
+
+  <!-- BREAKFAST OPTIONS -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Breakfast — pick one</div><div class="div-line"></div></div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">2 scoop protein shake + 2 poached eggs + 1 toast</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~515 kcal · ~64g protein · your current default (2 scoops)</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">2 scoop protein shake + 2 weetabix + splash of milk</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~495 kcal · ~59g protein · zero cooking, 1 minute</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">Greek yoghurt + protein powder + banana</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~350 kcal · ~38g protein · no cooking at all</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">2 scrambled eggs + beans on 1 toast</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~380 kcal · ~28g protein · proper hot breakfast, still quick</div>
+    </div>
+  </div>
+
+  <!-- LUNCH OPTIONS -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Lunch — pick one</div><div class="div-line"></div></div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">0% Greek yoghurt + berries + honey + protein powder</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~350 kcal · ~35g protein · zero prep</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">Wrap + ham or chicken slices + light mayo + lettuce</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~400 kcal · ~30g protein · 5 min assembly</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">2 boiled eggs + crisps + apple</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~380 kcal · ~16g protein · prep eggs in advance, zero effort on the day</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">Instant noodle pot + tin of tuna or chicken mixed in</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~350 kcal · ~28g protein · kettle + 3 min wait</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">Cup of soup + 2 slices toast + cheese</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~400 kcal · ~18g protein · cheap, hot, fast — good for a cold day</div>
+    </div>
+  </div>
+
+  <!-- AFTERNOON PROTEIN TOP-UP -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">After Work — pick one</div><div class="div-line"></div></div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">1 tin tuna, drained (water or oil)</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~116-200 kcal · ~26g protein · straight from the tin</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">1 pack tinned/pre-cooked chicken breast</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~120 kcal · ~25g protein · different taste from tuna, same convenience</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">Beef jerky / biltong (small pack)</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~120 kcal · ~20g protein · pricier per gram, good for a genuine change of taste</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">2 scoop protein shake (if tuna feels repetitive)</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~230 kcal · ~48g protein · fallback when you just can't face more tuna</div>
+    </div>
+  </div>
+
+  <!-- DINNER GUIDANCE -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Dinner</div><div class="div-line"></div></div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px;">
+    <div style="font-size:12px;font-weight:700;color:var(--white);margin-bottom:6px;">Whatever's cooked — out of your control, and that's fine</div>
+    <div style="font-size:11px;color:var(--mid);line-height:1.7;">Higher fat is okay on a cut — total calories matter more than where they come from. If there's ever a choice, take the smaller portion or drain visible excess oil, but don't stress about this meal. It's your pre-workout fuel, roughly an hour before the gym.</div>
+  </div>
+
+  <!-- POST-GYM OPTIONS -->
+  <div class="divider"><div class="div-line"></div><div class="div-text">Post-Gym / Evening — pick one</div><div class="div-line"></div></div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">1 scoop protein shake</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~130 kcal · ~24g protein · your current default</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">1 tin tuna, drained</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~116-200 kcal · ~26g protein · good before bed, real food instead of another shake</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--white);">Small pot of cottage cheese alternative — quark + berries</div>
+      <div style="font-size:10px;color:var(--mid);margin-top:2px;">~140 kcal · ~20g protein · smoother texture than cottage cheese, similar protein</div>
+    </div>
+  </div>
+
+  <!-- MACRO SUMMARY -->
   <div class="macro-row">
     <div class="mcell"><div class="mnum">216</div><div class="munit">g / day</div><div class="mname">Protein</div></div>
     <div class="mcell"><div class="mnum">209</div><div class="munit">g / day</div><div class="mname">Carbs</div></div>
     <div class="mcell"><div class="mnum">63</div><div class="munit">g / day</div><div class="mname">Fats</div></div>
   </div>
-  <div style="background:var(--card);border:1px solid var(--border);padding:12px 14px;margin-bottom:14px;">
-    <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Total Daily Calories</div>
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;color:var(--accent);">~2,270 <span style="font-size:13px;color:var(--grey)">kcal</span></div>
-    <div style="font-size:11px;color:var(--grey);margin-top:4px;">Slight deficit (recomp) · Training days 2,270 kcal · Rest day ~2,400 kcal</div>
-  </div>
-
-  <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(255,255,255,0.25);padding:13px 14px;margin-bottom:14px;">
-    <div style="background:rgba(200,16,46,0.07);border:1px solid rgba(255,255,255,0.25);padding:13px 14px;margin-bottom:14px;">
-    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">⚠ Recomposition Strategy · 101kg</div>
-    <div style="font-size:11px;color:var(--mid);line-height:1.8;">
-      At your stats a traditional bulk is unnecessary — you have enough stored energy to fuel muscle growth while in a small deficit. This is called <strong style="color:var(--white)">body recomposition</strong>. Expect to lose ~0.5–1kg per week while gaining strength. The scale might barely move for weeks — that's muscle replacing fat. <strong style="color:var(--white)">Judge progress by the mirror and your lifts, not the number.</strong>
-    </div>
-  </div>
-    
-  </div>  <div class="meal-switch">
-    <button class="mstab active" id="ms-am" onclick="switchMeal('am')">🌅 Morning<small>Before-work training</small></button>
-    <button class="mstab" id="ms-pm" onclick="switchMeal('pm')">🌆 Evening<small>After-work training</small></button>
-  </div>
-
-  <!-- AM MEALS -->
-  <div class="mplan active" id="mp-am">
-    <div class="mday-label">Your Actual Day — Aggressive Cut</div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">Morning</div><div class="mname">Breakfast</div><div class="mkcal">~110 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">1 medium</span>Banana</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">1g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">27g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">0g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Light and simple — fine for an aggressive cut. Fast carbs to start the day, minimal calories.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">Midday</div><div class="mname">Lunch — WITH protein powder added</div><div class="mkcal">~330 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">170g</span>Greek yoghurt</div><div class="ing"><span class="ing-amt">100g</span>Mixed berries</div><div class="ing"><span class="ing-amt">1 scoop</span>Protein powder, mixed in</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">34g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">30g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">6g</div><div class="mmac-l">Fats</div></div></div><div class="mnote"><strong style="color:var(--white)">This is the key change.</strong> Same lunch you're already having — just stir a scoop of protein powder into the yoghurt. Takes 10 seconds, adds ~24g protein you were otherwise missing.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">Evening</div><div class="mname">Protein Shake — before/with dinner</div><div class="mkcal">~130 kcal</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">1 scoop</span>Protein powder</div><div class="ing"><span class="ing-amt">250ml</span>Water or skimmed milk</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">24g</div><div class="mmac-l">Protein</div></div><div class="mmac"><div class="mmac-v">3g</div><div class="mmac-l">Carbs</div></div><div class="mmac"><div class="mmac-v">2g</div><div class="mmac-l">Fats</div></div></div><div class="mnote">Have this alongside or just before dinner. Gets protein in without needing to change what's actually cooked for you.</div></div></div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">Dinner</div><div class="mname">Grandad's Cooking — higher fat</div><div class="mkcal">~700 kcal (est.)</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">Whatever's</span>cooked — out of your control, and that's fine</div></div><div class="mmacros"><div class="mmac"><div class="mmac-v">~35g</div><div class="mmac-l">Protein (est.)</div></div><div class="mmac"><div class="mmac-v">~45g</div><div class="mmac-l">Carbs (est.)</div></div><div class="mmac"><div class="mmac-v">~35g</div><div class="mmac-l">Fats (est.)</div></div></div><div class="mnote">Higher fat is fine on a cut — fat isn't the enemy, total calories are. If there's a choice, take the leaner protein option and smaller portion of anything fried, but don't stress about this meal. It's not fully in your control and that's okay.</div></div></div>
-    <div class="mday-label">Daily Totals (estimated)</div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">Full day</div><div class="mname">Target vs Actual</div><div class="mkcal">~2,267 kcal target</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">216g</span>Protein target (2.2g/kg at 98kg)</div><div class="ing"><span class="ing-amt">209g</span>Carbs target</div><div class="ing"><span class="ing-amt">63g</span>Fats target</div><div class="ing"><span class="ing-amt">~93g</span>Protein from banana + yoghurt shake + evening shake alone</div></div><div class="mnote"><strong style="color:var(--white)">With the two protein additions, you're most of the way to target before dinner even happens.</strong> Whatever protein is in dinner closes most of the remaining gap. This is a realistic, sustainable version of aggressive — not starvation, not reckless, just genuinely tight on calories with protein protected.</div></div></div>
-  </div>
-
-  <!-- PM MEALS -->
-  <div class="mplan" id="mp-pm">
-    <div class="mday-label">Same Plan — Evening Training Reference</div>
-    <div class="mrow" onclick="toggleMeal(this)"><div class="mrow-head"><div class="mtime">All day</div><div class="mname">Same structure applies</div><div class="mkcal">~2,267 kcal target</div><div class="marrow">▼</div></div><div class="mbody"><div class="ings"><div class="ing"><span class="ing-amt">Banana</span>Breakfast — unchanged</div><div class="ing"><span class="ing-amt">Yoghurt + berries + protein powder</span>Lunch — the key addition</div><div class="ing"><span class="ing-amt">Protein shake</span>Evening, with or before dinner</div><div class="ing"><span class="ing-amt">Grandad's dinner</span>Whatever's cooked</div></div><div class="mnote">This eating pattern doesn't change based on training time — the meals are the same whether you train morning or evening. The only variable is when you fit in your Zone 2 cardio session (after lifting on training days, longer on rest day).</div></div></div>
-  </div>
-
-  <div class="divider"><div class="div-line"></div><div class="div-text">Supplements</div><div class="div-line"></div></div>
-  <div class="supp-list">
-    <div class="supp-item"><div class="supp-icon">💊</div><div class="supp-info"><div class="supp-name">Creatine Monohydrate</div><div class="supp-dose">5g daily · with pre-workout meal</div><div class="supp-why">The most researched supplement in existence. Increases strength, power output, and muscle size.</div></div></div>
-    <div class="supp-item"><div class="supp-icon">🥛</div><div class="supp-info"><div class="supp-name">Whey Protein</div><div class="supp-dose">40g post-workout</div><div class="supp-why">Fast-digesting. Hits your protein target conveniently. Not magic — just a practical tool.</div></div></div>
-    <div class="supp-item"><div class="supp-icon">💪</div><div class="supp-info"><div class="supp-name">Whey Protein Powder</div><div class="supp-dose">Lunch (mixed in) + evening shake</div><div class="supp-why">Closes the protein gap from a lighter daily eating pattern. On an aggressive cut, protein is what protects muscle while calories are tight — this is the highest-leverage single change available right now.</div></div></div>
-    <div class="supp-item"><div class="supp-icon">☀️</div><div class="supp-info"><div class="supp-name">Vitamin D3 + K2</div><div class="supp-dose">2000–4000 IU daily · with food</div><div class="supp-why">Supports testosterone production and immune function. Most people training hard are deficient.</div></div></div>
-    <div class="supp-item"><div class="supp-icon">🐟</div><div class="supp-info"><div class="supp-name">Omega-3 Fish Oil</div><div class="supp-dose">3g daily · with meals</div><div class="supp-why">Reduces inflammation, supports joint health, improves recovery between sessions.</div></div></div>
-    <div class="supp-item"><div class="supp-icon">⚡</div><div class="supp-info"><div class="supp-name">Zinc + Magnesium (ZMA)</div><div class="supp-dose">Before bed</div><div class="supp-why">Depleted by heavy training. Supports sleep quality, recovery, and hormonal health.</div></div></div>
-  </div>
 </div>
-
 
 <!-- ===== RECIPES ===== -->
 <div id="tab-recipes" class="section">
-  <div class="sec-label">Beginner Friendly · All Recipes</div>
+  <div class="sec-label">Your Real Meals · Aggressive Cut</div>
   <div class="sec-title">RECIPES</div>
 
-  <!-- SUNDAY PREP GUIDE -->
   <div class="prep-banner">
-    <div class="prep-banner-title">📦 Sunday Meal Prep — 60 Minutes, Whole Week Sorted</div>
-    <div class="prep-step"><div class="prep-num">1</div><span>Cook <strong style="color:var(--white)">1.8kg chicken breast</strong> in oven (200°C, 25 min). Slice and divide into 6 containers.</span></div>
-    <div class="prep-step"><div class="prep-num">2</div><span>Boil <strong style="color:var(--white)">900g dry rice</strong> — takes 12 min. Portion into same containers with chicken.</span></div>
-    <div class="prep-step"><div class="prep-num">3</div><span>Roast <strong style="color:var(--white)">1.4kg sweet potato</strong> (cubed, 200°C, 30 min) — do this while rice boils.</span></div>
-    <div class="prep-step"><div class="prep-num">4</div><span>Steam or microwave <strong style="color:var(--white)">broccoli and veg</strong> (5 min). Add to containers.</span></div>
-    <div class="prep-step"><div class="prep-num">5</div><span>Store in fridge. Grab and go all week — Monday to Saturday covered.</span></div>
-    <div style="margin-top:10px;font-size:11px;color:var(--grey);">💡 Total time: ~60 min · Saves 30+ min every single day · Removes all excuses for eating badly</div>
+    <div class="prep-banner-title">📦 Sunday Prep — 30 Minutes, Whole Week Sorted</div>
+    <div class="prep-step"><div class="prep-num">1</div><span>Hard boil <strong style="color:var(--white)">12 eggs</strong> (12 min simmer, then ice bath). Keeps 1 week in the fridge, covers backup breakfasts and lunches.</span></div>
+    <div class="prep-step"><div class="prep-num">2</div><span>Portion <strong style="color:var(--white)">protein powder</strong> into daily zip bags or a pre-measured shaker if you want zero thinking each morning.</span></div>
+    <div class="prep-step"><div class="prep-num">3</div><span>Stock up on <strong style="color:var(--white)">tuna tins, Greek yoghurt, berries, honey</strong> for the week — check the shopping list for exact quantities.</span></div>
+    <div style="margin-top:10px;font-size:11px;color:var(--grey);">💡 Total time: ~30 min · Most of your meals need zero actual cooking</div>
   </div>
 
   <div class="divider"><div class="div-line"></div><div class="div-text">Breakfast</div><div class="div-line"></div></div>
-  <div class="recipe-grid">
 
-    <!-- RECIPE 1: Power Oats -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🥣</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Power Oats</div>
-          <div class="recipe-meta">Pre-workout breakfast · 22g protein · 96g carbs</div>
-        </div>
-        <div class="recipe-time">5 MIN</div>
-        <div class="recipe-arrow">▼</div>
+  <div class="recipe-card">
+    <div class="recipe-head"><div class="recipe-icon">🍳</div><div><div class="recipe-name">Poached Eggs on Toast</div><div class="recipe-meta">~400 kcal · ~40g protein · 5 min</div></div></div>
+    <div class="recipe-body">
+      <div class="recipe-ings">
+        <div class="recipe-ing"><span class="recipe-ing-qty">2 scoops</span>Protein powder, mixed with water</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">2 large</span>Eggs</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">1 slice</span>Toast</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Vinegar (for poaching water)</div>
       </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list">
-            <div class="recipe-ing"><span class="recipe-ing-qty">120g</span>Rolled oats</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">300ml</span>Semi-skimmed milk</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 large</span>Banana, sliced</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Honey (optional)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">5g</span>Creatine (stir in after)</div>
-          </div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps">
-            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Pour oats and milk into a microwave-safe bowl. <strong>Microwave on high for 3 minutes.</strong> Stop halfway and stir.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Take out and stir again — it should be thick and creamy. If too thick, add a splash more milk.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text"><strong>Top with sliced banana</strong> and drizzle of honey. Stir in creatine now — it dissolves invisibly.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Eat immediately. Brew your coffee while it microwaves.</div></div>
-          </div>
-          <div class="recipe-tip"><strong>Beginner tip:</strong> Make this the night before as overnight oats — just mix oats + milk in a jar, leave in the fridge overnight. Grab it cold in the morning. Zero cooking required.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">5 min</span><span class="recipe-tag">No cooking skill needed</span></div>
-        </div>
+      <div class="recipe-steps">
+        <div class="recipe-step-row"><div class="recipe-step-num">1</div><div class="recipe-step-text">Simmer water with a splash of vinegar. Crack eggs into a cup, swirl the water into a gentle whirlpool, slide eggs in.</div></div>
+        <div class="recipe-step-row"><div class="recipe-step-num">2</div><div class="recipe-step-text">Poach 3 minutes for a runny yolk, 4 for firmer. Lift out with a slotted spoon onto kitchen roll.</div></div>
+        <div class="recipe-step-row"><div class="recipe-step-num">3</div><div class="recipe-step-text">Toast the bread, plate the eggs on top. Mix the shake separately and drink alongside.</div></div>
       </div>
     </div>
-
-    <!-- RECIPE 2: Scrambled Eggs -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🍳</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Perfect Scrambled Eggs on Toast</div>
-          <div class="recipe-meta">Post-workout breakfast · 62g protein · high satiety</div>
-        </div>
-        <div class="recipe-time">8 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list">
-            <div class="recipe-ing"><span class="recipe-ing-qty">5 whole</span>Eggs</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">2 slices</span>Sourdough bread</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">½</span>Avocado</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Butter or olive oil</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">pinch</span>Salt and black pepper</div>
-          </div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps">
-            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text"><strong>Put bread in the toaster now</strong> — it'll be ready by the time eggs are done.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Crack all 5 eggs into a bowl. Add a pinch of salt and pepper. <strong>Beat with a fork for 30 seconds</strong> until yolks and whites are fully mixed.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Put a non-stick pan on <strong>medium-low heat</strong> (not high — this is the most common beginner mistake). Add butter or oil.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Pour in eggs. <strong>Stir slowly and constantly</strong> with a spatula, moving the egg from the edges to the centre. Takes about 3–4 minutes.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text"><strong>Take off the heat just before they look fully set</strong> — residual heat finishes the job. They should look soft and slightly glossy.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">6</div><div class="recipe-step-text">Serve on toast. Slice avocado and place on top. Season with more black pepper.</div></div>
-          </div>
-          <div class="recipe-tip"><strong>The rule:</strong> Low heat + constant stirring = creamy eggs. High heat = rubbery eggs. Don't rush it.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">8 min</span></div>
-        </div>
-      </div>
-    </div>
-
-  
-    <!-- RECIPE 9: Protein French Toast -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🍳</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Protein French Toast</div>
-          <div class="recipe-meta">Weekend treat breakfast · 34g protein · 42g carbs</div>
-        </div>
-        <div class="recipe-time">10 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">2 large</span>Eggs</div><div class="recipe-ing"><span class="recipe-ing-qty">30g</span>Whey protein powder (vanilla)</div><div class="recipe-ing"><span class="recipe-ing-qty">60ml</span>Milk</div><div class="recipe-ing"><span class="recipe-ing-qty">2 slices</span>Wholemeal bread, thick-cut</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Cinnamon</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Butter for frying</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Berries, to serve</div></div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Whisk eggs, protein powder, milk and cinnamon in a shallow bowl until smooth — no lumps.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text"><strong>Dunk each slice of bread</strong> in the mixture for 10 seconds per side, letting it soak in properly.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Melt butter in a non-stick pan on medium heat. Fry each slice <strong>3–4 min per side</strong> until golden and cooked through.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Top with berries. No syrup needed — the protein powder already adds sweetness.</div></div></div>
-          <div class="recipe-tip"><strong>Tip:</strong> Use slightly stale bread — it soaks up the egg mixture better without falling apart.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">10 min</span><span class="recipe-tag">Weekend breakfast</span></div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- RECIPE 10: Cottage Cheese Pancakes -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🥞</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Cottage Cheese Pancakes</div>
-          <div class="recipe-meta">High protein weekend stack · 38g protein · 30g carbs</div>
-        </div>
-        <div class="recipe-time">12 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">250g</span>Cottage cheese</div><div class="recipe-ing"><span class="recipe-ing-qty">3 large</span>Eggs</div><div class="recipe-ing"><span class="recipe-ing-qty">40g</span>Plain flour or oats, blended</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Baking powder</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Vanilla extract</div><div class="recipe-ing"><span class="recipe-ing-qty">Spray</span>Oil, for the pan</div></div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Blend cottage cheese, eggs, flour and vanilla in a blender until completely smooth — about 30 seconds.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Stir in baking powder by hand (don't blend it — you want the bubbles it makes).</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Heat a non-stick pan on medium, spray lightly with oil. <strong>Pour small pancakes</strong> (about 3 tbsp batter each).</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Cook 2 min until bubbles form on top, then flip and cook another 90 seconds. Repeat with remaining batter.</div></div></div>
-          <div class="recipe-tip"><strong>Tip:</strong> These are far more filling than normal pancakes — the cottage cheese makes them dense and protein-packed. Great post-workout too.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">12 min</span><span class="recipe-tag">Weekend breakfast</span></div>
-        </div>
-      </div>
-    </div>
-</div>
-
-  <div class="divider"><div class="div-line"></div><div class="div-text">Lunch &amp; Meal Prep</div><div class="div-line"></div></div>
-  <div class="recipe-grid">
-
-    <!-- RECIPE 3: Oven Chicken + Rice -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🍗</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Oven Baked Chicken &amp; Rice</div>
-          <div class="recipe-meta">Meal prep staple · 57g protein per serving · makes 6 portions</div>
-        </div>
-        <div class="recipe-time">35 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients (6 portions)</div>
-          <div class="recipe-ing-list">
-            <div class="recipe-ing"><span class="recipe-ing-qty">1.8kg</span>Chicken breasts</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">900g dry</span>Basmati rice</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Olive oil</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">2 tsp</span>Garlic powder</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">2 tsp</span>Paprika (smoked or sweet)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Salt + black pepper</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">optional</span>Lemon juice (squeeze over after)</div>
-          </div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps">
-            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text"><strong>Preheat oven to 200°C.</strong> While it heats, line a large baking tray with foil (makes washing up easy).</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Place chicken on the tray. <strong>Drizzle with olive oil</strong>, then sprinkle garlic powder, paprika, salt, and pepper over both sides. Use your hands to rub it in.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text"><strong>Bake for 22–25 minutes.</strong> You'll know it's done when you cut the thickest part and there's no pink inside. When in doubt, give it 3 more minutes.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">While chicken cooks: <strong>boil rice.</strong> Pour rice into a pot. Cover with water (roughly double the volume of rice). Bring to boil, then reduce heat to low, lid on, cook 12 minutes. Turn off heat, leave lid on 5 more minutes.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Let chicken rest 5 minutes, then <strong>slice into strips</strong>. Divide chicken and rice across 6 meal prep containers. Add steamed veg to each.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">6</div><div class="recipe-step-text"><strong>Store in fridge up to 5 days</strong>, or freeze portions 3–6. Reheat in microwave 2–3 minutes.</div></div>
-          </div>
-          <div class="recipe-tip"><strong>Seasoning shortcuts:</strong> If you don't want to measure spices, just use any pre-mixed "chicken seasoning" from any supermarket. Results in 10 seconds.</div>
-          <div><span class="recipe-tag meal-prep">Meal Prep</span><span class="recipe-tag easy">Easy</span><span class="recipe-tag">35 min · 6 portions</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RECIPE 4: Garlic Beef Mince Rice Bowl -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🥩</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Garlic Beef Mince Rice Bowl</div>
-          <div class="recipe-meta">High protein dinner · 55g protein · incredibly easy</div>
-        </div>
-        <div class="recipe-time">15 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients (1 portion)</div>
-          <div class="recipe-ing-list">
-            <div class="recipe-ing"><span class="recipe-ing-qty">250g</span>Lean beef mince (5% fat)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">150g dry</span>Rice (pre-cooked from prep is fine)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">3 cloves</span>Garlic (or 1 tsp garlic powder)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Soy sauce</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Olive oil</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">pinch</span>Chilli flakes (optional)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Broccoli or spinach</div>
-          </div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps">
-            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Heat oil in a frying pan on <strong>medium-high heat</strong>. Add minced garlic (or garlic powder) and stir for 30 seconds — you'll smell it instantly.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Add mince. <strong>Break it apart with a spatula</strong> as it cooks — keep it moving so it doesn't clump. Cook for 6–7 minutes until all the pink is gone.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Add soy sauce and chilli flakes. Stir for 1 more minute. It'll go dark and glossy — that's the flavour.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Microwave broccoli for 3 minutes in a bowl with 2 tbsp of water, covered with a plate.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text"><strong>Serve mince over rice with broccoli on the side.</strong> Done.</div></div>
-          </div>
-          <div class="recipe-tip"><strong>Beginner tip:</strong> Soy sauce is your best friend as a new cook — it adds salt, depth, and umami to almost any meat. 1 tbsp goes a long way.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">15 min</span></div>
-        </div>
-      </div>
-    </div>
-
-  
-    <!-- RECIPE 11: High-Protein Chicken Burrito Bowl -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🌯</div>
-        <div class="recipe-info">
-          <div class="recipe-name">High-Protein Chicken Burrito Bowl</div>
-          <div class="recipe-meta">Meal prep lunch · 48g protein · 58g carbs</div>
-        </div>
-        <div class="recipe-time">20 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">500g</span>Chicken breast, diced</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Fajita seasoning or paprika+cumin</div><div class="recipe-ing"><span class="recipe-ing-qty">300g</span>Cooked rice</div><div class="recipe-ing"><span class="recipe-ing-qty">400g</span>Tin black beans, drained</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Red pepper, sliced</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Avocado, sliced</div><div class="recipe-ing"><span class="recipe-ing-qty">100g</span>Sweetcorn</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Fresh coriander</div></div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Season diced chicken with fajita spice. Fry in a hot pan with a little oil for <strong>8–10 min</strong> until fully cooked through and slightly charred.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">In the same pan, quickly soften the pepper for 2–3 min once chicken is out resting.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Warm the black beans in a separate pan or microwave for 2 min.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text"><strong>Build the bowl:</strong> rice base, chicken, peppers, beans, sweetcorn. Top with avocado and coriander.</div></div><div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Divide into 4 meal prep containers for the week — keeps well 3–4 days in the fridge.</div></div></div>
-          <div class="recipe-tip"><strong>Tip:</strong> This scales perfectly for batch cooking — double or triple the chicken and rice, prep once, eat all week.</div>
-          <div><span class="recipe-tag">Meal prep</span><span class="recipe-tag">20 min</span><span class="recipe-tag">4 servings</span></div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- RECIPE 12: Tuna &amp; White Bean Power Salad -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🥗</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Tuna &amp; White Bean Power Salad</div>
-          <div class="recipe-meta">No-cook lunch · 36g protein · 28g carbs</div>
-        </div>
-        <div class="recipe-time">8 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">2 tins</span>Tuna in spring water, drained</div><div class="recipe-ing"><span class="recipe-ing-qty">400g</span>Tin cannellini beans, drained</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Red onion, finely diced</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Lemon, juiced</div><div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Olive oil</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Fresh parsley, chopped</div><div class="recipe-ing"><span class="recipe-ing-qty">Salt &amp; pepper</span>To taste</div></div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Drain the tuna well and flake it into a large bowl with a fork.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Add the cannellini beans, red onion and parsley.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Dress with lemon juice, olive oil, salt and pepper. Toss everything together.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Eat straight away or pack into a container — this actually tastes better after a few hours in the fridge as the flavours settle.</div></div></div>
-          <div class="recipe-tip"><strong>Tip:</strong> Zero cooking required. This is the fastest way to hit 35g+ protein when you have no time or energy to cook.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">No-cook</span><span class="recipe-tag">8 min</span></div>
-        </div>
-      </div>
-    </div>
-</div>
-
-  <div class="divider"><div class="div-line"></div><div class="div-text">Dinner</div><div class="div-line"></div></div>
-  <div class="recipe-grid">
-
-    <!-- RECIPE 5: Pan Salmon + Sweet Potato -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🐟</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Pan-Seared Salmon &amp; Roast Sweet Potato</div>
-          <div class="recipe-meta">Recovery dinner · 55g protein · omega-3 rich</div>
-        </div>
-        <div class="recipe-time">30 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients (1 portion)</div>
-          <div class="recipe-ing-list">
-            <div class="recipe-ing"><span class="recipe-ing-qty">250g</span>Salmon fillet (skin on or off)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Sweet potato (1 medium)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Spinach or kale</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Olive oil</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Garlic powder</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">pinch</span>Salt + black pepper</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">optional</span>Lemon wedge to serve</div>
-          </div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps">
-            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text"><strong>Preheat oven to 200°C.</strong> Cut sweet potato into cubes (about 2cm). No need to peel — just scrub it. Toss in ½ tbsp olive oil, salt and pepper. Spread on a baking tray. <strong>Roast 25–30 minutes</strong>, turning once halfway.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">When potato has ~8 minutes left: pat salmon dry with kitchen paper. <strong>Season both sides</strong> with salt, pepper, and garlic powder.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Heat remaining oil in a frying pan on <strong>medium-high</strong>. When oil shimmers (but doesn't smoke), lay salmon in <strong>skin-side down</strong> if it has skin. <strong>Don't touch it for 4 minutes.</strong></div></div>
-            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text"><strong>Flip once</strong> and cook 2–3 more minutes. Salmon is done when it flakes easily with a fork and the inside is pale pink (not translucent).</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">While salmon rests: throw spinach into the same hot pan for 1–2 minutes. It wilts fast — just toss it around until it shrinks down.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">6</div><div class="recipe-step-text">Plate everything together. Squeeze lemon over salmon if you have it.</div></div>
-          </div>
-          <div class="recipe-tip"><strong>Don't flip too early:</strong> Salmon tells you when it's ready to flip — the flesh will have turned from translucent to opaque about halfway up the side. Flip then, not before.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">30 min</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RECIPE 6: Chilli Chicken Stir Fry -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🥡</div>
-        <div class="recipe-info">
-          <div class="recipe-name">High-Protein Chicken Stir Fry</div>
-          <div class="recipe-meta">Quick dinner · 60g protein · ready in 15 min</div>
-        </div>
-        <div class="recipe-time">15 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients (1 portion)</div>
-          <div class="recipe-ing-list">
-            <div class="recipe-ing"><span class="recipe-ing-qty">220g</span>Chicken breast, sliced thin</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">150g</span>Mixed frozen veg (from bag)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">150g</span>Pre-cooked rice</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Soy sauce</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Sesame oil (optional but great)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Garlic powder</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Olive oil</div>
-          </div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps">
-            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text"><strong>Slice chicken into thin strips</strong> — the thinner they are, the faster they cook and the better the texture.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Heat olive oil in a pan or wok on <strong>high heat</strong>. Stir fry = high heat, fast cooking. Add chicken and cook 4–5 minutes, stirring constantly.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Add frozen veg straight from the bag. Stir fry for 3–4 minutes until veg is heated through and starting to get slight colour.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Add pre-cooked rice, soy sauce, garlic powder, and sesame oil. Toss everything together for 2 minutes until rice is hot and coated.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Taste it. <strong>Want more flavour? Add more soy sauce</strong>, a splash at a time.</div></div>
-          </div>
-          <div class="recipe-tip"><strong>Meal prep hack:</strong> Make 3x this recipe on Sunday — keeps in the fridge 4 days. Best reheated in a pan for 3 minutes (not microwave, or the rice goes mushy).</div>
-          <div><span class="recipe-tag meal-prep">Meal Prep</span><span class="recipe-tag easy">Easy</span><span class="recipe-tag">15 min</span></div>
-        </div>
-      </div>
-    </div>
-
-  
-    <!-- RECIPE 13: One-Pan Chicken &amp; Chickpea Curry -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🍛</div>
-        <div class="recipe-info">
-          <div class="recipe-name">One-Pan Chicken &amp; Chickpea Curry</div>
-          <div class="recipe-meta">Batch-cook dinner · 44g protein · 38g carbs</div>
-        </div>
-        <div class="recipe-time">30 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">500g</span>Chicken thigh, diced (skinless)</div><div class="recipe-ing"><span class="recipe-ing-qty">400g</span>Tin chickpeas, drained</div><div class="recipe-ing"><span class="recipe-ing-qty">400g</span>Tin chopped tomatoes</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Onion, diced</div><div class="recipe-ing"><span class="recipe-ing-qty">2 cloves</span>Garlic, minced</div><div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Curry powder</div><div class="recipe-ing"><span class="recipe-ing-qty">200ml</span>Light coconut milk</div><div class="recipe-ing"><span class="recipe-ing-qty">300g</span>Cooked rice, to serve</div></div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Fry the onion and garlic in a large pan on medium heat for 3–4 min until softened.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Add the chicken thigh and curry powder. Fry for <strong>5 min</strong>, stirring, until the chicken is coated and starting to brown.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Pour in the chopped tomatoes, chickpeas and coconut milk. Stir well.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text"><strong>Simmer for 15–18 minutes</strong> on low-medium heat, stirring occasionally, until the chicken is fully cooked and the sauce has thickened.</div></div><div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Serve over rice. Makes 4 generous portions — freezes well for up to 3 months.</div></div></div>
-          <div class="recipe-tip"><strong>Tip:</strong> Chicken thigh stays juicier than breast in a curry that simmers this long — don't swap it out even though breast has slightly less fat.</div>
-          <div><span class="recipe-tag">Batch cook</span><span class="recipe-tag">30 min</span><span class="recipe-tag">4 servings</span><span class="recipe-tag">Freezer-friendly</span></div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- RECIPE 14: Baked Cod with Lemon &amp; Herb Crust -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🐟</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Baked Cod with Lemon &amp; Herb Crust</div>
-          <div class="recipe-meta">Light high-protein dinner · 40g protein · 22g carbs</div>
-        </div>
-        <div class="recipe-time">22 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">2</span>Cod fillets (150g each)</div><div class="recipe-ing"><span class="recipe-ing-qty">30g</span>Breadcrumbs (wholemeal)</div><div class="recipe-ing"><span class="recipe-ing-qty">1</span>Lemon, zested</div><div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Fresh parsley, chopped</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Olive oil</div><div class="recipe-ing"><span class="recipe-ing-qty">300g</span>New potatoes</div><div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Green beans</div></div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Preheat oven to <strong>200°C</strong>. Boil the new potatoes for 15–18 min until tender.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Mix breadcrumbs, lemon zest, parsley and olive oil in a bowl — this is your crust topping.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Pat the cod fillets dry, place on a lined baking tray, and press the breadcrumb mix firmly on top of each fillet.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text"><strong>Bake for 12–15 minutes</strong> until the fish is opaque and flakes easily with a fork, and the top is golden.</div></div><div class="recipe-step"><div class="recipe-step-num">5</div><div class="recipe-step-text">Steam the green beans for the last 4 minutes. Serve everything together.</div></div></div>
-          <div class="recipe-tip"><strong>Tip:</strong> Cod is one of the leanest white fish available and cooks fast — don't overcook it or it turns rubbery. 12 minutes is usually spot on for fillets this size.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">22 min</span><span class="recipe-tag">Light dinner</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RECIPE 15: Post-Workout Recovery Shake -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🥤</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Post-Workout Recovery Shake</div>
-          <div class="recipe-meta">Immediately after training · 42g protein · 48g carbs</div>
-        </div>
-        <div class="recipe-time">3 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">40g</span>Whey protein powder</div><div class="recipe-ing"><span class="recipe-ing-qty">1 large</span>Banana</div><div class="recipe-ing"><span class="recipe-ing-qty">300ml</span>Milk</div><div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Peanut butter</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Ice cubes</div></div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Add all ingredients to a blender.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Blend on high for <strong>30–45 seconds</strong> until completely smooth.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Drink within 30 minutes of finishing your session — this is when your muscles absorb protein and carbs most effectively.</div></div></div>
-          <div class="recipe-tip"><strong>Tip:</strong> The banana + peanut butter combo replaces the glycogen you burned during training, not just protein — both matter for recovery.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">No-cook</span><span class="recipe-tag">3 min</span></div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- RECIPE 16: 5-Minute Protein Wrap -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🥙</div>
-        <div class="recipe-info">
-          <div class="recipe-name">5-Minute Protein Wrap</div>
-          <div class="recipe-meta">Grab and go lunch · 32g protein · 26g carbs</div>
-        </div>
-        <div class="recipe-time">5 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list"><div class="recipe-ing"><span class="recipe-ing-qty">1 large</span>Wholemeal wrap</div><div class="recipe-ing"><span class="recipe-ing-qty">100g</span>Sliced chicken or turkey (pre-cooked)</div><div class="recipe-ing"><span class="recipe-ing-qty">2 tbsp</span>Hummus</div><div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Spinach leaves</div><div class="recipe-ing"><span class="recipe-ing-qty">Few slices</span>Cucumber</div></div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps"><div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Spread hummus evenly across the wrap.</div></div><div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Layer the sliced chicken, spinach and cucumber down the centre.</div></div><div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Roll tightly, tucking in the sides as you go. Cut in half diagonally.</div></div><div class="recipe-step"><div class="recipe-step-num">4</div><div class="recipe-step-text">Eat immediately or wrap in foil and take it with you — holds well for a few hours.</div></div></div>
-          <div class="recipe-tip"><strong>Tip:</strong> Keep pre-cooked sliced chicken or turkey in the fridge at all times (buy it ready-sliced if short on time) — this turns any lunch into a 30g+ protein meal in under 5 minutes.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">No-cook</span><span class="recipe-tag">5 min</span></div>
-        </div>
-      </div>
-    </div>
-</div>
-
-  <div class="divider"><div class="div-line"></div><div class="div-text">Quick &amp; No-Cook</div><div class="div-line"></div></div>
-  <div class="recipe-grid">
-
-    <!-- RECIPE 7: Cottage Cheese bowl -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🫙</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Night Fuel Cottage Cheese Bowl</div>
-          <div class="recipe-meta">Before bed · 38g protein · zero cooking</div>
-        </div>
-        <div class="recipe-time">2 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list">
-            <div class="recipe-ing"><span class="recipe-ing-qty">250g</span>Low-fat cottage cheese</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">20g</span>Almonds or walnuts</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">optional</span>1 tsp honey or cinnamon</div>
-          </div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps">
-            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Spoon cottage cheese into a bowl.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Scatter nuts on top. Drizzle honey or sprinkle cinnamon if you want it sweeter.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">3</div><div class="recipe-step-text">Eat. Sleep. Grow.</div></div>
-          </div>
-          <div class="recipe-tip"><strong>Why it works:</strong> Cottage cheese is full of casein — a slow-digesting protein that feeds your muscles for 7–8 hours while you sleep. This one habit alone will improve your recovery noticeably.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">Zero cooking</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RECIPE 8: High Protein Greek Yoghurt -->
-    <div class="recipe-card" onclick="toggleRecipe(this)">
-      <div class="recipe-head">
-        <div class="recipe-emoji">🍯</div>
-        <div class="recipe-info">
-          <div class="recipe-name">Greek Yoghurt Snack Bowl</div>
-          <div class="recipe-meta">Afternoon snack · 22g protein · keeps you full</div>
-        </div>
-        <div class="recipe-time">2 MIN</div>
-        <div class="recipe-arrow">▼</div>
-      </div>
-      <div class="recipe-body">
-        <div class="recipe-section">
-          <div class="recipe-section-title">Ingredients</div>
-          <div class="recipe-ing-list">
-            <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>Greek yoghurt (full fat)</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">30g</span>Mixed nuts</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Honey</div>
-            <div class="recipe-ing"><span class="recipe-ing-qty">optional</span>Handful of berries</div>
-          </div>
-        </div>
-        <div class="recipe-section">
-          <div class="recipe-section-title">Steps</div>
-          <div class="recipe-steps">
-            <div class="recipe-step"><div class="recipe-step-num">1</div><div class="recipe-step-text">Spoon yoghurt into a bowl or take straight from the tub.</div></div>
-            <div class="recipe-step"><div class="recipe-step-num">2</div><div class="recipe-step-text">Top with nuts, honey, and berries if using.</div></div>
-          </div>
-          <div class="recipe-tip"><strong>Buying tip:</strong> Get <strong>full-fat Greek yoghurt</strong> (not low-fat, not regular yoghurt). Brands like Fage, Chobani, or any supermarket own-brand Greek style work perfectly. Aim for 10g+ protein per 100g on the label.</div>
-          <div><span class="recipe-tag easy">Easy</span><span class="recipe-tag">Zero cooking</span></div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- KITCHEN BASICS -->
+  <div class="recipe-card">
+    <div class="recipe-head"><div class="recipe-icon">🥝</div><div><div class="recipe-name">Shake + Weetabix</div><div class="recipe-meta">~495 kcal · ~59g protein · 1 min, zero cooking</div></div></div>
+    <div class="recipe-body">
+      <div class="recipe-ings">
+        <div class="recipe-ing"><span class="recipe-ing-qty">2 scoops</span>Protein powder</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">2</span>Weetabix</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">Splash</span>Milk</div>
+      </div>
+      <div class="recipe-steps">
+        <div class="recipe-step-row"><div class="recipe-step-num">1</div><div class="recipe-step-text">Mix the shake with water in a shaker. Pour milk over the Weetabix. Done — genuinely zero cooking, good backup when poached eggs feel like effort.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">Lunch</div><div class="div-line"></div></div>
+
+  <div class="recipe-card">
+    <div class="recipe-head"><div class="recipe-icon">🍓</div><div><div class="recipe-name">Protein Yoghurt Bowl</div><div class="recipe-meta">~350 kcal · ~35g protein · 2 min</div></div></div>
+    <div class="recipe-body">
+      <div class="recipe-ings">
+        <div class="recipe-ing"><span class="recipe-ing-qty">200g</span>0% Greek yoghurt</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">100g</span>Mixed berries</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">1 tbsp</span>Honey</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">1 scoop</span>Protein powder</div>
+      </div>
+      <div class="recipe-steps">
+        <div class="recipe-step-row"><div class="recipe-step-num">1</div><div class="recipe-step-text">Spoon yoghurt into a bowl. Stir the protein powder in thoroughly before adding anything else — stops it clumping.</div></div>
+        <div class="recipe-step-row"><div class="recipe-step-num">2</div><div class="recipe-step-text">Top with berries, drizzle honey over. Done.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-card">
+    <div class="recipe-head"><div class="recipe-icon">🌯</div><div><div class="recipe-name">Wrap with Chicken or Ham</div><div class="recipe-meta">~400 kcal · ~30g protein · 5 min</div></div></div>
+    <div class="recipe-body">
+      <div class="recipe-ings">
+        <div class="recipe-ing"><span class="recipe-ing-qty">1</span>Wrap</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">2-3 slices</span>Ham or chicken</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">1 tsp</span>Light mayo</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">Handful</span>Lettuce</div>
+      </div>
+      <div class="recipe-steps">
+        <div class="recipe-step-row"><div class="recipe-step-num">1</div><div class="recipe-step-text">Lay the wrap flat, spread mayo thin. Layer meat and lettuce down the middle. Fold and roll tight.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-card">
+    <div class="recipe-head"><div class="recipe-icon">🥚</div><div><div class="recipe-name">Boiled Eggs + Crisps + Apple</div><div class="recipe-meta">~380 kcal · ~16g protein · 0 min on the day</div></div></div>
+    <div class="recipe-body">
+      <div class="recipe-ings">
+        <div class="recipe-ing"><span class="recipe-ing-qty">2</span>Boiled eggs (from Sunday prep)</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">1 small bag</span>Ready-salted crisps</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">1</span>Apple</div>
+      </div>
+      <div class="recipe-steps">
+        <div class="recipe-step-row"><div class="recipe-step-num">1</div><div class="recipe-step-text">Grab the pre-boiled eggs from the fridge, peel, eat alongside the crisps and apple. Zero prep on the day.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-card">
+    <div class="recipe-head"><div class="recipe-icon">🍜</div><div><div class="recipe-name">Noodle Pot + Tuna</div><div class="recipe-meta">~350 kcal · ~28g protein · 3 min</div></div></div>
+    <div class="recipe-body">
+      <div class="recipe-ings">
+        <div class="recipe-ing"><span class="recipe-ing-qty">1</span>Instant noodle pot</div>
+        <div class="recipe-ing"><span class="recipe-ing-qty">1 tin</span>Tuna or tinned chicken, drained</div>
+      </div>
+      <div class="recipe-steps">
+        <div class="recipe-step-row"><div class="recipe-step-num">1</div><div class="recipe-step-text">Boil the kettle, pour over the noodle pot, wait 3 minutes. Stir the tuna in once noodles have softened.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><div class="div-line"></div><div class="div-text">After Work</div><div class="div-line"></div></div>
+
+  <div class="recipe-card">
+    <div class="recipe-head"><div class="recipe-icon">🐟</div><div><div class="recipe-name">Tuna Straight From the Tin</div><div class="recipe-meta">~116-200 kcal · ~26g protein · 0 min</div></div></div>
+    <div class="recipe-body">
+      <div class="recipe-ings">
+        <div class="recipe-ing"><span class="recipe-ing-qty">1 tin</span>Tuna, water or oil</div>
+      </div>
+      <div class="recipe-steps">
+        <div class="recipe-step-row"><div class="recipe-step-num">1</div><div class="recipe-step-text">Drain well — press out excess liquid/oil with a fork for fewer calories. Eat straight from the tin. Genuinely that's it.</div></div>
+      </div>
+    </div>
+  </div>
+
   <div class="divider"><div class="div-line"></div><div class="div-text">Kitchen Basics</div><div class="div-line"></div></div>
-  <div style="background:var(--card);border:1px solid var(--border);padding:14px;margin-bottom:8px;">
-    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">What you need to own</div>
-    <div class="bench-item"><div class="bench-week" style="color:var(--white)">🍳</div><div class="bench-info"><div class="bench-title">Non-stick frying pan</div><div class="bench-detail">~£15 from any supermarket. Used for eggs, chicken, mince, stir fry. Most important item you can own.</div></div></div>
-    <div class="bench-item"><div class="bench-week" style="color:var(--white)">🥘</div><div class="bench-info"><div class="bench-title">Medium saucepan</div><div class="bench-detail">For boiling rice. That's it to start. ~£10.</div></div></div>
-    <div class="bench-item"><div class="bench-week" style="color:var(--white)">🔲</div><div class="bench-info"><div class="bench-title">Baking tray</div><div class="bench-detail">For oven chicken and roasted veg. Line with foil to avoid washing up. ~£8.</div></div></div>
-    <div class="bench-item"><div class="bench-week" style="color:var(--white)">⚖️</div><div class="bench-info"><div class="bench-title">Food scale (optional but useful)</div><div class="bench-detail">~£10 on Amazon. Helps you hit macro targets accurately. Especially useful for oats, rice, and protein.</div></div></div>
-    <div class="bench-item" style="border-bottom:none"><div class="bench-week" style="color:var(--white)">📦</div><div class="bench-info"><div class="bench-title">Meal prep containers × 6</div><div class="bench-detail">~£15 for a set. Glass or plastic, microwave safe. Sunday prep = week sorted.</div></div></div>
+  <div class="bench-grid">
+    <div class="bench-card"><div class="bench-icon">🍳</div><div><div class="bench-title">Perfect poached eggs</div><div class="bench-detail">Add a splash of vinegar to the water — helps the white hold together instead of feathering apart.</div></div></div>
+    <div class="bench-card"><div class="bench-icon">🥛</div><div><div class="bench-title">Smooth protein shakes</div><div class="bench-detail">Add powder to the shaker first, THEN liquid — stops clumping at the bottom.</div></div></div>
+    <div class="bench-card"><div class="bench-icon">🐟</div><div><div class="bench-title">Tuna in oil</div><div class="bench-detail">Press the tin lid down hard to drain, then press again with a fork — cuts a meaningful chunk of extra calories.</div></div></div>
   </div>
-
-  <div style="background:var(--card);border:1px solid var(--border);padding:14px;">
-    <div style="font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">5 spices that make everything taste good</div>
-    <div class="bench-item"><div class="bench-week" style="min-width:16px">🧄</div><div class="bench-info"><div class="bench-title">Garlic powder</div><div class="bench-detail">Goes on everything. Chicken, mince, rice, veg. Buy the big tub.</div></div></div>
-    <div class="bench-item"><div class="bench-week" style="min-width:16px">🌶️</div><div class="bench-info"><div class="bench-title">Smoked paprika</div><div class="bench-detail">Makes chicken taste like it was made by someone who can cook. ~£1.50.</div></div></div>
-    <div class="bench-item"><div class="bench-week" style="min-width:16px">🫙</div><div class="bench-info"><div class="bench-title">Cumin</div><div class="bench-detail">Adds warmth. Great on mince and roasted veg.</div></div></div>
-    <div class="bench-item"><div class="bench-week" style="min-width:16px">🫗</div><div class="bench-info"><div class="bench-title">Soy sauce</div><div class="bench-detail">Not a spice but acts like one. Add to any stir fry or mince dish for instant depth.</div></div></div>
-    <div class="bench-item" style="border-bottom:none"><div class="bench-week" style="min-width:16px">🧂</div><div class="bench-info"><div class="bench-title">Salt &amp; black pepper</div><div class="bench-detail">Season every single thing you cook. Most beginner food tastes bland because of this one omission.</div></div></div>
-  </div>
-
 </div>
 
 <!-- ===== SHOPPING ===== -->
@@ -3285,7 +2890,7 @@ function toggleVideoPlayer(vid_id){
   <div class="sec-title">SHOPPING LIST</div>
 
   <div class="shop-time-info">
-    Quantities based on <span id="shop-time-display">your selected training window</span>. Scaled for <span>101kg recomp</span> — 6 training days + 1 rest day.
+    Quantities for <span>your real meals</span> — poached eggs, protein shakes, yoghurt, tuna. Scaled for 1 week.
   </div>
 
   <div class="shop-toggle">
@@ -3293,98 +2898,38 @@ function toggleVideoPlayer(vid_id){
     <button class="shop-tab" id="sh-supps-btn" onclick="switchShop('supps')">💊 Supplements</button>
   </div>
 
-  <div class="shop-progress-text" id="shopProgressText">0 of 0 items checked</div>
-  <div class="shop-progress-bar"><div class="shop-progress-fill" id="shopProgressFill" style="width:0%"></div></div>
+  <div class="shop-list" id="shop-food-list">
+    <div class="shop-section-label">Breakfast</div>
+    <div class="shop-item" id="si-eggs"><button class="shop-chk" onclick="toggleShopItem(this,'si-eggs')">✓</button><div class="shop-item-info"><div class="shop-item-name">Eggs</div><div class="shop-item-detail">Poached breakfast, boiled lunch backup, 2+2 per day</div></div><div class="shop-item-qty">24</div></div>
+    <div class="shop-item" id="si-bread"><button class="shop-chk" onclick="toggleShopItem(this,'si-bread')">✓</button><div class="shop-item-info"><div class="shop-item-name">Bread</div><div class="shop-item-detail">1 slice with breakfast</div></div><div class="shop-item-qty">1 loaf</div></div>
+    <div class="shop-item" id="si-weetabix"><button class="shop-chk" onclick="toggleShopItem(this,'si-weetabix')">✓</button><div class="shop-item-info"><div class="shop-item-name">Weetabix</div><div class="shop-item-detail">Backup breakfast option</div></div><div class="shop-item-qty">1 box</div></div>
 
-  <div class="shop-actions">
-    <button class="shop-action-btn" onclick="clearShop()">Clear All</button>
-    <button class="shop-action-btn" onclick="checkAllShop()">Check All</button>
+    <div class="shop-section-label">Lunch</div>
+    <div class="shop-item" id="si-yoghurt"><button class="shop-chk" onclick="toggleShopItem(this,'si-yoghurt')">✓</button><div class="shop-item-info"><div class="shop-item-name">0% Greek yoghurt</div><div class="shop-item-detail">200g per lunch, 3x/week</div></div><div class="shop-item-qty">1 large tub</div></div>
+    <div class="shop-item" id="si-berries"><button class="shop-chk" onclick="toggleShopItem(this,'si-berries')">✓</button><div class="shop-item-info"><div class="shop-item-name">Mixed berries</div><div class="shop-item-detail">Frozen is cheaper, keeps longer</div></div><div class="shop-item-qty">1 bag</div></div>
+    <div class="shop-item" id="si-honey"><button class="shop-chk" onclick="toggleShopItem(this,'si-honey')">✓</button><div class="shop-item-info"><div class="shop-item-name">Honey</div><div class="shop-item-detail">Lunch yoghurt bowl</div></div><div class="shop-item-qty">1 jar</div></div>
+    <div class="shop-item" id="si-wraps"><button class="shop-chk" onclick="toggleShopItem(this,'si-wraps')">✓</button><div class="shop-item-info"><div class="shop-item-name">Wraps</div><div class="shop-item-detail">Tue/Sun lunch option</div></div><div class="shop-item-qty">1 pack</div></div>
+    <div class="shop-item" id="si-ham"><button class="shop-chk" onclick="toggleShopItem(this,'si-ham')">✓</button><div class="shop-item-info"><div class="shop-item-name">Ham or chicken slices</div><div class="shop-item-detail">Wrap filling</div></div><div class="shop-item-qty">1 pack</div></div>
+    <div class="shop-item" id="si-crisps"><button class="shop-chk" onclick="toggleShopItem(this,'si-crisps')">✓</button><div class="shop-item-info"><div class="shop-item-name">Ready-salted crisps</div><div class="shop-item-detail">Thursday lunch option</div></div><div class="shop-item-qty">1 multipack</div></div>
+    <div class="shop-item" id="si-apples"><button class="shop-chk" onclick="toggleShopItem(this,'si-apples')">✓</button><div class="shop-item-info"><div class="shop-item-name">Apples</div><div class="shop-item-detail">Thursday lunch option</div></div><div class="shop-item-qty">6</div></div>
+    <div class="shop-item" id="si-noodles"><button class="shop-chk" onclick="toggleShopItem(this,'si-noodles')">✓</button><div class="shop-item-info"><div class="shop-item-name">Instant noodle pots</div><div class="shop-item-detail">Saturday lunch option</div></div><div class="shop-item-qty">2</div></div>
+
+    <div class="shop-section-label">Protein Top-Ups</div>
+    <div class="shop-item" id="si-tuna"><button class="shop-chk" onclick="toggleShopItem(this,'si-tuna')">✓</button><div class="shop-item-info"><div class="shop-item-name">Tuna tins</div><div class="shop-item-detail">After work + post-gym, most days</div></div><div class="shop-item-qty">10-12</div></div>
+    <div class="shop-item" id="si-chicken-tin"><button class="shop-chk" onclick="toggleShopItem(this,'si-chicken-tin')">✓</button><div class="shop-item-info"><div class="shop-item-name">Tinned/pre-cooked chicken</div><div class="shop-item-detail">Tue/Fri variety swap for tuna</div></div><div class="shop-item-qty">4</div></div>
+
+    <div class="shop-section-label">Pantry</div>
+    <div class="shop-item" id="si-bananas"><button class="shop-chk" onclick="toggleShopItem(this,'si-bananas')">✓</button><div class="shop-item-info"><div class="shop-item-name">Bananas</div><div class="shop-item-detail">Breakfast variety option</div></div><div class="shop-item-qty">7</div></div>
+    <div class="shop-item" id="si-soup"><button class="shop-chk" onclick="toggleShopItem(this,'si-soup')">✓</button><div class="shop-item-info"><div class="shop-item-name">Cup of soup</div><div class="shop-item-detail">Cold-day lunch option</div></div><div class="shop-item-qty">1 box</div></div>
+    <div class="shop-item" id="si-milk"><button class="shop-chk" onclick="toggleShopItem(this,'si-milk')">✓</button><div class="shop-item-info"><div class="shop-item-name">Milk</div><div class="shop-item-detail">Weetabix, shakes if preferred over water</div></div><div class="shop-item-qty">2 pints</div></div>
+    <div class="shop-item" id="si-monster"><button class="shop-chk" onclick="toggleShopItem(this,'si-monster')">✓</button><div class="shop-item-info"><div class="shop-item-name">Monster Zero Sugar</div><div class="shop-item-detail">Not Original — saves ~590 kcal/day</div></div><div class="shop-item-qty">21 cans</div></div>
   </div>
 
-  <!-- FOOD LIST -->
-  <div class="shop-list-panel active" id="sh-food">
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">🥩</span>Meat &amp; Fish</div>
-      <div class="shop-item" id="si-chicken"><button class="shop-chk" onclick="toggleShopItem(this,'si-chicken')">✓</button><div class="shop-item-info"><div class="shop-item-name">Chicken breast</div><div class="shop-item-detail">Lean protein — grilled or baked</div></div><div class="shop-item-qty">1.8 kg</div></div>
-      <div class="shop-item" id="si-salmon"><button class="shop-chk" onclick="toggleShopItem(this,'si-salmon')">✓</button><div class="shop-item-info"><div class="shop-item-name">Salmon fillets</div><div class="shop-item-detail">Omega-3 · 2–3 dinners per week</div></div><div class="shop-item-qty">500g</div></div>
-      <div class="shop-item" id="si-beef"><button class="shop-chk" onclick="toggleShopItem(this,'si-beef')">✓</button><div class="shop-item-info"><div class="shop-item-name">Lean beef mince (5% fat)</div><div class="shop-item-detail">High creatine content from food</div></div><div class="shop-item-qty">500g</div></div>
-    </div>
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">🥚</span>Eggs &amp; Dairy</div>
-      <div class="shop-item" id="si-eggs"><button class="shop-chk" onclick="toggleShopItem(this,'si-eggs')">✓</button><div class="shop-item-info"><div class="shop-item-name">Free-range eggs</div><div class="shop-item-detail">Breakfast + post-workout meals</div></div><div class="shop-item-qty">18 eggs</div></div>
-      <div class="shop-item" id="si-cottage"><button class="shop-chk" onclick="toggleShopItem(this,'si-cottage')">✓</button><div class="shop-item-info"><div class="shop-item-name">Cottage cheese (low fat)</div><div class="shop-item-detail">Night fuel — high casein protein</div></div><div class="shop-item-qty">1.8 kg</div></div>
-      <div class="shop-item" id="si-yoghurt"><button class="shop-chk" onclick="toggleShopItem(this,'si-yoghurt')">✓</button><div class="shop-item-info"><div class="shop-item-name">Greek yoghurt (full fat)</div><div class="shop-item-detail">Afternoon snack</div></div><div class="shop-item-qty">1.4 kg</div></div>
-      <div class="shop-item" id="si-milk"><button class="shop-chk" onclick="toggleShopItem(this,'si-milk')">✓</button><div class="shop-item-info"><div class="shop-item-name">Semi-skimmed milk</div><div class="shop-item-detail">Pre-workout oats / shakes</div></div><div class="shop-item-qty">2 litres</div></div>
-    </div>
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">🌾</span>Carbs &amp; Grains</div>
-      <div class="shop-item" id="si-oats"><button class="shop-chk" onclick="toggleShopItem(this,'si-oats')">✓</button><div class="shop-item-info"><div class="shop-item-name">Rolled oats</div><div class="shop-item-detail">Pre-workout breakfast</div></div><div class="shop-item-qty">900g</div></div>
-      <div class="shop-item" id="si-rice"><button class="shop-chk" onclick="toggleShopItem(this,'si-rice')">✓</button><div class="shop-item-info"><div class="shop-item-name">Basmati or white rice</div><div class="shop-item-detail">Lunch + main carb source</div></div><div class="shop-item-qty">1.4 kg</div></div>
-      <div class="shop-item" id="si-bread"><button class="shop-chk" onclick="toggleShopItem(this,'si-bread')">✓</button><div class="shop-item-info"><div class="shop-item-name">Sourdough bread</div><div class="shop-item-detail">Post-workout &amp; breakfast</div></div><div class="shop-item-qty">1 loaf</div></div>
-      <div class="shop-item" id="si-sweet"><button class="shop-chk" onclick="toggleShopItem(this,'si-sweet')">✓</button><div class="shop-item-info"><div class="shop-item-name">Sweet potatoes</div><div class="shop-item-detail">Dinner carb — roasted</div></div><div class="shop-item-qty">1.0 kg</div></div>
-      <div class="shop-item" id="si-rice-cakes"><button class="shop-chk" onclick="toggleShopItem(this,'si-rice-cakes')">✓</button><div class="shop-item-info"><div class="shop-item-name">Rice cakes</div><div class="shop-item-detail">Post-workout quick carbs</div></div><div class="shop-item-qty">1 pack</div></div>
-    </div>
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">🥦</span>Vegetables</div>
-      <div class="shop-item" id="si-broccoli"><button class="shop-chk" onclick="toggleShopItem(this,'si-broccoli')">✓</button><div class="shop-item-info"><div class="shop-item-name">Broccoli</div><div class="shop-item-detail">Lunch &amp; dinner veg</div></div><div class="shop-item-qty">600g</div></div>
-      <div class="shop-item" id="si-spinach"><button class="shop-chk" onclick="toggleShopItem(this,'si-spinach')">✓</button><div class="shop-item-info"><div class="shop-item-name">Spinach or kale</div><div class="shop-item-detail">Dinner, omelettes, cooking</div></div><div class="shop-item-qty">300g</div></div>
-      <div class="shop-item" id="si-mixveg"><button class="shop-chk" onclick="toggleShopItem(this,'si-mixveg')">✓</button><div class="shop-item-info"><div class="shop-item-name">Mixed frozen vegetables</div><div class="shop-item-detail">Easy bulk cooking</div></div><div class="shop-item-qty">500g bag</div></div>
-    </div>
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">🍌</span>Fruit &amp; Snacks</div>
-      <div class="shop-item" id="si-banana"><button class="shop-chk" onclick="toggleShopItem(this,'si-banana')">✓</button><div class="shop-item-info"><div class="shop-item-name">Bananas</div><div class="shop-item-detail">Pre-gym snack + post-workout shakes</div></div><div class="shop-item-qty">10–12</div></div>
-      <div class="shop-item" id="si-nuts"><button class="shop-chk" onclick="toggleShopItem(this,'si-nuts')">✓</button><div class="shop-item-info"><div class="shop-item-name">Mixed nuts (almonds, cashews)</div><div class="shop-item-detail">Snack + night fuel</div></div><div class="shop-item-qty">200g</div></div>
-      <div class="shop-item" id="si-avo"><button class="shop-chk" onclick="toggleShopItem(this,'si-avo')">✓</button><div class="shop-item-info"><div class="shop-item-name">Avocados</div><div class="shop-item-detail">Healthy fats — breakfast</div></div><div class="shop-item-qty">3–4</div></div>
-      <div class="shop-item" id="si-oj"><button class="shop-chk" onclick="toggleShopItem(this,'si-oj')">✓</button><div class="shop-item-info"><div class="shop-item-name">Orange juice (fresh)</div><div class="shop-item-detail">Morning carbs (PM plan)</div></div><div class="shop-item-qty">1 litre</div></div>
-      <div class="shop-item" id="si-pbar"><button class="shop-chk" onclick="toggleShopItem(this,'si-pbar')">✓</button><div class="shop-item-info"><div class="shop-item-name">Protein bars (20g+ protein)</div><div class="shop-item-detail">Pre-gym snack (PM plan)</div></div><div class="shop-item-qty">3–4 bars</div></div>
-    </div>
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">🧴</span>Pantry Staples</div>
-      <div class="shop-item" id="si-oil"><button class="shop-chk" onclick="toggleShopItem(this,'si-oil')">✓</button><div class="shop-item-info"><div class="shop-item-name">Olive oil (extra virgin)</div><div class="shop-item-detail">Cooking fat for most meals</div></div><div class="shop-item-qty">500ml</div></div>
-      <div class="shop-item" id="si-honey"><button class="shop-chk" onclick="toggleShopItem(this,'si-honey')">✓</button><div class="shop-item-info"><div class="shop-item-name">Honey</div><div class="shop-item-detail">Oats, shakes, post-workout</div></div><div class="shop-item-qty">1 jar</div></div>
-      <div class="shop-item" id="si-peanut"><button class="shop-chk" onclick="toggleShopItem(this,'si-peanut')">✓</button><div class="shop-item-info"><div class="shop-item-name">Peanut butter (natural)</div><div class="shop-item-detail">High calorie, easy to eat — bulk essential</div></div><div class="shop-item-qty">1 jar</div></div>
-      <div class="shop-item" id="si-coffee"><button class="shop-chk" onclick="toggleShopItem(this,'si-coffee')">✓</button><div class="shop-item-info"><div class="shop-item-name">Ground coffee / instant</div><div class="shop-item-detail">Pre-workout caffeine source</div></div><div class="shop-item-qty">1 pack</div></div>
-    </div>
-  </div>
-
-  <!-- SUPPLEMENTS LIST -->
-  <div class="shop-list-panel" id="sh-supps">
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">💊</span>Core Supplements</div>
-      <div class="shop-item" id="ss-creatine"><button class="shop-chk" onclick="toggleShopItem(this,'ss-creatine')">✓</button><div class="shop-item-info"><div class="shop-item-name">Creatine Monohydrate</div><div class="shop-item-detail">5g/day · ~£15–20 for 500g · lasts 3 months</div></div><div class="shop-item-qty">500g tub</div></div>
-      <div class="shop-item" id="ss-whey"><button class="shop-chk" onclick="toggleShopItem(this,'ss-whey')">✓</button><div class="shop-item-info"><div class="shop-item-name">Whey Protein Powder</div><div class="shop-item-detail">40g post-workout · look for 20g+ per serving</div></div><div class="shop-item-qty">2 kg bag</div></div>
-      <div class="shop-item" id="ss-casein"><button class="shop-chk" onclick="toggleShopItem(this,'ss-casein')">✓</button><div class="shop-item-info"><div class="shop-item-name">Casein Protein Powder</div><div class="shop-item-detail">30g before bed — OR use cottage cheese</div></div><div class="shop-item-qty">1 kg bag</div></div>
-    </div>
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">🌿</span>Vitamins &amp; Minerals</div>
-      <div class="shop-item" id="ss-vitd"><button class="shop-chk" onclick="toggleShopItem(this,'ss-vitd')">✓</button><div class="shop-item-info"><div class="shop-item-name">Vitamin D3 + K2</div><div class="shop-item-detail">2000–4000 IU D3 daily · K2 improves absorption</div></div><div class="shop-item-qty">90 caps</div></div>
-      <div class="shop-item" id="ss-omega"><button class="shop-chk" onclick="toggleShopItem(this,'ss-omega')">✓</button><div class="shop-item-info"><div class="shop-item-name">Omega-3 Fish Oil</div><div class="shop-item-detail">3g daily · high EPA/DHA content</div></div><div class="shop-item-qty">90 caps</div></div>
-      <div class="shop-item" id="ss-zinc"><button class="shop-chk" onclick="toggleShopItem(this,'ss-zinc')">✓</button><div class="shop-item-info"><div class="shop-item-name">Zinc + Magnesium (ZMA)</div><div class="shop-item-detail">Take before bed, not with dairy</div></div><div class="shop-item-qty">90 caps</div></div>
-    </div>
-
-    <div class="shop-cat">
-      <div class="shop-cat-title"><span class="shop-cat-icon">⚡</span>Optional Extras</div>
-      <div class="shop-item" id="ss-caff"><button class="shop-chk" onclick="toggleShopItem(this,'ss-caff')">✓</button><div class="shop-item-info"><div class="shop-item-name">Caffeine tablets (200mg)</div><div class="shop-item-detail">Budget pre-workout — cheaper than powders</div></div><div class="shop-item-qty">100 tabs</div></div>
-      <div class="shop-item" id="ss-beta"><button class="shop-chk" onclick="toggleShopItem(this,'ss-beta')">✓</button><div class="shop-item-info"><div class="shop-item-name">Beta-Alanine</div><div class="shop-item-detail">3.2g/day · reduces muscle fatigue on hard sets</div></div><div class="shop-item-qty">250g</div></div>
-      <div class="shop-item" id="ss-vitc"><button class="shop-chk" onclick="toggleShopItem(this,'ss-vitc')">✓</button><div class="shop-item-info"><div class="shop-item-name">Vitamin C</div><div class="shop-item-detail">1000mg/day · immune support during hard training</div></div><div class="shop-item-qty">90 tabs</div></div>
-    </div>
-
-    <div style="background:var(--card);border:1px solid var(--border);padding:12px 14px;margin-top:4px;">
-      <div style="font-size:10px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Where to Buy (UK)</div>
-      <div style="font-size:12px;color:var(--mid);line-height:1.8;">
-        <strong style="color:var(--white)">Creatine + Whey + Casein:</strong> MyProtein, Bulk, Optimum Nutrition<br>
-        <strong style="color:var(--white)">Vitamins &amp; minerals:</strong> Holland &amp; Barrett, Amazon, Boots<br>
-        <strong style="color:var(--white)">Cheapest creatine:</strong> Search "creatine monohydrate 500g" — ~£15 is normal
-      </div>
-    </div>
+  <div class="shop-list" id="shop-supps-list" style="display:none;">
+    <div class="shop-item" id="si-whey"><button class="shop-chk" onclick="toggleShopItem(this,'si-whey')">✓</button><div class="shop-item-info"><div class="shop-item-name">Whey Protein Powder</div><div class="shop-item-detail">2 scoops x2 shakes/day + 1 scoop lunch — burns through fast</div></div><div class="shop-item-qty">Check stock</div></div>
+    <div class="shop-item" id="si-vitd"><button class="shop-chk" onclick="toggleShopItem(this,'si-vitd')">✓</button><div class="shop-item-info"><div class="shop-item-name">Vitamin D3</div><div class="shop-item-detail">Daily, with a fat-containing meal</div></div><div class="shop-item-qty">1 bottle</div></div>
+    <div class="shop-item" id="si-omega"><button class="shop-chk" onclick="toggleShopItem(this,'si-omega')">✓</button><div class="shop-item-info"><div class="shop-item-name">Omega-3 Fish Oil</div><div class="shop-item-detail">Daily</div></div><div class="shop-item-qty">1 bottle</div></div>
+    <div class="shop-item" id="si-magnesium"><button class="shop-chk" onclick="toggleShopItem(this,'si-magnesium')">✓</button><div class="shop-item-info"><div class="shop-item-name">Magnesium Glycinate</div><div class="shop-item-detail">Before bed — sleep, recovery</div></div><div class="shop-item-qty">1 bottle</div></div>
   </div>
 </div>
 
@@ -3461,481 +3006,6 @@ function toggleVideoPlayer(vid_id){
   </div>
 </div>
 
-<!-- ===== TRACKER ===== -->
-<div id="tab-tracker" class="section">
-  <div class="sec-label">12 Weeks</div>
-  <div class="sec-title">PROGRESS</div>
-
-  <!-- CURRENT PHASE CARD — filled by JS -->
-  <div class="phase-now-card" id="currentPhaseCard">
-    <div class="phase-now-label">▶ Current Phase</div>
-    <div class="phase-now-title" id="cpTitle">Phase 1 — Foundation</div>
-    <div class="phase-now-sub" id="cpSub">Weeks 1–4 · Build the base. Master form before load.</div>
-    <div class="phase-now-bar-wrap">
-      <div class="phase-now-bar-label">
-        <span id="cpWeekLabel">Week 1 of 4</span>
-        <span id="cpPct">0%</span>
-      </div>
-      <div class="phase-now-bar"><div class="phase-now-bar-fill" id="cpBarFill" style="width:0%"></div></div>
-    </div>
-    <div id="cpWeekBadge" class="phase-now-week">WEEK 1</div>
-  </div>
-
-  <!-- OVERALL PROGRESS RING + STATS -->
-  <div class="ring-wrap">
-    <svg width="130" height="130" viewBox="0 0 130 130">
-      <circle cx="65" cy="65" r="54" fill="none" stroke="var(--border)" stroke-width="6"/>
-      <circle cx="65" cy="65" r="54" fill="none" stroke="var(--accent)" stroke-width="6"
-        stroke-dasharray="339" stroke-dashoffset="339" id="progressCircle" stroke-linecap="round"/>
-    </svg>
-    <div class="ring-center">
-      <span class="ring-pct" id="progressPct">0%</span>
-      <span class="ring-lbl">Complete</span>
-    </div>
-  </div>
-  <div class="stat-row" style="margin-bottom:18px;">
-    <div class="stat-cell"><div class="stat-num" id="daysCompleted">0</div><div class="stat-lbl">Done</div></div>
-    <div class="stat-cell"><div class="stat-num" style="color:var(--grey)">72</div><div class="stat-lbl">Total</div></div>
-    <div class="stat-cell"><div class="stat-num" id="streakCount">0</div><div class="stat-lbl">Streak 🔥</div></div>
-    <div class="stat-cell"><div class="stat-num" id="currentWeekNum" style="color:var(--accent)">1</div><div class="stat-lbl">Week</div></div>
-  </div>
-
-  <!-- PHASE MILESTONES -->
-  <div class="phase-unlock" id="phaseMilestones">
-    <div class="phase-unlock-title">Phase Milestones</div>
-    <div class="unlock-item" id="ms-p1">
-      <div class="unlock-dot" id="dot-p1"></div>
-      <div class="unlock-icon">🏗️</div>
-      <div class="unlock-text"><strong>Phase 1 — Foundation</strong> · Weeks 1–4<br>4×10–12 reps · 60–90s rest · master form</div>
-    </div>
-    <div class="unlock-item" id="ms-p2">
-      <div class="unlock-dot" id="dot-p2"></div>
-      <div class="unlock-icon">⚡</div>
-      <div class="unlock-text"><strong>Phase 2 — Strength</strong> · Weeks 5–8<br>5×5–6 reps · 2–3 min rest · heavier loads</div>
-    </div>
-    <div class="unlock-item" id="ms-p3">
-      <div class="unlock-dot" id="dot-p3"></div>
-      <div class="unlock-icon">🔥</div>
-      <div class="unlock-text"><strong>Phase 3 — Definition</strong> · Weeks 9–12<br>Maintain strength · add cardio · reveal the work</div>
-    </div>
-
-  </div>
-
-  <!-- MONTHLY CALENDAR -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">Session Calendar</div><div class="div-line"></div></div>
-  <div id="monthCalendar" style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:20px;"></div>
-
-  <!-- WEEKLY GRID -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">Training Overview</div><div class="div-line"></div></div>
-  <div id="weeklyTracker"></div>
-
-
-  <!-- EXERCISE PRs & SPARKLINES -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">Exercise PRs</div><div class="div-line"></div></div>
-  <div id="exercisePRsGrid" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;"></div>
-
-  <!-- BENCHMARKS -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">Benchmarks</div><div class="div-line"></div></div>
-  <div style="background:var(--card);border:1px solid var(--border);padding:14px;">
-    <div class="bench-item">
-      <div class="bench-week" id="bm1-badge">Week 4</div>
-      <div class="bench-info"><div class="bench-title">Foundation complete</div><div class="bench-detail">Bench ~80–100kg · Squat ~120kg · 8–10 clean pull-ups · –3 to 4kg bodyweight</div></div>
-    </div>
-    <div class="bench-item">
-      <div class="bench-week" id="bm2-badge">Week 8</div>
-      <div class="bench-info"><div class="bench-title">Strength phase</div><div class="bench-detail">Bench ~110–120kg · Squat ~150kg · Weighted pull-ups +10kg · –6 to 8kg total</div></div>
-    </div>
-    <div class="bench-item">
-      <div class="bench-week" id="bm3-badge">Week 12</div>
-      <div class="bench-info"><div class="bench-title">Target physique</div><div class="bench-detail">Bench ~130kg · Squat ~170kg · Body fat 12% · Visible taper · ~–8 to 12kg</div></div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- ===== TRACKING ===== -->
-<div id="tab-tracking" class="section">
-  <div class="sec-label">Personal Records · Body Stats</div>
-  <div class="sec-title">TRACKING</div>
-
-  <!-- SUMMARY STATS -->
-  <div class="summary-grid">
-    <div class="summary-cell">
-      <div class="summary-num" id="trk-start-weight">110</div>
-      <div class="summary-lbl">Start kg</div>
-    </div>
-    <div class="summary-cell">
-      <div class="summary-num" id="trk-current-weight">98.7</div>
-      <div class="summary-lbl">Current kg</div>
-    </div>
-    <div class="summary-cell">
-      <div class="summary-num" id="trk-weight-change">—</div>
-      <div class="summary-lbl">Change kg</div>
-    </div>
-  </div>
-
-  <!-- PHOTO REMINDER -->
-  <div class="photo-reminder" id="photoReminder" style="display:none">
-    <div class="photo-reminder-icon">📸</div>
-    <div class="photo-reminder-text">
-      <strong>Progress Photo Due</strong>
-      Every 4 weeks — front + side. Same lighting, same spot. Photos show what the scale can't.
-    </div>
-  </div>
-
-  <!-- WEIGHT LOG -->
-  <div class="track-section">
-    <div class="track-section-title">Weekly Weigh-In</div>
-    <div class="log-card">
-      <div class="log-card-title">Log This Week's Weight</div>
-      <div style="font-size:11px;color:var(--grey);margin-bottom:12px;line-height:1.6;">
-        Same day each week · Morning · After toilet · Before eating
-      </div>
-      <div class="log-row">
-        <div class="log-label">Weight</div>
-        <input class="log-input" type="number" id="weightInput" placeholder="e.g. 99.4" step="0.1" min="40" max="200">
-        <div class="log-unit">kg</div>
-      </div>
-      <div class="log-row">
-        <div class="log-label">Week</div>
-        <select class="log-input" id="weightWeek" style="cursor:pointer;">
-          <option value="">Select week...</option>
-        </select>
-        <div class="log-unit"></div>
-      </div>
-      <button class="log-btn" onclick="logWeight()">SAVE WEIGH-IN</button>
-    </div>
-
-    <!-- Weight chart -->
-    <div class="chart-wrap">
-      <div class="chart-title">Bodyweight — 12 Weeks</div>
-      <div class="chart-sub">Target: slow decline · recomp = muscle up, fat down</div>
-      <div class="chart-canvas-wrap">
-        <svg class="chart-svg" id="weightChart" height="140" viewBox="0 0 320 140"></svg>
-        <div class="chart-empty" id="weightChartEmpty">Log your first weigh-in to see your chart</div>
-      </div>
-      <div class="chart-legend">
-        <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Actual weight</div>
-        <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.6)"></div>Trend</div>
-      </div>
-    </div>
-
-    <!-- Weight history -->
-    <div class="chart-wrap" id="weightHistoryWrap" style="display:none">
-      <div class="chart-title">History</div>
-      <table class="history-table">
-        <thead><tr><th>Week</th><th>Weight</th><th>Change</th><th></th></tr></thead>
-        <tbody id="weightHistoryBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- LIFT TRACKER -->
-  <div class="track-section">
-    <div class="track-section-title">Strength Log</div>
-    <div class="log-card">
-      <div class="log-card-title">Working Weight This Week</div>
-      <div style="font-size:11px;color:var(--grey);margin-bottom:12px;line-height:1.6;">
-        Log your main working set weight · PRs highlighted in green
-      </div>
-      <div class="log-row" style="margin-bottom:6px;">
-        <div class="log-label">Week</div>
-        <select class="log-input" id="liftWeek" style="cursor:pointer;"></select>
-        <div class="log-unit"></div>
-      </div>
-      <div id="liftInputs">
-        <div class="lift-row">
-          <div class="lift-name">Bench Press</div>
-          <input class="lift-input" type="number" id="lift-bench" placeholder="kg" min="0" max="500">
-          <div class="lift-pr" id="pr-bench"></div>
-        </div>
-        <div class="lift-row">
-          <div class="lift-name">Squat</div>
-          <input class="lift-input" type="number" id="lift-squat" placeholder="kg" min="0" max="500">
-          <div class="lift-pr" id="pr-squat"></div>
-        </div>
-        <div class="lift-row">
-          <div class="lift-name">Barbell Row</div>
-          <input class="lift-input" type="number" id="lift-row" placeholder="kg" min="0" max="500">
-          <div class="lift-pr" id="pr-row"></div>
-        </div>
-        <div class="lift-row">
-          <div class="lift-name">Pull-ups +kg</div>
-          <input class="lift-input" type="number" id="lift-pullup" placeholder="kg added" min="0" max="200">
-          <div class="lift-pr" id="pr-pullup"></div>
-        </div>
-        <div class="lift-row">
-          <div class="lift-name">OHP</div>
-          <input class="lift-input" type="number" id="lift-ohp" placeholder="kg" min="0" max="300">
-          <div class="lift-pr" id="pr-ohp"></div>
-        </div>
-      </div>
-      <button class="log-btn" onclick="logLifts()">SAVE LIFTS</button>
-    </div>
-
-    <!-- Lifts chart -->
-    <div class="chart-wrap">
-      <div class="chart-title">Strength Progress</div>
-      <div class="chart-sub">Tap a lift to highlight it</div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="liftChartToggle">
-        <button onclick="setActiveLift('bench')"  class="lift-toggle-btn active-lift" data-lift="bench">Bench</button>
-        <button onclick="setActiveLift('squat')"  class="lift-toggle-btn" data-lift="squat">Squat</button>
-        <button onclick="setActiveLift('row')"    class="lift-toggle-btn" data-lift="row">Row</button>
-        <button onclick="setActiveLift('pullup')" class="lift-toggle-btn" data-lift="pullup">Pull-ups</button>
-        <button onclick="setActiveLift('ohp')"    class="lift-toggle-btn" data-lift="ohp">OHP</button>
-      </div>
-      <div class="chart-canvas-wrap">
-        <svg class="chart-svg" id="liftChart" height="140" viewBox="0 0 320 140"></svg>
-        <div class="chart-empty" id="liftChartEmpty">Log your first session to see strength progress</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MEASUREMENTS -->
-  <div class="track-section">
-    <div class="track-section-title">Body Measurements · Every 2 Weeks</div>
-    <div class="log-card">
-      <div class="log-card-title">Log Measurements</div>
-      <div class="log-row" style="margin-bottom:10px;">
-        <div class="log-label">Week</div>
-        <select class="log-input" id="measWeek" style="cursor:pointer;"></select>
-        <div class="log-unit"></div>
-      </div>
-      <div class="meas-grid">
-        <div class="meas-field">
-          <div class="meas-label">Waist (cm)</div>
-          <input class="log-input" type="number" id="meas-waist" placeholder="e.g. 98" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Chest (cm)</div>
-          <input class="log-input" type="number" id="meas-chest" placeholder="e.g. 108" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Shoulders (cm)</div>
-          <input class="log-input" type="number" id="meas-shoulders" placeholder="e.g. 122" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Arm (cm)</div>
-          <input class="log-input" type="number" id="meas-arm" placeholder="e.g. 38" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Thigh (cm)</div>
-          <input class="log-input" type="number" id="meas-thigh" placeholder="e.g. 62" step="0.5">
-        </div>
-        <div class="meas-field">
-          <div class="meas-label">Neck (cm)</div>
-          <input class="log-input" type="number" id="meas-neck" placeholder="e.g. 40" step="0.5">
-        </div>
-      </div>
-      <button class="log-btn" onclick="logMeasurements()">SAVE MEASUREMENTS</button>
-    </div>
-
-    <!-- Measurements history -->
-    <div class="chart-wrap" id="measHistoryWrap" style="display:none">
-      <div class="chart-title">Measurements History</div>
-      <table class="history-table">
-        <thead><tr><th>Week</th><th>Waist</th><th>Chest</th><th>Shoulders</th><th></th></tr></thead>
-        <tbody id="measHistoryBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- NOTES -->
-  <div class="track-section">
-    <div class="track-section-title">Weekly Notes</div>
-    <div class="log-card">
-      <div class="log-card-title">How did this week feel?</div>
-      <div class="log-row" style="margin-bottom:10px;">
-        <div class="log-label">Week</div>
-        <select class="log-input" id="noteWeek" style="cursor:pointer;"></select>
-        <div class="log-unit"></div>
-      </div>
-      <textarea class="log-input" id="noteInput" placeholder="Energy levels, sleep quality, how lifts felt, diet adherence, anything worth remembering..." 
-        style="width:100%;min-height:90px;resize:none;padding:10px 12px;line-height:1.6;font-size:12px;"></textarea>
-      <button class="log-btn" onclick="logNote()">SAVE NOTE</button>
-      <div id="noteDisplay" style="display:none;margin-top:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);font-size:12px;color:var(--mid);line-height:1.6;"></div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ===== CALORIES ===== -->
-<div id="tab-calories" class="section">
-  <div class="sec-label">Daily Food Log · 2,270 kcal target</div>
-  <div class="sec-title">CALORIES</div>
-
-  <!-- ZONE 2 CARDIO GUIDE -->
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;">
-    <div style="height:3px;background:linear-gradient(90deg,var(--accent),#4a4a4a);"></div>
-    <div style="padding:16px;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);margin-bottom:4px;">Zone 2 Cardio Protocol</div>
-      <div style="font-size:11px;color:var(--mid);margin-bottom:12px;">Added to replace the lost walking commute — the right tool for pure fat loss without adding recovery cost on top of lifting.</div>
-
-      <div style="background:var(--surface);border-radius:8px;padding:12px 14px;margin-bottom:10px;">
-        <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Training Days (6x/week)</div>
-        <div style="font-size:12px;color:var(--white);font-weight:700;margin-bottom:4px;">15–20 min, after lifting</div>
-        <div style="font-size:11px;color:var(--mid);line-height:1.6;">Kept short since legs are already fatigued from that day's session. This is extra calorie burn, not a hard effort — conversational pace, walk/jog intervals like you're already doing are perfect.</div>
-      </div>
-
-      <div style="background:var(--surface);border-radius:8px;padding:12px 14px;margin-bottom:10px;">
-        <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Rest Day (1x/week)</div>
-        <div style="font-size:12px;color:var(--white);font-weight:700;margin-bottom:4px;">30–40 min, longer steady effort</div>
-        <div style="font-size:11px;color:var(--mid);line-height:1.6;">No lifting to recover from, so this is where you can push duration. Still conversational pace — you should be able to talk in full sentences throughout.</div>
-      </div>
-
-      <div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:10px 12px;border-radius:0 6px 6px 0;">
-        <div style="font-size:11px;color:var(--mid);line-height:1.6;"><strong style="color:var(--white);">On quitting smoking:</strong> cardio fitness improves faster in ex-smokers than almost any other group. You'll likely notice your lungs holding you back before your legs do — that's normal and it improves fast. If cardio ever feels like it's wrecking recovery from lifting, scale the cardio back first, not the training.</div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Day Navigation -->
-  <div class="cal-day-nav">
-    <button class="cal-day-btn" onclick="calChangeDay(-1)">‹</button>
-    <div class="cal-day-label" id="calDayLabel">TODAY</div>
-    <button class="cal-day-btn" onclick="calChangeDay(1)">›</button>
-  </div>
-
-  <!-- Ring -->
-  <div class="cal-ring-wrap">
-    <svg width="150" height="150" viewBox="0 0 150 150">
-      <circle cx="75" cy="75" r="62" fill="none" stroke="var(--border)" stroke-width="8"/>
-      <circle cx="75" cy="75" r="62" fill="none" stroke="var(--accent)" stroke-width="8"
-        stroke-dasharray="390" stroke-dashoffset="390" id="calRingCircle" stroke-linecap="round"/>
-      <circle cx="75" cy="75" r="62" fill="none" stroke="#ff6b35" stroke-width="8"
-        stroke-dasharray="390" stroke-dashoffset="390" id="calRingOver" stroke-linecap="round" opacity="0"/>
-    </svg>
-    <div class="cal-ring-center">
-      <span class="cal-ring-num" id="calRingNum">0</span>
-      <span class="cal-ring-lbl">kcal eaten</span>
-      <span class="cal-ring-target" id="calRingTarget">of 2,800</span>
-    </div>
-  </div>
-
-  <!-- Remaining -->
-  <div class="cal-remaining" id="calRemaining">
-    <span class="under" id="calRemainingNum">2,800</span> kcal remaining today
-  </div>
-
-  <!-- Macro strip -->
-  <div class="cal-macro-strip">
-    <div class="cal-macro">
-      <div class="cal-macro-val"><span id="calProteinEaten">0</span>g</div>
-      <div class="cal-macro-target">/ 230g</div>
-      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calProteinBar" style="width:0%"></div></div>
-      <div class="cal-macro-name">Protein</div>
-    </div>
-    <div class="cal-macro">
-      <div class="cal-macro-val"><span id="calCarbsEaten">0</span>g</div>
-      <div class="cal-macro-target">/ 270g</div>
-      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calCarbsBar" style="width:0%"></div></div>
-      <div class="cal-macro-name">Carbs</div>
-    </div>
-    <div class="cal-macro">
-      <div class="cal-macro-val"><span id="calFatsEaten">0</span>g</div>
-      <div class="cal-macro-target">/ 80g</div>
-      <div class="cal-macro-bar"><div class="cal-macro-fill" id="calFatsBar" style="width:0%"></div></div>
-      <div class="cal-macro-name">Fats</div>
-    </div>
-  </div>
-
-  <!-- Food Search (Open Food Facts) -->
-  <div class="cal-add-card" style="margin-bottom:10px;">
-    <div class="cal-add-title" style="margin-bottom:10px;">Search Food</div>
-    <div style="display:flex;gap:8px;margin-bottom:8px;">
-      <input class="cal-input" type="text" id="offSearchInput" placeholder="Search any food or brand…"
-        style="flex:1" onkeydown="if(event.key==='Enter')offSearch()">
-      <button onclick="offSearch()" style="padding:0 14px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;cursor:pointer;border-radius:6px;white-space:nowrap;-webkit-tap-highlight-color:transparent;">Search</button>
-    </div>
-    <button onclick="offStartScan()" style="width:100%;padding:9px;background:var(--surface);border:1px solid var(--border2);color:var(--mid);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:7px;-webkit-tap-highlight-color:transparent;margin-bottom:4px;">
-      <span style="font-size:16px;">📷</span> Scan Barcode
-    </button>
-    <div id="offResults" style="margin-top:8px;display:flex;flex-direction:column;gap:6px;"></div>
-
-    <!-- Camera scanner overlay -->
-    <div id="offScannerWrap" style="display:none;margin-top:8px;border-radius:10px;overflow:hidden;background:#000;position:relative;">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(0,0,0,0.8);">
-        <span style="font-size:12px;font-weight:600;color:#fff;">Point camera at barcode</span>
-        <button onclick="offStopScan()" style="background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:11px;font-weight:600;padding:5px 12px;cursor:pointer;border-radius:20px;-webkit-tap-highlight-color:transparent;">✕ Close</button>
-      </div>
-      <div style="position:relative;">
-        <video id="offScanVideo" style="width:100%;display:block;max-height:240px;object-fit:cover;" playsinline muted></video>
-        <!-- Aiming guide -->
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
-          <div style="width:70%;height:80px;border:2px solid rgba(255,255,255,0.8);border-radius:6px;box-shadow:0 0 0 2000px rgba(0,0,0,0.35);"></div>
-        </div>
-      </div>
-      <div id="offScanStatus" style="padding:10px 14px;font-size:11px;color:#aaa;background:rgba(0,0,0,0.8);text-align:center;">Scanning…</div>
-    </div>
-
-    <!-- Fallback: manual barcode entry -->
-    <div id="offBarcodeWrap" style="display:none;margin-top:8px;">
-      <div style="font-size:11px;color:var(--mid);margin-bottom:6px;">Enter barcode manually:</div>
-      <div style="display:flex;gap:8px;">
-        <input class="cal-input" type="number" id="offBarcodeInput" placeholder="e.g. 5000112548167" style="flex:1;font-size:16px;">
-        <button onclick="offLookupBarcode()" style="padding:0 14px;background:var(--accent);border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Look up</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Manual Log -->
-  <div class="cal-add-card">
-    <div class="cal-add-title">Log Food</div>
-    <div class="cal-input-row">
-      <input class="cal-input" type="text" id="calFoodName" placeholder="Food name (e.g. Chicken breast 200g)" maxlength="60">
-    </div>
-    <div class="cal-input-row">
-      <div style="flex:1">
-        <div class="cal-macro-label">Calories</div>
-        <input class="cal-input cal-input-kcal" style="width:100%" type="number" id="calFoodKcal" placeholder="kcal" min="0" max="5000">
-      </div>
-      <div style="flex:1">
-        <div class="cal-macro-label">Protein (g)</div>
-        <input class="cal-input" type="number" id="calFoodProtein" placeholder="g" min="0" max="500">
-      </div>
-    </div>
-    <div class="cal-input-row">
-      <div style="flex:1">
-        <div class="cal-macro-label">Carbs (g)</div>
-        <input class="cal-input" type="number" id="calFoodCarbs" placeholder="g" min="0" max="500">
-      </div>
-      <div style="flex:1">
-        <div class="cal-macro-label">Fats (g)</div>
-        <input class="cal-input" type="number" id="calFoodFats" placeholder="g" min="0" max="500">
-      </div>
-    </div>
-    <div style="font-size:10px;color:var(--grey);margin-bottom:8px;">Macros optional — kcal required</div>
-    <button class="cal-add-btn" style="width:100%" onclick="calAddEntry()">+ ADD FOOD</button>
-  </div>
-
-  <!-- Food log -->
-  <div class="cal-log" id="calLogWrap">
-    <div class="cal-log-header">
-      <div class="cal-log-header-title">Today's Log</div>
-      <div class="cal-log-header-cols">
-        <div class="cal-log-col">P</div>
-        <div class="cal-log-col">C</div>
-        <div class="cal-log-col">F</div>
-        <div class="cal-log-col" style="min-width:54px">kcal</div>
-      </div>
-    </div>
-    <div id="calLogBody">
-      <div class="cal-empty">No food logged yet today.<br>Add your first meal above.</div>
-    </div>
-  </div>
-
-  <!-- Week summary -->
-  <div class="divider"><div class="div-line"></div><div class="div-text">7-Day Average</div><div class="div-line"></div></div>
-  <div style="background:var(--card);border:1px solid var(--border);padding:14px;" id="calWeekSummary">
-    <div style="font-size:11px;color:var(--mid);text-align:center;padding:8px 0;">Log at least 3 days to see your weekly average</div>
-  </div>
-</div>
-
-
-
-<!-- ===== AFTER WEEK 12 ===== -->
 <script>
 // ── RECIPES ─────────────────────────────────────────────────────────────────
 function toggleRecipe(c){c.classList.toggle('open');}
@@ -5700,14 +4770,14 @@ function submitCheckin(){
   if(!w && !b){ alert('Enter at least your weight'); return; }
   logCheckin(w, b);
 
-  // Check milestones
-  if(w && w < 100){
+  // Check milestones — updated for current progress (past 100kg and 95kg already)
+  if(w && w <= 85){
     setTimeout(function(){
-      alert('🎯 MILESTONE: You broke 100kg! Sub-100 achieved. Incredible work.');
+      alert('🏆 GOAL WEIGHT REACHED: 85kg hit. You did it.');
     }, 300);
-  } else if(w && w <= 95){
+  } else if(w && w <= 90){
     setTimeout(function(){
-      alert('🏆 GOAL WEIGHT REACHED: 95kg hit. You did it.');
+      alert('🎯 MILESTONE: 90kg broken! Getting close to target now.');
     }, 300);
   }
 }
@@ -5715,20 +4785,30 @@ function submitCheckin(){
 // Log initial check-in from real gym scale data
 function initCheckin(){
   var history = getCheckinHistory();
-  // Update seed if our hardcoded dates are newer than stored
-  var latestSeedDate = '2026-08-24';
-  var needsUpdate = !history.length || history[0].date < latestSeedDate;
+  // Always merge the known real readings into history by date — any seed date
+  // not already present in storage gets added. This means future readings
+  // added to this seed array will always apply, with no manual guard date
+  // to remember to update (the previous version broke silently because of
+  // exactly that kind of manual guard going stale).
+  var seed = [
+    {date:'2026-10-01', weight:95.6, bf:20.2, ts: new Date('2026-10-01').getTime()},
+    {date:'2026-09-20', weight:95.3, bf:22.4, ts: new Date('2026-09-20').getTime()},
+    {date:'2026-09-10', weight:98.3, bf:20.6, ts: new Date('2026-09-10').getTime()},
+    {date:'2026-08-24', weight:98.7, bf:19.9, ts: new Date('2026-08-24').getTime()},
+    {date:'2026-08-14', weight:97.7, bf:19.9, ts: new Date('2026-08-14').getTime()},
+    {date:'2026-07-27', weight:99.2, bf:20.8, ts: new Date('2026-07-27').getTime()},
+    {date:'2026-07-18', weight:101.0, bf:21.0, ts: new Date('2026-07-18').getTime()},
+    {date:'2026-07-14', weight:102.0, bf:20.7, ts: new Date('2026-07-14').getTime()}
+  ];
+  var existingDates = {};
+  history.forEach(function(h){ existingDates[h.date] = true; });
+  var missing = seed.filter(function(s){ return !existingDates[s.date]; });
+  var needsUpdate = missing.length > 0;
   if(history.length === 0 || needsUpdate){
-    // Pre-load with the two real readings we already have
-    var seed = [
-      {date:'2026-09-20', weight:95.3, bf:22.4, ts: new Date('2026-09-20').getTime()},
-      {date:'2026-09-10', weight:98.3, bf:20.6, ts: new Date('2026-09-10').getTime()},
-      {date:'2026-08-24', weight:98.7, bf:19.9, ts: new Date('2026-08-24').getTime()},
-      {date:'2026-08-14', weight:97.7, bf:19.9, ts: new Date('2026-08-14').getTime()},
-      {date:'2026-07-27', weight:99.2, bf:20.8, ts: new Date('2026-07-27').getTime()},
-      {date:'2026-07-18', weight:101.0, bf:21.0, ts: new Date('2026-07-18').getTime()},
-      {date:'2026-07-14', weight:102.0, bf:20.7, ts: new Date('2026-07-14').getTime()}
-    ];
+    // Merge missing seed entries into history, then sort newest-first
+    var merged = history.concat(missing);
+    merged.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+    var seedForStorage = merged;
     // Also seed body tracking weight chart
     try{
       var TRK_KEY_SEED = 'forge_tracking_v1';
@@ -5740,7 +4820,7 @@ function initCheckin(){
       if(!tdSeed.weights[7]) tdSeed.weights[7] = 98.7;
       localStorage.setItem(TRK_KEY_SEED, JSON.stringify(tdSeed));
     }catch(e){}
-    localStorage.setItem(CHECKIN_KEY, JSON.stringify(seed));
+    localStorage.setItem(CHECKIN_KEY, JSON.stringify(seedForStorage));
   }
   renderCheckinBanner();
 }
@@ -6004,7 +5084,7 @@ function renderDoneState(){
   var dayMap={
     'push-day':['barbell_bench_press','incline_db_press','overhead_press','cable_lateral_raise','cable_fly','cable_tricep_pushdown','overhead_tricep_extension','dips'],
     'pull-day':['chest_supported_t_bar_row','barbell_row','lat_pulldown','assisted_pull_up','cable_face_pull','barbell_curl','hammer_curl','db_shrugs'],
-    'leg-day':['goblet_squat','smith_machine_rdl','leg_press','leg_extension','leg_curl','standing_calf_raise','hanging_leg_raise','wrist_curl','reverse_barbell_curl','plate_pinch_hold']
+    'leg-day':['goblet_squat','smith_machine_rdl','leg_press','leg_extension','leg_curl','standing_calf_raise','hanging_leg_raise','russian_twist','cable_crunch','wrist_curl','reverse_barbell_curl','plate_pinch_hold']
   };
   Object.keys(dayMap).forEach(function(day){
     var ex=dayMap[day];
