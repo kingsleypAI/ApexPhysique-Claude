@@ -1512,6 +1512,9 @@ function toggleVideoPlayer(vid_id){
         <span>VIEW WORKOUT</span><span>›</span>
       </button>
     </div>
+    <div style="padding:0 12px 12px;text-align:center;">
+      <span onclick="toggleTodayRest()" style="font-size:11px;color:var(--grey);text-decoration:underline;cursor:pointer;-webkit-tap-highlight-color:transparent;">Swap today to/from rest day</span>
+    </div>
   </div>
 
   <!-- DAILY MEAL TIMELINE -->
@@ -1600,12 +1603,12 @@ function toggleVideoPlayer(vid_id){
   <!-- COMPACT STATS STRIP -->
   <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px;">
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">95.6kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">93.2kg</div>
       <div style="font-size:11px;color:var(--mid);">4 months in · <span id="homeStatMonths">4</span>mo</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding-top:10px;border-top:1px solid var(--border);">
       <div style="text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent);" id="homeStatBF">20.2%</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent);" id="homeStatBF">19.3%</div>
         <div style="font-size:8px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px;">body fat</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border);">
@@ -3217,11 +3220,13 @@ function jsToIdx(jsDay){return jsDay===0?6:jsDay-1;}
 
 function logToday(){
   const idx=jsToIdx(new Date().getDay());
-  if(DTYPE[idx]==='rest') return;
+  var todayWorkoutType = getTodayWorkout();
+  if(todayWorkoutType==='rest') return;
   const curWeek=getCurrentWeek();
   const key='w'+curWeek+'d'+idx;
   tData[key]=!tData[key];
   saveAndRefresh();
+  renderTodayCard();
 }
 
 function logDay(week, dayIdx){
@@ -3229,12 +3234,24 @@ function logDay(week, dayIdx){
   const key='w'+week+'d'+dayIdx;
   tData[key]=!tData[key];
   saveAndRefresh();
+  renderTodayCard();
 }
 
 function renderTodayCard(){
   const jsDay=new Date().getDay();
   const idx=jsToIdx(jsDay);
-  const info=WORKOUT_SCHEDULE[idx];
+  // Respect a manual "swap today" override if one is set for today's date,
+  // mapping the override's workout type to the matching WORKOUT_SCHEDULE entry
+  var info = WORKOUT_SCHEDULE[idx];
+  try{
+    var overrides = JSON.parse(localStorage.getItem('forge_day_override')||'{}');
+    var todayStr = new Date().toISOString().slice(0,10);
+    if(overrides[todayStr]){
+      var typeToInfo = {push:0, pull:1, legs:2, rest:3};
+      var overrideIdx = typeToInfo[overrides[todayStr]];
+      if(overrideIdx !== undefined) info = WORKOUT_SCHEDULE[overrideIdx];
+    }
+  }catch(e){}
   const curWeek=getCurrentWeek();
   const phase=getCurrentPhase(curWeek);
   const key='w'+curWeek+'d'+idx;
@@ -4726,6 +4743,7 @@ function initCheckin(){
   // to remember to update (the previous version broke silently because of
   // exactly that kind of manual guard going stale).
   var seed = [
+    {date:'2026-10-15', weight:93.2, bf:19.3, ts: new Date('2026-10-15').getTime()},
     {date:'2026-10-01', weight:95.6, bf:20.2, ts: new Date('2026-10-01').getTime()},
     {date:'2026-09-20', weight:95.3, bf:22.4, ts: new Date('2026-09-20').getTime()},
     {date:'2026-09-10', weight:98.3, bf:20.6, ts: new Date('2026-09-10').getTime()},
@@ -4784,8 +4802,43 @@ var DAY_LABELS = {
 var DAY_NAMES_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 function getTodayWorkout(){
+  // Check for a one-off manual override for today's date (set via the
+  // "Swap today" button) before falling back to the default weekly schedule
+  try{
+    var overrides = JSON.parse(localStorage.getItem('forge_day_override')||'{}');
+    var todayStr = new Date().toISOString().slice(0,10);
+    if(overrides[todayStr]) return overrides[todayStr];
+  }catch(e){}
   var jsDay = new Date().getDay();
   return DAY_TO_WORKOUT[jsDay] || 'rest';
+}
+
+function toggleTodayRest(){
+  try{
+    var overrides = JSON.parse(localStorage.getItem('forge_day_override')||'{}');
+    var todayStr = new Date().toISOString().slice(0,10);
+    var jsDay = new Date().getDay();
+    var defaultType = DAY_TO_WORKOUT[jsDay] || 'rest';
+    var currentType = getTodayWorkout();
+    if(currentType === 'rest'){
+      // Currently rest (default or overridden) — swap to whatever this day
+      // would normally be if it weren't a rest day, or Push if today IS the
+      // normal rest day with nothing else to fall back to
+      overrides[todayStr] = (defaultType === 'rest') ? 'push' : defaultType;
+    } else {
+      overrides[todayStr] = 'rest';
+    }
+    localStorage.setItem('forge_day_override', JSON.stringify(overrides));
+    // Clean up old overrides (keep only today and yesterday, avoid buildup)
+    var cleaned = {};
+    var today = new Date();
+    Object.keys(overrides).forEach(function(d){
+      var diff = (today - new Date(d)) / 86400000;
+      if(diff >= -1 && diff <= 1) cleaned[d] = overrides[d];
+    });
+    localStorage.setItem('forge_day_override', JSON.stringify(cleaned));
+    location.reload();
+  }catch(e){}
 }
 
 function setWorkoutView(mode){
