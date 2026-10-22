@@ -145,6 +145,7 @@ body{
 
 /* SECTIONS */
 .section{display:none;padding:18px 16px 24px;}
+#tab-program{padding-bottom:100px;}
 .section.active{display:block;}
 
 
@@ -2024,7 +2025,7 @@ function toggleVideoPlayer(vid_id){
       <button class="sticky-timer-expand" onclick="toggleStickyTimerPresets()" id="stickyTimerExpandBtn">▴</button>
     </div>
   </div>
-  <div class="sticky-timer-presets-wrap" id="stickyTimerPresetsWrap" style="display:none;position:fixed;left:0;right:0;bottom:62px;z-index:39;background:var(--card);border-top:1px solid var(--border);padding:10px 16px;">
+  <div class="sticky-timer-presets-wrap" id="stickyTimerPresetsWrap" style="display:none;position:fixed;left:0;right:0;bottom:calc(56px + env(safe-area-inset-bottom, 0px));z-index:39;background:var(--card);border-top:1px solid var(--border);padding:10px 16px;">
     <div class="sticky-timer-presets" style="margin-top:0;">
       <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
       <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
@@ -4984,8 +4985,7 @@ var _mTime=90,_mRem=90,_mInt=null,_mRun=false;
 function miniSetTimer(s){
   _mTime=s;_mRem=s;_mRun=false;
   clearInterval(_mInt);_mInt=null;
-  var btn=document.getElementById('miniStartBtn');
-  if(btn)btn.textContent='START';
+  document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='START';});
   miniUpdDisplay();
   document.querySelectorAll('.mini-preset').forEach(function(b){b.classList.remove('active');});
   // Mark the matching preset active
