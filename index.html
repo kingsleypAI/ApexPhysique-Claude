@@ -1331,7 +1331,7 @@ body{
 
 
 .ex-tick{background:none;border:1.5px solid var(--border);color:var(--grey);width:44px;height:44px;border-radius:50%;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;margin-right:6px;-webkit-tap-highlight-color:transparent;transition:all 0.15s;}
-.ex-tick.done{background:#C8102E;border-color:#C8102E;color:#000;}
+.ex-tick.done{background:#C8102E;border-color:#C8102E;color:#fff;}
 .wcard.done-card>.whead .wname{text-decoration:line-through;color:var(--grey);}
 .day-checklist-bar{height:3px;background:var(--border);margin:0;overflow:hidden;}
 .day-checklist-fill{height:100%;background:#C8102E;border-radius:0;transition:width 0.4s;}
@@ -4993,6 +4993,14 @@ function miniSetTimer(s){
   var idx=secs[String(s)];
   var presets=document.querySelectorAll('.mini-preset');
   if(idx!==undefined && presets[idx]) presets[idx].classList.add('active');
+
+  // Auto-collapse the preset drawer once a duration is picked
+  var wrap = document.getElementById('stickyTimerPresetsWrap');
+  var expandBtn = document.getElementById('stickyTimerExpandBtn');
+  if(wrap && wrap.style.display !== 'none'){
+    wrap.style.display = 'none';
+    if(expandBtn) expandBtn.textContent = '▴';
+  }
 }
 
 function miniUpdDisplay(){
