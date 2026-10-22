@@ -25,6 +25,7 @@
   <meta name="theme-color" content="#0a0a0a">
 <title>FORGE</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 :root {
   --bg: #0a0a0a;
@@ -33,11 +34,12 @@
   --border: #242424;
   --border2: #2e2e2e;
   --accent: #C8102E;
+  --accent-text: #FF453A;
   --accent-glow: rgba(200,16,46,0.07);
   --accent-dim: rgba(200,16,46,0.05);
   --accent-dim2: rgba(200,16,46,0.03);
   --white: #ffffff;
-  --grey: #555555;
+  --grey: #808080;
   --mid: #888888;
   --green: #aaaaaa;
   --green-dim: rgba(200,16,46,0.05);
@@ -68,7 +70,7 @@ body{
   font-size:38px;letter-spacing:-1px;line-height:1;font-weight:700;
   color:var(--white);
 }
-.hero-title em{color:var(--accent);font-style:normal;}
+.hero-title em{color:var(--accent-text);font-style:normal;}
 .hero-sub{
   margin-top:8px;font-size:12px;color:var(--mid);
   line-height:1.6;max-width:320px;
@@ -81,7 +83,7 @@ body{
   padding:5px 12px;border:1px solid var(--border2);color:var(--mid);
   border-radius:20px;
 }
-.pill.gold{border-color:var(--accent);color:var(--accent);}
+.pill.gold{border-color:var(--accent-text);color:var(--accent-text);}
 
 /* TRAINING TIME TOGGLE */
 .time-block{
@@ -106,9 +108,9 @@ body{
 .time-sub{font-size:10px;color:var(--grey);letter-spacing:0.5px;}
 .time-btn.active{
   background:var(--accent-dim);
-  border-color:var(--accent);
+  border-color:var(--accent-text);
 }
-.time-btn.active .time-main{color:var(--accent);}
+.time-btn.active .time-main{color:var(--accent-text);}
 .time-btn.active .time-sub{color:rgba(232,200,74,0.5);}
 
 .schedule-reveal{
@@ -118,7 +120,7 @@ body{
   font-size:11px;color:var(--mid);line-height:1.9;
 }
 .schedule-reveal.on{display:block;}
-.schedule-reveal strong{color:var(--accent);display:block;margin-bottom:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.schedule-reveal strong{color:var(--accent-text);display:block;margin-bottom:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;}
 .sched-row{display:flex;gap:10px;}
 .sched-time{color:var(--grey);min-width:48px;font-size:10px;padding-top:1px;}
 .sched-train{color:var(--white);font-weight:700;}
@@ -139,7 +141,7 @@ body{
   white-space:nowrap;font-family:'Space Grotesk',sans-serif;font-weight:600;
   background:none;border-top:none;border-left:none;border-right:none;
 }
-.tab.active{color:var(--white);border-bottom-color:var(--accent);}
+.tab.active{color:var(--white);border-bottom-color:var(--accent-text);}
 
 /* SECTIONS */
 .section{display:none;padding:18px 16px 24px;}
@@ -160,7 +162,7 @@ body{
 .stat-row{display:flex;gap:0;border:1px solid var(--border);margin-bottom:18px;}
 .stat-cell{flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);}
 .stat-cell:last-child{border-right:none;}
-.stat-num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--accent);}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--accent-text);}
 .stat-lbl{font-size:9px;letter-spacing:2px;color:var(--grey);text-transform:uppercase;margin-top:2px;}
 
 /* WEEK GRID */
@@ -172,7 +174,7 @@ body{
 }
 .day-chip small{font-size:7px;display:block;margin-top:3px;letter-spacing:0;}
 .day-chip.rest{background:rgba(200,16,46,0.02);color:var(--border2);}
-.day-chip.train{background:var(--accent-dim2);border-color:rgba(232,200,74,0.2);color:var(--accent);}
+.day-chip.train{background:var(--accent-dim2);border-color:rgba(232,200,74,0.2);color:var(--accent-text);}
 
 /* BODY TARGET */
 .target-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
@@ -180,7 +182,7 @@ body{
 .target-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .target-name{font-size:12px;font-weight:700;letter-spacing:0.5px;}
 .target-tag{font-size:9px;letter-spacing:2px;border:1px solid var(--border2);color:var(--mid);padding:3px 7px;text-transform:uppercase;}
-.target-tag.hi{border-color:var(--accent);color:var(--accent);}
+.target-tag.hi{border-color:var(--accent-text);color:var(--accent-text);}
 .target-bar{height:2px;background:var(--border);margin-bottom:5px;}
 .target-fill{height:100%;background:linear-gradient(90deg,var(--accent),rgba(255,255,255,0.4));}
 .target-sub{font-size:10px;color:var(--grey);}
@@ -197,13 +199,13 @@ body{
 .phase-name{font-family:'Space Grotesk',sans-serif;font-size:16px;letter-spacing:2px;}
 .phase-wks{font-size:10px;color:var(--grey);margin-top:2px;letter-spacing:0.5px;}
 .phase-badge{font-size:9px;padding:3px 8px;border:1px solid;text-transform:uppercase;letter-spacing:1px;}
-.phase-badge.now{border-color:var(--accent);color:var(--accent);}
+.phase-badge.now{border-color:var(--accent-text);color:var(--accent-text);}
 .phase-badge.next{border-color:var(--border2);color:var(--grey);}
 .phase-body{display:none;padding:12px 14px;border-top:1px solid var(--border);font-size:12px;color:var(--mid);line-height:1.7;}
 .phase.open .phase-body{display:block;}
 .phase-goals{margin-top:8px;display:flex;flex-direction:column;gap:5px;}
 .pg{display:flex;gap:8px;font-size:12px;}
-.pg::before{content:'—';color:var(--accent);flex-shrink:0;}
+.pg::before{content:'—';color:var(--accent-text);flex-shrink:0;}
 
 /* WORKOUT CARD */
 .wcard{background:var(--card);border:1px solid var(--border);margin-bottom:8px;overflow:hidden;}
@@ -214,7 +216,7 @@ body{
   -webkit-tap-highlight-color:transparent;
 }
 .whead:active{background:rgba(200,16,46,0.02);}
-.wbadge{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0;color:var(--accent);min-width:26px;}
+.wbadge{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:0;color:var(--accent-text);min-width:26px;}
 .wname{flex:1;font-size:13px;font-weight:600;letter-spacing:0.2px;}
 .wmeta{font-size:11px;color:var(--grey);}
 .warrow{color:var(--grey);font-size:10px;transition:transform 0.2s;margin-left:4px;}
@@ -239,16 +241,16 @@ body{
   margin-top:10px;padding:10px 12px;
   background:var(--accent-dim2);border-left:2px solid var(--accent);
 }
-.cues-title{font-size:9px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:6px;}
+.cues-title{font-size:9px;letter-spacing:2px;color:var(--accent-text);text-transform:uppercase;margin-bottom:6px;}
 .cue{display:flex;gap:8px;font-size:11px;color:var(--mid);line-height:1.5;margin-bottom:4px;}
-.cue::before{content:'→';color:var(--accent);flex-shrink:0;}
+.cue::before{content:'→';color:var(--accent-text);flex-shrink:0;}
 
 /* SET TABLE */
 .stbl{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px;}
 .stbl th{text-align:left;color:var(--grey);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 7px;border-bottom:1px solid var(--border);font-weight:400;}
 .stbl td{padding:9px 7px;border-bottom:1px solid rgba(37,37,37,0.5);vertical-align:middle;}
 .stbl tr:last-child td{border-bottom:none;}
-.stbl td:first-child{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--accent);}
+.stbl td:first-child{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--accent-text);}
 .chk{
   width:22px;height:22px;border:1px solid var(--border2);
   background:none;cursor:pointer;
@@ -261,7 +263,7 @@ body{
 /* MACROS */
 .macro-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px;}
 .mcell{background:var(--card);border:1px solid var(--border);padding:12px 8px;text-align:center;}
-.mnum{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--accent);}
+.mnum{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--accent-text);}
 .munit{font-size:9px;color:var(--grey);letter-spacing:1px;}
 .mname{font-size:10px;color:var(--mid);margin-top:3px;letter-spacing:1px;text-transform:uppercase;}
 
@@ -275,14 +277,14 @@ body{
   font-family:'DM Sans',sans-serif;line-height:1.4;
 }
 .mstab small{display:block;font-size:9px;font-weight:400;letter-spacing:1px;color:var(--grey);margin-top:2px;}
-.mstab.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.mstab.active{background:var(--accent-dim);border-color:var(--accent-text);color:var(--accent-text);}
 .mstab.active small{color:rgba(232,200,74,0.5);}
 
 .mplan{display:none;}
 .mplan.active{display:block;}
 
 .mday-label{
-  font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-text);
   margin:14px 0 8px;display:flex;align-items:center;gap:8px;
 }
 .mday-label::after{content:'';flex:1;height:1px;background:var(--border);}
@@ -293,7 +295,7 @@ body{
   align-items:center;gap:8px;-webkit-tap-highlight-color:transparent;
 }
 .mrow-head:active{background:rgba(200,16,46,0.02);}
-.mtime{font-size:9px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;min-width:50px;}
+.mtime{font-size:9px;color:var(--accent-text);letter-spacing:2px;text-transform:uppercase;min-width:50px;}
 .mname{flex:1;font-size:13px;font-weight:600;}
 .mkcal{font-size:11px;color:var(--grey);}
 .marrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
@@ -317,7 +319,7 @@ body{
 .supp-icon{font-size:18px;min-width:24px;}
 .supp-info{}
 .supp-name{font-size:13px;font-weight:700;margin-bottom:2px;}
-.supp-dose{font-size:11px;color:var(--accent);margin-bottom:3px;letter-spacing:0.5px;}
+.supp-dose{font-size:11px;color:var(--accent-text);margin-bottom:3px;letter-spacing:0.5px;}
 .supp-why{font-size:11px;color:var(--mid);line-height:1.5;}
 
 /* SHOPPING LIST */
@@ -326,7 +328,7 @@ body{
   padding:12px 14px;margin-bottom:14px;
   font-size:12px;color:var(--mid);line-height:1.6;
 }
-.shop-time-info span{color:var(--accent);font-weight:700;}
+.shop-time-info span{color:var(--accent-text);font-weight:700;}
 
 .shop-cat{margin-bottom:16px;}
 .shop-cat-title{
@@ -354,7 +356,7 @@ body{
 .shop-item-info{flex:1;}
 .shop-item-name{font-size:13px;font-weight:500;transition:all 0.15s;}
 .shop-item-detail{font-size:10px;color:var(--grey);margin-top:1px;letter-spacing:0.3px;}
-.shop-item-qty{font-size:11px;color:var(--accent);font-weight:700;white-space:nowrap;}
+.shop-item-qty{font-size:11px;color:var(--accent-text);font-weight:700;white-space:nowrap;}
 
 .shop-actions{display:flex;gap:8px;margin-bottom:14px;}
 .shop-action-btn{
@@ -364,7 +366,7 @@ body{
   -webkit-tap-highlight-color:transparent;
   font-family:'DM Sans',sans-serif;
 }
-.shop-action-btn:active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.shop-action-btn:active{background:var(--accent-dim);border-color:var(--accent-text);color:var(--accent-text);}
 
 .shop-progress-bar{height:3px;background:var(--border);margin-bottom:14px;}
 .shop-progress-fill{height:100%;background:var(--green);transition:width 0.3s;}
@@ -378,7 +380,7 @@ body{
   transition:all 0.15s;-webkit-tap-highlight-color:transparent;
   font-family:'DM Sans',sans-serif;
 }
-.shop-tab.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.shop-tab.active{background:var(--accent-dim);border-color:var(--accent-text);color:var(--accent-text);}
 
 .shop-list-panel{display:none;}
 .shop-list-panel.active{display:block;}
@@ -407,7 +409,7 @@ body{
   -webkit-tap-highlight-color:transparent;transition:all 0.15s;
 }
 .pbtn small{font-size:8px;color:var(--grey);display:block;margin-top:1px;letter-spacing:0.5px;}
-.pbtn:active,.pbtn.sel{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.pbtn:active,.pbtn.sel{background:var(--accent-dim);border-color:var(--accent-text);color:var(--accent-text);}
 
 /* TRACKER */
 .ring-wrap{display:flex;justify-content:center;margin:12px 0;position:relative;}
@@ -457,7 +459,7 @@ body{
 .recipe-info{flex:1;}
 .recipe-name{font-size:14px;font-weight:700;letter-spacing:0.3px;}
 .recipe-meta{font-size:10px;color:var(--grey);margin-top:2px;letter-spacing:0.5px;}
-.recipe-time{font-size:10px;color:var(--accent);font-weight:700;letter-spacing:1px;}
+.recipe-time{font-size:10px;color:var(--accent-text);font-weight:700;letter-spacing:1px;}
 .recipe-arrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
 .recipe-card.open .recipe-arrow{transform:rotate(180deg);}
 .recipe-body{display:none;border-top:1px solid var(--border);}
@@ -466,7 +468,7 @@ body{
 .recipe-section:last-child{border-bottom:none;}
 .recipe-section-title{
   font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--accent);margin-bottom:10px;
+  color:var(--accent-text);margin-bottom:10px;
 }
 .recipe-ing-list{display:flex;flex-direction:column;gap:6px;}
 .recipe-ing{
@@ -485,7 +487,7 @@ body{
 .recipe-step:last-child{border-bottom:none;}
 .recipe-step-num{
   font-family:'Space Grotesk',sans-serif;font-size:20px;
-  color:var(--accent);line-height:1;min-width:22px;
+  color:var(--accent-text);line-height:1;min-width:22px;
   padding-top:1px;
 }
 .recipe-step-text{font-size:12px;color:var(--mid);line-height:1.6;flex:1;}
@@ -495,14 +497,14 @@ body{
   background:rgba(200,16,46,0.06);border-left:2px solid var(--accent);
   font-size:11px;color:var(--mid);line-height:1.5;
 }
-.recipe-tip strong{color:var(--accent);}
+.recipe-tip strong{color:var(--accent-text);}
 .recipe-tag{
   display:inline-block;font-size:9px;letter-spacing:1.5px;
   padding:3px 8px;border:1px solid var(--border2);
   color:var(--grey);text-transform:uppercase;margin-right:4px;margin-top:6px;
 }
 .recipe-tag.easy{border-color:var(--green);color:var(--green);}
-.recipe-tag.meal-prep{border-color:var(--accent);color:var(--accent);}
+.recipe-tag.meal-prep{border-color:var(--accent-text);color:var(--accent-text);}
 .prep-banner{
   background:var(--card);border:1px solid var(--border);
   padding:13px 14px;margin-bottom:14px;
@@ -513,7 +515,7 @@ body{
 }
 .prep-step{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(37,37,37,0.4);font-size:12px;color:var(--mid);}
 .prep-step:last-child{border-bottom:none;}
-.prep-num{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--accent);min-width:18px;}
+.prep-num{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--accent-text);min-width:18px;}
 
 /* PHASE PROGRESSION */
 .phase-now-card{
@@ -526,7 +528,7 @@ body{
 }
 .phase-now-label{
   font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--accent);margin-bottom:8px;
+  color:var(--accent-text);margin-bottom:8px;
 }
 .phase-now-title{
   font-family:'Space Grotesk',sans-serif;font-size:22px;
@@ -539,7 +541,7 @@ body{
 .phase-now-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.6s ease;}
 .phase-now-week{
   display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:13px;
-  letter-spacing:2px;color:var(--accent);padding:4px 10px;
+  letter-spacing:2px;color:var(--accent-text);padding:4px 10px;
   border:1px solid rgba(255,255,255,0.3);background:rgba(200,16,46,0.06);
 }
 
@@ -565,7 +567,7 @@ body{
   margin-top:4px;border:1px solid var(--border2);background:transparent;
 }
 .unlock-dot.done{background:var(--green);border-color:var(--green);}
-.unlock-dot.active{background:var(--accent);border-color:var(--accent);}
+.unlock-dot.active{background:var(--accent);border-color:var(--accent-text);}
 
 .week-badge{
   display:inline-block;font-size:9px;padding:2px 7px;
@@ -573,19 +575,19 @@ body{
   color:var(--grey);text-transform:uppercase;margin-left:6px;
   vertical-align:middle;
 }
-.week-badge.current{border-color:var(--accent);color:var(--accent);}
+.week-badge.current{border-color:var(--accent-text);color:var(--accent-text);}
 .week-badge.done{border-color:var(--green);color:var(--green);}
 
 /* Phase badges updated dynamically */
 .phase-badge.done{border-color:var(--green);color:var(--green);}
-.phase-badge.active{border-color:var(--accent);color:var(--accent);background:rgba(200,16,46,0.08);}
+.phase-badge.active{border-color:var(--accent-text);color:var(--accent-text);background:rgba(200,16,46,0.08);}
 .done-badge{font-size:10px;padding:3px 8px;color:var(--green);border:1px solid var(--green);text-transform:uppercase;letter-spacing:1px;}
-.current-badge{font-size:10px;padding:3px 8px;color:var(--accent);border:1px solid var(--accent);text-transform:uppercase;letter-spacing:1px;}
+.current-badge{font-size:10px;padding:3px 8px;color:var(--accent-text);border:1px solid var(--accent);text-transform:uppercase;letter-spacing:1px;}
 
-.trkr-week.current-week .trkr-week-title{color:var(--accent);}
+.trkr-week.current-week .trkr-week-title{color:var(--accent-text);}
 .trkr-week.current-week .trkr-week-title::after{
   content:' ← YOU ARE HERE';font-size:8px;letter-spacing:1px;
-  color:var(--accent);opacity:0.7;
+  color:var(--accent-text);opacity:0.7;
 }
 .trkr-week.past-week .trkr-week-title{color:var(--grey);}
 .trkr-week.future-week .trkr-week-title{color:rgba(110,110,110,0.4);}
@@ -664,7 +666,7 @@ body{
 .track-section{margin-bottom:20px;}
 .track-section-title{
   font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--accent);margin-bottom:10px;
+  color:var(--accent-text);margin-bottom:10px;
   display:flex;align-items:center;gap:8px;
 }
 .track-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
@@ -680,7 +682,7 @@ body{
   color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;
   padding:9px 12px;outline:none;-webkit-appearance:none;border-radius:0;
 }
-.log-input:focus{border-color:var(--accent);}
+.log-input:focus{border-color:var(--accent-text);}
 .log-input::placeholder{color:var(--grey);}
 .log-unit{font-size:11px;color:var(--grey);min-width:28px;}
 .log-btn{
@@ -725,7 +727,7 @@ body{
 .history-table tr:last-child td{border-bottom:none;}
 .history-table td:first-child{color:var(--white);font-weight:600;}
 .change-up{color:#aaaaaa;}
-.change-down{color:var(--accent);}
+.change-down{color:var(--accent-text);}
 .change-same{color:var(--grey);}
 .delete-row-btn{
   background:none;border:none;color:var(--grey);
@@ -741,7 +743,7 @@ body{
 }
 .summary-num{font-family:'Space Grotesk',sans-serif;font-size:20px;color:var(--white);}
 .summary-num.pos{color:#aaaaaa;}
-.summary-num.neg{color:var(--accent);}
+.summary-num.neg{color:var(--accent-text);}
 .summary-lbl{font-size:9px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
 
 /* Photo reminder */
@@ -767,7 +769,7 @@ body{
   padding:7px 10px;outline:none;-webkit-appearance:none;
   border-radius:0;text-align:center;
 }
-.lift-input:focus{border-color:var(--accent);}
+.lift-input:focus{border-color:var(--accent-text);}
 .lift-pr{font-size:10px;color:#aaaaaa;min-width:44px;text-align:right;}
 
 /* Measurement grid */
@@ -783,7 +785,7 @@ body{
   -webkit-tap-highlight-color:transparent;transition:all 0.15s;
 }
 .lift-toggle-btn.active-lift{
-  background:var(--accent);border-color:var(--accent);color:#fff;
+  background:var(--accent);border-color:var(--accent-text);color:#fff;
 }
 
 
@@ -889,7 +891,7 @@ body{
 .warmup-head:active{background:rgba(200,16,46,0.02);}
 .warmup-emoji{font-size:18px;}
 .warmup-title{flex:1;font-size:13px;font-weight:700;color:var(--white);}
-.warmup-time{font-size:10px;color:var(--accent);letter-spacing:1px;font-weight:700;}
+.warmup-time{font-size:10px;color:var(--accent-text);letter-spacing:1px;font-weight:700;}
 .warmup-arrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
 .warmup-card.open .warmup-arrow{transform:rotate(180deg);}
 .warmup-body{display:none;padding:0 14px 14px;border-top:1px solid rgba(255,255,255,0.2);}
@@ -902,13 +904,13 @@ body{
 .warmup-step:last-child{border-bottom:none;}
 .warmup-step-num{
   font-family:'Space Grotesk',sans-serif;font-size:16px;
-  color:var(--accent);min-width:20px;line-height:1.2;flex-shrink:0;
+  color:var(--accent-text);min-width:20px;line-height:1.2;flex-shrink:0;
 }
 .warmup-step-info{flex:1;}
 .warmup-step-name{font-size:12px;font-weight:700;color:var(--white);margin-bottom:2px;}
 .warmup-step-detail{font-size:11px;color:var(--mid);line-height:1.5;}
 .warmup-step-time{
-  font-size:10px;color:var(--accent);letter-spacing:1px;
+  font-size:10px;color:var(--accent-text);letter-spacing:1px;
   font-weight:700;white-space:nowrap;margin-top:2px;
 }
 
@@ -1018,7 +1020,7 @@ body{
 }
 .expect-week{
   font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:1px;
-  color:var(--accent);min-width:56px;
+  color:var(--accent-text);min-width:56px;
 }
 .expect-title{flex:1;font-size:13px;font-weight:700;}
 .expect-arrow{font-size:10px;color:var(--grey);transition:transform 0.2s;}
@@ -1032,7 +1034,7 @@ body{
   border:1px solid var(--border2);color:var(--grey);text-transform:uppercase;
   margin-top:8px;margin-right:4px;
 }
-.expect-tag.red{border-color:var(--accent);color:var(--accent);}
+.expect-tag.red{border-color:var(--accent-text);color:var(--accent-text);}
 .expect-tag.green{border-color:var(--green);color:var(--green);}
 .expect-tag.blue{border-color:#4a9eff;color:#4a9eff;}
 
@@ -1043,7 +1045,7 @@ body{
   padding:12px;cursor:pointer;-webkit-tap-highlight-color:transparent;
   transition:border-color 0.15s;
 }
-.widget-mini:active{border-color:var(--accent);}
+.widget-mini:active{border-color:var(--accent-text);}
 .widget-mini-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:4px;}
 .widget-mini-val{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--white);}
 .widget-mini-sub{font-size:10px;color:var(--mid);margin-top:2px;}
@@ -1061,7 +1063,7 @@ body{
 .wt-detail{font-size:10px;color:var(--mid);margin-top:2px;line-height:1.5;}
 .wt-time{
   font-family:'Space Grotesk',sans-serif;font-size:26px;
-  color:var(--accent);letter-spacing:1px;line-height:1;text-align:right;
+  color:var(--accent-text);letter-spacing:1px;line-height:1;text-align:right;
 }
 .wt-time-label{font-size:9px;color:var(--grey);letter-spacing:1px;text-align:right;}
 .wt-breakdown{
@@ -1100,7 +1102,7 @@ body{
   color:var(--white);font-family:'DM Sans',sans-serif;font-size:13px;
   padding:9px 12px;outline:none;-webkit-appearance:none;
 }
-.cal-input:focus{border-color:var(--accent);}
+.cal-input:focus{border-color:var(--accent-text);}
 .cal-input::placeholder{color:var(--grey);}
 .cal-input-kcal{width:90px;flex:none;text-align:center;}
 .cal-input-macro{width:64px;flex:none;text-align:center;font-size:12px;}
@@ -1129,7 +1131,7 @@ body{
 .cal-entry:last-child{border-bottom:none;}
 .cal-entry-name{flex:1;font-size:12px;color:var(--white);}
 .cal-entry-time{font-size:10px;color:var(--grey);margin-top:1px;}
-.cal-entry-kcal{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--accent);min-width:50px;text-align:right;}
+.cal-entry-kcal{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--accent-text);min-width:50px;text-align:right;}
 .cal-entry-macro{font-size:10px;color:var(--grey);min-width:36px;text-align:right;}
 .cal-del-btn{background:none;border:none;color:var(--grey);font-size:13px;cursor:pointer;padding:4px 6px;margin-left:4px;-webkit-tap-highlight-color:transparent;}
 .cal-empty{text-align:center;padding:24px;font-size:12px;color:var(--grey);}
@@ -1140,7 +1142,7 @@ body{
   color:var(--mid);font-size:16px;cursor:pointer;display:flex;align-items:center;
   justify-content:center;-webkit-tap-highlight-color:transparent;
 }
-.cal-day-btn:active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.cal-day-btn:active{background:var(--accent);border-color:var(--accent-text);color:#fff;}
 .cal-day-label{flex:1;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:15px;letter-spacing:2px;color:var(--white);}
 
 .cal-remaining{
@@ -1177,7 +1179,7 @@ body{
 .nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--accent);border-radius:0 2px 2px 0;}
 .nav-item-icon{font-size:20px;width:28px;text-align:center;flex-shrink:0;}
 .nav-item-name{font-size:14px;font-weight:600;color:#f2efe8;line-height:1;margin-bottom:2px;}
-.nav-item.active .nav-item-name{color:var(--accent);}
+.nav-item.active .nav-item-name{color:var(--accent-text);}
 .nav-item-desc{font-size:11px;color:#666;}
 .nav-divider{height:1px;background:#222;margin:4px 20px;}
 
@@ -1192,24 +1194,24 @@ body{
 .ex-weight-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);}
 .ex-weight-pr{font-size:11px;font-weight:700;color:#aaaaaa;}
 .ex-weight-input-row{display:flex;gap:6px;align-items:center;margin-bottom:6px;}
-.ex-weight-input{flex:1;background:var(--surface);border:1px solid var(--border2,#2e2e2e);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:9px 12px;outline:none;-webkit-appearance:none;text-align:center;border-radius:4px;transform:translateZ(0);touch-action:manipulation;}
-.ex-weight-input:focus{border-color:var(--accent);}
+.ex-weight-input{flex:1;background:var(--surface);border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:9px 12px;outline:none;-webkit-appearance:none;text-align:center;border-radius:4px;transform:translateZ(0);touch-action:manipulation;}
+.ex-weight-input:focus{border-color:var(--accent-text);}
 .ex-weight-input::placeholder{color:var(--grey);font-size:12px;font-weight:400;}
 .ex-weight-unit{font-size:12px;color:var(--mid);padding:0 2px;}
 .ex-weight-save{padding:9px 16px;background:var(--accent);border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:4px;}
 .ex-weight-save:active{opacity:0.8;}
 .ex-weight-history{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;}
-.ex-weight-chip{font-size:10px;padding:3px 8px;background:var(--card);border:1px solid var(--border);color:var(--mid);border-radius:12px;white-space:nowrap;}
-.ex-weight-chip.latest{background:rgba(200,16,46,0.08);border-color:rgba(255,255,255,0.3);color:var(--accent);font-weight:700;}
+.ex-weight-chip{font-size:10px;padding:3px 8px;background:var(--surface);border:none;color:var(--mid);border-radius:12px;white-space:nowrap;}
+.ex-weight-chip.latest{background:rgba(200,16,46,0.08);border-color:rgba(255,255,255,0.3);color:var(--accent-text);font-weight:700;}
 .day-banner{margin:20px 0 12px;border-radius:10px;overflow:hidden;border:1px solid var(--border);}
 .day-banner-inner{padding:16px 18px;background:var(--card);display:flex;align-items:center;gap:14px;position:relative;}
 .day-banner-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
 .day-banner-icon{font-size:28px;flex-shrink:0;}
 .day-banner-info{flex:1;}
 .day-banner-name{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1;margin-bottom:4px;}
-.day-banner-days{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase;}
+.day-banner-days{font-size:11px;font-weight:600;color:var(--accent-text);letter-spacing:0.04em;text-transform:uppercase;}
 .day-banner-muscles{font-size:11px;color:var(--mid);margin-top:3px;}
-.day-banner-chip{background:rgba(200,16,46,0.08);border:1px solid rgba(255,255,255,0.2);color:var(--accent);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.day-banner-chip{background:rgba(200,16,46,0.08);border:1px solid rgba(255,255,255,0.2);color:var(--accent-text);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
 @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 
 
@@ -1217,7 +1219,7 @@ body{
 .home-today{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden;}
 .home-today::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
 .home-today-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
-.home-today-eyebrow{font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);}
+.home-today-eyebrow{font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-text);}
 .home-today-week{font-size:12px;font-weight:700;color:var(--white);font-family:'Space Grotesk',sans-serif;}
 .home-today-phase{font-size:11px;color:var(--grey);font-weight:400;}
 .home-today-main{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
@@ -1239,7 +1241,7 @@ body{
 .home-split-day.rest{background:var(--surface);border-color:var(--border);}
 .home-split-day:active{opacity:0.7;}
 .home-split-d{font-size:9px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:0.04em;}
-.home-split-t{font-size:8px;color:var(--accent);font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
+.home-split-t{font-size:8px;color:var(--accent-text);font-weight:700;letter-spacing:0.04em;text-transform:uppercase;}
 .home-split-day.rest .home-split-t{color:var(--grey);}
 
 .home-track-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
@@ -1249,7 +1251,7 @@ body{
 .home-track-big span:first-child{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--white);}
 .home-track-unit{font-size:11px;color:var(--grey);}
 .home-track-btn{flex:1;padding:8px 0;background:var(--surface);border:1px solid var(--border);color:var(--mid);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:5px;}
-.home-track-btn.accent{background:rgba(200,16,46,0.12);border-color:rgba(255,255,255,0.3);color:var(--accent);}
+.home-track-btn.accent{background:rgba(200,16,46,0.12);border-color:rgba(255,255,255,0.3);color:var(--accent-text);}
 
 .home-section-label{font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);margin-bottom:10px;}
 
@@ -1258,14 +1260,14 @@ body{
 .home-target-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
 .home-target-name{font-size:13px;font-weight:600;color:var(--white);}
 .home-target-tag{font-size:8px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--surface);color:var(--grey);border:1px solid var(--border);}
-.home-target-tag.hi{background:rgba(200,16,46,0.1);color:var(--accent);border-color:rgba(255,255,255,0.3);}
+.home-target-tag.hi{background:rgba(200,16,46,0.1);color:var(--accent-text);border-color:rgba(255,255,255,0.3);}
 .home-target-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
 .home-target-fill{height:100%;background:linear-gradient(90deg,var(--accent),rgba(255,255,255,0.5));border-radius:2px;}
 
 .home-rules{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
 .home-rule{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border);}
 .home-rule:last-child{border-bottom:none;}
-.home-rule-n{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:800;color:var(--accent);min-width:22px;padding-top:1px;}
+.home-rule-n{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:800;color:var(--accent-text);min-width:22px;padding-top:1px;}
 .home-rule-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
 .home-rule-sub{font-size:11px;color:var(--mid);line-height:1.5;}
 
@@ -1286,7 +1288,7 @@ body{
 
 
 .off-result{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 13px;transition:border-color 0.15s;}
-.off-result:active{border-color:var(--accent);}
+.off-result:active{border-color:var(--accent-text);}
 
 
 .ex-prog{margin:8px 0;background:var(--surface);border-radius:6px;padding:8px 10px;}
@@ -1300,13 +1302,22 @@ body{
 .ex-video-thumb img{display:block;width:100%;height:auto;min-height:90px;background:var(--surface);}
 
 
-.day-banner-week{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-top:4px;opacity:0.9;}
+.day-banner-week{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-top:4px;opacity:0.9;}
 
 
 #checkinBanner{margin-bottom:14px;}
 
 
 /* ── MINI REST TIMER ─────────────────────────────────────────── */
+
+.sticky-timer{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--card);border-top:1px solid var(--border);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;transition:transform 0.25s ease;}
+.sticky-timer.collapsed .sticky-timer-presets{display:none;}
+.sticky-timer-display{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:800;color:var(--white);letter-spacing:0.02em;line-height:1;min-width:64px;}
+.sticky-timer-main{flex:1;display:flex;align-items:center;gap:12px;}
+.sticky-timer-btns{display:flex;gap:8px;align-items:center;}
+.sticky-timer-presets{display:flex;gap:6px;margin-top:8px;}
+.sticky-timer-expand{background:none;border:none;color:var(--grey);font-size:16px;cursor:pointer;padding:4px 8px;-webkit-tap-highlight-color:transparent;}
+
 .mini-timer{background:var(--surface);border-radius:0 0 10px 10px;padding:12px 14px;margin-bottom:12px;border:1px solid var(--border);border-top:none;}
 .mini-timer-row1{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .mini-timer-display{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;color:var(--white);letter-spacing:0.02em;line-height:1;}
@@ -1315,7 +1326,7 @@ body{
 .mini-reset{padding:10px 14px;background:var(--card);border:1px solid var(--border);color:var(--mid);font-size:14px;cursor:pointer;border-radius:7px;-webkit-tap-highlight-color:transparent;}
 .mini-timer-presets{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
 .mini-preset{padding:8px 0;background:var(--card);border:1px solid var(--border);color:var(--grey);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;text-align:center;width:100%;}
-.mini-preset.active{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4);color:var(--accent);}
+.mini-preset.active{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4);color:var(--accent-text);}
 
 
 .ex-tick{background:none;border:1.5px solid var(--border);color:var(--grey);width:44px;height:44px;border-radius:50%;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;margin-right:6px;-webkit-tap-highlight-color:transparent;transition:all 0.15s;}
@@ -1374,6 +1385,11 @@ function navTo(id,label){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   var sec=document.getElementById('tab-'+id);
   if(sec) sec.classList.add('active');
+  // Sticky rest timer only makes sense on the Workouts tab
+  var stickyBar = document.getElementById('stickyTimerBar');
+  var stickyWrap = document.getElementById('stickyTimerPresetsWrap');
+  if(stickyBar) stickyBar.style.display = (id==='program') ? 'flex' : 'none';
+  if(stickyWrap && id!=='program') stickyWrap.style.display = 'none';
   document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
   var ni=document.getElementById('nav-'+id);
   if(ni) ni.classList.add('active');
@@ -1381,7 +1397,7 @@ function navTo(id,label){
   window.scrollTo(0,0);
   if(id==='program') setTimeout(function(){try{initWorkoutView();}catch(e){}},50);
   if(id==='tracker') setTimeout(function(){try{renderExercisePRsGrid();}catch(e){};try{buildMonthCalendar();}catch(e){}},50);
-  if(id==='schedule') setTimeout(function(){try{renderHomePRs();}catch(e){};try{buildHomeMiniCal();}catch(e){}},50);
+  if(id==='schedule') setTimeout(function(){try{renderHomePRs();}catch(e){};try{buildHomeWeeklyStrip();}catch(e){}},50);
   playNavTick();
 }
 function switchTab(id,el){navTo(id,NAV_LABELS[id]||id);}
@@ -1468,14 +1484,14 @@ function toggleVideoPlayer(vid_id){
   <path d="M36,58 L42,64" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85"/>
 </svg></div><div><div class="nav-drawer-title">Forge</div><div class="nav-drawer-sub">Tap any section</div></div></div>
   <div class="nav-section"><div class="nav-section-label">Main</div>
-    <div class="nav-item active" id="nav-schedule" onclick="navTo('schedule','Overview')"><div class="nav-item-icon">🏠</div><div><div class="nav-item-name">Home</div><div class="nav-item-desc">Today · Water · Overview</div></div></div>
-    <div class="nav-item" id="nav-program" onclick="navTo('program','Workouts')"><div class="nav-item-icon">💪</div><div><div class="nav-item-name">Workouts</div><div class="nav-item-desc">Push · Pull · Legs</div></div></div>
+    <div class="nav-item active" id="nav-schedule" onclick="navTo('schedule','Overview')"><div class="nav-item-icon" style="font-size:22px;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-house"></i></div><div><div class="nav-item-name">Home</div><div class="nav-item-desc">Today · Water · Overview</div></div></div>
+    <div class="nav-item" id="nav-program" onclick="navTo('program','Workouts')"><div class="nav-item-icon" style="font-size:22px;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-dumbbell"></i></div><div><div class="nav-item-name">Workouts</div><div class="nav-item-desc">Push · Pull · Legs</div></div></div>
   </div>
   <div class="nav-divider"></div>
   <div class="nav-section"><div class="nav-section-label">More</div>
-    <div class="nav-item" id="nav-nutrition" onclick="navTo('nutrition','Cut Meal Plan')"><div class="nav-item-icon">🥗</div><div><div class="nav-item-name">Cut Meal Plan</div><div class="nav-item-desc">Macros · meal options</div></div></div>
-    <div class="nav-item" id="nav-recipes" onclick="navTo('recipes','Recipes')"><div class="nav-item-icon">🍳</div><div><div class="nav-item-name">Recipes</div><div class="nav-item-desc">Meals · Prep guide</div></div></div>
-    <div class="nav-item" id="nav-shopping" onclick="navTo('shopping','Shopping')"><div class="nav-item-icon">🛒</div><div><div class="nav-item-name">Shopping List</div><div class="nav-item-desc">Weekly groceries</div></div></div>
+    <div class="nav-item" id="nav-nutrition" onclick="navTo('nutrition','Cut Meal Plan')"><div class="nav-item-icon" style="font-size:22px;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-utensils"></i></div><div><div class="nav-item-name">Cut Meal Plan</div><div class="nav-item-desc">Macros · meal options</div></div></div>
+    <div class="nav-item" id="nav-recipes" onclick="navTo('recipes','Recipes')"><div class="nav-item-icon" style="font-size:22px;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-book"></i></div><div><div class="nav-item-name">Recipes</div><div class="nav-item-desc">Meals · Prep guide</div></div></div>
+    <div class="nav-item" id="nav-shopping" onclick="navTo('shopping','Shopping')"><div class="nav-item-icon" style="font-size:22px;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-cart-shopping"></i></div><div><div class="nav-item-name">Shopping List</div><div class="nav-item-desc">Weekly groceries</div></div></div>
   </div>
   <div class="nav-divider"></div>
 </div>
@@ -1488,7 +1504,7 @@ function toggleVideoPlayer(vid_id){
   <div id="homeMiniCal" style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;">
     <div onclick="goToTodayWorkout()" style="padding:12px 14px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;cursor:pointer;-webkit-tap-highlight-color:transparent;">
       <div style="display:flex;align-items:center;gap:10px;">
-        <div style="font-size:26px;" id="todayIcon">💪</div>
+        <div style="font-size:26px;" id="todayIcon"><i class="fa-solid fa-dumbbell"></i></div>
         <div>
           <div style="font-family:Space+Grotesk,sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="todayName">Push Day</div>
           <div style="font-size:11px;color:var(--mid);" id="todaySub">Chest · Shoulders · Triceps</div>
@@ -1496,7 +1512,7 @@ function toggleVideoPlayer(vid_id){
       </div>
       <div style="text-align:right;display:flex;align-items:center;gap:8px;">
         <div>
-          <div style="font-size:11px;font-weight:700;color:var(--accent);" id="todayWeekBig">Wk 1</div>
+          <div style="font-size:11px;font-weight:700;color:var(--accent-text);" id="todayWeekBig">Wk 1</div>
           <div style="font-size:9px;color:var(--grey);" id="todayPhaseBig">Foundation</div>
         </div>
         <div style="font-size:16px;color:var(--grey);">›</div>
@@ -1520,7 +1536,7 @@ function toggleVideoPlayer(vid_id){
   <!-- DAILY MEAL TIMELINE -->
   <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;">
     <div style="padding:12px 14px 8px;display:flex;align-items:center;justify-content:space-between;">
-      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Today's Meal Plan</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);">Today's Meal Plan</div>
       <div style="font-size:9px;color:var(--grey);">Aggressive Cut</div>
     </div>
     <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:0;">
@@ -1558,7 +1574,7 @@ function toggleVideoPlayer(vid_id){
       </div>
 
       <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
-        <div style="width:52px;flex-shrink:0;font-size:10px;font-weight:700;color:var(--accent);">6-7pm</div>
+        <div style="width:52px;flex-shrink:0;font-size:10px;font-weight:700;color:var(--accent-text);">6-7pm</div>
         <div style="flex:1;">
           <div style="font-size:12px;font-weight:700;color:var(--white);">Gym</div>
           <div style="font-size:10px;color:var(--mid);margin-top:1px;">Push / Pull / Legs as scheduled</div>
@@ -1583,7 +1599,7 @@ function toggleVideoPlayer(vid_id){
   <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:14px;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <div style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);">Weight Trend</div>
-      <div id="trendSummary" style="font-size:11px;font-weight:700;color:var(--accent);"></div>
+      <div id="trendSummary" style="font-size:11px;font-weight:700;color:var(--accent-text);"></div>
     </div>
     <svg id="trendSparkline" width="100%" height="40" viewBox="0 0 300 40" style="display:block;"></svg>
   </div>
@@ -1595,7 +1611,7 @@ function toggleVideoPlayer(vid_id){
       <div id="nextCheckinDate" style="font-size:13px;font-weight:700;color:var(--white);margin-top:2px;">Sunday 4th October</div>
     </div>
     <div style="text-align:right;">
-      <div id="nextCheckinDays" style="font-size:16px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--accent);">14 days</div>
+      <div id="nextCheckinDays" style="font-size:16px;font-weight:800;font-family:'Space Grotesk',sans-serif;color:var(--accent-text);">14 days</div>
       <div style="font-size:9px;color:var(--grey);">from now</div>
     </div>
   </div>
@@ -1608,7 +1624,7 @@ function toggleVideoPlayer(vid_id){
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding-top:10px;border-top:1px solid var(--border);">
       <div style="text-align:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent);" id="homeStatBF">19.3%</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--accent-text);" id="homeStatBF">19.3%</div>
         <div style="font-size:8px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;margin-top:1px;">body fat</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border);">
@@ -1640,7 +1656,7 @@ function toggleVideoPlayer(vid_id){
 
   <!-- DATA BACKUP -->
   <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Data Backup</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px;">Data Backup</div>
     <div style="font-size:11px;color:var(--mid);margin-bottom:10px;">Save a copy of your weights, check-ins, and progress. Browser storage can be cleared unexpectedly — back up regularly.</div>
     <div style="display:flex;gap:8px;">
       <button onclick="exportData()" style="flex:1;padding:10px;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">⬇ Export JSON</button>
@@ -1653,10 +1669,10 @@ function toggleVideoPlayer(vid_id){
     <div style="font-size:28px;flex-shrink:0;">🔥</div>
     <div style="flex:1">
       <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:800;color:var(--white);margin-bottom:2px;">🔥 11.3kg down · 19.9% BF · 85kg target</div>
-      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → 98.7kg → <strong style="color:var(--accent);">98.3kg</strong> → 85kg target. Sugar cut, Zone 2 cardio added. 13.3kg to go.</div>
+      <div style="font-size:11px;color:var(--mid);line-height:1.5;">110kg → 98.7kg → <strong style="color:var(--accent-text);">98.3kg</strong> → 85kg target. Sugar cut, Zone 2 cardio added. 13.3kg to go.</div>
     </div>
     <div style="text-align:right;flex-shrink:0;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent);">98.7</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:var(--accent-text);">98.7</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;">kg now</div>
     </div>
   </div>
@@ -1669,9 +1685,9 @@ function toggleVideoPlayer(vid_id){
     <div style="height:3px;background:linear-gradient(90deg,#444,#222);"></div>
     <div style="padding:14px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Mind &amp; Body</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);">Mind &amp; Body</div>
         <div style="display:flex;gap:6px;">
-          <button onclick="setMotivationMode('low')" id="btnMotivLow" style="padding:5px 10px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.3);color:var(--accent);">Low Motivation</button>
+          <button onclick="setMotivationMode('low')" id="btnMotivLow" style="padding:5px 10px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.3);color:var(--accent-text);">Low Motivation</button>
           <button onclick="setMotivationMode('ill')" id="btnMotivIll" style="padding:5px 10px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;background:var(--surface);border:1px solid var(--border);color:var(--mid);">I'm Ill</button>
           <button onclick="setMotivationMode('normal')" id="btnMotivNormal" style="padding:5px 10px;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:5px;-webkit-tap-highlight-color:transparent;background:var(--surface);border:1px solid var(--border);color:var(--mid);">Feeling Good</button>
         </div>
@@ -1687,7 +1703,7 @@ function toggleVideoPlayer(vid_id){
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Weight</div>
     </div>
     <div style="text-align:center;border-left:1px solid var(--border);">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--accent);">20.6%</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:var(--accent-text);">20.6%</div>
       <div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;">Body Fat</div>
     </div>
     <div style="text-align:center;border-left:1px solid var(--border);">
@@ -1703,7 +1719,7 @@ function toggleVideoPlayer(vid_id){
   <!-- TDEE NOTE -->
   <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:10px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
     <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px;">Daily Burn (TDEE)</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent-text);margin-bottom:2px;">Daily Burn (TDEE)</div>
       <div style="font-size:11px;color:var(--mid);">~3,100 kcal · deficit ~830/day · ~0.8kg/wk loss</div>
     </div>
     <div style="text-align:right;">
@@ -1738,7 +1754,7 @@ function toggleVideoPlayer(vid_id){
       </div>
     </div>
     <div class="home-track-card">
-      <div class="home-track-label">🏃 Cardio <span style="font-size:9px;color:var(--accent);font-weight:700;">40 sessions · 2,927 kcal (Jul)</span></div>
+      <div class="home-track-label">🏃 Cardio <span style="font-size:9px;color:var(--accent-text);font-weight:700;">40 sessions · 2,927 kcal (Jul)</span></div>
       <div class="home-track-big"><span id="cardioThisWeek">0</span><span class="home-track-unit">this wk</span></div>
       <div id="cardioWeekDisplay" style="margin:8px 0 6px;"></div>
       <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
@@ -1747,7 +1763,7 @@ function toggleVideoPlayer(vid_id){
       </div>
       <div style="display:flex;justify-content:space-between;">
         <span style="font-size:10px;color:var(--grey);">Streak</span>
-        <span style="font-size:12px;font-weight:700;color:var(--accent)" id="cardioStreak">0</span>
+        <span style="font-size:12px;font-weight:700;color:var(--accent-text)" id="cardioStreak">0</span>
       </div>
     </div>
   </div>
@@ -1793,7 +1809,7 @@ function toggleVideoPlayer(vid_id){
     <div class="home-target">
       <div class="home-target-row"><span class="home-target-name">Belly &amp; Core</span><span class="home-target-tag" style="background:rgba(200,16,46,0.1);color:#bbbbbb;border-color:rgba(255,255,255,0.3);">Fat Loss Last</span></div>
       <div class="home-target-bar"><div class="home-target-fill" style="width:35%;background:linear-gradient(90deg,#bbbbbb,rgba(255,255,255,0.4));"></div></div>
-      <div style="font-size:10px;color:var(--grey);margin-top:4px;"><strong style="color:var(--accent);">Wk 1–4:</strong> Hanging leg raises only · <strong style="color:var(--white);">Wk 5+:</strong> Add cable crunch + plank finisher</div>
+      <div style="font-size:10px;color:var(--grey);margin-top:4px;"><strong style="color:var(--accent-text);">Wk 1–4:</strong> Hanging leg raises only · <strong style="color:var(--white);">Wk 5+:</strong> Add cable crunch + plank finisher</div>
     </div>
     <div class="home-target">
       <div class="home-target-row"><span class="home-target-name">Love Handles / Obliques</span><span class="home-target-tag" style="background:rgba(200,16,46,0.1);color:#bbbbbb;border-color:rgba(255,255,255,0.3);">Fat Loss Last</span></div>
@@ -1827,7 +1843,7 @@ function toggleVideoPlayer(vid_id){
   <div style="margin-bottom:20px;">
     <button onclick="var d=this.nextElementSibling;var open=d.style.display!=='none';d.style.display=open?'none':'block';this.querySelector('.supp-arrow').textContent=open?'▶':'▼';" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;-webkit-tap-highlight-color:transparent;margin-bottom:4px;">
       <div>
-        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:2px;">Your Supplements</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:2px;">Your Supplements</div>
         <div style="font-size:11px;color:var(--mid);">Whey · Omega 3 · Magnesium · Vitamin D3 — tap to expand</div>
       </div>
       <span class="supp-arrow" style="color:var(--grey);font-size:12px;">▶</span>
@@ -1997,6 +2013,26 @@ function toggleVideoPlayer(vid_id){
 <div id="tab-program" class="section">
   <div class="sec-label">Programme</div>
   <div id="todayWorkoutHeader" class="sec-title">TRAINING PLAN</div>
+<!-- STICKY REST TIMER — only visible while Workouts tab is active -->
+  <div class="sticky-timer collapsed" id="stickyTimerBar" style="display:none;">
+    <div class="sticky-timer-main">
+      <div class="sticky-timer-display mini-timer-display" id="miniTimerDisplay-push">01:30</div>
+      <div class="sticky-timer-btns">
+        <button class="mini-start" id="miniStartBtn-push" onclick="miniStartStop()">START</button>
+        <button class="mini-reset" onclick="miniReset()">↺</button>
+      </div>
+      <button class="sticky-timer-expand" onclick="toggleStickyTimerPresets()" id="stickyTimerExpandBtn">▴</button>
+    </div>
+  </div>
+  <div class="sticky-timer-presets-wrap" id="stickyTimerPresetsWrap" style="display:none;position:fixed;left:0;right:0;bottom:62px;z-index:39;background:var(--card);border-top:1px solid var(--border);padding:10px 16px;">
+    <div class="sticky-timer-presets" style="margin-top:0;">
+      <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
+      <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
+      <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
+      <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
+    </div>
+  </div>
+
 
   <!-- TODAY'S WORKOUT CARD -->
   <div id="todayWorkoutCard" style="margin-bottom:16px;"></div>
@@ -2008,7 +2044,7 @@ function toggleVideoPlayer(vid_id){
     <button id="btn30Min" onclick="toggle30MinMode()" style="flex:1;padding:9px;background:var(--surface);border:1px solid var(--border);color:var(--mid);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">⚡ 30 Min</button>
   </div>
   <div id="thirtyMinBanner" style="display:none;background:rgba(200,16,46,0.08);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:10px 14px;margin-bottom:10px;">
-    <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:4px;">⚡ 30-Minute Superset Mode</div>
+    <div style="font-size:11px;font-weight:700;color:var(--accent-text);margin-bottom:4px;">⚡ 30-Minute Superset Mode</div>
     <div style="font-size:11px;color:var(--mid);line-height:1.6;">Exercises are paired into supersets — do A then B back-to-back with no rest. Rest 60 sec between pairs. 3 sets per superset. Done in 30 min. <strong style="color:var(--white);">Same stimulus, half the time.</strong></div>
   </div>
 
@@ -2039,38 +2075,24 @@ function toggleVideoPlayer(vid_id){
 
 
   <div id="push" style="scroll-margin-top:60px">
-  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Push Day</div><div class="day-banner-days">Monday &amp; Friday</div><div class="day-banner-muscles">Chest · Shoulders · Triceps</div></div></div>
+  <div class="day-banner"><div class="day-banner-inner" style="padding:12px 16px;"><div style="font-size:11px;color:var(--grey);">Chest · Shoulders · Triceps  |  Mon &amp; Fri</div></div></div>
     <div class="day-checklist-bar"><div class="day-checklist-fill" id="bar-push-day"></div></div>
-    <div class="mini-timer" id="miniTimer-push">
-      <div class="mini-timer-row1">
-        <div class="mini-timer-display" id="miniTimerDisplay-push">01:30</div>
-        <div class="mini-timer-btns">
-          <button class="mini-start" id="miniStartBtn-push" onclick="miniStartStop()">START</button>
-          <button class="mini-reset" onclick="miniReset()">↺</button>
-        </div>
-      </div>
-      <div class="mini-timer-presets">
-        <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
-        <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
-        <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
-        <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
-      </div>
-    </div>
+    
     <div class="wcard" data-variant="a">
-      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Barbell Bench Press</div><div class="wmeta">4×6–8</div><button class="ex-tick" id="tick-barbell_bench_press" onclick="event.stopPropagation();toggleExDone('Barbell Bench Press')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Dumbbell Bench Press</div><div class="wmeta">4×6–8</div><button class="ex-tick" id="tick-dumbbell_bench_press" onclick="event.stopPropagation();toggleExDone('Dumbbell Bench Press')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         
         
-        <div onclick="openYT('M7OU_kSMzhs')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/M7OU_kSMzhs/mqdefault.jpg" alt="How to Perform The Barbell Bench Press" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to Perform The Barbell Bench Press</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
-        <p class="wtip">Drive through your chest, not shoulders. Elbows 45° to body. Full ROM — bar touches chest. This is your primary strength movement. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Cable Lateral Raise — do both back-to-back, rest 60s. Push + isolation = no muscle overlap.</span></p>
+        <div onclick="openYT('fjNxsn57o_g')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/fjNxsn57o_g/mqdefault.jpg" alt="Dumbbell Bench Press: Step-by-Step Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dumbbell Bench Press: Step-by-Step Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <p class="wtip">Drive through your chest, not shoulders. Elbows 45° to body. Full ROM — let the dumbbells travel lower than a bar would for a deeper stretch. Greater range of motion than barbell, and each side works independently. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Pair with Cable Lateral Raise — do both back-to-back, rest 60s. Push + isolation = no muscle overlap.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×5 @ 85%+ — max effort sets</span></div>
         </div>
-        <div class="ex-weight-log" id="wl-barbell_bench_press">
+        <div class="ex-weight-log" id="wl-dumbbell_bench_press">
           <div class="ex-weight-label">Track weight</div>
-          <div class="ex-weight-pr" id="wl-pr-barbell_bench_press"></div>
-          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_bench_press',-2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-barbell_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Barbell Bench Press')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-barbell_bench_press',2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Barbell Bench Press')">Log</button></div>
-          <div class="ex-weight-history" id="wl-hist-barbell_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
+          <div class="ex-weight-pr" id="wl-pr-dumbbell_bench_press"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-dumbbell_bench_press',-2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-dumbbell_bench_press" placeholder="Enter kg" min="0" max="500" step="0.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Dumbbell Bench Press')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-dumbbell_bench_press',2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Dumbbell Bench Press')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-dumbbell_bench_press"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2081,7 +2103,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('-1uX3Xrhc28')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/-1uX3Xrhc28/mqdefault.jpg" alt="High Incline Dumbbell Press Form Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">High Incline Dumbbell Press Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">30–45° incline. Controls upper chest. Dumbbells allow full stretch at the bottom — don't rush the eccentric. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Cable Tricep Pushdown — chest then triceps, natural sequence.</span></p>
+        <p class="wtip">30–45° incline. Controls upper chest. Dumbbells allow full stretch at the bottom — don't rush the eccentric. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Pair with Cable Tricep Pushdown — chest then triceps, natural sequence.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×6–8 heavy</span></div>
         </div>
@@ -2100,7 +2122,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('afR3tPH6y_g')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/afR3tPH6y_g/mqdefault.jpg" alt="Barbell Overhead Press Form Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Barbell Overhead Press Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Standing or seated. Brace core hard. Bar path: slight arc around nose. Lock out fully at top. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Cable Fly — shoulders then chest isolation finish.</span></p>
+        <p class="wtip">Standing or seated. Brace core hard. Bar path: slight arc around nose. Lock out fully at top. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Pair with Cable Fly — shoulders then chest isolation finish.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×6–8 heavy — push PR</span></div>
         </div>
@@ -2119,7 +2141,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('HCfU6LGpgMk')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/HCfU6LGpgMk/mqdefault.jpg" alt="Cable Lateral Raise Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cable Lateral Raise Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Slight lean away from cable. Lead with elbow, not wrist. Control the negative — don't swing. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Bench Press. Do this immediately after bench, no rest.</span></p>
+        <p class="wtip">Slight lean away from cable. Lead with elbow, not wrist. Control the negative — don't swing. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with Bench Press. Do this immediately after bench, no rest.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×10–12 heavy</span></div>
         </div>
@@ -2138,7 +2160,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('c44hwGS-peY')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/c44hwGS-peY/mqdefault.jpg" alt="Cable Flyes Target Different Chest Parts" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cable Flyes Target Different Chest Parts</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">High-to-low or mid cable. Slight bend in elbow, squeeze at centre. Chest isolation — not a pressing movement. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Overhead Press. Finisher superset.</span></p>
+        <p class="wtip">High-to-low or mid cable. Slight bend in elbow, squeeze at centre. Chest isolation — not a pressing movement. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with Overhead Press. Finisher superset.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×10 heavy stretch</span></div>
         </div>
@@ -2150,6 +2172,22 @@ function toggleVideoPlayer(vid_id){
         </div>
       </div>
     </div>
+<div class="wcard" data-variant="b">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D1</div><div class="wname">Plate Pinch Hold</div><div class="wmeta">3×30-45 sec</div><button class="ex-tick" id="tick-plate_pinch_hold" onclick="event.stopPropagation();toggleExDone('Plate Pinch Hold')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div onclick="openYT('rGEXLWLj6tQ')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/rGEXLWLj6tQ/mqdefault.jpg" alt="Pinch Grip Holds for Strong Hands" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pinch Grip Holds for Strong Hands</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <p class="wtip">Forearm density and finger flexor strength — grip two weight plates smooth-side-out, pinch and hold. Builds a vascular, defined look even at rest. Don't drop it on your foot.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×30-45 sec, add weight as it gets easier</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-plate_pinch_hold">
+          <div class="ex-weight-label">Track weight used</div>
+          <div class="ex-weight-pr" id="wl-pr-plate_pinch_hold"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold',-2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-plate_pinch_hold" placeholder="Enter kg" min="0" max="50" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Plate Pinch Hold')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold',2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Plate Pinch Hold')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-plate_pinch_hold"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
     <div class="wcard" data-variant="a">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C2</div><div class="wname">Cable Tricep Pushdown</div><div class="wmeta">4×10–12</div><button class="ex-tick" id="tick-cable_tricep_pushdown" onclick="event.stopPropagation();toggleExDone('Cable Tricep Pushdown')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
@@ -2157,7 +2195,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('leazgWMaSo8')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/leazgWMaSo8/mqdefault.jpg" alt="Perfect Tricep Pushdown Form" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Perfect Tricep Pushdown Form</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Straight bar or rope. Elbows pinned at sides — only forearms move. Full extension every rep. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Incline DB Press. Triceps are already warm.</span></p>
+        <p class="wtip">Straight bar or rope. Elbows pinned at sides — only forearms move. Full extension every rep. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with Incline DB Press. Triceps are already warm.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×8–10 heavy</span></div>
         </div>
@@ -2176,7 +2214,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('VDSx0BWXuSE')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/VDSx0BWXuSE/mqdefault.jpg" alt="Overhead Tricep Extension" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Overhead Tricep Extension</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Rope or DB overhead. Full stretch at the top, controlled extension. Long head emphasis — critical for arm size. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Solo finisher. 3×12, rest 45s between sets. Session done.</span></p>
+        <p class="wtip">Rope or DB overhead. Full stretch at the top, controlled extension. Long head emphasis — critical for arm size. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Solo finisher. 3×12, rest 45s between sets. Session done.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×8–10 heavy</span></div>
         </div>
@@ -2214,28 +2252,14 @@ function toggleVideoPlayer(vid_id){
   </div>
 
   <div id="pull" style="scroll-margin-top:60px">
-  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Pull Day</div><div class="day-banner-days">Tuesday &amp; Saturday</div><div class="day-banner-muscles">Back · Lats · Biceps · Forearms</div></div></div>
+  <div class="day-banner"><div class="day-banner-inner" style="padding:12px 16px;"><div style="font-size:11px;color:var(--grey);">Back · Lats · Biceps · Forearms  |  Tue &amp; Sat</div></div></div>
     <div class="day-checklist-bar"><div class="day-checklist-fill" id="bar-pull-day"></div></div>
-    <div class="mini-timer" id="miniTimer-pull">
-      <div class="mini-timer-row1">
-        <div class="mini-timer-display" id="miniTimerDisplay-pull">01:30</div>
-        <div class="mini-timer-btns">
-          <button class="mini-start" id="miniStartBtn-pull" onclick="miniStartStop()">START</button>
-          <button class="mini-reset" onclick="miniReset()">↺</button>
-        </div>
-      </div>
-      <div class="mini-timer-presets">
-        <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
-        <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
-        <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
-        <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
-      </div>
-    </div>
+    
     <div class="wcard" data-variant="a">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Chest-Supported T-Bar Row</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-chest_supported_t_bar_row" onclick="event.stopPropagation();toggleExDone('Chest-Supported T-Bar Row')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         <div onclick="openYT('Mlr-Lx-10HQ')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/Mlr-Lx-10HQ/mqdefault.jpg" alt="Chest Supported T-Bar Row Form Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Chest Supported T-Bar Row Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
-        <p class="wtip">Chest braced firmly against the pad — this removes your lower back from the movement entirely, making it the safest heavy back builder when training alone. Pull elbows back and up, squeeze blades together at the top. No spinal loading risk. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Lat Pulldown — both horizontal + vertical pull, no overlap.</span></p>
+        <p class="wtip">Chest braced firmly against the pad — this removes your lower back from the movement entirely, making it the safest heavy back builder when training alone. Pull elbows back and up, squeeze blades together at the top. No spinal loading risk. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Pair with Lat Pulldown — both horizontal + vertical pull, no overlap.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×6-8 heavy</span></div>
         </div>
@@ -2254,7 +2278,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('kIdRn16sFQg')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/kIdRn16sFQg/mqdefault.jpg" alt="How To Build Your Lats (Barbell Row Form)" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How To Build Your Lats (Barbell Row Form)</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Overhand grip. Hinge to ~45°, pull to lower chest. Squeeze shoulder blades. More mass-building than cable rows. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Assisted Pull-Up — compound pull superset.</span></p>
+        <p class="wtip">Overhand grip. Hinge to ~45°, pull to lower chest. Squeeze shoulder blades. More mass-building than cable rows. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Pair with Assisted Pull-Up — compound pull superset.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×5 heavy</span></div>
         </div>
@@ -2273,7 +2297,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('02Qci1-0Aao')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/02Qci1-0Aao/mqdefault.jpg" alt="Wide Grip Lat Pulldown Form Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Wide Grip Lat Pulldown Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Wide grip, slight lean back. Pull to upper chest, lead with elbows. Full hang at top — don't cheat the stretch. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with T-Bar Row. Do this immediately after.</span></p>
+        <p class="wtip">Wide grip, slight lean back. Pull to upper chest, lead with elbows. Full hang at top — don't cheat the stretch. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with T-Bar Row. Do this immediately after.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×6–8 heavy</span></div>
         </div>
@@ -2289,14 +2313,14 @@ function toggleVideoPlayer(vid_id){
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">B2</div><div class="wname">Assisted Pull-Up</div><div class="wmeta">4×8–10</div><button class="ex-tick" id="tick-assisted_pull_up" onclick="event.stopPropagation();toggleExDone('Assisted Pull-Up')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         <div onclick="openYT('fWvV5cV4Fn4')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/fWvV5cV4Fn4/mqdefault.jpg" alt="Dual Cable Machine Assisted Pull Up" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dual Cable Machine Assisted Pull Up</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
-        <p class="wtip"><strong style="color:var(--accent)">Your pull-up goal starts here.</strong> Use the assisted pull-up machine — set the counterweight so you can complete 8–10 clean reps. Reduce the assistance weight every 2 weeks. When the machine is at zero, you can do a pull-up. Full ROM: dead hang at the bottom, chin over bar at the top. No kipping. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Barbell Row. Second compound superset.</span></p>
+        <p class="wtip"><strong style="color:var(--accent-text)">Your pull-up goal starts here.</strong> Use the assisted pull-up machine — set the counterweight so you can complete 8–10 clean reps. Reduce the assistance weight every 2 weeks. When the machine is at zero, you can do a pull-up. Full ROM: dead hang at the bottom, chin over bar at the top. No kipping. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with Barbell Row. Second compound superset.</span></p>
         <div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:10px 12px;margin:8px 0;border-radius:0 6px 6px 0;">
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Pull-Up Progression Milestones</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px;">Pull-Up Progression Milestones</div>
           <div style="display:flex;flex-direction:column;gap:4px;">
             <div style="font-size:11px;color:var(--mid);"><span style="color:var(--white);font-weight:600;">Wk 1–4 &nbsp;</span>Assisted machine · reduce weight each week</div>
             <div style="font-size:11px;color:var(--mid);"><span style="color:var(--white);font-weight:600;">Wk 5–8 &nbsp;</span>Resistance band pull-ups · thinner band each week</div>
             <div style="font-size:11px;color:var(--mid);"><span style="color:var(--white);font-weight:600;">Wk 8–10 </span>Negative pull-ups · jump to top, lower slowly 5 sec</div>
-            <div style="font-size:11px;color:var(--accent);font-weight:700;"><span style="color:var(--white);font-weight:600;">Wk 10–12 </span>First bodyweight pull-up 🎯</div>
+            <div style="font-size:11px;color:var(--accent-text);font-weight:700;"><span style="color:var(--white);font-weight:600;">Wk 10–12 </span>First bodyweight pull-up 🎯</div>
             <div style="font-size:11px;color:var(--mid);"><span style="color:var(--white);font-weight:600;">Post-12wk</span>5–10 reps · then muscle-up work begins</div>
           </div>
         </div>
@@ -2318,7 +2342,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('MChHOiaCR7s')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/MChHOiaCR7s/mqdefault.jpg" alt="How to: Cable Face Pull" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to: Cable Face Pull</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Rope at eye level. Pull to face, elbows flared out. Essential for shoulder health and rear delt development. Never skip this. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Barbell Curl — rear delt then bicep, no overlap.</span></p>
+        <p class="wtip">Rope at eye level. Pull to face, elbows flared out. Essential for shoulder health and rear delt development. Never skip this. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Pair with Barbell Curl — rear delt then bicep, no overlap.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×12–15 moderate heavy</span></div>
         </div>
@@ -2337,7 +2361,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('rZtbLUGMzbk')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/rZtbLUGMzbk/mqdefault.jpg" alt="You're Curling WRONG! Fix Barbell Curl" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">You're Curling WRONG! Fix Barbell Curl</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Strict form. No swinging. Supinate at the top — rotate wrist out. Full extension at bottom. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Face Pull. Curl straight after face pull.</span></p>
+        <p class="wtip">Strict form. No swinging. Supinate at the top — rotate wrist out. Full extension at bottom. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with Face Pull. Curl straight after face pull.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×6–8 heavy</span></div>
         </div>
@@ -2356,7 +2380,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('NyW2fT2gQhM')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/NyW2fT2gQhM/mqdefault.jpg" alt="Hammer Curls - Form Tip Do's and Don'ts" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Hammer Curls - Form Tip Do's and Don'ts</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Neutral grip. Works brachialis — adds thickness under the bicep. Alternate arms or together. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Solo finisher. 3×10, rest 45s. Session done.</span></p>
+        <p class="wtip">Neutral grip. Works brachialis — adds thickness under the bicep. Alternate arms or together. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Solo finisher. 3×10, rest 45s. Session done.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×8–10 heavy</span></div>
         </div>
@@ -2373,7 +2397,7 @@ function toggleVideoPlayer(vid_id){
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">C4</div><div class="wname">DB Shrugs</div><div class="wmeta">4×15–20</div><button class="ex-tick" id="tick-db_shrugs" onclick="event.stopPropagation();toggleExDone('DB Shrugs')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         <div onclick="openYT('j2-RccWDhDo')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/j2-RccWDhDo/mqdefault.jpg" alt="Dumbbell Shrugs Correct Form" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dumbbell Shrugs Correct Form</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
-        <p class="wtip"><strong style="color:var(--accent)">Tom Hardy's defining feature is trap thickness.</strong> Heavy DBs, full shrug to ear level, 1 second hold at top, slow descent. High reps build the dense trap look. Do NOT roll your shoulders — straight up and down. <span style="display:none;color:#C8102E;">⚡ 30-MIN: Paired with Hammer Curl — shrug then curl, opposite muscles.</span></p>
+        <p class="wtip"><strong style="color:var(--accent-text)">Tom Hardy's defining feature is trap thickness.</strong> Heavy DBs, full shrug to ear level, 1 second hold at top, slow descent. High reps build the dense trap look. Do NOT roll your shoulders — straight up and down. <span style="display:none;color:#C8102E;">⚡ 30-MIN: Paired with Hammer Curl — shrug then curl, opposite muscles.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×10 very heavy — PR focus</span></div>
         </div>
@@ -2382,6 +2406,22 @@ function toggleVideoPlayer(vid_id){
           <div class="ex-weight-pr" id="wl-pr-db_shrugs"></div>
           <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-db_shrugs',-2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-db_shrugs" placeholder="Enter kg per DB" min="0" max="200" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('DB Shrugs')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-db_shrugs',2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('DB Shrugs')">Log</button></div>
           <div class="ex-weight-history" id="wl-hist-db_shrugs"><span class="ex-weight-chip">No entries yet</span></div>
+        </div>
+      </div>
+    </div>
+<div class="wcard" data-variant="b">
+      <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D1</div><div class="wname">Plate Pinch Hold (Pull)</div><div class="wmeta">3×30-45 sec</div><button class="ex-tick" id="tick-plate_pinch_hold_pull" onclick="event.stopPropagation();toggleExDone('Plate Pinch Hold (Pull)')" title="Mark done">✓</button><div class="warrow">▼</div></div>
+      <div class="wbody" onclick="event.stopPropagation()">
+        <div onclick="openYT('rGEXLWLj6tQ')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/rGEXLWLj6tQ/mqdefault.jpg" alt="Pinch Grip Holds for Strong Hands" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pinch Grip Holds for Strong Hands</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
+        <p class="wtip">Forearm density and finger flexor strength — grip two weight plates smooth-side-out, pinch and hold. Builds a vascular, defined look even at rest. Don't drop it on your foot.</p>
+        <div class="ex-prog">
+          <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×30-45 sec, add weight as it gets easier</span></div>
+        </div>
+        <div class="ex-weight-log" id="wl-plate_pinch_hold_pull">
+          <div class="ex-weight-label">Track weight used</div>
+          <div class="ex-weight-pr" id="wl-pr-plate_pinch_hold_pull"></div>
+          <div class="ex-weight-input-row"><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold_pull',-2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">−</button><input class="ex-weight-input" type="number" inputmode="decimal" id="wl-input-plate_pinch_hold_pull" placeholder="Enter kg" min="0" max="50" step="2.5" onfocus="this.scrollIntoView({block:'nearest',behavior:'smooth'})" onkeydown="if(event.key==='Enter')logExerciseWeight('Plate Pinch Hold (Pull)')"><div class="ex-weight-unit">kg</div><button class="wl-step" onclick="event.stopPropagation();stepWeight('wl-input-plate_pinch_hold_pull',2.5)" style="width:44px;height:44px;background:var(--card);border:1px solid var(--border2);color:var(--white);font-size:17px;font-weight:700;border-radius:4px;-webkit-tap-highlight-color:transparent;flex-shrink:0;">+</button><button class="ex-weight-save" onclick="event.stopPropagation();logExerciseWeight('Plate Pinch Hold (Pull)')">Log</button></div>
+          <div class="ex-weight-history" id="wl-hist-plate_pinch_hold_pull"><span class="ex-weight-chip">No entries yet</span></div>
         </div>
       </div>
     </div>
@@ -2396,23 +2436,9 @@ function toggleVideoPlayer(vid_id){
   </div>
 
   <div id="legs" style="scroll-margin-top:60px">
-  <div class="day-banner"><div class="day-banner-inner"><div class="day-banner-name">Leg Day</div><div class="day-banner-days">Wednesday &amp; Sunday</div><div class="day-banner-muscles">Quads · Hamstrings · Glutes · Calves</div></div></div>
+  <div class="day-banner"><div class="day-banner-inner" style="padding:12px 16px;"><div style="font-size:11px;color:var(--grey);">Quads · Hamstrings · Glutes · Calves  |  Wed &amp; Sun</div></div></div>
     <div class="day-checklist-bar"><div class="day-checklist-fill" id="bar-leg-day"></div></div>
-    <div class="mini-timer" id="miniTimer-legs">
-      <div class="mini-timer-row1">
-        <div class="mini-timer-display" id="miniTimerDisplay-legs">01:30</div>
-        <div class="mini-timer-btns">
-          <button class="mini-start" id="miniStartBtn-legs" onclick="miniStartStop()">START</button>
-          <button class="mini-reset" onclick="miniReset()">↺</button>
-        </div>
-      </div>
-      <div class="mini-timer-presets">
-        <button class="mini-preset" onclick="miniSetTimer(60)">1:00</button>
-        <button class="mini-preset active" onclick="miniSetTimer(90)">1:30</button>
-        <button class="mini-preset" onclick="miniSetTimer(120)">2:00</button>
-        <button class="mini-preset" onclick="miniSetTimer(180)">3:00</button>
-      </div>
-    </div>
+    
     <div class="wcard" data-variant="a">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">A1</div><div class="wname">Goblet Squat</div><div class="wmeta">4×10–12</div><button class="ex-tick" id="tick-goblet_squat" onclick="event.stopPropagation();toggleExDone('Goblet Squat')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
@@ -2420,7 +2446,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('wjkoL-CagYE')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/wjkoL-CagYE/mqdefault.jpg" alt="Goblet Squat Tutorial: Proper Form & Depth" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Goblet Squat Tutorial: Proper Form & Depth</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Hold a dumbbell vertically at chest height, elbows tucked. Sit between legs, not back. Hit parallel or below. Much gentler on the lower back than barbell squats — good option when recovering or short on energy. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Leg Curl — quad dominant + hamstring isolation, no overlap.</span></p>
+        <p class="wtip">Hold a dumbbell vertically at chest height, elbows tucked. Sit between legs, not back. Hit parallel or below. Much gentler on the lower back than barbell squats — good option when recovering or short on energy. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Pair with Leg Curl — quad dominant + hamstring isolation, no overlap.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×5 @ 85%+ — max effort</span></div>
         </div>
@@ -2440,7 +2466,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('S4c9EYGYDA8')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/S4c9EYGYDA8/mqdefault.jpg" alt="How to Use the Leg Press Machine Safely" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to Use the Leg Press Machine Safely</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Feet mid-platform. Full depth — don't lock out at top. Vary foot position: high = glutes, low = quads. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Pair with Leg Extension — both quad dominant but different stimulus.</span></p>
+        <p class="wtip">Feet mid-platform. Full depth — don't lock out at top. Vary foot position: high = glutes, low = quads. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Pair with Leg Extension — both quad dominant but different stimulus.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×8 heavy</span></div>
         </div>
@@ -2459,7 +2485,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('d3d2yz7V26c')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/d3d2yz7V26c/mqdefault.jpg" alt="Leg Extension Setup & Form Tips" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Leg Extension Setup & Form Tips</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Seated, back of knees against the pad, no gap. Extend fully, squeeze quads at the top, lower slow. Much gentler than split squats — no balance demand, isolates the quads directly. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Leg Press. Go straight in after leg press.</span></p>
+        <p class="wtip">Seated, back of knees against the pad, no gap. Extend fully, squeeze quads at the top, lower slow. Much gentler than split squats — no balance demand, isolates the quads directly. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with Leg Press. Go straight in after leg press.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×12 controlled</span></div>
         </div>
@@ -2478,7 +2504,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('aakNLjjm4Qo')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/aakNLjjm4Qo/mqdefault.jpg" alt="How To: Seated Leg Curl Form Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How To: Seated Leg Curl Form Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Lying or seated. Full extension, curl to full contraction. One of the only true hamstring isolation movements. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with Squat. Do this immediately after squats.</span></p>
+        <p class="wtip">Lying or seated. Full extension, curl to full contraction. One of the only true hamstring isolation movements. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with Squat. Do this immediately after squats.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">3×8–10 heavy</span></div>
         </div>
@@ -2497,7 +2523,7 @@ function toggleVideoPlayer(vid_id){
         
         <div onclick="openYT('yQZDGjL-xT4')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/yQZDGjL-xT4/mqdefault.jpg" alt="Standing Calf Raise Machine Tutorial" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Standing Calf Raise Machine Tutorial</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
         
-        <p class="wtip">Full stretch at the bottom — paused. Rise up onto big toe. Calves respond to high reps and full ROM. Most people rush this. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent);">⚡ 30-MIN: Paired with RDL. Calves between RDL sets.</span></p>
+        <p class="wtip">Full stretch at the bottom — paused. Rise up onto big toe. Calves respond to high reps and full ROM. Most people rush this. <span style="display:block;margin-top:6px;font-size:11px;color:var(--accent-text);">⚡ 30-MIN: Paired with RDL. Calves between RDL sets.</span></p>
         <div class="ex-prog">
           <div class="ex-prog-row"><span class="ex-prog-phase">TARGET</span><span class="ex-prog-target">4×12–15 heavy</span></div>
         </div>
@@ -2542,7 +2568,7 @@ function toggleVideoPlayer(vid_id){
         </div>
       </div>
     </div>
-<div class="wcard" data-variant="b">
+<div class="wcard" data-variant="both">
       <div class="whead" onclick="toggleCard(this.closest('.wcard'))"><div class="wbadge">D1</div><div class="wname">Wrist Curl</div><div class="wmeta">3×15–20</div><button class="ex-tick" id="tick-wrist_curl" onclick="event.stopPropagation();toggleExDone('Wrist Curl')" title="Mark done">✓</button><div class="warrow">▼</div></div>
       <div class="wbody" onclick="event.stopPropagation()">
         <div onclick="openYT('xY8c6LcLRao')" style="background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;display:flex;align-items:stretch;gap:0;height:64px;"><div style="position:relative;width:96px;flex-shrink:0;background:#000;"><img src="https://img.youtube.com/vi/xY8c6LcLRao/mqdefault.jpg" alt="How to: Dumbbell Wrist Curl" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:#1a1a1a;color:#555;font-size:9px;text-align:center;">No preview</div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.15);"><div style="width:28px;height:28px;border-radius:50%;background:rgba(200,16,46,0.9);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-style:solid;border-width:5px 0 5px 8px;border-color:transparent transparent transparent #fff;margin-left:2px;"></div></div></div></div><div style="flex:1;min-width:0;padding:8px 12px;display:flex;flex-direction:column;justify-content:center;"><div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">How to: Dumbbell Wrist Curl</div><div style="font-size:10px;color:var(--grey);margin-top:2px;">Tap to watch · Opens YouTube</div></div><div style="display:flex;align-items:center;padding-right:12px;font-size:16px;color:var(--grey);">›</div></div>
@@ -2574,14 +2600,14 @@ function toggleVideoPlayer(vid_id){
   <div class="sec-title">CUT MEAL PLAN</div>
   <!-- MONSTER SWAP CALLOUT -->
   <div style="background:rgba(200,16,46,0.06);border:1px solid rgba(200,16,46,0.25);border-radius:10px;padding:14px;margin-bottom:14px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">🥤 Easiest Win Available</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px;">🥤 Easiest Win Available</div>
     <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">Monster Original → Monster Zero Sugar</div>
     <div style="font-size:11px;color:var(--mid);line-height:1.7;">3 cans/day of Original is ~630 kcal and 162g sugar — daily. Switching to Zero Sugar keeps the exact same routine and caffeine but drops that to ~30–45 kcal. That's roughly <strong style="color:var(--white);">590 kcal/day recovered</strong> without changing anything else about your food.</div>
   </div>
 
   <!-- FOOD FATIGUE NOTE -->
   <div style="background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:14px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Variety Fixes Food Fatigue</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px;">Variety Fixes Food Fatigue</div>
     <div style="font-size:11px;color:var(--mid);line-height:1.7;">Eating the same thing every day is the fastest way to fall off a cut — not because the food is wrong, but because you stop wanting to eat it. Everything below is grouped by meal slot with several swappable options. Pick whichever sounds good that day — all options in a group are roughly matched for protein and calories.</div>
   </div>
 
@@ -3207,13 +3233,13 @@ function saveAndRefresh(){
 // ── TODAY CARD ─────────────────────────────────────────────────────────────────
 const DAY_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const WORKOUT_SCHEDULE=[
-  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'💪', type:'workout'},
-  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'🔙', type:'workout'},
-  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'🦵', type:'workout'},
-  {name:'Rest Day',  sub:'Recovery · Eat well · Sleep', icon:'😴', type:'rest'},
-  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'💪', type:'workout'},
-  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'🔙', type:'workout'},
-  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'🦵', type:'workout'},
+  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'fa-dumbbell', type:'workout'},
+  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'fa-people-pulling', type:'workout'},
+  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'fa-person-running', type:'workout'},
+  {name:'Rest Day',  sub:'Recovery · Eat well · Sleep', icon:'fa-bed', type:'rest'},
+  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'fa-dumbbell', type:'workout'},
+  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'fa-people-pulling', type:'workout'},
+  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'fa-person-running', type:'workout'},
 ];
 // Map JS getDay() (0=Sun) to our Mon-first index (0=Mon..6=Sun)
 function jsToIdx(jsDay){return jsDay===0?6:jsDay-1;}
@@ -3262,7 +3288,7 @@ function renderTodayCard(){
   const eyebrow=document.getElementById('todayEyebrow');
   if(eyebrow) eyebrow.innerHTML='<span class="today-eyebrow-dot"></span><span>'+DAY_NAMES[jsDay].toUpperCase()+' · WEEK '+curWeek+'</span>';
   const icon=document.getElementById('todayIcon');
-  if(icon) icon.textContent=info.icon;
+  if(icon) icon.innerHTML='<i class="fa-solid '+info.icon+'"></i>';
   const name=document.getElementById('todayName');
   if(name) name.textContent=info.name;
   const sub=document.getElementById('todaySub');
@@ -3279,13 +3305,13 @@ function renderTodayCard(){
   if(btn&&btnIcon&&btnText){
     if(isRest){
       btn.className='today-log-btn rest-day';
-      btnIcon.textContent='😴'; btnText.textContent='REST DAY — RECOVER WELL';
+      btnIcon.innerHTML='<i class="fa-solid fa-bed"></i>'; btnIcon.style.fontSize='16px'; btnText.textContent='REST DAY — RECOVER WELL';
     } else if(isLogged){
       btn.className='today-log-btn logged';
-      btnIcon.textContent='✓'; btnText.textContent='SESSION LOGGED — WELL DONE';
+      btnIcon.style.fontSize=''; btnIcon.textContent='✓'; btnText.textContent='SESSION LOGGED — WELL DONE';
     } else {
       btn.className='today-log-btn';
-      btnIcon.textContent='＋'; btnText.textContent="LOG TODAY'S SESSION";
+      btnIcon.style.fontSize=''; btnIcon.textContent='＋'; btnText.textContent="LOG TODAY'S SESSION";
     }
   }
 
@@ -3333,7 +3359,7 @@ function buildTracker(){
     else wClass+=' future-week';
     wd.className=wClass;
     const phLabel=w===1?'Phase 1':w===5?'Phase 2':w===9?'Phase 3':'';
-    const phHtml=phLabel?'<span style="font-size:8px;letter-spacing:2px;color:var(--accent);margin-left:6px;opacity:0.7">'+phLabel+'</span>':'';
+    const phHtml=phLabel?'<span style="font-size:8px;letter-spacing:2px;color:var(--accent-text);margin-left:6px;opacity:0.7">'+phLabel+'</span>':'';
     wd.innerHTML='<div class="trkr-week-title">Wk '+w+phHtml+'</div>';
     const dd=document.createElement('div');
     dd.className='trkr-days';
@@ -3837,11 +3863,12 @@ window.addEventListener('DOMContentLoaded',function(){
   try{renderExercisePRsGrid();}catch(e){}
   try{renderHomePRs();}catch(e){}
   try{buildMonthCalendar();}catch(e){}
-  try{buildHomeMiniCal();}catch(e){}
+  try{buildHomeWeeklyStrip();}catch(e){}
   try{updateMealRotation();}catch(e){}
   try{updateCheckinCountdown();}catch(e){}
   try{renderWeightTrend();}catch(e){}
   try{applyABVariant();}catch(e){}
+  try{updateWorkoutBanners();}catch(e){}
   try{
     // Ensure program start reflects ~4 months of real training if not set realistically
     var psKey='apx_program_start';
@@ -4241,7 +4268,7 @@ async function offSearch(){
     if(!prods.length){el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">No results. Try different search or log manually.</div>';return;}
     window._offProds=prods;
     offRenderResults(prods);
-  }catch(e){el.innerHTML='<div style="font-size:12px;color:var(--accent);padding:8px 0;">Search failed. Check connection.</div>';}
+  }catch(e){el.innerHTML='<div style="font-size:12px;color:var(--accent-text);padding:8px 0;">Search failed. Check connection.</div>';}
 }
 
 // ── Camera barcode scanner ────────────────────────────────────────
@@ -4351,7 +4378,7 @@ async function offFetchBarcode(code){
     card.style.cssText='background:var(--card);border:1px solid rgba(255,255,255,0.35);border-radius:10px;overflow:hidden;';
     card.innerHTML='<div style="height:3px;background:var(--accent);"></div>'
       +'<div style="padding:14px;">'
-      +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">✓ Barcode matched</div>'
+      +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px;">✓ Barcode matched</div>'
       +'<div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px;">'+nm+'</div>'
       +(br?'<div style="font-size:11px;color:var(--grey);margin-bottom:10px;">'+br+'</div>':'<div style="margin-bottom:10px;"></div>')
       +'<div style="display:flex;gap:8px;margin-bottom:12px;">'
@@ -4405,7 +4432,7 @@ async function offFetchBarcode(code){
       setTimeout(function(){if(el)el.innerHTML='';},3000);
     });
   }catch(e){
-    el.innerHTML='<div style="font-size:12px;color:var(--accent);padding:8px 0;">Lookup failed. Check connection.</div>';
+    el.innerHTML='<div style="font-size:12px;color:var(--accent-text);padding:8px 0;">Lookup failed. Check connection.</div>';
   }
 }
 
@@ -4661,7 +4688,7 @@ function renderCheckinBanner(){
 function buildCheckinBanner(type, days, last){
   if(type === 'first'){
     return '<div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.4);border-radius:10px;padding:14px;">'
-      +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">📊 Log First Check-In</div>'
+      +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px;">📊 Log First Check-In</div>'
       +'<div style="font-size:12px;color:var(--mid);margin-bottom:10px;">Log your current weight and body fat % from the gym scale to start tracking your progress properly.</div>'
       +'<div style="display:flex;gap:8px;">'
       +'<input type="number" inputmode="decimal" id="ciWeightDue" placeholder="Weight (kg)" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
@@ -4672,7 +4699,7 @@ function buildCheckinBanner(type, days, last){
   }
   var overdue = days - 14;
   return '<div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.4);border-radius:10px;padding:14px;">'
-    +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">⏰ Check-In Due'+(overdue>0?' ('+overdue+'d overdue)':'')+'</div>'
+    +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px;">⏰ Check-In Due'+(overdue>0?' ('+overdue+'d overdue)':'')+'</div>'
     +'<div style="font-size:12px;color:var(--mid);margin-bottom:4px;">Last check-in: <strong style="color:var(--white);">'+last.date+'</strong>'
     +(last.weight?' · '+last.weight+'kg':'')+(last.bf?' · '+last.bf+'% BF':'')+'</div>'
     +'<div style="font-size:11px;color:var(--mid);margin-bottom:10px;">'+days+' days since last weigh-in. Head to the gym scale and come back to log it.</div>'
@@ -4709,7 +4736,7 @@ function buildCheckinStatus(days, last, history){
     +'</div>'
     +'<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);">'
     +'<span>Last: <strong style="color:var(--white);">'+(last.weight||'—')+'kg</strong>'+(diffStr?' <span style="color:'+(diff<0?'#aaaaaa':'var(--accent)')+';">'+diffStr+'</span>':'')+' · '+(last.bf||'—')+'% BF</span>'
-    +(nextMilestone?'<span style="color:var(--accent);">'+kmToGo+'kg to '+nextMilestone.label+'</span>':'<span style="color:#aaaaaa;">All milestones hit! 🏆</span>')
+    +(nextMilestone?'<span style="color:var(--accent-text);">'+kmToGo+'kg to '+nextMilestone.label+'</span>':'<span style="color:#aaaaaa;">All milestones hit! 🏆</span>')
     +'</div>'
     +'</div>';
 }
@@ -4793,10 +4820,10 @@ var DAY_TO_WORKOUT = {
 };
 
 var DAY_LABELS = {
-  push: {name:'Push Day', sub:'Chest · Shoulders · Triceps', icon:'💪'},
-  pull: {name:'Pull Day', sub:'Back · Lats · Biceps', icon:'🔙'},
-  legs: {name:'Leg Day', sub:'Quads · Hamstrings · Glutes', icon:'🦵'},
-  rest: {name:'Rest Day', sub:'Recovery · Eat well · Sleep', icon:'😴'}
+  push: {name:'Push Day', sub:'Chest · Shoulders · Triceps', icon:'fa-dumbbell'},
+  pull: {name:'Pull Day', sub:'Back · Lats · Biceps', icon:'fa-people-pulling'},
+  legs: {name:'Leg Day', sub:'Quads · Hamstrings · Glutes', icon:'fa-person-running'},
+  rest: {name:'Rest Day', sub:'Recovery · Eat well · Sleep', icon:'fa-bed'}
 };
 
 var DAY_NAMES_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -4903,14 +4930,14 @@ function applyWorkoutView(mode){
           +'<div style="height:3px;background:linear-gradient(90deg,#aaaaaa,#dddddd);"></div>'
           +'<div style="padding:14px;">'
           +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">'
-          +'<div style="font-size:32px;">😴</div>'
+          +'<div style="font-size:32px;"><i class="fa-solid fa-bed"></i></div>'
           +'<div><div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--white);">Rest Day</div>'
           +'<div style="font-size:11px;color:var(--mid);">Recovery is where muscle is built</div></div></div>'
           +'<div style="display:flex;flex-direction:column;gap:8px;">'
-          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">①</span><span><strong style="color:var(--white);">Protein target: 220g+</strong> — muscle repair peaks 24-48h after training. Today matters as much as yesterday.</span></div>'
-          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">②</span><span><strong style="color:var(--white);">Walk if you can</strong> — light movement (not your commute walks) helps flush lactic acid. 20 min casual walk.</span></div>'
-          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">③</span><span><strong style="color:var(--white);">Sleep 8hrs tonight</strong> — tomorrow is '+(tomLabel?tomLabel.name:'training day')+'. GH spikes at night. This is when muscle actually grows.</span></div>'
-          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent);flex-shrink:0;">④</span><span><strong style="color:var(--white);">Magnesium before bed</strong> — take your 2 caps tonight. Cortisol blunting and deep sleep.</span></div>'
+          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent-text);flex-shrink:0;">①</span><span><strong style="color:var(--white);">Protein target: 220g+</strong> — muscle repair peaks 24-48h after training. Today matters as much as yesterday.</span></div>'
+          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent-text);flex-shrink:0;">②</span><span><strong style="color:var(--white);">Walk if you can</strong> — light movement (not your commute walks) helps flush lactic acid. 20 min casual walk.</span></div>'
+          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent-text);flex-shrink:0;">③</span><span><strong style="color:var(--white);">Sleep 8hrs tonight</strong> — tomorrow is '+(tomLabel?tomLabel.name:'training day')+'. GH spikes at night. This is when muscle actually grows.</span></div>'
+          +'<div style="display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--mid);"><span style="color:var(--accent-text);flex-shrink:0;">④</span><span><strong style="color:var(--white);">Magnesium before bed</strong> — take your 2 caps tonight. Cortisol blunting and deep sleep.</span></div>'
           +'</div>'
           +'<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--grey);">Showing tomorrow\'s '+(tomLabel?tomLabel.name:'workout')+' below so you can preview it ↓</div>'
           +'</div></div>';
@@ -4923,7 +4950,7 @@ function applyWorkoutView(mode){
           +'<div style="font-size:11px;color:var(--mid);">'+dayLabel.sub+'</div>'
           +'</div>'
           +'<div style="margin-left:auto;text-align:right;">'
-          +'<div style="font-size:11px;font-weight:700;color:var(--accent);">Week '+week+'</div>'
+          +'<div style="font-size:11px;font-weight:700;color:var(--accent-text);">Week '+week+'</div>'
           +'<div style="font-size:10px;color:var(--grey);">'+getCurrentPhase(week).name+'</div>'
           +'</div>'
           +'</div>'
@@ -4940,6 +4967,7 @@ function applyWorkoutView(mode){
     if(card) card.innerHTML = '';
   }
   try{applyABVariant();}catch(e){}
+  try{updateWorkoutBanners();}catch(e){}
 }
 
 function initWorkoutView(){
@@ -5007,6 +5035,16 @@ function miniReset(){
   miniUpdDisplay();
   document.querySelectorAll('.mini-start').forEach(function(b){b.textContent='START';});
 }
+
+function toggleStickyTimerPresets(){
+  var wrap = document.getElementById('stickyTimerPresetsWrap');
+  var btn = document.getElementById('stickyTimerExpandBtn');
+  if(!wrap || !btn) return;
+  var isOpen = wrap.style.display !== 'none';
+  wrap.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? '▴' : '▾';
+}
+
 
 </script>
 <script>
@@ -5125,10 +5163,10 @@ function getAllExercisePRs(){
   var WL_KEY = 'forge_weights_v1';
   var log = JSON.parse(localStorage.getItem(WL_KEY)||'{}');
   var exercises = [
-    'Barbell Bench Press','Incline DB Press','Overhead Press','Cable Lateral Raise',
-    'Cable Fly','Cable Tricep Pushdown','Overhead Tricep Extension','Dips',
+    'Dumbbell Bench Press','Incline DB Press','Overhead Press','Cable Lateral Raise',
+    'Cable Fly','Cable Tricep Pushdown','Overhead Tricep Extension','Dips','Plate Pinch Hold',
     'Chest-Supported T-Bar Row','Barbell Row','Lat Pulldown','Assisted Pull-Up',
-    'Cable Face Pull','Barbell Curl','Hammer Curl','DB Shrugs',
+    'Cable Face Pull','Barbell Curl','Hammer Curl','DB Shrugs','Plate Pinch Hold (Pull)',
     'Goblet Squat','Leg Press','Leg Extension',
     'Leg Curl','Standing Calf Raise','Russian Twist','Cable Crunch','Wrist Curl'
   ];
@@ -5277,7 +5315,7 @@ function toggle30MinMode(){
   if(banner) banner.style.display = _30minMode ? 'block' : 'none';
 
   // Show/hide 30-min tips in exercise cards
-  document.querySelectorAll('.wcard .wtip span[style*="color:var(--accent)"]').forEach(function(s){
+  document.querySelectorAll('.wcard .wtip span[style*="color:var(--accent-text)"]').forEach(function(s){
     s.style.display = _30minMode ? 'block' : 'none';
   });
 
@@ -5301,7 +5339,7 @@ function init30MinMode(){
   }
   // Hide 30-min tips initially if mode off
   if(!_30minMode){
-    document.querySelectorAll('.wcard .wtip span[style*="color:var(--accent)"]').forEach(function(s){
+    document.querySelectorAll('.wcard .wtip span[style*="color:var(--accent-text)"]').forEach(function(s){
       s.style.display = 'none';
     });
   }
@@ -5320,12 +5358,12 @@ var MOTIV_CONTENT = {
     + '<div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Motivation is temporary. Results are permanent.</div>'
     + '<div style="font-size:12px;color:var(--mid);line-height:1.7;">You\'ve lost 13.3kg. Sub-100kg. Sub-20% BF. Shoulders wider. People are noticing. <strong style="color:var(--white);">That didn\'t happen by accident — it happened because you showed up.</strong></div>'
     + '<div style="background:var(--surface);border-radius:8px;padding:10px 12px;">'
-    + '<div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">When motivation is low — do this</div>'
+    + '<div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px;">When motivation is low — do this</div>'
     + '<div style="display:flex;flex-direction:column;gap:6px;">'
-    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">①</span><span><strong style="color:var(--white);">Just get there.</strong> Don\'t plan a session. Just walk to the gym. The hardest part is leaving.</span></div>'
-    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">②</span><span><strong style="color:var(--white);">Use ⚡ 30-Min mode.</strong> 3 supersets, done. You will always feel better after than before.</span></div>'
-    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">③</span><span><strong style="color:var(--white);">Look at your progress.</strong> 110kg → 98.7kg. That\'s real. The person who started this programme earned every kg.</span></div>'
-    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">④</span><span><strong style="color:var(--white);">Week 7 is the hardest.</strong> This is exactly when most people quit. The ones who don\'t are the ones who look completely different in 12 weeks.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent-text);">①</span><span><strong style="color:var(--white);">Just get there.</strong> Don\'t plan a session. Just walk to the gym. The hardest part is leaving.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent-text);">②</span><span><strong style="color:var(--white);">Use ⚡ 30-Min mode.</strong> 3 supersets, done. You will always feel better after than before.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent-text);">③</span><span><strong style="color:var(--white);">Look at your progress.</strong> 110kg → 98.7kg. That\'s real. The person who started this programme earned every kg.</span></div>'
+    + '<div style="font-size:12px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent-text);">④</span><span><strong style="color:var(--white);">Week 7 is the hardest.</strong> This is exactly when most people quit. The ones who don\'t are the ones who look completely different in 12 weeks.</span></div>'
     + '</div></div>'
     + '<div style="background:rgba(200,16,46,0.06);border-left:3px solid var(--accent);padding:10px 12px;border-radius:0 6px 6px 0;">'
     + '<div style="font-size:11px;color:var(--mid);line-height:1.6;"><strong style="color:var(--white);">Remember why you started.</strong> You wanted to look like Tom Hardy in Warrior. You wanted to be lean. You wanted to feel strong. None of that changed — only your energy today did.</div>'
@@ -5543,6 +5581,98 @@ function updateHomeStats(){
 var _homeCalYear  = new Date().getFullYear();
 var _homeCalMonth = new Date().getMonth();
 
+
+function buildHomeWeeklyStrip(){
+  var el = document.getElementById('homeMiniCalGrid');
+  if(!el) return;
+  var expanded = localStorage.getItem('forge_cal_expanded') === 'true';
+  if(expanded){ buildHomeMiniCal(); return; }
+
+  var now = new Date();
+  var jsDay = now.getDay();
+  var mondayOffset = (jsDay === 0) ? -6 : 1 - jsDay;
+  var monday = new Date(now);
+  monday.setDate(now.getDate() + mondayOffset);
+
+  var allDone = typeof getAllDoneData==='function' ? getAllDoneData() : {};
+  var DAY_T   = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'};
+  var DAY_COL = {push:'#C8102E',pull:'#aaaaaa',legs:'#777777',rest:'transparent'};
+  var DAY_LETTERS = ['M','T','W','T','F','S','S'];
+
+  var out = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">';
+
+  for(var i=0;i<7;i++){
+    var dt = new Date(monday);
+    dt.setDate(monday.getDate() + i);
+    var jsDayNum = dt.getDay();
+    var dtype = DAY_T[jsDayNum];
+    var col = DAY_COL[dtype] || 'transparent';
+    var ds = dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');
+    var dayDone = allDone[ds] ? Object.values(allDone[ds]).filter(Boolean).length : 0;
+    var isToday = (dt.toDateString() === now.toDateString());
+    var isFuture = dt > now && !isToday;
+    var trained = dayDone >= 4;
+    var isRest = dtype === 'rest';
+
+    var bg = trained ? col : (isToday ? 'rgba(200,16,46,0.22)' : 'var(--surface)');
+    var border = isToday ? '2px solid var(--accent)' : '1px solid var(--border)';
+    var glow = isToday ? 'box-shadow:0 0 0 2px rgba(200,16,46,0.35);' : '';
+    var numCol = trained ? '#fff' : (isToday ? 'var(--accent)' : (isFuture ? 'var(--grey)' : 'var(--mid)'));
+    var op = isFuture ? '0.4' : '1';
+
+    out += '<div style="border-radius:8px;padding:6px 2px;text-align:center;background:'+bg
+      +';border:'+border+';opacity:'+op+';min-height:48px;display:flex;flex-direction:column;'
+      +'align-items:center;justify-content:center;'+glow+'">'
+      +'<div style="font-size:9px;font-weight:700;color:var(--grey);margin-bottom:2px;">'+DAY_LETTERS[i]+'</div>'
+      +'<div style="font-size:13px;font-weight:700;color:'+numCol+';">'+dt.getDate()+'</div>'
+      +(!isRest ? '<div style="width:5px;height:5px;border-radius:50%;background:'
+        +(trained?'rgba(255,255,255,0.6)':col)+';margin-top:3px;"></div>' : '<div style="width:5px;height:5px;margin-top:3px;"></div>')
+      +'</div>';
+  }
+  out += '</div>';
+
+  // Quick stats row — current real distances, not hardcoded
+  var realCurrentWeight = 93.2, realTargetWeight = 85.0;
+  var toGoal = (realCurrentWeight - realTargetWeight).toFixed(1);
+
+  var totalThisWeek = 0;
+  for(var i2=0;i2<7;i2++){
+    var dt2 = new Date(monday); dt2.setDate(monday.getDate()+i2);
+    var ds2 = dt2.getFullYear()+'-'+String(dt2.getMonth()+1).padStart(2,'0')+'-'+String(dt2.getDate()).padStart(2,'0');
+    if(allDone[ds2] && Object.values(allDone[ds2]).filter(Boolean).length>=4) totalThisWeek++;
+  }
+
+  out += '<div style="display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">'
+    +'<div style="text-align:center;flex:1;">'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--white);">'+totalThisWeek+'</div>'
+    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">this week</div>'
+    +'</div>'
+    +'<div style="width:1px;background:var(--border);"></div>'
+    +'<div style="text-align:center;flex:1;">'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">'+toGoal+'kg</div>'
+    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">to goal</div>'
+    +'</div>'
+    +'</div>'
+    +'<div style="text-align:center;margin-top:10px;">'
+    +'<span onclick="toggleCalendarView()" style="font-size:10px;color:var(--grey);text-decoration:underline;cursor:pointer;-webkit-tap-highlight-color:transparent;">See full month</span>'
+    +'</div>';
+
+  el.innerHTML = out;
+}
+
+function toggleCalendarView(){
+  var expanded = localStorage.getItem('forge_cal_expanded') === 'true';
+  localStorage.setItem('forge_cal_expanded', expanded ? 'false' : 'true');
+  if(!expanded){
+    buildHomeMiniCal();
+    // Add a "back to week view" link at the bottom of the expanded month grid
+    var el = document.getElementById('homeMiniCalGrid');
+    if(el) el.innerHTML += '<div style="text-align:center;margin-top:10px;"><span onclick="toggleCalendarView()" style="font-size:10px;color:var(--grey);text-decoration:underline;cursor:pointer;-webkit-tap-highlight-color:transparent;">Back to week view</span></div>';
+  } else {
+    buildHomeWeeklyStrip();
+  }
+}
+
 function buildHomeMiniCal(){
   var el = document.getElementById('homeMiniCalGrid');
   if(!el) return;
@@ -5614,13 +5744,13 @@ function buildHomeMiniCal(){
     +'</div>'
     +'<div style="width:1px;background:var(--border);"></div>'
     +'<div style="text-align:center;flex:1;">'
-    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--accent);">'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--accent-text);">'
     +(month===now.getMonth()&&year===now.getFullYear() ? (daysInMonth-now.getDate()) : '—')+'</div>'
     +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">days left</div>'
     +'</div>'
     +'<div style="width:1px;background:var(--border);"></div>'
     +'<div style="text-align:center;flex:1;">'
-    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">14.2kg</div>'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">8.2kg</div>'
     +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">to goal</div>'
     +'</div>'
     +'';
