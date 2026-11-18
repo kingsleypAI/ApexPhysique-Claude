@@ -1,0 +1,17 @@
+FORGE SAFE DEPLOY CHECKLIST
+
+BEFORE DEPLOY
+[ ] Open the current live FORGE app and use its Export Data / Backup function.
+[ ] Keep the existing GitHub repository commit as a rollback point.
+[ ] Upload the contents of this package to a separate test branch first if possible.
+
+AFTER DEPLOY
+[ ] Confirm the app loads at the GitHub Pages URL.
+[ ] Confirm home, workouts, nutrition, recipes, shopping and tracking tabs open.
+[ ] Confirm today's workout icon appears even if Font Awesome fails.
+[ ] Confirm date labels and workout completion use the local calendar date.
+[ ] Log one test set and confirm it appears after reload.
+[ ] Export a new backup and verify it includes forge_set_logs_v1.
+[ ] Test restore only with a duplicate/test profile before using it on valuable data.
+[ ] Add the app to the home screen and test a second visit offline.
+[ ] Keep the previous deployment/commit until all checks pass.

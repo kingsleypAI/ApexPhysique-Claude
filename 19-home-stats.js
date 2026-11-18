@@ -1,0 +1,41 @@
+function updateHomeStats(){
+  // Count total sessions from done data
+  var doneRaw = (typeof getAllDoneData==='function') ? getAllDoneData() : JSON.parse(localStorage.getItem('apx_done_v1')||'{}');
+  var totalSessions = 0;
+  var streak = 0;
+  var dates = Object.keys(doneRaw).sort().reverse();
+  var today = forgeLocalDateKey(new Date());
+
+  dates.forEach(function(date){
+    var d = doneRaw[date];
+    if(!d) return;
+    var count = Object.values(d).filter(Boolean).length;
+    if(count >= 4) totalSessions++; // 4+ exercises = counts as session
+  });
+
+  // Calculate streak
+  var checkDate = new Date();
+  for(var i=0;i<60;i++){
+    var ds = forgeLocalDateKey(checkDate);
+    var jsDay = checkDate.getDay();
+    var dayType = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'}[jsDay];
+    if(dayType === 'rest'){
+      checkDate.setDate(checkDate.getDate()-1);
+      continue;
+    }
+    var d = doneRaw[ds];
+    var count = d ? Object.values(d).filter(Boolean).length : 0;
+    if(count >= 4){ streak++; checkDate.setDate(checkDate.getDate()-1); }
+    else if(ds === today) { checkDate.setDate(checkDate.getDate()-1); } // today not yet done
+    else break;
+  }
+
+  var sessEl = document.getElementById('homeStatSessions');
+  var strEl  = document.getElementById('homeStatStreak');
+  if(sessEl) sessEl.textContent = totalSessions;
+  if(strEl)  strEl.textContent  = streak;
+  var sessEl2 = document.getElementById('homeStatSessions2');
+  var strEl2  = document.getElementById('homeStatStreak2');
+  if(sessEl2) sessEl2.textContent = totalSessions;
+  if(strEl2)  strEl2.textContent  = streak;
+}
