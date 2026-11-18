@@ -1,13 +1,9 @@
-/* FORGE modular upgrade: set logging, insights, achievements and accurate timers. */
+/* FORGE performance insights, achievements and accurate timers. */
 (function(){
   'use strict';
-  var SET_KEY='forge_set_logs_v1';
   var restDeadline=0,restTick=null,sessionStartedAt=0;
   function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
-  function readSetLogs(){return forgeSafeJSON(localStorage.getItem(SET_KEY)||'{}',{});}
-  function exerciseKey(name){return String(name||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');}
   function todayKey(){return forgeLocalDateKey(new Date());}
-  function latestFor(key){var a=readSetLogs()[key]||[];return a.slice().sort(function(x,y){return (y.ts||0)-(x.ts||0);})[0]||null;}
   // Per-exercise logger removed: weight and reps are entered in the main workout logger.
   function startSetRest(){
     restDeadline=Date.now()+90000;
@@ -44,11 +40,10 @@
     var avgProtein=proteinDays.length?Math.round(proteinDays.reduce((a,b)=>a+b,0)/proteinDays.length):null;
     var waterHistory=forgeSafeJSON(localStorage.getItem('forge_water_history_v1')||'{}',{}),waterDays=weekDays.filter(function(k){return waterHistory[k]!=null;}),avgWater=waterDays.length?(waterDays.reduce(function(n,k){return n+(Number(waterHistory[k])||0);},0)/waterDays.length).toFixed(1):null;
     var prLog=forgeSafeJSON(localStorage.getItem('forge_weights_v1')||'{}',{}),prCount=Object.keys(prLog).filter(function(k){return Array.isArray(prLog[k])&&prLog[k].length>0;}).length;
-    var setLog=readSetLogs(),setSessions=Object.values(setLog).reduce(function(n,a){return n+(Array.isArray(a)?a.length:0);},0);
     metrics.innerHTML='<div class="forge-metric"><strong>'+weekSessions+'/7</strong><span>Training sessions this week</span></div><div class="forge-metric"><strong>'+weekExercises+'</strong><span>Exercises ticked this week</span></div><div class="forge-metric"><strong>'+sessions+'</strong><span>Lifetime logged sessions</span></div><div class="forge-metric"><strong>'+weightText+'</strong><span>Latest weigh-in · change vs prior</span></div><div class="forge-metric"><strong>'+(avgWater===null?'—':avgWater)+'</strong><span>Glasses of water/day · '+waterDays.length+' logged days</span></div>';
-    var awards=[{n:'First session',ok:sessions>=1,e:'🏁'},{n:'5 sessions',ok:sessions>=5,e:'🔥'},{n:'10 sessions',ok:sessions>=10,e:'⚡'},{n:'25 sessions',ok:sessions>=25,e:'🥉'},{n:'50 sessions',ok:sessions>=50,e:'🥈'},{n:'100 sessions',ok:sessions>=100,e:'🥇'},{n:'Set logger',ok:setSessions>=1,e:'📋'},{n:'Strength tracker',ok:prCount>=3,e:'💪'}];
+    var awards=[{n:'First session',ok:sessions>=1,e:'🏁'},{n:'5 sessions',ok:sessions>=5,e:'🔥'},{n:'10 sessions',ok:sessions>=10,e:'⚡'},{n:'25 sessions',ok:sessions>=25,e:'🥉'},{n:'50 sessions',ok:sessions>=50,e:'🥈'},{n:'100 sessions',ok:sessions>=100,e:'🥇'},{n:'Strength tracker',ok:prCount>=3,e:'💪'}];
     ach.innerHTML=awards.map(function(a){return '<span class="forge-achievement'+(a.ok?' earned':'')+'">'+a.e+' '+a.n+(a.ok?' ✓':' 🔒')+'</span>';}).join('');
-    var lines=['LAST 7 DAYS','Training: '+weekSessions+' complete sessions · '+weekExercises+' exercises ticked','Set logs: '+setSessions+' saved exercise sessions','Strength records: '+prCount+' exercises with weight history','Nutrition: '+(avgKcal===null?'No calorie entries logged this week':avgKcal+' kcal/day average across '+kcalDays.length+' logged days')+' · '+(avgProtein===null?'protein not logged':avgProtein+' g/day average'), 'Hydration: '+(avgWater===null?'No water history logged yet':avgWater+' glasses/day across '+waterDays.length+' logged days'), 'Latest bodyweight: '+weightText, 'Focus: aim for consistent sessions, record working sets, and compare like-for-like weekly averages.'];
+    var lines=['LAST 7 DAYS','Training: '+weekSessions+' complete sessions · '+weekExercises+' exercises ticked','Strength records: '+prCount+' exercises with weight history','Nutrition: '+(avgKcal===null?'No calorie entries logged this week':avgKcal+' kcal/day average across '+kcalDays.length+' logged days')+' · '+(avgProtein===null?'protein not logged':avgProtein+' g/day average'), 'Hydration: '+(avgWater===null?'No water history logged yet':avgWater+' glasses/day across '+waterDays.length+' logged days'), 'Latest bodyweight: '+weightText, 'Focus: aim for consistent sessions, keep training consistently, progress your lifts, and compare like-for-like weekly averages.'];
     latestReport=lines.join('\n');report.textContent=latestReport;
   }
   function copyReport(){if(!latestReport)return;var done=function(){if(typeof showToast==='function')showToast('Weekly summary copied',1800);};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(latestReport).then(done).catch(function(){fallbackCopy();});else fallbackCopy();function fallbackCopy(){var t=document.createElement('textarea');t.value=latestReport;document.body.appendChild(t);t.select();try{document.execCommand('copy');done();}catch(e){}t.remove();}}
@@ -80,9 +75,6 @@
   document.addEventListener('visibilitychange',function(){if(!document.hidden){if(_mRun)miniUpdDisplay();if(typeof updateHomeStats==='function')updateHomeStats();}});
   document.addEventListener('DOMContentLoaded',function(){
     buildInsights();updatePhaseCycleLabels();
-    // If app sections are re-rendered, attach set loggers to newly created exercise cards.
-    var target=document.getElementById('tab-program')||document.body;
-    if(window.MutationObserver&&target){var observer=new MutationObserver(function(){});observer.observe(target,{childList:true,subtree:true});}
   });
   window.addEventListener('load',function(){buildInsights();updatePhaseCycleLabels();});
 })();
