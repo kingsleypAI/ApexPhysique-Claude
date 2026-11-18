@@ -49,7 +49,7 @@ async function offStartScan(){
       try{
         var codes=await detector.detect(video);
         var code=codes&&codes.length?String(codes[0].rawValue||''):'';
-        if(code&&/^\\d{8,14}$/.test(code)){
+        if(code&&/^\d{8,14}$/.test(code)){
           matched=true;
           clearInterval(_offScanInterval);_offScanInterval=null;
           if(status)status.textContent='✓ Barcode detected: '+code;
@@ -76,7 +76,7 @@ function offStopScan(){
 async function offFetchBarcode(code){
   var el=document.getElementById('offResults');
   if(!el)return;
-  if(!/^\\d{8,14}$/.test(String(code||''))){el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Enter a valid 8–14 digit barcode.</div>';return;}
+  if(!/^\d{8,14}$/.test(String(code||''))){el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Enter a valid 8–14 digit barcode.</div>';return;}
   el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Looking up…</div>';
   try{
     var r=await fetch('https://world.openfoodfacts.org/api/v0/product/'+encodeURIComponent(code)+'.json?fields=product_name,brands,nutriments,serving_size,product_quantity,quantity');
