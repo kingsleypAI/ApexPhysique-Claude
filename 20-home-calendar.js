@@ -2,6 +2,18 @@
 var _homeCalYear  = new Date().getFullYear();
 var _homeCalMonth = new Date().getMonth();
 
+function getHomeGoalDistanceLabel(){
+  var targetWeight = 85.0;
+  try{
+    var history = typeof getCheckinHistory==='function' ? getCheckinHistory() : [];
+    var currentWeight = history.length ? Number(history[0].weight) : NaN;
+    if(!Number.isFinite(currentWeight) || currentWeight <= 0) return '—';
+    return currentWeight <= targetWeight ? 'Goal hit' : (currentWeight - targetWeight).toFixed(1)+'kg';
+  }catch(e){
+    return '—';
+  }
+}
+
 
 function buildHomeWeeklyStrip(){
   var el = document.getElementById('homeMiniCalGrid');
@@ -52,9 +64,8 @@ function buildHomeWeeklyStrip(){
   }
   out += '</div>';
 
-  // Quick stats row — current real distances, not hardcoded
-  var realCurrentWeight = 92.6, realTargetWeight = 85.0;
-  var toGoal = (realCurrentWeight - realTargetWeight).toFixed(1);
+  // Keep the goal distance in sync with the latest saved check-in.
+  var toGoal = getHomeGoalDistanceLabel();
 
   var totalThisWeek = 0;
   for(var i2=0;i2<7;i2++){
@@ -70,7 +81,7 @@ function buildHomeWeeklyStrip(){
     +'</div>'
     +'<div style="width:1px;background:var(--border);"></div>'
     +'<div style="text-align:center;flex:1;">'
-    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">'+toGoal+'kg</div>'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">'+toGoal+'</div>'
     +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">to goal</div>'
     +'</div>'
     +'</div>'
@@ -171,7 +182,7 @@ function buildHomeMiniCal(){
     +'</div>'
     +'<div style="width:1px;background:var(--border);"></div>'
     +'<div style="text-align:center;flex:1;">'
-    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">7.6kg</div>'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">'+getHomeGoalDistanceLabel()+'</div>'
     +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">to goal</div>'
     +'</div>'
     +'';
