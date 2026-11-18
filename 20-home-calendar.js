@@ -118,7 +118,7 @@ function buildHomeMiniCal(){
   var startOffset = (firstDay === 0) ? 6 : firstDay - 1;
   var allDone = typeof getAllDoneData==='function' ? getAllDoneData() : {};
   var DAY_T   = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'};
-  var DAY_COL = {push:'#C8102E',pull:'#aaaaaa',legs:'#777777',rest:'transparent'};
+  var DAY_COL = {push:'var(--accent)',pull:'#aaaaaa',legs:'#777777',rest:'transparent'};
 
   var out = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
     +'<button onclick="homeCalPrev()" style="background:none;border:none;color:var(--grey);font-size:20px;cursor:pointer;padding:0 6px;-webkit-tap-highlight-color:transparent;line-height:1;">‹</button>'
@@ -146,9 +146,9 @@ function buildHomeMiniCal(){
     var trained= dayDone >= 4;
     var isRest = dtype==='rest';
 
-    var bg     = trained ? col : (isToday ? 'rgba(200,16,46,0.22)' : 'var(--surface)');
+    var bg     = trained ? col : (isToday ? 'rgba(139,92,246,0.22)' : 'var(--surface)');
     var border = isToday ? '2px solid var(--accent)' : '1px solid var(--border)';
-    var glow   = isToday ? 'box-shadow:0 0 0 2px rgba(200,16,46,0.35);' : '';
+    var glow   = isToday ? 'box-shadow:0 0 0 2px rgba(139,92,246,0.35);' : '';
     var numCol = trained ? '#fff' : (isToday ? 'var(--accent)' : (fut ? 'var(--grey)' : 'var(--mid)'));
     var op     = fut ? '0.3' : '1';
 
