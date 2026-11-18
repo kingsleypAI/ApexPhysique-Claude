@@ -289,3 +289,19 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
   .section{animation:none!important}
   .wcard,.home-track-card,.meal-card,.recipe-card{transition:none!important}
 }
+
+
+/* Audit pass: finish translating legacy red inline gradients into the FORGE violet system. */
+[style*="linear-gradient(135deg,rgba(200,16,46"],
+[style*="linear-gradient(135deg, rgba(200, 16, 46"]{
+  background:linear-gradient(135deg,rgba(139,92,246,.17),rgba(139,92,246,.055))!important;
+  border-color:rgba(182,154,255,.28)!important;
+}
+#progBannerHeadline{color:var(--white)!important}
+#progBannerKgNow{color:var(--accent-text)!important}
+#btnMotivLow[style*="200,16,46"],
+#btnMotivLow[style*="200, 16, 46"]{
+  background:rgba(139,92,246,.16)!important;
+  border-color:rgba(182,154,255,.35)!important;
+  color:#cbb8ff!important;
+}
