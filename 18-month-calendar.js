@@ -91,9 +91,6 @@ function buildMonthCalendar(){
       +'<div style="width:8px;height:8px;border-radius:2px;background:'+CAL_DAY_COLOUR[item.t]+';"></div>'
       +'<span>'+item.l+'</span></div>';
   });
-  html += '<div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--grey);">'
-    +'<div style="width:8px;height:8px;border-radius:50%;background:var(--accent);"></div>'
-    +'<span>Partial</span></div>';
   html += '</div>';
 
   el.innerHTML = html;
