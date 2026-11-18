@@ -191,3 +191,101 @@ hr{border-color:var(--border)!important}
  .tab{padding:13px 12px!important}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+
+/* ── FINAL FINISH: dashboard hierarchy, clarity and interaction polish ─────── */
+/* Keep the existing content and data flow; this layer only refines presentation. */
+:root{
+  --forge-line:rgba(190,174,232,.13);
+  --forge-panel:linear-gradient(145deg,rgba(28,26,43,.96),rgba(17,17,27,.98));
+}
+.section{animation:forge-section-in .28s ease both}
+@keyframes forge-section-in{from{opacity:.72;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.sec-header,.sec-label{position:relative}
+.sec-label{margin-bottom:8px!important}
+.sec-title{line-height:1.06!important}
+.home-section-label{display:flex;align-items:center;gap:10px;margin:22px 0 10px!important}
+.home-section-label:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--border2),transparent)}
+#tab-schedule>div:nth-of-type(2),
+#tab-schedule>div:nth-of-type(3),
+#tab-schedule>div:nth-of-type(4),
+#tab-schedule>div:nth-of-type(5){
+  border-radius:18px!important;
+  border:1px solid var(--forge-line)!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.025)!important;
+}
+#tab-schedule>div:nth-of-type(2){background:var(--forge-panel)!important;overflow:hidden}
+#tab-schedule>div:nth-of-type(2)>div:first-child{padding:17px 18px 10px!important}
+#tab-schedule>div:nth-of-type(2)>div:nth-child(2){padding:0 18px 15px!important}
+#tab-schedule>div:nth-of-type(2)>div:nth-child(2)>div{
+  position:relative;padding:13px 0!important;border-color:rgba(190,174,232,.10)!important
+}
+#tab-schedule>div:nth-of-type(2)>div:nth-child(2)>div>div:first-child{
+  color:#b9a4f0!important;font-size:10px!important;font-weight:800!important;letter-spacing:.04em
+}
+#tab-schedule>div:nth-of-type(2)>div:nth-child(2)>div>div:nth-child(2)>div:first-child{
+  font-size:13px!important;letter-spacing:.005em
+}
+#tab-schedule>div:nth-of-type(2)>div:nth-child(2)>div>div:nth-child(2)>div:nth-child(2){
+  font-size:11px!important;line-height:1.55!important;color:#aaa5bb!important
+}
+#tab-schedule>div:nth-of-type(2)>div:last-child{
+  background:rgba(139,92,246,.075)!important;border-top:1px solid var(--forge-line)!important;padding:12px 18px!important
+}
+#tab-schedule>div:nth-of-type(3){
+  background:linear-gradient(135deg,#191827,#11111b)!important;padding:16px 18px!important
+}
+#tab-schedule>div:nth-of-type(3)>div:first-child{margin-bottom:12px!important}
+#trendSparkline{height:58px!important;overflow:visible}
+#tab-schedule>div:nth-of-type(4){
+  background:linear-gradient(110deg,rgba(139,92,246,.13),rgba(23,23,37,.96) 62%)!important;
+  padding:15px 18px!important;min-height:76px
+}
+#nextCheckinDate{font-size:14px!important;letter-spacing:-.015em}
+#nextCheckinDays{font-size:20px!important}
+#tab-schedule>div:nth-of-type(5){
+  background:linear-gradient(145deg,#1a1928,#12121d)!important;padding:17px 18px!important
+}
+#homeStatWeight{font-size:25px!important;letter-spacing:-.04em}
+#homeStatMonths{color:#d5c6ff}
+#tab-schedule>div:nth-of-type(5)>div:nth-child(2){gap:0!important}
+#tab-schedule>div:nth-of-type(5)>div:nth-child(2)>div{padding:4px 5px}
+#tab-schedule>div:nth-of-type(5)>div:nth-child(2)>div+div{border-left:1px solid var(--forge-line)}
+#homePRsCard{padding:18px!important}
+#homePRsCard .forge-panel{box-shadow:none!important}
+#homeMoreBtn{border-radius:12px!important;min-height:46px}
+#homeMoreContent{padding-top:12px}
+#tab-nutrition .sec-title{margin-bottom:18px}
+#tab-nutrition .macro-row{margin-top:12px}
+#tab-nutrition .mcell{box-shadow:0 8px 24px rgba(0,0,0,.14)}
+#tab-program .sec-title{margin-bottom:18px}
+#tab-program .phase{margin-bottom:12px}
+#tab-program .wcard{transition:border-color .18s,transform .18s,box-shadow .18s}
+#tab-program .wcard:focus-within{border-color:rgba(182,154,255,.48)!important}
+#tab-program .wcard:has(.chk.done){border-color:rgba(53,212,154,.24)!important}
+#tab-program .wcard:has(.chk.done) .wbadge{background:rgba(53,212,154,.12);border-color:rgba(53,212,154,.25);color:#73e5bd}
+button,.btn,.action-btn,.primary-btn,.home-log-btn,.tab,.nav-item{ -webkit-tap-highlight-color:transparent }
+button:disabled{opacity:.48;cursor:not-allowed;transform:none!important}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[role=button]:focus-visible{
+  outline:2px solid #b69aff!important;outline-offset:3px!important
+}
+@media(hover:hover){
+  .wcard:hover,.home-track-card:hover,.meal-card:hover,.recipe-card:hover{
+    border-color:rgba(182,154,255,.34)!important;transform:translateY(-1px)
+  }
+  .nav-item:not(.active):hover{background:rgba(139,92,246,.08)!important}
+}
+@media(max-width:560px){
+  .section{padding-left:14px!important;padding-right:14px!important}
+  #tab-schedule>div:nth-of-type(2),
+  #tab-schedule>div:nth-of-type(3),
+  #tab-schedule>div:nth-of-type(4),
+  #tab-schedule>div:nth-of-type(5){border-radius:16px!important}
+  #tab-schedule>div:nth-of-type(2)>div:nth-child(2)>div{gap:9px!important}
+  #tab-schedule>div:nth-of-type(5)>div:nth-child(2)>div{padding-left:2px;padding-right:2px}
+  #homeStatWeight{font-size:23px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .section{animation:none!important}
+  .wcard,.home-track-card,.meal-card,.recipe-card{transition:none!important}
+}
