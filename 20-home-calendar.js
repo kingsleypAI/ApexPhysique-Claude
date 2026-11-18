@@ -81,7 +81,7 @@ function buildHomeWeeklyStrip(){
     +'</div>'
     +'<div style="width:1px;background:var(--border);"></div>'
     +'<div style="text-align:center;flex:1;">'
-    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;"'+toGoal+'</div>'
+    +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:#aaaaaa;">'+toGoal+'</div>'
     +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">to goal</div>'
     +'</div>'
     +'</div>'
