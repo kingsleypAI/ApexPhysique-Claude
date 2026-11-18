@@ -23,7 +23,7 @@
       html+='</div><button type="button" class="forge-set-save" data-forge-save="'+key+'" data-forge-name="'+esc(name)+'">SAVE EXERCISE & START REST</button>';
       html+='<div class="forge-set-foot">'+(previous?'Last logged '+esc(previous.date||'')+' · '+(lastSet.kg!=null?esc(lastSet.kg)+' kg':'weight not recorded')+(lastSet.reps!=null?' × '+esc(lastSet.reps)+' reps':''):'No previous exercise history yet')+'. One weight and rep target for all sets.</div>';
       html+='<div class="forge-timer-pill" data-forge-timer="'+key+'" aria-live="polite"></div>';
-      details.innerHTML=html;card.appendChild(details);
+      details.innerHTML=html;var expandedBody=card.querySelector('.wbody');(expandedBody||card).appendChild(details);
     });
   }
   function startSetRest(){
