@@ -1,5 +1,5 @@
 const CACHE_NAME='forge-static-v3';
-const CORE=['./','./index.html','./manifest.json','./css/app.css','./js/00-core.js','./js/31-forge-enhancements.js'];
+const CORE=['./','./index.html','./manifest.json','./app.css','./00-core.js','./31-forge-enhancements.js'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',event=>{
