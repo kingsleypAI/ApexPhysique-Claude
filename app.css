@@ -1428,3 +1428,29 @@ button,.tab,.whead,.mrow-head,.recipe-head,.day-chip,.trkr-day{touch-action:mani
   .section{max-width:980px;margin:0 auto;padding-left:24px;padding-right:24px;}
   .hero{padding-left:max(24px,calc((100vw - 932px)/2));}
 }
+
+
+/* Navigation accessibility and mobile ergonomics */
+.nav-drawer{
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.nav-item{min-height:52px;outline:none}
+.nav-item:focus-visible{
+  background:rgba(139,92,246,.16);
+  box-shadow:inset 0 0 0 2px rgba(182,154,255,.72);
+}
+.nav-item[aria-current="page"]{background:rgba(139,92,246,.12)}
+.nav-backdrop{touch-action:manipulation}
+.hamburger-btn{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.hamburger-btn:focus-visible,.topbar-wordmark:focus-visible{
+  outline:2px solid var(--accent-text);outline-offset:3px;border-radius:8px
+}
+@media(max-width:420px){
+  .nav-drawer{width:min(86vw,340px)}
+  .nav-item{padding:14px 18px;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .nav-drawer,.nav-backdrop,.nav-item{transition:none!important}
+}
