@@ -28,7 +28,7 @@ function getAllExercisePRs(){
   return prs.sort(function(a,b){return b.pr-a.pr;});
 }
 
-function prEsc(value){return String(value==null?'':value).replace(/[&<>\"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c];});}
+function prEsc(value){return String(value==null?'':value).replace(/[&<>\"']/g,function(c){return c==='&'?'&amp;':c==='<'?'&lt;':c==='>'?'&gt;':c==='\"'?'&quot;':'&#39;';});}
 
 function buildSparkline(vals, w, h){
   if(!vals||vals.length<2) return '';
