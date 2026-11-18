@@ -8,24 +8,7 @@
   function exerciseKey(name){return String(name||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');}
   function todayKey(){return forgeLocalDateKey(new Date());}
   function latestFor(key){var a=readSetLogs()[key]||[];return a.slice().sort(function(x,y){return (y.ts||0)-(x.ts||0);})[0]||null;}
-  function mountSetLogs(){
-    document.querySelectorAll('.wcard').forEach(function(card){
-      if(card.querySelector('.forge-setlog'))return;
-      var badge=card.querySelector('.wbadge');
-      if(badge&&/cardio/i.test(badge.textContent||''))return;
-      var nameEl=card.querySelector('.wname');if(!nameEl)return;
-      var name=nameEl.textContent.trim(),key=exerciseKey(name);if(!key)return;
-      var previous=latestFor(key),lastSet=previous&&Array.isArray(previous.sets)?previous.sets[0]||{}:{};
-      var details=document.createElement('details');details.className='forge-setlog';
-      var html='<summary><span>＋ Log exercise</span><span>WEIGHT · REPS</span></summary><div class="forge-setlog-grid">';
-      html+='<div class="forge-set-field"><label for="forge-kg-'+key+'">WEIGHT · KG</label><input id="forge-kg-'+key+'" type="number" inputmode="decimal" min="0" step="0.5" placeholder="kg" value="'+(lastSet.kg!=null?esc(lastSet.kg):'')+'"></div>';
-      html+='<div class="forge-set-field"><label for="forge-reps-'+key+'">REPS</label><input id="forge-reps-'+key+'" type="text" inputmode="numeric" placeholder="e.g. 6–8" value="'+(lastSet.reps!=null?esc(lastSet.reps):'')+'"></div>';
-      html+='</div><button type="button" class="forge-set-save" data-forge-save="'+key+'" data-forge-name="'+esc(name)+'">SAVE EXERCISE & START REST</button>';
-      html+='<div class="forge-set-foot">'+(previous?'Last logged '+esc(previous.date||'')+' · '+(lastSet.kg!=null?esc(lastSet.kg)+' kg':'weight not recorded')+(lastSet.reps!=null?' × '+esc(lastSet.reps)+' reps':''):'No previous exercise history yet')+'. One weight and rep target for all sets.</div>';
-      html+='<div class="forge-timer-pill" data-forge-timer="'+key+'" aria-live="polite"></div>';
-      details.innerHTML=html;var expandedBody=card.querySelector('.wbody');(expandedBody||card).appendChild(details);
-    });
-  }
+  // Per-exercise logger removed: weight and reps are entered in the main workout logger.
   function startSetRest(){
     restDeadline=Date.now()+90000;
     if(restTick)clearInterval(restTick);
@@ -35,26 +18,6 @@
       if(!remaining){clearInterval(restTick);restTick=null;if(typeof fireTimerNotification==='function')fireTimerNotification();if(typeof playBeep==='function')playBeep();}
     }
     tick();restTick=setInterval(tick,250);
-  }
-  function saveSets(button){
-    var key=button.getAttribute('data-forge-save'),name=button.getAttribute('data-forge-name');if(!key)return;
-    var kg=document.getElementById('forge-kg-'+key),reps=document.getElementById('forge-reps-'+key);
-    var k=kg&&kg.value!==''?Number(kg.value):null,r=reps&&reps.value.trim()?reps.value.trim():null;
-    if(k===null||!Number.isFinite(k)||k<0||!r){alert('Add the exercise weight and your target reps (for example, 6–8).');return;}
-    var sets=[{kg:k,reps:r}];
-    var data=readSetLogs();if(!Array.isArray(data[key]))data[key]=[];
-    var savedAt=Date.now();data[key].push({name:name,date:todayKey(),ts:savedAt,sets:sets});
-    localStorage.setItem(SET_KEY,JSON.stringify(data));
-    var weightLog=forgeSafeJSON(localStorage.getItem('forge_weights_v1')||'{}',{});
-    if(!Array.isArray(weightLog[key]))weightLog[key]=[];
-    weightLog[key].push({kg:k,reps:r,date:todayKey(),ts:savedAt});
-    localStorage.setItem('forge_weights_v1',JSON.stringify(weightLog));
-    if(typeof renderExercisePRsGrid==='function')renderExercisePRsGrid();
-    if(typeof renderExerciseWeightLog==='function')renderExerciseWeightLog(name);
-    button.textContent='SAVED ✓';button.classList.add('saved');
-    var foot=button.nextElementSibling;if(foot)foot.textContent='Saved '+k+' kg × '+r+' reps for '+todayKey()+'. One entry covers every set.';
-    if(typeof showToast==='function')showToast('✓ Exercise saved · '+name,2500);
-    startSetRest();
   }
   function countSessions(done){var total=0;Object.keys(done||{}).forEach(function(k){if(done[k]&&Object.values(done[k]).filter(Boolean).length>=4)total++;});return total;}
   function buildInsights(){
@@ -114,13 +77,12 @@
     sessionStartedAt=Date.now()-wSec*1000;wRun=true;document.getElementById('workoutBtn').textContent='PAUSE';clearInterval(wInt);
     wInt=setInterval(function(){wSec=Math.floor((Date.now()-sessionStartedAt)/1000);var h=Math.floor(wSec/3600),m=Math.floor((wSec%3600)/60).toString().padStart(2,'0'),s=(wSec%60).toString().padStart(2,'0');var el=document.getElementById('workoutDisplay');if(el)el.textContent=(h>0?h+':':'')+m+':'+s;},500);
   };
-  document.addEventListener('click',function(e){var b=e.target.closest('[data-forge-save]');if(b)saveSets(b);});
   document.addEventListener('visibilitychange',function(){if(!document.hidden){if(_mRun)miniUpdDisplay();if(typeof updateHomeStats==='function')updateHomeStats();}});
   document.addEventListener('DOMContentLoaded',function(){
-    mountSetLogs();buildInsights();updatePhaseCycleLabels();
+    buildInsights();updatePhaseCycleLabels();
     // If app sections are re-rendered, attach set loggers to newly created exercise cards.
     var target=document.getElementById('tab-program')||document.body;
-    if(window.MutationObserver&&target){var observer=new MutationObserver(function(){mountSetLogs();});observer.observe(target,{childList:true,subtree:true});}
+    if(window.MutationObserver&&target){var observer=new MutationObserver(function(){});observer.observe(target,{childList:true,subtree:true});}
   });
-  window.addEventListener('load',function(){mountSetLogs();buildInsights();updatePhaseCycleLabels();});
+  window.addEventListener('load',function(){buildInsights();updatePhaseCycleLabels();});
 })();
