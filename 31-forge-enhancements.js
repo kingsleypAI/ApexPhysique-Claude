@@ -11,18 +11,17 @@
   function mountSetLogs(){
     document.querySelectorAll('.wcard').forEach(function(card){
       if(card.querySelector('.forge-setlog'))return;
+      var badge=card.querySelector('.wbadge');
+      if(badge&&/cardio/i.test(badge.textContent||''))return;
       var nameEl=card.querySelector('.wname');if(!nameEl)return;
       var name=nameEl.textContent.trim(),key=exerciseKey(name);if(!key)return;
-      var previous=latestFor(key),sets=previous&&Array.isArray(previous.sets)?previous.sets:[];
+      var previous=latestFor(key),lastSet=previous&&Array.isArray(previous.sets)?previous.sets[0]||{}:{};
       var details=document.createElement('details');details.className='forge-setlog';
-      var html='<summary><span>＋ Set-by-set log</span><span>WEIGHT · REPS</span></summary><div class="forge-setlog-grid">';
-      for(var i=0;i<4;i++){
-        var prev=sets[i]||{};
-        html+='<div class="forge-set-field"><label for="forge-kg-'+key+'-'+i+'">SET '+(i+1)+' · KG</label><input id="forge-kg-'+key+'-'+i+'" type="number" inputmode="decimal" min="0" step="0.5" placeholder="kg" value="'+(prev.kg!=null?esc(prev.kg):'')+'"></div>';
-        html+='<div class="forge-set-field"><label for="forge-reps-'+key+'-'+i+'">REPS</label><input id="forge-reps-'+key+'-'+i+'" type="number" inputmode="numeric" min="0" step="1" placeholder="reps" value="'+(prev.reps!=null?esc(prev.reps):'')+'"></div>';
-      }
-      html+='</div><button type="button" class="forge-set-save" data-forge-save="'+key+'" data-forge-name="'+esc(name)+'">SAVE SETS & START REST</button>';
-      html+='<div class="forge-set-foot">'+(previous?'Last logged '+esc(previous.date||'')+' · '+sets.filter(function(s){return s&&s.kg!=null&&s.reps!=null;}).length+' sets recorded':'No previous set history yet')+'. Saving records this session separately from your existing exercise checklist.</div>';
+      var html='<summary><span>＋ Log exercise</span><span>WEIGHT · REPS</span></summary><div class="forge-setlog-grid">';
+      html+='<div class="forge-set-field"><label for="forge-kg-'+key+'">WEIGHT · KG</label><input id="forge-kg-'+key+'" type="number" inputmode="decimal" min="0" step="0.5" placeholder="kg" value="'+(lastSet.kg!=null?esc(lastSet.kg):'')+'"></div>';
+      html+='<div class="forge-set-field"><label for="forge-reps-'+key+'">REPS</label><input id="forge-reps-'+key+'" type="text" inputmode="numeric" placeholder="e.g. 6–8" value="'+(lastSet.reps!=null?esc(lastSet.reps):'')+'"></div>';
+      html+='</div><button type="button" class="forge-set-save" data-forge-save="'+key+'" data-forge-name="'+esc(name)+'">SAVE EXERCISE & START REST</button>';
+      html+='<div class="forge-set-foot">'+(previous?'Last logged '+esc(previous.date||'')+' · '+(lastSet.kg!=null?esc(lastSet.kg)+' kg':'weight not recorded')+(lastSet.reps!=null?' × '+esc(lastSet.reps)+' reps':''):'No previous exercise history yet')+'. One weight and rep target for all sets.</div>';
       html+='<div class="forge-timer-pill" data-forge-timer="'+key+'" aria-live="polite"></div>';
       details.innerHTML=html;card.appendChild(details);
     });
@@ -39,25 +38,22 @@
   }
   function saveSets(button){
     var key=button.getAttribute('data-forge-save'),name=button.getAttribute('data-forge-name');if(!key)return;
-    var sets=[];
-    for(var i=0;i<4;i++){
-      var kg=document.getElementById('forge-kg-'+key+'-'+i),reps=document.getElementById('forge-reps-'+key+'-'+i);
-      var k=kg&&kg.value!==''?Number(kg.value):null,r=reps&&reps.value!==''?Number(reps.value):null;
-      if(k!==null||r!==null){if(k===null||r===null||k<0||r<1){alert('For each set entered, add both weight and reps.');return;}sets.push({kg:k,reps:r});}
-    }
-    if(!sets.length){alert('Enter at least one set before saving.');return;}
+    var kg=document.getElementById('forge-kg-'+key),reps=document.getElementById('forge-reps-'+key);
+    var k=kg&&kg.value!==''?Number(kg.value):null,r=reps&&reps.value.trim()?reps.value.trim():null;
+    if(k===null||!Number.isFinite(k)||k<0||!r){alert('Add the exercise weight and your target reps (for example, 6–8).');return;}
+    var sets=[{kg:k,reps:r}];
     var data=readSetLogs();if(!Array.isArray(data[key]))data[key]=[];
     var savedAt=Date.now();data[key].push({name:name,date:todayKey(),ts:savedAt,sets:sets});
     localStorage.setItem(SET_KEY,JSON.stringify(data));
     var weightLog=forgeSafeJSON(localStorage.getItem('forge_weights_v1')||'{}',{});
     if(!Array.isArray(weightLog[key]))weightLog[key]=[];
-    sets.forEach(function(set,index){weightLog[key].push({kg:set.kg,reps:set.reps,date:todayKey(),ts:savedAt+index});});
+    weightLog[key].push({kg:k,reps:r,date:todayKey(),ts:savedAt});
     localStorage.setItem('forge_weights_v1',JSON.stringify(weightLog));
     if(typeof renderExercisePRsGrid==='function')renderExercisePRsGrid();
     if(typeof renderExerciseWeightLog==='function')renderExerciseWeightLog(name);
     button.textContent='SAVED ✓';button.classList.add('saved');
-    var foot=button.nextElementSibling;if(foot)foot.textContent='Saved '+sets.length+' sets for '+todayKey()+'. Previous sessions are retained.';
-    if(typeof showToast==='function')showToast('✓ '+sets.length+' sets saved · '+name,2500);
+    var foot=button.nextElementSibling;if(foot)foot.textContent='Saved '+k+' kg × '+r+' reps for '+todayKey()+'. One entry covers every set.';
+    if(typeof showToast==='function')showToast('✓ Exercise saved · '+name,2500);
     startSetRest();
   }
   function countSessions(done){var total=0;Object.keys(done||{}).forEach(function(k){if(done[k]&&Object.values(done[k]).filter(Boolean).length>=4)total++;});return total;}
