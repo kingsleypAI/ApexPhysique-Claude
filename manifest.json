@@ -1,13 +1,14 @@
 {
-  "name": "Forge",
-  "short_name": "Forge",
-  "description": "Forge \u2014 physique recomposition tracker",
-  "start_url": "./index.html",
+  "id": "./",
+  "name": "FORGE \u2014 Training & Nutrition",
+  "short_name": "FORGE",
+  "description": "Your training, nutrition and progress companion.",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
-  "orientation": "portrait",
   "icons": [
     {
       "src": "./icon-192.png",
