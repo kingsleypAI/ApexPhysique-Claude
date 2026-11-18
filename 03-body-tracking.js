@@ -1,6 +1,13 @@
 // ── TRACKING ──────────────────────────────────────────────────────────────────
 const TRK_KEY = 'apx_tracking_v1';
-let trkData = JSON.parse(localStorage.getItem(TRK_KEY) || '{"weights":{},"lifts":{},"measurements":{},"notes":{}}');
+let trkData = (function(){
+  var parsed = typeof forgeSafeJSON==='function' ? forgeSafeJSON(localStorage.getItem(TRK_KEY)||'{}',{}) : {};
+  if(!parsed || typeof parsed!=='object' || Array.isArray(parsed)) parsed={};
+  ['weights','lifts','measurements','notes'].forEach(function(key){
+    if(!parsed[key] || typeof parsed[key]!=='object' || Array.isArray(parsed[key])) parsed[key]={};
+  });
+  return parsed;
+})();
 
 const LIFT_KEYS = ['bench','squat','row','pullup','ohp'];
 let activeLift = 'bench';
@@ -27,10 +34,10 @@ function populateWeekSelects(){
 
 // ── WEIGHT ────────────────────────────────────────────────────────────────────
 function logWeight(){
-  const val = parseFloat(document.getElementById('weightInput').value);
-  const week = parseInt(document.getElementById('weightWeek').value);
-  if(!val || val < 40 || val > 300){ alert('Please enter a valid weight (40–300kg)'); return; }
-  if(!week){ alert('Please select a week'); return; }
+  const val = Number(document.getElementById('weightInput').value);
+  const week = Number(document.getElementById('weightWeek').value);
+  if(!Number.isFinite(val) || val < 40 || val > 300){ alert('Please enter a valid weight (40–300kg)'); return; }
+  if(!Number.isInteger(week) || week < 1 || week > 16){ alert('Please select a valid programme week (1–16)'); return; }
   trkData.weights[week] = val;
   saveTrk();
   document.getElementById('weightInput').value = '';
@@ -140,18 +147,18 @@ function renderSummary(){
 
 // ── LIFTS ─────────────────────────────────────────────────────────────────────
 function logLifts(){
-  const week = parseInt(document.getElementById('liftWeek').value);
-  if(!week) return;
-  if(!trkData.lifts[week]) trkData.lifts[week]={};
-  let saved=false;
+  const week = Number(document.getElementById('liftWeek').value);
+  if(!Number.isInteger(week) || week < 1 || week > 16){ alert('Please select a valid programme week (1–16)'); return; }
+  const pending={};
   LIFT_KEYS.forEach(k=>{
     const inp=document.getElementById('lift-'+k);
-    if(inp&&inp.value!==''){
-      trkData.lifts[week][k]=parseFloat(inp.value);
-      saved=true;
-    }
+    if(inp&&inp.value!=='') pending[k]=Number(inp.value);
   });
-  if(!saved){ alert('Enter at least one lift weight'); return; }
+  const values=Object.values(pending);
+  if(!values.length){ alert('Enter at least one lift weight'); return; }
+  if(values.some(v=>!Number.isFinite(v)||v<=0||v>1000)){ alert('Please enter valid lift weights (above 0 and no more than 1000kg)'); return; }
+  if(!trkData.lifts[week]) trkData.lifts[week]={};
+  Object.assign(trkData.lifts[week],pending);
   saveTrk();
   LIFT_KEYS.forEach(k=>{
     const inp=document.getElementById('lift-'+k);
@@ -227,19 +234,16 @@ function renderLiftChart(){
 
 // ── MEASUREMENTS ──────────────────────────────────────────────────────────────
 function logMeasurements(){
-  const week=parseInt(document.getElementById('measWeek').value);
-  if(!week) return;
-  if(!trkData.measurements[week]) trkData.measurements[week]={};
+  const week=Number(document.getElementById('measWeek').value);
+  if(!Number.isInteger(week) || week<1 || week>16){ alert('Please select a valid programme week (1–16)'); return; }
   const fields=['waist','chest','shoulders','arm','thigh','neck'];
-  let saved=false;
-  fields.forEach(f=>{
-    const inp=document.getElementById('meas-'+f);
-    if(inp&&inp.value!==''){
-      trkData.measurements[week][f]=parseFloat(inp.value);
-      saved=true;
-    }
-  });
-  if(!saved){ alert('Enter at least one measurement'); return; }
+  const pending={};
+  fields.forEach(f=>{const inp=document.getElementById('meas-'+f);if(inp&&inp.value!=='')pending[f]=Number(inp.value);});
+  const values=Object.values(pending);
+  if(!values.length){ alert('Enter at least one measurement'); return; }
+  if(values.some(v=>!Number.isFinite(v)||v<=0||v>300)){ alert('Please enter valid measurements (above 0 and no more than 300cm)'); return; }
+  if(!trkData.measurements[week]) trkData.measurements[week]={};
+  Object.assign(trkData.measurements[week],pending);
   saveTrk();
   fields.forEach(f=>{const inp=document.getElementById('meas-'+f);if(inp)inp.value='';});
   renderMeasHistory();
@@ -274,8 +278,9 @@ function deleteMeas(week){ delete trkData.measurements[week]; saveTrk(); renderM
 
 // ── NOTES ────────────────────────────────────────────────────────────────────
 function logNote(){
-  const week=parseInt(document.getElementById('noteWeek').value);
+  const week=Number(document.getElementById('noteWeek').value);
   const text=document.getElementById('noteInput').value.trim();
+  if(!Number.isInteger(week)||week<1||week>16){ alert('Please select a valid programme week (1–16)'); return; }
   if(!text){ alert('Write something first'); return; }
   trkData.notes[week]=text;
   saveTrk();
