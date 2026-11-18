@@ -109,7 +109,10 @@ async function offFetchBarcode(code){
     }
 
     // Nutrition per 100g/ml
-    var kcal100=Math.round(nut['energy-kcal_100g']||nut['energy-kcal']||0);
+    var energy100=nut['energy-kcal_100g'];
+    if(energy100==null)energy100=nut['energy-kcal'];
+    if(energy100==null&&nut['energy-kj_100g']!=null)energy100=Number(nut['energy-kj_100g'])/4.184;
+    var kcal100=Math.round(Number(energy100)||0);
     var prot100=Math.round((nut['proteins_100g']||nut['proteins']||0)*10)/10;
     var carb100=Math.round((nut['carbohydrates_100g']||nut['carbohydrates']||0)*10)/10;
     var fat100 =Math.round((nut['fat_100g']||nut['fat']||0)*10)/10;
