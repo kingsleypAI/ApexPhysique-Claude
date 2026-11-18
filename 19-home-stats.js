@@ -1,5 +1,5 @@
 function updateHomeStats(){
-  // Count total sessions from done data
+  // Count training days using the same rule as the activity report: any ticked exercise.
   var doneRaw = (typeof getAllDoneData==='function') ? getAllDoneData() : JSON.parse(localStorage.getItem('apx_done_v1')||'{}');
   var totalSessions = 0;
   var streak = 0;
@@ -9,8 +9,7 @@ function updateHomeStats(){
   dates.forEach(function(date){
     var d = doneRaw[date];
     if(!d) return;
-    var count = Object.values(d).filter(Boolean).length;
-    if(count >= 4) totalSessions++; // 4+ exercises = counts as session
+    if(Object.values(d).some(Boolean)) totalSessions++;
   });
 
   // Calculate streak
@@ -24,8 +23,8 @@ function updateHomeStats(){
       continue;
     }
     var d = doneRaw[ds];
-    var count = d ? Object.values(d).filter(Boolean).length : 0;
-    if(count >= 4){ streak++; checkDate.setDate(checkDate.getDate()-1); }
+    var hasActivity = !!(d && Object.values(d).some(Boolean));
+    if(hasActivity){ streak++; checkDate.setDate(checkDate.getDate()-1); }
     else if(ds === today) { checkDate.setDate(checkDate.getDate()-1); } // today not yet done
     else break;
   }
