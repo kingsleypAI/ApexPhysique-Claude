@@ -1,20 +1,43 @@
 function toggleNav(){
   var b=document.getElementById('hamburgerBtn'),d=document.getElementById('navDrawer'),k=document.getElementById('navBackdrop');
-  if(!d)return;
-  if(d.classList.contains('open')){
-    b.classList.remove('open');d.classList.remove('open');k.classList.remove('open');
-    document.body.style.overflow='';
-  } else {
+  if(!d||!b||!k)return;
+  if(d.classList.contains('open')){closeNav();}
+  else{
     b.classList.add('open');d.classList.add('open');k.classList.add('open');
+    b.setAttribute('aria-expanded','true');
+    d.setAttribute('aria-hidden','false');
+    k.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
+    var first=d.querySelector('.nav-item');
+    if(first)first.focus();
   }
 }
 function closeNav(){
   ['hamburgerBtn','navDrawer','navBackdrop'].forEach(function(id){
     var e=document.getElementById(id);if(e)e.classList.remove('open');
   });
+  var b=document.getElementById('hamburgerBtn'),d=document.getElementById('navDrawer'),k=document.getElementById('navBackdrop');
+  if(b){b.setAttribute('aria-expanded','false');b.focus();}
+  if(d)d.setAttribute('aria-hidden','true');
+  if(k)k.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
 }
+document.addEventListener('keydown',function(e){
+  var d=document.getElementById('navDrawer');
+  if(!d||!d.classList.contains('open'))return;
+  if(e.key==='Escape'){e.preventDefault();closeNav();return;}
+  if(e.key==='Tab'){
+    var items=Array.prototype.slice.call(d.querySelectorAll('.nav-item[tabindex="0"]'));
+    if(!items.length)return;
+    var first=items[0],last=items[items.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+});
+document.addEventListener('keydown',function(e){
+  var item=e.target.closest&&e.target.closest('.nav-item[role="button"]');
+  if(item&&(e.key==='Enter'||e.key===' ')){e.preventDefault();item.click();}
+});
 var NAV_LABELS={
   schedule:'Overview',program:'Workouts',nutrition:'Nutrition',
   recipes:'Recipes',shopping:'Shopping',timer:'Timer',
