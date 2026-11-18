@@ -89,8 +89,10 @@ async function offFetchBarcode(code){
       return;
     }
     var p=d.product;
-    var nm=(p.product_name||'Unknown').substring(0,50);\n    var safeNm=offEsc(nm);
-    var br=p.brands?(p.brands.split(',')[0]).trim():'';\n    var safeBr=offEsc(br);
+    var nm=(p.product_name||'Unknown').substring(0,50);
+    var safeNm=offEsc(nm);
+    var br=p.brands?(p.brands.split(',')[0]).trim():'';
+    var safeBr=offEsc(br);
     var nut=p.nutriments;
 
     // Work out the full product amount in grams/ml
@@ -195,12 +197,16 @@ async function offLookupBarcode(){
 function offRenderResults(prods){
   var el=document.getElementById('offResults');
   var rows=prods.map(function(p,i){
-    var energy=p.nutriments['energy-kcal_100g'];\n    if(energy==null&&p.nutriments['energy-kj_100g']!=null)energy=Number(p.nutriments['energy-kj_100g'])/4.184;\n    var kcal=Math.round(Number(energy)||0);
+    var energy=p.nutriments['energy-kcal_100g'];
+    if(energy==null&&p.nutriments['energy-kj_100g']!=null)energy=Number(p.nutriments['energy-kj_100g'])/4.184;
+    var kcal=Math.round(Number(energy)||0);
     var prot=Math.round(p.nutriments['proteins_100g']||0);
     var carb=Math.round(p.nutriments['carbohydrates_100g']||0);
     var fat=Math.round(p.nutriments['fat_100g']||0);
-    var nm=(p.product_name||'Unknown food').substring(0,50);\n    var safeNm=offEsc(nm);
-    var br=p.brands?(p.brands.split(',')[0]).substring(0,30):'';\n    var safeBr=offEsc(br);
+    var nm=(p.product_name||'Unknown food').substring(0,50);
+    var safeNm=offEsc(nm);
+    var br=p.brands?(p.brands.split(',')[0]).substring(0,30):'';
+    var safeBr=offEsc(br);
     var d=document.createElement('div');
     d.className='off-result';
     d.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">'
