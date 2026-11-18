@@ -100,7 +100,8 @@ function buildCheckinStatus(days, last, history){
   var milestones = [
     {w:99, label:'Sub-100kg 🎯', achieved: last.weight && last.weight < 100},
     {w:95, label:'Milestone: 95kg 🎯', achieved: last.weight && last.weight <= 95},
-    {w:90, label:'Goal weight: 85kg 🏆', achieved: last.weight && last.weight <= 90},
+    {w:90, label:'Milestone: 90kg 🎯', achieved: last.weight && last.weight <= 90},
+    {w:85, label:'Goal weight: 85kg 🏆', achieved: last.weight && last.weight <= 85},
   ];
   var nextMilestone = milestones.find(function(m){ return !m.achieved; });
   var kmToGo = nextMilestone && last.weight ? (last.weight - nextMilestone.w).toFixed(1) : null;
