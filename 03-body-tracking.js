@@ -52,7 +52,7 @@ function renderWeightChart(){
   const iW=W-pad.l-pad.r, iH=H-pad.t-pad.b;
   const vals = entries.map(e=>e.v);
   const minV = Math.min(...vals)-2, maxV = Math.max(...vals)+2;
-  const xS = w => pad.l + ((w-1)/(12-1||1))*iW;
+  const xS = w => pad.l + ((w-1)/(16-1||1))*iW;
   const yS = v => pad.t + iH - ((v-minV)/(maxV-minV||1))*iH;
 
   let out = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
@@ -64,7 +64,7 @@ function renderWeightChart(){
     out += `<text x="${pad.l-4}" y="${y+4}" text-anchor="end" fill="#6e6e6e" font-size="9">${val.toFixed(0)}</text>`;
   }
   // Week markers
-  [1,4,8,12].forEach(w=>{
+  [1,4,8,12,16].forEach(w=>{
     const x=xS(w);
     out+=`<text x="${x}" y="${H-4}" text-anchor="middle" fill="#6e6e6e" font-size="9">W${w}</text>`;
   });
@@ -200,7 +200,7 @@ function renderLiftChart(){
   const iW=W-pad.l-pad.r,iH=H-pad.t-pad.b;
   const vals=entries.map(e=>e.v);
   const minV=Math.max(0,Math.min(...vals)-10),maxV=Math.max(...vals)+10;
-  const xS=w=>pad.l+((w-1)/(12-1||1))*iW;
+  const xS=w=>pad.l+((w-1)/(16-1||1))*iW;
   const yS=v=>pad.t+iH-((v-minV)/(maxV-minV||1))*iH;
 
   let out=`<svg class="chart-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
@@ -210,7 +210,7 @@ function renderLiftChart(){
     out+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#252525" stroke-width="1"/>`;
     out+=`<text x="${pad.l-4}" y="${y+4}" text-anchor="end" fill="#6e6e6e" font-size="9">${val.toFixed(0)}</text>`;
   }
-  [1,4,8,12].forEach(w=>{
+  [1,4,8,12,16].forEach(w=>{
     out+=`<text x="${xS(w)}" y="${H-4}" text-anchor="middle" fill="#6e6e6e" font-size="9">W${w}</text>`;
   });
   if(entries.length>=2){
