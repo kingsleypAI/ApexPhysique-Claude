@@ -143,7 +143,7 @@ function buildHomeMiniCal(){
     var dayDone= allDone[ds] ? Object.values(allDone[ds]).filter(Boolean).length : 0;
     var isToday= (d===now.getDate()&&month===now.getMonth()&&year===now.getFullYear());
     var fut    = dt > new Date(now.getFullYear(),now.getMonth(),now.getDate());
-    var trained= dayDone >= 4;
+    var trained= dayDone > 0;
     var isRest = dtype==='rest';
 
     var bg     = trained ? col : (isToday ? 'rgba(139,92,246,0.22)' : 'var(--surface)');

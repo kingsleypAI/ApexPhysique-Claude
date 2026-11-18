@@ -50,10 +50,12 @@ function updateCheckinCountdown(){
     var daysEl = document.getElementById('nextCheckinDays');
     if(!dateEl || !daysEl || !history.length) return;
     var lastDate = forgeParseLocalDate(history[0].date);
-    var nextDue = new Date(lastDate);
-    nextDue.setDate(nextDue.getDate() + 14);
+    if(!lastDate || !isFinite(lastDate.getTime())) return;
+    var nextDue = new Date(lastDate.getFullYear(), lastDate.getMonth(), lastDate.getDate() + 14);
     var today = new Date();
-    var daysLeft = Math.ceil((nextDue - today) / (1000*60*60*24));
+    var todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    // Compare calendar dates, not elapsed 24-hour periods, to avoid DST/time-of-day drift.
+    var daysLeft = Math.round((Date.UTC(nextDue.getFullYear(),nextDue.getMonth(),nextDue.getDate()) - Date.UTC(todayStart.getFullYear(),todayStart.getMonth(),todayStart.getDate())) / 86400000);
     if(daysLeft <= 0){
       daysEl.textContent = 'Due now';
     } else {

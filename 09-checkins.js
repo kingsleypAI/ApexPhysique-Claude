@@ -53,7 +53,9 @@ function renderCheckinBanner(){
   }
 
   var lastDate = forgeParseLocalDate(last.date);
-  var daysSince = Math.floor((today - lastDate) / (1000*60*60*24));
+  if(!lastDate || !isFinite(lastDate.getTime())) return;
+  var todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  var daysSince = Math.round((Date.UTC(todayStart.getFullYear(),todayStart.getMonth(),todayStart.getDate()) - Date.UTC(lastDate.getFullYear(),lastDate.getMonth(),lastDate.getDate())) / 86400000);
 
   if(daysSince >= 14){
     banner.style.display = 'block';
@@ -66,7 +68,7 @@ function renderCheckinBanner(){
 
 function buildCheckinBanner(type, days, last){
   if(type === 'first'){
-    return '<div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.4);border-radius:10px;padding:14px;">'
+    return '<div style="background:rgba(139,92,246,0.1);border:1px solid rgba(255,255,255,0.4);border-radius:10px;padding:14px;">'
       +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px;">📊 Log First Check-In</div>'
       +'<div style="font-size:12px;color:var(--mid);margin-bottom:10px;">Log your current weight and body fat % from the gym scale to start tracking your progress properly.</div>'
       +'<div style="display:flex;gap:8px;">'
@@ -77,7 +79,7 @@ function buildCheckinBanner(type, days, last){
       +'</div>';
   }
   var overdue = days - 14;
-  return '<div style="background:rgba(200,16,46,0.1);border:1px solid rgba(255,255,255,0.4);border-radius:10px;padding:14px;">'
+  return '<div style="background:rgba(139,92,246,0.1);border:1px solid rgba(255,255,255,0.4);border-radius:10px;padding:14px;">'
     +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px;">⏰ Check-In Due'+(overdue>0?' ('+overdue+'d overdue)':'')+'</div>'
     +'<div style="font-size:12px;color:var(--mid);margin-bottom:4px;">Last check-in: <strong style="color:var(--white);">'+last.date+'</strong>'
     +(last.weight?' · '+last.weight+'kg':'')+(last.bf?' · '+last.bf+'% BF':'')+'</div>'
