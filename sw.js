@@ -1,6 +1,6 @@
 const CACHE_NAME='forge-static-v9';
 const CORE=[
- './','./index.html','./manifest.json','./icon.svg','./icon-192.png',
+ './','./index.html','./manifest.json','./icon.svg',
  './app.css','./forge-redesign.css',
  './00-core.js','./01-navigation.js','./02-main-features.js','./03-body-tracking.js','./04-pwa-register.js',
  './05-food-scanner.js','./06-backup-restore.js','./07-workout-badges.js','./08-manual-week.js',
