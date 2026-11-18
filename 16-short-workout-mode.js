@@ -27,19 +27,18 @@ function toggle30MinMode(){
 }
 
 function init30MinMode(){
+  // Restore the saved preference directly. Do not call the toggle handler here:
+  // it writes to storage and shows user-facing feedback intended for clicks.
   _30minMode = localStorage.getItem('apx_30min') === '1';
-  if(_30minMode){
-    toggle30MinMode(); // apply state without toggling
-    _30minMode = true; // reapply since toggle flipped it
-    var btn   = document.getElementById('btn30Min');
-    var banner= document.getElementById('thirtyMinBanner');
-    if(btn){ btn.style.background='var(--accent)'; btn.style.color='#fff'; btn.style.border='none'; }
-    if(banner) banner.style.display='block';
+  var btn = document.getElementById('btn30Min');
+  var banner = document.getElementById('thirtyMinBanner');
+  if(btn){
+    btn.style.background = _30minMode ? 'var(--accent)' : 'var(--surface)';
+    btn.style.color = _30minMode ? '#fff' : 'var(--mid)';
+    btn.style.border = _30minMode ? 'none' : '1px solid var(--border)';
   }
-  // Hide 30-min tips initially if mode off
-  if(!_30minMode){
-    document.querySelectorAll('.wcard .wtip span[style*="color:var(--accent-text)"]').forEach(function(s){
-      s.style.display = 'none';
-    });
-  }
+  if(banner) banner.style.display = _30minMode ? 'block' : 'none';
+  document.querySelectorAll('.wcard .wtip span[style*="color:var(--accent-text)"]').forEach(function(s){
+    s.style.display = _30minMode ? 'block' : 'none';
+  });
 }
