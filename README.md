@@ -4,7 +4,7 @@ This is a modular static-site version of the supplied FORGE app. It remains comp
 
 ## Deploy
 1. Download and extract `FORGE-GitHub-Pages.zip`.
-2. In your GitHub repository, upload the **contents** of this folder (not the enclosing folder) to the repository root, keeping the `css`, `js`, and `assets` folders.
+2. In your GitHub repository, upload the **contents** of this folder (not the enclosing folder) to the repository root, keeping all uploaded files together in the repository root.
 3. Commit to your Pages publishing branch.
 4. In GitHub: Settings → Pages, select the correct branch and root folder (or your existing `/docs` publishing folder).
 5. Open the published site, export a FORGE backup, then test workouts, nutrition, restore and offline mode.
@@ -19,11 +19,11 @@ This is a modular static-site version of the supplied FORGE app. It remains comp
 
 ## Structure
 - `index.html` — app shell and existing markup
-- `css/app.css` — original styles plus new responsive components
-- `js/00-core.js` — local date and safe parsing helpers
-- `js/01-30-*.js` — original scripts separated into ordered files
-- `js/31-forge-enhancements.js` — set logging, weekly insights, achievements and drift-resistant timers
-- `manifest.json`, `sw.js`, `assets/icons/` — PWA files
+- `app.css` — original styles plus new responsive components
+- `00-core.js` — local date and safe parsing helpers
+- `01-30-*.js` — original scripts separated into ordered files
+- `31-forge-enhancements.js` — set logging, weekly insights, achievements and drift-resistant timers
+- `manifest.json`, `sw.js`, `icon-192.png`, `icon-512.png` — PWA files
 
 ## Validation
 The JavaScript files are intended to load as ordered classic scripts, not ES modules, because the existing app uses shared global functions and state. Do not add `type="module"` to these script tags without a deliberate refactor.
