@@ -3,7 +3,8 @@ function exKey2(name){ return name.toLowerCase().replace(/[^a-z0-9]+/g,'_').repl
 
 function getAllExercisePRs(){
   var WL_KEY = 'forge_weights_v1';
-  var log = JSON.parse(localStorage.getItem(WL_KEY)||'{}');
+  var log = typeof forgeSafeJSON==='function' ? forgeSafeJSON(localStorage.getItem(WL_KEY)||'{}',{}) : {};
+  if(!log||typeof log!=='object'||Array.isArray(log))log={};
   // Read exercise names live from the DOM (.wname inside each .wcard) rather
   // than a hardcoded list — this was going stale every time an exercise was
   // swapped or renamed, since nothing kept it in sync with the actual cards.
@@ -18,14 +19,16 @@ function getAllExercisePRs(){
   var prs = [];
   exercises.forEach(function(name){
     var key = exKey2(name);
-    var entries = (log[key]||[]).slice().sort(function(a,b){return a.ts-b.ts;});
+    var entries = (Array.isArray(log[key])?log[key]:[]).filter(function(e){return e&&Number.isFinite(Number(e.kg))&&Number(e.kg)>0;}).slice().sort(function(a,b){return Number(a.ts||0)-Number(b.ts||0);});
     if(!entries.length) return;
-    var pr = Math.max.apply(null, entries.map(function(e){return e.kg;}));
-    var last5 = entries.slice(-5).map(function(e){return e.kg;});
+    var pr = Math.max.apply(null, entries.map(function(e){return Number(e.kg);}));
+    var last5 = entries.slice(-5).map(function(e){return Number(e.kg);});
     prs.push({name:name, pr:pr, last5:last5, count:entries.length});
   });
   return prs.sort(function(a,b){return b.pr-a.pr;});
 }
+
+function prEsc(value){return String(value==null?'':value).replace(/[&<>\"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c];});}
 
 function buildSparkline(vals, w, h){
   if(!vals||vals.length<2) return '';
@@ -57,7 +60,7 @@ function renderExercisePRsGrid(){
     var tcolor = p.last5.length>1 ? (p.last5[p.last5.length-1]>=p.last5[0]?'var(--accent)':'#aaaaaa') : '';
     return '<div style="background:var(--surface);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:12px;">'
       +'<div style="flex:1;min-width:0;">'
-      +'<div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+p.name+'</div>'
+      +'<div style="font-size:12px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+prEsc(p.name)+'</div>'
       +'<div style="font-size:10px;color:var(--grey);margin-top:2px;">'+p.count+' log'+(p.count!==1?'s':'')+'</div>'
       +'</div>'
       +(spark?'<div style="flex-shrink:0;">'+spark+'</div>':'')
@@ -83,7 +86,7 @@ function renderHomePRs(){
     + top.map(function(p){
       var spark = buildSparkline(p.last5, 50, 20);
       return '<div style="background:var(--surface);border-radius:7px;padding:9px 10px;">'
-        +'<div style="font-size:10px;color:var(--grey);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px;">'+p.name+'</div>'
+        +'<div style="font-size:10px;color:var(--grey);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px;">'+prEsc(p.name)+'</div>'
         +'<div style="display:flex;align-items:center;justify-content:space-between;">'
         +'<div style="font-family:Space+Grotesk,sans-serif;font-size:18px;font-weight:800;color:var(--white);">'+p.pr+'<span style="font-size:9px;color:var(--grey);">kg</span></div>'
         +(spark?'<div>'+spark+'</div>':'')
