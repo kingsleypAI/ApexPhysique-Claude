@@ -66,8 +66,7 @@ function buildMonthCalendar(){
 
     // Check if session was done (any exercises ticked that day)
     var doneThatDay = doneRaw[dateStr] ? Object.values(doneRaw[dateStr]).filter(Boolean).length : 0;
-    var totalEx = (dayType==='push'||dayType==='pull') ? 8 : (dayType==='legs' ? 7 : 0);
-    var sessionDone = doneThatDay >= Math.ceil(totalEx * 0.5); // 50%+ = done
+    var sessionDone = doneThatDay > 0; // Any logged exercise marks training activity
 
     var opacity = isFuture ? '0.25' : '1';
     var bg = sessionDone
@@ -80,7 +79,6 @@ function buildMonthCalendar(){
     html += '<div style="border-radius:6px;padding:4px 2px;text-align:center;background:'+bg+';border:'+border+';opacity:'+opacity+';min-height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;">'
       +'<div style="font-size:12px;font-weight:700;color:'+dayNumCol+';">'+d+'</div>'
       +(dayType!=='rest' ? '<div style="font-size:7px;font-weight:700;letter-spacing:0.04em;color:'+(sessionDone?'rgba(255,255,255,0.8)':colour)+';text-transform:uppercase;">'+label+'</div>' : '')
-      +(doneThatDay>0 && !sessionDone ? '<div style="width:4px;height:4px;border-radius:50%;background:'+colour+';margin-top:1px;"></div>' : '')
       +'</div>';
   }
 
@@ -93,9 +91,6 @@ function buildMonthCalendar(){
       +'<div style="width:8px;height:8px;border-radius:2px;background:'+CAL_DAY_COLOUR[item.t]+';"></div>'
       +'<span>'+item.l+'</span></div>';
   });
-  html += '<div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--grey);">'
-    +'<div style="width:8px;height:8px;border-radius:50%;background:var(--accent);"></div>'
-    +'<span>Partial</span></div>';
   html += '</div>';
 
   el.innerHTML = html;

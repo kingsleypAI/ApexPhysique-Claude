@@ -29,7 +29,7 @@ function buildHomeWeeklyStrip(){
 
   var allDone = typeof getAllDoneData==='function' ? getAllDoneData() : {};
   var DAY_T   = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'};
-  var DAY_COL = {push:'#C8102E',pull:'#aaaaaa',legs:'#777777',rest:'transparent'};
+  var DAY_COL = {push:'var(--accent)',pull:'#aaaaaa',legs:'#777777',rest:'transparent'};
   var DAY_LETTERS = ['M','T','W','T','F','S','S'];
 
   var out = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">';
@@ -44,12 +44,12 @@ function buildHomeWeeklyStrip(){
     var dayDone = allDone[ds] ? Object.values(allDone[ds]).filter(Boolean).length : 0;
     var isToday = (dt.toDateString() === now.toDateString());
     var isFuture = dt > now && !isToday;
-    var trained = dayDone >= 4;
+    var trained = dayDone > 0;
     var isRest = dtype === 'rest';
 
-    var bg = trained ? col : (isToday ? 'rgba(200,16,46,0.22)' : 'var(--surface)');
+    var bg = trained ? col : (isToday ? 'rgba(139,92,246,0.22)' : 'var(--surface)');
     var border = isToday ? '2px solid var(--accent)' : '1px solid var(--border)';
-    var glow = isToday ? 'box-shadow:0 0 0 2px rgba(200,16,46,0.35);' : '';
+    var glow = isToday ? 'box-shadow:0 0 0 2px rgba(139,92,246,0.35);' : '';
     var numCol = trained ? '#fff' : (isToday ? 'var(--accent)' : (isFuture ? 'var(--grey)' : 'var(--mid)'));
     var op = isFuture ? '0.4' : '1';
 
@@ -71,13 +71,13 @@ function buildHomeWeeklyStrip(){
   for(var i2=0;i2<7;i2++){
     var dt2 = new Date(monday); dt2.setDate(monday.getDate()+i2);
     var ds2 = dt2.getFullYear()+'-'+String(dt2.getMonth()+1).padStart(2,'0')+'-'+String(dt2.getDate()).padStart(2,'0');
-    if(allDone[ds2] && Object.values(allDone[ds2]).filter(Boolean).length>=4) totalThisWeek++;
+    if(allDone[ds2] && Object.values(allDone[ds2]).some(Boolean)) totalThisWeek++;
   }
 
   out += '<div style="display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);">'
     +'<div style="text-align:center;flex:1;">'
     +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--white);">'+totalThisWeek+'</div>'
-    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">this week</div>'
+    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">training days</div>'
     +'</div>'
     +'<div style="width:1px;background:var(--border);"></div>'
     +'<div style="text-align:center;flex:1;">'
@@ -118,7 +118,7 @@ function buildHomeMiniCal(){
   var startOffset = (firstDay === 0) ? 6 : firstDay - 1;
   var allDone = typeof getAllDoneData==='function' ? getAllDoneData() : {};
   var DAY_T   = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'};
-  var DAY_COL = {push:'#C8102E',pull:'#aaaaaa',legs:'#777777',rest:'transparent'};
+  var DAY_COL = {push:'var(--accent)',pull:'#aaaaaa',legs:'#777777',rest:'transparent'};
 
   var out = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
     +'<button onclick="homeCalPrev()" style="background:none;border:none;color:var(--grey);font-size:20px;cursor:pointer;padding:0 6px;-webkit-tap-highlight-color:transparent;line-height:1;">‹</button>'
@@ -146,9 +146,9 @@ function buildHomeMiniCal(){
     var trained= dayDone >= 4;
     var isRest = dtype==='rest';
 
-    var bg     = trained ? col : (isToday ? 'rgba(200,16,46,0.22)' : 'var(--surface)');
+    var bg     = trained ? col : (isToday ? 'rgba(139,92,246,0.22)' : 'var(--surface)');
     var border = isToday ? '2px solid var(--accent)' : '1px solid var(--border)';
-    var glow   = isToday ? 'box-shadow:0 0 0 2px rgba(200,16,46,0.35);' : '';
+    var glow   = isToday ? 'box-shadow:0 0 0 2px rgba(139,92,246,0.35);' : '';
     var numCol = trained ? '#fff' : (isToday ? 'var(--accent)' : (fut ? 'var(--grey)' : 'var(--mid)'));
     var op     = fut ? '0.3' : '1';
 
@@ -166,13 +166,13 @@ function buildHomeMiniCal(){
   var totalThisMonth=0;
   for(var dd=1;dd<=daysInMonth;dd++){
     var dds=year+'-'+String(month+1).padStart(2,'0')+'-'+String(dd).padStart(2,'0');
-    if(allDone[dds]&&Object.values(allDone[dds]).filter(Boolean).length>=4) totalThisMonth++;
+    if(allDone[dds]&&Object.values(allDone[dds]).some(Boolean)) totalThisMonth++;
   }
 
   out += '<div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);">'
     +'<div style="text-align:center;flex:1;">'
     +'<div style="font-family:Space+Grotesk,sans-serif;font-size:16px;font-weight:800;color:var(--white);">'+totalThisMonth+'</div>'
-    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">sessions</div>'
+    +'<div style="font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:0.04em;">training days</div>'
     +'</div>'
     +'<div style="width:1px;background:var(--border);"></div>'
     +'<div style="text-align:center;flex:1;">'
