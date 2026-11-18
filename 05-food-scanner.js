@@ -10,9 +10,11 @@ async function offSearch(){
   if(!q||!q.trim())return;
   q=q.trim();
   var el=document.getElementById('offResults');
+  if(!el)return;
   el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Searching…</div>';
   try{
     var r=await fetch('https://world.openfoodfacts.org/cgi/search.pl?search_terms='+encodeURIComponent(q)+'&search_simple=1&action=process&json=1&page_size=8&fields=product_name,brands,nutriments');
+    if(!r.ok)throw new Error('Food search request failed');
     var d=await r.json();
     var prods=(d.products||[]).filter(function(p){var n=p.nutriments||{};return p.product_name&&Number.isFinite(Number(n['energy-kcal_100g']!=null?n['energy-kcal_100g']:n['energy-kj_100g']));});
     if(!prods.length){el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">No results. Try different search or log manually.</div>';return;}
@@ -25,48 +27,41 @@ async function offSearch(){
 async function offStartScan(){
   var wrap=document.getElementById('offScannerWrap');
   var status=document.getElementById('offScanStatus');
-
-  // Check BarcodeDetector support
-  if(!('BarcodeDetector' in window)){
-    // Fallback: show manual input
-    document.getElementById('offBarcodeWrap').style.display='block';
+  var fallback=document.getElementById('offBarcodeWrap');
+  if(_offStream)offStopScan();
+  if(!('BarcodeDetector' in window)||!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    if(fallback)fallback.style.display='block';
     return;
   }
-
-  // Request camera
   try{
-    _offStream=await navigator.mediaDevices.getUserMedia({
-      video:{facingMode:'environment',width:{ideal:1280},height:{ideal:720}}
-    });
+    _offStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment',width:{ideal:1280},height:{ideal:720}}});
+    var video=document.getElementById('offScanVideo');
+    if(!video)throw new Error('Scanner video element is unavailable');
+    video.srcObject=_offStream;
+    await video.play();
+    var detector=new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e','code_128','code_39']});
+    if(wrap)wrap.style.display='block';
+    if(status)status.textContent='Scanning — hold steady over a barcode';
+    var detecting=false,matched=false;
+    _offScanInterval=setInterval(async function(){
+      if(detecting||matched||!video||video.readyState<video.HAVE_ENOUGH_DATA)return;
+      detecting=true;
+      try{
+        var codes=await detector.detect(video);
+        var code=codes&&codes.length?String(codes[0].rawValue||''):'';
+        if(code&&/^\\d{8,14}$/.test(code)){
+          matched=true;
+          clearInterval(_offScanInterval);_offScanInterval=null;
+          if(status)status.textContent='✓ Barcode detected: '+code;
+          offStopScan();
+          offFetchBarcode(code);
+        }
+      }catch(e){}finally{detecting=false;}
+    },300);
   }catch(e){
-    // Camera denied or unavailable — fallback to manual
-    document.getElementById('offBarcodeWrap').style.display='block';
-    return;
+    offStopScan();
+    if(fallback)fallback.style.display='block';
   }
-
-  var video=document.getElementById('offScanVideo');
-  video.srcObject=_offStream;
-  await video.play();
-  wrap.style.display='block';
-  status.textContent='Scanning — hold steady over a barcode';
-
-  // Create detector
-  var detector=new BarcodeDetector({formats:['ean_13','ean_8','upc_a','upc_e','code_128','code_39','qr_code']});
-
-  _offScanInterval=setInterval(async function(){
-    if(video.readyState<video.HAVE_ENOUGH_DATA)return;
-    try{
-      var codes=await detector.detect(video);
-      if(codes&&codes.length>0){
-        var code=codes[0].rawValue;
-        clearInterval(_offScanInterval);
-        _offScanInterval=null;
-        status.textContent='✓ Barcode detected: '+code;
-        setTimeout(function(){offStopScan();},600);
-        offFetchBarcode(code);
-      }
-    }catch(e){}
-  },300);
 }
 
 function offStopScan(){
@@ -80,9 +75,12 @@ function offStopScan(){
 
 async function offFetchBarcode(code){
   var el=document.getElementById('offResults');
+  if(!el)return;
+  if(!/^\\d{8,14}$/.test(String(code||''))){el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Enter a valid 8–14 digit barcode.</div>';return;}
   el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Looking up…</div>';
   try{
-    var r=await fetch('https://world.openfoodfacts.org/api/v0/product/'+code+'.json?fields=product_name,brands,nutriments,serving_size,product_quantity,quantity');
+    var r=await fetch('https://world.openfoodfacts.org/api/v0/product/'+encodeURIComponent(code)+'.json?fields=product_name,brands,nutriments,serving_size,product_quantity,quantity');
+    if(!r.ok)throw new Error('Product lookup failed');
     var d=await r.json();
     if(d.status!==1||!d.product||!d.product.nutriments){
       el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">Product not found. Try searching by name.</div>';
@@ -164,7 +162,8 @@ async function offFetchBarcode(code){
     el.appendChild(card);
 
     document.getElementById('offScanLogBtn').addEventListener('click',function(){
-      var g=parseFloat(document.getElementById('offScanGrams').value)||fullGrams;
+      var g=Number(document.getElementById('offScanGrams').value);
+      if(!Number.isFinite(g)||g<1||g>5000){alert('Enter a serving size between 1 and 5000g/ml.');return;}
       var ratio=g/100;
       var fLabel=nm+' ('+g+(qty&&String(qty).toLowerCase().indexOf('ml')>-1?'ml':'g')+')';
       var fKcal=Math.round(kcal100*ratio);
@@ -243,7 +242,8 @@ function offRenderResults(prods){
 
 function offLogProduct(idx,name,kcal100,prot100,carb100,fat100){
   var gEl=document.getElementById('offG_'+idx);
-  var g=parseFloat(gEl?gEl.value:100)||100;
+  var g=Number(gEl?gEl.value:100);
+  if(!Number.isFinite(g)||g<1||g>2000){alert('Enter a serving size between 1 and 2000g.');return;}
   var f=g/100;
   var kcal=Math.round(kcal100*f);
   var prot=Math.round(prot100*f);
