@@ -828,7 +828,7 @@ function renderCalories(){
         `<div class="cal-entry">
           <div style="flex:1">
             <div class="cal-entry-name">${calEscapeHTML(e.name)}</div>
-            <div class="cal-entry-time">${e.time}</div>
+            <div class="cal-entry-time">${calEscapeHTML(e.time)}</div>
           </div>
           <div class="cal-entry-macro">${e.protein?Math.round(e.protein)+'g':'—'}</div>
           <div class="cal-entry-macro">${e.carbs?Math.round(e.carbs)+'g':'—'}</div>
