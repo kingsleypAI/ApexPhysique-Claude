@@ -129,8 +129,8 @@ async function offFetchBarcode(code){
     card.innerHTML='<div style="height:3px;background:var(--accent);"></div>'
       +'<div style="padding:14px;">'
       +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px;">✓ Barcode matched</div>'
-      +'<div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px;"' + safeNm + '</div>'
-      +(br?'<div style="font-size:11px;color:var(--grey);margin-bottom:10px;"' + safeBr + '</div>':'<div style="margin-bottom:10px;"></div>')
+      +'<div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px;">'+safeNm+'</div>'
+      +(br?'<div style="font-size:11px;color:var(--grey);margin-bottom:10px;">'+safeBr+'</div>':'<div style="margin-bottom:10px;"></div>')
       +'<div style="display:flex;gap:8px;margin-bottom:12px;">'
       +'<div style="flex:1;background:var(--surface);border-radius:7px;padding:10px;text-align:center;">'
       +'<div style="font-size:20px;font-weight:800;color:var(--white);">'+kcal+'</div>'
@@ -205,8 +205,8 @@ function offRenderResults(prods){
     d.className='off-result';
     d.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">'
       +'<div style="flex:1;min-width:0;">'
-      +'<div style="font-size:13px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"' + safeNm + '</div>'
-      +(br?'<div style="font-size:10px;color:var(--grey);margin-top:1px;"' + safeBr + '</div>':'')
+      +'<div style="font-size:13px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+safeNm+'</div>'
+      +(br?'<div style="font-size:10px;color:var(--grey);margin-top:1px;">'+safeBr+'</div>':'')
       +'</div>'
       +'<div style="text-align:right;flex-shrink:0;">'
       +'<div style="font-size:16px;font-weight:700;color:var(--white);">'+kcal+'</div>'
