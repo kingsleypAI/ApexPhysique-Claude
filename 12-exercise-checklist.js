@@ -1,9 +1,15 @@
 // ── EXERCISE CHECKLIST ───────────────────────────────────────────
 var DONE_KEY = 'apx_done_v1';
 
+function readAllDoneData(){
+  var all=typeof forgeSafeJSON==='function'?forgeSafeJSON(localStorage.getItem(DONE_KEY)||'{}',{}):{};
+  if(!all||typeof all!=='object'||Array.isArray(all))return {};
+  if(all.date&&all.done){var migrated={};migrated[all.date]=all.done;localStorage.setItem(DONE_KEY,JSON.stringify(migrated));return migrated;}
+  return all;
+}
 function getDoneData(){
   // Returns today's done object {key: bool}
-  var all = JSON.parse(localStorage.getItem(DONE_KEY)||'{}');
+  var all = readAllDoneData();
   var today = forgeLocalDateKey(new Date());
   // Migrate old format {date, done} to new date-keyed format
   if(all.date && all.done){
@@ -15,14 +21,7 @@ function getDoneData(){
   return {date: today, done: all[today] || {}};
 }
 function getAllDoneData(){
-  var all = JSON.parse(localStorage.getItem(DONE_KEY)||'{}');
-  if(all.date && all.done){
-    var migrated = {};
-    migrated[all.date] = all.done;
-    localStorage.setItem(DONE_KEY, JSON.stringify(migrated));
-    return migrated;
-  }
-  return all;
+  return readAllDoneData();
 }
 function saveDoneData(d){
   var all = getAllDoneData();

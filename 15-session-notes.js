@@ -2,7 +2,8 @@
 var NOTE_KEY = 'apx_notes_v1';
 
 function saveSessionNote(day, text){
-  var notes = JSON.parse(localStorage.getItem(NOTE_KEY)||'{}');
+  var notes = typeof forgeSafeJSON==='function' ? forgeSafeJSON(localStorage.getItem(NOTE_KEY)||'{}',{}) : {};
+  if(!notes||typeof notes!=='object'||Array.isArray(notes))notes={};
   var today = forgeLocalDateKey(new Date());
   if(!notes[today]) notes[today] = {};
   notes[today][day] = text;
@@ -12,7 +13,8 @@ function saveSessionNote(day, text){
 }
 
 function loadSessionNotes(){
-  var notes = JSON.parse(localStorage.getItem(NOTE_KEY)||'{}');
+  var notes = typeof forgeSafeJSON==='function' ? forgeSafeJSON(localStorage.getItem(NOTE_KEY)||'{}',{}) : {};
+  if(!notes||typeof notes!=='object'||Array.isArray(notes))notes={};
   var today = forgeLocalDateKey(new Date());
   var todayNotes = notes[today] || {};
   ['push','pull','legs'].forEach(function(day){

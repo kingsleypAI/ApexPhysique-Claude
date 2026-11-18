@@ -159,7 +159,7 @@ function applyWorkoutView(mode){
           +'<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--grey);">Showing tomorrow\'s '+(tomLabel?tomLabel.name:'workout')+' below so you can preview it ↓</div>'
           +'</div></div>';
       } else {
-        card.innerHTML = '<div style="background:rgba(200,16,46,0.06);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:12px 14px;">'
+        card.innerHTML = '<div style="background:rgba(139,92,246,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:12px 14px;">'
           +'<div style="display:flex;align-items:center;gap:10px;">'
           +'<div style="font-size:28px;line-height:1;" role="img" aria-label="'+dayLabel.name+'">'+(dayLabel.emoji||'🏋️')+'</div>'
           +'<div>'
