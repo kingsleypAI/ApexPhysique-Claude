@@ -177,12 +177,7 @@ tr{border-color:var(--border)!important}
 svg [fill="#C8102E"],svg [fill="#c8102e"],svg [stroke="#C8102E"],svg [stroke="#c8102e"]{fill:#9b79ed!important;stroke:#9b79ed!important}
 a{color:#c1aaff}
 hr{border-color:var(--border)!important}
-@media(min-width:760px){
- .section{padding-top:32px!important}
- #tab-schedule{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.85fr);column-gap:18px;align-items:start}
- #tab-schedule>.sec-header,#tab-schedule>#homeMiniCal,#tab-schedule>#checkinBanner,#tab-schedule>#motivationCard,#tab-schedule>#homePRsCard{grid-column:1/-1}
- #homeMiniCal{grid-column:1/-1}
-}
+@media(min-width:760px){.section{padding-top:32px!important}}
 @media(max-width:560px){
  .section{padding:18px 13px 96px!important}
  #homeMiniCal{border-radius:20px!important}
