@@ -372,10 +372,4 @@ button:focus-visible,.whead:focus-visible,.nav-item:focus-visible{outline:2px so
  #tab-nutrition .mnum{font-size:23px!important}
  #tab-nutrition .mstab{flex:1;min-width:0;padding:9px 8px!important}
 }
-@media(min-width:900px){
- #tab-schedule{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);column-gap:18px;align-items:start}
- #tab-schedule>.sec-header,#tab-schedule>#homeMiniCal{grid-column:1/-1}
- #tab-schedule>#homeMiniCal{width:100%}
- #tab-schedule>div:nth-of-type(2),#tab-schedule>div:nth-of-type(3),#tab-schedule>div:nth-of-type(4),#tab-schedule>div:nth-of-type(5){width:100%}
-}
 @media(prefers-reduced-motion:reduce){#tab-program .wcard,#todayLogBtn,#homeMiniCal button{transition:none!important}}
