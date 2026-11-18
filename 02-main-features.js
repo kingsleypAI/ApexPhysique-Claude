@@ -677,6 +677,8 @@ function calcWorkoutTime(){
 const CAL_KEY = 'apx_calories_v1';
 const CAL_TARGET = 2700;
 const CAL_TARGET_REST = 2400;
+
+function calEscapeHTML(value){return String(value==null?'':value).replace(/[&<>"']/g,function(c){if(c==='&')return '&amp;';if(c==='<')return '&lt;';if(c==='>')return '&gt;';if(c==='"')return '&quot;';return '&#39;';});}
 let calOffset = 0; // 0 = today, -1 = yesterday etc.
 
 function getCalKey(offset){
@@ -825,8 +827,8 @@ function renderCalories(){
       logBody.innerHTML = entries.slice().reverse().map(e =>
         `<div class="cal-entry">
           <div style="flex:1">
-            <div class="cal-entry-name">${e.name}</div>
-            <div class="cal-entry-time">${e.time}</div>
+            <div class="cal-entry-name">${calEscapeHTML(e.name)}</div>
+            <div class="cal-entry-time">${calEscapeHTML(e.time)}</div>
           </div>
           <div class="cal-entry-macro">${e.protein?Math.round(e.protein)+'g':'—'}</div>
           <div class="cal-entry-macro">${e.carbs?Math.round(e.carbs)+'g':'—'}</div>

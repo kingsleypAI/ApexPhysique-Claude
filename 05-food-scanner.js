@@ -2,6 +2,9 @@
 var _offStream = null;
 var _offScanInterval = null;
 
+// Treat product-database text as untrusted before placing it in HTML.
+function offEsc(value){return String(value==null?'':value).replace(/[&<>"']/g,function(c){if(c==='&')return '&amp;';if(c==='<')return '&lt;';if(c==='>')return '&gt;';if(c==='"')return '&quot;';return '&#39;';});}
+
 async function offSearch(){
   var q=(document.getElementById('offSearchInput')||{}).value;
   if(!q||!q.trim())return;
@@ -11,7 +14,7 @@ async function offSearch(){
   try{
     var r=await fetch('https://world.openfoodfacts.org/cgi/search.pl?search_terms='+encodeURIComponent(q)+'&search_simple=1&action=process&json=1&page_size=8&fields=product_name,brands,nutriments');
     var d=await r.json();
-    var prods=(d.products||[]).filter(function(p){return p.product_name&&p.nutriments&&p.nutriments['energy-kcal_100g'];});
+    var prods=(d.products||[]).filter(function(p){var n=p.nutriments||{};return p.product_name&&Number.isFinite(Number(n['energy-kcal_100g']!=null?n['energy-kcal_100g']:n['energy-kj_100g']));});
     if(!prods.length){el.innerHTML='<div style="font-size:12px;color:var(--grey);padding:8px 0;">No results. Try different search or log manually.</div>';return;}
     window._offProds=prods;
     offRenderResults(prods);
@@ -87,7 +90,9 @@ async function offFetchBarcode(code){
     }
     var p=d.product;
     var nm=(p.product_name||'Unknown').substring(0,50);
+    var safeNm=offEsc(nm);
     var br=p.brands?(p.brands.split(',')[0]).trim():'';
+    var safeBr=offEsc(br);
     var nut=p.nutriments;
 
     // Work out the full product amount in grams/ml
@@ -104,7 +109,10 @@ async function offFetchBarcode(code){
     }
 
     // Nutrition per 100g/ml
-    var kcal100=Math.round(nut['energy-kcal_100g']||nut['energy-kcal']||0);
+    var energy100=nut['energy-kcal_100g'];
+    if(energy100==null)energy100=nut['energy-kcal'];
+    if(energy100==null&&nut['energy-kj_100g']!=null)energy100=Number(nut['energy-kj_100g'])/4.184;
+    var kcal100=Math.round(Number(energy100)||0);
     var prot100=Math.round((nut['proteins_100g']||nut['proteins']||0)*10)/10;
     var carb100=Math.round((nut['carbohydrates_100g']||nut['carbohydrates']||0)*10)/10;
     var fat100 =Math.round((nut['fat_100g']||nut['fat']||0)*10)/10;
@@ -126,8 +134,8 @@ async function offFetchBarcode(code){
     card.innerHTML='<div style="height:3px;background:var(--accent);"></div>'
       +'<div style="padding:14px;">'
       +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px;">✓ Barcode matched</div>'
-      +'<div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px;">'+nm+'</div>'
-      +(br?'<div style="font-size:11px;color:var(--grey);margin-bottom:10px;">'+br+'</div>':'<div style="margin-bottom:10px;"></div>')
+      +'<div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:2px;">'+safeNm+'</div>'
+      +(br?'<div style="font-size:11px;color:var(--grey);margin-bottom:10px;">'+safeBr+'</div>':'<div style="margin-bottom:10px;"></div>')
       +'<div style="display:flex;gap:8px;margin-bottom:12px;">'
       +'<div style="flex:1;background:var(--surface);border-radius:7px;padding:10px;text-align:center;">'
       +'<div style="font-size:20px;font-weight:800;color:var(--white);">'+kcal+'</div>'
@@ -151,7 +159,7 @@ async function offFetchBarcode(code){
       +'<input type="number" id="offScanGrams" value="'+fullGrams+'" min="1" max="5000" style="width:70px;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:6px 8px;outline:none;border-radius:5px;text-align:center;">'
       +'<span style="font-size:11px;color:var(--grey);">'+(qty&&String(qty).toLowerCase().indexOf('ml')>-1?'ml':'g')+' (full item: '+sizeStr+')</span>'
       +'</div>'
-      +'<button id="offScanLogBtn" style="width:100%;padding:13px;background:var(--accent);border:none;color:#fff;font-family:Space Grotesk,sans-serif;font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:7px;-webkit-tap-highlight-color:transparent;">Log '+nm.split(' ')[0]+'</button>'
+      +'<button id="offScanLogBtn" style="width:100%;padding:13px;background:var(--accent);border:none;color:#fff;font-family:Space Grotesk,sans-serif;font-size:13px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:7px;-webkit-tap-highlight-color:transparent;">Log '+offEsc(nm.split(' ')[0])+'</button>'
       +'</div>';
     el.appendChild(card);
 
@@ -192,18 +200,22 @@ async function offLookupBarcode(){
 function offRenderResults(prods){
   var el=document.getElementById('offResults');
   var rows=prods.map(function(p,i){
-    var kcal=Math.round(p.nutriments['energy-kcal_100g']||0);
+    var energy=p.nutriments['energy-kcal_100g'];
+    if(energy==null&&p.nutriments['energy-kj_100g']!=null)energy=Number(p.nutriments['energy-kj_100g'])/4.184;
+    var kcal=Math.round(Number(energy)||0);
     var prot=Math.round(p.nutriments['proteins_100g']||0);
     var carb=Math.round(p.nutriments['carbohydrates_100g']||0);
     var fat=Math.round(p.nutriments['fat_100g']||0);
     var nm=(p.product_name||'Unknown food').substring(0,50);
+    var safeNm=offEsc(nm);
     var br=p.brands?(p.brands.split(',')[0]).substring(0,30):'';
+    var safeBr=offEsc(br);
     var d=document.createElement('div');
     d.className='off-result';
     d.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">'
       +'<div style="flex:1;min-width:0;">'
-      +'<div style="font-size:13px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+nm+'</div>'
-      +(br?'<div style="font-size:10px;color:var(--grey);margin-top:1px;">'+br+'</div>':'')
+      +'<div style="font-size:13px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+safeNm+'</div>'
+      +(br?'<div style="font-size:10px;color:var(--grey);margin-top:1px;">'+safeBr+'</div>':'')
       +'</div>'
       +'<div style="text-align:right;flex-shrink:0;">'
       +'<div style="font-size:16px;font-weight:700;color:var(--white);">'+kcal+'</div>'
