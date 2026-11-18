@@ -3,7 +3,7 @@ var _offStream = null;
 var _offScanInterval = null;
 
 // Treat product-database text as untrusted before placing it in HTML.
-function offEsc(value){return String(value==null?'':value).replace(/[&<>\"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c];});}
+function offEsc(value){return String(value==null?'':value).replace(/[&<>"']/g,function(c){if(c==='&')return '&amp;';if(c==='<')return '&lt;';if(c==='>')return '&gt;';if(c==='"')return '&quot;';return '&#39;';});}
 
 async function offSearch(){
   var q=(document.getElementById('offSearchInput')||{}).value;
