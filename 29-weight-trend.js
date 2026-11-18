@@ -3,14 +3,22 @@ function renderWeightTrend(){
     var history = typeof getCheckinHistory==='function' ? getCheckinHistory() : [];
     var svg = document.getElementById('trendSparkline');
     var summary = document.getElementById('trendSummary');
-    if(!svg || !summary || history.length < 2) {
-      if(summary) summary.textContent = history.length ? 'Log more check-ins to see trend' : '';
+    if(!svg || !summary) return;
+    if(history.length < 2) {
+      svg.innerHTML = '';
+      summary.textContent = history.length ? 'Log more check-ins to see trend' : '';
+      summary.style.color = 'var(--accent-text)';
       return;
     }
     // history[0] is newest, so reverse for chronological order
     var chrono = history.slice().reverse();
-    var weights = chrono.map(function(h){ return h.weight; }).filter(function(w){ return w != null; });
-    if(weights.length < 2){ summary.textContent = 'Log more check-ins to see trend'; return; }
+    var weights = chrono.map(function(h){ return Number(h.weight); }).filter(function(w){ return Number.isFinite(w) && w > 0; });
+    if(weights.length < 2){
+      svg.innerHTML = '';
+      summary.textContent = 'Log more check-ins to see trend';
+      summary.style.color = 'var(--accent-text)';
+      return;
+    }
 
     var minW = Math.min.apply(null, weights);
     var maxW = Math.max.apply(null, weights);
