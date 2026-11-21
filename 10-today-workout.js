@@ -26,7 +26,7 @@ function toggleTodayRest(){
   try{
     var today=new Date();
     var isRest=getTodayWorkout()==='rest';
-    setWorkoutRestOverride(today,!isRest);
+    if(setWorkoutRestOverride(today,!isRest)===false) return;
     location.reload();
   }catch(e){}
 }

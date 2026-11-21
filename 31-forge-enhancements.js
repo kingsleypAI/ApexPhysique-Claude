@@ -32,6 +32,17 @@
     for(var i=6;i>=0;i--){var d=new Date(today);d.setDate(today.getDate()-i);weekDays.push(forgeLocalDateKey(d));}
     var weekTrainingDays=weekDays.filter(function(k){return done[k]&&Object.values(done[k]).some(Boolean);}).length;
     var weekExercises=weekDays.reduce(function(n,k){return n+(done[k]?Object.values(done[k]).filter(Boolean).length:0);},0);
+    // Compare completed sessions with the actual dynamic schedule, not a fixed weekday template.
+    var monday=new Date(today.getFullYear(),today.getMonth(),today.getDate(),12);
+    monday.setDate(monday.getDate()-((monday.getDay()+6)%7));
+    var sessionsDue=0,sessionsCompleted=0;
+    for(var day=new Date(monday);day<=today;day.setDate(day.getDate()+1)){
+      if(typeof getWorkoutForDate!=='function' || getWorkoutForDate(day)==='rest') continue;
+      sessionsDue++;
+      var dayKey=forgeLocalDateKey(day),activity=done[dayKey];
+      if(activity&&Object.values(activity).some(Boolean)) sessionsCompleted++;
+    }
+    var scheduleProgress=sessionsDue?sessionsCompleted+'/'+sessionsDue:'—';
     var weights=typeof getCheckinHistory==='function'?getCheckinHistory():forgeSafeJSON(localStorage.getItem('apx_checkin_v1')||'[]',[]);
     var weightText='—';if(weights.length&&weights[0].weight){weightText=Number(weights[0].weight).toFixed(1)+' kg';if(weights.length>1&&weights[1].weight)weightText+=' ('+(Number(weights[0].weight)-Number(weights[1].weight)>0?'+':'')+(Number(weights[0].weight)-Number(weights[1].weight)).toFixed(1)+')';}
     var calories=forgeSafeJSON(localStorage.getItem('apx_calories_v1')||'{}',{}),kcalDays=[],proteinDays=[];
@@ -40,10 +51,10 @@
     var avgProtein=proteinDays.length?Math.round(proteinDays.reduce((a,b)=>a+b,0)/proteinDays.length):null;
     var waterHistory=forgeSafeJSON(localStorage.getItem('forge_water_history_v1')||'{}',{}),waterDays=weekDays.filter(function(k){return waterHistory[k]!=null;}),avgWater=waterDays.length?(waterDays.reduce(function(n,k){return n+(Number(waterHistory[k])||0);},0)/waterDays.length).toFixed(1):null;
     var prLog=forgeSafeJSON(localStorage.getItem('forge_weights_v1')||'{}',{}),prCount=Object.keys(prLog).filter(function(k){return Array.isArray(prLog[k])&&prLog[k].length>0;}).length;
-    metrics.innerHTML='<div class="forge-metric"><strong>'+weekTrainingDays+'/7</strong><span>Training days logged this week</span></div><div class="forge-metric"><strong>'+weekExercises+'</strong><span>Exercises ticked this week</span></div><div class="forge-metric"><strong>'+trainingDays+'</strong><span>Lifetime training days logged</span></div><div class="forge-metric"><strong>'+weightText+'</strong><span>Latest weigh-in · change vs prior</span></div><div class="forge-metric"><strong>'+(avgWater===null?'—':avgWater)+'</strong><span>Glasses of water/day · '+waterDays.length+' logged days</span></div>';
+    metrics.innerHTML='<div class="forge-metric"><strong>'+scheduleProgress+'</strong><span>Scheduled sessions completed</span></div><div class="forge-metric"><strong>'+weekTrainingDays+'/7</strong><span>Training days logged · last 7 days</span></div><div class="forge-metric"><strong>'+weekExercises+'</strong><span>Exercises ticked · last 7 days</span></div><div class="forge-metric"><strong>'+trainingDays+'</strong><span>Lifetime training days logged</span></div><div class="forge-metric"><strong>'+weightText+'</strong><span>Latest weigh-in · change vs prior</span></div><div class="forge-metric"><strong>'+(avgWater===null?'—':avgWater)+'</strong><span>Glasses of water/day · '+waterDays.length+' logged days</span></div>';
     var awards=[{n:'First training day',ok:trainingDays>=1,e:'🏁'},{n:'5 training days',ok:trainingDays>=5,e:'🔥'},{n:'10 training days',ok:trainingDays>=10,e:'⚡'},{n:'25 training days',ok:trainingDays>=25,e:'🥉'},{n:'50 training days',ok:trainingDays>=50,e:'🥈'},{n:'100 training days',ok:trainingDays>=100,e:'🥇'},{n:'Strength tracker',ok:prCount>=3,e:'💪'}];
     ach.innerHTML=awards.map(function(a){return '<span class="forge-achievement'+(a.ok?' earned':'')+'">'+a.e+' '+a.n+(a.ok?' ✓':' 🔒')+'</span>';}).join('');
-    var lines=['LAST 7 DAYS','Training: '+weekTrainingDays+' days with activity logged · '+weekExercises+' exercises ticked','Strength records: '+prCount+' exercises with weight history','Nutrition: '+(avgKcal===null?'No calorie entries logged this week':avgKcal+' kcal/day average across '+kcalDays.length+' logged days')+' · '+(avgProtein===null?'protein not logged':avgProtein+' g/day average'), 'Hydration: '+(avgWater===null?'No water history logged yet':avgWater+' glasses/day across '+waterDays.length+' logged days'), 'Latest bodyweight: '+weightText, 'Focus: aim for consistent sessions, keep training consistently, progress your lifts, and compare like-for-like weekly averages.'];
+    var lines=['THIS WEEK + LAST 7 DAYS','Schedule: '+scheduleProgress+' planned sessions completed so far this week','Training: '+weekTrainingDays+' days with activity logged · '+weekExercises+' exercises ticked','Strength records: '+prCount+' exercises with weight history','Nutrition: '+(avgKcal===null?'No calorie entries logged this week':avgKcal+' kcal/day average across '+kcalDays.length+' logged days')+' · '+(avgProtein===null?'protein not logged':avgProtein+' g/day average'), 'Hydration: '+(avgWater===null?'No water history logged yet':avgWater+' glasses/day across '+waterDays.length+' logged days'), 'Latest bodyweight: '+weightText, 'Focus: aim for consistent sessions, keep training consistently, progress your lifts, and compare like-for-like weekly averages.'];
     latestReport=lines.join('\n');report.textContent=latestReport;
   }
   function copyReport(){if(!latestReport)return;var done=function(){if(typeof showToast==='function')showToast('Weekly summary copied',1800);};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(latestReport).then(done).catch(function(){fallbackCopy();});else fallbackCopy();function fallbackCopy(){var t=document.createElement('textarea');t.value=latestReport;document.body.appendChild(t);t.select();try{document.execCommand('copy');done();}catch(e){}t.remove();}}

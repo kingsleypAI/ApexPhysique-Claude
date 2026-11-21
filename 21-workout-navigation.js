@@ -3,7 +3,8 @@ function goToTodayWorkout(){
   setTimeout(function(){
     try{ setWorkoutView('today'); }catch(e){}
     var todayType = getTodayWorkout();
-    var target = document.getElementById(todayType === 'rest' ? DAY_TO_WORKOUT[(new Date().getDay()+1)%7] : todayType);
+    var targetType = todayType === 'rest' ? getNextWorkoutScheduleEntry(new Date()).type : todayType;
+    var target = document.getElementById(targetType);
     if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
   }, 150);
 }
