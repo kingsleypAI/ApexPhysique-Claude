@@ -133,3 +133,28 @@ test('a previously saved Saturday rest day can be corrected back to Friday', () 
   assert.equal(h.api.getWorkoutRestDayWeekday('2026-11-21T12:00:00'), 5);
   assert.equal(h.api.getWorkoutScheduleEntry('2026-11-20T12:00:00').type, 'rest');
 });
+
+
+test('weekly rest-day picker does not refresh over an in-progress selection', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(html.includes('id="weeklyRestDaySelect" onchange="previewWeeklyRestDaySelection(this.value)"'));
+  assert.ok(!html.includes('id="weeklyRestDaySelect" onfocus="refreshWeeklyRestDayControl()"'));
+  assert.ok(html.includes('onclick="applyWeeklyRestDaySelection()"'));
+});
+
+test('picker preview leaves persisted rest day unchanged until Apply', () => {
+  const h = createHarness('2026-11-21T12:00:00');
+  const status = { textContent: '' };
+  const select = { value: '5' };
+  h.api.document = { getElementById(id) {
+    if (id === 'weeklyRestDayStatus') return status;
+    if (id === 'weeklyRestDaySelect') return select;
+    return null;
+  }};
+  h.api.previewWeeklyRestDaySelection('5');
+  assert.ok(status.textContent.includes('Friday selected'));
+  assert.equal(h.api.getWorkoutRestDayWeekday('2026-11-21T12:00:00'), 4);
+  assert.equal(h.api.applyWeeklyRestDaySelection(), true);
+  assert.equal(h.api.getWorkoutRestDayWeekday('2026-11-21T12:00:00'), 5);
+  assert.equal(h.reloads, 1);
+});
