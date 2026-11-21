@@ -298,7 +298,11 @@ function logToday(){
 }
 
 function logDay(week, dayIdx){
-  if(DTYPE[dayIdx]==='rest') return;
+  if(week===getCurrentWeek()){
+    var monday=new Date();monday.setHours(12,0,0,0);monday.setDate(monday.getDate()-((monday.getDay()+6)%7));
+    var targetDate=new Date(monday);targetDate.setDate(monday.getDate()+dayIdx);
+    if(getWorkoutForDate(targetDate)==='rest') return;
+  } else if(DTYPE[dayIdx]==='rest') return;
   const key='w'+week+'d'+dayIdx;
   tData[key]=!tData[key];
   saveAndRefresh();
