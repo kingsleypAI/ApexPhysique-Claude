@@ -98,3 +98,20 @@ test('legacy Thursday training override migrates to Friday rest', () => {
   assert.equal(h.api.getWorkoutScheduleEntry('2026-11-19T12:00:00').id, 'pushB');
   assert.equal(h.api.getWorkoutScheduleEntry('2026-11-20T12:00:00').type, 'rest');
 });
+
+test('current week can record the actual rest day retrospectively when no workout is logged', () => {
+  const h = createHarness('2026-11-21T12:00:00');
+  assert.equal(h.api.setWorkoutRestDay('2026-11-20T12:00:00'), true);
+  assert.equal(h.api.getWorkoutScheduleEntry('2026-11-19T12:00:00').id, 'pushB');
+  assert.equal(h.api.getWorkoutScheduleEntry('2026-11-20T12:00:00').type, 'rest');
+  assert.equal(h.api.getWorkoutScheduleEntry('2026-11-21T12:00:00').id, 'pullB');
+  assert.equal(h.api.getWorkoutScheduleEntry('2026-11-22T12:00:00').id, 'legsB');
+});
+
+test('current-week retrospective rest-day correction is blocked when a workout is logged that day', () => {
+  const h = createHarness('2026-11-21T12:00:00');
+  h.values.set('apx_done_v1', JSON.stringify({ '2026-11-20': { 'bench-press': true } }));
+  assert.equal(h.api.setWorkoutRestDay('2026-11-20T12:00:00'), false);
+  assert.equal(h.api.getWorkoutScheduleEntry('2026-11-20T12:00:00').id, 'pushB');
+  assert.equal(h.alerts.length, 1);
+});
