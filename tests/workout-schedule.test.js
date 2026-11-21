@@ -115,3 +115,19 @@ test('current-week retrospective rest-day correction is blocked when a workout i
   assert.equal(h.api.getWorkoutScheduleEntry('2026-11-20T12:00:00').id, 'pushB');
   assert.equal(h.alerts.length, 1);
 });
+
+
+test('weekday selector values map to the correct Monday-first calendar dates', () => {
+  const h = createHarness('2026-11-21T12:00:00');
+  assert.equal(h.api.moveWorkoutRestDayToWeekday(5), true); // Friday (JS weekday)
+  assert.equal(h.api.getWorkoutRestDayWeekday('2026-11-21T12:00:00'), 5);
+  assert.equal(h.api.getWorkoutScheduleEntry('2026-11-20T12:00:00').type, 'rest');
+  assert.equal(h.api.getWorkoutScheduleEntry('2026-11-21T12:00:00').id, 'pullB');
+});
+
+test('same-week rest day can be corrected from Saturday back to Friday', () => {
+  const h = createHarness('2026-11-21T12:00:00');
+  assert.equal(h.api.setWorkoutRestDay('2026-11-21T12:00:00'), true);
+  assert.equal(h.api.setWorkoutRestDay('2026-11-20T12:00:00'), true);
+  assert.equal(h.api.getWorkoutRestDayWeekday('2026-11-21T12:00:00'), 5);
+});
