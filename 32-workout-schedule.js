@@ -80,11 +80,21 @@
     if(!Number.isFinite(d.getTime())){alert('Choose a valid day.');return false;}
     d=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);
     var today=new Date();today.setHours(0,0,0,0);
-    if(d<today){alert('Past days cannot be changed. Choose today or a day still ahead this week.');return false;}
-    var monday=mondayOf(d),restDays=readRestDays();
+    var monday=mondayOf(d),todayMonday=mondayOf(today),restDays=readRestDays();
+    var isCurrentWeek=key(monday)===key(todayMonday);
     var currentRest=validRestDay(monday,restDays[key(monday)])||new Date(monday.getFullYear(),monday.getMonth(),monday.getDate()+3,12);
-    if(key(currentRest)!==key(d) && currentRest<today){
-      alert('This week’s rest day has already passed. Keep it as it is and choose a new day next week.');
+    // Allow a one-time correction within the current week so the user can
+    // record the rest day they actually took, even if it was yesterday.
+    if(d<today && !isCurrentWeek){alert('Past weeks cannot be changed.');return false;}
+    if(d<today){
+      var done=forgeSafeJSON(localStorage.getItem('apx_done_v1')||'{}',{});
+      if(done[key(d)] && Object.values(done[key(d)]).some(Boolean)){
+        alert('A workout is already logged on that day, so it cannot be changed to a rest day.');
+        return false;
+      }
+    }
+    if(currentRest<today && d>=today && key(currentRest)!==key(d)){
+      alert('This week’s rest day has already passed. You can only correct it to a day you actually rested earlier this week.');
       return false;
     }
     restDays[key(monday)]=key(d);
@@ -119,16 +129,23 @@
     var today=new Date();today.setHours(0,0,0,0);
     var monday=mondayOf(today),restDate=new Date(monday);
     restDate.setDate(restDate.getDate()+((selected+6)%7));
+    var saved=readRestDays(),hasExplicitChoice=!!saved[key(monday)];
     var restAlreadyPassed=restDate<today;
-    select.disabled=restAlreadyPassed;
+    // A default rest day that has passed can still be corrected once this
+    // week; after an explicit past day is saved, lock the control.
+    var locked=restAlreadyPassed && hasExplicitChoice;
+    select.disabled=locked;
     var apply=document.getElementById('weeklyRestDayApply');
-    if(apply) apply.disabled=restAlreadyPassed;
-    if(status && restAlreadyPassed) status.textContent=names[selected]+' rest day already used · next week resets to Thursday';
+    if(apply) apply.disabled=locked;
+    if(status){
+      if(locked) status.textContent=names[selected]+' was your rest day this week · resets to Thursday next week';
+      else if(restAlreadyPassed) status.textContent=names[selected]+' default has passed · you can still record the day you actually rested this week';
+    }
     Array.prototype.forEach.call(select.options,function(option){
-      var day=new Date(monday);day.setDate(day.getDate()+Number(option.value));
-      option.disabled=day<today;
+      var day=new Date(monday);day.setDate(day.getDate()+((Number(option.value)+6)%7));
+      var dayKey=key(day),done=forgeSafeJSON(localStorage.getItem('apx_done_v1')||'{}',{});
+      option.disabled=day<today && !!(done[dayKey] && Object.values(done[dayKey]).some(Boolean));
     });
-    // Keep the current saved choice visible even if it has already passed.
     select.value=String(selected);
   };
   // Compatibility API used by the existing Today toggle. Switching today's
