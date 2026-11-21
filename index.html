@@ -309,14 +309,14 @@
   <!-- (duplicate sessions/streak row removed — shown in compact strip above) -->
 
   <!-- WEEK SPLIT -->
-  <div class="home-split">
-    <div class="home-split-day train" onclick="goToWorkout('push')"><span class="home-split-d">Mon</span><span class="home-split-t">Push</span></div>
-    <div class="home-split-day train" onclick="goToWorkout('pull')"><span class="home-split-d">Tue</span><span class="home-split-t">Pull</span></div>
-    <div class="home-split-day train" onclick="goToWorkout('legs')"><span class="home-split-d">Wed</span><span class="home-split-t">Legs</span></div>
+  <div class="home-split" id="homeWeeklySplit" aria-label="This week's workout schedule">
+    <div class="home-split-day train" onclick="goToWorkout('push')"><span class="home-split-d">Mon</span><span class="home-split-t">Push A</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('pull')"><span class="home-split-d">Tue</span><span class="home-split-t">Pull A</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('legs')"><span class="home-split-d">Wed</span><span class="home-split-t">Legs A</span></div>
     <div class="home-split-day rest"><span class="home-split-d">Thu</span><span class="home-split-t">Rest</span></div>
-    <div class="home-split-day train" onclick="goToWorkout('push')"><span class="home-split-d">Fri</span><span class="home-split-t">Push</span></div>
-    <div class="home-split-day train" onclick="goToWorkout('pull')"><span class="home-split-d">Sat</span><span class="home-split-t">Pull</span></div>
-    <div class="home-split-day train" onclick="goToWorkout('legs')"><span class="home-split-d">Sun</span><span class="home-split-t">Legs</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('push')"><span class="home-split-d">Fri</span><span class="home-split-t">Push B</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('pull')"><span class="home-split-d">Sat</span><span class="home-split-t">Pull B</span></div>
+    <div class="home-split-day train" onclick="goToWorkout('legs')"><span class="home-split-d">Sun</span><span class="home-split-t">Legs B</span></div>
   </div>
 
   <!-- WATER + CARDIO -->
@@ -401,7 +401,7 @@
   <div class="home-rules">
     <div class="home-rule"><span class="home-rule-n">01</span><div><div class="home-rule-title">Consistency above all</div><div class="home-rule-sub">30 minutes done beats 90 minutes skipped every time. Use ⚡ 30-min mode in Workouts when time is short — same stimulus, supersets, half the time.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">02</span><div><div class="home-rule-title">Progressive overload</div><div class="home-rule-sub">Add weight or reps every single week. You have huge room to grow fast.</div></div></div>
-    <div class="home-rule"><span class="home-rule-n">03</span><div><div class="home-rule-title">Rest is productive</div><div class="home-rule-sub">Thursday off. 8+ hours sleep. Muscle is built during recovery.</div></div></div>
+    <div class="home-rule"><span class="home-rule-n">03</span><div><div class="home-rule-title">Rest is productive</div><div class="home-rule-sub" id="homeRestRuleSub">Your selected rest day off. 8+ hours sleep. Muscle is built during recovery.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">04</span><div><div class="home-rule-title">Eat to cut &amp; build</div><div class="home-rule-sub">~2,495 kcal actual intake (2 scoops/shake confirmed) · 217g protein daily, already on target. Deficit smaller than planned (~470 kcal/day, ~0.4kg/wk) but protein is excellent — worth the trade-off.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">05</span><div><div class="home-rule-title">Sleep is non-negotiable</div><div class="home-rule-sub">7+ hours. Cortisol from poor sleep directly causes belly and lower back fat storage and retention. The single most underrated factor in stubborn fat loss.</div></div></div>
     <div class="home-rule"><span class="home-rule-n">06</span><div><div class="home-rule-title">Belly &amp; love handles — the truth</div><div class="home-rule-sub">You cannot target fat loss to these areas. But the deficit + daily walks + calorie cycling is already the optimal protocol. The oblique twists in leg raises build the muscle underneath. Fat clears from these areas last — typically weeks 8–12.</div></div></div>
