@@ -275,13 +275,13 @@ function saveAndRefresh(){
 // ── TODAY CARD ─────────────────────────────────────────────────────────────────
 const DAY_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const WORKOUT_SCHEDULE=[
-  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'fa-dumbbell', emoji:'🏋️', type:'workout'},
-  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'fa-people-pulling', emoji:'💪', type:'workout'},
-  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'fa-person-running', emoji:'🦵', type:'workout'},
+  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'fa-dumbbell', emoji:'🏋️', type:'push'},
+  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'fa-people-pulling', emoji:'💪', type:'pull'},
+  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'fa-person-running', emoji:'🦵', type:'legs'},
   {name:'Rest Day',  sub:'Recovery · Eat well · Sleep', icon:'fa-bed', emoji:'😴', type:'rest'},
-  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'fa-dumbbell', emoji:'🏋️', type:'workout'},
-  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'fa-people-pulling', emoji:'💪', type:'workout'},
-  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'fa-person-running', emoji:'🦵', type:'workout'},
+  {name:'Push Day',  sub:'Chest · Shoulders · Triceps', icon:'fa-dumbbell', emoji:'🏋️', type:'push'},
+  {name:'Pull Day',  sub:'Back · Lats · Biceps',        icon:'fa-people-pulling', emoji:'💪', type:'pull'},
+  {name:'Leg Day',   sub:'Quads · Hamstrings · Core',   icon:'fa-person-running', emoji:'🦵', type:'legs'},
 ];
 // Map JS getDay() (0=Sun) to our Mon-first index (0=Mon..6=Sun)
 function jsToIdx(jsDay){return jsDay===0?6:jsDay-1;}
@@ -308,18 +308,11 @@ function logDay(week, dayIdx){
 function renderTodayCard(){
   const jsDay=new Date().getDay();
   const idx=jsToIdx(jsDay);
-  // Respect a manual "swap today" override if one is set for today's date,
-  // mapping the override's workout type to the matching WORKOUT_SCHEDULE entry
-  var info = WORKOUT_SCHEDULE[idx];
-  try{
-    var overrides = JSON.parse(localStorage.getItem('forge_day_override')||'{}');
-    var todayStr = forgeLocalDateKey(new Date());
-    if(overrides[todayStr]){
-      var typeToInfo = {push:0, pull:1, legs:2, rest:3};
-      var overrideIdx = typeToInfo[overrides[todayStr]];
-      if(overrideIdx !== undefined) info = WORKOUT_SCHEDULE[overrideIdx];
-    }
-  }catch(e){}
+  // The home hero must use the same dynamic schedule as the calendar,
+  // workout screen and rest-day selector — never the legacy weekday template.
+  var scheduleEntry = getWorkoutScheduleEntry(new Date());
+  var infoByType = {push:WORKOUT_SCHEDULE[0],pull:WORKOUT_SCHEDULE[1],legs:WORKOUT_SCHEDULE[2],rest:WORKOUT_SCHEDULE[3]};
+  var info = infoByType[scheduleEntry.type] || WORKOUT_SCHEDULE[0];
   const curWeek=getCurrentWeek();
   const phase=getCurrentPhase(curWeek);
   const key='w'+curWeek+'d'+idx;
@@ -361,11 +354,13 @@ function renderTodayCard(){
   const strip=document.getElementById('todayWeekStrip');
   if(!strip) return;
   strip.innerHTML='';
+  var weekMonday=new Date();weekMonday.setHours(12,0,0,0);weekMonday.setDate(weekMonday.getDate()-((weekMonday.getDay()+6)%7));
   for(let d=0;d<7;d++){
     const dk='w'+curWeek+'d'+d;
     const done=!!tData[dk];
     const isToday=(d===idx);
-    const isRestD=(DTYPE[d]==='rest');
+    var stripDate=new Date(weekMonday);stripDate.setDate(weekMonday.getDate()+d);
+    const isRestD=(getWorkoutForDate(stripDate)==='rest');
     const div=document.createElement('div');
     let cls='today-strip-day';
     if(isToday) cls+=' sd-today';
