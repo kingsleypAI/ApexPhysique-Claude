@@ -76,9 +76,14 @@
   };
   // Select the one recovery day for the date's Monday-Sunday week.
   window.setWorkoutRestDay=function(date){
-    var d=date instanceof Date?date:new Date(date),monday=mondayOf(d),restDays=readRestDays();
+    var d=date instanceof Date?date:new Date(date);
+    d=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);
+    var today=new Date();today.setHours(0,0,0,0);
+    if(d<today){alert('Past days cannot be changed. Choose today or a day still ahead this week.');return false;}
+    var monday=mondayOf(d),restDays=readRestDays();
     restDays[key(monday)]=key(d);
     saveRestDays(restDays);
+    return true;
   };
   window.getWorkoutRestDayWeekday=function(date){
     var d=date instanceof Date?date:new Date(date),monday=mondayOf(d),restDays=readRestDays();
@@ -91,10 +96,28 @@
     var today=new Date();today.setHours(0,0,0,0);
     var monday=mondayOf(today),target=new Date(monday);
     target.setDate(target.getDate()+n);
-    if(target<today){alert('Choose today or a day still ahead this week.');return false;}
-    window.setWorkoutRestDay(target);
+    if(!window.setWorkoutRestDay(target)) return false;
     location.reload();
     return true;
+  };
+  window.refreshWeeklyRestDayControl=function(){
+    var select=document.getElementById('weeklyRestDaySelect');
+    if(!select) return;
+    var selected=window.getWorkoutRestDayWeekday(new Date());
+    select.value=String(selected);
+    var status=document.getElementById('weeklyRestDayStatus');
+    if(status){
+      var names=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      status.textContent=names[selected]+' is your rest day this week · resets to Thursday next week';
+    }
+    var today=new Date();today.setHours(0,0,0,0);
+    var monday=mondayOf(today);
+    Array.prototype.forEach.call(select.options,function(option){
+      var day=new Date(monday);day.setDate(day.getDate()+Number(option.value));
+      option.disabled=day<today;
+    });
+    // Keep the current saved choice visible even if it has already passed.
+    select.value=String(selected);
   };
   // Compatibility API used by the existing Today toggle. If today's rest is
   // switched to training, the recovery slot moves to the next day (or Saturday
@@ -102,14 +125,18 @@
   window.setWorkoutRestOverride=function(date,makeRest){
     var d=date instanceof Date?date:new Date(date),monday=mondayOf(d);
     var restDays=readRestDays(),current=validRestDay(monday,restDays[key(monday)])||new Date(monday.getFullYear(),monday.getMonth(),monday.getDate()+3,12);
-    if(makeRest){
-      restDays[key(monday)]=key(d);
-    }else if(key(d)===key(current)){
+    if(makeRest) return window.setWorkoutRestDay(d);
+    if(key(d)===key(current)){
       var moved=new Date(d);
-      moved.setDate(moved.getDate()+(d.getDay()===0?-1:1));
+      moved.setDate(moved.getDate()+1);
+      if(weekKey(moved)!==key(monday)){
+        alert('There are no training days left this week to move your rest day to. Your Sunday rest day will stay in place.');
+        return false;
+      }
       restDays[key(monday)]=key(moved);
+      saveRestDays(restDays);
     }
-    saveRestDays(restDays);
+    return true;
   };
   window.getWorkoutVariantForDate=function(date){
     var entry=at(date);
