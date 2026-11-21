@@ -62,7 +62,8 @@
     var today=new Date();today.setHours(12,0,0,0);
     Object.keys(restDays).forEach(function(k){
       var monday=new Date(k+'T12:00:00');
-      if(!Number.isFinite(monday.getTime()) || monday<ANCHOR || monday-today>180*86400000) delete restDays[k];
+      var anchorDay=new Date(ANCHOR.getFullYear(),ANCHOR.getMonth(),ANCHOR.getDate(),0,0,0,0);
+      if(!Number.isFinite(monday.getTime()) || monday<anchorDay || monday-today>180*86400000) delete restDays[k];
     });
     localStorage.setItem(KEY,JSON.stringify(restDays));
   }
@@ -78,6 +79,11 @@
     var d=date instanceof Date?date:new Date(date),monday=mondayOf(d),restDays=readRestDays();
     restDays[key(monday)]=key(d);
     saveRestDays(restDays);
+  };
+  window.getWorkoutRestDayWeekday=function(date){
+    var d=date instanceof Date?date:new Date(date),monday=mondayOf(d),restDays=readRestDays();
+    var rest=validRestDay(monday,restDays[key(monday)])||new Date(monday.getFullYear(),monday.getMonth(),monday.getDate()+3,12);
+    return rest.getDay();
   };
   window.moveWorkoutRestDayToWeekday=function(weekday){
     var n=Number(weekday);
