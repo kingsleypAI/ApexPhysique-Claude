@@ -3,6 +3,7 @@
 (function(){
   'use strict';
   var KEY='forge_weekly_rest_days_v1';
+  var LEGACY_KEY='forge_schedule_overrides_v2';
   var ANCHOR=new Date(2026,10,16,12,0,0,0); // Monday: Push A
   var SESSIONS=['pushA','pullA','legsA','pushB','pullB','legsB'];
   var BASE={0:'legsB',1:'pushA',2:'pullA',3:'legsA',4:'rest',5:'pushB',6:'pullB'};
@@ -17,13 +18,21 @@
     var saved=forgeSafeJSON(localStorage.getItem(KEY)||'{}',{});
     // Migrate an existing one-off rest choice without deleting its original history.
     var legacy=forgeSafeJSON(localStorage.getItem('forge_day_override')||'{}',{});
-    Object.keys(legacy).forEach(function(k){
-      if(legacy[k]!=='rest') return;
-      var parsed=new Date(k+'T12:00:00');
-      if(!Number.isFinite(parsed.getTime())) return;
-      var wk=weekKey(parsed);
-      if(!saved[wk]) saved[wk]=key(parsed);
-    });
+    var previous=forgeSafeJSON(localStorage.getItem(LEGACY_KEY)||'{}',{});
+    function migrate(map,allowTrain){
+      Object.keys(map).forEach(function(k){
+        var value=map[k];
+        if(value!=='rest' && !(allowTrain && value==='train')) return;
+        var parsed=new Date(k+'T12:00:00');
+        if(!Number.isFinite(parsed.getTime())) return;
+        var wk=weekKey(parsed);
+        if(saved[wk]) return;
+        if(value==='rest') saved[wk]=key(parsed);
+        else if(parsed.getDay()===4){parsed.setDate(parsed.getDate()+1);saved[wk]=key(parsed);}
+      });
+    }
+    migrate(legacy,false);
+    migrate(previous,true);
     return saved;
   }
   function details(id){
@@ -69,6 +78,17 @@
     var d=date instanceof Date?date:new Date(date),monday=mondayOf(d),restDays=readRestDays();
     restDays[key(monday)]=key(d);
     saveRestDays(restDays);
+  };
+  window.moveWorkoutRestDayToWeekday=function(weekday){
+    var n=Number(weekday);
+    if(!Number.isInteger(n) || n<0 || n>6) return false;
+    var today=new Date();today.setHours(0,0,0,0);
+    var monday=mondayOf(today),target=new Date(monday);
+    target.setDate(target.getDate()+n);
+    if(target<today){alert('Choose today or a day still ahead this week.');return false;}
+    window.setWorkoutRestDay(target);
+    location.reload();
+    return true;
   };
   // Compatibility API used by the existing Today toggle. If today's rest is
   // switched to training, the recovery slot moves to the next day (or Saturday
