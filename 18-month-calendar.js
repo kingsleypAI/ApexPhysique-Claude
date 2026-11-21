@@ -55,7 +55,7 @@ function buildMonthCalendar(){
   for(var d=1;d<=daysInMonth;d++){
     var date = new Date(year, month, d);
     var jsDay = date.getDay();
-    var dayType = CAL_DAY_TYPE[jsDay] || 'rest';
+    var dayType = getWorkoutForDate(date);
     var colour  = CAL_DAY_COLOUR[dayType] || 'var(--border2)';
     var label   = CAL_DAY_LABEL[dayType]  || '';
     var dateStr = year+'-'+(month+1<10?'0'+(month+1):(month+1))+'-'+(d<10?'0'+d:d);

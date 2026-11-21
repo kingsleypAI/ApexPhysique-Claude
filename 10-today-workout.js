@@ -19,68 +19,14 @@ var DAY_LABELS = {
 var DAY_NAMES_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 function getTodayWorkout(){
-  // Check for a one-off manual override for today's date (set via the
-  // "Swap today" button) before falling back to the default weekly schedule
-  try{
-    var overrides = JSON.parse(localStorage.getItem('forge_day_override')||'{}');
-    var todayStr = forgeLocalDateKey(new Date());
-    if(overrides[todayStr]) return overrides[todayStr];
-  }catch(e){}
-  var jsDay = new Date().getDay();
-  return DAY_TO_WORKOUT[jsDay] || 'rest';
+  return getWorkoutForDate(new Date());
 }
 
 function toggleTodayRest(){
   try{
-    var overrides = JSON.parse(localStorage.getItem('forge_day_override')||'{}');
-    var today = new Date();
-    var todayStr = forgeLocalDateKey(today);
-    var jsDay = today.getDay();
-    var defaultType = DAY_TO_WORKOUT[jsDay] || 'rest';
-    var currentType = getTodayWorkout();
-
-    if(currentType === 'rest'){
-      // Swapping a rest day TO training: cascade the rest of this week
-      // forward by one day, so nothing gets skipped or doubled up —
-      // today takes what would normally be tomorrow's session, tomorrow
-      // takes what the day after would normally be, and so on through
-      // Sunday. The week resets to its normal pattern the following Monday.
-      // Days to shift, counting today through Sunday inclusive. Sunday swapping to
-      // training has nowhere left to cascade into (the week already ends there), so
-      // it just becomes a normal training day with no knock-on effect.
-      var daysLeftInWeek = (jsDay === 0) ? 0 : (7 - jsDay) + 1; // e.g. Thursday(4) -> 4 (Thu,Fri,Sat,Sun)
-      for(var i=0; i<daysLeftInWeek; i++){
-        var d = new Date(today);
-        d.setDate(today.getDate() + i);
-        var dStr = forgeLocalDateKey(d);
-        var sourceDay = (jsDay + i + 1) % 7; // "tomorrow relative to this slot"'s normal workout
-        // The final day of the shifted run (the week's last day, Sunday) absorbs the
-        // original rest slot that got pushed out, closing the cascade cleanly rather
-        // than doubling up whatever Sunday's own normal workout happened to be
-        overrides[dStr] = (i === daysLeftInWeek-1) ? 'rest' : (DAY_TO_WORKOUT[sourceDay] || 'rest');
-      }
-    } else {
-      // Swapping a training day TO rest: just rest today, cascade doesn't
-      // apply since the review requested only training-day backfills
-      overrides[todayStr] = 'rest';
-    }
-
-    localStorage.setItem('forge_day_override', JSON.stringify(overrides));
-    // Clean up overrides older than a week back, so storage doesn't grow forever.
-    // Compare calendar dates only (midnight-to-midnight), not raw millisecond
-    // differences — "today" carries the current time-of-day while override keys
-    // parse as midnight, so a naive ms diff can misjudge a genuinely future date
-    // as already past by up to half a day.
-    var todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    var cleaned = {};
-    Object.keys(overrides).forEach(function(d){
-      // diff = today minus the override's date: positive for a date in the past,
-      // negative for a date still ahead. Keep yesterday (diff=1) through 8 days
-      // ahead (diff=-8), which comfortably covers this week's whole cascade.
-      var diff = Math.round((todayMidnight - new Date(d)) / 86400000);
-      if(diff >= -8 && diff <= 1) cleaned[d] = overrides[d];
-    });
-    localStorage.setItem('forge_day_override', JSON.stringify(cleaned));
+    var today=new Date();
+    var isRest=getTodayWorkout()==='rest';
+    setWorkoutRestOverride(today,!isRest);
     location.reload();
   }catch(e){}
 }
@@ -125,8 +71,7 @@ function applyWorkoutView(mode){
   // Failsafe: on rest day, show tomorrow's workout type instead of nothing
   var displayType = todayType;
   if(todayType === 'rest'){
-    var tomorrowDay = (jsDay + 1) % 7;
-    displayType = DAY_TO_WORKOUT[tomorrowDay] || 'push';
+    displayType = getNextWorkoutScheduleEntry(new Date()).type || 'push';
   }
 
   if(mode === 'today'){
