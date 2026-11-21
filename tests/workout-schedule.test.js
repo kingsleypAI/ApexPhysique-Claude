@@ -158,3 +158,16 @@ test('picker preview leaves persisted rest day unchanged until Apply', () => {
   assert.equal(h.api.getWorkoutRestDayWeekday('2026-11-21T12:00:00'), 5);
   assert.equal(h.reloads, 1);
 });
+
+
+test('home weekly split renders the live A/B session and movable rest-day assignments', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  const home = fs.readFileSync(path.join(__dirname, '..', '20-home-calendar.js'), 'utf8');
+  const main = fs.readFileSync(path.join(__dirname, '..', '02-main-features.js'), 'utf8');
+  assert.ok(html.includes('id="homeWeeklySplit"'));
+  assert.ok(html.includes('id="homeRestRuleSub"'));
+  assert.ok(home.includes('getWorkoutScheduleEntry(date)'));
+  assert.ok(home.includes("entry.variant.toUpperCase()"));
+  assert.ok(home.includes('getWorkoutRestDayWeekday(now)'));
+  assert.ok(main.includes('renderHomeWeeklySplit()'));
+});

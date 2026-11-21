@@ -913,6 +913,7 @@ window.addEventListener('DOMContentLoaded',function(){
   try{renderHomePRs();}catch(e){}
   try{buildMonthCalendar();}catch(e){}
   try{buildHomeWeeklyStrip();}catch(e){}
+  try{renderHomeWeeklySplit();}catch(e){}
   try{updateMealRotation();}catch(e){}
   try{updateCheckinCountdown();}catch(e){}
   try{updateHomeRealStats();}catch(e){}
