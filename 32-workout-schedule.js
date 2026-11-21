@@ -118,6 +118,29 @@
     location.reload();
     return true;
   };
+  // Keep an in-progress dropdown choice separate from the saved value.
+  // Mobile native pickers can refocus when closing; never refresh on focus.
+  window.previewWeeklyRestDaySelection=function(weekday){
+    var n=Number(weekday),names=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var status=document.getElementById('weeklyRestDayStatus');
+    if(status && Number.isInteger(n) && n>=0 && n<=6){
+      status.textContent=names[n]+' selected · tap APPLY to save';
+    }
+  };
+  window.applyWeeklyRestDaySelection=function(){
+    var select=document.getElementById('weeklyRestDaySelect');
+    if(!select) return false;
+    var n=Number(select.value),names=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var status=document.getElementById('weeklyRestDayStatus');
+    if(!Number.isInteger(n) || n<0 || n>6){
+      if(status) status.textContent='Choose a valid rest day, then tap APPLY';
+      return false;
+    }
+    if(status) status.textContent='Saving '+names[n]+' as your rest day…';
+    var saved=window.moveWorkoutRestDayToWeekday(n);
+    if(!saved && status) status.textContent='Not saved · choose a valid day and try APPLY again';
+    return saved;
+  };
   window.refreshWeeklyRestDayControl=function(){
     var select=document.getElementById('weeklyRestDaySelect');
     if(!select) return;
