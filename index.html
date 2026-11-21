@@ -99,11 +99,12 @@
     <div style="padding:0 12px 12px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <label for="weeklyRestDaySelect" style="font-size:10px;color:var(--grey);white-space:nowrap;">Weekly rest day</label>
-        <select id="weeklyRestDaySelect" onfocus="this.value=getWorkoutRestDayWeekday(new Date())" style="flex:1;min-width:0;padding:8px;background:var(--surface);border:1px solid var(--border2);border-radius:7px;color:var(--white);font-size:11px;">
+        <select id="weeklyRestDaySelect" onfocus="refreshWeeklyRestDayControl()" style="flex:1;min-width:0;padding:8px;background:var(--surface);border:1px solid var(--border2);border-radius:7px;color:var(--white);font-size:11px;">
           <option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4" selected>Thursday (default)</option><option value="5">Friday</option><option value="6">Saturday</option><option value="0">Sunday</option>
         </select>
         <button onclick="moveWorkoutRestDayToWeekday(document.getElementById('weeklyRestDaySelect').value)" style="padding:8px 10px;background:var(--accent);border:0;border-radius:7px;color:#fff;font-size:10px;font-weight:700;white-space:nowrap;">APPLY</button>
       </div>
+      <div id="weeklyRestDayStatus" aria-live="polite" style="margin-top:6px;text-align:center;font-size:9px;color:var(--grey);">Thursday is your rest day this week · resets to Thursday next week</div>
       <div style="margin-top:6px;text-align:center;">
         <span onclick="toggleTodayRest()" style="font-size:10px;color:var(--grey);text-decoration:underline;cursor:pointer;-webkit-tap-highlight-color:transparent;">Swap today to/from rest day</span>
       </div>
@@ -1629,6 +1630,7 @@
 <script src="./08-manual-week.js"></script>
 <script src="./09-checkins.js"></script>
 <script src="./32-workout-schedule.js"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){if(typeof refreshWeeklyRestDayControl==='function')refreshWeeklyRestDayControl();});</script>
 <script src="./10-today-workout.js"></script>
 <script src="./11-rest-timer.js"></script>
 <script src="./12-exercise-checklist.js"></script>
