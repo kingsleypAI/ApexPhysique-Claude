@@ -81,6 +81,11 @@
     var today=new Date();today.setHours(0,0,0,0);
     if(d<today){alert('Past days cannot be changed. Choose today or a day still ahead this week.');return false;}
     var monday=mondayOf(d),restDays=readRestDays();
+    var currentRest=validRestDay(monday,restDays[key(monday)])||new Date(monday.getFullYear(),monday.getMonth(),monday.getDate()+3,12);
+    if(key(currentRest)!==key(d) && currentRest<today){
+      alert('This week’s rest day has already passed. Keep it as it is and choose a new day next week.');
+      return false;
+    }
     restDays[key(monday)]=key(d);
     saveRestDays(restDays);
     return true;
