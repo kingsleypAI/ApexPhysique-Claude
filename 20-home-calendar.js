@@ -14,6 +14,33 @@ function getHomeGoalDistanceLabel(){
   }
 }
 
+function renderHomeWeeklySplit(){
+  var el=document.getElementById('homeWeeklySplit');
+  if(!el || typeof getWorkoutScheduleEntry!=='function') return;
+  var now=new Date(),monday=new Date(now.getFullYear(),now.getMonth(),now.getDate(),12);
+  monday.setDate(monday.getDate()-((monday.getDay()+6)%7));
+  var days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  var labels={push:'Push',pull:'Pull',legs:'Legs',rest:'Rest'};
+  var html='';
+  for(var i=0;i<7;i++){
+    var date=new Date(monday);date.setDate(monday.getDate()+i);
+    var entry=getWorkoutScheduleEntry(date);
+    var label=labels[entry.type]||'Workout';
+    if(entry.type!=='rest' && entry.variant) label+=' '+entry.variant.toUpperCase();
+    var dayClass=entry.type==='rest'?'rest':'train';
+    var action=entry.type==='rest'?'':' onclick="goToWorkout(\''+entry.type+'\')"';
+    html+='<div class="home-split-day '+dayClass+'"'+action+' aria-label="'+days[i]+' '+label+'">'
+      +'<span class="home-split-d">'+days[i]+'</span><span class="home-split-t">'+label+'</span></div>';
+  }
+  el.innerHTML=html;
+  var restRule=document.getElementById('homeRestRuleSub');
+  if(restRule && typeof getWorkoutRestDayWeekday==='function'){
+    var names=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    var restDay=getWorkoutRestDayWeekday(now);
+    restRule.textContent=names[restDay]+' off. 8+ hours sleep. Muscle is built during recovery.';
+  }
+}
+
 
 function buildHomeWeeklyStrip(){
   var el = document.getElementById('homeMiniCalGrid');
