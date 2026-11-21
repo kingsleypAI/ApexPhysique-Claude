@@ -38,7 +38,7 @@ function buildHomeWeeklyStrip(){
     var dt = new Date(monday);
     dt.setDate(monday.getDate() + i);
     var jsDayNum = dt.getDay();
-    var dtype = DAY_T[jsDayNum];
+    var dtype = getWorkoutForDate(dt);
     var col = DAY_COL[dtype] || 'transparent';
     var ds = dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');
     var dayDone = allDone[ds] ? Object.values(allDone[ds]).filter(Boolean).length : 0;
@@ -137,7 +137,7 @@ function buildHomeMiniCal(){
   for(var d=1;d<=daysInMonth;d++){
     var dt     = new Date(year, month, d);
     var jsDay  = dt.getDay();
-    var dtype  = DAY_T[jsDay];
+    var dtype  = getWorkoutForDate(dt);
     var col    = DAY_COL[dtype] || 'transparent';
     var ds     = year+'-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
     var dayDone= allDone[ds] ? Object.values(allDone[ds]).filter(Boolean).length : 0;

@@ -96,8 +96,17 @@
         <span>VIEW WORKOUT</span><span>›</span>
       </button>
     </div>
-    <div style="padding:0 12px 12px;text-align:center;">
-      <span onclick="toggleTodayRest()" style="font-size:11px;color:var(--grey);text-decoration:underline;cursor:pointer;-webkit-tap-highlight-color:transparent;">Swap today to/from rest day</span>
+    <div style="padding:0 12px 12px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <label for="weeklyRestDaySelect" style="font-size:10px;color:var(--grey);white-space:nowrap;">Weekly rest day</label>
+        <select id="weeklyRestDaySelect" onfocus="this.value=getWorkoutRestDayWeekday(new Date())" style="flex:1;min-width:0;padding:8px;background:var(--surface);border:1px solid var(--border2);border-radius:7px;color:var(--white);font-size:11px;">
+          <option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4" selected>Thursday (default)</option><option value="5">Friday</option><option value="6">Saturday</option><option value="0">Sunday</option>
+        </select>
+        <button onclick="moveWorkoutRestDayToWeekday(document.getElementById('weeklyRestDaySelect').value)" style="padding:8px 10px;background:var(--accent);border:0;border-radius:7px;color:#fff;font-size:10px;font-weight:700;white-space:nowrap;">APPLY</button>
+      </div>
+      <div style="margin-top:6px;text-align:center;">
+        <span onclick="toggleTodayRest()" style="font-size:10px;color:var(--grey);text-decoration:underline;cursor:pointer;-webkit-tap-highlight-color:transparent;">Swap today to/from rest day</span>
+      </div>
     </div>
   </div>
 
@@ -187,7 +196,7 @@
   <!-- COMPACT STATS STRIP -->
   <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px;">
     <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">92.6kg</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:800;color:var(--white);" id="homeStatWeight">91.7kg</div>
       <div style="font-size:11px;color:var(--mid);">4 months in · <span id="homeStatMonths">4</span>mo</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding-top:10px;border-top:1px solid var(--border);">
@@ -1229,7 +1238,7 @@
 </div>
 <!-- ===== NUTRITION ===== -->
 <div id="tab-nutrition" class="section">
-  <div class="sec-label">Guide Targets · 92.6kg · Aggressive Cut</div>
+  <div class="sec-label">Guide Targets · 91.7kg · Aggressive Cut</div>
   <div class="sec-title">CUT MEAL PLAN</div>
   <!-- MONSTER SWAP CALLOUT -->
   <div style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.25);border-radius:10px;padding:14px;margin-bottom:14px;">
@@ -1619,6 +1628,7 @@
 <script src="./07-workout-badges.js"></script>
 <script src="./08-manual-week.js"></script>
 <script src="./09-checkins.js"></script>
+<script src="./32-workout-schedule.js"></script>
 <script src="./10-today-workout.js"></script>
 <script src="./11-rest-timer.js"></script>
 <script src="./12-exercise-checklist.js"></script>
