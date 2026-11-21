@@ -71,8 +71,7 @@ function applyWorkoutView(mode){
   // Failsafe: on rest day, show tomorrow's workout type instead of nothing
   var displayType = todayType;
   if(todayType === 'rest'){
-    var tomorrowDay = (jsDay + 1) % 7;
-    displayType = DAY_TO_WORKOUT[tomorrowDay] || 'push';
+    displayType = getNextWorkoutScheduleEntry(new Date()).type || 'push';
   }
 
   if(mode === 'today'){
