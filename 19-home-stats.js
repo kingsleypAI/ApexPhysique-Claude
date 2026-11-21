@@ -16,16 +16,11 @@ function updateHomeStats(){
   var checkDate = new Date();
   for(var i=0;i<60;i++){
     var ds = forgeLocalDateKey(checkDate);
-    var jsDay = checkDate.getDay();
-    var dayType = {0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'}[jsDay];
-    if(dayType === 'rest'){
-      checkDate.setDate(checkDate.getDate()-1);
-      continue;
-    }
     var d = doneRaw[ds];
     var hasActivity = !!(d && Object.values(d).some(Boolean));
+    var dayType = typeof getWorkoutForDate==='function' ? getWorkoutForDate(checkDate) : ({0:'legs',1:'push',2:'pull',3:'legs',4:'rest',5:'push',6:'pull'}[checkDate.getDay()]);
     if(hasActivity){ streak++; checkDate.setDate(checkDate.getDate()-1); }
-    else if(ds === today) { checkDate.setDate(checkDate.getDate()-1); } // today not yet done
+    else if(ds === today || dayType === 'rest') { checkDate.setDate(checkDate.getDate()-1); }
     else break;
   }
 
