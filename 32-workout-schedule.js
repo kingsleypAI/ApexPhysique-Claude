@@ -111,7 +111,9 @@
     if(!Number.isInteger(n) || n<0 || n>6) return false;
     var today=new Date();today.setHours(0,0,0,0);
     var monday=mondayOf(today),target=new Date(monday);
-    target.setDate(target.getDate()+n);
+    // The select stores JavaScript weekdays (Sun=0..Sat=6), while the
+    // schedule engine's week starts Monday. Convert before offsetting.
+    target.setDate(target.getDate()+((n+6)%7));
     if(!window.setWorkoutRestDay(target)) return false;
     location.reload();
     return true;
@@ -129,18 +131,14 @@
     var today=new Date();today.setHours(0,0,0,0);
     var monday=mondayOf(today),restDate=new Date(monday);
     restDate.setDate(restDate.getDate()+((selected+6)%7));
-    var saved=readRestDays(),hasExplicitChoice=!!saved[key(monday)];
     var restAlreadyPassed=restDate<today;
-    // A default rest day that has passed can still be corrected once this
-    // week; after an explicit past day is saved, lock the control.
-    var locked=restAlreadyPassed && hasExplicitChoice;
-    select.disabled=locked;
+    // Keep the selector available throughout the current week so an
+    // incorrect same-week choice can be corrected. Past days with a logged
+    // workout remain disabled and the setter enforces that protection.
+    select.disabled=false;
     var apply=document.getElementById('weeklyRestDayApply');
-    if(apply) apply.disabled=locked;
-    if(status){
-      if(locked) status.textContent=names[selected]+' was your rest day this week · resets to Thursday next week';
-      else if(restAlreadyPassed) status.textContent=names[selected]+' default has passed · you can still record the day you actually rested this week';
-    }
+    if(apply) apply.disabled=false;
+    if(status && restAlreadyPassed) status.textContent=names[selected]+' is recorded as this week’s rest day · resets to Thursday next week';
     Array.prototype.forEach.call(select.options,function(option){
       var day=new Date(monday);day.setDate(day.getDate()+((Number(option.value)+6)%7));
       var dayKey=key(day),done=forgeSafeJSON(localStorage.getItem('apx_done_v1')||'{}',{});
