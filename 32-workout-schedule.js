@@ -77,6 +77,7 @@
   // Select the one recovery day for the date's Monday-Sunday week.
   window.setWorkoutRestDay=function(date){
     var d=date instanceof Date?date:new Date(date);
+    if(!Number.isFinite(d.getTime())){alert('Choose a valid day.');return false;}
     d=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);
     var today=new Date();today.setHours(0,0,0,0);
     if(d<today){alert('Past days cannot be changed. Choose today or a day still ahead this week.');return false;}
@@ -116,7 +117,13 @@
       status.textContent=names[selected]+' is your rest day this week · resets to Thursday next week';
     }
     var today=new Date();today.setHours(0,0,0,0);
-    var monday=mondayOf(today);
+    var monday=mondayOf(today),restDate=new Date(monday);
+    restDate.setDate(restDate.getDate()+((selected+6)%7));
+    var restAlreadyPassed=restDate<today;
+    select.disabled=restAlreadyPassed;
+    var apply=document.getElementById('weeklyRestDayApply');
+    if(apply) apply.disabled=restAlreadyPassed;
+    if(status && restAlreadyPassed) status.textContent=names[selected]+' rest day already used · next week resets to Thursday';
     Array.prototype.forEach.call(select.options,function(option){
       var day=new Date(monday);day.setDate(day.getDate()+Number(option.value));
       option.disabled=day<today;
@@ -124,9 +131,9 @@
     // Keep the current saved choice visible even if it has already passed.
     select.value=String(selected);
   };
-  // Compatibility API used by the existing Today toggle. If today's rest is
-  // switched to training, the recovery slot moves to the next day (or Saturday
-  // when moving Sunday's rest), so the week always contains exactly one rest.
+  // Compatibility API used by the existing Today toggle. Switching today's
+  // rest to training moves the recovery slot to tomorrow, but never across
+  // the Monday-Sunday boundary or after the weekly rest day has passed.
   window.setWorkoutRestOverride=function(date,makeRest){
     var d=date instanceof Date?date:new Date(date),monday=mondayOf(d);
     var restDays=readRestDays(),current=validRestDay(monday,restDays[key(monday)])||new Date(monday.getFullYear(),monday.getMonth(),monday.getDate()+3,12);
