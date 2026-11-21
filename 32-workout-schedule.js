@@ -30,7 +30,8 @@
       var choice=overrides[key(cursor)];
       var next=queue[0];
       if(choice==='rest'){
-        next='rest'; // Pause the workout queue; nothing is skipped.
+        next='rest';
+        if(queue[0]==='rest') queue.shift(); // Keep the planned rest; only pause when replacing a workout.
       }else{
         if(next==='rest' && choice==='train'){
           queue.shift();
