@@ -1,47 +1,44 @@
-/* FORGE dynamic workout sequence.
-   The six-session A/B rotation is continuous; rest days pause the queue.
-   Baseline anchor preserves the existing Mon–Sun plan from 16 Nov 2026. */
+/* FORGE weekly-reset workout sequence.
+   Push A starts each Monday. Thursday is the default rest day every week.
+   Manual extra rests pause the session queue for the remainder of that week. */
 (function(){
   'use strict';
   var KEY='forge_schedule_overrides_v2';
   var ANCHOR=new Date(2026,10,16,12,0,0,0); // Monday: Push A
-  var CYCLE=['pushA','pullA','legsA','rest','pushB','pullB','legsB'];
+  var SESSIONS=['pushA','pullA','legsA','pushB','pullB','legsB'];
   var BASE={0:'legsB',1:'pushA',2:'pullA',3:'legsA',4:'rest',5:'pushB',6:'pullB'};
   function key(d){return forgeLocalDateKey(d);}
   function readOverrides(){
     var saved=forgeSafeJSON(localStorage.getItem(KEY)||'{}',{});
-    // Preserve any one-off choices made by the previous scheduler.
     var legacy=forgeSafeJSON(localStorage.getItem('forge_day_override')||'{}',{});
-    Object.keys(legacy).forEach(function(k){
-      if(!saved[k]) saved[k]=legacy[k]==='rest'?'rest':'train';
-    });
+    Object.keys(legacy).forEach(function(k){if(!saved[k]) saved[k]=legacy[k]==='rest'?'rest':'train';});
     return saved;
   }
   function details(id){
     if(id==='rest') return {id:'rest',type:'rest',variant:null};
-    var type=id.replace(/[AB]$/,'').toLowerCase();
-    return {id:id,type:type,variant:id.slice(-1).toLowerCase()};
+    return {id:id,type:id.replace(/[AB]$/,'').toLowerCase(),variant:id.slice(-1).toLowerCase()};
+  }
+  function mondayOf(d){
+    var m=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);
+    m.setDate(m.getDate()-((m.getDay()+6)%7));
+    return m;
   }
   function at(date){
     var d=new Date(date.getFullYear(),date.getMonth(),date.getDate(),12);
     if(d<ANCHOR) return details(BASE[d.getDay()]||'rest');
-    var overrides=readOverrides(),queue=CYCLE.slice(),cursor=new Date(ANCHOR);
+    var overrides=readOverrides(),monday=mondayOf(d),queue=SESSIONS.slice(),cursor=new Date(monday);
     while(cursor<=d){
       var choice=overrides[key(cursor)];
-      var next=queue[0];
-      if(choice==='rest'){
-        next='rest';
-        if(queue[0]==='rest') queue.shift(); // Keep the planned rest; only pause when replacing a workout.
+      var isThursday=cursor.getDay()===4;
+      var next;
+      if(isThursday && choice!=='train'){
+        next='rest'; // Thursday is the recurring weekly recovery day.
+      }else if(choice==='rest'){
+        next='rest'; // An extra rest pauses, but does not consume, the next session.
       }else{
-        if(next==='rest' && choice==='train'){
-          queue.shift();
-          queue.push('rest'); // Move the planned recovery slot after the remaining sessions.
-          next=queue[0];
-        }
-        queue.shift();
+        next=queue.shift()||'rest';
       }
       if(cursor.getTime()===d.getTime()) return details(next);
-      if(!queue.length) queue=CYCLE.slice();
       cursor.setDate(cursor.getDate()+1);
     }
     return details('rest');
@@ -54,9 +51,7 @@
     return details('pushA');
   };
   window.setWorkoutRestOverride=function(date,makeRest){
-    var overrides=readOverrides();
-    overrides[key(date)]=makeRest?'rest':'train';
-    // Keep history for auditability, but cap future manual edits to 180 days.
+    var overrides=readOverrides();overrides[key(date)]=makeRest?'rest':'train';
     var today=new Date();today.setHours(0,0,0,0);
     Object.keys(overrides).forEach(function(k){
       var parsed=new Date(k+'T12:00:00');
@@ -66,7 +61,6 @@
   };
   window.getWorkoutVariantForDate=function(date){
     var entry=at(date);
-    if(entry.variant) return entry.variant;
-    return window.getNextWorkoutScheduleEntry(date).variant||'a';
+    return entry.variant||window.getNextWorkoutScheduleEntry(date).variant||'a';
   };
 })();
