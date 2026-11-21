@@ -125,9 +125,11 @@ test('weekday selector values map to the correct Monday-first calendar dates', (
   assert.equal(h.api.getWorkoutScheduleEntry('2026-11-21T12:00:00').id, 'pullB');
 });
 
-test('same-week rest day can be corrected from Saturday back to Friday', () => {
+test('a previously saved Saturday rest day can be corrected back to Friday', () => {
   const h = createHarness('2026-11-21T12:00:00');
-  assert.equal(h.api.setWorkoutRestDay('2026-11-21T12:00:00'), true);
+  // Reproduce the prior selector bug: Friday was saved as Saturday.
+  h.values.set('forge_weekly_rest_days_v1', JSON.stringify({ '2026-11-16': '2026-11-21' }));
   assert.equal(h.api.setWorkoutRestDay('2026-11-20T12:00:00'), true);
   assert.equal(h.api.getWorkoutRestDayWeekday('2026-11-21T12:00:00'), 5);
+  assert.equal(h.api.getWorkoutScheduleEntry('2026-11-20T12:00:00').type, 'rest');
 });
