@@ -1,19 +1,19 @@
 /* FORGE weekly shopping and spend tracker. Keeps legacy monthly checks separate. */
 (function(){
   'use strict';
-  var MONTHLY_TOTAL=136.65,MONTHLY_BUDGET=150;
+  var MONTHLY_BUDGET=150;
   var ITEMS={
-    'si-budget-chicken':['2.1kg','£8.90',38.16],
+    'si-budget-chicken':['1.89kg','£8.90',38.16],
     'si-budget-yoghurt':['2.8kg','£4.17',17.88],
     'si-budget-cottage':['1.75kg','£4.96',21.25],
     'si-budget-lentils':['930g','£1.66',7.12],
     'si-budget-eggs':['21 eggs','£3.47',14.85],
-    'si-budget-oats':['165g','£0.20',0.85],
-    'si-budget-rice':['165g','£0.12',0.52],
+    'si-budget-oats':['140g','£0.20',0.85],
+    'si-budget-rice':['140g','£0.12',0.52],
     'si-budget-veg':['1.4kg','£1.39',5.94],
     'si-budget-fruit':['7 bananas','£1.09',4.68],
-    'si-budget-tomatoes':['930g','£0.80',3.44],
-    'si-budget-onions':['470g onions + 470g carrots','£0.79',3.40],
+    'si-budget-tomatoes':['700g','£0.80',3.44],
+    'si-budget-onions':['350g onions + 350g carrots','£0.79',3.40],
     'si-budget-potatoes':['1.2kg','£0.93',3.98],
     'si-budget-bread':['about ½ loaf','£0.37',1.58],
     'si-budget-milk':['1.05L','£0.82',3.50],
