@@ -173,17 +173,24 @@ test('home weekly split renders the live A/B session and movable rest-day assign
 });
 
 
-test('budget shopping and recipe sections use the confirmed targets and exclude energy-drink cans', () => {
+test('Aldi one-shop meal plan keeps the food budget, portions and no-supplement rules visible', () => {
   const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-  const shopping = html.slice(html.indexOf('<!-- ===== SHOPPING ===== -->'), html.indexOf('<!-- ===== TIMER ===== -->'));
+  const nutrition = html.slice(html.indexOf('<!-- ===== NUTRITION ===== -->'), html.indexOf('<!-- ===== RECIPES ===== -->'));
   const recipes = html.slice(html.indexOf('<!-- ===== RECIPES ===== -->'), html.indexOf('<!-- ===== SHOPPING ===== -->'));
-  assert.match(shopping, /£150\.00/);
-  assert.match(shopping, /180g protein/);
-  assert.match(shopping, /1,700–1,900 kcal/);
-  assert.match(shopping, /No cans or supplement spend/);
-  assert.doesNotMatch(shopping, /Monster|energy drink|\b21 cans\b/i);
-  assert.match(recipes, /Paprika Chicken Rice Bowl/);
-  assert.match(recipes, /Chicken & Red Lentil Tomato Curry/);
-  assert.match(recipes, /Egg & Lentil Shakshuka/);
-  assert.match(recipes, /Cottage Cheese & Potato Bowl/);
+  const shopping = html.slice(html.indexOf('<!-- ===== SHOPPING ===== -->'), html.indexOf('<!-- ===== TIMER ===== -->'));
+  const rotation = fs.readFileSync(path.join(__dirname, '..', '27-meal-rotation.js'), 'utf8');
+  assert.match(shopping, /£150 FOOD SHOP/);
+  assert.match(shopping, /£136\.67/);
+  assert.match(shopping, /£13\.33/);
+  assert.match(shopping, /One Supermarket · Aldi/);
+  assert.match(shopping, /220g\/day/);
+  assert.match(shopping, /350g\/day/);
+  assert.match(shopping, /130g dry weight\/day/);
+  assert.match(shopping, /No energy-drink cans or supplement spend/);
+  assert.doesNotMatch(nutrition + recipes + rotation, /protein powder|whey|tuna|tinned chicken/i);
+  assert.match(nutrition, /~1,890/);
+  assert.match(nutrition, /~186g/);
+  assert.match(recipes, /Paprika Chicken, Lentil & Rice Bowl/);
+  assert.match(recipes, /Chicken & Red Lentil Curry/);
+  assert.match(rotation, /PROTEIN_SNACK_ROTATION/);
 });
