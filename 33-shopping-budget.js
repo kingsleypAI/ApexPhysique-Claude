@@ -73,6 +73,7 @@
     return rows().reduce(function(sum,row){var b=row.querySelector('.shop-chk'),m=ITEMS[row.id];return sum+(b&&b.classList.contains('done')&&m?m[2]*(mode==='weekly'?7/30:1):0);},0);
   }
   function render(){
+    var liveWeek=mondayKey();if(liveWeek!==weeklyKey){weeklyKey=liveWeek;restoreVisible();}
     var all=rows().filter(function(row){return !!row.querySelector('.shop-chk');}),done=all.filter(function(row){return row.querySelector('.shop-chk').classList.contains('done');});
     var pct=all.length?Math.round(done.length/all.length*100):0,spend=checkedSpend();
     var fill=document.getElementById('shopProgressFill'),txt=document.getElementById('shopProgressText');
