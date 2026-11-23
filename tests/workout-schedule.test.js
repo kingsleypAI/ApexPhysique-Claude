@@ -171,3 +171,19 @@ test('home weekly split renders the live A/B session and movable rest-day assign
   assert.ok(home.includes('getWorkoutRestDayWeekday(now)'));
   assert.ok(main.includes('renderHomeWeeklySplit()'));
 });
+
+
+test('budget shopping and recipe sections use the confirmed targets and exclude energy-drink cans', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  const shopping = html.slice(html.indexOf('<!-- ===== SHOPPING ===== -->'), html.indexOf('<!-- ===== TIMER ===== -->'));
+  const recipes = html.slice(html.indexOf('<!-- ===== RECIPES ===== -->'), html.indexOf('<!-- ===== SHOPPING ===== -->'));
+  assert.match(shopping, /£150\.00/);
+  assert.match(shopping, /180g protein/);
+  assert.match(shopping, /1,700–1,900 kcal/);
+  assert.match(shopping, /No cans or supplement spend/);
+  assert.doesNotMatch(shopping, /Monster|energy drink|\b21 cans\b/i);
+  assert.match(recipes, /Paprika Chicken Rice Bowl/);
+  assert.match(recipes, /Chicken & Red Lentil Tomato Curry/);
+  assert.match(recipes, /Egg & Lentil Shakshuka/);
+  assert.match(recipes, /Cottage Cheese & Potato Bowl/);
+});
