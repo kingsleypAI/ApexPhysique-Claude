@@ -183,13 +183,13 @@ test('Aldi one-shop meal plan keeps the food budget, portions and no-supplement 
   assert.match(shopping, /£136\.67/);
   assert.match(shopping, /£13\.33/);
   assert.match(shopping, /One Supermarket · Aldi/);
-  assert.match(shopping, /220g\/day/);
-  assert.match(shopping, /350g\/day/);
+  assert.match(shopping, /270g\/day/);
+  assert.match(shopping, /250g\/day/);
   assert.match(shopping, /130g dry weight\/day/);
   assert.match(shopping, /No energy-drink cans or supplement spend/);
   assert.doesNotMatch(nutrition + recipes + rotation, /protein powder|tuna|tinned chicken/i);
-  assert.match(nutrition, /~1,890/);
-  assert.match(nutrition, /~186g/);
+  assert.match(nutrition, /~1,870/);
+  assert.match(nutrition, /~187g/);
   assert.match(recipes, /Paprika Chicken, Lentil & Rice Bowl/);
   assert.match(recipes, /Chicken & Red Lentil Curry/);
   assert.match(rotation, /PROTEIN_SNACK_ROTATION/);
