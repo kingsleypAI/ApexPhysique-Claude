@@ -27,8 +27,8 @@ function updateMealRotation(){
 
     var lunchNameEl = document.getElementById('mealLunchName');
     var lunchDescEl = document.getElementById('mealLunchDesc');
-    var snackNameEl = document.getElementById('mealTunaName');
-    var snackDescEl = document.getElementById('mealTunaDesc');
+    var snackNameEl = document.getElementById('mealSnackName');
+    var snackDescEl = document.getElementById('mealSnackDesc');
 
     if(lunchNameEl && lunch){ lunchNameEl.textContent = lunch.name; }
     if(lunchDescEl && lunch){ lunchDescEl.textContent = lunch.desc; }
