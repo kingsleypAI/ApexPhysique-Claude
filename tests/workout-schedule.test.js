@@ -193,4 +193,5 @@ test('Aldi one-shop meal plan keeps the food budget, portions and no-supplement 
   assert.match(recipes, /Paprika Chicken, Lentil & Rice Bowl/);
   assert.match(recipes, /Chicken & Red Lentil Curry/);
   assert.match(rotation, /PROTEIN_SNACK_ROTATION/);
+  assert.doesNotMatch(html, /2 scoop protein shake|~2,495 kcal actual intake|217g protein daily|Tuna kept clear/i);
 });
