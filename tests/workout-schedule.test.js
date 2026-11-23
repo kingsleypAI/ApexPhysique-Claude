@@ -180,8 +180,8 @@ test('Aldi one-shop meal plan keeps the food budget, portions and no-supplement 
   const shopping = html.slice(html.indexOf('<!-- ===== SHOPPING ===== -->'), html.indexOf('<!-- ===== TIMER ===== -->'));
   const rotation = fs.readFileSync(path.join(__dirname, '..', '27-meal-rotation.js'), 'utf8');
   assert.match(shopping, /£150 FOOD SHOP/);
-  assert.match(shopping, /£136\.67/);
-  assert.match(shopping, /£13\.33/);
+  assert.match(shopping, /£136\.65/);
+  assert.match(shopping, /£13\.35/);
   assert.match(shopping, /One Supermarket · Aldi/);
   assert.match(shopping, /270g\/day/);
   assert.match(shopping, /250g\/day/);
