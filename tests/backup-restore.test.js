@@ -56,3 +56,8 @@ test('empty or non-FORGE backups are rejected', () => {
   assert.throws(() => h.api.forgeGetBackupEntries({ unrelated: 'x' }), /No FORGE data/i);
   assert.throws(() => h.api.forgeGetBackupEntries({ apx_x: 1 }), /invalid FORGE data/i);
 });
+
+test('backup restore update advances the service-worker cache without pinning a version', () => {
+  const sw = fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8');
+  assert.match(sw, /const CACHE_NAME='forge-static-v\\d+'/);
+});
