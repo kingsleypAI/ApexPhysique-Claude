@@ -16,28 +16,47 @@ function exportData(){
   a.href=url;a.download='forge-backup-'+forgeLocalDateKey(new Date())+'.json';
   document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
+function forgeGetBackupEntries(data){
+  if(!data || typeof data!=='object' || Array.isArray(data)) throw new Error('This is not a valid FORGE backup.');
+  var entries=Object.entries(data).filter(function(entry){return /^(apx_|forge_)/.test(entry[0]);});
+  if(!entries.length) throw new Error('No FORGE data was found in this backup.');
+  if(entries.some(function(entry){return typeof entry[1]!=='string';})) throw new Error('This backup contains invalid FORGE data. Nothing has been changed.');
+  return entries;
+}
+function forgeRestoreBackupData(data){
+  var entries=forgeGetBackupEntries(data);
+  var before={};
+  forgeOwnedStorageKeys().forEach(function(k){before[k]=localStorage.getItem(k);});
+  var incoming={};
+  entries.forEach(function(entry){incoming[entry[0]]=entry[1];});
+  try{
+    // A restore replaces the complete FORGE data set, not just keys present in the file.
+    Object.keys(before).forEach(function(k){if(!Object.prototype.hasOwnProperty.call(incoming,k))localStorage.removeItem(k);});
+    entries.forEach(function(entry){localStorage.setItem(entry[0],entry[1]);});
+  }catch(writeError){
+    try{
+      forgeOwnedStorageKeys().forEach(function(k){localStorage.removeItem(k);});
+      Object.keys(before).forEach(function(k){localStorage.setItem(k,before[k]);});
+    }catch(rollbackError){
+      throw new Error('Restore failed and automatic rollback was incomplete. Keep this tab open and export any remaining data. '+rollbackError.message);
+    }
+    throw new Error('Restore could not be completed. Your previous data has been rolled back. '+writeError.message);
+  }
+  return entries.length;
+}
 function importData(){
   const input=document.createElement('input');input.type='file';input.accept='.json,application/json';
   input.onchange=function(e){
     const file=e.target.files&&e.target.files[0];if(!file)return;
     const reader=new FileReader();
     reader.onload=function(ev){
-      const before={};
-      let changed=[];
       try{
         if(file.size>10*1024*1024)throw new Error('Backup file is too large (maximum 10MB).');
         const backup=JSON.parse(ev.target.result);
         if(!backup || (backup.app && backup.app!=='FORGE') || !backup.data || typeof backup.data!=='object' || Array.isArray(backup.data)) throw new Error('This is not a valid FORGE backup.');
-        const entries=Object.entries(backup.data).filter(([k,v])=>/^(apx_|forge_)/.test(k)&&typeof v==='string');
-        if(!entries.length) throw new Error('No FORGE data was found in this backup.');
-        if(!confirm('Restore '+entries.length+' FORGE data items? Current data will be replaced. Export a backup first if you have not already.')) return;
-        entries.forEach(([k])=>{before[k]=localStorage.getItem(k);});
-        try{
-          entries.forEach(([k,v])=>{localStorage.setItem(k,v);changed.push(k);});
-        }catch(writeError){
-          changed.forEach(function(k){if(before[k]===null)localStorage.removeItem(k);else localStorage.setItem(k,before[k]);});
-          throw new Error('Restore could not be completed. Your previous data has been rolled back. '+writeError.message);
-        }
+        const entries=forgeGetBackupEntries(backup.data);
+        if(!confirm('Restore '+entries.length+' FORGE data items? All current FORGE data will be replaced. Export a backup first if you have not already.')) return;
+        forgeRestoreBackupData(backup.data);
         alert('FORGE data restored. The app will now reload.');location.reload();
       }catch(err){alert('Restore failed: '+err.message);}
     };
