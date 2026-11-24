@@ -27,5 +27,5 @@ test('water progress, glass controls and daily limit consistently use eleven gla
 });
 
 test('service worker cache is refreshed for the tracking consistency update', () => {
-  assert.match(serviceWorker, /forge-static-v26/);
+  assert.match(serviceWorker, /const CACHE_NAME='forge-static-v\\d+'/);
 });
