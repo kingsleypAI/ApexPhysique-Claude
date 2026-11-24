@@ -51,7 +51,7 @@ function getCheckinHistory(){
     var val=JSON.parse(stored);
     var items=Array.isArray(val)?val:[val];
     return items.filter(function(item){
-      return item&&typeof item==='object'&&!Array.isArray(item)&&typeof item.date==='string'&&/^\\d{4}-\\d{2}-\\d{2}$/.test(item.date);
+      return item&&typeof item==='object'&&!Array.isArray(item)&&typeof item.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(item.date);
     });
   }catch(e){return [];}
 }
