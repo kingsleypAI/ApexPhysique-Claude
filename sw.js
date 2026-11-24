@@ -1,4 +1,4 @@
-const CACHE_NAME='forge-static-v26';
+const CACHE_NAME='forge-static-v27';
 const CORE=[
  './','./index.html','./manifest.json','./icon.svg','./icon-192.png','./icon-512.png','./icon-512-maskable.png','./apple-touch-icon.png',
  './app.css','./forge-redesign.css',
