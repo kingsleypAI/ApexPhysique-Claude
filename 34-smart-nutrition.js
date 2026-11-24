@@ -15,6 +15,33 @@
  function cal(){return read(CAL);}
  function entries(){return cal()[day()]||[];}
  function totals(list){return list.reduce(function(t,e){t.kcal+=Number(e.kcal)||0;t.protein+=Number(e.protein)||0;return t;},{kcal:0,protein:0});}
+ function ensureHomeSnapshot(){
+  var anchor=document.getElementById('homeMiniCal');
+  if(!anchor||document.getElementById('forgeHomeNutritionSnapshot'))return;
+  var card=document.createElement('section');
+  card.id='forgeHomeNutritionSnapshot';
+  card.style.cssText='background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:13px 14px;margin:0 0 14px;';
+  card.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:11px"><div><div style="font-size:9px;font-weight:800;letter-spacing:.1em;color:var(--accent-text)">TODAY\'S FUEL</div><div style="font-size:14px;font-weight:800;color:var(--white)">Nutrition at a glance</div></div><div id="forgeHomeMealCount" style="font-size:10px;font-weight:800;color:var(--accent-text);white-space:nowrap">0 / 4 meals</div></div>'+
+   '<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">'+
+   '<div style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px"><div style="font-size:9px;color:var(--grey);text-transform:uppercase">Calories</div><div id="forgeHomeKcal" style="font-size:21px;font-weight:800;color:var(--white)">0</div><div style="font-size:9px;color:var(--grey)">of 1,700–1,900 kcal</div><div style="height:4px;background:var(--border);border-radius:4px;margin-top:7px;overflow:hidden"><div id="forgeHomeKcalBar" role="progressbar" aria-label="Calories toward 1,900 kcal upper target" aria-valuemin="0" aria-valuemax="1900" aria-valuenow="0" style="height:100%;width:0;background:var(--accent)"></div></div></div>'+
+   '<div style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px"><div style="font-size:9px;color:var(--grey);text-transform:uppercase">Protein</div><div id="forgeHomeProtein" style="font-size:21px;font-weight:800;color:var(--white)">0g</div><div style="font-size:9px;color:var(--grey)">of 180g target</div><div style="height:4px;background:var(--border);border-radius:4px;margin-top:7px;overflow:hidden"><div id="forgeHomeProteinBar" role="progressbar" aria-label="Protein toward 180g target" aria-valuemin="0" aria-valuemax="180" aria-valuenow="0" style="height:100%;width:0;background:var(--accent)"></div></div></div></div>'+
+   '<div id="forgeHomeNutritionStatus" aria-live="polite" style="font-size:10px;color:var(--mid);line-height:1.5;margin-top:9px">Log food to see today\'s progress.</div>';
+  anchor.insertAdjacentElement('afterend',card);
+ }
+ function renderHomeSnapshot(t,done){
+  var card=document.getElementById('forgeHomeNutritionSnapshot');if(!card)return;
+  var kcal=document.getElementById('forgeHomeKcal'),protein=document.getElementById('forgeHomeProtein');
+  if(!kcal||!protein)return;
+  kcal.textContent=Math.round(t.kcal).toLocaleString();protein.textContent=Math.round(t.protein)+'g';
+  var kb=document.getElementById('forgeHomeKcalBar'),pb=document.getElementById('forgeHomeProteinBar');
+  if(kb){kb.style.width=Math.min(100,t.kcal/TARGET.max*100)+'%';kb.setAttribute('aria-valuenow',String(Math.round(t.kcal)));}
+  if(pb){pb.style.width=Math.min(100,t.protein/TARGET.protein*100)+'%';pb.setAttribute('aria-valuenow',String(Math.round(t.protein)));}
+  var count=MEALS.filter(function(m){return !!done[m.id];}).length;
+  document.getElementById('forgeHomeMealCount').textContent=count+' / 4 meals';
+  var msg=t.kcal<TARGET.min?Math.round(TARGET.min-t.kcal)+' kcal to reach your range':t.kcal>TARGET.max?Math.round(t.kcal-TARGET.max)+' kcal above your range':'Inside your calorie range';
+  msg+=' · '+(t.protein>=TARGET.protein?'Protein target reached':Math.round(TARGET.protein-t.protein)+'g protein to target');
+  document.getElementById('forgeHomeNutritionStatus').textContent=count+' of 4 planned meals added · '+msg;
+ }
  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
  function ensure(){
   var host=document.getElementById('tab-nutrition');if(!host||document.getElementById('forgeNutritionTracker'))return;
@@ -31,6 +58,7 @@
  }
  function render(){
   var log=cal(),today=log[day()]||[],t=totals(today),state=read(KEY),done=state[day()]||{};
+  renderHomeSnapshot(t,done);
   var kcal=document.getElementById('forgeNutKcal'),prot=document.getElementById('forgeNutProtein');
   if(!kcal||!prot)return;
   document.getElementById('forgeNutritionDate').textContent=new Date().toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
@@ -56,7 +84,7 @@
   log[day()]=arr;state[day()]=done;write(CAL,log);write(KEY,state);render();
  }
  function init(){
-  ensure();var box=document.getElementById('forgeNutritionTracker');if(!box)return;
+  ensure();ensureHomeSnapshot();var box=document.getElementById('forgeNutritionTracker');if(!box)return;
   box.addEventListener('click',function(e){var b=e.target.closest('button[data-meal]');if(b)toggle(b.dataset.meal);});
   render();
   window.addEventListener('storage',function(e){if(e.key===CAL||e.key===KEY)render();});

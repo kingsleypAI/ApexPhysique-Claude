@@ -34,6 +34,15 @@ test('calorie and protein progress targets use the agreed cut targets', () => {
 
 test('smart nutrition script is loaded and included in the service-worker cache', () => {
   assert.match(html, /<script src="\.\/34-smart-nutrition\.js"><\/script>/);
-  assert.match(sw, /forge-static-v24/);
+  assert.match(sw, /forge-static-v25/);
   assert.match(sw, /\.\/34-smart-nutrition\.js/);
+});
+
+test('home dashboard snapshot is driven by the same food log and meal state', () => {
+  assert.match(nutrition, /id='forgeHomeNutritionSnapshot'/);
+  assert.match(nutrition, /renderHomeSnapshot\(t,done\)/);
+  assert.match(nutrition, /forgeHomeKcalBar/);
+  assert.match(nutrition, /forgeHomeProteinBar/);
+  assert.match(nutrition, /MEALS\.filter\(function\(m\)\{return !!done\[m\.id\];\}\)/);
+  assert.match(nutrition, /insertAdjacentElement\('afterend',card\)/);
 });
