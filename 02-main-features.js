@@ -521,18 +521,29 @@ function saveWaterData(count){
 function renderWater(){
   const d = getWaterData();
   const count = d.count;
-  const target = 7;
+  const target = 11;
   const countEl = document.getElementById('waterCount');
   const fillEl = document.getElementById('waterBarFill');
   const glassesEl = document.getElementById('waterGlasses');
   if(countEl) countEl.textContent = count;
-  if(fillEl) fillEl.style.width = Math.min(100, Math.round(count/target*100)) + '%';
+  if(fillEl){
+    fillEl.style.width = Math.min(100, Math.round(count/target*100)) + '%';
+    fillEl.setAttribute('role','progressbar');
+    fillEl.setAttribute('aria-label','Daily water intake');
+    fillEl.setAttribute('aria-valuemin','0');
+    fillEl.setAttribute('aria-valuemax',String(target));
+    fillEl.setAttribute('aria-valuenow',String(count));
+  }
   if(glassesEl){
     glassesEl.innerHTML = '';
     for(let i=0;i<target;i++){
-      const g = document.createElement('span');
+      const g = document.createElement('button');
+      g.type = 'button';
       g.className = 'water-glass' + (i < count ? ' filled' : '');
       g.textContent = '💧';
+      g.setAttribute('aria-label','Set water intake to '+(i+1)+' glasses');
+      g.setAttribute('aria-pressed',String(i < count));
+      g.style.cssText = 'border:0;background:transparent;padding:0;line-height:1;';
       g.onclick = () => { saveWaterData(i+1); renderWater(); };
       glassesEl.appendChild(g);
     }
@@ -569,12 +580,22 @@ function renderCardioWeek(){
   const el = document.getElementById('cardioWeekDisplay');
   if(!el) return;
   const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  const dtype = ['workout','workout','workout','rest','workout','workout','workout'];
+  const today = new Date();
+  const monday = new Date(today.getFullYear(),today.getMonth(),today.getDate(),12);
+  monday.setDate(monday.getDate()-((monday.getDay()+6)%7));
+  function isScheduledRest(weekNumber,dayIndex){
+    const weekMonday = new Date(monday);
+    weekMonday.setDate(weekMonday.getDate()-(curWeek-weekNumber)*7);
+    const date = new Date(weekMonday);
+    date.setDate(date.getDate()+dayIndex);
+    const entry = typeof getWorkoutScheduleEntry==='function' ? getWorkoutScheduleEntry(date) : null;
+    return entry ? entry.type==='rest' : dayIndex===3;
+  }
   let html = '<div class="cardio-week-header">Week ' + curWeek + ' — Cardio Sessions</div>';
   for(let d=0;d<7;d++){
     const key = 'w'+curWeek+'d'+d;
     const done = !!cardioData[key];
-    const isRest = dtype[d]==='rest';
+    const isRest = isScheduledRest(curWeek,d);
     const label = isRest ? 'Rest Day' : dayNames[d]+' — Post-Session LISS';
     const sub = isRest ? 'No cardio needed' : '20–30 min walk/cycle · 120–140bpm';
     html += '<div class="cardio-log-row">';
@@ -592,12 +613,14 @@ function renderCardioWeek(){
   let total=0, thisWeek=0, weekStreak=0;
   for(const k in cardioData){ if(cardioData[k]) total++; }
   for(let d=0;d<7;d++){
-    if(cardioData['w'+curWeek+'d'+d]) thisWeek++;
+    if(!isScheduledRest(curWeek,d) && cardioData['w'+curWeek+'d'+d]) thisWeek++;
   }
-  // Week streak — how many consecutive weeks with at least 1 cardio session
+  // Count only completed cardio on scheduled training days; preserve all stored history.
   for(let w=curWeek;w>=1;w--){
     let hasCardio=false;
-    for(let d=0;d<7;d++){ if(cardioData['w'+w+'d'+d]){ hasCardio=true; break; } }
+    for(let d=0;d<7;d++){
+      if(!isScheduledRest(w,d) && cardioData['w'+w+'d'+d]){ hasCardio=true; break; }
+    }
     if(hasCardio) weekStreak++;
     else break;
   }
