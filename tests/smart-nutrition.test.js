@@ -34,7 +34,7 @@ test('calorie and protein progress targets use the agreed cut targets', () => {
 
 test('smart nutrition script is loaded and included in the service-worker cache', () => {
   assert.match(html, /<script src="\.\/34-smart-nutrition\.js"><\/script>/);
-  assert.match(sw, /forge-static-v24/);
+  assert.match(sw, /forge-static-v25/);
   assert.match(sw, /\.\/34-smart-nutrition\.js/);
 });
 
