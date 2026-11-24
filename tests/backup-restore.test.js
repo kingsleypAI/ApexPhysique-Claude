@@ -59,5 +59,5 @@ test('empty or non-FORGE backups are rejected', () => {
 
 test('backup restore update advances the service-worker cache without pinning a version', () => {
   const sw = fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8');
-  assert.match(sw, /const CACHE_NAME='forge-static-v\\d+'/);
+  assert.match(sw, /const CACHE_NAME='forge-static-v\d+'/);
 });
