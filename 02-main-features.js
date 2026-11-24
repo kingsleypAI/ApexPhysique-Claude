@@ -674,8 +674,8 @@ function calcWorkoutTime(){
 
 // ── CALORIE TRACKER ────────────────────────────────────────────────────────────
 const CAL_KEY = 'apx_calories_v1';
-const CAL_TARGET = 2700;
-const CAL_TARGET_REST = 2400;
+const CAL_TARGET = 1800;
+const CAL_TARGET_REST = 1800;
 
 function calEscapeHTML(value){return String(value==null?'':value).replace(/[&<>"']/g,function(c){if(c==='&')return '&amp;';if(c==='<')return '&lt;';if(c==='>')return '&gt;';if(c==='"')return '&quot;';return '&#39;';});}
 let calOffset = 0; // 0 = today, -1 = yesterday etc.
@@ -811,7 +811,7 @@ function renderCalories(){
       bar.className = 'cal-macro-fill' + (val > target ? ' over' : '');
     }
   };
-  setMacro('calProteinEaten', totalProtein, 230, 'calProteinBar');
+  setMacro('calProteinEaten', totalProtein, 180, 'calProteinBar');
   setMacro('calCarbsEaten', totalCarbs, 270, 'calCarbsBar');
   setMacro('calFatsEaten', totalFats, 80, 'calFatsBar');
 
