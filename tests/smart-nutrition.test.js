@@ -9,7 +9,9 @@ const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const sw = fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8');
 
 test('planned meal shortcuts match the agreed daily calorie and protein range', () => {
-  const meals = [...nutrition.matchAll(/kcal:(\d+),protein:(\d+)/g)].map(m => ({ kcal: Number(m[1]), protein: Number(m[2]) }));
+  const mealSection = nutrition.split('var MEALS=[')[1].split('];')[0];
+  const meals = [...mealSection.matchAll(/\{id:'[^']+',name:'[^']+',kcal:(\d+),protein:(\d+)/g)]
+    .map(m => ({ kcal: Number(m[1]), protein: Number(m[2]) }));
   assert.equal(meals.length, 4);
   assert.equal(meals.reduce((s, m) => s + m.kcal, 0), 1871);
   assert.equal(meals.reduce((s, m) => s + m.protein, 0), 188);
@@ -18,7 +20,7 @@ test('planned meal shortcuts match the agreed daily calorie and protein range', 
 });
 
 test('nutrition shortcuts write to the existing food-log key and preserve unrelated entries', () => {
-  assert.match(nutrition, /var CAL='apx_calories_v1'/);
+  assert.match(nutrition, /CAL='apx_calories_v1'/);
   assert.match(nutrition, /arr\.push\(\{id:eid,name:m\.name,kcal:m\.kcal,protein:m\.protein/);
   assert.match(nutrition, /arr=arr\.filter\(function\(e\)\{return e\.id!==done\[id\];\}\)/);
   assert.match(nutrition, /source:'forge-meal-plan'/);
