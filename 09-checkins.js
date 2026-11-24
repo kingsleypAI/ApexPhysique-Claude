@@ -2,28 +2,41 @@
 var CHECKIN_KEY = 'apx_checkin_v1';
 
 function getLastCheckin(){
-  return JSON.parse(localStorage.getItem(CHECKIN_KEY)||'null');
+  return getCheckinHistory()[0]||null;
+}
+
+function normalizeCheckinValue(value,min,max,label){
+  if(value===null||value===undefined||String(value).trim()==='')return {value:null,error:null};
+  var n=Number(value);
+  if(!Number.isFinite(n)||n<min||n>max)return {value:null,error:label+' must be between '+min+' and '+max+'.'};
+  return {value:Math.round(n*10)/10,error:null};
 }
 
 function logCheckin(weight, bf){
-  var data = {
-    date: forgeLocalDateKey(new Date()),
-    weight: weight||null,
-    bf: bf||null,
-    ts: Date.now()
-  };
-  var history = getCheckinHistory();
+  var w=normalizeCheckinValue(weight,40,300,'Weight');
+  var b=normalizeCheckinValue(bf,1,70,'Body fat');
+  if(w.error)throw new Error(w.error);
+  if(b.error)throw new Error(b.error);
+  if(w.value===null&&b.value===null)throw new Error('Enter at least your weight or body fat percentage.');
+  var today=forgeLocalDateKey(new Date());
+  var data={date:today,weight:w.value,bf:b.value,ts:Date.now()};
+  // Keep one current entry per calendar day; a correction replaces that day's reading.
+  var history=getCheckinHistory().filter(function(item){return item.date!==today;});
   history.unshift(data);
-  localStorage.setItem(CHECKIN_KEY, JSON.stringify(history.slice(0,20)));
-  // Bridge to body tracking weight chart
-  if(weight){
+  history.sort(function(a,b){return String(b.date).localeCompare(String(a.date));});
+  localStorage.setItem(CHECKIN_KEY,JSON.stringify(history.slice(0,20)));
+  // Bridge a valid weight reading to the existing body-tracking chart.
+  if(w.value!==null){
     try{
-      var td = JSON.parse(localStorage.getItem(TRK_KEY)||'{"weights":{},"lifts":{},"measurements":{},"notes":{}}');
-      var week = typeof getCurrentWeek==='function' ? getCurrentWeek() : 1;
-      td.weights[week] = weight;
-      localStorage.setItem(TRK_KEY, JSON.stringify(td));
-      if(typeof renderWeightChart==='function') renderWeightChart();
-      if(typeof renderSummary==='function') renderSummary();
+      var td=typeof forgeSafeJSON==='function'?forgeSafeJSON(localStorage.getItem(TRK_KEY)||'{}',{}):JSON.parse(localStorage.getItem(TRK_KEY)||'{}');
+      if(!td||typeof td!=='object'||Array.isArray(td))td={};
+      if(!td.weights||typeof td.weights!=='object'||Array.isArray(td.weights))td.weights={};
+      var week=typeof getCurrentWeek==='function'?Number(getCurrentWeek()):1;
+      if(!Number.isInteger(week)||week<1||week>16)week=1;
+      td.weights[week]=w.value;
+      localStorage.setItem(TRK_KEY,JSON.stringify(td));
+      if(typeof renderWeightChart==='function')renderWeightChart();
+      if(typeof renderSummary==='function')renderSummary();
     }catch(e){}
   }
   renderCheckinBanner();
@@ -32,10 +45,15 @@ function logCheckin(weight, bf){
 }
 
 function getCheckinHistory(){
-  var stored = localStorage.getItem(CHECKIN_KEY);
-  if(!stored) return [];
-  var val = JSON.parse(stored);
-  return Array.isArray(val) ? val : [val];
+  var stored=localStorage.getItem(CHECKIN_KEY);
+  if(!stored)return [];
+  try{
+    var val=JSON.parse(stored);
+    var items=Array.isArray(val)?val:[val];
+    return items.filter(function(item){
+      return item&&typeof item==='object'&&!Array.isArray(item)&&typeof item.date==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(item.date);
+    });
+  }catch(e){return [];}
 }
 
 function renderCheckinBanner(){
@@ -72,8 +90,8 @@ function buildCheckinBanner(type, days, last){
       +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px;">📊 Log First Check-In</div>'
       +'<div style="font-size:12px;color:var(--mid);margin-bottom:10px;">Log your current weight and body fat % from the gym scale to start tracking your progress properly.</div>'
       +'<div style="display:flex;gap:8px;">'
-      +'<input type="number" inputmode="decimal" id="ciWeightDue" placeholder="Weight (kg)" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
-      +'<input type="number" inputmode="decimal" id="ciBFDue" placeholder="BF %" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
+      +'<input type="number" inputmode="decimal" id="ciWeightDue" placeholder="Weight (kg)" min="40" max="300" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
+      +'<input type="number" inputmode="decimal" id="ciBFDue" placeholder="BF %" min="1" max="70" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
       +'</div>'
       +'<button onclick="submitCheckin()" style="width:100%;margin-top:8px;padding:10px;background:var(--accent);border:none;color:#fff;font-family:Space Grotesk,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Log Check-In</button>'
       +'</div>';
@@ -85,8 +103,8 @@ function buildCheckinBanner(type, days, last){
     +(last.weight?' · '+last.weight+'kg':'')+(last.bf?' · '+last.bf+'% BF':'')+'</div>'
     +'<div style="font-size:11px;color:var(--mid);margin-bottom:10px;">'+days+' days since last weigh-in. Head to the gym scale and come back to log it.</div>'
     +'<div style="display:flex;gap:8px;">'
-    +'<input type="number" inputmode="decimal" id="ciWeight" placeholder="Weight (kg)" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
-    +'<input type="number" inputmode="decimal" id="ciBF" placeholder="BF %" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
+    +'<input type="number" inputmode="decimal" id="ciWeight" placeholder="Weight (kg)" min="40" max="300" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
+    +'<input type="number" inputmode="decimal" id="ciBF" placeholder="BF %" min="1" max="70" step="0.1" style="flex:1;background:var(--surface);border:1px solid var(--border2);color:var(--white);font-size:16px;padding:8px 10px;outline:none;border-radius:6px;">'
     +'</div>'
     +'<button onclick="submitCheckin()" style="width:100%;margin-top:8px;padding:10px;background:var(--accent);border:none;color:#fff;font-family:Space Grotesk,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent;">Log Check-In</button>'
     +'</div>';
